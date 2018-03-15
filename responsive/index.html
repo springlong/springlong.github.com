@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>响应式布局概述</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+<div class="header">
+	<div class="container collapse-box j_collapseBox">
+		<div class="logo"><a href="/">响应式设计logo</a></div>
+		<div class="nav-wrap">
+			<div class="nav-button j_collapseSwitch"><span></span></div>
+			<ul class="nav-box j_collapseCont">
+				<li class="nav-item"><a href="#">导航菜单</a></li>
+				<li class="nav-item"><a href="#floor-gainian">主流布局</a></li>
+				<li class="nav-item"><a href="#floor-yuanze">基本原则</a></li>
+				<li class="nav-item"><a href="#floor-layout">变化模式</a></li>
+				<li class="nav-item"><a href="#floor-shebei">设备响应</a></li>
+				<li class="nav-item"><a href="#floor-case">站点案例</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container" id="floor-gainian">
+	<h2>主流布局方式</h2>
+	<hr>
+	<div class="row clear-sm-6">
+		<div class="col-sm-6">
+			<div class="text-item">
+				<strong class="text-title">固定布局（静态布局）</strong>
+				<p class="text-desc">即传统Web设计，整个网页只有一个固定宽度，不会随着屏幕大小而变化，当屏幕过小时会显示滚动条来查阅被遮挡的部分。</p>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="text-item">
+				<strong class="text-title">弹性布局（流式布局）</strong>
+				<p class="text-desc">页面元素的宽度采用百分比规则根据屏幕大小自动适配，大部分移动站点均采用此种布局。主要的问题表现在如果屏幕尺度跨度太大，那么在相对其原始设计而言过小或过大的屏幕上不能正常显示。</p>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="text-item">
+				<strong class="text-title">自适应布局</strong>
+				<p class="text-desc">该布局的特点是分别为不同的屏幕分辨率定义布局方式。当布局方式切换时，页面元素发生对应变化。但是在每个布局方式中，页面元素不随窗口大小的调整而发生变化。</p>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div class="text-item">
+				<strong class="text-title">响应式布局</strong>
+				<p class="text-desc">可以把响应式布局看做是弹性布局和自适应布局的融合。在响应式布局中，每个页面元素都采用弹性布局，同时根据屏幕宽度的不同，展示不同的显示方案。</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container" id="floor-yuanze">
+	<h2><a href="#floor-yuanze">响应式布局的基本原则</a></h2>
+	<hr>
+	<div class="section" id="floor-yuanze-mobilefirst">
+		<h3><a href="#floor-yuanze-mobilefirst">1. 移动优先</a></h3>
+		<p>移动优先，它的意思是，先为移动端设计样式，然后再根据需求去优化更大屏幕的样式。换句话说，假如你把移动端样式当成网站的默认样式，且以后不用去优化它，一步到位。那就更省事了！</p>
+		<p>移动优先促使我们考虑哪些才是用户最迫切的需求，用户最想要的是什么。</p>
+		<p>从大到小，我们可能会忽略掉一些重要的信息。从小到大，我们能够保证重要的信息一直都在。移动优先，因为加法容易减法难。</p>
+	</div>
+	<div class="section" id="floor-yuanze-shensuo">
+		<h3><a href="#floor-yuanze-shensuo">2. 模块内容的可伸缩性</a></h3>
+		<p>页面中的每个模块以及每个内容单元均采用弹性布局，根据屏幕宽度的不同而自动伸缩。</p>
+		<div class="row">
+			<div class="col-xs-4">
+				<div class="text-pic"><img src="images/goods-1.jpg"></div>
+				<div class="text-desc withSingle withCenter">阿联酋ECHT ERZGEBIRGE碗碟通色单码</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="text-pic"><img src="images/goods-2.jpg"></div>
+				<div class="text-desc withSingle withCenter">意大利Richard Glaesser 儿童硅材料 围嘴儿单色通码</div>
+			</div>
+			<div class="col-xs-4">
+				<div class="text-pic"><img src="images/goods-3.jpg"></div>
+				<div class="text-desc withSingle withCenter">澳大利亚Roanjane更祺婴儿宝宝拉拉裤小内裤4色4码</div>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="floor-yuanze-lieshu">
+		<h3><a href="#floor-yuanze-lieshu">3. 模块内容的列数排布的自由性</a></h3>
+		<p>根据页面宽度自动调整模块内容的列数排版，从而能够根据屏幕类型的不同而展示更加适当的内容。</p>
+		<div class="row clear-sm-6 clear-md-4 clear-lg-3">
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="text-item">
+					<div class="text-pic"><img src="images/pic-1.jpg" alt=""></div>
+					<p class="text-desc">响应式设计是由著名网页设计师Ethan Marcotte在2010年5月提出的设计概念，随后席卷前端和设计领域，成为了如今网页设计的大趋势。正如同Ethan所说：“响应式网站设计提供了一种全新的选择，这种基于栅格布局和CSS3的流动性网页设计，可以让网页随着屏幕变化而响应。这是一种更为统一，更加全面的设计技巧，一种打破网页固有型态和限制的灵活设计方法。”</p>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="text-item">
+					<div class="text-pic"><img src="images/pic-2.jpg" alt=""></div>
+					<p class="text-desc">这种兼顾多屏幕多场景的灵活设计，这就是响应式设计令人着迷的所在。这一点和编程开发领域所追求的“一次编写，到处运行”有着异曲同工之妙。所以它在短短几年内迅速火起来，然后成为大趋势，可以说是意料之中，水到渠成。响应式设计的网页现在已经很多了，而相关的教程也是数不胜数。国外的设计博客Pixel77搜集了15篇优秀的响应式网页设计的教程，让喜欢钻研的你来学习。</p>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="text-item">
+					<div class="text-pic"><img src="images/pic-1.jpg" alt=""></div>
+					<p class="text-desc">响应式设计（以下称 RWD ）是一种设计思维方式，而不是某种特定的技术。我理解的响应式设计，就是让 Web 内容的呈现从手机到27寸 iMac 都保持最佳使用体验。一开始接触 RWD 的时候，感觉它关注的都是移动端，实际上大屏幕以及高分屏也属于 RWD 需要在设计或技术层面考量的要素。</p>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="text-item">
+					<div class="text-pic"><img src="images/pic-2.jpg" alt=""></div>
+					<p class="text-desc">自适应布局给了你更多设计的空间，因为你只用考虑几种不同的状态。而在响应式布局中你却得考虑上百种不同的状态。虽然绝大部分状态差异较小，但仍然也算做差异。它使得把握设计最终效果变得更难，同样让响应式布局更加的难以测试和预测。但同时说难，这也算是响应式布局美的所在。</p>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="text-item">
+					<div class="text-pic"><img src="images/pic-1.jpg" alt=""></div>
+					<p class="text-desc">响应式设计是由著名网页设计师Ethan Marcotte在2010年5月提出的设计概念，随后席卷前端和设计领域，成为了如今网页设计的大趋势。正如同Ethan所说：“响应式网站设计提供了一种全新的选择，这种基于栅格布局和CSS3的流动性网页设计，可以让网页随着屏幕变化而响应。这是一种更为统一，更加全面的设计技巧，一种打破网页固有型态和限制的灵活设计方法。”</p>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="text-item">
+					<div class="text-pic"><img src="images/pic-2.jpg" alt=""></div>
+					<p class="text-desc">这种兼顾多屏幕多场景的灵活设计，这就是响应式设计令人着迷的所在。这一点和编程开发领域所追求的“一次编写，到处运行”有着异曲同工之妙。所以它在短短几年内迅速火起来，然后成为大趋势，可以说是意料之中，水到渠成。响应式设计的网页现在已经很多了，而相关的教程也是数不胜数。国外的设计博客Pixel77搜集了15篇优秀的响应式网页设计的教程，让喜欢钻研的你来学习。</p>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="text-item">
+					<div class="text-pic"><img src="images/pic-1.jpg" alt=""></div>
+					<p class="text-desc">响应式设计（以下称 RWD ）是一种设计思维方式，而不是某种特定的技术。我理解的响应式设计，就是让 Web 内容的呈现从手机到27寸 iMac 都保持最佳使用体验。一开始接触 RWD 的时候，感觉它关注的都是移动端，实际上大屏幕以及高分屏也属于 RWD 需要在设计或技术层面考量的要素。</p>
+				</div>
+			</div>
+			<div class="col-sm-6 col-md-4 col-lg-3">
+				<div class="text-item">
+					<div class="text-pic"><img src="images/pic-2.jpg" alt=""></div>
+					<p class="text-desc">自适应布局给了你更多设计的空间，因为你只用考虑几种不同的状态。而在响应式布局中你却得考虑上百种不同的状态。虽然绝大部分状态差异较小，但仍然也算做差异。它使得把握设计最终效果变得更难，同样让响应式布局更加的难以测试和预测。但同时说难，这也算是响应式布局美的所在。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="floor-yuanze-pic">
+		<h3><a href="#floor-yuanze-pic">4. 能够适应比例变化的图片</a></h3>
+		<h4>前景图片根据比例自动伸缩，可控制最大宽度</h4>
+		<div class="pic-box">
+			<img src="images/test.jpg">
+		</div>
+		<h4>可自动覆盖的背景图片</h4>
+		<p>当容器大于原始图片，将把背景图片扩展至足够大，以使背景图片完全覆盖背景区域。</p>
+		<p>当容器小于原始图片，背景图片的某些部分也许无法显示在背景定位区域中。</p>
+		<div class="pic-bg">
+			<p>背景图片自动覆盖容器</p>
+			<p>背景图片自动覆盖容器</p>
+			<p>背景图片自动覆盖容器</p>
+			<p>背景图片自动覆盖容器</p>
+			<p>背景图片自动覆盖容器</p>
+		</div>
+		<h4>根据屏幕类型，加载不同的图片</h4>
+		<p>这种做法的目的，一个是因为自动伸缩的图片在过大或过小的屏幕下会显示模糊，另一个则是因为在移动设备上加载过大尺寸的图片会造成访客的资源浪费。</p>
+		<div class="pic-box">
+			<img src="images/placeholder.png" class="j_loadImg" data-image="images/banner.jpg" data-image-sm="images/banner-md.jpg" data-image-md="images/banner-md.jpg" data-image-lg="images/banner-lg.jpg">
+		</div>
+	</div>
+	<div class="section" id="floor-yuanze-hidden">
+		<h3><a href="#floor-yuanze-hidden">5. 能够自动隐藏/部分显示内容</a></h3>
+		<p>例如，在电脑上显示大段描述文本，而在手机上仅少量显示或者全部隐藏；</p>
+		<p>例如，在电脑上显示的模块内容，而在手机上不进行展示；</p>
+	</div>
+	<div class="section" id="floor-yuanze-nav">
+		<h3><a href="#floor-yuanze-nav">6. 能自动折叠的导航和菜单</a></h3>
+		<p>根据页面宽度决定导航和菜单是否展开还是收起，使得不同屏幕类型下导航和菜单显示的完整性和合理性。</p>
+	</div>
+</div>
+<div class="container" id="floor-layout">
+	<h2><a href="#floor-layout">响应式布局的变化模式</a></h2>
+	<hr>
+	<h3>布局不变</h3>
+	<div class="layout-pic">
+		<img src="images/layout-11.png">
+	</div>
+	<div class="layout-pic">
+		<img src="images/layout-12.png">
+	</div>
+	<div class="layout-pic">
+		<img src="images/layout-13.png">
+	</div>
+	<h3>布局改变</h3>
+	<div class="layout-pic">
+		<img src="images/layout-21.png">
+	</div>
+	<div class="layout-pic">
+		<img src="images/layout-22.png">
+	</div>
+	<div class="layout-pic">
+		<img src="images/layout-23.png">
+	</div>
+</div>
+<div class="container" id="floor-shebei">
+	<h2><a href="#floor-shebei">响应式布局的设备响应</a></h2>
+	<hr>
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="text-item">
+				<p class="text-desc">移动设备的物理像素（设备分辨率，最大内容展示像素）和逻辑像素（最佳视觉呈现，相对于物理像素存在一个缩放比例）。</p>
+				<p class="text-desc"><a href="http://iosres.com/" target="_blank">IOS像素查询</a></p>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="text-item">
+				<p class="text-desc">依据分辨率划分设备：</p>
+				<p class="text-desc">1. 超小型设备（手机），分辨率小于768；</p>
+				<p class="text-desc">2. 小型设备（竖屏Pad），分辨率大于等于768；</p>
+				<p class="text-desc">3. 中型设备（横屏Pad），分辨率大于等于1024；</p>
+				<p class="text-desc">4. 大型设备（台式机、笔记本），分辨率在1280、1366、1440、1600、1920及以上设备；</p>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="text-item">
+				<p class="text-desc">移动设备采用逻辑像素进行视觉呈现的控制开关：</p>
+				<p class="text-desc"><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no"></code></p>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="text-item">
+				<p class="text-desc">采用CSS3的媒体查询进行适配：</p>
+				<p class="text-desc"><code>@media screen and (min-width: 768px){ }</code></p>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="text-item">
+				<p class="text-desc">适配的断点设置</p>
+				<p class="text-desc">以流行的响应式框架Bootstrap为例，它的断点分别是：（大）1200（中）992（小）768（超小）。</p>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="text-item">
+				<p class="text-desc">网格系统</p>
+				<p>将每个布局单元划分为12等分，布局列数可在1列、2列、3列、4列、6列中间自由切换，布局单元的宽度包含间距在内；</p>
+				<p>布局单元之间，允许随着屏幕尺寸的不同，而设置不同的间距；</p>
+			</div>
+			<div class="row grid-box">
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+				<div class="col-xs-6 col-sm-3 col-md-2 col-lg-1"><div class="grid-item"></div></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container" id="floor-case">
+	<h2><a href="#floor-case">响应式布局的站点案例</a></h2>
+	<hr>
+	<ul class="linklist">
+		<li><a href="https://www.tmall.com/" target="_blank">简单自适应-天猫首页，大（1260）中，最小布局982，最大1230</a></li>
+		<li><a href="https://www.jd.com/" target="_blank">简单自适应-京东首页，大（1190）中，最小布局990，最大1190</a></li>
+		<li><a href="https://www.vip.com/" target="_blank">简单自适应-唯品会，大（1441）中，最小1000，最大1170</a></li>
+		<li><a href="http://www.duokan.com/" target="_blank">简单自适应-多看阅读，大（1200）中，最小布局960，最大1200</a></li>
+	</ul>
+	<ul class="linklist">
+		<li><a href="https://www.apple.com/" target="_blank">响应式站点案例-apple，大（1068）中/小（735）超小</a></li>
+		<li><a href="https://enga.ge/" target="_blank">响应式站点案例-engage，大（1200）中（992）小（768）超小</a></li>
+		<li><a href="http://www.greenbelt.org.uk/" target="_blank">响应式站点案例-greenbelt，响应尺寸随意型</a></li>
+	</ul>
+	<ul class="linklist">
+		<li><a href="http://www.coolsite360.com/" target="_blank">响应式建站工具-易派</a></li>
+		<li><a href="http://www.qifeiye.com/" target="_blank">响应式建站工具-起飞页</a></li>
+		<li><a href="http://www.zhuzi.me/" target="_blank">响应式建站工具-竹子建站</a></li>
+	</ul>
+	<ul class="linklist">
+		<li><a href="http://responsive.cn/" target="_blank">响应式站点收录-中国响应式网站分享凭他</a></li>
+		<li><a href="https://mediaqueri.es/" target="_blank">响应式站点收录-Media Queries</a></li>
+	</ul>
+</div>
+<script src="js/jquery/1.11.1/jquery.js"></script>
+<script src="js/responsive.js"></script>
+</body>
+</html>
