@@ -10,11 +10,21 @@
 <body>
   <button onclick="handleOpenInApp()" style="width: 200px;height:100px;border: 1px solid #ddd">open in app</button>
   <div>
-    <p><a href="tencent://Message/?Uin=910521727&websiteName=www.qq.com&Menu=yes">tencent://Message/?Uin=910521727&websiteName=www.qq.com&Menu=yes</a></p>
-    <p><a href="UNApatmentGuestApp://">UNApatmentGuestApp://</a></p>
-    <p><a href="UNApatmentGuestAppUnInstallTest://">UNApatmentGuestAppUnInstallTest://</a></p>
-    <p><a href="https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169">https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169</a></p>
-    <p><a href="http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2">http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2</a></p>
+    <p>
+      <a href="tencent://Message/?Uin=910521727&websiteName=www.qq.com&Menu=yes">tencent://Message/?Uin=910521727&websiteName=www.qq.com&Menu=yes</a>
+    </p>
+    <p>
+      <a href="UNApatmentGuestApp://">UNApatmentGuestApp://</a>
+    </p>
+    <p>
+      <a href="UNApatmentGuestAppUnInstallTest://">UNApatmentGuestAppUnInstallTest://</a>
+    </p>
+    <p>
+      <a href="https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169">https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169</a>
+    </p>
+    <p>
+      <a href="http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2">http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2</a>
+    </p>
   </div>
   <iframe src="about:blank;" name="dostName"></iframe>
   <script>
@@ -70,13 +80,20 @@
         }
 
         if (openUrl) {
-          this.trigger(openUrl)
-        } else if(opts.autoRedirect && downUrl) {
+          this.trigger(openUrl, downUrl)
+        } else if (opts.autoRedirect && downUrl) {
           window.location.href = downUrl
         }
       },
-      trigger(url, target) {
-        window.location.href = url
+      trigger(openUrl, downUrl, target) {
+        window.location.href = openUrl
+        const startTime = +new Date();
+        setTimeout(function () {
+          alert(+new Date() - startTime)
+          if (+new Date() - startTime < 1000) {
+            alert('启动失败') // 延时低于1000视为触发失败，尝试使用低版本链接进行触发
+          };
+        }, 800);
         // iOS9 and later is no longer support iframe call scheme.
         // const ele = document.createElement('a')
         // ele.setAttribute('href', url)
