@@ -8,42 +8,49 @@
 </head>
 
 <body>
-  <button onclick="openApp.handleOpenInApp()" style="width: 200px;height:100px;border: 1px solid #ddd">open in app</button>
+  <button onclick="handleOpenInApp()" style="width: 200px;height:100px;border: 1px solid #ddd">open in app</button>
   <div>
     <p><a class="j_addOpen" href="tencent://Message/?Uin=910521727&websiteName=www.qq.com&Menu=yes">tencent://Message/?Uin=910521727&websiteName=www.qq.com&Menu=yes</a></p>
     <p><a href="UNApatmentGuestApp://">UNApatmentGuestApp://</a></p>
-    <p><a href="https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169?mt=8">https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169?mt=8</a></p>
+    <p><a href="UNApatmentGuestAppUnInstallTest://">UNApatmentGuestAppUnInstallTest://</a></p>
+    <p><a href="https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169">https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169</a></p>
     <p><a href="http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2">http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2</a></p>
   </div>
   <script>
-    const ele = document.querySelector('.j_addOpen')
-    ele.addEventListener('click', function(){
-      alert(1222);
-    })
+    function handleOpenInApp() {
+      OpenApp.open({
+        androidAppUrl: 'unapatmentguestapp://',
+        androidDownloadUrl: 'http://image.intebox.com/appstore/android/lianyuplus_guest_2017112801.apk',
+        androidUseThird: true,
+        iosAppUrl: 'UNApatmentGuestApp://',
+        iosDownloadUrl: 'https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169',
+        iosUseThird: false,
+        thirdDownloadUrl: 'http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2', // 应用宝下载链接
+        autoRedirect: true,
+      })
+    }
 
-    objEvent = document.createEvent("MouseEvents")
-    objEvent.initMouseEvent('click', true, false)
-    ele.dispatchEvent(objEvent)
+    const OpenApp = {
+      open(options) {
+        const opts = Object.assign({
+          // 安卓的打开链接
+          androidAppUrl: '',
+          // 安卓的下载链接，开启第三方下载url时无效
+          androidDownloadUrl: '',
+          // 安卓是否使用第三方下载url
+          androidUseThird: false,
+          // IOS的打开链接
+          iosAppUrl: '',
+          // IOS的下载链接
+          iosDownloadUrl: '',
+          // IOS是否使用第三方下载url
+          iosUseThird: false,
+          // 第三方下载url
+          thirdDownloadUrl: '',
+          // 打开APP失败后，是否自动跳转到下载页面
+          autoRedirect: true,
+        }, options)
 
-    const openApp = {
-      handleOpenInApp() {
-        alert('handleOpenInApp')
-        this.openInApp({
-          button: document.querySelector('.j_openApp'),
-          androidUrl: 'unapatmentguestapp://', // 安卓的打开链接
-          androidDownloadUrl: 'http://image.intebox.com/appstore/android/lianyuplus_guest_2017112801.apk', // 安卓的下载链接,开启应用宝的时候这个配置没有用
-          androidYYB: true, // android 是否开启应用宝下载
-          iosUrl: 'UNApatmentGuestApp://', // ios 打开链接
-          iosDownloadUrl: 'https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169?mt=8', // ios 的下载链接
-          iosUniversalLinkEnabled: false, // 是否开启 Universal Link
-          iosYYB: false, // ios 是否开启应用宝下载
-          yybDownloadUrl: 'http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2', // 应用宝下载链接
-          autoRedirectToDownloadUrl: true, // 是否自动跳转到下载页面
-        })
-      },
-      // 在APP中打开
-      openInApp(options) {
-        // 判断浏览器
         const userAgent = navigator.userAgent;
         const isAndroid = /Android/i.test(userAgent)
         const isIOS = /iPhone|iPad|iPd/i.test(userAgent)
@@ -52,39 +59,31 @@
         let downUrl = ''
 
         if (isIOS) {
-          openUrl = options.iosUrl || ''
-          downUrl = options.iosYYB ? options.yybDownloadUrl : options.iosDownloadUrl
+          openUrl = opts.iosAppUrl || ''
+          downUrl = opts.iosUseThird ? opts.thirdDownloadUrl : opts.iosDownloadUrl
         } else if (isAndroid) {
-          openUrl = options.androidUrl || ''
-          downUrl = options.androidYYB ? options.yybDownloadUrl : options.androidDownloadUrl
+          openUrl = opts.androidAppUrl || ''
+          downUrl = opts.androidUseThird ? opts.thirdDownloadUrl : opts.androidDownloadUrl
+        } else {
+          downUrl = opts.thirdDownloadUrl || ''
         }
 
-        alert('openInIframe start 1')
-        this.openInIframe('oepnInApp', 'UNApatmentGuestApp://', () => {
-          alert('openInIframe in 1')
-        })
-      },
-      /**
-       * 在指定iframe中打开url链接
-       * @param  {String} name iframe的name和id属性
-       * @param  {String} url 需要打开的url链接
-       * @param  {Function} callback 加载成功执行函数
-       * @return {String} 返回name参数值
-       */
-      openInIframe: function (name, url, callback) {
-        let iframe = document.getElementById(name);
-        if (iframe == null) {
-          iframe = document.createElement('iframe');
-          iframe.id = name;
-          iframe.name = name;
-          iframe.onload = callback;
-          iframe.src = url;
-          iframe.style.cssText = 'position:absolute;left:-9999px;overflow:hidden;width:0px;height:0px;';
-          document.body.appendChild(iframe);
-        } else {
-          iframe.onload = callback;
-          iframe.src = url;
+        if (openUrl) {
+          this.trigger(openUrl)
+        } else if(opts.autoRedirect && downUrl) {
+          window.location.href = downUrl
         }
+      },
+      trigger(url, target) {
+        const ele = document.createElement('a')
+        ele.setAttribute('href', url)
+        ele.setAttribute('target', target || '_self')
+        ele.style.display = 'none'
+        document.body.appendChild(ele)
+
+        const objEvent = document.createEvent("MouseEvents")
+        objEvent.initMouseEvent('click', true, false)
+        ele.dispatchEvent(objEvent)
       }
     }
   </script>
