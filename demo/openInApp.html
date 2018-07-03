@@ -86,7 +86,6 @@
         }
       },
       trigger(openUrl, downUrl, target) {
-        window.location.href = openUrl
         const startTime = +new Date();
         setTimeout(function () {
           alert(+new Date() - startTime)
@@ -94,6 +93,7 @@
             alert('启动失败') // 延时低于1000视为触发失败，尝试使用低版本链接进行触发
           };
         }, 800);
+        window.location.href = openUrl
         // iOS9 and later is no longer support iframe call scheme.
         // const ele = document.createElement('a')
         // ele.setAttribute('href', url)
