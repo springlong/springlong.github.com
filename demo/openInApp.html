@@ -12,6 +12,7 @@
   <script>
     const openApp = {
       handleOpenInApp() {
+        alert(handleOpenInApp)
         this.openInApp({
           button: document.querySelector('.j_openApp'),
           androidUrl: 'unapatmentguestapp://', // 安卓的打开链接
@@ -44,7 +45,7 @@
         }
 
         this.openInIframe('oepnInApp', 'tencent://Message/?Uin=910521727&websiteName=www.qq.com&Menu=yes', () => {
-          console.log('openInApp')
+          alert('openInIframe')
         })
       },
       /**
