@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>open in app</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+
+<body>
+  <button onclick="openApp.handleOpenInApp()" style="width: 200px;height:100px;border: 1px solid #ddd">open in app</button>
+  <script>
+    const openApp = {
+      handleOpenInApp() {
+        this.openInApp({
+          button: document.querySelector('.j_openApp'),
+          androidUrl: 'unapatmentguestapp://', // 安卓的打开链接
+          androidDownloadUrl: 'http://image.intebox.com/appstore/android/lianyuplus_guest_2017112801.apk', // 安卓的下载链接,开启应用宝的时候这个配置没有用
+          androidYYB: true, // android 是否开启应用宝下载
+          iosUrl: 'UNApatmentGuestApp://', // ios 打开链接
+          iosDownloadUrl: 'https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169?mt=8', // ios 的下载链接
+          iosUniversalLinkEnabled: false, // 是否开启 Universal Link
+          iosYYB: false, // ios 是否开启应用宝下载
+          yybDownloadUrl: 'http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2', // 应用宝下载链接
+          autoRedirectToDownloadUrl: true, // 是否自动跳转到下载页面
+        })
+      },
+      // 在APP中打开
+      openInApp(options) {
+        // 判断浏览器
+        const userAgent = navigator.userAgent;
+        const isAndroid = /Android/i.test(userAgent)
+        const isIOS = /iPhone|iPad|iPd/i.test(userAgent)
+
+        let openUrl = ''
+        let downUrl = ''
+
+        if (isIOS) {
+          openUrl = options.iosUrl || ''
+          downUrl = options.iosYYB ? options.yybDownloadUrl : options.iosDownloadUrl
+        } else if (isAndroid) {
+          openUrl = options.androidUrl || ''
+          downUrl = options.androidYYB ? options.yybDownloadUrl : options.androidDownloadUrl
+        }
+
+        this.openInIframe('oepnInApp', 'tencent://Message/?Uin=910521727&websiteName=www.qq.com&Menu=yes', () => {
+          console.log('openInApp')
+        })
+      },
+      /**
+       * 在指定iframe中打开url链接
+       * @param  {String} name iframe的name和id属性
+       * @param  {String} url 需要打开的url链接
+       * @param  {Function} callback 加载成功执行函数
+       * @return {String} 返回name参数值
+       */
+      openInIframe: function (name, url, callback) {
+        let iframe = document.getElementById(name);
+        if (iframe == null) {
+          iframe = document.createElement('iframe');
+          iframe.id = name;
+          iframe.name = name;
+          iframe.onload = callback;
+          iframe.src = url;
+          iframe.style.cssText = 'position:absolute;left:-9999px;overflow:hidden;width:0px;height:0px;';
+          document.body.appendChild(iframe);
+        } else {
+          iframe.onload = callback;
+          iframe.src = url;
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
