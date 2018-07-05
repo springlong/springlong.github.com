@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>绑定内联样式</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>绑定内联样式</h1>
+	<div id="testBox">
+		<div v-bind:style="{color: color, fontSize: fontSize}">使用对象语法</div>
+		<div v-bind:style="styleObject">直接使用对象</div>
+		<div v-bind:style="[styleObject, styleObject2]">使用数组</div>
+	</div>
+	<script>
+	    var vm = new Vue({
+	    	el: '#testBox',
+	        data: {
+	        	color: 'red',
+	        	fontSize: '18px',
+	        	styleObject: {
+	        		fontWeight: 'bold',
+	        		color: 'blue'
+	        	},
+	        	styleObject2: {
+	        		color: 'white',
+	        		background: '#333',
+	        		transform: 'rotate(-5deg)'
+	        	}
+	        }
+	    });
+	</script>
+</div>
+</body>
+</html>

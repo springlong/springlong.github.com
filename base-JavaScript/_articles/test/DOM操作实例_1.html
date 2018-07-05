@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <base charset="utf-8" />
+    <title>DOM操作实例_1</title>
+    <style>
+        *{margin:0;padding:0;}
+        #container1{padding:10px;border:2px solid #333;margin:10px;line-height:1.5em;}
+        .test{padding-left:20px;}
+        .paragraph{padding:20px;}
+        .color{color:red;}
+        .red{font-weight:bold;color:red;}
+        .bg{background:gray;}
+
+        
+    </style>
+    <script src="js/jsApp.js"></script>
+</head>
+<body>
+    <div id="container1">
+        <p>document对象的整个结构构成了文档对象模型DOM。</p>
+        <p>在DOM中，每一段文本、每一段注释、每一组元素标签都是以节点（node）的形式存在的。</p>
+        <div><p id="test1Date">2013年08月16日：</p></div>
+    </div>
+    <div id="container2"></div>
+    <div id="test1" class="test red bg" style="width:auto;">1</div>
+    <div id="test2" class="test">2</div>
+    <div id="test3" class="test bg">3</div>
+    <div id="test4" class="test">4</div>
+    <p class="paragraph">每一个节点都有一些属性，用来表示该节点的类型或者引用该节点的父节点、子节点以及兄弟节点；每一个节点都有一些方法，用来进行添加子节点、替换子节点或者移除子节点等操作；而document对象也作为一个节点使用，它提供了一些方法用来创建新的节点，通过以上种种，我们即可达到对页面文档结构的控制。</p>
+    <div id="styleTest"></div>
+    <script>
+        // $("#test1").prepend($("#test1Date"));
+        // $("#test1").prepend("<p>prepend方法：这是头部！</p>");
+        // $("#test1").append($(".paragraph"));
+        // $("#test1").append("<p>append方法：这是尾部！</p>");
+        // document.getElementById("test1").insertAdjacentHTML ("beforebegin", document.getElementById("test2"));
+
+        // alert($("#test2").addClass(function(index, oldClass)
+        // {
+        //     alert(oldClass);
+        //     return "test" + index;
+        // }));
+        
+        // var ele = document.getElementById("test1");
+        // alert(ele.currentStyle["styleFloat"]);
+        // alert(window.getComputedStyle(ele,null)["cssFloat"]);
+
+        alert($("#test1").css("width"));
+    </script>
+</body>
+</html>

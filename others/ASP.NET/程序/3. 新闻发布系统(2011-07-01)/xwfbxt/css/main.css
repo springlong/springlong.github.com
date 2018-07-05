@@ -1,0 +1,82 @@
+﻿*{margin:0;padding:0;}
+body{width:85%;margin:0 auto;}
+li{list-style:none;overflow:hidden;}
+a{text-decoration:none;color:#2C2C2C;}
+a:hover{text-decoration:underline;color:#000;}
+
+/*==页面主页CSS样式==*/
+/*头部*/
+#header h1,#header ul,#header div.currentUser{height:80px;line-height:80px;margin-bottom:10px;}
+#header h1{float:left;width:300px;font-size:32px;text-align:center;color:#C1C9C9;background:#243615;}
+#header ul{float:left;}
+#header ul li{float:left;width:100px;}
+#header ul li a{display:block;width:100%;height:100%;font:bold 18px/80px "微软雅黑";text-align:center;text-decoration:none;}
+#header ul li a:hover{color:#008000;}
+#header div.currentUser{float:right;line-height:40px;}
+#header div.currentUser h2{color:#0F468B;}
+#header div.currentUser span{color:Gray;}
+#header div.currentUser a{color:#2C2C2C;}
+#header div.currentUser p.youke{font-size:14px;color:Gray;}
+#header div.currentUser p.youke strong{font-weight:normal;color:red;}
+#header div.currentPos{clear:both;height:35px;line-height:35px;padding-left:1em;margin:0 0 10px 0;background:#F7D8FC;}
+#header div.currentPos p{float:left;}
+#header div.currentPos div{float:right;font-size:12px;}
+
+/*登陆*/
+#loginBox{position:absolute;left:100px;top:100px;width:400px;height:400px;background:gray;}
+
+/*内容区*/
+#content{float:left;width:100%;}
+#content section{float:left;width:49%;height:200px;border:1px solid green;margin-bottom:10px;}
+#content section.right{float:right;}
+#content section h2{height:40px;line-height:40px;padding-left:1em;margin-bottom:5px;color:#D1D1D1;background:#396C5F;}
+#content section li{width:90%;padding-left:15px;height:30px;margin-left:10px;line-height:30px;background:url(/images/icon1.jpg) no-repeat 5px 12px;}
+
+
+/*==登陆页面CSS样式==*/
+#frmLogin{width:400px;margin:20px auto;padding:5px;background:gray;}
+#login h2{text-align:center;margin:20px 0;}
+#login p{margin-top:20px;}
+#login .error{color:#fff;}
+#login label{display:inline-block;width:140px;text-align:right;padding-right:10px;}
+#login input{font-family:宋体;}
+#login p.button{text-align:center;}
+#login p.button a{color:#000;}
+#login p.button a:hover{color:#0846CB;}
+
+/*==注册页面CSS样式==*/
+#frmRegist{width:400px;margin:20px auto;padding:5px;background:gray;}
+#frmRegist h2{text-align:center;margin:20px 0;}
+#frmRegist p{margin-top:20px;}
+#frmRegist .error{color:#fff;}
+#frmRegist label{display:inline-block;width:140px;text-align:right;padding-right:10px;}
+#frmRegist input{font-family:宋体;}
+#frmRegist p.button{text-align:center;}
+#frmRegist p.button a{color:#000;}
+#frmRegist p.button a:hover{color:#0846CB;}
+
+/*“添加新闻”页面CSS样式*/
+#addNewsOuter{width:600px;margin:0 auto;}
+#addNews{float:left;width:600px;margin:20px auto;border:1px solid green;}
+#addNews h2{text-align:center;margin:20px 0;}
+#addNews p{float:left;padding-bottom:20px;}
+#addNews label{display:inline-block;float:left;width:140px;text-align:right;padding-right:10px;}
+#addNews #subject{float:left;width:400px;}
+#addNews #summary{float:left;width:400px;height:5em;}
+#addNews #content{float:left;width:400px;height:10em;}
+#addNews p.button{clear:both;padding-left:150px;}
+
+/*“新闻管理”页面CSS样式*/
+#newsManage .tableOuter{height:23em}
+#newsManage table{width:100%;border:1px solid gray;border-collapse:collapse;table-layout:fixed;}
+#newsManage table th,#newsManage table td{height:30px;text-align:center;}
+#newsManage table .col1{width:60%;text-align:left;text-indent:2em;}
+#newsManage table .col2{width:10%;}
+#newsManage table .col3{width:10%;}
+#newsManage table .col4{width:10%;}
+#newsManage table .col1 a{display:block;width:90%;height:2em;line-height:2em;white-space:nowrap;overflow:hidden;}
+#newsManage table tr.header{background:#9D9881;}
+#newsManage table tr.even{background:#EDEAE0;}
+#newsManage .control{text-align:right;margin:1em 2em 0 0;}
+#newsManage .control a{display:inline-block;width:50px;margin:0 0.5em;border:1px solid gray;text-align:center;background:none;cursor:pointer;}
+#newsManage #currentPage{width:4em;border:1px solid gray;text-align:right;padding-right:5px;}

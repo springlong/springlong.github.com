@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS图像映射3</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+	<!--
+		
+		body {
+			font-family: "微软雅黑";
+			color: #000;
+		}
+		a{
+			text-decoration:none;
+		}
+		ul{
+			margin:0px;
+			padding:0px;
+			list-style:none;
+		}
+		
+		/*实现热点图像的基本设置*/
+		#pic{
+			width:640px;
+			height:425px;		
+			background:url(images/group-photo.jpg) no-repeat left top;
+			position:relative;	/*应用相对定位从而使其容器中的元素可以相对于其实行绝对定位*/
+		}
+		/*锚链接的布局*/
+		#pic a{ 
+			width:120px;
+			height:136px;
+			border:1px solid transparent;		/*首先设置透明边框可以放置当鼠标滑过链接时的闪烁效果*/
+			_border:none;						/*IE6不支持透明的边框*/
+			position:absolute;
+		}
+		#pic a:hover{
+			border:1px solid #FF9;
+			cursor:pointer;				/*在IE6中a:hover下的嵌套元素将不会应用手掌的鼠标样式，因此在这里需要给它添上*/
+		}
+		#pic .baidu a{
+			left:83px;
+			top:6px;
+		}
+		#pic .hao123 a{
+			left:268px;
+			top:101px;
+		}
+		#pic .qq a{
+			left:418px;
+			top:233px;
+		}
+		
+		/*链接文本的布局*/
+		#pic a .link{
+			width:10em;
+			height:1.5em;
+			line-height:1.5em;
+			color:#306270;
+			background:#FFC;
+			text-align:center;
+			position:absolute;
+			left:-10000px;			/*使文本不可见,但存在,因此不使用display为none*/
+			bottom:-2em;
+		}
+		#pic a:hover .link{
+			left:60px;				/*首先将链接文本的left属性定位到锚链接的水平中间位置*/			
+			margin-left:-5em;		/*再设置链接文本宽度的一半作为负边距，将链接文本与锚链接垂直居中对齐*/
+		}
+		/*设置锚链接的外边框和内边框*/
+		#pic a .outer{
+			display:block;
+			width:118px;
+			height:134px;
+		}
+		#pic a .inner{
+			display:block;
+			width:116px;
+			height:132px;
+		}
+		#pic:hover .outer,#pic a:hover .outer{
+			border:1px solid black;
+		}
+		#pic:hover .inner,#pic a:hover .inner{
+			border:1px solid white;
+		}/*说明：在IE6中仅能支持锚链接的:hover,因此在实现以上两个功能时，需要同时使用两种方案！*/
+		
+
+		
+	-->
+	</style>
+</head>
+<body>
+<div id="pic">
+	<ul>
+		<li class="baidu">
+			<a href="http://www.baidu.com">
+				<span class="outer">
+				<span class="inner">
+				<span class="link">访问百度首页</span>
+				</span>
+				</span>		
+			</a>
+		</li>
+		<li class="hao123">
+			<a href="http://www.hao123.com">
+				<span class="outer">
+				<span class="inner">
+				<span class="link">访问hao123首页</span>
+				</span>
+				</span>	
+			</a>
+		</li>
+		<li class="qq">
+			<a href="http://www.qq.com">
+				<span class="outer">
+				<span class="inner">
+				<span class="link">访问腾讯首页</span>
+				</span>
+				</span>	
+			</a>
+			<!--说明：在IE浏览器中,锚链接的嵌套元素不应用a标签的title属性，所以在每一个嵌套元素中都指明title属性-->
+		</li>
+	</ul>
+</div>
+</body>
+</html>

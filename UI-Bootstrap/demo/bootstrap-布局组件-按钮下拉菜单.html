@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>布局组件：按钮下拉菜单 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>布局组件：按钮下拉菜单</h1>
+    
+    <h2>简单的按钮下拉菜单</h2>
+    <p>本章将讲解如何使用 Bootstrap class 向按钮添加下拉菜单。如需向按钮添加下拉菜单，只需要简单地在在一个 .btn-group 中放置按钮和下拉菜单即可。您也可以使用 &lt;span class="caret">&lt;/span> 来指示按钮作为下拉菜单。</p>
+    <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          默认 <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">功能</a></li>
+          <li><a href="#">另一个功能</a></li>
+          <li><a href="#">其他</a></li>
+          <li class="divider"></li>
+          <li><a href="#">分离的链接</a></li>
+        </ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle"  data-toggle="dropdown">
+          原始 <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">功能</a></li>
+          <li><a href="#">另一个功能</a></li>
+          <li><a href="#">其他</a></li>
+          <li class="divider"></li>
+          <li><a href="#">分离的链接</a></li>
+        </ul>
+    </div>
+
+    <hr>
+    <h3>分割的按钮下拉菜单</h3>
+    <p>分割的按钮下拉菜单使用与下拉菜单按钮大致相同的样式，但是对下拉菜单添加了原始的功能。分割按钮的左边是原始的功能，右边是显示下拉菜单的切换。</p>
+    <div class="btn-group">
+        <button type="button" class="btn btn-default">默认</button>
+        <button type="button" class="btn btn-default dropdown-toggle"data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">切换下拉菜单</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">功能</a></li>
+          <li><a href="#">另一个功能</a></li>
+          <li><a href="#">其他</a></li>
+          <li class="divider"></li>
+          <li><a href="#">分离的链接</a></li>
+        </ul>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary">原始</button>
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+          <span class="sr-only">切换下拉菜单</span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">功能</a></li>
+          <li><a href="#">另一个功能</a></li>
+          <li><a href="#">其他</a></li>
+          <li class="divider"></li>
+          <li><a href="#">分离的链接</a></li>
+        </ul>
+    </div>
+
+    <hr>
+    <h3>按钮下拉菜单的大小</h3>
+    <p>您可以使用带有各种大小按钮的下拉菜单：.btn-large、.btn-sm 或 .btn-xs。</p>
+    <div class="btn-group">
+       <button type="button" class="btn btn-default dropdown-toggle btn-lg"  data-toggle="dropdown">
+          默认 <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu" role="menu">
+          <li><a href="#">功能</a></li>
+          <li><a href="#">另一个功能</a></li>
+          <li><a href="#">其他</a></li>
+          <li class="divider"></li>
+          <li><a href="#">分离的链接</a></li>
+       </ul>
+    </div>
+    <div class="btn-group">
+       <button type="button" class="btn btn-primary dropdown-toggle btn-sm"  data-toggle="dropdown">
+          原始 <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu" role="menu">
+          <li><a href="#">功能</a></li>
+          <li><a href="#">另一个功能</a></li>
+          <li><a href="#">其他</a></li>
+          <li class="divider"></li>
+          <li><a href="#">分离的链接</a></li>
+       </ul>
+    </div>
+    <div class="btn-group">
+       <button type="button" class="btn btn-success dropdown-toggle btn-xs"  data-toggle="dropdown">
+          成功 <span class="caret"></span>
+       </button>
+       <ul class="dropdown-menu" role="menu">
+          <li><a href="#">功能</a></li>
+          <li><a href="#">另一个功能</a></li>
+          <li><a href="#">其他</a></li>
+          <li class="divider"></li>
+          <li><a href="#">分离的链接</a></li>
+       </ul>
+    </div>
+
+
+    <hr>
+    <h3>按钮上拉菜单</h3>
+    <p>菜单也可以往上拉伸的，只需要简单地向父 .btn-group 容器添加 .dropup 即可。</p>
+    <div>
+       <div class="btn-group dropup">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+             默认 <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+             <li><a href="#">功能</a></li>
+             <li><a href="#">另一个功能</a></li>
+             <li><a href="#">其他</a></li>
+             <li class="divider"></li>
+             <li><a href="#">分离的链接</a></li>
+          </ul>
+       </div>
+       <div class="btn-group dropup">
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+             原始 <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+             <li><a href="#">功能</a></li>
+             <li><a href="#">另一个功能</a></li>
+             <li><a href="#">其他</a></li>
+             <li class="divider"></li>
+             <li><a href="#">分离的链接</a></li>
+          </ul>
+       </div>
+    </div>
+
+</div>
+</body>
+</html>

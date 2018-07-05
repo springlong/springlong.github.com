@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gb2312">
+    <title>浏览器信息获取 - jsApp</title>
+    <script type="text/javascript" src="jsApp.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body{font-size:14px;line-height:24px;}
+        section{display:block;}
+        p{margin:20px 0;}
+
+        #container{width:980px;margin:10px auto 0;}
+        #info{padding:20px 0;}
+        #control{height:30px;padding:10px 0;}
+        #control button{float:left;display:inline;width:250px;height:30px;margin-right:10px;}
+    </style>
+</head>
+<body>
+<div id="container">
+    <p id="control">
+        <button onclick="$$.browser.setHome()">设为首页-$$.browser.setHome()</button>
+        <button onclick="$$.browser.addFavorite()">加入收藏-$$.browser.addFavorite()</button>
+    </p>
+    <hr />
+    <script>
+        //浏览器操作
+        document.write("<p><strong>浏览器信息：</strong><br />名称-$$.browser.name：" + $$.browser.name + "<br />版本-$$.browser.version：" + $$.browser.version + "<br />Flash支持-$$.browser.canFlash()：" + $$.browser.canFlash() + "</p>");
+        document.write("<p><strong>常用变量：</strong><br />是否为IE-$$.browser.isIE：" + $$.browser.isIE + "<br />是否为IE6-$$.browser.isIE6：" + $$.browser.isIE6 + "<br />是否为IE7-$$.browser.isIE7：" + $$.browser.isIE7 + "<br />是否为IE8-$$.browser.isIE8：" + $$.browser.isIE8 + "<br />是否低于IE9版本-$$.browser.lessIE9：" + $$.browser.lessIE9 + "</p>")
+    </script>
+</div>
+</body>
+</html>

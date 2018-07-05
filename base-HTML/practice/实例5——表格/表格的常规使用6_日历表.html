@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>表格的常规使用_日历表</title>
+	<style type="text/css">
+		body{
+			font-family:"微软雅黑";
+		}
+		
+		#calendar{
+			width:240px;
+			height:200px;
+			border-collapse:collapse;
+			text-align:center;
+		}
+		#calendar caption{
+			height:1.5em;
+			color:#C90;
+		}
+		#calendar th,#calendar td{
+			border:1px solid #85B187;
+			background:#CFEFD5;
+		}
+		#calendar th{
+			background:#91BFBB;
+		}
+		#calendar td:hover{
+			background:#AFE4BD;
+		}
+		#calendar td.today{
+			font-weight:bold;
+			color:#C60;
+			background:#81E0C1;
+		}
+		#calendar td.lastMonth,#calendar td.nextMonth{
+			color:silver;
+			background:#CFEFD5;			/*设置背景色是为了放置鼠标滑过时改变背景色*/
+		}
+	</style>
+</head>
+<body>
+<table id="calendar">
+	<caption>2011年3月</caption>
+	<tr>
+		<th scope="col">日</th>
+		<th scope="col">一</th>
+		<th scope="col">二</th>
+		<th scope="col">三</th>
+		<th scope="col">四</th>
+		<th scope="col">五</th>
+		<th scope="col">六</th>
+	</tr>
+	<tr>
+		<td class="lastMonth">27</td>
+		<td class="lastMonth">28</td>
+		<td>1</td>
+		<td>2</td>
+		<td>3</td>
+		<td>4</td>
+		<td>5</td>
+	</tr>
+	<tr>
+		<td>6</td>
+		<td>7</td>
+		<td>8</td>
+		<td>9</td>
+		<td>10</td>
+		<td>11</td>
+		<td>12</td>
+	</tr>
+	<tr>
+		<td>13</td>
+		<td>14</td>
+		<td>15</td>
+		<td>16</td>
+		<td>17</td>
+		<td>18</td>
+		<td class="today" title="今天是：2011年3月19日">19</td>
+	</tr>
+	<tr>
+		<td>20</td>
+		<td>21</td>
+		<td>22</td>
+		<td>23</td>
+		<td>24</td>
+		<td>25</td>
+		<td>26</td>
+	</tr>
+	<tr>
+		<td>27</td>
+		<td>28</td>
+		<td>29</td>
+		<td>30</td>
+		<td>31</td>
+		<td class="nextMonth">1</td>
+		<td class="nextMonth">2</td>
+	</tr>
+</table>
+
+</body>
+</html>

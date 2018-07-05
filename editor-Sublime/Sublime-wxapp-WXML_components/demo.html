@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>组件数据拷贝</title>
+	<script type="text/javascript" src="./data.js"></script>
+	<script>
+		const tag_attributes = {}
+
+		for (let item of data) {
+			let tagName = item.name
+			tag_attributes[tagName] = {}
+			tag_attributes[tagName].attrs = []
+			tag_attributes[tagName].docLink = item.docLink
+
+			let attrs = item.attrs || []
+
+			for (let attr of attrs) {
+				let attrObj = {
+					name: attr.name,
+					type: (attr.type || {}).name || '',
+					defaultValue: attr.defaultValue || '',
+					desc: (attr.desc || [])[0] || '',
+				}
+
+				if (attr.enum) {
+					attrObj.enum = []
+
+					for (let values of attr.enum) {
+						attrObj.enum.push({
+							value: values.value,
+							desc: values.desc,
+						})
+					}
+				}
+				tag_attributes[tagName].attrs.push(attrObj)
+			}
+		}
+
+		console.log(JSON.stringify(tag_attributes))
+		console.log(tag_attributes)
+	</script>
+</head>
+<body>
+
+</body>
+</html>

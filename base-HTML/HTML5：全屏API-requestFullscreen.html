@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5：全屏API-requestFullscreen</title>
+    <link rel="stylesheet" href="static/css/main.css">
+    <style>
+    	/*针对全屏的内容块设置样式*/
+	    #pic:-webkit-full-screen {
+		    background-color: black;
+		}
+
+		:fullscreen::backdrop {
+		    background-color: #eee;
+		}
+    </style>
+</head>
+</head>
+<body>
+<div class="container">
+	<div class="text-item">
+		<p>Full-Screen API，可以使单个元素全屏显示。与按下F11键强制浏览器全屏不同，该API的目的是在一个全屏的容器中展示图片、视频和游戏等。当进入全屏模式时，将会出现一条信息提示用户可以在任何时候按ESC键返回页面，同时也可以按F11退出全屏。触发全屏展示必须由用户点击触发才有效。<span id="supportText"></span></p>
+	</div>
+	<p class="text-item">浏览器支持情况：IE 11+、Firefox 10+、Chrome 15+、Safari 5.1+、Opera 15+，不支持设备：IOS Safari、Android。</p>
+	<p class="text-item">目前全屏API在各大浏览器支持均不完善，都需要使用浏览器前缀来实现。</p>
+	<div class="pic-box"><a href="https://caniuse.com/#search=Full%20Screen%20API" target="_blank"><img src="static/images/FullScreenAPI.png" alt=""></a></div>
+	<div class="pic-box"><a href="https://caniuse.com/#search=Full%20Screen%20API" target="_blank" onclick="return false;"><img src="static/images/FullScreenAPI-2.png" alt="" id="pic"></a></div>
+</div>
+<script>
+
+	// 是否支持全屏API
+	// document.fullscreenEnable
+	function fullscreenEnable() {
+		return document.fullscreenEnable ||
+			   document.webkitFullscreenEnabled ||
+			   document.mozFullScreenEnabled ||
+			   document.msFullscreenEnabled;
+	}
+	document.getElementById('supportText').innerHTML = fullscreenEnable() ? '当前浏览器支持全屏API' : '当前浏览器不支持全屏API';
+
+
+	// 返回当前处于全屏显示的element，当不是全屏时则返回null
+	// document.fullscreenElement
+	function fullscreenElement() {
+		return document.fullscreenElement ||
+			   document.webkitFullscreenElement ||
+			   document.mozFullScreenElement ||
+			   document.msFullscreenElement || null;
+	}
+
+	// 将单独的element全屏展示
+	// element.requestFullscreen()
+	function requestFullscreen(ele) {
+		var props = ['requestFullscreen', 'webkitRequestFullscreen', 'mozRequestFullScreen', 'msRequestFullscreen'];
+		for(var i = 0, len = props.length; i < len; i++) {
+			if(ele[props[i]]) {
+				ele[props[i]]();
+				break;
+			}
+		}
+	}
+
+	// 取消全屏模式
+	// document.exitFullscreen()
+	function exitFullsreen() {
+		var props = ['exitFullscreen', 'webkitExitFullscreen', 'mozCancelFullScreen', 'msExitFullscreen'];
+		for(var i = 0, len = props.length; i < len; i++) {
+			if(document[props[i]]) {
+				document[props[i]]();
+				break;
+			}
+		}
+	}
+
+
+	// 全屏状态改变时触发事件
+	// document.addEventListener("fullscreenchange", function() { ... });
+	function fullscreenchange(handler) {
+		var props = ['fullscreenchange', 'webkitfullscreenchange', 'mozfullscreenchange', 'MSFullscreenChange'];
+		for(var i = 0, len = props.length; i < len; i++) {
+			if('on' + props[i] in document) {
+				document.addEventListener(props[i], handler);
+				break;
+			}
+		}
+	}
+
+
+	// 全屏操作失败时触发事件
+	// document.addEventListener("fullscreenerror", function() { ... });
+	function fullscreenerror(handler) {
+		var props = ['fullscreenerror', 'webkitfullscreenerror', 'mozfullscreenerror', 'MSFullscreenError'];
+		for(var i = 0, len = props.length; i < len; i++) {
+			if('on' + props[i] in document) {
+				document.addEventListener(props[i], handler);
+				break;
+			}
+		}
+	}
+
+
+	// ===============================================================================================================
+	// ===============================================================================================================
+
+
+
+	// 点击图片全屏展示
+	document.getElementById('pic').onclick = function(ev) {
+		requestFullscreen(ev.target);
+		return false;
+	};
+
+	// 全局状态改变处理函数
+	fullscreenchange(function(ev){
+		console.log(fullscreenElement() !== null ? '进入全屏' : '退出全屏', ev);
+	})
+
+</script>
+</body>
+</html>

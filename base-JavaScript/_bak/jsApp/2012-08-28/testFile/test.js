@@ -1,0 +1,1 @@
+document.write("\x3cscript src='http://source2.qq.com/a/mq4.0/js/performance-header.js' type='text/javascript'\x3e\x3c/script\x3e");

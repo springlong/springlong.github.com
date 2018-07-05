@@ -1,0 +1,4 @@
+
+Á½¶Ë¶ÔÆë£º
+text-align: justify;
+text-justify: inter-ideograph;

@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS应用——滤镜的使用（翻转+灰度+反转+X射线）</title>
+	<meta name="keywords" content="CSS应用——滤镜的使用" />
+	<meta name="description" content="CSS应用——滤镜的使用" />
+	<meta name="author" content="Jerry_小猪" />
+	<meta http-equive="Content-Type" content="text/html;charset=gb2312"/>
+	<style type="text/css">
+		@import url("css.css");
+		
+		#biaozhun{
+			width:600px;
+			height:30px;
+			border:4px solid silver;}
+		
+}
+    </style>
+</head>
+<body>
+	<p class="caption">CSS应用-滤镜的使用（翻转+灰度+反转+X射线）</p>
+	<p class="caption">CSS应用-滤镜的使用（翻转+灰度+反转+X射线）</p>
+	<hr />
+	<table width="850" border="1" align="center" bordercolor="black" cellspacing="0" cellpadding="5" style="font-size:16px;color:#0033CC">
+    	<!--第一行-->
+    	<tr align="center" height="30" bgcolor="silver">
+        	<td colspan="2" class="type">翻转+灰度+反转+X射线</td>
+        </tr>
+        <tr height="30">
+        	<td colspan="2" align="center"><span class="keywords">filter:fliph flipv gray invert  xray;</span></td>
+        </tr>
+    	<!--第二行-->
+    	<tr height="30">
+        	<td>属性</td>
+        	<td>说明</td>
+        </tr>
+    	<!--第三行-->
+    	<tr height="30">
+        	<td>fliph</td>
+        	<td>水平翻转</td>
+        </tr>
+    	<!--第四行-->
+    	<tr height="30">
+        	<td height="20">flipv</td>
+       	  <td>垂直翻转</td>
+        </tr>
+    	<!--第五行-->
+    	<tr height="30">
+        	<td>gray</td>
+        	<td>灰度模式：将图片的颜色去除，产生黑白的效果！</td>
+      	</tr>
+    	<!--第六行-->
+    	<tr height="30">
+        	<td>invert</td>
+        	<td>反转：将对象颜色的饱和度和亮度值设置为反转，产生类似于底片的效果！</td>
+      	</tr>
+    	<!--第七行-->
+    	<tr height="30">
+        	<td>xray</td>
+        	<td>X射线效果</td>
+      	</tr>
+    </table>
+    
+    <hr />
+    
+	<p class="type">（水平翻转）fliph：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:fliph;</span>
+                <br  />
+                水平翻转！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:fliph;" />
+       	  	</td>
+        </tr>
+    </table>
+    <hr />
+    
+	<p class="type">（垂直翻转）flipv：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:flipv;</span>
+                <br  />
+                垂直翻转！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:flipv;" />
+       	  	</td>
+        </tr>
+    </table>
+    <hr />
+    
+	<p class="type">（灰度模式）gray：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:gray;</span>
+                <br  />
+                灰度模式
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:gray;" />
+       	  	</td>
+        </tr>
+    </table>
+    <hr />
+      
+	<p class="type">（反转）invert：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:invert;</span>
+                <br  />
+                反转！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:invert;" />
+       	  	</td>
+        </tr>
+    </table>
+    <hr />
+    
+	<p class="type">（X射线）xray：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:xray;</span>
+                <br  />
+                X射线效果！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:xray;" />
+       	  	</td>
+        </tr>
+    </table>
+    <hr />
+</body>
+</html>

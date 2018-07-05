@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<title>日期操作：倒计时</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+    	body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+		code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+		span.code{display:inline-block;width:360px;}
+
+		#wrapper span{font-size:25px;font-weight:bold;color:red;}
+    </style>
+</head>
+<body>
+<h1>日期操作：倒计时</h1>
+<h2>运行结果</h2>
+<div id="wrapper">
+	<strong>距离今年圣诞节还有：</strong>
+	<span id="day"></span>天
+	<span id="hour"></span>时
+	<span id="minute"></span>分
+	<span id="second"></span>秒
+</div>
+<h2>脚本函数</h2>
+<pre class="jsCode autoHeight">
+/**
+ * 倒计时程序
+ * @param  {Object} params 参数配置
+ * @param  {Date} params.endTime 到期时间
+ * @param  {String} params.outputEles 元素id的集合，用于接收天、时、分、秒这四个值的最终输出
+ * @param  {Function} [params.callbackOnTime] 时间到了，所执行的回调函数
+ * @param  {Function} [params.callbackOnExpires] 时间过期了，所执行的回调函数
+ * @return
+ */
+function countDown(params)
+{
+	var endTime = params.endTime.getTime(),
+		outputEles = params.outputEles,
+		callbackOnTime = params.callbackOnTime,
+		callbackOnExpires = params.callbackOnExpires,
+		intervalID;
+
+	intervalID = setInterval(function()
+	{
+		var difference = endTime - Date.now(),  //相差的毫秒数
+			days, hours, minites, seconds,
+			baseSecond = 1000,
+			baseMinite = baseSecond * 60,
+			baseHour = baseMinite * 60;
+		
+		if(difference &lt; 0){
+			//时间过期了
+			callbackOnExpires &amp;&amp; callbackOnExpires();
+			clearInterval(intervalID);
+			return;
+		}else if(difference === 0){
+			//时间到了
+			callbackOnTime &amp;&amp; callbackOnTime();
+			clearInterval(intervalID);
+			return;
+		}
+
+		days = Math.floor(difference / baseHour / 24); //剩余天数
+		hours = Math.floor(difference / baseHour % 24); //剩余小时
+		minites = Math.floor(difference / baseMinite % 60); //剩余分钟
+		seconds = Math.floor(difference / baseSecond % 60); //剩余秒钟
+
+		document.getElementById(outputEles[0]).innerHTML = days;
+		document.getElementById(outputEles[1]).innerHTML = hours;
+		document.getElementById(outputEles[2]).innerHTML = minites;
+		document.getElementById(outputEles[3]).innerHTML = seconds;
+	}, 1000);
+}
+</pre>
+<h2>调用代码</h2>
+<pre class="jsCode">
+countDown(
+{
+	endTime: new Date(new Date().getFullYear(), 11, 25, 0, 0, 0, 0), //圣诞时间12月25日0时0分0秒
+	outputEles: ["day", "hour", "minute", "second"],
+	callbackOnTime: function(){
+		alert("时间到！");
+	},
+	callbackOnExpires: function(){
+		alert("倒计时已过期，等明年吧！");
+	}
+});
+</pre>
+<script>
+	/**
+	 * 倒计时程序
+	 * @param  {Object} params 参数配置
+	 * @param  {Date} params.endTime 到期时间
+	 * @param  {String} params.outputEles 元素id的集合，用于接收天、时、分、秒这四个值的最终输出
+	 * @param  {Function} [params.callbackOnTime] 时间到了，所执行的回调函数
+	 * @param  {Function} [params.callbackOnExpires] 时间过期了，所执行的回调函数
+	 * @return
+	 */
+	function countDown(params)
+ 	{
+ 		var endTime = params.endTime.getTime(),
+ 			outputEles = params.outputEles,
+ 			callbackOnTime = params.callbackOnTime,
+ 			callbackOnExpires = params.callbackOnExpires,
+ 			intervalID;
+
+ 		intervalID = setInterval(function()
+ 		{
+ 			var difference = endTime - Date.now(),  //相差的毫秒数
+ 				days, hours, minites, seconds,
+ 				baseSecond = 1000,
+ 				baseMinite = baseSecond * 60,
+ 				baseHour = baseMinite * 60;
+ 			
+ 			if(difference < 0){
+ 				//时间过期了
+ 				callbackOnExpires && callbackOnExpires();
+ 				clearInterval(intervalID);
+ 				return;
+ 			}else if(difference === 0){
+ 				//时间到了
+ 				callbackOnTime && callbackOnTime();
+ 				clearInterval(intervalID);
+ 				return;
+ 			}
+
+ 			days = Math.floor(difference / baseHour / 24); //剩余天数
+ 			hours = Math.floor(difference / baseHour % 24); //剩余小时
+ 			minites = Math.floor(difference / baseMinite % 60); //剩余分钟
+ 			seconds = Math.floor(difference / baseSecond % 60); //剩余秒钟
+
+ 			document.getElementById(outputEles[0]).innerHTML = days;
+ 			document.getElementById(outputEles[1]).innerHTML = hours < 10 ? ("0" + hours) : hours;
+ 			document.getElementById(outputEles[2]).innerHTML = minites < 10 ? ("0" + minites) : minites;
+ 			document.getElementById(outputEles[3]).innerHTML = seconds < 10 ? ("0" + seconds) : seconds;
+ 		}, 1000);
+	}
+
+	//方法调用
+	countDown(
+	{
+		endTime: new Date(new Date().getFullYear(), 11, 25, 0, 0, 0, 0), //圣诞时间12月25日0时0分0秒
+		outputEles: ["day", "hour", "minute", "second"],
+		callbackOnTime: function(){
+			alert("时间到！");
+		},
+		callbackOnExpires: function(){
+			alert("倒计时已过期，等明年吧！");
+		}
+	});
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

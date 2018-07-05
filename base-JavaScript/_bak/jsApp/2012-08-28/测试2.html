@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>test</title>
+    <script type="text/javascript" src="jsApp.js"></script>
+    <link rel="stylesheet" href="http://www.er021.com/css/global.css?v=2012112701" />
+    <style type="text/css" id="jsApp_data">
+        *{margin:0;padding:0;}
+        body{font-size:14px;line-height:24px;color:#fff;background:#333;}
+        section{display:block;}
+        p{margin:20px 0;}
+
+        #container{width:980px;margin:10px auto 0;}
+        #info{padding:20px 0;}
+        .test{height:30px;padding:10px 0;}
+        .test input{float:left;display:inline;width:200px;height:30px;margin-right:10px;}
+        .test button{float:left;display:inline;width:260px;height:30px;margin-right:10px;}
+        .type{background:gray;}
+        .typeover{padding:50px;}
+    </style>
+</head>
+<body id="body">
+<img id="pic" class="testInput" name="testPic" width="100" height="100" src="http://www.er021.com/images/banner/header_banner.jpg" data-src="images/pic1.jpg" alt="Í¼Æ¬ÃèÊö" title="abc" />
+<div id="container" data="testData" init_src="testSRC" class="nametype nametype type nametype name type nametype typeover" style="display:block;width:100px;height:100px;border:1px solid #333;"></div>
+<label id="testLabel">ÐÕÃû£º</label><input type="text" id="testInput" class="testInput" name="testInput" value="123" maxlength="20" />
+<input type="checkbox" id="testCheck" />
+<p>¹þ¹þ...<span class="details" title="ÏêÇéxq">ÏêÇé</span></p>
+<p>ÍÞÍÞ</p>
+<p>ºôºô</p>
+<p>¾Û¾Û</p>
+<script type="text/javascript">
+    // alert($$("abc").attr("title"));
+    // alert($$(".testInput").attr("id"));
+    alert($$("p").attr("id"));
+    
+    // try
+    // {
+    //     if(document.styleSheets[0].insertRule)
+    //     {
+    //         document.styleSheets[1].insertRule("body>#container{background:green;}", 4);
+    //     }
+    //     else
+    //     {
+    //         document.styleSheets[1].addRule("body>#container", "q:a;", 4);
+    //     }
+    // }
+    // catch(e)
+    // {
+    //     alert(e.message);
+    // }
+</script>
+</body>
+</html>

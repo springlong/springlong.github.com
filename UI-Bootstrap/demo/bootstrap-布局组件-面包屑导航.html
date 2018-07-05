@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>布局组件：面包屑导航 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>布局组件：面包屑导航</h1>
+    <hr>
+
+    <p>面包屑导航（Breadcrumbs）是一种基于网站层次信息的显示方式。以博客为例，面包屑导航可以显示发布日期、类别或标签。它们表示当前页面在导航层次结构内的位置。</p>
+    <p>Bootstrap 中的面包屑导航（Breadcrumbs）是一个简单的带有 <code>.breadcrumb</code> class 的无序列表。分隔符会通过 CSS（bootstrap.min.css）中下面所示的 class 自动被添加：</p>
+<pre>
+.breadcrumb > li + li:before {
+    color: #CCCCCC;
+    content: "/ ";
+    padding: 0 5px;
+}
+</pre>
+
+    <p>下面的实例演示了面包屑导航：</p>
+    <ol class="breadcrumb">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">2013</a></li>
+        <li class="active">十一月</li>
+    </ol>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

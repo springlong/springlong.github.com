@@ -1,0 +1,192 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>表格的常规使用_按行分组</title>
+	<style type="text/css">
+		body{
+			font-family:"微软雅黑";
+		}
+		
+		/*=====================================================================================
+		 *表格的基本布局与样式设置
+		 *=============================*/
+		#jfbOuter{
+			width:750px;
+			margin:0px auto;
+		}
+		#jfb{/*表格的整体设置*/
+			width:750px;
+			text-align:center;
+			border-collapse:collapse;
+		}
+		#jfb caption{/*表格标题的设置*/
+			font-size:1.5em;
+			line-height:2em;
+			color:#4B7146;
+		}
+		#jfb th,#jfb td{/*设置表格中各单元格的边框*/
+			border:1px solid silver;
+			height:1.5em;
+		}
+		#jfb thead th{/*表格头部的设置*/
+			height:2em;
+			color:white;
+			background:#52A6AF;
+			border-bottom:2px solid #397739;
+		}
+		#jfb tfoot td{/*表格尾部的设置*/
+			color:silver;
+			border:none;
+			text-align:right;
+		}
+		#jfb col.lastFive{/*设置后五列的宽度*/
+			width:13%;
+		}
+		
+		/*===================================================================================
+		 *针对行分组设置不同的显示样式
+		 *=================================*/
+		 /*西班牙*/
+		 #jfb .Span .title{
+			 background:#C5EE46;
+		 }
+		 #jfb .Span th{
+			 background:#EEEE46;
+		 }
+		 /*意大利*/
+		 #jfb .Italy .title{
+			 background:#BBDE14;
+		 }
+		 #jfb .Italy th{
+			 background:#FBE839;
+		 }
+		 /*英格兰*/
+		 #jfb .England .title{
+			 background:#2BC914;
+		 }
+		 #jfb .England th{
+			 background:#FBCB39;
+		 }
+	</style>
+</head>
+
+<body>
+<div id="jfbOuter">
+<table id="jfb">
+	<caption>欧洲豪门最新积分榜(截止到2008-09-14)</caption>
+	<col /><col span="5" class="lastFive" />
+	<thead>
+		<tr>
+			<th>球队</th>
+			<th>胜</th>
+			<th>平</th>
+			<th>负</th>
+			<th>积分</th>
+			<th>排名</th>
+		</tr>
+	</thead>
+	<tfoot>
+	  	<tr>
+			<td colspan="6">zhaohui </td>
+	  	</tr>
+	</tfoot>
+	<tbody class="Span">
+		<tr>
+			<th colspan="6" class="title">西班牙甲级联赛</th>
+		</tr>
+		<tr>
+			<th>皇家马德里</th>
+			<td>0</td>
+			<td>0</td>
+			<td>1</td>
+			<td>0</td>
+			<td>15</td>
+		</tr>
+		<tr>
+			<th>巴塞罗那</th>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>14</td>
+		</tr>
+		<tr>
+			<th>瓦伦西亚</th>
+			<td>1</td>
+			<td>0</td>
+			<td>0</td>
+			<td>3</td>
+			<td>3</td>
+		</tr>
+	</tbody>
+	<tbody class="Italy">
+  		<tr>
+    		<th colspan="6" class="title">意大利甲级联赛</th>
+  		</tr>
+  		<tr>
+			<th>AC米兰</th>
+			<td>0</td>
+			<td>0</td>
+			<td>2</td>
+			<td>0</td>
+			<td>19</td>
+  		</tr>
+  		<tr>
+			<th>国际米兰</th>
+			<td>1</td>
+			<td>0</td>
+			<td>1</td>
+			<td>4</td>
+			<td>4</td>
+  		</tr>
+  		<tr>
+			<th>罗马</th>
+			<td>0</td>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>17</td>
+		</tr>
+	</tbody>
+	<tbody class="England">
+		<tr>
+			<th colspan="6" class="title">英格兰超级联赛</th>
+		</tr>
+		<tr>
+			<th>曼彻斯特联</th>
+			<td>1</td>
+			<td>1</td>
+			<td>1</td>
+			<td>4</td>
+			<td>14</td>
+		</tr>
+		<tr>
+			<th>切尔西</th>
+			<td>3</td>
+			<td>1</td>
+			<td>0</td>
+			<td>10</td>
+			<td>1</td>
+		</tr>
+		<tr>
+			<th>利物浦</th>
+			<td>3</td>
+			<td>1</td>
+			<td>0</td>
+			<td>10</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<th>阿森纳</th>
+			<td>3</td>
+			<td>0</td>
+			<td>1</td>
+			<td>9</td>
+			<td>3</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+</body>
+</html>

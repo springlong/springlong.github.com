@@ -1,0 +1,43 @@
+/* pages/country/country.wxss */
+
+.section {
+	width: 100%;
+}
+
+.flex-wrap {
+	display: flex;
+}
+
+.flex-wrap-column {
+	flex-direction: column;
+	height: 500rpx;
+	background-color: #CFBCBC;
+}
+
+.flex-item {
+	width: 100rpx;
+	height: 100rpx;
+	flex-grow: 1;
+	text-align: center;
+	position: relative;
+	position: absolute;
+	position: relative;
+	position: static;
+	position: fixed;
+	position: absolute;
+	position: fixed;
+	-ms-text-align-last: auto;
+	text-align-last: auto;
+	text-align: justify;
+	text-align: center;
+	position: static;
+	position: absolute;
+	position: absolute;
+	position: relative;
+	position: fixed;
+	position: static;
+}
+
+.bg-green {background-color: green;}
+.bg-red {background-color: red;}
+.bg-blue {background-color: blue;}

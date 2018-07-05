@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Hello World!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<h1>Hello World!</h1>
+	<div>
+		<p>当网页加载完毕，AngularJS 自动开启。</p>
+		<p><code>ng-app</code> 指令告诉 AngularJS，div 元素是 AngularJS 应用程序 的"所有者"。</p>
+		<p><code>ng-model</code> 指令把输入域的值绑定到应用程序变量 name。</p>
+		<p><code>ng-bind</code> 指令把应用程序变量 name 绑定到某个段落的 innerHTML。</p>
+	</div>
+<pre>
+&lt;div ng-app="">
+  &lt;p>名字 : &lt;input type="text" ng-model="name" placeholder="World">&lt;/p>
+  &lt;h1>Hello {{name || 'World'}}!&lt;/h1>
+&lt;/div>
+</pre>
+	<hr>
+	<div ng-app="">
+	 	<p>名字 : <input type="text" ng-model="name" placeholder="World"></p>
+	 	<h1>Hello {{name || 'World'}}!</h1>
+	</div>
+</div>
+</body>
+</html>

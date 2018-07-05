@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gb2312">
+    <title>字符串功能扩展 - jsApp</title>
+    <script type="text/javascript" src="jsApp.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body{font-size:14px;line-height:24px;}
+        section{display:block;}
+        p{margin:20px 0;}
+
+        #container{width:980px;margin:10px auto 0;}
+        #info{padding:20px 0;}
+        .test{height:30px;padding:10px 0;}
+        .test input{float:left;display:inline;width:200px;height:30px;margin-right:10px;}
+        .test button{float:left;display:inline;width:260px;height:30px;margin-right:10px;}
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="test">
+        <input type="text" />
+        <button id="doTrim" title="移除字符串首尾空格">$$.trim("   abcd efg hjk   ")</button>
+    </div>
+    <div class="test">
+        <input type="text" />
+        <button id="doTrim2" title="移除字符串所有空格">$$.trim("   abcd efg hjk   ", true)</button>
+    </div>
+    <div class="test">
+        <input type="text" />
+        <button id="doPadStr" title="填充字符串以达到指定长度">$$.padStr("12345", "left", 10, "@")</button>
+    </div>
+    <div class="test">
+        <input type="text" />
+        <button id="doDupStr" title="重复输出字符">$$.dupStr("A", 10)</button>
+    </div>
+    <script>
+        $$("#doTrim").click(function()
+        {
+            $$(this).prev().attr("value", $$.trim("   abcd efg hjk   "));
+        });
+
+        $$("#doTrim2").click(function()
+        {
+            $$(this).prev().attr("value", $$.trim("   abcd efg hjk   ", true));
+        });
+
+        $$("#doPadStr").click(function()
+        {
+            $$(this).prev().attr("value", $$.padStr("12345", "left", 10, "@"));
+        });
+
+        $$("#doDupStr").click(function()
+        {
+            $$(this).prev().attr("value", $$.dupStr("A", 10));
+        });
+    </script>
+</div>
+</body>
+</html>

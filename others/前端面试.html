@@ -1,0 +1,1533 @@
+<DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>前端面试</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no">
+    <style>
+		* {
+		  padding: 0;
+		  margin: 0;
+		  box-sizing: border-box;
+		}
+
+		html, body {
+		  font: 13px/1.8 Avenir, Arial, "Hiragino Sans GB", "\5FAE\8F6F\96C5\9ED1", "\5b8b\4f53", sans-serif;
+		  background-color: #FFF;
+		  background-image: url(none);
+		  background-attachment: fixed;
+		  color: #222;
+		}
+
+		body {
+		  padding-bottom: 50px;
+		}
+
+		li {
+		  list-style: none;
+		}
+
+		a {
+		  background: transparent;
+		  text-decoration: none;
+		  color: #222;
+		}
+
+		a:active, a:hover {
+		  text-decoration: underline;
+		  outline: none;
+		}
+
+		a:focus {
+		  text-decoration: none;
+		  outline: none;
+		  hide-focus: expression(this.hideFocus=true);
+		}
+
+		a:visited {
+		  text-decoration: none;
+		  outline: none;
+		}
+
+		h1, h2, h3 {
+		  margin-top: 20px;
+		  margin-bottom: 10px;
+		  line-height: 1.5;
+		}
+
+		h4, h5, h6 {
+		  margin-top: 10px;
+		  margin-bottom: 10px;
+		  line-height: 1.8;
+		}
+
+		h1 {
+		  font-size: 36px;
+		}
+
+		h2 {
+		  font-size: 30px;
+		}
+
+		h3 {
+		  font-size: 24px;
+		}
+
+		h4 {
+		  font-size: 18px;
+		}
+
+		h5 {
+		  font-size: 14px;
+		}
+
+		h6 {
+		  font-size: 12px;
+		}
+
+		p {
+		  margin-top: 10px;
+		  margin-bottom: 10px;
+		}
+
+		.container {
+		  *zoom: 1;
+		  padding-left: 15px;
+		  padding-right: 15px;
+		  margin-left: auto;
+		  margin-right: auto;
+		}
+		.container:after {
+		  content: "";
+		  clear: both;
+		  display: block;
+		  height: 0;
+		}
+		@media screen and (min-width: 768px) {
+		  .container {
+		    width: 738px;
+		    padding-left: 15px;
+		    padding-right: 15px;
+		  }
+		}
+		@media screen and (min-width: 992px) {
+		  .container {
+		    width: 962px;
+		    padding-left: 15px;
+		    padding-right: 15px;
+		  }
+		}
+		@media screen and (min-width: 1200px) {
+		  .container {
+		    width: 1170px;
+		    padding-left: 15px;
+		    padding-right: 15px;
+		  }
+		}
+
+		.section {
+			padding: 20px 0;
+		  	background-color: #eee;
+		}
+
+		.text-item {
+		  padding: 20px;
+		  margin-bottom: 20px;
+		}
+		.text-item .text-pic img {
+		  max-width: 320px;
+		}
+
+		.text-pic + .text-desc {
+		  margin-top: 20px;
+		}
+
+		.text-pic img {
+		  display: block;
+		  width: 100%;
+		  margin: 0 auto;
+		}
+
+		.text-caption {
+			font-size: 16px;
+		}
+
+		.text-title {
+		  font-size: 14px;
+		}
+		.text-title + .text-desc {
+		  margin-top: 10px;
+		}
+
+		.text-desc {
+		  margin-top: 0;
+		  margin-bottom: 0;
+		}
+		.text-desc + .text-desc {
+		  margin-top: 10px;
+		}
+		.text-desc + .text-item {
+		  margin-top: 20px;
+		}
+
+		.withCenter {
+		  text-align: center;
+		}
+
+		.withLeft {
+		  text-align: left;
+		}
+
+		.withRight {
+		  text-align: right;
+		}
+
+		.text-desc {display: none;}
+		.text-item {padding: 0px 20px; margin-bottom: 0;}
+    </style>
+</head>
+<body>
+<div class="container">
+	<h2>工作经验</h2>
+	<hr>
+	<div class="section">
+		<div class="text-item">
+			<p class="text-title">自我介绍一下！</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">接触前端多久了？学习的渠道是什么？看过有关前端开发的书籍有哪些？最近在看什么书？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">你在学习js的时候，遇到过哪些js方面的坑、 你觉得js哪些知识会难一些。</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">对前端工程师这个职位你是怎么样理解的？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">以前做过什么项目？使用了什么技术？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">你都使用过哪些框架？zepto 和 jquery 是什么关系，有什么联系么？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">angular、react、vue和jQuery适合哪些应用场景</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">有没有看过框架的源码？jquery 源码中你对哪个部分印象最深，讲一讲？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">你学习过什么框架，现在在学习什么框架？为什么先开始学习 React 而不是 vue、Angular 或其它框架呢？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">你是通过业余时间完全自学的前端，你是如何制定学习计划和学习目标的？你学习的过程中，有没有真正的做过什么东西？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">有没有经常和前端同行业的人交流，通过什么途径交流？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">你最大的优点是什么？那你最大的缺点呢？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">前端现在更新的这么快，你对前端行业有什么看法？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">未来3-5年有什么规划？什么是全栈，你理解的全栈是干嘛的？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">github开源做过哪些，贡献过什么，pr过吗？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">现在给你一个项目，有两个框架可以选择，一个你比较熟悉，另一个是个新框架，大家都没用过，你会如何选择？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">如果有个功能你写的代码有一个 bug , 刚好你同事的代码可以弥补你这个 bug, 但是他的代码有新的 bug 怎么办？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">如果小组开发的时候对于一个软件的各个功能，每个人都有一定的 bug 怎么办？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">现在你的领导给你了一份工作，要求你一个星期完成，但你看了需求以后估计需要3周才能完成，你该怎么办？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">给你一个项目，你使用jquery还是vue、react。为什么。</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">平时项目中有遇到最难的问题是什么？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">在和队友沟通的时候遇到什么麻烦？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">怎么设计好的组件？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">你觉得什么样的代码是好的代码？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">你所知道的前端大会有哪些？</p>
+			<p class="text-desc">回答：比如腾讯web前端大会，CSS conf大会，js conf大会。</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">你还投了哪些公司，现在招聘进度如何？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">你还有什么问题想问我？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">对加班有什么看法？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">设计一个产品，实现非前端人员或者运维人员可以方便使用，达到不需要专业前端开发人员就可以实现前端交互实现的功能，详细介绍产品设计的思路、技术选型、用户体验考虑、前端底层支撑实现、项目架构设计和后台架构设计。</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">给你一个团队，怎么去带，怎么分配任务和把控项目进度！</p>
+			<p class="text-desc">回答：</p>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<h2>JavaScript面试题</h2>
+	<hr>
+	<div class="section">
+		<div class="text-item">
+			<h3 class="text-caption">对象&原型与继承</h3>
+			<div class="text-item">
+				<p class="text-title">说一说原型链！在JS里面如何做到继承呢？</p>
+				<p class="text-desc">回答：原型链、组合模式、寄生组合式继承</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一说原型和原型链，object是最上面的吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">prototype和__proto__的关系是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">假如构造函数有一个test()方法，prototype上也有一个test()这两个方法有区别吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请谈谈 Object.getPrototypeOf()、 Object.setPrototypeOf()、Object.create() ！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请实现ECMAScript 5中的Object.getPrototypeOf() 函数！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">JavaScript 中，有一个函数，执行对象查找时，永远不会去查找原型，这个函数是哪个？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">JS对象属性的可枚举性，hasOwnProperty()属性有什么用？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">Object.defineProperty()是干什么用的？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">比较typeof与instanceof？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">深拷贝和浅拷贝的区别，手写深拷贝！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">函数与作用域</h3>
+			<div class="text-item">
+				<p class="text-title">函数调用的方式有哪些。他们的区别是什么。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">call和apply还有bind是干嘛的？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">表述您对javascript this工作原理的理解！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">this在不同情况下有哪些可能的值？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请谈谈JS中的执行上下文和作用域链！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请谈谈变量提升！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">闭包是怎么回事？为什么要用它？有什么注意事项？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">匿名的自执行函数又是怎么回事？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">具名函数表达式知道吗？函数声明和函数表达式有什么区别吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">"use strict"是干什么用的？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">ajax请求</h3>
+			<div class="text-item">
+				<p class="text-title">简述同步和异步的区别！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">ajax如何实现、ajax请求的过程、readyState五种状态的含义</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">AJAX请求总共有多少种CALLBACK?</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">Ajax的优缺点及工作原理？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">get和post的区别</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一下同源策略！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">在平时开发中，遇到过跨域的问题吗？如何处理跨域呢？还有其他跨域方式吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">JSONP的实现原理是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何进行CORS跨域？需要什么条件？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">对服务器来说，返回json数据和JSONP数据有什么不一样？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何解决ajax无法后退的问题？</p>
+				<p class="text-desc">回答：我回答了用哈希值，然后用history函数，面试官又问，那你知道history的什么函数吗，。这个我真不知道，之前看阮一峰的教程上，有写那两个函数，但是我实在是想不起来了。</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">关于数组</h3>
+			<div class="text-item">
+				<p class="text-title">在Javascript中什么是伪数组？如何将伪数组转化为标准数组？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">怎么判断一个对象是不是数组，尽可能多的说出你知道的方法？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">怎么把一个类数组对象转为数组？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">类数组有哪些？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">编写一个方法 去掉一个数组的重复元素！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">求数组中的最大值、最小值！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">["1","2","3"].map(parseInt) 的答案是多少？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">关于DOM</h3>
+			<div class="text-item">
+				<p class="text-title">JavaScript中Element与Node的区别，children与childNodes的区别！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">兼容浏览器的获取指定元素（elem）的样式属性（name）的方法！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何获取光标的水平位置？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">浏览器事件</h3>
+			<div class="text-item">
+				<p class="text-title">浏览器里面的事件都会按照一定的规则去传递，这个规则是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">事件流的三个阶段，哪些事件不能冒泡？如何阻止冒泡？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">事件代理，事件委托是什么意思？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请谈谈事件循环（event loop）！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请指出document load和document ready的区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">IE与火狐的事件机制有何区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">能否写一个通用的事件侦听器函数？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">表单的change事件和input事件有什么区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">模块化：requirejs、seajs、CommonJS、ES6 Module</h3>
+			<div class="text-item">
+				<p class="text-title">amd和cmd的区别，怎么了解到这些区别的，是否是去看了规范</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">requirejs/seajs那些经常用的方法，然后对其进行解释</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请谈谈你对ES6 Module的理解！如何使用ES6 Module？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">CommonJS 和 ES6 Module对比有哪些区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">关于ES6</h3>
+			<div class="text-item">
+				<p class="text-title">谈一谈你对 ECMAScript6 的了解？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">ECMAScript 6 怎么写 class ，为何会出现 class？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">ES6用到什么程度？谈谈async/await！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">所有的 ES6 特性你都知道吗？如果遇到一个东西不知道是 ES6 还是 ES5, 你该怎么区分它？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一说回调地狱是什么，有什么问题。异常捕获怎么做。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">知道 promise 么？它用来做什么？Promise.all() 是干什么用的，怎么用？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一说promise。一个promise有多个then，如果第一个then出错，后面的还会执行吗，如何捕获异常。<br>如果第一个then出错了，我还想要后面的继续执行，应该怎么做。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">你最喜欢的es6中的特性是什么，为什么。</p>
+				<p class="text-desc">回家：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">箭头函数和普通函数区别！</p>
+				<p class="text-desc">回答：this指向、不能做构造函数、不能使用arguments等.</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">let暂时性死区和块级作用域！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">因为引用计数产生的内存泄漏，在ES6中的解决办法是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">怎么在当下浏览器环境使用ES6，Babel如何使用，如何配置？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">关于Node</h3>
+			<div class="text-item">
+				<p class="text-title">nodejs 你了解多少？全局对象是什么</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">Express 和 koa 有什么关系，有什么区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">为什么数据库使用的是mongodb而不是mysql。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">为什么选 nodeJS 为什么不喜欢 php 和 python？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">Buffer模块是干什么的</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">Stream是什么，使用的两种模式</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">node中的process是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">node中如何创建子进程？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">http模块如何将异步处理方式实现成同步处理方式</p>
+				<p class="text-desc">回答：</p>
+				<p class="text-desc">面试官建议去阅读node的http模块和Stream模块源码</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">nodejs http获取百度页面，把百度改为千百度！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何判断当前脚本运行在浏览器还是 node 环境中？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">关于jQuery</h3>
+			<div class="text-item">
+				<p class="text-title">jQuery 库中的 $() 是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">$(this) 和 this 关键字在 jQuery 中有何不同？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">jQuery.extend 与 jQuery.fn.extend 有何区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">是否了解针对 jQuery 性能的优化方法？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">jQuery 与 jQuery UI 有何区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">jquery怎么移除标签onclick属性？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">jQuery中的Delegate()函数有什么作用？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">$(document).ready()方法和window.onload有什么区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何用jQuery禁用浏览器的前进后退按钮？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">jquery中$.get()提交和$.post()提交有区别吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">jQuery的事件委托方法bind 、live、delegate、on之间有什么区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">关于MVVM</h3>
+			<div class="text-item">
+				<p class="text-title">前端 MVC、MVVM概念，MVVM的好处！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">JQuery和三大框架的区别？react和vue的区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vue接触过多长时间？react接触过多长时间？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vue和react有什么区别？angular用过吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">为什么要用vue和react，而不用JQuery，给你一个项目，什么情况下使用单页面应用？什么情况下使用多页面应用？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">React的思想和原理，虚拟DOM树和diff算法！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一下vue和react中的路由实现方式？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vue中的路由是如何管理的？你知道他的实现方式吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vue中v-if和v-show的区别是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vue中的数据双向绑定是如何实现的？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vue父子组件和兄弟组件的通信问题；</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vue的事件监听；</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vue-router获取自定义参数；</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vue-router的go相关；</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vue组件设计相关；</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vuex的原理；</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">vuex的action和mutation的异步操作和同步操作问题；</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">关于TypeScript</h3>
+			<div class="text-item">
+				<p class="text-title">Typescript你用过吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">JS代码优化</h3>
+			<div class="text-item">
+				<p class="text-title">谈谈垃圾回收机制方式及内存管理！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">哪些操作会造成内存泄漏？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">开发过程中遇到的内存泄露情况，如何解决的？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">变量常驻内存会带来什么问题？如何避免这种问题？怎么销毁？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">进程和线程的区别是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">设计模式</h3>
+			<div class="text-item">
+				<p class="text-title">有没有学过设计模式？说一说观察者模式吧！能不能写出来？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">了解过设计模式吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">开发中间用过什么设计模式？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一下工厂模式是什么样子！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">手写给出一个工厂方法实现！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">手写给出一个策略模式实现！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">手写给出一个装饰者模式实现！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">为什么只知道这么几个设计模式？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">JS习题</h3>
+			<div class="text-item">
+				<p class="text-title">一个DOM树，其中有两个节点，找出这两个节点公共的父节点？ </p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">获取页面上个数top3标签！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何实现一个倒计时功能，类似于蘑菇街中的秒杀？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">在100 0000个数中选出最大的五个数字，那种排序方法最为快速？</p>
+				<p class="text-desc">考点： 堆排序，合并排序，快速排序，希尔排序（插入排序的一种，也称缩小增量排序）</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">一瓶饮料3块钱，喝完三瓶饮料可以拿空瓶子再换一瓶，我有300块钱，可以喝到多少饮料？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">给定两个整数a和b，要求在使用任何辅助空间的情况下，交换两个的值！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">给10个箱子，有一个比其他得要轻，用最少的比较次数找出这个箱子！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">想实现一个对页面某个节点的拖曳？如何做？（使用原生JS）。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">判断一个字符串中出现次数最多的字符，统计这个次数。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">编写一个方法 求一个字符串的字节长度！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">写一个function，清除字符串前后的空格。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">怎样用js实现千位分隔符？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一下二叉树？如果反转二叉树？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何自定义dialog组件？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一下图片轮播的思路！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">自定义表单，使各浏览器表现一致，如何实现？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">Javascript中实现类似PHP的print_r函数！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请编写一个JavaScript函数 parseQueryString，它的用途是把URL参数解析为一个对象！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">delegate如何实现</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">weex实现大致原理</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">前端异常监测如何实现</p>
+				<p class="text-desc">回答：</p>
+				<p class="text-desc">初步了解了前端异常监测，并且了解了百姓网、腾讯和阿里在前端异常监测的一些方案和框架。</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">js的uglify如何实现</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">其他</h3>
+			<div class="text-item">
+				<p class="text-title">原生js的选择器有哪些？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">setTimeout和setInterval的区别！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">JavaScript 代码中的 "use strict"; 是什么意思？使用它的区别是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">字符串的substr、substring、slice有什么区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何说服对方使用jsBridge</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">unicode与utf-8字符编码方式关系</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何规避javascript多人开发函数重名问题？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">JS中基本类型在内存中存储方式是什么？引用类型的存储方式是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<h2>HTML/HTML5 API</h2>
+	<hr>
+	<div class="section">
+		<div class="text-item">
+			<h3 class="text-caption">浏览器存储</h3>
+			<div class="text-item">
+				<p class="text-title">cookie和session有什么区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">前端存储了解多少？cookie和stroage的区别是？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">sessionStorage 、localStorage 和 cookie 之间的区别！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">localStorage 的最大存储空间是多少？如果存超了会怎么样？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">localStorage 是注册在几级域名底下的？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">Web Storage与Cookie相比存在的优势！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">websocket</h3>
+			<div class="text-item">
+				<p class="text-title">websocket聊天室如果发送失败了，你怎么解决这个问题？如何做到发送图片？ 有了文字、图片等不同的数据类型之后，你如何实现数据的存储，如何设计，前端如何获取？ </p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">websocket聊天室有输入框，那么怎么获取的，对于使用div来模仿textarea，我说使用正则去掉div，那么用户输入的也是div呢？如果发送失败了呢？  究竟应该是先发送，还是应该先存储到redux中，考虑用户体验（仿照微信）。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">websocket的使用，底层是如何处理的。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">websocket是如何实现服务器端推送的？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">websocket和http的区别是什么？websocket的优点是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">为什么使用websocket？ websocket是怎么连接的，一定需要通过http协议吗？ 短轮询、commet、长轮训都介绍一下。各有什么优缺点。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">聊天室如何兼容IE8？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">webSocket 如何兼容低浏览器？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">其他</h3>
+			<div class="text-item">
+				<p class="text-title">用过canvas吗，你了解多少？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">Canvas和SVG的比较！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">页面中一个video，可能格式不支持，那么前端如何判断并给出提示？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">HTML5的离线存储怎么使用？能否解释一下工作原理？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">浏览器是怎么对HTML5的离线储存资源进行管理和加载的呢？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">页面可见性（Page Visibility） API可以有哪些用途？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何在页面上实现一个圆形的可点击区域？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<h2>网页布局</h2>
+	<hr>
+	<div class="section">
+		<div class="text-item">
+			<h3 class="text-caption">HTML部分</h3>
+			<div class="text-item">
+				<p class="text-title">浏览器的内核分别是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">meta标签作用！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">iframe 有哪些缺点？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">HTML5的form如何关闭自动完成功能？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">简述一下src与href的区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">介绍一下盒模型！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">行内元素有哪些？块级元素有哪些？空(void)元素有那些？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">有没有做过整站？会不会切图？切图时会保存成什么格式？不透明的时候会保存成png格式吗？png8和png24怎么选择？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">CSS部分</h3>
+			<div class="text-item">
+				<p class="text-title">float和display：inline-block；的区别。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">浮动是怎么样的？文档流又是怎么回事？如何清除浮动？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一下position的几个属性。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">position:absolute;与position:fixed的区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">有没有了解过css3的position:sticky;</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">除了border之外还有一种方法可以给div划线，你了解过这个吗？</p>
+				<p class="text-desc">回答：outline，它不占宽度。</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">css选择器优先级。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">什么时候用ID，什么时候用class？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">有没有遇到过这样的问题： 一个有border的div，里面有一个图片，发现图片和下面的border有一定的空隙（baseline）。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">css高度坍塌：两个盒子，一个下边据20px，一个上边据50px，最后为两个盒子之间的距离为多少？如何解决高度坍塌？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">两侧固定，中间自适应的布局解决方案！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">CSS中居中的几种方式！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">你平时都用什么布局？你所知道的布局方式有哪些？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">display有哪些？</p>
+				<p class="text-desc">回答：尽可能多回答，全面！</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">CSS中的单位有哪些？分别说一说！</p>
+				<p class="text-desc">回答：尽可能多回答，全面！</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">rem和em的区别？rem如何定位？</p>
+				<p class="text-desc">回答：尽可能多回答，全面！</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">px和em的区别！</p>
+				<p class="text-desc">回答：尽可能多回答，全面！</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">怎么让Chrome支持小于12px 的文字？</p>
+				<p class="text-desc">回答：body{-webkit-text-size-adjust:none} </p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">现在HTML5中css3可以写出一个旋转的立方体，请写出要用到的CSS属性。</p>
+				<p class="text-desc">回答：body{-webkit-text-size-adjust:none} </p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">介绍一下 Sass 和 Less 是什么？它们有何区别？</p>
+				<p class="text-desc">回答：body{-webkit-text-size-adjust:none} </p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">::before 和 :after中双冒号和单冒号 有什么区别？解释一下这2个伪元素的作用。</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请谈谈对CSS3 Flex布局！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">flex布局是什么，默认的方向是什么，如何改变方向？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请谈谈对CSS3 Grid布局！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一说CSS3中的动画，animation中可以取哪些值？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">说一说CSS3中的变形，transform都有哪些选项？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">CSS3了解多少？说说优雅降级和渐进增强？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">css3动画和jquery动画的差别是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">你前端用了Bootstrap，知道它的响应式是如何实现的吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">Boostrap怎么用css实现的栅格布局？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">媒体查询的原理是什么？知道流媒体查询吗？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<h2>移动端</h2>
+	<hr>
+	<div class="section">
+		<div class="text-item">
+			<p class="text-title">有没有做过移动端页面？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">meta viewport原理！</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">retina屏幕的了解！</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">说一说移动端的布局（flexible）。知道原理吗？怎么自己去实现一个flexible？ rem布局的实现原理？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">移动端的点透是什么，有没有了解？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">移动端如何真机调试？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">手机上页面有问题怎么办？怎么调试？</p>
+			<p class="text-desc">回答：weinre！</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">tap是怎么回事、和click的区别！tap为什么有300毫秒的延迟？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">移动端解决屏幕旋转问题！</p>
+			<p class="text-desc">回答：这个我一开始没回答上来，后来想到了通过检测浏览器的宽来实现，虽然面试官说有一个内置的函数，但是也算勉强回答对了。</p>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<h2>性能优化</h2>
+	<hr>
+	<div class="section">
+		<div class="text-item">
+			<h3 class="text-caption">常规</h3>
+			<div class="text-item">
+				<p class="text-title">异步加载JS文件的方式有哪些？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请说出三种减低页面加载时间的方法！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">页面加载速度很慢，如何加速页面的渲染？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">图片很大，如何进行优化？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">那些购物网站有那么多图片，怎么保证的加载速度？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">性能动画方面，为什么用css3？</p>
+				<p class="text-desc">回答：因为css3动画能启动GPU渲染。</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">首屏、白屏时间如何计算！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">域名收敛是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">前端开发中，如何优化图像？图像格式的区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">文件、脚本合并是如何优化的呢？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">页面性能优化有哪些方式？你所知道的前端优化有哪些内容？ </p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">浏览器原理</h3>
+			<div class="text-item">
+				<p class="text-title">输入了一个URL之后发生了什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">浏览器是如何渲染页面的？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">重绘，重排是怎么回事？有什么区别？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">请举例说明重绘，什么情况下会重绘？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">你认为样式是会引起重绘的吗？什么样式会引起重绘/重排？什么属性会引起重绘/重排？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">浏览器缓存</h3>
+			<div class="text-item">
+				<p class="text-title">说一下浏览器缓存问题！说一下强缓存和协商缓存？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">浏览器如何知道一个文件资源是否需要缓存？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">前端缓存如何实现？etag和Last-Modified的优先级哪个比较高以及为什么？cache-control和expire优先级哪个比较高以及为什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">前端缓存机制！如果去掉etags\last-modefied\cache-control\expires这些控制缓存的字段，浏览器会怎么处理缓存？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<h2>Web请求与网络安全</h2>
+	<hr>
+	<div class="section">
+		<div class="text-item">
+			<h3 class="text-caption">http协议</h3>
+			<div class="text-item">
+				<p class="text-title">HTTP的几种请求方法用途！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">一次完整的HTTP事务是怎样的一个过程？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">熟不熟悉 http？ http 和 https 有什么区别？https的整个过程画一下！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">httPS需要多少时间？比http慢多少？怎么优化？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">https有什么缺点？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">http2有哪些特性？头部压缩和多路复用怎么回事？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">画出TCP三次握手的过程！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">http1.0、http1.1、http2的三者比较！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">http1.1中的keep-alive是怎么理解的？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">accept是什么，怎么用？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">http协议状态码，302和303的区别</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">304和200的区别是什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">HTTP状态码304,502,503</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">1,2,3,4,5 开头的状态码都表示什么？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+		<div class="text-item">
+			<h3 class="text-caption">网络安全</h3>
+			<div class="text-item">
+				<p class="text-title">你所了解到的Web攻击技术！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">网页验证码是干什么用的？是为了解决什么安全问题？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">做代码的时候有没有考虑过安全问题？怎么防止注入？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">如何防止 XSS 和 CORS？ 被攻击了该怎么办？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">知道 XSS 吧，怎么防护？cross-site script</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">知道 CSRF 么，怎么防止 CSRF？ cross-site request forgery</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">简要阐述XSS和CSRF攻击及防范！</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">XSS脚本劫持，如何截获？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">xss怎么防范？尖括号应该怎么过滤？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+			<div class="text-item">
+				<p class="text-title">你项目中如何进行用户输入过滤的？都过滤了那些内容？</p>
+				<p class="text-desc">回答：</p>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<h2>开发工具</h2>
+	<hr>
+	<div class="section">
+		<div class="text-item">
+			<p class="text-title">开发页面时怎么debug？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">前端工程化方面做了哪些东西？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">已经上线的项目，出问题，怎么样去处理异常？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">构建工具除了Webpack，还接触过其他的吗？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">Webpack的优点和应用场景？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">gulp 和 webpack 有什么区别，为什么你要用 gulp？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">设计一个自己的打包工具需要设计哪些主要功能?</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">熟不熟悉 git，你用它做过什么？git命令了解哪些？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<h2>其他</h2>
+	<hr>
+	<div class="section">
+		<div class="text-item">
+			<p class="text-title">说一下restful api吧！</p>
+			<p class="text-desc">回答：</p>
+		</div>
+		<div class="text-item">
+			<p class="text-title">兼容性说一说，你做的PC端兼容性是到哪的？</p>
+			<p class="text-desc">回答：</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

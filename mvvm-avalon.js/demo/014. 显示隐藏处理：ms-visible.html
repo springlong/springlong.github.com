@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>显示隐藏处理：ms-visible</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+
+
+
+
+        table{
+            width:300px;
+            border-collapse: collapse;
+            border:1px solid red;
+        }
+
+        td {
+            padding:5px;
+            border:1px solid red;
+        }
+
+        .menu{
+            display:inline-block;
+            *display:inline;
+            *zoom:1;
+            width:140px;
+            padding:5px 20px;
+            text-align: center;
+            margin-left:1em;
+            border: 1px solid green;
+        }
+
+        .btn{
+            padding:5px 20px;
+            margin-left:1em;
+            display: inline-block;
+        }
+
+
+        button{
+            margin:1em 3em;
+        }
+        .panel div{
+            height:200px;
+            background: #a9ea00;
+        }
+        .panel .panel2{
+            height:200px;
+            background: green;
+        }
+        .panel .panel3{
+            display:block;
+            width:100%;
+            height:200px;
+            background: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>显示隐藏处理：ms-visible</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>今天的主角是<code>ms-visible</code>，它的效果类拟于jQuery的toggle，如果它后面跟着的表达式为真值时则显示它所在的元素，为假值时则隐藏。不过显示不是 display:none这么简单，众所周知，display拥有inline, inline-block, block, list-item, table, table-cell等十来个值，比如用户之前是让此LI元素表示inline-block，实现水平菜单效果，你直接display:block就会撑破布局。因此元素之前是用什么样式显示，需要保存下来，当表达式转换为真值时再还原。</p>
+
+
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: 'test',
+        toggle: false,
+        array: [1,2,3,4]
+    });
+&lt;/script>
+&lt;div ms-controller="test">
+    &lt;table ms-visible="@toggle">
+        &lt;tr ms-visible="@toggle">&lt;td>111&lt;/td>&lt;td>222&lt;/td>&lt;/tr>
+        &lt;tr>&lt;td>333&lt;/td>&lt;td>444&lt;/td>&lt;/tr>
+    &lt;/table>
+    &lt;br>
+    &lt;table>
+        &lt;tr ms-visible="@toggle">&lt;td>aaa&lt;/td>&lt;td>bbb&lt;/td>&lt;/tr>
+        &lt;tr>&lt;td>ccc&lt;/td>&lt;td>ddd&lt;/td>&lt;/tr>
+    &lt;/table>
+    &lt;br>
+    &lt;p>&lt;button type="button" ms-click="@toggle = !@toggle">click me!&lt;/button>&lt;/p>
+&lt;/div>
+</pre>
+
+
+	<hr>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            toggle: false,
+            array: [1,2,3,4]
+        });
+    </script>
+    <div ms-controller="test">
+        <table ms-visible="@toggle">
+            <tr ms-visible="@toggle"><td>111</td><td>222</td></tr>
+            <tr><td>333</td><td>444</td></tr>
+        </table>
+        <br>
+        <table>
+            <tr ms-visible="@toggle"><td>aaa</td><td>bbb</td></tr>
+            <tr><td>ccc</td><td>ddd</td></tr>
+        </table>
+        <br>
+        <p><button type="button" ms-click="@toggle = !@toggle">click me!</button></p>
+    </div>
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>我们再来一个有用的例子，做一个切换卡。</p>
+<pre>
+&lt;script>
+    var vm2 = avalon.define({
+        $id: 'test2',
+        curIndex: 0,  // 默认显示第一个
+        buttons: ['aaa', 'bbb', 'ccc'],
+        panels: ['&lt;div class="panel1">面板1&lt;/div>', '&lt;div class="panel2">面板2&lt;/div>', '&lt;div class="panel3">面板3&lt;/div>']
+    });
+&lt;/script>
+&lt;div ms-controller="test2">
+    &lt;div>
+        &lt;button ms-for="(i, el) in @buttons" ms-click="@curIndex = i" ms-text="el">&lt;/button>
+    &lt;/div>
+    &lt;div class="panel" ms-for="(i, el) in @panels" ms-visible="i === @curIndex" ms-html="el">&lt;/div>
+&lt;/div>
+</pre>
+
+
+    <script>
+        var vm2 = avalon.define({
+            $id: 'test2',
+            curIndex: 0,  // 默认显示第一个
+            buttons: ['aaa', 'bbb', 'ccc'],
+            panels: ['<div class="panel1">面板1</div>', '<div class="panel2">面板2</div>', '<div class="panel3">面板3</div>']
+        });
+    </script>
+    <div ms-controller="test2">
+        <div>
+            <button ms-for="(i, el) in @buttons" ms-click="@curIndex = i" ms-text="el"></button>
+        </div>
+        <div class="panel" ms-for="(i, el) in @panels" ms-visible="i === @curIndex" ms-html="el"></div>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

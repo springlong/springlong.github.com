@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>开发库核心：集合的遍历筛选-关系查找 - jQuery使用文档</title>
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link rel="stylesheet" href="public/css/codeView.css" />
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/jquery.extend.js"></script>
+    <script src="public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+    <h1>jQuery使用文档——开发库核心：集合的遍历筛选-关系查找</h1>
+    <p>在上篇文档中，我们讲解了那些用于筛选出元素集合中符合特定条件的元素部分的操作方法。那么在这篇文档中，我们将来了解那些用于关系查找的方法。这些方法的作用，就是查找出与当前元素集合中的元素拥有着某种关系的其他元素，然后将它们构建为新的jQuery对象并返回。</p>
+    <h2>兄弟节点</h2>
+    <ol class="list">
+        <li>
+            <p class="title"><code>.next([selector])</code></p>
+            <p>返回当前元素集合中每个元素的后一相邻节点所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/next.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.nextAll([selector])</code></p>
+            <p>返回当前元素集合中每个元素的位于其后的所有兄弟节点所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/nextAll.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.nextUntil([until][,selector])</code></p>
+            <p>返回当前元素集合中每个元素的位于其后到停止条件为止的所有兄弟节点所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数until：<span>（类型：String | DOMElement | Array | jQuery，可选）</span>停止条件；</p>
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法没有提供参数时，则相当于<code>.nextAll()</code>。</p>
+            <p>当该方法的until参数不为空时，表示停止条件，即获取的兄弟节点在哪里中断不再包含进新的jQuery对象，参数类型可以是<code>$()</code>所允许的所有类型。</p>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/nextUntil.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.prev([selector])</code></p>
+            <p>返回当前元素集合中每个元素的前一相邻节点所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/prev.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.prevAll([selector])</code></p>
+            <p>返回当前元素集合中每个元素的位于其前的所有兄弟节点所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/prevAll.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.prevUntil([until][,selector])</code></p>
+            <p>返回当前元素集合中每个元素的位于其前到停止条件为止的所有兄弟节点所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数until：<span>（类型：String | DOMElement | Array | jQuery，可选）</span>停止条件；</p>
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法没有提供参数时，则相当于<code>.prevAll()</code>。</p>
+            <p>当该方法的until参数不为空时，表示停止条件，即获取的兄弟节点在哪里中断不再包含进新的jQuery对象，参数类型可以是<code>$()</code>所允许的所有类型。</p>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/prevUntil.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.siblings([selector])</code></p>
+            <p>返回当前元素集合中每个元素的所有兄弟节点所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/siblings.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+    </ol>
+    <h2>后代节点</h2>
+    <ol class="list">
+        <li>
+            <p class="title"><code>.children([selector])</code></p>
+            <p>返回元素集合中每个元素的所有子节点（不包含文字和注释节点）所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/children.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.contents([selector])</code></p>
+            <p>返回元素集合中每个元素的所有子节点（包含文字和注释节点）所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>当该方法的selector参数为String类型时，则相当于<code>.children(selector)</code>操作，因为在执行filter操作中将会过滤掉文本和注释节点。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/contents.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.find(selector)</code></p>
+            <p>获取当前元素集合的每个元素中符合查询条件的所有后代元素（不包含文字和注释节点），并将它们构建为新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String | DOMElement | jQuery）</span>查询条件；</p>
+            </div>
+            <p>该方法的selector参数既可以是一个选择器字符串，也可以是一个jQuery对象，还可以是一个DOM元素：</p>
+            <ul>
+                <li>当参数没有被提供时，返回结果将为空。</li>
+                <li>当参数类型为String时，表示与选择器字符串相匹配的所有后代元素。</li>
+                <li>当参数类型为DOMElement时，如果该元素是当前元素集合中某个元素的后代，则返回结果就是该元素，否则为空。</li>
+                <li>当参数类型为jQuery对象时，如果该jQuery对象中的某些元素是当前元素集合中某个元素的后代，则返回结果将包含这些元素，否则为空。</li>
+            </ul>
+<pre class="jsCodeNum">
+var $new1 = $("body").find("div");  //当前文档中所有的div元素
+var $new2 = $("div").find("span");  //当前文档中所有div元素的后代span元素
+var $new3 = $("div").find($("span"));       //当前文档中所有div元素的后代span元素（同上）
+var $new4 = $("div").find($("span")[0]);    //如果当前文档的第一个span元素是div元素的后代，则结果就是这个span元素，否则
+</pre>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/find.html" target="_blank">这里</a>！</p>
+        </li>
+    </ol>
+    <h2>祖先节点</h2>
+    <ol class="list">
+        <li>
+            <p class="title"><code>.parent([selector])</code></p>
+            <p>返回当前元素集合中每个元素的父节点所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/parent.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.parents([selector])</code></p>
+            <p>返回当前元素集合中每个元素的所有祖先元素（一直到HTML元素）所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>祖先元素和父节点的区别在于，祖先元素包含目标元素的所有外围容器（其中包括父节点），而父节点则是目标节点的第一个外围容器。</p>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/parents.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.parentsUntil([until][,selector])</code></p>
+            <p>返回当前元素集合中每个元素的一直到停止条件为止的所有祖先元素（一直到HTML元素）所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数until：<span>（类型：String | DOMElement | Array | jQuery，可选）</span>停止条件；</p>
+                <p>参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+            </div>
+            <p>当该方法没有提供参数时，则相当于<code>.parents()</code>。</p>
+            <p>当该方法的until参数不为空时，表示停止条件，即获取的祖先元素在哪里中断不再包含进新的jQuery对象，参数类型可以是<code>$()</code>所允许的所有类型。</p>
+            <p>当该方法的selector参数为String类型时，相当于在获取结果后执行了<code>.filter(selector)</code>过滤操作，如果selector参数为其他类型则忽略该参数。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/parentsUntil.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+        <li>
+            <p class="title"><code>.closest(selector)</code></p>
+            <p>返回当前元素集合中每个元素的第一个与查询条件相匹配的祖先元素所构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String | DOMElement | Array | jQuery）</span>查询条件；</p>
+            </div>
+            <p>1. 如果没有提供selector参数，则返回结果为空。</p>
+            <p>2. 该方法在查询祖先元素时，会从自己开始查找，而不像<code>.parents()</code>那样从父级节点开始查找。</p>
+            <p>3. selector参数的类型可以是$()所允许的所有类型。</p>
+            <p>该方法在这里不做代码示例，请点击<a href="example/closest.html" target="_blank">这里</a>查看实际效果的演示！</p>
+        </li>
+    </ol>
+</article>
+<section class="codeView">
+    <h2>程序代码：jQuery中的遍历筛选-关系查找</h2>
+    <pre class="jsCodeNum">
+jQuery.fn = jQuery.prototype = {
+
+    // Take an array of elements and push it onto the stack
+    // (returning the new matched element set)
+    pushStack: function( elems ) {
+
+        // Build a new jQuery matched element set
+        var ret = jQuery.merge( this.constructor(), elems );
+
+        // Add the old object onto the stack (as a reference)
+        ret.prevObject = this;
+        ret.context = this.context;
+
+        // Return the newly-formed element set
+        return ret;
+    }
+};
+
+jQuery.each({
+    parent: function( elem ) {
+        var parent = elem.parentNode;
+        return parent &amp;&amp; parent.nodeType !== 11 ? parent : null;
+    },
+    parents: function( elem ) {
+        return jQuery.dir( elem, "parentNode" );
+    },
+    parentsUntil: function( elem, i, until ) {
+        return jQuery.dir( elem, "parentNode", until );
+    },
+    next: function( elem ) {
+        return sibling( elem, "nextSibling" );
+    },
+    prev: function( elem ) {
+        return sibling( elem, "previousSibling" );
+    },
+    nextAll: function( elem ) {
+        return jQuery.dir( elem, "nextSibling" );
+    },
+    prevAll: function( elem ) {
+        return jQuery.dir( elem, "previousSibling" );
+    },
+    nextUntil: function( elem, i, until ) {
+        return jQuery.dir( elem, "nextSibling", until );
+    },
+    prevUntil: function( elem, i, until ) {
+        return jQuery.dir( elem, "previousSibling", until );
+    },
+    siblings: function( elem ) {
+        return jQuery.sibling( ( elem.parentNode || {} ).firstChild, elem );
+    },
+    children: function( elem ) {
+        return jQuery.sibling( elem.firstChild );
+    },
+    contents: function( elem ) {
+        return jQuery.nodeName( elem, "iframe" ) ?
+            elem.contentDocument || elem.contentWindow.document :
+            jQuery.merge( [], elem.childNodes );
+    }
+}, function( name, fn ) {
+    jQuery.fn[ name ] = function( until, selector ) {
+        var ret = jQuery.map( this, fn, until );
+
+        if ( !runtil.test( name ) ) {
+            selector = until;
+        }
+
+        if ( selector &amp;&amp; typeof selector === "string" ) {
+            ret = jQuery.filter( selector, ret );
+        }
+
+        ret = this.length > 1 &amp;&amp; !guaranteedUnique[ name ] ? jQuery.unique( ret ) : ret;
+
+        if ( this.length > 1 &amp;&amp; rparentsprev.test( name ) ) {
+            ret = ret.reverse();
+        }
+
+        return this.pushStack( ret );
+    };
+});
+
+jQuery.extend({
+    filter: function( expr, elems, not ) {
+        if ( not ) {
+            expr = ":not(" + expr + ")";
+        }
+
+        return elems.length === 1 ?
+            jQuery.find.matchesSelector(elems[0], expr) ? [ elems[0] ] : [] :
+            jQuery.find.matches(expr, elems);
+    },
+
+    dir: function( elem, dir, until ) {
+        var matched = [],
+            cur = elem[ dir ];
+
+        while ( cur &amp;&amp; cur.nodeType !== 9 &amp;&amp; (until === undefined || cur.nodeType !== 1 || !jQuery( cur ).is( until )) ) {
+            if ( cur.nodeType === 1 ) {
+                matched.push( cur );
+            }
+            cur = cur[dir];
+        }
+        return matched;
+    },
+
+    sibling: function( n, elem ) {
+        var r = [];
+
+        for ( ; n; n = n.nextSibling ) {
+            if ( n.nodeType === 1 &amp;&amp; n !== elem ) {
+                r.push( n );
+            }
+        }
+
+        return r;
+    }
+});
+
+jQuery.fn.extend({
+
+    find: function( selector ) {
+        var i, ret, self,
+            len = this.length;
+
+        if ( typeof selector !== "string" ) {
+            self = this;
+            return this.pushStack( jQuery( selector ).filter(function() {
+                for ( i = 0; i &lt; len; i++ ) {
+                    if ( jQuery.contains( self[ i ], this ) ) {
+                        return true;
+                    }
+                }
+            }) );
+        }
+
+        ret = [];
+        for ( i = 0; i &lt; len; i++ ) {
+            jQuery.find( selector, this[ i ], ret );
+        }
+
+        // Needed because $( selector, context ) becomes $( context ).find( selector )
+        ret = this.pushStack( len > 1 ? jQuery.unique( ret ) : ret );
+        ret.selector = ( this.selector ? this.selector + " " : "" ) + selector;
+        return ret;
+    },
+
+    closest: function( selectors, context ) {
+        var cur,
+            i = 0,
+            l = this.length,
+            ret = [],
+            pos = rneedsContext.test( selectors ) || typeof selectors !== "string" ?
+                jQuery( selectors, context || this.context ) :
+                0;
+
+        for ( ; i &lt; l; i++ ) {
+            cur = this[i];
+
+            while ( cur &amp;&amp; cur.ownerDocument &amp;&amp; cur !== context &amp;&amp; cur.nodeType !== 11 ) {
+                if ( pos ? pos.index(cur) > -1 : jQuery.find.matchesSelector(cur, selectors) ) {
+                    ret.push( cur );
+                    break;
+                }
+                cur = cur.parentNode;
+            }
+        }
+
+        return this.pushStack( ret.length > 1 ? jQuery.unique( ret ) : ret );
+    }
+});
+</pre>
+</section>
+<script src="public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>开发库核心：关于jQuery-对象扩展 - jQuery使用文档</title>
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link rel="stylesheet" href="public/css/codeView.css" />
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/jquery.extend.js"></script>
+    <script src="public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+    <h1>jQuery使用文档——开发库核心：关于jQuery-对象扩展</h1>
+    <p>jQuery为开发者们提供了基本的DOM访问、动画、Ajax等操作，但这并不能满足所有开发人员的需求。这个时候，我们就可以考虑对jQuery进行扩展处理，也就是大家常说的jQuery插件的开发。</p>
+    <h2>jQuery中对象扩展的基本格式</h2>
+    <div>
+        <p>第一种扩展方式是通过jQuery对象进行成员的添加，如下代码所示：</p>
+<pre class="jsCodeNum">
+//扩展实例成员
+$.prototype.newMember1 = function(){}
+$.prototype.newMember2 = function(){}
+
+//扩展静态成员
+$.newMember1 = function(){}
+$.newMember2 = function(){}
+</pre>
+            <p>第二种扩展方式是通过jQuery提供的<b>extend方法</b>进行操作，如下代码所示：</p>
+<pre class="jsCodeNum">
+//扩展实例成员
+$.fn.extend({
+    newMember1: function(){},
+    newMember2: function(){}
+});
+
+//扩展静态成员
+$.extend({
+    newMember1: function(){},
+    newMember2: function(){}
+});
+</pre>
+        <p>在上面的两种方式中，前者每扩展一个成员就需要书写一次$或者$.prototype，而后者即便扩展多个成员也只需要书写一次$.extend或者$.fn.extend，所以我更喜欢后者的扩展方式，也建议大家使用后者进行多成员的扩展处理。后者的代码格式看上去也更美观漂亮，不是吗？</p>
+    </div>
+    <h2>jQuery中extend方法的特殊使用</h2>
+    <div>
+        <p>jQuery提供的extend方法，在只有一个参数传递的情况下，进行的是对jQuery对象的成员扩展处理。但是当提供的参数个数大于1时，那么将进行多个对象的成员合并操作。同时，在合并操作中根据第一个参数的类型的不同，又可以分为普通合并和深度合并，具体的使用操作讲解如下。</p>
+        <h3>普通合并</h3>
+        <div>
+            <p>当<code>jQuery.extend()</code>方法的参数个数大于1，且第1个参数不是布尔值时，则将第二个参数以及后续参数的所有成员合并到第1个参数中。在进行合并处理的过程中，相同名称的成员的值将被后面的值覆盖。</p>
+            <p>示例代码如下：</p>
+<pre class="jsCodeNum">
+var p1 = {name: "Tom", sex: "male", location: {city: "Shanghai", country: "China"}};
+var p2 = {name: "Jerry", age: 21, location: {capital: "Beijin", country: "China"}};
+
+//对p1和p2进行合并处理
+var result = $.extend(p1, p2);
+</pre>
+            <p>执行上述操作后，result的值等于p1，且p1的最终值如下：</p>
+<pre class="jsCode">
+{name: "Jerry", sex: "male", location: {capital: "Beijin", country: "China"}, age: 21}
+</pre>
+            <p>上述操作中，p1的值发生了改变，如果希望只进行合并处理而不改变p1的值则可以采用下面的代码：</p>
+<pre class="jsCode">
+var result = $.extend({}, p1, p2);
+</pre>
+        </div>
+        <h3>深度合并</h3>
+        <div>
+            <p>当第1个参数为布尔值时，那么该参数将决定是否进行深度合并（即进行合并操作时是否也对嵌套的子对象进行合并）。在这种情况下，jQuery将第三个参数以及后续参数的所有成员合并到第2个参数中。在进行合并处理的过程中，相同名称的元素将被后面的值覆盖。</p>
+            <p>示例代码如下：</p>
+<pre class="jsCodeNum">
+var p1 = {name: "Tom", sex: "male", location: {city: "Shanghai", country: "China"}};
+var p2 = {name: "Jerry", age: 21, location: {capital: "Beijin", country: "China"}};
+
+//对p1和p2进行合并处理
+var result = $.extend(true, p1, p2);
+</pre>
+            <p>执行上述操作后，result的值等于p1，且p1的最终值如下：</p>
+<pre class="jsCode">
+{name: "Jerry", sex: "male", location: {capital: "Beijin", city: "Shanghai", country: "China"}, age: 21}
+</pre>
+            <p>在上述的操作中，由于第一个参数值为true所以开启了深度合并操作。如果将第一个参数变更为false，那么相当于<code>$.extend({}, p1, p2)</code>。</p>
+        </div>
+        <h3>应用案例</h3>
+        <div>
+            <p>在上面我们演示了<code>$.extend()</code>方法的普通合并和深度合并的使用和区别，不过大家并不清楚这个合并功能的具体用途。那么下面我就给大家演示该功能在我们实际工作中，使用频率相对较高的一个使用场景——用于函数处理中进行默认参数的配置，示例代码如下：</p>
+<pre class="jsCodeNum">
+$.fn.slideshow = function(config)
+{
+    //1. config参数的默认配置
+    //2. 更新config参数的最终值
+    config = $.extend({
+        effect: "left",
+        duration: 400,
+        delay: 1000,
+        auto: true
+    }, config);
+};
+
+//执行下面的语句后，函数中config配置的最终值为：{effect: "fade", duration: 400, delay: 1000, auto: fale}
+$("#id").slideshow({effect: "fade", auto: false});
+</pre>
+        </div>
+    </div>
+    <h2>jQuery中extend方法的注意事项</h2>
+    <div>
+        <ol>
+            <li>在进行jQuery对象的扩展操作时，<code>$.extend()</code>表示的是对静态成员的扩展，而<code>$.fn.extend()</code>表示的则是对实例成员的扩展。</li>
+            <li>进行合并操作时，<code>$.extend()</code>和<code>$.fn.extend()</code>的实现结果是一致的，建议始终使用<code>$.extend()</code>进行书写。</li>
+            <li>进行合并处理时，合并对象中值为undefined的属性成员不会被合并。</li>
+            <li>为了保证成员扩展操作以及合并处理的正确完成，应确保extend方法中被操作的参数均为Object类型。</li>
+        </ol>
+    </div>
+    <h2>程序代码：jQuery中的extend方法</h2>
+    <div class="codeView">
+        <pre class="jsCodeNum">
+jQuery.extend = jQuery.fn.extend = function() {
+    var src, copyIsArray, copy, name, options, clone,
+        target = arguments[0] || {},
+        i = 1,
+        length = arguments.length,
+        deep = false;
+
+    // Handle a deep copy situation
+    if ( typeof target === "boolean" ) {
+        deep = target;
+        target = arguments[1] || {};
+        // skip the boolean and the target
+        i = 2;
+    }
+
+    // Handle case when target is a string or something (possible in deep copy)
+    if ( typeof target !== "object" &amp;&amp; !jQuery.isFunction(target) ) {
+        target = {};
+    }
+
+    // extend jQuery itself if only one argument is passed
+    if ( length === i ) {
+        target = this;
+        --i;
+    }
+
+    for ( ; i &lt; length; i++ ) {
+        // Only deal with non-null/undefined values
+        if ( (options = arguments[ i ]) != null ) {
+            // Extend the base object
+            for ( name in options ) {
+                src = target[ name ];
+                copy = options[ name ];
+
+                // Prevent never-ending loop
+                if ( target === copy ) {
+                    continue;
+                }
+
+                // Recurse if we're merging plain objects or arrays
+                if ( deep &amp;&amp; copy &amp;&amp; ( jQuery.isPlainObject(copy) || (copyIsArray = jQuery.isArray(copy)) ) ) {
+                    if ( copyIsArray ) {
+                        copyIsArray = false;
+                        clone = src &amp;&amp; jQuery.isArray(src) ? src : [];
+
+                    } else {
+                        clone = src &amp;&amp; jQuery.isPlainObject(src) ? src : {};
+                    }
+
+                    // Never move original objects, clone them
+                    target[ name ] = jQuery.extend( deep, clone, copy );
+
+                // Don't bring in undefined values
+                } else if ( copy !== undefined ) {
+                    target[ name ] = copy;
+                }
+            }
+        }
+    }
+
+    // Return the modified object
+    return target;
+};</pre>
+    </div>
+</article>
+<script src="public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

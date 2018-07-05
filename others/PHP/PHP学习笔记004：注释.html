@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>注释 - PHP学习笔记 - 前端志</title>
+    <link rel="stylesheet" href="../public/css/main.css" />
+    <link rel="stylesheet" href="../public/css/codeView.css" />
+    <script src="../public/js/jquery.min.js"></script>
+    <script src="../public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<section id="instruction">
+	<h1><span>PHP学习笔记004：注释</span></h1>
+    <p>使用注释可以增加代码的可读性，帮助我们更好地理解和阅读代码。特别是当随着时间的迁徙，我们再回过头来看自己写的代码时可能已经完全忘却。这个时候如果有相关注释，那么就可以让我们快速拾起以前的思路和想法，快速理解该代码的使用原理和方法，亦或者是帮助他人快速理解代码的实现机制。</p>
+    <p>注释仅用于代码的补充说明、提醒使用，所有注释内容均不会被执行（即使注释中包含可执行代码）。</p>
+    <p>在PHP中，我们可以使用如下两种注释风格：</p>
+    <ul>
+        <li>
+            <strong>单行注释（//）</strong>
+            <p>单行注释以“//”开头，位于其后的所有内容都会被作为注释处理。</p>
+            <p>单行注释通常放在语句行的末尾进行书写，也可放在语句行的上方进行书写。</p>
+            <p>单行注释通常用来说明某一变量的作用，或者是某一语句的注意事项和实现原理。</p>
+            <p>示例如下：</p>
+<pre class="jsCode">
+$sex = "M";  //性别
+if($sex == "M" || $sex == "F")
+{
+    //M：男；F：女 
+    echo $sex == "M" ? "男" : "女";  
+}
+</pre>
+        </li>
+        <li>
+            <strong>多行注释（/**/）</strong>
+            <p>多行注释以“/*”和“*/” 标识注释的开始和结尾，位于他们之间的所有内容都会被作为注释处理。</p>
+            <p>多行注释允许放在代码的任何位置，但我们通常放在语句行的上方进行书写。</p>
+            <p>多行注释通常用来对一个函数进行说明（如：用途、实现原理、注意事项、参数、返回值、作者、完成时间等），或者是对当前文件进行说明（如：作用、版本、作者、版权等）。</p>
+            <p>如果需要对代码块进行一行简单的描述，建议使用/**/进行注释，以区分单行代码的//注释。</p>
+            <p>示例如下：</p>
+<pre class="jsCode">
+/**
+ *该函数用于求和运算
+ *(如果有必要，还可以在这里描述函数的实现原理和注意事项)
+ *
+ *@return int 返回两参数的和
+ *@param int $num1 加数1
+ *@param int $num2 加数2
+ *@author Jerry Sun &lt;yangtuan2009@126.com&gt;
+ *@version 1.0
+ *@date 2013-06-30
+ */
+function add($num1, $num2)
+{
+    return $num1 + $num2;
+}
+</pre>
+            <p>多行注释的作用更侧重于文档注释，关于文档注释的更多规范和信息请参见下面两个链接：</p>
+            <p><a href="http://zh.wikipedia.org/wiki/PHPDoc" target="_blank">PHPDoc 维基百科：http://zh.wikipedia.org/wiki/PHPDoc</a></p>
+            <p><a href="http://manual.phpdoc.org/HTMLframesConverter/default/" target="_blank">PHPDocumentor格式规定：http://manual.phpdoc.org/HTMLframesConverter/default/</a></p>
+        </li>
+    </ul>
+    <script src="../public/js/main.js"></script>
+</section>
+</body>
+</html>

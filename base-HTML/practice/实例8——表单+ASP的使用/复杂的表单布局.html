@@ -1,0 +1,211 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+	<title>复杂的表单布局</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="EditPlus" />
+	<meta name="author" content="Jerry_糊涂" />
+	<style type="text/css">
+		*{
+			font-family:"微软雅黑";
+			font-size:12px;
+		}
+		.clear{
+			clear:both;
+		}
+
+		#loginOuter{
+			width:600px;
+			margin:0px auto;
+		}
+		#login{
+			padding:1em;
+			border:1px solid gray;
+			background:#f9f9f9;
+		}
+		#login fieldset{
+			margin:1em 0px;	/*使各表单分组前后相隔一段距离*/
+			padding:1em;	/*使各表单分组中的控件与边框相隔一定的距离*/
+			border:1px solid gray;
+		}
+		#login legend{
+			font-weight:bold;
+		}
+		#login p{/*使得错误文本提示信息可以定位*/
+			position:relative;
+		}
+		#login label,#login h3.aiHao{/*标签文本的设置*/
+			float:left;
+			width:80px;
+			padding-right:20px;			/*注意：使标签总宽度保持在100px*/
+			text-align:right;			/*使前缀的标签文本右对齐显示*/
+		}
+		#login label.other{/*radio、checkbox等元素的标签另外设置*/
+			float:none;
+
+		}
+		#login .require{/*必填提示星号（*）的显示*/
+			color:red;
+		}
+		#login label .error{
+			position:absolute;
+			left:303px;		/*这里宽度必须要衡量好额*/
+			_left:203px;	/*在IE6中该错误提示元素的相对元素为input元素而非label元素*/
+			top:0px;
+			margin-left:1em;
+			padding-left:12px;
+			text-align:left;
+			color:#F33;
+			background:url(error.png) no-repeat left top;
+			_width:200px;	/*在IE6中的处理有些不同，其默认为最小宽度，所以这里需要设置!另外需要注意各元素宽度之和不能大于容器宽度值，注意！*/
+		}
+		#login input{/*input元素总体设置*/
+			width:200px;
+			height:1.5em;
+		}
+		#login .button{
+			padding-left:100px;
+		}
+		#login .button input{/*设置按钮的大小*/
+			width:5em;
+			height:2em;
+		}
+		#login input.other{/*为radio/checkbox等元素另外设置*/
+			width:auto;
+			vertical-align:middle;		/*使radio、checkbox元素后的文本垂直居中显示*/
+		}
+		#login select{/*为下拉列表框设置样式*/
+			width:5em;
+		}
+		#login textarea{/*设置文本区域的大小*/
+			width:400px;
+			height:100px;
+		}
+		#login .onFocus{/*设置文本输入框呈3D凹陷显示*/
+			border-left:2px solid #A4A4A4;
+			border-top:2px solid #A4A4A4;
+			border-right:1px solid #E1E1E1;
+			border-bottom:1px solid #E1E1E1;
+		}
+		#login .onFocus:focus{/*设置文本输入框在焦点时改变背景颜色以突出显示*/
+			background:#fff7b9;
+		}
+
+		/*以下是针对“爱好”一栏中复选框的布局*/
+		#login h3.aiHao{
+			font-weight:normal;
+		}
+		#login div.aiHao{
+			width:100px;
+			float:left;
+		}
+		#login .aiHao label{
+			float:none;
+		}
+	</style>
+</head>
+<body>
+<div id="loginOuter">
+<form name="login" id="login" action="" method="post">
+	<fieldset>
+		<legend>用户注册</legend>
+		<p>
+			<label for="userName"><strong class="require">*</strong>用户名称:<span class="error">请输入正确的用户帐号！</span></label>
+			<input type="text" id="userName" name="userName" class="onFocus" maxlength="12" />
+		</p>
+		<p>
+			<label for="password1"><strong class="require">*</strong>用户密码:</label>
+			<input type="password" id="password1" name="password1" class="onFocus" maxlength="12" />
+		</p>
+		<p>
+			<label for="password2"><strong class="require">*</strong>密码确认:</label>
+			<input type="password" id="password2" name="password2" class="onFocus" maxlength="12" />
+		</p>
+	</fieldset>
+	<fieldset>
+		<legend>个人资料</legend>
+		<p>
+			<label for="name">姓名：</label>
+			<input type="text" id="name" name="name" class="onFocus" min="10" max="100" />
+		</p>
+		<p>
+			<label for="age">年龄：</label>
+			<select name="age" id="age">
+				<option value="15">15</option>
+				<option value="16" selected="selected">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+			</select>
+		</p>
+		<p>
+			<label>性别：</label>
+			<input type="radio" name="sex" id="male" value="male"  checked="checked" class="other" />
+			<label for="male" class="other">男</label>
+			<input type="radio" name="sex" id="female" value="female" class="other" />
+			<label for="female" class="other">女</label>
+		</p>
+        <h3 class="aiHao">爱好：</h3>
+        <div class="aiHao">
+        <p>
+            <input type="checkbox" id="aiHao_wx" name="aiHao_wx" class="other" />
+            <label for="aiHao_wx">文学</label>
+        </p>
+        <p>
+            <input type="checkbox" id="aiHao_tw" name="aiHao_tw" class="other"  />
+            <label for="aiHao_tw">天文</label>
+       	</p>
+        <p>
+            <input type="checkbox" id="aiHao_dl" name="aiHao_dl" class="other"  />
+            <label for="aiHao_dl">地理</label>
+     	</p>
+        <p>
+            <input type="checkbox" id="aiHao_math" name="aiHao_math" class="other"  />
+            <label for="aiHao_math">数学</label>
+      	</p>
+        <p>
+            <input type="checkbox" id="aiHao_English" name="aiHao_English" class="other"  />
+            <label for="aiHao_English">英语</label>
+      	</p>
+        </div>
+        <div class="aiHao">
+        <p>
+            <input type="checkbox" id="aiHao_movie" name="aiHao_movie" class="other"  />
+            <label for="aiHao_movie">影视</label>
+       	</p>
+        <p>
+            <input type="checkbox" id="aiHao_ys" name="aiHao_ys" class="other"  />
+            <label for="aiHao_ys">艺术</label>
+      	</p>
+        <p>
+            <input type="checkbox" id="aiHao_sport" name="aiHao_sport" class="other"  />
+            <label for="aiHao_sport">运动</label>
+      	</p>
+        <p>
+            <input type="checkbox" id="aiHao_computer" name="aiHao_computer" class="other"  />
+            <label for="aiHao_computer">计算机</label>
+        </p>
+        <p>
+            <input type="checkbox" id="aiHao_other" name="aiHao_writing" class="other"  />
+            <label for="aiHao_other">其它</label>
+       	</p>
+        </div>
+		<p class="clear">
+			<label for="introduce">自我介绍：</label>
+			<textarea id="introduce" name="introduce" class="onFocus"></textarea>
+		<p>
+	</fieldset>
+	<p class="button">
+		<input type="submit" value="注册"/>
+		<input type="reset" value="取消" />
+	</p>
+</form>
+</div>
+</body>
+</html>

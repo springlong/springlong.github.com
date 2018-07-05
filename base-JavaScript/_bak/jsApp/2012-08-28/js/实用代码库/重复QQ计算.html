@@ -1,0 +1,67 @@
+
+
+<center style="margin-top:30px;">
+<p> 将要对比的qq号码放到第1,2个输入框,然后点击下面的对比按钮，即可查看统计结果，第3个框中的是重复qq！ <p>
+<textarea id="t1" rows='50'>
+
+</textarea>
+
+<textarea id="t2" rows='50'>
+
+</textarea>
+
+<textarea id="t3" rows='50'>
+
+</textarea>
+
+<p/>
+<input value="对比" type="button"  id="b"/>
+
+<script>
+
+var $=function(id){
+	return document.getElementById(id);
+}
+
+
+function j(qq1){
+	var qqs={};
+	var qs=qq1.split('\n');
+	var nums=0;
+	for(var i in qs){
+		var temp=qs[i].replace('\r','');
+		if(temp){
+			nums++;
+			qqs[temp]=1;
+		}
+	}
+	qqs['length']=nums;
+	return qqs;
+}
+
+$("b").onclick=function(){
+	var qq1=$('t1').value;
+	var qqs1=j(qq1);
+	var qq2=$('t2').value;
+	var qqs2=j(qq2);
+	var rep=0;
+	var qq3=$('t3');
+	qq3.value="";
+	for(var i in qqs1){
+		if(i != 'length' && i in qqs2 ){
+			rep++;
+			qq3.value += i+"\r\n";
+		}
+	}
+	var s="总计:" +(qqs1.length + qqs2.length)  +"个    重复个数:"+rep + "    总计不重复:"+(qqs1.length + qqs2.length-rep);
+	s+="\r\n\左边:"+qqs1.length+"    "+ rep + "/" + qqs1.length + "=" + (rep/qqs1.length).toFixed(2);
+	s+="\r\n右边:"+qqs2.length+"    "+ rep + "/" + qqs2.length + "=" + (rep/qqs2.length).toFixed(2);
+	s+="\r\n\r\n重复/总计:"+ rep +"/" +(qqs1.length + qqs2.length) + "="  + (rep/(qqs1.length + qqs2.length)).toFixed(2);
+	s+="\r\n重复/总计不重复:"+ rep +"/" +(qqs1.length + qqs2.length-rep) + "="  + (rep/(qqs1.length + qqs2.length-rep)).toFixed(2);
+	alert(s);
+}
+
+</script>
+
+<center>
+

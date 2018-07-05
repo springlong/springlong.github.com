@@ -1,0 +1,18 @@
+body{padding-right:300px;}
+code{padding:0 4px;border:1px solid #ddd;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+
+.btnShort{height:2.5em;padding:0 20px;font-size:14px;font-family:"Courier New";word-spacing:2px;text-align:left;}
+.btnError{color:#c00000;}
+.title,.desc,.params{padding:10px;border:1px dashed #ccc;}
+.title{margin-bottom:0;}
+.desc,.params{border-top:0;margin-top:0;margin-bottom:0;}
+.params span{font-size:14px;color:#5F8B64;}
+.content{margin-top:30px;}
+
+#box{position:fixed;right:0;top:0;width:260px;padding:10px;border:10px solid green;margin-left:210px;font-size:12px;line-height:16px;background-color:#fff;_position:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop));}
+#box div{padding:5px;margin:10px 0 0 0;background:gray;}
+#box div p,#box div div{padding:5px;margin:10px 0 0 20px;background:silver;}
+#box div div{border:1px solid #fff;}
+#box fieldset{padding:10px;margin-top:10px;}
+#box fieldset p{height:30px;padding:0;margin:0;line-height:30px;}
+#box fieldset p input{height:30px;line-height:30px;vertical-align:middle;}

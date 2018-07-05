@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>页面文字选中后弹出按钮</title>
+	<base target="_blank" />
+	<meta charset="gb2312" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="robots" content="all" />
+	<meta name="googlebot" content="all" />
+	<meta name="copyright" content="版权所有" />
+	<meta name="generator" content="EditPlus" />
+	<meta name="author"	content="Jerry-小猪" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<style>
+		img{border:none;}
+	    #container,#wrapper{width:800px;padding:20px;border:10px groove green;margin:20px auto 0;}
+		#container p,#wrapper p{font-size:14px;line-height:28px;text-indent:2em;color:#333;}
+	</style>
+</head>
+<body>
+<div id="container">
+	<p><strong>文本选择效果仅针对该容器有效！</strong>随后，高池清主任带领记者参观了诊疗基地的设施设备和治疗过程。首先，通过准确定位，采用世界卫生组织（WHO）规范诊疗标准国际先进的耳内窥镜和丹麦MADSEN听力纯音测听两大设备，精确检测耳部疾病，进行诊断，高分辨率影象，准确、清晰的观察等部位的病变，准确选择可疑部位，对可疑部位进行筛查，检测精确，可对耳聋耳鸣进行诊断，确定病情轻重，然后采用独创的“康乐TTS”技术进行治疗。</p>
+	<p>其次，“康乐TTS”技术是武汉康音耳鸣耳聋研究院与丹麦厄勒耳病研究中心将丹麦听力的百年品质，与博大精深的中华医药相结合共同研发的治疗耳聋耳鸣的独创疗法。该疗法是通过声频共振治疗系统、点穴按摩针灸治疗系统，并辅之外治、导引等方法，采取因病治疗、专病专治的治疗理念整合而成。之后，在大约一个月的时间内，进行中药的调理和巩固效果。经了解，该项技术的临床表现效果显著，使治疗率提高到98.2%。>>>根据自己的病情，在线咨询专家，看自己是否合适采用该技术</p>
+</div>
+<div id="wrapper">
+	<p>您好！感谢您对武汉康音专家的信任。像您治疗没有效果可能是诊断不明确或是治疗不当的原因，具体的要通过耳内窥镜明确的检查下您鼓室和听小骨的情况，如果您的鼓室和听小骨没有受损的话是完全可以治愈的，毕竟每个医院的治疗方案是不一样的，我们采用的康乐TTS系统疗法能有效的治疗耳鸣。具有清耳毒、通耳窍、激活耳神经，使其恢复正常。详细情况可以点击在线咨询或是拨打电话400-027-0021。</p>
+</div>
+<script>
+	//============================================================================================================================//
+	//用于实现页面文字选中后弹出按钮
+	/*=================
+	 *目标：用于实现页面文字选中后弹出一个咨询按钮；
+	 *说明： 1. 提供一个id参数，用于设置文本选择效果所针对的容器范围；
+	 *       2. 当点击鼠标键且松开时，如果在指定的id容器范围内拥有选中文本，则在鼠标位置显示链接按钮；
+	 *       3. 当链接按钮处于显示状态，再次点击鼠标且松开，如果在指定的ID容器范围内没有选中文本，则隐藏链接按钮；
+	 *------------------
+	 *作者：Jerry_小猪
+	 *QQ：569320261
+	 *创作时间：2012-06-26
+	 *修改时间：2012-06-26;2012-07-09;
+	 *---------------------------------
+	 *参数说明：
+	 *1. id: 目标对象的引用或ID属性值（必参);
+	 *2. params: 参数列表，使用JSON格式进行设置：
+			1. url: 需要链接的地址，当地址中包含"zixun("时，则作为咨询按钮来使用;
+			2. img: 需要显示的图片地址;
+			3. title：用于表示图片的提示文本;
+	 *===========================================*/
+	function showNewsBtn(id, params)
+	{
+		var obj = document.getElementById(id);
+		if(obj)
+		{
+			var url = params && params.url ? params.url : "zixun('newsBtn')";
+			var img = params && params.img ? params.img : "/images/public/showszixun.gif";
+			var title = params && params.title ? params.title : "";
+			var addEvent = function(obj, eventName, func)
+			{
+				"addEventListener" in document ? obj.addEventListener(eventName.substring(2, eventName.length), func) : obj.attachEvent(eventName, func);
+			}
+
+			//添加元素
+			var newEle = document.createElement("div");
+			newEle.id = "showNewsBtn";
+			newEle.style.cssText = "position:absolute;left:-9999px;top:0;display:none;";
+			if(url.substring(0, 6) == "zixun(")
+			{
+				newEle.innerHTML = "<a href=\"javascript:void(0);\" target=\"_self\" onclick=\"" + url + "\"><img style=\"display:block;vertical-align:baseline;\" src=\"" + img + "\" title=\"" + title + "\" /></a>";	//咨询链接
+			}
+			else
+			{
+				newEle.innerHTML = "<a href=\"" + url + "\" target=\"_blank\"><img style=\"display:block;vertical-align:baseline;\" src=\"" + img + "\" title=\"" + title + "\" /></a>";
+			}
+			newEle.onmouseup = function(e)
+			{
+				e = (e) ? e : window.event;
+			    "stopPropagation" in e ? e.stopPropagation() : (e.cancelBubble = true);
+			}
+			document.body.appendChild(newEle);
+
+			//事件触发
+			addEvent(document, "onmousedown", function(e)
+			{
+				e = e ? e : window.event;
+				obj.lastY = (e.pageY ? e.pageY : document.documentElement.scrollTop + event.clientY);  //用于记录鼠标按下时的位置
+			});
+			addEvent(document, "onmouseup", function(e)
+			{
+				e = e ? e : window.event;
+				var target = e.target || e.srcElement;
+
+				var str = ((document.selection) ? document.selection.createRange().text : document.getSelection()) + "";		//获取当前浏览器鼠标选中的文本内容
+				if(str != "" && str != obj.selectText && obj.contains(target))
+				{
+					//当选中文本时且和上次所选文本不一致,并在指定ID容器范围内方才执行下续操作
+					obj.selectText = str				//记录本次所选中的文本内容
+					newEle.style.display = "block";
+
+					obj.nowY = (e.pageY ? e.pageY : document.documentElement.scrollTop + event.clientY);  //用于记录鼠标松开时的位置
+					var boolDown = obj.nowY > obj.lastY;	//鼠标是否为向下运动
+
+					newEle.style.left = (e.pageX ? e.pageX : document.documentElement.scrollLeft + event.clientX) + "px";
+					newEle.style.top = (obj.nowY - (boolDown ? -20 : (newEle.offsetHeight + 20))) + "px";
+				}
+				else
+				{
+					newEle.style.display = "none";
+				}
+			});
+		}
+	}
+</script>
+<script>
+	showNewsBtn("container", { url:"http://www.baidu.com", img:"images/showszixun.gif", title:"点击咨询专家"});
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>布局组件：下拉菜单 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>布局组件：下拉菜单</h1>
+    
+    <p>如需使用下列菜单，只需要在 class .dropdown 内加上下拉菜单即可。下面的实例演示了基本的下拉菜单：</p>
+    <div class="dropdown">
+        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            主题
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Java</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">数据挖掘</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">数据通信/网络</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">分离的链接</a></li>
+        </ul>
+    </div>
+
+    <hr>
+    <p>通过向 .dropdown-menu 添加 class .pull-right 来向右对齐下拉菜单。下面的实例演示了这点：</p>
+    <div class="dropdown">
+        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            主题
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Java</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">数据挖掘</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">数据通信/网络</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">分离的链接</a></li>
+        </ul>
+    </div>
+
+
+    <hr>
+    <p>您可以使用 class dropdown-header 向下拉菜单的标签区域添加标题。下面的实例演示了这点：</p>
+    <div class="dropdown">
+        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">
+            主题
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation" class="dropdown-header">下拉菜单标题</li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Java</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">数据挖掘</a></li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">数据通信/网络</a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" class="dropdown-header">下拉菜单标题</li>
+            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">分离的链接</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>表格的常规使用1——对列分组</title>
+	<style type="text/css">
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		body{
+			font-family:"微软雅黑";
+		}
+		
+		#priceContainer{
+			width:794px;
+			margin:0px auto;
+		}
+		#price{
+			width:794px;
+			border-collapse:collapse;
+			border:4px groove #660;
+		}
+		#price caption{
+			line-height:2em;
+		}
+		#price th,#price td{
+			border:1px solid #660;
+		}
+		#price th{
+			line-height:2em;
+			background:silver;
+		}
+		#price td{
+			line-height:1.5em;
+			text-indent:0.5em;			/*事先针对所有td设置缩进,然后再针对不需要设置的单元格重新赋值;由于使用<col>标签进行列分组所设置的样式的优先级要低于直接使用td选择符所设置的样式,因此该目的在IE6中不能实现*/
+		}
+		#price tr:hover{
+			background:#B3B641;			/*不会应用到标题行上*/
+		}
+		
+		/*==============================================================
+		 *针对IE6/7浏览器按列分组设置样式,除此之外其它现代浏览器将继承这里所设置的width和background属性
+		 *===========================					
+		/*第一列*/
+		#price .column1{
+			width:25%;
+			background:#CAD1C2;
+		}
+		/*第二列*/
+		#price .column2{
+			width:35%;
+			background:#B9C596;
+		}
+		/*第三列之后的所有列*/
+		#price .column3{
+			background:#94B669;
+			text-align:center;		/*针对IE6实现第三列之后所有列进行水平居中对齐*/
+		}
+		
+		/*=============================================================
+		 *针对现代浏览器不支持通过<col>和<colgroup>进行列分组来设置相应列的文本控制、字体等属性而采用诸如td+td形式的选择符来实现
+		 *====================*/
+		/*第二列*/
+		#price td+td{			/*如果不设置的话,在Chrome浏览器中从第二行开始的第二列单元格将继承上一行末尾单元格的相关样式*/
+			text-align:left;
+		}
+		/*第三列及以后*/
+		#price td+td+td{
+			text-align:center;
+			text-indent:0px;
+		}
+		/*第一列*/
+		#price td:first-child{	/*如果不设置的话,在Chrome浏览器中从第二行开始的第一列单元格将继承上一行末尾单元格的相关样式*/
+			text-align:left;
+		}		
+	</style>
+</head>
+<body>
+<div id="priceContainer">
+<table id="price">
+	<caption>尼康数码相机最新报价</caption>
+	<col class="column1" />
+	<col class="column2" />
+	<col span="3" class="column3" />
+	<tr>
+		<th scope="col">尼康</th>
+		<th scope="col">像素/光变/液晶屏</th>
+		<th scope="col">现价格</th>
+		<th scope="col">原价格</th>
+		<th scope="col">涨跌</th>		
+	</tr>
+	<tr>
+		<td>尼康 S10</td>
+		<td>600万/10倍/2.5英寸</td>
+		<td>2160</td>
+		<td>2260</td>
+		<td>-100</td>
+	</tr>
+	<tr>
+		<td>尼康 S200</td>
+		<td>700万/3倍/2.5英寸</td>
+		<td>1690</td>
+		<td>1790</td>
+		<td>-100</td>
+	</tr>
+	<tr>
+		<td>尼康 S500</td>
+		<td>700万/3倍/2.5英寸</td>
+		<td>2050</td>
+		<td>2250</td>
+		<td>-200</td>
+	</tr>
+	<tr>
+		<td>尼康 L11</td>
+		<td>600万/3倍/2.4英寸</td>
+		<td>1070</td>
+		<td>1100</td>
+		<td>-30</td>
+	</tr>
+	<tr>
+		<td>尼康 D40</td>
+		<td>600万/单反/2.5英寸</td>
+		<td>3950</td>
+		<td>4200</td>
+		<td>-250</td>
+	</tr>
+	<tr>
+		<td>尼康 D40X</td>
+		<td>1000万/单反/2.5英寸</td>
+		<td>5560</td>
+		<td>5670</td>
+		<td>-110</td>
+	</tr>
+	<tr>
+		<td>尼康 D80</td>
+		<td>1000万/单反/2.5英寸</td>
+		<td>8500</td>
+		<td>8580</td>
+		<td>-80</td>
+	</tr>
+	<tr>
+		<td>尼康 D200</td>
+		<td>1000万/单反/2.5英寸</td>
+		<td>9800</td>
+		<td>9900</td>
+		<td>-100</td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>属性操作：ms-att</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>属性操作：ms-att</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>avalon2 与 avalon1 的属性操作虽然都是使用<code>ms-attr</code>，但用法完全不一样。</p>
+    <p>avalon1是这样操作属性的:</p>
+<pre>
+&lt;div ms-attr-aaa='a' ms-attr-bbb='b' ms-attr-ccc='b'>&lt;/div>
+</pre>
+    <p>其语法为：</p>
+<pre>
+ms-attr-valueName="vmProp"
+</pre>
+    <p>有多少个属性就写多个<code>ms-attr-</code>。其中不能省略。此外，还存在ms-title, ms-alt，ms-src, ms-href, ms-selected, ms-checked等等缩略写法。但估计很少人知道，到底哪些属性可以缩写，哪些不能。</p>
+    <p><strong>avalon2从减轻用户的记忆出发，将你要操作的属性全部打包成一个对象，并规定，只能属性值才能使用@开头的vm属性。此外，avalon不存在ms-title这样的缩略写法。</strong></p>    
+<pre>
+&lt;div ms-attr="{aaa:@a, bbb:@b+11, ccc: @fn(@d,@e)}">&lt;/div>
+</pre>
+    <p>或者</p>
+<pre>
+&lt;div ms-attr="@attrObj">&lt;/div>
+</pre>
+    <p>attrObj为vm的一个对象属性，但这个不太常用。</p>
+    <p>或者</p>
+<pre>
+&lt;div ms-attr="[{aaa:@a}, {bbb: @b}, @toggle ? {add:"111"}: {}]">&lt;/div>
+</pre>
+    <p>ms-attr直接对应一个数组。这个灵感是来自ReactNative的style指令，它们可以通过数组，传入多个样式对象…………</p>
+    <p>不过无论你怎么搞，最后你传的东西能保持avalon内部能将它变回一个对象就行了。</p>
+
+
+	<hr>
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: 'test',
+        title: 111,
+        src: '222',
+        lang: 333
+    });
+&lt;/script>
+&lt;div ms-controller="test">
+    &lt;div aaa="ddd" bbb="333" ms-attr="{title: @title, ddd: @src, lang: @lang}" ms-text="@src ? 333 : 'empty'">&lt;/div>
+    &lt;input type="text" ms-duplex="@src">
+&lt;/div>
+</pre>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            title: 111,
+            src: '222',
+            lang: 333
+        });
+    </script>
+    <div ms-controller="test">
+        <div aaa="aaa" bbb="bbb" ms-attr="{title: @title, ddd: @src, lang: @lang}" ms-text="@src ? 333 : 'empty'"></div>
+        <input type="text" ms-duplex="@src">
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+//调用执行
+$(el).rotate({ 　
+	angle:0,  	//起始角度
+	animateTo:180,  //结束的角度
+	duration:500， 	//转动时间
+	callback:function(){}, 		//回调函数
+	easing: $.easing.easeInOutExpo 	//定义运动的效果，需要引用jquery.easing.min.js的文件
+})
+
+//直接这样子调用的话就是变换角度
+$(el).rotate(45);
+
+//返回对象当前的角度
+$(el).getRotateAngle();
+
+//停止旋转动画
+$(el).stopRotare();

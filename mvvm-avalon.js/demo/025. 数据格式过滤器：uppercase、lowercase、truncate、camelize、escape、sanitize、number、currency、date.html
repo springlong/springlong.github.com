@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>数据格式过滤器：uppercase、lowercase、truncate、camelize、escape、sanitize、number、currency、date</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>数据格式过滤器：uppercase、lowercase、truncate、camelize、escape、sanitize、number、currency、date</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: 'format',
+        word: 'aaBBccDd',
+        longWord: '0123456890123456789',
+        className: 'hd-logo',
+        strHtml: '&lt;a href="#">&lt;/a>',
+        strJs: '\x3cscript>alert(1);\x3c/script>\x3cdiv onclick="fn();">\x3c/div>\x3cp>word&lt;/p>',
+        price: 1234.56789
+    });
+&lt;/script>
+</pre>
+	<hr>
+    <script>
+        var vm = avalon.define({
+            $id: 'format',
+            word: 'aaBBccDd',
+            longWord: '0123456890123456789',
+            className: 'hd-logo',
+            strHtml: '<a href="#"></a>',
+            strJs: '\x3cscript>alert(1);\x3c/script>\x3cdiv onclick="fn();">\x3c/div>\x3cp>word</p>',
+            price: 1234.56789
+        });
+    </script>
+    <div ms-controller="format">
+
+        <h2><code>uppercase</code>：</h2>
+        <p>将字符串全部大写</p>
+        <p>原数据：<b>vm.word = 'aaBBccDd';</b></p>
+        <p>输出：<code>&lt;code ms-text="@word | uppercase">&lt;/code></code></p>
+        <p>结果：<code ms-text="@word | uppercase"></code></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <hr>
+
+
+
+        <h2><code>lowercase</code>：</h2>
+        <p>将字符串全部小写</p>
+        <p>原数据：<b>vm.word = 'aaBBccDd';</b></p>
+        <p>输出：<code>&lt;code ms-text="@word | lowercase">&lt;/code></code></p>
+        <p>结果：<code ms-text="@word | lowercase"></code></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <hr>
+
+
+
+        <h2><code>truncate</code>：</h2>
+        <p>对长字符串进行截短，有两个可选参数</p>
+        <ul>
+            <li>number，最后返回的字符串的长度，已经将truncation的长度包含在内，默认为30。</li>
+            <li>truncation，告知用户它已经被截短的一个结尾标识，默认为"..."</li>
+        </ul>
+        <p>原数据：<b>vm.longWord = '0123456890123456789';</b></p>
+        <p>输出：<code>&lt;code ms-text="@longWord | truncate(10, '...')">&lt;/code></code></p>
+        <p>结果：<code ms-text="@longWord | truncate(10, '...')"></code></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <hr>
+
+
+
+        <h2><code>camelize</code>：</h2>
+        <p>驼峰化处理， 如"aaa-bbb"变成"aaaBbb"</p>
+        <p>原数据：<b>vm.className = 'hd-logo';</b></p>
+        <p>输出：<code>&lt;code ms-text="@className | camelize">&lt;/code></code></p>
+        <p>结果：<code ms-text="@className | camelize"></code></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <hr>
+
+
+
+        <h2><code>escape</code>：</h2>
+        <p>对类似于HTML格式的字符串进行转义，如将&lt;、 &gt;转换为<code>&amp;lt;</code>、 <code>&amp;gt;</code></p>
+        <p>原数据：<b>vm.strHtml = '&lt;a href="#">&lt;/a>';</b></p>
+        <p>输出：<code>&lt;code ms-text="@strHtml | escape">&lt;/code></code></p>
+        <p>结果：<code ms-text="@strHtml | escape"></code></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <hr>
+
+
+
+        <h2><code>sanitize</code>：</h2>
+        <p>对用户输入的字符串进行反XSS处理，去掉onclick, javascript:alert，&lt;script>等危险属性与标签。</p>
+        <p>原数据：<b>vm.strJs = '&lt;script>alert(1);&lt;/script>&lt;div onclick="fn();">&lt;/div>&lt;p>word&lt;/p>';</b></p>
+        <p>输出：<code>&lt;code ms-text="@strJs | sanitize">&lt;/code></code></p>
+        <p>结果：<code ms-text="@strJs | sanitize"></code></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <hr>
+
+
+        <h2><code>number</code>：</h2>
+        <p>对需要处理的数字的整数部分插入千分号（每三个数字插入一个逗号），有一个参数fractionSize，用于保留小数点的后几位。</p>
+        <ul>
+            <li>fractionSize:小数部分的精度，默认为3。</li>
+        </ul>
+        <p>原数据：<b>vm.price = 1234.56789;</b></p>
+        <p>输出：<code>&lt;code ms-text="@price">&lt;/code></code></p>
+        <p>结果：<code ms-text="@price"></code></p>
+        <p>&nbsp;</p>
+        <p>输出：<code>&lt;code ms-text="@price | number">&lt;/code></code></p>
+        <p>结果：<code ms-text="@price | number"></code></p>
+        <p>&nbsp;</p>
+        <p>输出：<code>&lt;code ms-text="@price | number(0)">&lt;/code></code></p>
+        <p>结果：<code ms-text="@price | number(0)"></code></p>
+        <p>&nbsp;</p>
+        <p>输出：<code>&lt;code ms-text="@price | number(4)">&lt;/code></code></p>
+        <p>结果：<code ms-text="@price | number(4)"></code></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <hr>
+
+
+
+        <h2><code>currency</code>：</h2>
+        <p>用于格式化货币，类似于number过滤器（即插入千分号），但前面加了一个货币符号，默认使用人民币符号\uFFE5。</p>
+        <ul>
+            <li>symbol, 货币符号，默认是\uFFE5</li>
+            <li>fractionSize，小数点后保留多少数，默认是2</li>
+        </ul>
+        <p>原数据：<b>vm.price = 1234.56789;</b></p>
+        <p>输出：<code>&lt;code ms-text="@price | currency">&lt;/code></code></p>
+        <p>结果：<code ms-text="@price | currency"></code></p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <hr>
+    </div>
+
+
+
+    <h2><code>date</code>：</h2>
+    <p>对日期进行格式化，date(formats), 目标可能是符合一定格式的字符串，数值，或Date对象。</p>
+<pre>
+&lt;script>
+    avalon.define({
+        $id: 'testDate',
+        name: "gogogogo",
+        d1: new Date(),
+        d2: "2011/07/08",
+        d3: "2011-07-08",
+        d4: "01-01-2000",
+        d5: "03 04,2000",
+        d6: "3 4,2000",
+        d7: 1373021259229,
+        d8: "1373021259229",
+        d9: "2014-12-07T22:50:58+08:00",
+        d10: "\/Date(1373021259229)\/"
+    });
+&lt;/script>
+&lt;div ms-controller="testDate">
+    &lt;p>生成于{{ @d1 | date("yyyy MM dd:HH:mm:ss")}}&lt;/p>
+    &lt;p>生成于{{ @d2 | date("yyyy MM dd:HH:mm:ss")}}&lt;/p>
+    &lt;p>生成于{{ @d3 | date("yyyy MM dd:HH:mm:ss")}}&lt;/p>
+    &lt;p>生成于{{ @d4 | date("yyyy MM dd:HH:mm:ss")}}&lt;/p>
+    &lt;p>生成于{{ @d5 | date("yyyy MM dd:HH:mm:ss")}}&lt;/p>
+    &lt;p>生成于{{ @d6 | date("yyyy MM dd")}}&lt;/p>
+    &lt;p>生成于{{ @d7 | date("yyyy MM dd:HH:mm:ss")}}&lt;/p>
+    &lt;p>生成于{{ @d8 | date("yyyy MM dd:HH:mm:ss")}}&lt;/p>
+    &lt;p>生成于{{ @d9 | date("yyyy MM dd:HH:mm:ss")}} //这是ISO8601的日期格式&lt;/p>
+    &lt;p>生成于{{ @d10| date("yyyy MM dd:HH:mm:ss")}} //这是ASP.NET输出的JSON数据的日期格式&lt;/p>
+&lt;/div>
+</pre>
+        
+    <script>
+        avalon.define({
+            $id: 'testDate',
+            name: "gogogogo",
+            d1: new Date(),
+            d2: "2011/07/08",
+            d3: "2011-07-08",
+            d4: "01-01-2000",
+            d5: "03 04,2000",
+            d6: "3 4,2000",
+            d7: 1373021259229,
+            d8: "1373021259229",
+            d9: "2014-12-07T22:50:58+08:00",
+            d10: "\/Date(1373021259229)\/"
+        });
+    </script>
+    <div ms-controller="testDate">
+        <p>生成于1: {{ @d1 | date("yyyy MM dd:HH:mm:ss")}}</p>
+        <p>生成于2: {{ @d2 | date("yyyy MM dd:HH:mm:ss")}}</p>
+        <p>生成于3: {{ @d3 | date("yyyy MM dd:HH:mm:ss")}}</p>
+        <p>生成于4: {{ @d4 | date("yyyy MM dd:HH:mm:ss")}}</p>
+        <p>生成于5: {{ @d5 | date("yyyy MM dd:HH:mm:ss")}}</p>
+        <p>生成于6: {{ @d6 | date("yyyy MM dd")}}</p>
+        <p>生成于7: {{ @d7 | date("yyyy MM dd:HH:mm:ss")}}</p>
+        <p>生成于8: {{ @d8 | date("yyyy MM dd:HH:mm:ss")}}</p>
+        <p>生成于9: {{ @d9 | date("yyyy MM dd:HH:mm:ss")}} //这是ISO8601的日期格式</p>
+        <p>生成于10: {{ @d10| date("yyyy MM dd:HH:mm:ss")}} //这是ASP.NET输出的JSON数据的日期格式</p>
+    </div>
+    <p>&nbsp;</p>
+    <p>上面的yyyy, MM, dd其实是一种关键字，用来帮我们格式化日期，详看下表：</p>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <td>yyyy</td><td>将当前的年份以4位数输出，如果那一年为300，则补足为0300</td>
+        </tr>
+        <tr>
+            <td>yy</td><td>将当前的年份截取最后两位数输出，如2014变成14， 1999变成99， 2001变成01</td>
+        </tr>
+        <tr>
+            <td>y</td><td>将当前的年份原样输出，如2014变成2014， 399变成399， 1变成1</td>
+        </tr>
+        <tr>
+            <td>MMMM</td><td>在中文中，MMMM与MMM是没有区别，都是"1月"，"2月"……英语则为该月份的单词全拼</td>
+        </tr>
+        <tr>
+            <td>MMM</td><td>在中文中，MMMM与MMM是没有区别，都是"1月"，"2月"……英语则为该月份的单词缩写(前三个字母)</td>
+        </tr>
+        <tr>
+            <td>MM</td><td>将月份以01-12的形式输出(即不到两位数，前面补0)</td>
+        </tr>
+        <tr>
+            <td>M</td><td>将月份以1-12的形式输出</td>
+        </tr>
+        <tr>
+            <td>dd</td><td>以日期以01-31的形式输出(即不到两位数，前面补0)</td>
+        </tr>
+        <tr>
+            <td>d</td><td>以日期以1-31的形式输出</td>
+        </tr>
+        <tr>
+            <td>EEEE</td><td>将当前天的星期几以“星期一”，“星期二”，“星期日”的形式输出，英语则Sunday-Saturday</td>
+        </tr>
+        <tr>
+            <td>EEE</td><td>将当前天的星期几以“周一”，“周二”，“周日”的形式输出，英语则Sun-Sat</td>
+        </tr>
+        <tr>
+            <td>HH</td><td>将当前小时数以00-23的形式输出</td>
+        </tr>
+        <tr>
+            <td>H</td><td>将当前小时数以0-23的形式输出</td>
+        </tr>
+        <tr>
+            <td>hh</td><td>将当前小时数以01-12的形式输出</td>
+        </tr>
+        <tr>
+            <td>h</td><td>将当前小时数以0-12的形式输出</td>
+        </tr>
+        <tr>
+            <td>mm</td><td>将当前分钟数以00-59的形式输出</td>
+        </tr>
+        <tr>
+            <td>m</td><td>将当前分钟数以0-59的形式输出</td>
+        </tr>
+        <tr>
+            <td>ss</td><td>将当前秒数以00-59的形式输出</td>
+        </tr>
+        <tr>
+            <td>s</td><td>将当前秒数以0-59的形式输出</td>
+        </tr>
+        <tr>
+            <td>a</td><td>将当前时间是以“上午”，“下午”的形式输出</td>
+        </tr>
+        <tr>
+            <td>Z</td><td>将当前时间的时区以-1200-+1200的形式输出</td>
+        </tr>
+        <tr>
+            <td>fullDate</td><td>相当于y年M月d日EEEE  2014年12月31日星期三</td>
+        </tr>
+        <tr>
+            <td>longDate</td><td>相当于y年M月d日EEEE  2014年12月31日</td>
+        </tr>
+        <tr>
+            <td>medium</td><td>相当于yyyy-M-d H:mm:ss   2014-12-31 19:02:44</td>
+        </tr>
+        <tr>
+            <td>mediumDate</td><td>相当于yyyy-M-d   2014-12-31</td>
+        </tr>
+        <tr>
+            <td>mediumTime</td><td>相当于H:mm:ss   19:02:44</td>
+        </tr>
+        <tr>
+            <td>short</td><td>相当于yy-M-d ah:mm   14-12-31 下午7:02</td>
+        </tr>
+        <tr>
+            <td>shortDate</td><td>相当于yy-M-d   14-12-31</td>
+        </tr>
+        <tr>
+            <td>shortTime</td><td>相当于ah:mm   下午7:02</td>
+        </tr>
+
+    </table>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

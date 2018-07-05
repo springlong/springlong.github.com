@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5：Web 存储-localStorage</title>
+    <link rel="stylesheet" href="static/css/main.css">
+</head>
+<body>
+<div class="container">
+	<div class="text-item">
+		<p>sessionStorage: 为每一个给定的源（given origin）维持一个独立的存储区域，该存储区域在页面会话期间可用（即只要浏览器处于打开状态，包括页面重新加载和恢复）。实际测试发现，当浏览器关闭所有同源的页面后，视为会话结束，sessionStorage存储将自动清除。</p>
+		<p>localStorage: 同样的功能，但是在浏览器关闭，然后重新打开后数据仍然存在。</p>
+		<p>无论数据存储在 localStorage 还是 sessionStorage ，它们都特定于页面的协议，遵守同源策略。</p>
+		<p>对于HTML5的localStorage而言，其大小支持为5M（当然，各浏览器的大小差异还是有的）。</p>
+	</div>
+	<p class="text-item">浏览器支持情况：IE 8+、Firefox 3.5+、Chrome 4+、Safari 4+、Opera 15+、IOS Safari 3.2+、Android 2.1+。</p>
+	<p class="text-item">其中IE8~10仅支持HTTP协议访问，不支持本地file协议，直到IE11才支持file协议。同时在IE8~9中不区分http和https以及域名端口的区别。</p>
+	<div class="pic-box"><a href="https://caniuse.com/#search=localStorage" target="_blank"><img src="static/images/webstrore.png" alt=""></a></div>
+	<div class="pic-box"><a href="https://caniuse.com/#search=localStorage" target="_blank"><img src="static/images/webstrore-2.png" alt=""></a></div>
+	<div class="text-item">
+		<p>参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank">使用 Web Storage API</a></p>
+		<p>参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Storage" target="_blank">Storage</a></p>
+		<p>参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/localStorage" target="_blank">Window.localStorage</a></p>
+		<p>参考链接：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/sessionStorage" target="_blank">Window.sessionStorage</a></p>
+	</div>
+</div>
+<script>
+	// 通过 StorageEvent 响应存储的变化
+	// 在Chrome和firefox浏览器中，需要在http协议上工作的页面，且在同域下的其他页面修改存储，才会在本页面触发storage事件
+	// 而在IE中，当前页面修改存储就会触发storage事件
+	window.addEventListener('storage', function(ev) {
+		console.log('stroage edit....');
+		console.log('ev.key', ev.key);
+		console.log('ev.oldValue', ev.oldValue);
+		console.log('ev.newValue', ev.newValue);
+		console.log('ev.url', ev.url);
+		console.log('ev.storageArea', ev.storageArea);
+	});
+
+
+	// localStorage的使用
+
+	// 从存储中获取值
+	console.log('localStorage.getItem(\'prop\')', localStorage.getItem('prop'));  // 如果没有值，返回null
+	console.log('localStorage.arr', localStorage.arr);  // 如果没有值，返回undefined
+	console.log('localStorage["arr"]', localStorage['arr']);  // 如果没有值，返回undefined
+
+	// 在存储中设置值
+	localStorage.setItem('a', 1);
+	localStorage.b = 2;
+	localStorage['c'] = 3;
+
+	// 从存储中获取值
+	console.log('localStorage.getItem(\'a\')', localStorage.getItem('a'));
+	console.log('localStorage.getItem(\'b\')', localStorage.getItem('b'));
+	console.log('localStorage.getItem(\'c\')', localStorage.getItem('c'));
+
+	// 获取存储对象的数据数量
+	console.log('localStorage.length', localStorage.length);
+
+	// 返回存储对象 n个数据项的键名
+	console.log('localStorage.key(0)', localStorage.key(0));
+	console.log('localStorage.key(1)', localStorage.key(1));
+
+	// 删除数据记录
+	localStorage.removeItem('b');
+	console.log('localStorage.length after removeItem', localStorage.length);
+
+	// 删除所有数据记录
+	// localStorage.clear();
+	// console.log('localStorage.length after clear', localStorage.length);
+
+	// 在存储中设置值
+	// Web存储只能存储字符串数据，存储Object或者Array时，将自动使用.toString()的值进行储存
+	localStorage.setItem('prop', {a:1, b:2});
+	localStorage.setItem('arr', [1,2,3,4,5]);
+
+</script>
+</body>
+</html>

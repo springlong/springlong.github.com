@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html lang="en-zh">
+<head>
+    <meta charset="UTF-8">
+    <title>利用 clipboardData 在网页中实现截屏粘贴的功能</title>
+    <script type="text/javascript" src="https://static.xidibuy.com/??static/sea-modules/jquery/jquery.js,static/sea-modules/seajs/seajs/2.2.0/sea.js,static/sea-modules/seajs/seajs-flush.js"></script>
+    <style type="text/css">
+        #testInput {
+            width: 200px;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        #box{ width:200px; height:200px; border:1px solid #ddd; }
+    </style>
+</head>
+<body>
+<h1>利用 clipboardData 在网页中实现截屏粘贴的功能</h1>   
+<hr>
+<div><div id="testInput" contenteditable="true">截屏后粘贴到输入框中</div></div>
+<p></p>
+<script type="text/javascript">
+
+    bindClipboardPasteImage('#testInput', function(data) {
+        
+        var img = new Image();
+        img.src = data;
+        document.body.appendChild(img);
+    });
+
+
+    /**
+     * 绑定剪切板图片数据的粘贴处理
+     * @param  {string}   selector 目标元素选择器
+     * @param  {Function} callback 回调函数，参数-data : 图片的base64编码数据 
+     * @return {undefined}
+     */
+    function bindClipboardPasteImage(selector, callback)
+    {
+        // 通过 paste 事件获取剪切板中的图片数据
+        $(selector).each(function(){
+
+            this.addEventListener('paste', function(ev){
+
+                var clipboardData = ev.clipboardData,
+                    i = 0,
+                    items, imgData, types;
+
+                if( clipboardData ){
+
+                    items = clipboardData.items;
+
+                    if( !items ){
+                        return;
+                    }
+
+                    imgData = items[0];
+                    types = clipboardData.types || [];
+
+                    for( ; i < types.length; i++ ){
+                        if( types[i] === 'Files' ){
+                            imgData = items[i];
+                            break;
+                        }
+                    }
+
+                    if( imgData && imgData.kind === 'file' && imgData.type.match(/^image\//i) ){
+                        imgReader( imgData );
+                    }
+                }
+            });
+        });
+
+        // 使用 FileReader 对图片数据进行读取
+        function imgReader( imgData )
+        {
+            var blob = imgData.getAsFile(),
+                reader = new FileReader();
+
+            reader.onload = function( ev ){
+                typeof callback === 'function' && callback(ev.target.result);
+            };
+
+            reader.readAsDataURL( blob );
+        }
+    }
+</script>
+
+</body>
+</html>

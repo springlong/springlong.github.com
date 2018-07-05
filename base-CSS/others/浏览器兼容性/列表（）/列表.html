@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<base target="_blank" />
+	<title>浏览器兼容——列表</title>
+	<style>
+		/*公共样式*/
+		*{margin:0;padding:0;}
+		h1{margin-bottom:20px;text-align:center;}
+		p{line-height:24px;margin:10px 0;}
+		p span{display:inline-block;width:10px;height:16px;background:gray;}
+		li{list-style:none;overflow:hidden;line-height:24px;margin:5px 0;}
+
+		.red{font-weight:normal;color:#c00000;}
+		.browser{color:#0DD327;}
+		strong.solve{font-size:18px;color:#004BFF;}
+		.question{font-size:18px;color:#F54803;}
+		.f{float:left;_display:inline;margin:0 5px;}
+		.clear{clear:both;}
+
+		/*本页面私有样式*/
+		.wrapper{position:relative;width:80%;padding:10px;border:2px groove #27760A;margin:0 auto 20px;}
+		div.solve{height:300px;border-color:#EA6A08;}
+        .result{width:80%;padding:10px;background:#222;color:#FA5505;line-height:24px;border:5px groove #405812;margin:20px auto 0;text-indent:2em;}
+
+		.w1 .no1{padding-left:26px;}
+		.w1 .no1 li{overflow:visible;list-style-type:decimal;}
+		.w1 .no2{width:50%;padding-left:24px;}
+		.w1 .no2 li{list-style-type:lower-roman;overflow:visible;}
+
+	</style>
+</head>
+<body>
+<h1>浏览器兼容——列表</h1>
+
+<div class="wrapper w1">
+	<p>
+		<strong class="question">问题一：</strong>
+		在<b class="browser">所有浏览器</b>中，无论是有序列表还是无序列表，它们的ol或ul都被浏览器默认设置了26px左右的左填充（即：<code>padding-left:26px;</code>），从而达到显示列表符号的目的。要想让列表正常显示出列表符号，还必须满足以下几个条件：</p>
+	<ol class="no1">
+		<li>必须确保li元素的overflow属性值为visible，如果设置其为hidden，那么列表符号将被作为多余文本而被隐藏掉；</li>
+		<li>必须确保li元素的list-style-type属性不为none，这是显示列表符号的必要条件；</li>
+		<li>在<b class="browser">IE6/7</b>浏览器下，必须保证li元素的float属性为none，否则列表符号将无法显示；</li>
+		<li>在<b class="browser">IE6/7</b>浏览器下，必须保证li元素的height属性值为auto，否则对于有序列表符号而言，将始终仅显示序号值1或i，具体所显示的序号值视li元素的list-style-type属性值而定！</li>
+	</ol>
+	<p><strong>下面的灰色“分割线”是一个空DIV，其高度被设置为5px，请在不同浏览器下测试结果：</strong></p>
+	<ol class="no2">
+		<li>割线”是一个空DIV，其高度被设置为5px，割线”是一个空DIV，其高度被设置为5px，割线”是一个空DIV，其高度被设置为5px，</li>
+		<li>割线”是一个空DIV，其高度被设置为5px，</li>
+		<li>割线”是一个空DIV，其高度被设置为5px，</li>
+	</ol>
+	<p><strong class="solve">解决方法：</strong>由于上面的IE6 Bug是取决于字体的大小，所以要想在IE6中实现高度为5px的容器，则可以通过将目标容器的font-size设置为0或容器所需高度的值来解决，解决方案实现如下：</p>
+	<div class="result">
+		<p><strong>说明：</strong>使用空白DIV来实现页面中的分割线是一种方法，但其并不具备语义性，更何况在没有CSS的情况下，用户将看不到“分割线”的任何效果，所以在实现分割线时，还是使用特定的&lt;hr /&gt;标签为好！</p>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>企业QQ咨询的自动接入</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+</head>
+<body style="padding:20px 10px;">
+    <h1>企业QQ咨询的自动接入</h1>
+    <p>默认设置下，当我们打开企业QQ咨询的对话窗口后，并不会将我们自动分配给客服人员，除非我们自己在对话窗口中输入内容，或者点击指定客服，才会触发企业QQ的分配机制，进而产生对话。</p>
+    <p>而通过企业QQ咨询的自动接入设置，即使用户在打开的企业QQ咨询窗口中没有说话，企业QQ也能在软件中查看到该访客的“来访记录”，从而为营销的后续工作提供便利。</p>
+    <p>利用这一点，我们可以在用户进入网页后立即通过iframe加载可以自动接入企业QQ的对话链接（该链接的获取在后续部分有步骤分解），从而自动触发我们企业QQ的对话窗口。如果访客使用企业QQ进行对话，那么本次弹出就是有效的；如果访客立马关闭了企业QQ的对话窗口，不用担心，因为他的QQ访问记录已经被记入企业QQ的后台了，咨询人员可以在企业QQ的软件中随时可以向该访客发起会话。</p>
+    <p>大家可以点击查看现有的<a href="http://www.ent029.net/" target="_blank">网站案例</a>。</p>
+    <p>同时大家也可以点击下面的相关链接与西安、沪申的指定客服进行沟通。</p>
+    <hr/>
+    <h2>西安800010082</h2>
+    <p><a href="javascript:void(0);" target="_self" onclick="openInIframe('loadQQ', 'tencent://message/?Menu=yes&amp;uin=800010082&amp;Service=58&amp;SigT=A7F6FEA02730C9889BF98F2F696DA7CA47029F6791497A246CE57BF47693F7CADE8DB76C14576D7E7C305016E9A7C780793F504646D224A1E56EE482128F51F95AE69D05526ECCCDF60827D956CB22A422CA976DB259038B29EE0FF46CB558E4FB0D680E97973442411D3DF380B802AAE53E8762488ADB7C&amp;SigU=30E5D5233A443AB280F0253101898DDEB0D928380F960B23B93F8F8B13D1A2FE537B95816D629BD26E591101BC263A29C722921899875B93E3AC66BF9E52C14E9CF1183C6B2E41E1')">客服1001</a> </p>
+    <p><strong>在线代码：</strong><code>&lt;script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDAxMDA4Ml8xOTAzNDdfODAwMDEwMDgyXw">&lt;/script></code></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="openInIframe('loadQQ', 'tencent://message/?Menu=yes&amp;uin=800010082&amp;Service=58&amp;SigT=A7F6FEA02730C98844A35FFECB4D8D9CE4DD412E55C81102C010D50BC535E8E66C2838658AB40B109543287334901B53BD0FA9D4376C3EFA1F29BA6BF77A7E67497CD7B207C7D7A6D629ACC90A168CA9E00FE1DB0AD911212ADA5C65A96976B826FB0CFFAF8C5EED8D1DBA3F1B97EC5CBD82293552B6CDA8&amp;SigU=30E5D5233A443AB2412409B67597311B3B21B1015F1FC710462FB158304B2134165363FD00108384DABAF5E5C7A0F3A757EA52DEB4C034B67E3159ADB9AB7197C6E8306BD59E7F94')">客服1002</a> </p>
+    <p><strong>在线代码：</strong><code>&lt;script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDAxMDA4Ml8xOTAzNzJfODAwMDEwMDgyXw">&lt;/script></code></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="openInIframe('loadQQ', 'tencent://message/?Menu=yes&amp;uin=800010082&amp;Service=58&amp;SigT=A7F6FEA02730C9883F02EE828CCBAD1C3EDB43D12E4A6859BE46B3A2EE5148CA000B3F16D1D36D1B8CAA26F7B7A89F02249C8D338BC4C210D91C3A194E9066D03BF503D3D20031CF4DAEA28A2A79CEC78E901EF208025F1D1FEBFAB9DBE6FCC9201633421502134ACDE4C8600B0494187E4F97073D881637&amp;SigU=30E5D5233A443AB2D3A976B1A6BBFD7595DAC555542105A06F6A973635E29390CBE6E9C4D89163E9511F9D92A59C50977C4D12B27066F5799C921A16ABE6B8266E5600ED519447CB')">客服1003</a> </p>
+    <p><strong>在线代码：</strong><code>&lt;script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDAxMDA4Ml8xOTAzNzdfODAwMDEwMDgyXw">&lt;/script></code></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="openInIframe('loadQQ', 'tencent://message/?Menu=yes&amp;uin=800010082&amp;Service=58&amp;SigT=A7F6FEA02730C988EBCF4100C5D4F4457081CAB87A2E0E9D89E8DF1AB092BA1B07F0812B024326AE1944A566B0E1CBE9B4CD40A7279D853361FB97325A072460177EDC53CBD683B781C0CF0D0B6909A3B51626A171BA6BD75FFD4EF6667819D4425D3D7B57F85C31A723FD9E9861698C3A382B169D1B64BA&amp;SigU=30E5D5233A443AB29493841D93E0538B5C02EB79A3C37CC42ABAA8E6D39E0EBDCB2DA239FE718515FDF82083157D880C4EC44F336A727C91546B4D7D1D5276034A4D0DCAB8C2A771')">客服1004</a> </p>
+    <p><strong>在线代码：</strong><code>&lt;script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDAxMDA4Ml8xOTAzODFfODAwMDEwMDgyXw">&lt;/script></code></p>
+    <hr/>
+    <h2>沪申800077475</h2>
+    <p><a href="javascript:void(0);" target="_self" onclick="openInIframe('loadQQ', 'tencent://message/?Menu=yes&amp;uin=800077475&amp;Service=58&amp;SigT=A7F6FEA02730C9881BE0834B8B617B1DC486EBB76C9D36287F6867FDA4D1FACFF4A01454083DC38F631E09394F4C0CD3E224292B80E16A69B11A11B6E116291F891FCACCE5444231C478A3D3BFD9D9F719EE2251DE1BAFE60B195340327DA3574105F0B6462D8FFB17D958F095ADC25B929EBA7F7F0F5594&amp;SigU=30E5D5233A443AB2AEECC68D3CBBA70B587E202FA4255CA0B37513FA9DD1C16515A9FB21581CD96BBC7B2F43E3C35202439E1944F8E1C9FC4DD96F9FA9F9653AA745EDF2B61BE256')">客服1001</a> </p>
+    <p><strong>在线代码：</strong><code>&lt;script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDA3NzQ3NV8xOTAzODZfODAwMDc3NDc1Xw">&lt;/script></code></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="openInIframe('loadQQ', 'tencent://message/?Menu=yes&amp;uin=800077475&amp;Service=58&amp;SigT=A7F6FEA02730C9883E4C700644F096B1DE4AAA6788AE1528A92E1A0874FC99453A85CBA5B3DA702B523F1458E0FBB944B4F6844284B30FD06FAAED24B13A2DF1857972DE7F4FE3143A12A287659CB880677BA80DEFB8822AAFCB19FCD9456DED116E2610515A2B2CCD4321904762501683814A81324005C4&amp;SigU=30E5D5233A443AB2FEB9AFB23300ACA5EA4A5F3B5900E24DD0C725B53C77167DA07142C76B2CFB48A2B24D4AE0E597D5EE37D6DDFD64D9FBB81B72CA6C90CDEF3404D82A4EA66BB4')">客服1002</a> </p>
+    <p><strong>在线代码：</strong><code>&lt;script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDA3NzQ3NV8xOTAzODlfODAwMDc3NDc1Xw">&lt;/script></code></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="openInIframe('loadQQ', 'tencent://message/?Menu=yes&amp;uin=800077475&amp;Service=58&amp;SigT=A7F6FEA02730C988F31D5C451F3657C9531FDD4CC0FD9F9930BF105F16CD31D92D9A8B572DD9C6A13438A28533E4DA83EF4510C98906ED7A839A246E3C652C5F24360BE57131E66E4DA710F3B983AE8769F70F54179891EF818F33CAAE66DC1E590C0CE0EC5BE672CB9C23BC85DC9FEA4E6451E3BA979DC2&amp;SigU=30E5D5233A443AB2CF92AC03E238E8D60C62EBB963AB7DBDFB371B179C3275403CBBD93317287742F3B9930B6DE179BA75A83655AA20EF75242E489642BF64890CD1FCA28D7107F0')">客服1003</a> </p>
+    <p><strong>在线代码：</strong><code>&lt;script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDA3NzQ3NV8xOTAzOTFfODAwMDc3NDc1Xw">&lt;/script></code></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="openInIframe('loadQQ', 'tencent://message/?Menu=yes&amp;uin=800077475&amp;Service=58&amp;SigT=A7F6FEA02730C988E17EECB61D3DF8F354F89DF0FF888ACF3B09F29299833FFD7CAA80DA026F04355FC335F2026068CD4B610CFB8150A184AF5E7DE754B61999B8B09BB4ACCE7F155E5760F41A01455DAFEEFA80E58F7DBB3D8963373C5EAF179CA588F422719CA53AD4F9B254C0BDD43A70CE4645BFA275&amp;SigU=30E5D5233A443AB2C7BCDB5B7EA563934EA2155D35A50E247D3E3E7292A460AEB8E39EA716952E6D6334B6027E8F361501D0CA70321CC0FAF72903BBAD8BB61ABCCB73FA87470ACE')">客服1004</a> </p>
+    <p><strong>在线代码：</strong><code>&lt;script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzgwMDA3NzQ3NV8xOTAzOTNfODAwMDc3NDc1Xw">&lt;/script></code></p>
+    <hr/>
+    <h2>操作方式</h2>
+    <ol>
+        <li>
+            <p>进入营销QQ的后台管理，点击左侧导航中的“在线代码生成”链接：</p>
+            <p><img width="520" src="bqq/step_1.png" alt="" /></p>
+        </li>
+        <li>
+            <p>在“在线代码生成”页面点击“在网站上添加浮动/固定咨询图标”链接：</p>
+            <p><img width="520" src="bqq/step_2.png" alt="" /></p>
+        </li>
+        <li>
+            <p>在打开的“在线咨询图标风格选择”页面随便选择一种样式，我们的目的不是样式，而是最终的代码：</p>
+            <p><img width="520" src="bqq/step_3.png" alt="" /></p>
+        </li>
+        <li>
+            <p>在“代码生成页面”将接入方式设置为“指定到工号”并选择“指定客服”，然后点击“生成代码”按钮：</p>
+            <p><img width="520" src="bqq/step_4.png" alt="" /></p>
+        </li>
+        <li>
+            <p>点击按钮并自动保存后，会弹出针对“指定客服”进行接入咨询的在线代码：</p>
+            <p><img width="520" src="bqq/step_5.png" alt="" /></p>
+        </li>
+        <li>
+            <p>将在线代码保存至测试页面，并运行：</p>
+            <p><img width="520" src="bqq/step_6.png" alt="" /></p>
+        </li>
+        <li>
+            <p>点击测试页面中在线代码自动生成的“咨询图标”：</p>
+            <p><img width="520" src="bqq/step_7.png" alt="" /></p>
+        </li>
+        <li>
+            <p>点击咨询图标后，在部分浏览器中会弹出如下图类似的“询问框”（下图为谷歌浏览器的效果图），询问用户是否允许打开，此时需要选择“确定”按钮方能触发企业QQ的对话窗口：</p>
+            <p><img width="520" src="bqq/step_8.png" alt="" /></p>
+        </li>
+        <li>
+            <p>在上面情况下，不管点击与否，我们的目的已经达到。在谷歌浏览器的“网络面板”中已经得到了我们想要的链接，如下图红色方框所示（即以“tencent://message/”开头的链接地址，也就是真正用来触发会话的本地QQ协议链接）：</p>
+            <p><img width="520" src="bqq/step_9.png" alt="" /></p>
+        </li>
+        <li><strong>接下来为了在用户访问网站时能够自动触发企业QQ的对话窗口，我们可以在网页代码中通过iframe来加载这个协议链接。</strong></li>
+        <li>
+            <p>当访客通过上面的自动触发并进入到对话窗口后，我们会看到新的QQ用户正在准备与制定的客服人员进入接入对话：</p>
+            <p><img width="520" src="bqq/step_10.png" alt="" /></p>
+        </li>
+        <li>
+            <p>此时在企业QQ软件界面的右上角，有一个“未接入”的按钮处于高亮状态，表示目前有未接入的用户需要接入对话：</p>
+            <p><img width="520" src="bqq/step_11.png" alt="" /></p>
+        </li>
+        <li>
+            <p>当我们点击这个“未接入”按钮后，就可以看到目标访客的QQ信息了（即使访客立马关闭了企业QQ的对话窗口，这里的“未接入”面板依然会保留该访客的信息，咨询人员无论什么时候将该访客接入就可以与访客进行对话）：</p>
+            <p><img width="520" src="bqq/step_12.png" alt="" /></p>
+        </li>
+        <li>上面所演示的访客进入到“未接入”面板，是因为在企业QQ软件中设置了最大允许的“自动接入”量，当自动接入的量超过这个数后，就会被转移至“未接入”面板。</li>
+        <li>
+            <p>为了实现自动接入以及“未接入”面板的访客显示，必须勾选“开启指定客服”选项，并设置可指定的客服数量大于1：</p>
+            <p><img width="520" src="bqq/step_13.png" alt="" /></p>
+            <p><img width="520" src="bqq/step_14.png" alt="" /></p>
+        </li>
+    </ol>
+    <hr/>
+    <h2>不足</h2>
+    <ol>
+        <li>
+            <p>由于触发的链接每次都会自动接入到同一个客服人员，会导致资源分配的不合理。不过该问题可以通过随机加载指定客服的会话链接来避免。</p>
+        </li>
+        <li>
+            <p>在火狐浏览器（Firefox）、苹果浏览器（Safari）、以及360安全浏览器、360极速浏览器、傲游浏览器、搜狗浏览器、世界之窗浏览器等国产浏览器中，会话链接可以自动触发企业QQ的窗口对话，而不会提示用户任何信息。而在谷歌浏览器（Chrome）、欧鹏浏览器（Opera）以及IE浏览器中，出于安全性的考虑会提示用户是否触发本地协议然后才能发起窗口会话。该问题无法得以解决。</p>
+        </li>
+        <li>
+            <p>如果用户登陆了多个QQ，会提示用户选择哪个QQ来触发会话，在不知情的情况下，用户会不知所措。这一点是否有影响呢？各位看官？</p>
+        </li>
+    </ol>
+    <script>
+        /**
+         * 在指定iframe中打开url链接
+         * @param  {String} name iframe的name和id属性
+         * @param  {String} url 需要打开的url链接
+         * @return {String} 返回name参数值
+         */
+        function openInIframe(name, url)
+        {
+            var iframe = document.getElementById(name);
+            if(iframe == null){
+                iframe = document.createElement("iframe");
+                iframe.id = name;
+                iframe.name = name;
+                iframe.src = url;
+                iframe.style.cssText = "position:absolute;left:-9999px;overflow:hidden;width:0px;height:0px;";
+                document.body.appendChild(iframe);
+            }else{
+                iframe.src = url;
+            }
+        }
+    </script>
+</body>
+</html>

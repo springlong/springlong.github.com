@@ -1,0 +1,347 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>页面大致外观</title>
+	<meta name="keywords" content="主流英文网站" />
+	<meta name="description" content="主流英文网站" />
+	<meta name="author" content="Jerry_小猪"  />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="icon" href="images/souCang.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="images/souCang.ico" type="image/x-icon" />
+
+	<style type="text/css">
+/*====================================================================
+ *页面的默认设置
+ *====================================================================*/
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		body{
+			font-family:Tahoma, Geneva, sans-serif,Arial, Helvetica, sans-serif;
+			font-size:11px;
+			color:#999;
+			background-color:gray;
+		}
+		.clear{
+			clear:both;
+		}
+		
+/*====================================================================
+ *页面总体布局
+ *====================================================================*/
+		 
+		/*页面主容器设置*/
+		#mainContainer{
+			width:821px;
+			margin:0px auto;
+			background-color:White;
+		}
+		#header,#navContainer,#contentContainer,#footerContainer{
+			width:791px;
+			margin:0px auto;
+		}
+		
+		/*头部、导航栏、尾部设置*/
+		#header{
+			height:158px;
+		}
+		/*======*/
+		#mainNav,#mainNavOuter{
+			width:634px;
+		}
+		#mainNavOuter{
+			float:right;
+			margin:10px 0px;
+		}
+		#mainNav{
+			height:28px;
+		}
+		/*======*/
+		#footerContainer{
+			padding:15px 0px;	/*由于footer前有浮动元素，因此margin属性无效，特加外框设置padding值来留出空白*/
+		}
+		#footer{
+			height:26px;
+		}
+		
+		/*内容显示区呈三列布局*/
+		#sideRight{
+			float:right;
+		}
+		#sideLeft{
+			float:left;
+		}
+		#mainContent{
+			float:left;
+			width:429px;
+		}
+		
+		/*内容右部侧栏高度值为：240(27+27+186)+347=587px*/
+		#sideRight,#aboutUs,#welcome{
+			width:171px;
+		}
+		/*======*/
+		#aboutUsOuter{
+			margin-bottom:17px;
+		}
+		#aboutUs_content{
+			height:186px;	
+		}
+		#welcome{
+			height:347px;
+		}
+		
+		/*内容左部侧栏高度值为：30+190(27+163)+363(27+336)=583px*/
+		#sideLeft,#search,#servicesSide,#news{
+			width:191px;
+		}
+		#search{
+			/*height:30px;*/
+			height:24px;
+			margin-bottom:6px;
+		}
+		/*======*/
+		#servicesSide{
+			margin-bottom:17px;
+		}
+		#servicesSide_caption,#news_caption,#servicesMain_caption,#aboutUs_caption,#aboutUs_footer{
+			height:27px;
+		}
+		#servicesSide_content{
+			height:163px;
+		}
+		/*======*/
+		#news_content{
+			height:336px;
+		}
+		
+		/*内容主体高度值为：227+27+100*3+3=557px*/
+		#show,#servicesMain{
+			width:391px;
+			margin:auto;
+		}
+		#show{
+			height:227px;
+			margin-bottom:17px;
+		}
+		/*======*/
+		#servicesMain_service1,#servicesMain_service2,#servicesMain_service3,#servicesMain_service4{
+			width:195px;
+			height:100px;
+		}
+		#servicesMain_service5{
+			width:391px;
+			height:100px;
+			border-bottom:1px dashed;
+		}
+		#servicesMain_service1,#servicesMain_service3{
+			float:left;
+			border-right:1px dashed;
+			border-bottom:1px dashed;
+		}
+		#servicesMain_service2,#servicesMain_service4{
+			float:right;
+			border-bottom:1px dashed;
+		}
+		
+		
+/*====================================================================
+ *页面的大体外观
+ *====================================================================*/
+		#header{
+			background:url(images/top.jpg) no-repeat;
+		}
+		/*======*/
+		#mainNavOuter{
+			background:url(images/bg_Nav2.gif) repeat-x;
+		}
+		#mainNav{
+			background:url(images/bg_Nav1.gif) no-repeat left bottom;
+		}
+		/*======*/
+		#search .regExp{
+			width:130px;
+			height:20px;
+		}
+		#search .submit{
+			width:49px;
+			height:20px;
+			border:none;
+			background:url(images/search.gif) no-repeat;
+		}
+		/*======*/
+		#servicesSide_captionOuter{
+			background-color:#006699;
+		}
+		#servicesSide_caption{
+			background:url(images/bg_servicesSide1.gif) no-repeat left top;
+		}
+		#servicesSide_content{
+			background-color:#e0edf3;
+		}
+		/*======*/
+		#news_caption{
+			background-color:#006699;
+		}
+		#news_content{
+			background-color:#cde3ec;
+		}
+		/*======*/
+		#show{
+			background:url(images/show.jpg) no-repeat left top;
+		}
+		/*======*/
+		#aboutUsOuter{
+			background-color:#cde3ec;
+		}
+		#aboutUsInner{
+			background:url(images/bg_aboutUs1.gif) no-repeat left top;
+		}
+		#aboutUs{
+			background:url(images/bg_aboutUs2.gif) no-repeat left bottom;
+		}
+		/*======*/
+		#welcome{
+			background:#e0edf3 url(images/welcome.jpg) no-repeat left top;
+		}
+		/*======*/
+		#footerOuter{
+			background-color:#006699;
+		}
+		#footerInner{
+			background:url(images/bg_Footer1.gif) no-repeat left bottom;
+		}
+		#footer{
+			background:url(images/bg_Footer2.gif) no-repeat right bottom;
+		}
+	</style>
+</head>
+<body>
+
+<div id="mainContainer">
+	<!--========================================================================================
+		=================================  头部内容  ============================================
+		========================================================================================-->
+	<div id="header">
+	
+	</div>
+	
+	<!--========================================================================================
+		=================================  页面导航栏  ==========================================
+		========================================================================================-->
+	<div id="navContainer">
+		<div id="mainNavOuter">
+		<div id="mainNav">
+		
+		</div>	
+		</div>
+	</div>
+	
+	<!--========================================================================================
+		=================================  页面主体内容  ========================================
+		========================================================================================-->
+	<div id="contentContainer" class="clear">
+		<!--===========================右部侧栏===========================-->
+		<div id="sideRight">
+			<!-- aboutUs 关于我们 -->
+			<div id="aboutUsOuter">
+			<div id="aboutUsInner">
+			<div id="aboutUs">
+				<div id="aboutUs_caption">
+				
+				</div>
+				<div id="aboutUs_content">
+				
+				</div>
+				<div id="aboutUs_footer">
+				
+				</div>
+			</div>
+			</div>
+			</div>
+			<!-- welcome 欢迎光临 -->
+			<div id="welcome">
+			
+			</div>
+		</div>
+		<!--===========================左部侧栏===========================-->
+		<div id="sideLeft">
+			<!-- search 搜索表单 -->
+			<div id="search">
+				<form method="post" action="">
+					<input type="text" name="regExp" class="regExp" />
+					<input type="submit"  value=" " class="submit" />  <!--注意：必须给value属性赋值，否则文本输入框在IE中将会下移！-->
+				</form>
+			</div>
+			<!-- servicesSide 侧栏服务连接 -->
+			<div id="servicesSide">
+				<div id="servicesSide_captionOuter">
+				<div id="servicesSide_caption">
+				
+				</div>
+				</div>
+				<div id="servicesSide_content">
+				
+				</div>
+			</div>
+			<!-- news 新闻 -->
+			<div id="news">
+				<div id="news_caption">
+				
+				</div>
+				<div id="news_content">
+				
+				</div>
+			</div>
+		</div>
+		<!--===========================中部主要内容===========================-->
+		<div id="mainContent">
+			<!-- show 展示 -->
+			<div id="show"></div>
+			<!-- servicesMain 主体内容服务列表 -->
+			<div id="servicesMain">
+				<div id="servicesMain_caption">
+					Services
+				</div>
+				<div id="servicesMain_wrapper1">
+					<div id="servicesMain_service1">
+					
+					</div>
+					<div id="servicesMain_service2">
+					
+					</div>
+				</div>
+				<div id="servicesMain_wrapper2" class="clear">
+					<div id="servicesMain_service3">
+					
+					</div>
+					<div id="servicesMain_service4">
+					
+					</div>				
+				</div>
+				<div id="servicesMain_wrapper3" class="clear">
+					<div id="servicesMain_service5">
+					
+					</div>				
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--========================================================================================
+		===================================  页面尾部  ==========================================
+		========================================================================================-->
+	<div id="footerContainer" class="clear">
+		<div id="footerOuter">
+		<div id="footerInner">
+		<div id="footer">
+		
+		</div>
+		</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

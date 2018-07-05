@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>计算属性</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>计算属性</h1>
+	<div>
+		<p class="text-item">模板内的表达式非常便利，但是设计它们的初衷是用于简单运算的。在模板中放入太多的逻辑会让模板过重且难以维护。对于任何复杂逻辑，你都应当使用计算属性。</p>
+	</div>
+<pre>
+&lt;div id="testBox">
+  &lt;p>原始内容：{{message}}&lt;/p>
+  &lt;p>计算反转属性：{{reverseMessage}}&lt;/p>
+  &lt;p>不依赖其他属性的计算属性：{{now}}&lt;/p>
+&lt;/div>
+&lt;script>
+    var vm = new Vue({
+    	el: '#testBox',
+        data: {
+        	message: 'Hello world！'
+        },
+        computed: {
+        	// 计算属性的 getter
+        	// 当计算属性的值依赖其他属性时，那么该计算属性的值将被缓存，仅当依赖属性发生变更后才会重新进行计算
+        	reverseMessage: function(){
+        		// this指向vm实例
+        		return this.message.split('').reverse().join('');
+        	},
+        	// 该计算属性不依赖其他属性，因此每一次的重新渲染，该属性的值都一样
+        	now: function(){
+        		return Date.now();
+        	}
+        }
+    });
+
+	// vm.reverseMessage 这个计算属性的值将始终依赖于 vm.message，当vm.message发生变更时，vm.reverseMessage也将发生变更
+	setTimeout(function(){
+		vm.message = 'This is a new word！';
+	}, 1000);
+&lt;/script>
+</pre>
+	<div id="testBox">
+	  <p>原始内容：{{message}}</p>
+	  <p>计算反转属性：{{reverseMessage}}</p>
+	  <p>不依赖其他属性的计算属性：{{now}}</p>
+	  <p>计算属性与data重名：{{repeat}}</p>
+	</div>
+	<script>
+	    var vm = new Vue({
+	    	el: '#testBox',
+	        data: {
+	        	message: 'Hello world！',
+	        	repeat: 'repeat in data',
+	        },
+	        computed: {
+	        	// 计算属性的 getter
+	        	// 当计算属性的值依赖其他属性时，那么该计算属性的值将被缓存，仅当依赖属性发生变更后才会重新进行计算
+	        	reverseMessage: function(){
+	        		// this指向vm实例
+	        		return this.message.split('').reverse().join('');
+	        	},
+	        	// 该计算属性不依赖其他属性，因此每一次的重新渲染，该属性的值都一样
+	        	now: function(){
+	        		return Date.now();
+	        	},
+	        	// 计算属性与data重名
+	        	repeat: function() {
+	        		return 'repeat in computed'
+	        	}
+	        }
+	    });
+
+		// vm.reverseMessage 这个计算属性的值将始终依赖于 vm.message，当vm.message发生变更时，vm.reverseMessage也将发生变更
+		setTimeout(function(){
+			vm.message = 'This is a new word！';
+		}, 1000);
+	</script>
+</div>
+</body>
+</html>

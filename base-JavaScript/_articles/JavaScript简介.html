@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript简介</title>
+    <link rel="stylesheet" href="./public/css/main.css" />
+    <link rel="stylesheet" href="./public/css/codeView.css" />
+    <script src="./public/js/jquery.min.js"></script>
+    <script src="./public/js/jquery.extend.js"></script>
+    <script src="./public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+	<h1><span>JavaScript简介</span></h1>
+    <h2>JavaScript的基本概念</h2>
+    <div>
+        <p>JavaScript是由<a href="https://brendaneich.com/" target="_blank" class="external" title="布兰登·艾奇的个人博客">布兰登·艾奇</a>（Brendan Eich，1964年～）于1995年在网景公司（Netscape）任职时设计的一门基于浏览器的<b>解释型语言</b>。</p>
+        <p>Javascript是由网景公司的LiveScript发展而来，它是一种原型化继承的、面向对象的、动态类型的、区分大小写的客户端脚本语言，其最初目的是为了解决服务器端语言（比如Perl）遗留的速度问题，为客户提供更流畅的浏览效果。当时服务端需要对数据进行验证，由于网络速度相当缓慢（只有28.8kbps），验证步骤浪费的时间太多。于是网景公司为自家的Navigator浏览器加入了JavaScript，提供了数据验证的基本功能。</p>
+    </div>
+    <h2>JavaScript的历史简述</h2>
+    <div>
+        <h3>Netscape发明了JavaScript</h3>
+        <div>
+            <p><strong>20世纪90年代</strong>，当网上冲浪越来越流行时，人们对客户端脚本语言的需求也越来越强烈。那个时候，大部分因特网用户还仅仅通过<b>28.8kbit/s</b>的调制解调器连接到网络，但网页的大小和复杂性却不断增加。仅仅为了简单的表单有效性验证，就要与服务器进行多次地往返交互。设想一下，用户填完一个表单，点击提交按钮，等待了30秒的处理后，看到的却是一条消息告诉你忘记填写一个必要的字段…</p>
+            <p>当时走在技术革新最前沿的Netscape公司，决定着手开发一种客户端语言，用来处理这种简单的验证工作。</p>
+            <p>当时就职于Netscape公司的<b>布兰登·艾奇</b>（Brendan Eich），开始着手为即将在<strong>1995年</strong>发行的Netscape Navigator 2.0开发一个称之为<b>LiveScript</b>的脚本语言——该语言将同时在浏览器和服务器端中使用（它在服务器上的名字叫作<b>LiveWire</b>）。为了赶在发布日期前完成LiveScript的开发，Netscape与Sun公司建立了一个开发联盟，合作并及时完成了LiveScript的实现。</p>
+            <p><strong>就在Netscape Navigator 2.0即将正式发布前，Netscape将LiveWire更名为JavaScript，目的是为了利用Java这个因特网时髦词汇</strong>。Netscape的赌注最终得到回报，JavaScript从此变成了因特网的必备组件。</p>
+        </div>
+        <h3>JScript与JavaScript</h3>
+        <div>
+            <p>由于JavaScript 1.0如此成功，<strong>1996年08月</strong>，Netscape随即在Netscape Navigator 3.0中又发布了1.1版。Web虽然羽翼未丰，但用户关注度却屡创新高。在这样的背景下，Netscape把自己定位为市场领袖型公司。</p>
+            <p>与此同时，微软决定向自家产品Internet Explorer浏览器投入更多的资源。Netscape Navigator 3.0发布后不久，微软就在其Internet Explorer 3中加入了名为<b>JScript</b>的JavaScript实现（命名为JScript是为了避开与Netscape有关的授权问题）。</p>
+            <p><strong>微软推出其JavaScript实现意味着有了两个不同的JavaScript版本：</strong>Netscape Navigator中的JavaScript、Internet Explorer中的JScript。与C及其他编程语言不同，当时还没有标准规定JavaScript的语法和特性，两个不同版本并存的局面已经完全暴露了这个问题。随着业界担心的日益加剧，JavaScript的标准化问题被提上了议事日程。</p>
+       </div>
+       <h3>JavaScript标准化——ECMAScript</h3>
+       <div>
+           <p><strong>1997年，JavaScript 1.1作为一个草案提交给欧洲计算机制造商协会（ECMA）</strong>。在ECMA的协调下，由来自Netscape、Sun、微软、Borland和其他一些对脚本编程感兴趣的公司的程序员组成的<a href="http://www.ecma-international.org/memento/TC39.htm" target="_blank" class="external" title="TC39工作组介绍">TC39</a>工作组，经过数月的努力完成了统一标准：<a href="http://www.ecma-international.org/" target="_blank" title="ECMA的官方网站" class="external">ECMA-262</a>，该标准定义了名为<a href="http://www.ecmascript.org/" target="_blank" title="ECMAScriptd的进展情况" class="external">ECMAScript</a>（发音为“ek-ma-script”）的全新的脚本语言。</p>
+          <p>第二年，国际标准化组织及国际电工委员会（ISO/IEC）也采纳 ECMAScript作为标准（ISO/IEC-16262）。自此以后，浏览器开发商就开始致力于将ECMAScript作为各自JavaScript的实现基础，并在不同程度上取得了成功。</p>
+          <p>尽管ECMAScript是一个重要的标准，但它并不是JavaScript的唯一部分，当然，也不是唯一被标准化的部分。实际上，一个完整的JavaScript实现是由以下3个不同部分组成的：</p>
+          <ul>
+              <li>核心(ECMAScript)——JavaScript的核心ECMAScript描述了该语言的语法和基本对象。</li>
+              <li>文档对象模型(DOM)——DOM描述了处理网页内容的方法和接口。</li>
+              <li>浏览器对象模型(BOM)——BOM描述了与浏览器进行交互的方法和接口。</li>
+          </ul>
+       </div>
+   </div>
+    <h2>JavaScript的版本历史</h2>
+    <div>
+        <h3>ECMAscript的进展情况</h3>
+        <div>
+            <p>通过上述内容我们了解到——ECMAScript是形成JavaScript语言基础的脚本语言，是由Ecma国际标准组织以ECMA-262规范的形式进行标准化的。到目前为止，ECMAScript经历了多个版本的制定和发布，下表整理归纳了ECMAScript的工作进展：</p>
+            <table class="alignLeft">
+                <col />
+                <col />
+                <col />
+                <col style="width:65%" />
+                <thead>
+                    <tr>
+                        <th>版本</th>
+                        <th>发布时间</th>
+                        <th>文档链接</th>
+                        <th>与前版本的差异</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ECMAScript 1</td>
+                        <td>1997年06月</td>
+                        <td><a href="http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262,%201st%20edition,%20June%201997.pdf" target="_blank" class="external">PDF</a></td>
+                        <td>首版</td>
+                    </tr>
+                    <tr>
+                        <td>ECMAScript 2</td>
+                        <td>1998年08月</td>
+                        <td><a href="http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262,%202nd%20edition,%20August%201998.pdf" target="_blank" class="external">PDF</a></td>
+                        <td>格式修正，以使得其形式与ISO/IEC16262国际标准一致。</td>
+                    </tr>
+                    <tr>
+                        <td>ECMAScript 3</td>
+                        <td>1999年12月</td>
+                        <td><a href="http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262,%203rd%20edition,%20December%201999.pdf" target="_blank" class="external">PDF</a></td>
+                        <td>强大的正则表达式，更好的词法作用域链处理，新的控制指令，异常处理，错误定义更加明确，数据输出的格式化，以及其它改变。</td>
+                    </tr>
+                    <tr>
+                        <td>ECMAScript 4</td>
+                        <td>放弃</td>
+                        <td>无</td>
+                        <td>由于关于语言的复杂性出现分歧，第4版本被放弃，其中部分成为了第5版以及Harmony的基础。</td>
+                    </tr>
+                    <tr>
+                        <td>ECMAScript 5</td>
+                        <td>2009年12月</td>
+                        <td><a href="http://www.ecma-international.org/publications/files/ECMA-ST-ARCH/ECMA-262%205th%20edition%20December%202009.pdf" target="_blank" class="external">PDF</a></td>
+                        <td>新增“严格模式（strict mode）”，一个子集用作提供更彻底的错误检查，以避免结构出错。澄清了许多第3版本的模糊规范，and accommodates behaviour of real-world implementations that differed consistently from that specification。增加了部分新功能，如getters、setters，并支持JSON等。</td>
+                    </tr>
+                    <tr>
+                        <td>ECMAScript 5.1</td>
+                        <td>2011年06月</td>
+                        <td><a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" class="external">PDF</a></td>
+                        <td>ECMAScript 5.1，最新发布的规范文档。该版本完全符合<a href="http://www.iso.org/iso/iso_catalogue/catalogue_tc/catalogue_detail.htm?csnumber=55755" target="_blank" class="external">ISO/IEC 16262:2011</a>国际标准第三版。它包含了ES5的勘误修复，并没有添加新的特性。</td>
+                    </tr>
+                    <tr>
+                        <td>ECMAScript 6</td>
+                        <td>草案制定中...</td>
+                        <td><a href="http://wiki.ecmascript.org/doku.php?id=harmony:specification_drafts" target="_blank" class="external">草案</a></td>
+                        <td>代号“Harmony”，增加了多个新的概念和语言特性。ECMAScript Harmony将会以“ECMAScript 6”发布。</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>除了上述ECMAScript的常规版本之外，2004年6月Ecma组织还发表了<a href="http://www.ecma-international.org/publications/standards/Ecma-357.htm" target="_blank" class="external">ECMA-357</a>标准，它是ECMAScript的一个扩延，也被称为<a href="https://developer.mozilla.org/zh-CN/docs/E4X" target="_blank" class="external">E4X</a>（ECMAScript for XML）。E4X为JavaScript加入了原生XML的支持。它通过提供以表单的方式访问XML文档，这使ECMAScript程序员感觉很自然。它的目标是提供一个可替代DOM接口的、更简明的语法来访问XML文档。</p>
+        </div>
+        <h3>Mozilla与JavaScript版本</h3>
+        <div>
+            <p>作为Netscape“继承人”的Mozilla公司，是目前唯一还在沿用最初的JavaScript版本编号序列的浏览器开发商。在Netscape将源代码提交给开源的Mozilla项目的时候，JavaScript在浏览器中的最后一个版本号是1.3。随着Mozilla基金会继续开发JavaScript（添加新的特性、关键字和语法），JavaScript的版本号继续递增。下表列出了Netscape/Mozilla浏览器中JavaScript的版本情况：</p>
+            <table class="alignLeft">
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>版本</th>
+                        <th>发布日期</th>
+                        <th>实现</th>
+                        <th>基于</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>JavaScript 1.0</td>
+                        <td>1996年03月</td>
+                        <td>Netscape Navigator 2</td>
+                        <td>无</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.1</td>
+                        <td>1996年08月</td>
+                        <td>Netscape Navigator 3</td>
+                        <td>无</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.2</td>
+                        <td>1997年06月</td>
+                        <td>Netscape Navigator 4</td>
+                        <td>无</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.3</td>
+                        <td>1998年10月</td>
+                        <td>Netscape Navigator 4.06</td>
+                        <td>ECMAScript第一版 (1997年6月) / ECMAScript第二版 (1998年6月)</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.4</td>
+                        <td>无</td>
+                        <td>Netscape Server Only</td>
+                        <td>无</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.5</td>
+                        <td>2000年11月</td>
+                        <td>Firefox 1</td>
+                        <td>ECMAScript第三版 (1999年12月)</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.6</td>
+                        <td>2005年11月</td>
+                        <td>Firefox 1.5</td>
+                        <td>1.5 + Array extras + Array and String generics + E4X</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.7</td>
+                        <td>2006年10月</td>
+                        <td>Firefox 2</td>
+                        <td>1.6 + Pythonic generators + Iterators + let</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.8</td>
+                        <td>2008年06月</td>
+                        <td>Firefox 3</td>
+                        <td>1.7 + Generator expressions + Expression closures</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.8.1</td>
+                        <td>2009年06月</td>
+                        <td>Firefox 3.5</td>
+                        <td>1.8 + Native JSON support + Minor Updates</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.8.2</td>
+                        <td>2009年06月</td>
+                        <td>Firefox 3.6</td>
+                        <td>1.8.1 + Minor updates</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 1.8.5</td>
+                        <td>2010年07月</td>
+                        <td>Firefox 4</td>
+                        <td>1.8.1 + ECMAScript 5 Compliance</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript 2.0</td>
+                        <td>工作中...</td>
+                        <td>无</td>
+                        <td>ECMAScript Harmony（草案制定中...）</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><strong>注意，只有Netscape/Mozilla浏览器才遵循这种编号模式，IE则采用另外一种版本命名的模式。</strong>其他浏览器在提及对JavaScript的支持情况时，一般都以<b>ECMAScript兼容性</b>和<b>对DOM的支持情况</b>为准。</p>
+            <p><b>特别说明：</b></p>
+            <ol>
+                <!-- <li>关于JavaScript 1.0的发布日期，部分国外资料以及维基百科中标注的是1996年03月，《JavaScript高级程序设计》一书中提到的是1995年02月，而其他资料中仅只给出了1995年。为了验证具体的发布日期，查询Netscape Navigator的版本发布日期后，初步确定1996年03月为2.01的发布日期，而1995年08月才是2.0的发布日期。所以最后在上面的表格中将1.0的发布时间标注为1995年08月。</li> -->
+                <li>当Netscape将它的源代码作为Mozilla项目公布于众时，本来计划JavaScript 1.4将会嵌入到Netscape Navigator 5.0 中。然而，一个冒进的决定——要完全从头重新设计Netscape的代码，破坏了这个工作。JavaScript 1.4仅仅作为一个Netscape Enterprise Server 的服务器端脚本语言发布，以后也没有被放入浏览器中。</li>
+                <li>如今，所有的主流Web浏览器都遵守ECMA-262 第三版，即实现的是JavaScript 1.5版，JavaScript 1.6-1.9只是ECMAScript升级至JavaScript 2.0的临时代号。</li>
+            </ol>
+        </div>
+        <h3>Internet Explorer与JScript版本</h3>
+        <div>
+            <p>微软在Netscape发布JavaScrpt 1.1版本后不久，就在自家的Internet Explorer 3.0中实现了JavaScript的克隆版——JScript（这样命名是为了避免与Netscape潜在的许可纠纷）。在发展初期，为了取得竞争上的优势，微软和Netscape在各自的浏览器上进行着不同的“脚本试验”，其直接后果就是开发人员需要书写两套不同的脚本代码来实现浏览器兼容。为了杜绝这种局面，ECMAScript出现了。之后，微软和Netscape就开始致力于将ECMAScript作为各自脚本的实现基础。</p>
+            <p>换句话说，JScript只是微软对JavaScript的叫法，他们的本质其实是一样的，都是基于对ECMAScript的实现。</p>
+            <p>自ECMAScript问世以来，各大浏览器厂商就不断地完善着各自的浏览器以及对ECMAScript的实现，下表列出了微软JScript这些年来的进展情况：</p>
+            <table class="alignLeft">
+                <col />
+                <col />
+                <col />
+                <col />
+                <thead>
+                    <tr>
+                        <th>版本</th>
+                        <th>发布日期</th>
+                        <th>实现</th>
+                        <th>基于</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>JScript 1.0</td>
+                        <td>1996年08月</td>
+                        <td>Internet Explorer 3.0</td>
+                        <td>Netscape JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td>JScript 2.0</td>
+                        <td>1997年01月</td>
+                        <td>Windows IIS 3.0</td>
+                        <td>Netscape JavaScript</td>
+                    </tr>
+                    <tr>
+                        <td>JScript 3.0</td>
+                        <td>1997年10月</td>
+                        <td>Internet Explorer 4.0</td>
+                        <td>ECMA-262 1st edition</td>
+                    </tr>
+                    <tr>
+                        <td>JScript 4.0</td>
+                        <td></td>
+                        <td>Visual Studio 6.0 (Visual InterDev的一部分) </td>
+                        <td>ECMA-262 1st edition</td>
+                    </tr>
+                    <tr>
+                        <td>JScript 5.0</td>
+                        <td>1999年05月</td>
+                        <td>Internet Explorer 5.0</td>
+                        <td>ECMA-262 2nd edition</td>
+                    </tr>
+                    <tr>
+                        <td>JScript 5.1</td>
+                        <td></td>
+                        <td>Internet Explorer 5.01</td>
+                        <td>ECMA-262 2nd edition</td>
+                    </tr>
+                    <tr>
+                        <td>JScript 5.5</td>
+                        <td>2000年07月</td>
+                        <td>Internet Explorer 5.5 &amp; Windows CE 4.2</td>
+                        <td>ECMA-262 3rd edition</td>
+                    </tr>
+                    <tr>
+                        <td>JScript 5.6</td>
+                        <td>2001年10月</td>
+                        <td>Internet Explorer 6.0 &amp; Windows CE 5.0</td>
+                        <td>ECMA-262 3rd edition</td>
+                    </tr>
+                    <tr>
+                        <td>JScript 5.7</td>
+                        <td>2006年11月</td>
+                        <td>Internet Explorer 7.0</td>
+                        <td>ECMA-262 3rd edition + ECMA-327 (ES-CP)</td>
+                    </tr>
+                    <tr>
+                        <td>JScript 5.8</td>
+                        <td>2009年05月</td>
+                        <td>Internet Explorer 8.0</td>
+                        <td>ECMA-262 3rd edition +  ECMA-327 (ES-CP) + JSON</td>
+                    </tr>
+                    <tr>
+                        <td>JScript 9.0</td>
+                        <td>2011年03月</td>
+                        <td>Internet Explorer 9.0</td>
+                        <td>ECMA-262 5th edition</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><b>特别说明：</b></p>
+            <ol>
+                <li>在IE浏览器中可使用<code>ScriptEngineMajorVersion()</code>方法获取JScript的版本号（仅限整数版本，1.0版本不支持该方法）。</li>
+                <li>自2002年01月以来，微软就在其.NET平台中添加了对JScript的支持，官方名称为<b>JScript.NET</b>。JScript.NET属于<b>编译型语言</b>，需要依赖于.NET的通用语言运行库方可运行。JScript.NET很少被开发者所关注，不过你还是可以使用JScript.NET来编写ASP.NET应用程序，点击<a href="http://msdn.microsoft.com/zh-cn/library/vstudio/72bd815a(v=vs.100).aspx" target="_blank" class="external">这里</a>了解更多。</li>
+            </ol>
+        </div>
+    </div>
+    <h2>有问必答</h2>
+    <div>
+        <ol>
+            <li>
+                <p class="title"><b>大家常说的“JS”跟JavaScript有什么关系吗?</b></p>
+                <p>“JS”是开发者们对JavaScript的一种简称，跟PS（Photoshop）、DW（Dreamweaver）、VS（Visual Studio）属于同一性质。</p>
+            </li>
+            <li>
+                <p class="title"><b>JavaScript与Java有何关系?</b></p>
+                <p>Java是由Sun公司于1995年5月推出的Java程序设计语言和Java平台（即JavaSE, JavaEE, JavaME）的总称。而JavaScript则是Netscape公司与Sun公司合作开发的一门脚本语言，其最开始的名字是LiveScript，后来选择JavaScript作为正式名称发布。其目的是为了利用Java这个因特网时髦词汇，让它听起来有系出名门的感觉。</p>
+                <p>换句话说，Java与JavaScript的关系就好比“雷锋”与“雷峰塔”。</p>
+            </li>
+            <li>
+                <p class="title"><b>JavaScript与JScript是一样的吗？</b></p>
+                <p>JavaScript是1995年由Netscape公司研发的一门基于浏览器的脚本语言，而JScript则是微软于1996年在Internet Explorer 3.0中加入JavaScript实现的一种叫法（为的是避免与Netscape潜在的许可纠纷）。在早期，JavaScript与JScript着实存在着大量的不一致，Web开发人员往往需要书写两套不同的脚本代码来实现兼容。不过自1997年由欧洲计算机制造商协会（ECMA）推出ECMAScript标准后，微软和Netscape都将ECMAScript作为其浏览器脚本实现的基础。自此，JavaScript和JScript有了一个更为标准的统一称谓——ECMAScript。</p>
+            </li>
+            <li>
+                <p class="title"><b>Netscape浏览器现在去哪儿了？</b></p>
+                <p><strong>Netscape</strong>的中文名：网景，是一个自1994年开始的品牌，是网景通信公司（Netscape Communications Corporation）的常用简称。Netscape以其生产的同名网页浏览器Netscape Navigator而闻名。不过伴随着Windows 98系统的发售以及微软与ISP以及主机厂商的合作、可以加入IE专属标签的FrontPage软件的普及、IE对CSS的抢先支持、以及网景公司的错误决策等多方面因素，网景慢慢走向衰落。</p>
+                <p>1998年01月，网景与微软IE浏览器的竞争失利之后，为了挽回市场，网景通信公司公布旗下所有软件以后的版本皆为免费。</p>
+                <p>1998年02月23日，网景在公司内部成立了非正式的<strong>Mozilla（谋智）组织</strong>。该组织独立运作来负责Mozilla Application Suite的研发（一套自由的、跨平台的因特网应用套装软件）。</p>
+                <p>1998年11月24日，美国在线（American Online，简称AOL）以42亿美元、免税换股的方式收购了网景。</p>
+                <p>2003年05月，著名的AOL诉微软垄断案达成和解。作为让步，AOL同意解散网景并中止其下业务。</p>
+                <p>2003年07月15日，AOL正式解散网景公司。当天，Mozilla组织正式注册成为了非牟利机构，并正式更名为<strong>Mozilla基金会</strong>（Mozilla Foundation，简称MF或MoFo）。</p>
+                <p>2004年11月9日，Mozilla基金会正式发布了<strong>Mozilla Firefox 1.0</strong>（网页浏览器）。Firefox（对Mozilla Firefox的缩写，简称FF）最初派生于Mozilla Application Suite所分支出的实验性项目，在2002年09月以Phoenix为名发布测试用可执行文件而正式问世。2003年04月，由于Phoenix商标纠纷问题Mozilla将Phoenix更名为Firebird。后面由于跟Firebird数据库重名，迫于压力最终再次更名为Mozilla Firefox。</p>
+                <p>2005年08月03日，Mozilla基金成立了完全所有的应税牟利子公司<strong>Mozilla公司</strong>。其公司初始运营资金来自Mozilla基金，其成立目的在于推广Firefox和Thunderbird。</p>
+                <p>2007年12月28日，AOL在博客表示将停止网景浏览器的开发，并于2008年03月01日停止安全更新和所有的技术支持，并建议用户转移使用Mozilla Firefox浏览器。从此，Netscape正式退出历史舞台。</p>
+            </li>
+            <li>
+                <p class="title"><b>Netscape，Mozilla和Firefox是什么关系？</b></p>
+                <p>Netscape是一家中文名为网景的通信公司，以其开发的同名网页浏览器Netscape Navigator而闻名一时。</p>
+                <p>后来在与微软IE浏览器的竞争过程中不断失利，于是在公司内部成立了Mozilla组织。</p>
+                <p>之后Netscape公司被解散，而Mozilla组织则正式注册成为Mozilla基金会。</p>
+                <p>最后Mozilla基金会推出了Mozilla Firefox网页浏览器（简称Firefox），并成立了Mozilla公司，而Netscape公司以及Netscape Navigator浏览器则退出了历史舞台。</p>
+            </li>
+            <li>
+                <p class="title"><b>解释型语言与编译型语言有什么不同？</b></p>
+                <p>编译型语言（如：C、C++、Java）必须将源代码编译（或转换）为机器语言（二进制机器代码）后方可执行，而解释型语言（如：JavaScript、Python、Ruby）则由解析器边解释，边执行。对于JavaScript而言，它属于解释型语言，浏览器（解析器）会直接执行所遇到的每一行JavaScript代码。</p>
+                <p>解释型语言有一个主要优点：编写或更改代码都非常简单。更改JavaScript代码就像更改一个典型的HTML文档一样容易，而且只要在浏览器里再次加载该文档就可以使更改生效。解释型语言也有缺点——其运行速度受到局限，它们并不适合于较为复杂的工作。</p>
+            </li>
+        </ol>
+    </div>
+    <h2>参考内容</h2>
+    <div>
+        <ul>
+            <li><a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Language_Resources" target="_blank" class="external">Mozilla - ECMAScript 概述</a></li>
+            <li><a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Guide/JavaScript_Overview#Relationship_between_JavaScript_Versions_and_ECMAScript_Editions" target="_blank" class="external">Mozilla - JavaScript 概述</a></li>
+            <li><a href="http://zh.wikipedia.org/wiki/JavaScript#cite_note-8" target="_blank" class="external">维基百科 - JavaScript</a></li>
+            <li><a href="http://zh.wikipedia.org/wiki/ECMAScript" target="_blank" class="external">维基百科 - ECMAScript</a></li>
+            <li><a href="http://zh.wikipedia.org/wiki/JScript" target="_blank" class="external">维基百科 - JScript</a></li>
+            <li><a href="http://technet.microsoft.com/zh-cn/library/2z6exc9e(v=vs.100)" target="_blank" class="external">MSDN - JScript版本信息</a></li>
+            <li><a href="http://www.cnblogs.com/lhb25/archive/2011/01/16/1936669.html" target="_blank" class="external">博客园 - JavaScript版本迷局</a></li>
+            <li><a href="http://www.ituring.com.cn/article/28242" target="_blank" class="external">图灵社区 - 图书: 1.3 JavaScript版本</a></li>
+            <li><a href="http://blog.csdn.net/aimingoo/article/details/1932315" target="_blank" class="external">CSDN - 还原JavaScript的真实历史</a></li>
+            <li><a href="http://blog.csdn.net/aimingoo/article/details/6654742/" target="_blank" class="external">CSDN - 详图实证：再谈JavaScript的语源问题</a></li>
+            <li><a href="http://blog.csdn.net/aimingoo/article/details/7383338" target="_blank" class="external">CSDN - 迟来的真相：关于JavaScript的历史</a></li>
+        </ul>
+    </div>
+</article>
+<script src="../public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

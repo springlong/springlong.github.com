@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gb2312">
+    <title>通过iframe加载网页覆盖原有内容显示</title>
+    <style>
+        *{padding:0;margin:0;}
+        html,body{overflow:hidden;}
+    </style>
+    <script>
+        var s_src = "http://www.ent029.net/",
+            loadURL = '<{#label} style="position:fixed;left:0;top:0;z-index:9999;width:100%;height:100%;" id="frameLook" src="{#url}" border="0" vspace="0" hspace="0" marginwidth="0" marginheight="0" framespacing="0" frameborder="0" >';
+        document.write(loadURL.replace("{#label}", "iframe").replace("{#url}", s_src));
+    </script>
+</head>
+<body>
+<p>通过输出的iframe标签不带结束标记来使得浏览器不会处理Body中的内容！</p>
+<div id="box">
+    容器（ID：box）
+    <div id="layer1">
+        图层1（ID：layer1）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer2">
+        图层2（ID：layer2）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer3">
+        图层3（ID：layer3）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+</div>
+</body>
+</html>

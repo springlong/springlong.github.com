@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>侧栏跟随：单个模块（最后一个）</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script src="../src/jquery.scrollwith.js"></script>
+    <link rel="stylesheet" href="main.css" />
+    <base target="_blank" />
+</head>
+<body>
+    <h1>侧栏跟随：单个模块（最后一个）</h1>
+    <pre class="jsCodeNum">
+$("#aside-4").scrollWith();
+</pre>
+<div id="all">
+    <div id="header">header (980*120)</div>
+    <div id="contentWrapper">
+        <div id="main">main (720*3000)</div>
+        <div id="aside">
+            <div id="aside-1">aside-1 (250*200)</div>
+            <div id="aside-2">aside-2 (250*400)</div>
+            <div id="aside-3">aside-3 (250*400)</div>
+            <div id="aside-4">aside-4 (250*300)</div>
+        </div>
+    </div>
+    <div id="footer">footer (980*300)</div>
+</div>
+<script type="text/javascript">
+    jQuery(function($)
+    {
+        $("#aside-4").scrollWith();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+/* CSS Document */
+
+
+
+	
+.left_list{
+   width:120px;
+   float:left;
+   margin-left:6px;}  
+.left_list li{
+   color:#006599;
+   height:52px;
+   line-height:20px;}     
+.right_list{
+   width:280px;
+   float:left;}
+.right_list li{
+   height:52px;
+   line-height:20px;}
+.right_list li a{
+   color:#58595b;}   
+   	
+   	

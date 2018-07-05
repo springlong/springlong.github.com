@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>在HTML中嵌入PHP代码 - PHP学习笔记 - 前端志</title>
+    <link rel="stylesheet" href="../public/css/main.css" />
+    <link rel="stylesheet" href="../public/css/codeView.css" />
+    <script src="../public/js/jquery.min.js"></script>
+    <script src="../public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<section id="instruction">
+	<h1><span>PHP学习笔记002：在HTML中嵌入PHP代码</span></h1>
+    <p>在一个php文件中，如果没有嵌入后端代码，那么我们完全可以理解为——它就是一个html文件，只是增加了可以书写后端代码的能力。</p>
+    <p>如果需要在php文件中执行后端代码，我们可以通过下面三种方式来实现：</p>
+    <ol>
+        <li>
+            <strong>表达式语法</strong>
+<pre class="jsCode">
+&lt;?=表达式 ?&gt;
+</pre>
+            </div>
+            <p>该种方式将在代码位置处输出表达式的计算结果，同时也支持变量、常量、方法等的直接输出。</p>
+            <p>例如，下面的语句代码将直接输出为6：</p>
+<pre class="jsCode">
+&lt;?=3 + 3 ?&gt;
+</pre>
+        </li>
+        <li>
+            <strong>语句语法</strong>
+<pre class="jsCode">
+&lt;?php 语句 ?&gt;
+</pre>
+            <p>该种方式将在代码位置处输出目标语句所执行的结果。</p>
+            <p>例如，下面的语句代码将输出1~10这10个数字使用单个空格隔开的结果：</p>
+<pre class="jsCode">
+&lt;?php
+    for($i = 1; $i &lt;= 10; $i++)
+    {
+        echo $i." ";
+    }
+?&gt;
+</pre>
+            <b>注意：</b>
+            <p>在支持简写的服务器上，我们可以将上面的&lt;?php ?&gt;代码简写为&lt;? ?&gt;。不过为了达到最好的兼容性，我们最好使用标准形式，而不是简写形式。</p>
+        </li>
+        <li>
+            <strong>组合语法</strong>
+            <p>该种方式就是将表达式语法、语句语法、HTML代码组合在一起进行书写。</p>
+            <p>例如，下面的语句代码将输出10个段落，且段落内容分别为1~10：</p>
+<pre class="jsCode">
+&lt;?php
+    for($i = 1; $i &lt;= 10; $i++)
+    {
+?&gt;
+&lt;p&gt;&lt;?=$i ?&gt;&lt;/p&gt;
+&lt;?php
+    }
+?&gt;
+</pre>
+        </li>
+    </ol>
+    <script src="../public/js/main.js"></script>
+</section>
+</body>
+</html>

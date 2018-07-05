@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS应用——滤镜的使用（波浪效果）</title>
+	<meta name="keywords" content="CSS应用——滤镜的使用" />
+	<meta name="description" content="CSS应用——滤镜的使用" />
+	<meta name="author" content="Jerry_小猪" />
+	<meta http-equive="Content-Type" content="text/html;charset=gb2312"/>
+	<style type="text/css">
+		@import url("css.css");
+		
+		#biaozhun{
+			width:600px;
+			height:30px;
+			border:4px solid silver;}
+		
+}
+    </style>
+</head>
+<body>
+	<p class="caption">CSS应用-滤镜的使用（波浪效果）</p>
+<p class="caption">CSS应用-滤镜的使用（波浪效果）</p>
+<hr />
+	<table width="850" border="1" align="center" bordercolor="black" cellspacing="0" cellpadding="5" style="font-size:16px;color:#0033CC">
+    	<!--第一行-->
+    	<tr align="center" height="30" bgcolor="silver">
+        	<td colspan="2" class="type">波浪效果</td>
+      </tr>
+        <tr height="30">
+        	<td colspan="2" align="center"><span class="keywords">filter:wave(add=?,freq=?,lightstrength=?,phase=?,strength=?);</span></td>
+        </tr>
+    	<!--第二行-->
+    	<tr height="30">
+        	<td>属性</td>
+        	<td>说明</td>
+        </tr>
+    	<!--第三行-->
+    	<tr height="30">
+        	<td>add</td>
+        	<td>是否显示源图像!true表示显示源图像；false表示不显示源图像；默认值为false，不显示源图像！</td>
+        </tr>
+    	<!--第四行-->
+    	<tr height="30">
+        	<td height="20">freq</td>
+       	  <td>设置产生的波浪的条目，数值越多，波浪的条目就越多！默认值为3，表示有三条波浪！</td>
+        </tr>
+    	<!--第五行-->
+    	<tr height="30">
+        	<td>lightstrength</td>
+        	<td>设置波浪的光照强度，参数值从0到100！0表示光照最弱，波浪不显示颜色；100表示光照最强，波浪显示纯黑色！默认值为100，呈纯黑显示！</td>
+      	</tr>
+    	<!--第六行-->
+    	<tr height="30">
+        	<td>phase</td>
+        	<td>设置正弦波开始的偏移量，取值从0到100！</td>
+      	</tr>
+    	<!--第七行-->
+    	<tr height="30">
+        	<td>strength</td>
+        	<td>设置振幅，也称波浪的强度！值从0到100！默认值为0，波浪呈水平显示！值越大，波浪的强度也就越大！</td>
+      	</tr>
+    </table>
+    
+    <hr />
+    
+	<p class="type">（波浪效果）wave属性——add：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:wave(add=true);</span>
+                <br  />
+                显示源图像！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(add=true);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(add=false);</span>
+                <br  />
+                不显示源图像！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(add=false);" />
+       	  	</td>
+    </table>
+    <hr />
+    
+	<p class="type">（波浪效果）wave属性——freq：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:wave(freq=3);</span>
+                <br  />
+                3条波浪线！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(freq=3);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wavefreq=6);</span>
+                <br  />
+                6条波浪线！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(freq=6);" />
+       	  	</td>
+        </tr>
+    </table>
+    <hr />
+    
+	<p class="type">（波浪效果）wave属性——lightstrength：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:wave(lightstrength=0);</span>
+                <br  />
+                光照强度为0！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(lightstrength=0);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(lightstrength=30);</span>
+                <br  />
+                光照强度为30！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(lightstrength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(lightstrength=60);</span>
+                <br  />
+                光照强度为60！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(lightstrength=60);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(lightstrength=80);</span>
+                <br  />
+                光照强度为80！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(lightstrength=80);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(lightstrength=100);</span>
+                <br  />
+                光照强度为100！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(lightstrength=100);" />
+       	  	</td>
+        </tr>
+    </table>
+    <hr />
+    
+	<p class="type">（波浪效果）wave属性——phase：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:wave(strength=70);</span>
+                <br  />
+                波浪的振幅为：70！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(strength=70);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(phase=0);</span>
+                <br  />
+                正弦波的起始位置：360<sup>。</sup>*0% = 0<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(phase=0,strength=70);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(phase=12.5);</span>
+                <br  />
+                正弦波的起始位置：360<sup>。</sup>*12.5% = 45<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(phase=12.5,strength=70);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(phase=25);</span>
+                <br  />
+                正弦波的起始位置：360<sup>。</sup>*25% =90<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(phase=25,strength=70);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(phase=37.5);</span>
+                <br  />
+                正弦波的起始位置：360<sup>。</sup>*37.5% = 135<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(phase=37.5,strength=70);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(phase=50);</span>
+                <br  />
+                正弦波的起始位置：360<sup>。</sup>*50% = 180<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(phase=50,strength=70);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(phase=62.5);</span>
+                <br  />
+                正弦波的起始位置：360<sup>。</sup>*62.5% = 225<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(phase=62.5,strength=70);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(phase=75);</span>
+                <br  />
+                正弦波的起始位置：360<sup>。</sup>*75% = 270<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(phase=75,strength=70);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(phase=87.5);</span>
+                <br  />
+                正弦波的起始位置：360<sup>。</sup>*87.5% = 315<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(phase=87.5,strength=70);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(phase100);</span>
+                <br  />
+                正弦波的起始位置：360<sup>。</sup>*100% = 360<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(phase=100,strength=70);" />
+       	  	</td>
+        </tr>
+    </table>
+    <hr />
+    
+	<p class="type">（波浪效果）wave属性——strength：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:wave(strength=0);</span>
+                <br  />
+                波浪的振幅为：0
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(strength=0);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(strength=10);</span>
+                <br  />
+                波浪的振幅为：10
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(strength=10);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(strength=40);</span>
+                <br  />
+                波浪的振幅为：40
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(strength=40);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(strength=70);</span>
+                <br  />
+                波浪的振幅为：70
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(strength=70);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(strength=90);</span>
+                <br  />
+                波浪的振幅为：90
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(strength=90);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:wave(strength=100);</span>
+                <br  />
+                波浪的振幅为:100
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:wave(strength=100);" />
+       	  	</td>
+        </tr>
+    </table>
+    <hr />
+    
+</body>
+</html>

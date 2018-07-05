@@ -1,0 +1,322 @@
+@charset "utf-8";
+@import "./_base.scss";
+
+body {
+	padding-bottom: 50px;
+}
+
+h1,h2,h3{
+	margin-top: 20px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+h4,h5,h6{
+	margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 1.8;
+}
+h1 {
+	font-size: 36px;
+}
+h2 {
+	font-size: 30px;
+}
+h3 {
+	font-size: 24px;
+}
+h4 {
+	font-size: 18px;
+}
+h5 {
+	font-size: 14px;
+}
+h6 {
+	font-size: 12px;
+}
+
+p {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.row {
+	margin-top: 20px;
+}
+
+dt {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.container + .container {
+	margin-top: 50px;
+}
+
+.section + .section {
+	margin-top: 30px;
+}
+
+
+.collapse-box {
+	position: relative;
+}
+
+
+
+// =================================================================================
+// 头部导航
+
+.header {
+	width: 100%;
+	height: 50px;
+	background-color: #6D6E6F;
+
+	.logo {
+		float: left;
+		width: 180px;
+		height: 50px;
+		background: url("../images/logo.png") no-repeat center center;
+
+		a {
+			display: block;
+			width: 100%;
+			height: 100%;
+			text-indent: -9999px;
+		}
+	}
+
+	.nav-wrap {
+		float: right;
+		height: 50px;
+	}
+
+	.nav-button {
+		position: relative;
+		width: 40px;
+		height: 40px;
+		margin-top: 5px;
+		display: block;
+		background-color: rgba(0,0,0,0.05);
+		cursor: pointer;
+
+		@media screen and (min-width: $screen-sm) {
+			display: none;
+		}
+
+		span,
+		&:after,
+		&:before {
+			position: absolute;
+			left: 20%;
+			width: 60%;
+			height: 2px;
+			background-color: #fff;
+		}
+
+		&:before {
+			content: '';
+			top: 12px;
+		}
+
+		span {
+			top: 18px;
+		}
+
+		&:after {
+			content: '';
+			top: 24px;
+		}
+	}
+
+	.nav-box {
+		position: absolute;
+		left: 0;
+		top: 100%;
+		z-index: 10;
+		overflow: hidden;
+		display: none;
+		width: 100%;
+		background-color: #484848;
+
+		&.stateShow {
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+
+		.nav-item {
+			display: block;
+
+			a {
+				display: block;
+				padding-left: 15px;
+				padding-right: 15px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				color: #eee;
+
+				&:hover {
+					background-color: #939D9D;
+					text-decoration: none;
+				}
+			}
+		}
+
+		@media screen and (min-width: $screen-sm) {
+			position: static;
+			float: right;
+			display: block !important;
+			height: auto;
+			padding: 0;
+			text-align: right;
+			background: none;
+
+			&.stateShow {
+				padding-top: 0;
+				padding-bottom: 0;
+			}
+
+			.nav-item {
+				float: left;
+
+				a {
+					display: block;
+					padding: 0 10px;
+					font-size: 13px;
+					height: 50px;
+					line-height: 50px;
+					color: #99c7df;
+					transition: all .4s ease-in-out;
+				}
+			}
+		}
+	}
+}
+
+
+
+// =================================================================================
+// 文本列表
+
+.text-item {
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: #eee;
+
+	.text-pic img {
+		max-width: 320px;
+	}
+}
+
+.text-pic + .text-desc {
+	margin-top: 20px;
+}
+
+.text-pic img{
+	display: block;
+	width: 100%;
+	margin: 0 auto;
+}
+
+.text-title {
+	font-size: 14px;
+	font-weight: bold;
+
+	+ .text-desc {
+		margin-top: 10px;
+	}
+}
+
+.text-desc {
+	margin-top: 0;
+	margin-bottom: 0;
+
+	+ .text-desc {
+		margin-top: 10px;
+	}	
+} 
+
+.withSingle {
+	@extend %ellipsis;
+}
+
+.withCenter {
+	text-align: center;
+}
+
+.withLeft {
+	text-align: left;
+}
+
+.withRight {
+	text-align: right;
+}
+
+.pic-box {
+
+	img {
+		display: block;
+		vertical-align: baseline;
+		width: 100%;
+	}
+}
+
+.layout-pic {
+	padding: 15px 0;
+
+	img {
+		display: block;
+		vertical-align: baseline;
+		width: 100%;
+		max-width: 720px;
+	}
+}
+
+.pic-bg {
+	padding: 100px 0;
+	background: url(../images/bg-1.jpg) no-repeat center center;
+	background-size: cover;
+
+	p {
+		text-align: center;
+		font-size: 20px;
+		line-height: 2;
+		color: #fff;
+
+		+ p {
+			margin-top: 20px;
+		}
+	}
+}
+
+.linklist {
+	padding: 20px 0;
+
+	li {
+		height: 30px;
+		font-size: 14px;
+		line-height: 30px;
+
+		a {
+			color: #317CAA;
+		}
+	}
+}
+
+.grid-box {
+	background-color: #fcfcfc;
+
+	>div {
+		background-color: #98C6C1;
+	}
+
+	>div:nth-child(2n+1) {
+		background-color: #CBE0DE;
+	}
+}
+
+.grid-item {
+	height: 100px;
+	margin-bottom: 15px;
+	background-color: #ccc;
+}

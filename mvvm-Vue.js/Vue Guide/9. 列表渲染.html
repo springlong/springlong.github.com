@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>列表渲染</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>列表渲染</h1>
+	<div id="testBox">
+		<div v-for="item in items">{{item}}</div>
+		<div v-for="(item, index) in items">{{index}} - {{item}}</div>
+	</div>
+	<script>
+	    var vm = new Vue({
+	    	el: '#testBox',
+	        data: {
+	        	items: {
+	        		name: 'yangtuan',
+	        		age: '26'
+	        	}
+	        }
+	    });
+	</script>
+
+	<hr>
+
+	<div id="testBox2">
+		<div v-for="item in items">{{item.name}} - {{item.age}}</div>
+	</div>
+	<script>
+	    var vm2 = new Vue({
+	    	el: '#testBox2',
+	        data: {
+	        	items: [
+	        		{name: '张珊', age: 18},
+	        		{name: '利斯', age: 21},
+	        		{name: '王武', age: 26},
+	        	]
+	        }
+	    });
+
+	    // 由于JavaScript的限制，Vue无法检测通过索引修改数组而导致的变化
+	    vm2.items[0] = {name: '张三', age: '188'};
+
+	    // 可以使用Vue.set方法来改变数组的某个索引的值而让Vue进行重新渲染
+	    Vue.set(vm2.items, 0, {name: '张三丰', age: 'dead'});
+	</script>
+
+	<hr>
+
+	<div id="testBox3">
+		<div v-for="(item, index) in items">{{index}} - {{item}}</div>
+	</div>
+	<script>
+	    var vm3 = new Vue({
+	    	el: '#testBox3',
+	        data: {
+	        	items: {
+	        		year: '2018',
+	        		monty: '01',
+	        		day: '19'
+	        	}
+	        }
+	    });
+
+	    // 由于JavaScript的限制，Vue 不能检测对象属性的添加或删除：
+	    setTimeout(function(){
+	    	vm3.items.hour = '17';
+	    }, 1000);
+
+	    // 可以使用Vue.set方法来改变数组的某个索引的值而让Vue进行重新渲染
+	    setTimeout(function(){
+	    	Vue.set(vm3.items, 'minute', '50');
+	    }, 2000);
+
+	    // 如果需要使用Object.assign()添加多个新成员，你需要这么写
+	    setTimeout(function(){
+	    	vm3.items = Object.assign({}, vm3.items, {second: '59', millisecond: '999'})
+
+		    // 而不能这么写：
+		    // Object.assign(vm3.items, {second: '59', millisecond: '999'});
+	    }, 3000);
+	</script>
+
+	<hr>
+
+	<div id="testBox4">
+		<div>v-for with v-if，当它们处于同一节点，v-for 的优先级比 v-if 更高，这意味着 v-if 将分别重复运行于每个 v-for 循环中。</div>
+		<div v-for="n in 10" v-if="n !==5">一段取值范围的 v-for: {{n}}</div>
+	</div>
+	<script>
+	    var vm4 = new Vue({
+	    	el: '#testBox4',
+	        data: {
+	        }
+	    });
+	</script>
+</div>
+</body>
+</html>

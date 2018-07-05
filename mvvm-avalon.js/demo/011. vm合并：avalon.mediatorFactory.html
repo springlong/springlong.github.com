@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>vm合并：avalon.mediatorFactory</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0s/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>vm合并：avalon.mediatorFactory</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>在avalon2，还提供了一个工厂来合并两个vm：</p>
+    
+
+<pre>
+var vm1 = avalon.define({
+    $id: 'test',
+    a: 111
+});
+
+vm1.$watch('a', function(){
+    console.log('vm1.a change');
+});
+
+var vm2 = avalon.define({
+    $id: 'test2',
+    b: 222
+});
+
+vm2.$watch('b', function(){
+    console.log('vm2.b change');
+});
+
+var vm3 = avalon.mediatorFactory(vm1, vm2);
+
+vm3.$watch('a', function(){
+    console.log('vm3.a change');
+});
+
+vm3.$watch('b', function(){
+    console.log('vm3.b change');
+});
+
+console.log('--------');
+vm3.a = 22;
+vm3.b = 44;
+</pre>
+
+
+	<hr>
+    <script>
+        var vm1 = avalon.define({
+            $id: 'test',
+            a: 111
+        });
+
+        vm1.$watch('a', function(){
+            console.log('vm1.a change');
+        });
+
+        var vm2 = avalon.define({
+            $id: 'test2',
+            b: 222
+        });
+
+        vm2.$watch('b', function(){
+            console.log('vm2.b change');
+        });
+
+        var vm3 = avalon.mediatorFactory(vm1, vm2);
+
+        vm3.$watch('a', function(){
+            console.log('vm3.a change');
+        });
+
+        vm3.$watch('b', function(){
+            console.log('vm3.b change');
+        });
+
+        console.log('--------');
+        vm3.a = 22;
+        vm3.b = 44;
+    </script>
+    <div ms-controller="test">
+        <input type="text" ms-duplex="@a">
+        <p>{{@a}}</p>
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>    
+    <p>在chrome控制台中依次打印如下：</p>
+    <p><img src="images/vm-merge-pic-console.png" alt=""></p>
+    <p>有人可能不理解为什么输出6次，我们先忽视调试信息。</p>
+    <ol>
+        <li>首先前两个是vm3.a的值发生改变，由111变成22, 由于vm3.a实际上与vm1.a是同一个东西，因此都触发了。</li>
+        <li>其次中间两个是vm3.b的值发生变化，由222变成44,由于vm3.b实际上与vm2.b是同一个东西，因此都触发了。</li>
+        <li>最后是ms-duplex要将input.value同步为vm1，a这时为数字的22,但到了元素上，变成字符串的22, 于是又触了两下！</li>
+    </ol>
+    <p><code>avalon.mediatorFactory</code>是一个重要的方法，是实现<code>ms-controller</code>套嵌的关键，大家有兴趣的话可以看看其源码。</p>
+    <table class="table table-bordered">
+        <tr>
+            <td>顶层vm</td>
+            <td>masterFactory</td>
+            <td>供用户操作与保存回调与同步视图</td>
+        </tr>
+        <tr>
+            <td>子vm</td>
+            <td>slaveFactory</td>
+            <td>承载更多用户数据</td>
+        </tr>
+        <tr>
+            <td>监控数组</td>
+            <td>arrayFactory</td>
+            <td>承载更多用户数据</td>
+        </tr>
+        <tr>
+            <td>内部vm</td>
+            <td>mediatorFactory</td>
+            <td>容纳多个vm的数据与回调，并作为参数传入$render方法，生成新的虚拟DOM树</td>
+        </tr>
+    </table>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

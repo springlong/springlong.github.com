@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>插件：标签页（Tab）插件 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>插件：标签页（Tab）插件</h1>
+    <hr>
+
+    
+    <p>&nbsp;</p>
+    <h2>用法</h2>
+    <p>您可以通过以下两种方式启用标签页：</p>
+    <ul>
+        <li>
+            <p><strong>通过 data 属性</strong>：您需要添加 <code>data-toggle="tab"</code> 或 <code>data-toggle="pill"</code> 到锚文本链接中。添加 <code>nav</code> 和 <code>nav-tabs</code> 类到 ul 中，将会应用 Bootstrap 标签样式，添加 <code>nav</code> 和 <code>nav-pills</code> 类到 ul 中，将会应用 Bootstrap 胶囊式样式。</p>
+<pre>
+&lt;ul class="nav nav-tabs">
+    &lt;li>&lt;a href="#identifier" data-toggle="tab">Home&lt;/a>&lt;/li>
+    ...
+&lt;/ul>
+</pre>
+        </li>
+        <li>
+            <p><strong>通过 JavaScript</strong>：您可以使用 Javscript 来启用标签页，如下所示：</p>
+<pre>
+$('#myTab a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+});
+</pre>
+            <p>下面的实例演示了以不同的方式来激活各个标签页：</p>
+<pre>
+// 通过名称选取标签页
+$('#myTab a[href="#profile"]').tab('show');
+ 
+// 选取第一个标签页
+$('#myTab a:first').tab('show');
+
+// 选取最后一个标签页
+$('#myTab a:last').tab('show');
+
+// 选取第三个标签页（从 0 开始索引）
+$('#myTab li:eq(2) a').tab('show');
+</pre>
+        </li>
+    </ul>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>淡入淡出效果</h2>
+    <p>如果需要为标签页设置淡入淡出效果，请添加 <code>.fade</code> 到每个 <code>.tab-pane</code> 后面。第一个标签页必须添加 <code>.in</code> 类，以便淡入显示初始内容，如下面实例所示：</p>
+<pre>
+&lt;div class="tab-content">
+    &lt;div class="tab-pane fade in active" id="home">...&lt;/div>
+    &lt;div class="tab-pane fade" id="svn">...&lt;/div>
+    &lt;div class="tab-pane fade" id="ios">...&lt;/div>
+    &lt;div class="tab-pane fade" id="java">...&lt;/div>
+&lt;/div>
+</pre>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <div><img src="images/tab-methods.png" alt=""></div>
+    <div><img src="images/tab-events.png" alt=""></div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>案例</h2>
+
+    <hr>
+       <p class="active-tab"><strong>激活的标签页</strong>：<span></span></p>
+       <p class="previous-tab"><strong>前一个激活的标签页</strong>：<span></span></p>
+    <hr>
+    <ul id="myTab" class="nav nav-tabs">
+       <li class="active"><a href="#home" data-toggle="tab">W3Cschool Home</a></li>
+       <li><a href="#ios" data-toggle="tab">iOS</a></li>
+       <li class="dropdown">
+          <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">Java <b class="caret"></b></a>
+          <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+             <li><a href="#jmeter" tabindex="-1" data-toggle="tab">jmeter</a></li>
+             <li><a href="#ejb" tabindex="-1" data-toggle="tab">ejb</a></li>
+          </ul>
+       </li>
+    </ul>
+    <div id="myTabContent" class="tab-content" style="padding: 20px;">
+       <div class="tab-pane fade in active" id="home">
+          <p>W3Cschoool菜鸟教程是一个提供最新的web技术站点，本站免费提供了建站相关的技术文档，帮助广大web技术爱好者快速入门并建立自己的网站。菜鸟先飞早入行——学的不仅是技术，更是梦想。</p>
+       </div>
+       <div class="tab-pane fade" id="ios">
+          <p>iOS 是一个由苹果公司开发和发布的手机操作系统。最初是于 2007 年首次发布 iPhone、iPod Touch 和 Apple TV。iOS 派生自 OS X，它们共享 Darwin 基础。OS X 操作系统是用在苹果电脑上，iOS 是苹果的移动版本。</p>
+       </div>
+       <div class="tab-pane fade" id="jmeter">
+          <p>jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
+       </div>
+       <div class="tab-pane fade" id="ejb">
+          <p>Enterprise Java Beans（EJB）是一个创建高度可扩展性和强大企业级应用程序的开发架构，部署在兼容应用程序服务器（比如 JBOSS、Web Logic 等）的 J2EE 上。</p>
+       </div>
+    </div>
+<pre>
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+    // 获取已激活的标签页的名称
+    var activeTab = $(e.target).text(); 
+
+    // 获取前一个激活的标签页的名称
+    var previousTab = $(e.relatedTarget).text(); 
+    $(".active-tab span").html(activeTab);
+    $(".previous-tab span").html(previousTab);
+});
+</pre>
+    <script>
+       $(function(){
+
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+
+                // 获取已激活的标签页的名称
+                var activeTab = $(e.target).text(); 
+
+                // 获取前一个激活的标签页的名称
+                var previousTab = $(e.relatedTarget).text(); 
+                $(".active-tab span").html(activeTab);
+                $(".previous-tab span").html(previousTab);
+            });
+        });
+    </script>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

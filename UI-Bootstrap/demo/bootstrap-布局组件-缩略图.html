@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>布局组件：缩略图 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>布局组件：缩略图</h1>
+    <hr>
+
+    <p>本章将讲解 Bootstrap 缩略图。大多数站点都需要在网格中布局图像、视频、文本等。Bootstrap 通过缩略图为此提供了一种简便的方式。使用 Bootstrap 创建缩略图的步骤如下：</p>
+    <ul>
+        <li>在图像周围添加带有 class <code>.thumbnail</code> 的 <code>&lt;a></code> 标签。</li>
+        <li>这会添加四个像素的内边距（padding）和一个灰色的边框。</li>
+        <li>当鼠标悬停在图像上时，会动画显示出图像的轮廓。</li>
+    </ul>
+    <p>下面的实例演示了默认的缩略图：</p>
+    <div class="row">
+       <div class="col-sm-6 col-md-3">
+          <a href="#" class="thumbnail">
+             <img src="images/thumb-1.jpg"  alt="通用的占位符缩略图">
+          </a>
+       </div>
+       <div class="col-sm-6 col-md-3">
+          <a href="#" class="thumbnail">
+             <img src="images/thumb-1.jpg"  alt="通用的占位符缩略图">
+          </a>
+       </div>
+       <div class="col-sm-6 col-md-3">
+          <a href="#" class="thumbnail">
+             <img src="images/thumb-1.jpg"  alt="通用的占位符缩略图">
+          </a>
+       </div>
+       <div class="col-sm-6 col-md-3">
+          <a href="#" class="thumbnail">
+             <img src="images/thumb-1.jpg"  alt="通用的占位符缩略图">
+          </a>
+       </div>
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>添加自定义的内容</h2>
+    <p>现在我们有了一个基本的缩略图，我们可以向缩略图添加各种 HTML 内容，比如标题、段落或按钮。具体步骤如下：</p>
+    <ul>
+        <li>把带有 class <code>.thumbnail</code> 的 <code>&lt;a></code> 标签改为 <code>&lt;div></code>。</li>
+        <li>在该 <code>&lt;div></code> 内，您可以添加任何您想要添加的东西。由于这是一个 <code>&lt;div></code>，我们可以使用默认的基于 span 的命名规则来调整大小。</li>
+        <li>如果您想要给多个图像进行分组，请把它们放置在一个无序列表中，且每个列表项向左浮动。</li>
+    </ul>
+    <div class="row">
+       <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+             <img src="images/thumb-1.jpg"  alt="通用的占位符缩略图">
+             <div class="caption">
+                <h3>缩略图标签</h3>
+                <p>一些示例文本。一些示例文本。</p>
+                <p>
+                   <a href="#" class="btn btn-primary" role="button">
+                      按钮
+                   </a> 
+                   <a href="#" class="btn btn-default" role="button">
+                      按钮
+                   </a>
+                </p>
+             </div>
+          </div>
+       </div>
+       <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+             <img src="images/thumb-1.jpg"  alt="通用的占位符缩略图">
+             <div class="caption">
+                <h3>缩略图标签</h3>
+                <p>一些示例文本。一些示例文本。</p>
+                <p>
+                   <a href="#" class="btn btn-primary" role="button">
+                      按钮
+                   </a> 
+                   <a href="#" class="btn btn-default" role="button">
+                      按钮
+                   </a>
+                </p>
+             </div>
+          </div>
+       </div>
+       <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+             <img src="images/thumb-1.jpg"  alt="通用的占位符缩略图">
+             <div class="caption">
+                <h3>缩略图标签</h3>
+                <p>一些示例文本。一些示例文本。</p>
+                <p>
+                   <a href="#" class="btn btn-primary" role="button">
+                      按钮
+                   </a> 
+                   <a href="#" class="btn btn-default" role="button">
+                      按钮
+                   </a>
+                </p>
+             </div>
+          </div>
+       </div>
+       <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+             <img src="images/thumb-1.jpg"  alt="通用的占位符缩略图">
+             <div class="caption">
+                <h3>缩略图标签</h3>
+                <p>一些示例文本。一些示例文本。</p>
+                <p>
+                   <a href="#" class="btn btn-primary" role="button">
+                      按钮
+                   </a> 
+                   <a href="#" class="btn btn-default" role="button">
+                      按钮
+                   </a>
+                </p>
+             </div>
+          </div>
+       </div>
+    </div>
+
+
+    
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>测试 - 语法高亮插件（jquery.snippet）</title>
+    <link rel="stylesheet" href="jquery.snippet.custom.min.css">
+    <script src="http://libs.useso.com/js/jquery/1.10.0/jquery.js"></script>
+    <script src="jquery.snippet.js"></script>
+</head>
+<body>
+<h1>测试 - 语法高亮插件（jquery.snippet）</h1>
+<p>注意：该插件不支持在HTML代码中高亮显示CSS和JavaScript代码。</p>
+<h2>HTML代码</h2>
+<pre class="htmlCode">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-cn"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;title>标题&lt;/title&gt;
+    &lt;meta name="keywords" content="关键字" /&gt;
+    &lt;meta name="description" content="描述" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!--这里是主体部分--&gt;
+    &lt;p&gt;这是一个段落。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<h2>CSS代码</h2>
+<pre class="cssCode">
+/*CSS代码*/
+body,input,button,select,textarea{font-size:12px;font-family:Simsun;color:#333;}
+h1,h2,h3,h4,h5,h6{font-size:12px;}
+body{background:#fff;}
+table{border-collapse:collapse;border-spacing:0;table-layout:fixed;}
+address,em,i{font-style:normal;}
+button{cursor:pointer;}
+button::-moz-focus-inner{border:0;padding:0;}
+textarea{resize:none;}
+</pre>
+<h2>JavaScript代码</h2>
+<pre class="jsCode">
+/*JavaScript代码*/
+var pageCount = 10;
+var base = 5;
+var jsonObj = {
+    a: 1,
+    b: 2,
+    c: 3
+};
+
+function funTest(a, b, c)
+{
+    //执行语句
+}
+
+if(pageCount &gt; 10 &amp;&amp; base &lt; 20)
+{
+    for(i = 1; i &lt;= 10; i++)
+    {
+        alert("执行代码！");
+    }
+}
+else
+{
+    alert("执行代码！");
+}
+</pre>
+<script>
+    $(function()
+    {
+        /*snippet方法将为元素集合执行语法高亮操作
+         *=======================================
+         *参数1：语言选择
+         *参数2：参数设置
+         *  style：          颜色展现方案，默认为"random"，即随机方案。
+         *  showNum：        是否显示数字，默认为true
+         *  transparent：    背景是否透明，默认为false
+         *  clipboard：      指定用于拷贝操作所需的Flash文件，指定则开启复制功能，默认不启用复制功能
+         *  collapse：       是否开启折叠功能，默认为false
+         *  startCollapsed： 初始状态下是否这点代码块，默认为true，仅在collapse属性为true时有效
+         *  startText：      初始状态下是否显示纯文本，默认为false
+         *  showMsg：        开启折叠功能后，指定显示操作的文本内容
+         *  hideMsg：        开启折叠功能后，指定隐藏操作的文本内容
+         *  box：            设置需要显示方框的行数，如"4"——仅第4行显示方框；"4-6"——第4行到第6行显示方框；"4-6, 10"——第4行到第6行显示方框、第10行也显示方框
+         *  boxColor：       方框的边框颜色，默认为主色调
+         *  boxFill：        方框的填充颜色，默认为透明
+         *  menu：           是否显示右上角的菜单（包含copy、切换text/html、弹窗显示三个链接），默认为true
+         */
+        
+        $("pre.htmlCode").snippet("html", {style: "custom_html",
+                                            clipboard:"ZeroClipboard.swf",
+                                            collapse: true,
+                                            startCollapsed: false,
+                                            showMsg:"显示代码",
+                                            hideMsg:"折叠代码"});
+
+        $("pre.cssCode").snippet("css", {style: "custom_css"});
+
+        $("pre.jsCode").snippet("javascript", {style: "custom_js"});
+
+    });
+</script>
+</body>
+</html>

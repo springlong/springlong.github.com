@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Date日期对象：日期时间各部分的获取</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script src="../../public/js/jquery.min.js"></script>
+    <script src="../../public/js/jquery.extend.js"></script>
+    <script src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';} 
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        p{margin-top:20px;line-height:2em;}
+        code{padding:5px 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:360px;}
+
+        #wrapper div{display:inline-block;font-size:21px;font-weight:bold;color:#3B834D;}
+    </style>
+</head>
+<body>
+<h1>Date日期对象：日期时间各部分的获取</h1>
+<script>
+    var dt = new Date();
+    document.write("<h2>本机日期时间</h2>");
+    document.write("<p><code>new Date().getFullYear()</code>：" + dt.getFullYear());
+    document.write("<p><code>new Date().getMonth()</code>：" + dt.getMonth());
+    document.write("<p><code>new Date().getDate()</code>：" + dt.getDate());
+    document.write("<p><code>new Date().getDay()</code>：" + dt.getDay());
+    document.write("<p><code>new Date().getHours()</code>：" + dt.getHours());
+    document.write("<p><code>new Date().getMinutes()</code>：" + dt.getMinutes());
+    document.write("<p><code>new Date().getSeconds()</code>：" + dt.getSeconds());
+    document.write("<p><code>new Date().getMilliseconds()</code>：" + dt.getMilliseconds());
+    document.write("<h2>本机对应的UTC时间</h2>");
+    document.write("<p><code>new Date().getUTCFullYear()</code>：" + dt.getUTCFullYear());
+    document.write("<p><code>new Date().getUTCMonth()</code>：" + dt.getUTCMonth());
+    document.write("<p><code>new Date().getUTCDate()</code>：" + dt.getUTCDate());
+    document.write("<p><code>new Date().getUTCDay()</code>：" + dt.getUTCDay());
+    document.write("<p><code>new Date().getUTCHours()</code>：" + dt.getUTCHours());
+    document.write("<p><code>new Date().getUTCMinutes()</code>：" + dt.getUTCMinutes());
+    document.write("<p><code>new Date().getUTCSeconds()</code>：" + dt.getUTCSeconds());
+    document.write("<p><code>new Date().getUTCMilliseconds()</code>：" + dt.getUTCMilliseconds());
+    document.write("<h2>已被废弃</h2>");
+    document.write("<p><code>new Date(\"1998/8/12\").getYear()</code>：" + new Date("1998/8/12").getYear());
+    document.write("<p><code>new Date(\"2014/8/12\").getYear()</code>：" + new Date("2014/8/12").getYear());
+
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

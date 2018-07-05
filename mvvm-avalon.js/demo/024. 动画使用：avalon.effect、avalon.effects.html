@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>动画使用：avalon.effect、avalon.effects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>动画使用：avalon.effect</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>avalon2实际上没有实现完整的动画模块，它只是对现有的<strong>CSS3动画</strong>或<strong>jquery animate</strong>再包装一层。</p>
+    <p>我们先说如何用CSS3为avalon实现动画效果。首先要使用<code>avalon.effect</code>注册一个特效。</p>    
+<pre>
+avalon.effect(name, definition);
+</pre>
+    <p>所有注册了的特效，都可以在<code>avalon.effects</code>对象中找到。</p>
+    <p>css3动画要求我们至少添加4个类名。这个是从angular那里学过来的。因此如果你以前的项目是基于angular，它那些CSS动画类可以原封不动地搬过来用。</p>
+<pre>
+avalon.effect('animate', {
+    enterClass: 'animate-enter',
+    enterActiveClass: 'animate-enter-active',
+    leaveClass: 'animate-leave',
+    leaveActiveClass: 'animate-leave-active', 
+});
+</pre>
+    <p>当然，这些类名会默认帮你添加，因为它内部是这样实现的。</p>
+<pre>
+avalon.effect = function (name, definition) {
+    avalon.effects[name] = definition
+    if (support.css) {
+        if (!definition.enterClass) {
+            definition.enterClass = name + '-enter'
+        }
+        if (!definition.enterActiveClass) {
+            definition.enterActiveClass = definition.enterClass + '-active'
+        }
+        if (!definition.leaveClass) {
+            definition.leaveClass = name + '-leave'
+        }
+        if (!definition.leaveActiveClass) {
+            definition.leaveActiveClass = definition.leaveClass + '-active'
+        }
+
+    }
+    if (!definition.action) {
+        definition.action = 'enter'
+    }
+};
+</pre>
+    <p>因此你可以简化成这样：</p>
+<pre>
+avalon.effect('animate', {});
+</pre>
+    <p>注册完，我们就需要在样式表中添加真正的CSS类。</p>
+<pre>
+&lt;style>
+    .animate-enter, .animate-leave{
+        width:100px;
+        height:100px;
+        background: #29b6f6;
+        transition: width 2s;
+        -moz-transition: width 2s; /* Firefox 4 */
+        -webkit-transition: width 2s; /* Safari 和 Chrome */
+        -o-transition: width 2s; /* Opera */
+    }  
+    .animate-enter-active, .animate-leave{
+        width:300px;
+    }
+    .animate-leave-active{
+        width:100px;
+    }
+&lt;/style>
+</pre>
+    <p>我们还得定义一个vm，里面指明动画的动作（默认有三种方式, <code>enter</code>, <code>leave</code>, <code>move</code>）及动画结束时的回调（这是可选的）</p>
+<pre>
+var vm = avalon.define({
+    $id: 'test',
+    aaa: 'test',
+    action: 'enter',
+    enterCb: function(){
+        avalon.log('动画完成');
+    },
+    leaveCb: function(){
+        avalon.log('动画回到原点');
+    };
+});
+</pre>
+    <p>然后页面上这样使用：</p>
+<pre>
+&lt;div ms-controller="test">
+    &lt;div ms-effect="{is:'animate', action:@action, onEnterDone: @enterCb, onLeaveDone: @leaveCb}">
+        {{@aaa}}
+    &lt;/div>
+    &lt;button ms-click="@action = @action !== 'leave' ? 'leave' : 'enter'">click&lt;/button>
+&lt;/div>
+</pre>
+
+
+	<hr>
+    <style>
+        .animate-enter, .animate-leave{
+            width:100px;
+            height:100px;
+            background: #29b6f6;
+            transition: width 2s;
+            -moz-transition: width 2s; /* Firefox 4 */
+            -webkit-transition: width 2s; /* Safari 和 Chrome */
+            -o-transition: width 2s; /* Opera */
+        }  
+        .animate-enter-active, .animate-leave{
+            width:300px;
+        }
+        .animate-leave-active{
+            width:100px;
+        }
+    </style>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            aaa: 'test',
+            action: 'enter',
+            enterCb: function(){
+                avalon.log('动画完成');
+            },
+            leaveCb: function(){
+                avalon.log('动画回到原点');
+            }
+        });
+    </script>
+    <div ms-controller="test">
+        <div ms-effect="{is:'animate', action:@action, onEnterDone: @enterCb, onLeaveDone: @leaveCb}">
+            {{@aaa}}
+        </div>
+        <button ms-click="@action = @action !== 'leave' ? 'leave' : 'enter'">click</button>
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p><code>ms-effect</code> 的值为一个对象，其中<code>is</code>是必选。除了<code>action</code>, 还支持这么多种回调：</p>
+<pre>
+onEnterDone, onLeaveDone, onEnterAbort, onLeaveAbort, onBeforeEnter, onBeforeLeave
+</pre>
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>如果使用JS实现，则是这样的：</p>
+<pre>
+&lt;style>
+    .ani {
+       width: 100px;
+       height: 100px;
+       background: #29b6f6;
+    }
+&lt;/style>
+&lt;script>
+    avalon.effect('animate2', {
+        enter: function(el, done) {
+            $(el).animate({width: 300}, 1000, done);
+        },
+        leave: function(el, done) {
+            $(el).animte({width: 100}, 1000, done);
+        }
+    });
+
+    var vm2 = avalon.define({
+        $id: 'test2',
+        aaa: 'test',
+        action: 'enter',
+        enterCb: function(){
+            avalon.log('动画完成');
+        },
+        leaveCb: function(){
+            avalon.log('动画回到原点');
+        }
+    });
+&lt;/script>
+&lt;div ms-controller="test2">
+    &lt;div class="ani" ms-effect="{is: 'animate', action: @action, onEnterDone: @enterCb, onLeaveDone: @leaveCb}">
+        {{@aaa}}
+    &lt;/div>
+    &lt;button ms-click="@action !== 'leave' ? 'leave' : 'enter'">click&lt;/button>
+&lt;/div>
+</pre>
+    <style>
+        .ani {
+           width: 100px;
+           height: 100px;
+           background: #29b6f6;
+        }
+    </style>
+    <script>
+        avalon.effect('animate2', {
+            enter: function(el, done) {
+                $(el).animate({width: 300}, 1000, done);
+            },
+            leave: function(el, done) {
+                $(el).animate({width: 100}, 1000, done);
+            }
+        });
+
+        var vm2 = avalon.define({
+            $id: 'test2',
+            aaa: 'test',
+            action: 'enter',
+            enterCb: function(){
+                avalon.log('动画完成');
+            },
+            leaveCb: function(){
+                avalon.log('动画回到原点');
+            }
+        });
+    </script>
+    <div ms-controller="test2">
+        <div class="ani" ms-effect="{is: 'animate2', action: @action, onEnterDone: @enterCb, onLeaveDone: @leaveCb}">
+            {{@aaa}}
+        </div>
+        <button ms-click="@action = @action !== 'leave' ? 'leave' : 'enter'">click</button>
+    </div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>一个CSS3位置效果：</p>
+<pre>
+&lt;style>
+   .anim{
+        width:100px;
+        height:100px;
+        background: #ff6e6e;
+    }
+    .wave-enter, .wave-leave {
+        -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    }
+
+    .wave-enter {
+        position:absolute;
+        left:45%;
+    }
+
+    .wave-enter-active {
+        left:0;
+    }
+
+    .wave-leave {
+        position:absolute;
+        left:0;
+    }
+
+    .wave-leave-active {
+        left:45%;
+    }
+&lt;/style>
+&lt;script>
+    avalon.effect('wave', {});
+
+    var vm = avalon.define({
+        $id: 'test3',
+        action: 'enter',
+        enterCb: function () {
+            avalon.log('动画完成');
+        },
+        leaveCb: function () {
+            avalon.log('动画回到原点');
+        }
+    });
+&lt;/script>
+&lt;div ms-controller="test3" style="position:relative;">
+    &lt;div class='anim' ms-effect="{is:'wave', action:@action, onEnterDone: @enterCb, onLeaveDone: @leaveCb}">
+        &lt;button ms-click='@action = @action !== "leave" ? "leave": "enter"' type="button">click&lt;/button>
+    &lt;/div>
+&lt;/div>
+</pre>
+    <style>
+       .anim{
+            width:100px;
+            height:100px;
+            background: #ff6e6e;
+        }
+        .wave-enter, .wave-leave {
+            -webkit-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+            -moz-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+            -o-transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+            transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+        }
+
+        .wave-enter {
+            position:absolute;
+            left:45%;
+        }
+
+        .wave-enter-active {
+            left:0;
+        }
+
+        .wave-leave {
+            position:absolute;
+            left:0;
+        }
+
+        .wave-leave-active {
+            left:45%;
+        }
+    </style>
+    <script>
+        avalon.effect('wave', {});
+
+        var vm = avalon.define({
+            $id: 'test3',
+            action: 'enter',
+            enterCb: function () {
+                avalon.log('动画完成');
+            },
+            leaveCb: function () {
+                avalon.log('动画回到原点');
+            }
+        });
+    </script>
+    <div ms-controller="test3" style="position:relative;">
+        <div class='anim' ms-effect="{is:'wave', action:@action, onEnterDone: @enterCb, onLeaveDone: @leaveCb}">
+            <button ms-click='@action = @action !== "leave" ? "leave": "enter"' type="button">click</button>
+        </div>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

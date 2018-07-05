@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Banner大图视差滚动切换效果</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="css/index.css" />
+	<script src="js/jquery-1.9.1.js"></script>
+</head>
+<body>
+<div id="slideParallax">
+	<div class="banner-bg"></div>
+	<div class="banner-wrap">
+		<a class="banner">
+			<div class="d_1" style="left:0;"></div>
+			<div class="d_2" style="left:0;"></div>
+			<div class="d_3" style="left:0;"></div>
+		</a>
+		<a class="banner">
+			<div class="d_4" style="left:-150%;"></div>
+			<div class="d_5" style="left:-150%;"></div>
+			<div class="d_6" style="left:-150%;"></div>
+		</a>
+		<a class="banner">
+			<div class="d_7" style="left:-150%;"></div>
+			<div class="d_8" style="left:-150%;"></div>
+			<div class="d_9" style="left:-150%;"></div>
+		</a>
+	</div>
+	<ul class="banner-nav">
+		<li class="sele"></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<script type="text/javascript">
+	(function($)
+	{
+		/**
+         * 返回len个目标字符串的拼接结果
+         * @param  {String} str 目标字符串
+         * @param  {Number} len 需要拼接的次数
+         * @return {String}     字符串拼接后的结果
+         */
+        $.dupStr = function(str, len)
+        {
+            var result = "", i = 0;
+            for(; i < len; i++)
+            {
+                result += str;
+            }
+            return result;
+        };
+
+        /**
+         * 判断类型是否为：jQuery对象
+         * @param  {任意类型}  value 需要判断的值
+         * @return {Boolean}       是/否
+         */
+       	$.isJQuery = function(value)
+        {
+            return value instanceof jQuery;
+        };
+
+		$.slideParallax = function(params)
+		{
+			new $.slideParallax.init(params);
+		};
+
+		$.slideParallax.init = function(params)
+		{
+			var container, children;
+			if(params && $.isJQuery(container = params.container) && container.length === 1 && (children = container.children()).length === 3)
+			{
+				this.wrap = children.eq(1);
+				this.bgPics = params.bgPics || [];
+				this.delay = params.delay || 4000;
+				this.animated = false;
+				this.time = 0;
+				this.current = 0;
+				this.init();
+			}
+		};
+
+		$.slideParallax.init.prototype = {
+
+			//初始化相关操作
+			init: function()
+			{	
+				var _self = this;
+
+				_self.length = _self.wrap.children().length; //幻灯片个数
+				_self.bg = _self.wrap.prev(); //背景容器
+				_self.nav = _self.wrap.next(); //导航按钮
+
+				//得到所需运动的节点数组
+				_self.child = _self.wrap.children();
+				_self.child_child = [];
+				$.each(_self.child, function(index)
+				{
+					_self.child_child[index] = $(this).children();
+				});
+				
+				//为导航按钮添加事件绑定
+				$.each(_self.nav.children(), function(index)
+				{
+					$(this).click(function()
+					{
+						if(_self.current !== index && !_self.animated)
+						{
+							_self.stop();
+							_self.navStatus(index);
+							_self.moveOut(index);
+						}
+					});
+				});
+
+				this.play();
+			},
+
+			//播放当前动画
+			play: function()
+			{
+				var _self = this;
+				_self.time = setTimeout(function(){ _self.moveOut() }, _self.delay);
+			},
+
+			//停止当前动画
+			stop: function()
+			{
+				clearTimeout(this.time);
+			},
+
+			//将现有幻灯片淡出
+			moveOut: function(index)
+			{
+				var _self = this,
+					length = _self.length,
+					i = 0,
+					max = length - 1,
+					currentElements = _self.child_child[_self.current];
+
+				_self.animated = true;
+
+				for(; i < max; i++)
+				{
+					$(currentElements[i]).animate({'left':'150%'}, 600);
+				}
+				$(currentElements[max]).animate({'left':'150%'}, 400, function()
+				{
+					if(index === undefined)
+					{
+						if(++_self.current >= length) _self.current = 0;
+						_self.navStatus();
+					}
+					else
+					{
+						_self.current = index;	
+					}
+					_self.changBg();
+				});
+			},
+
+			//变更导航按钮的状态
+			navStatus: function(index)
+			{
+				var eles = this.nav.children();
+				eles.removeClass("sele");
+				$(eles[index !== undefined ? index : this.current]).addClass("sele");
+			},
+
+			//切换背景图片
+			changBg: function()
+			{
+				var _self = this,
+					bg = _self.bg,
+					bgPic = 'url(' + _self.bgPics[_self.current] +')',
+					currentElements = _self.child_child[_self.current];
+
+				bg.animate({'opacity': '0.2'}, 600, function()
+				{
+					bg.css('background', bgPic);
+					bg.animate({'opacity': '1'}, 400, function()
+					{
+						currentElements.css("left", "-150%");
+						_self.moveIn();
+					});
+				});
+			},
+
+			//将接下来需要显示的幻灯片淡入
+			moveIn: function()
+			{
+				var _self = this,
+					length = _self.length,
+					i = 0,
+					max = length - 1,
+					currentElements = _self.child_child[_self.current];
+
+				for(; i < max; i++)
+				{
+					$(currentElements[i]).animate({'left': '0'}, 600 + i * 200);
+				}
+				$(currentElements[max]).animate({'left': '0'}, 600 + max * 200, function()
+				{
+					_self.animated = false;
+					_self.play();
+				});
+			}
+		};
+
+	})(jQuery);
+
+	
+	$(function()
+	{
+		$.slideParallax({
+			container: $("#slideParallax"),
+			bgPics: ['images/9_N1bg.jpg','images/find5.jpg','images/colorbg.jpg'],
+			delay: 4000
+		});
+	})
+</script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript" src="https://static.xidibuy.com/??static/sea-modules/jquery/jquery.js,static/sea-modules/seajs/seajs/2.2.0/sea.js,static/sea-modules/seajs/seajs-flush.js"></script>
+	<style>
+		body {
+			background: #eee;
+		}
+	</style>
+</head>
+<body>
+<hr>
+<p>本以为这个功能会很简单，但是查了很多资料，用JS操作粘贴板IE下很好用，直接支持一个window.lipboardData对象，通过这个对象可以访问到粘贴板中内容。但是chrome和firefox支持不是很好。Chrome和firefox为什么不支持有点难以理解，为了保护系统，免受外来侵害？
+在网上搜了很多资料，但是大部分资料都是介绍在IE下使用window.clipboardData对象访问粘贴板实现Copy和paste，但是单独只为IE开发一个复制、粘贴功能，非常不实用；当然网上还有其他方法，比如通过Flash的间接方式操作OS粘贴板，虽然有这类插件，但是也很不好用，只能用户点击复制按钮才行，而且也不灵活。
+  后来想了想，很多页面都是禁止copy的，那么通过浏览器事件，是不是可以访问到粘贴板？查了下资料，IE/Chrome/Firefox都支持oncopy/onpaste/oncut事件，虽然不是在所有元素上都支持。但是这里通过事件的event应该可以访问到用户复制了什么内容，并修改Data。动手实验了下，通过console.debug查看chrome和firefox的event对象，会发现event里面有一个clipboardData对象，所以后面的事情就不难了。看如下Firefox的截图就知道了：</p>
+<!-- <embed width="500" height="550" src="http://img2.tbcdn.cn/tfscom/T1CRkMFh0hXXXtxVjX.swf" type="application/x-shockwave-flash" wmode="transparent" allowscriptaccess="never"> -->
+<!-- <embed width="500" height="550" src="https://static.xidibuy.com/static/global/images/1.0.0/newyear/yanhua.swf" type="application/x-shockwave-flash" wmode="transparent"> -->
+<!-- <object width="500" height="550" type="application/x-shockwave-flash" data="https://static.xidibuy.com/static/global/images/1.0.0/newyear/yanhua.swf" width="100%" height="100%">
+	<param name="allowFullScreen" value="true">
+	<param name="allowScriptAccess" value="always">
+</object> -->
+<!-- <embed width="500" height="550" src="http://img.uu1001.cn/bcv3.swf?v=20130904-175748" type="application/x-shockwave-flash" wmode="transparent" allowscriptaccess="never"> -->
+<!-- <embed width="500" height="550" src="http://img.uu1001.cn/materials/original/2009-06-29/bc4f1f08f8d66ad53643cb613eb67fdebaff5ff9.swf" type="application/x-shockwave-flash" wmode="transparent" allowscriptaccess="never"> -->
+<!-- <embed width="500" height="550" src="http://img.uu1001.cn/materials/original/2009-06-29/bc4f1f08f8d66ad53643cb613eb67fdebaff5ff9.swf" type="application/x-shockwave-flash" wmode="transparent" allowscriptaccess="never"> -->
+<script>
+
+</script>
+<script type="text/javascript">
+
+    function getClipboard()
+    {
+        if (window.clipboardData) {
+
+            return (window.clipboardData.getData('Text'));
+        }
+        else if (window.netscape) {
+
+            netscape.security.PrivilegeManager.enablePrivilege('UniversalXPConnect');
+
+            var clip = Components.classes['@mozilla.org/widget/clipboard;1'].createInstance(Components.interfaces.nsIClipboard);
+            if (!clip) return;
+
+            var trans = Components.classes['@mozilla.org/widget/transferable;1'].createInstance(Components.interfaces.nsITransferable);
+            if (!trans) return;
+
+            trans.addDataFlavor('text/unicode');
+            clip.getData(trans, clip.kGlobalClipboard);
+
+            var str = new Object();
+            var len = new Object();
+
+            try {
+                trans.getTransferData('text/unicode', str, len);
+            }
+            catch (error) {
+                return null;
+            }
+
+            if (str) {
+                if (Components.interfaces.nsISupportsWString) str = str.value.QueryInterface(Components.interfaces.nsISupportsWString);
+                else if (Components.interfaces.nsISupportsString) str = str.value.QueryInterface(Components.interfaces.nsISupportsString);
+                else str = null;
+            }
+
+            if (str) {
+            	return (str.data.substring(0, len.value / 2));
+            }
+        }
+        return null;
+    }
+
+
+
+    //绑定在了body上，也可以绑定在其他可用元素行，但是不是所有元素都支持copy和past事件。  
+	$(document.body).bind({  
+	    copy: function(e) {//copy事件  
+	        // var cpTxt = "复制的数据";  
+	        // var clipboardData = window.clipboardData; //for IE  
+	        // if (!clipboardData) { // for chrome  
+	        //     clipboardData = e.originalEvent.clipboardData;  
+	        // }  
+	        // //e.clipboardData.getData('text');//可以获取用户选中复制的数据  
+	        // clipboardData.setData('Text', cpTxt);  
+	        // console.log('Copy Data : ' + cpTxt);  
+	        // return false;//否则设不生效  
+	    },paste: function(e) {//paste事件  
+	        var eve = e.originalEvent  
+	        var cp = eve.clipboardData;  
+	        var data = null;  
+	        var clipboardData = window.clipboardData; // IE  
+	        if (!clipboardData) { //chrome  
+	            clipboardData = e.originalEvent.clipboardData  
+	        }  
+	        data = clipboardData.getData('file');  
+	        // data = clipboardData.getData('Text');  
+	        console.log(data);  
+	    }  
+	}); 
+</script>
+</body>
+</html>

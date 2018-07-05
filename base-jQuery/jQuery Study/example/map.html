@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>.map() - jQuery代码示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../../public/js/jquery.extend.js"></script>
+    <script src="../../public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<h1>jQuery代码示例：<code>.map()</code></h1>
+<p class="title"><code>.map(function(){index, ele})</code></p>
+<p class="desc">遍历元素集合，将通过回调函数返回的值构建为一个新的jQuery对象并返回（不包含null和undefined）。（返回类型：jQuery）</p>
+<p class="params">参数function(){index, ele}：<span>（类型：Function）</span>回调函数；</p>
+<div id="box">
+    容器（ID：box）
+    <div id="layer1">
+        图层1（ID：layer1）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer2">
+        图层2（ID：layer2）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer3">
+        图层3（ID：layer3）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+</div>
+<pre class="jsCode" style="width:800px;">
+//map方法执行的结果中将会包含除null、undefined之外的任何值
+$("#box p").map(function(index, ele)
+{
+    return index + "：" + $(ele).html();
+}).each(function(index, ele)
+{
+    alert(ele);
+});
+</pre>
+<p><button class="btnShort">执行上面的代码</button></p>
+<pre class="jsCode" style="width:800px;">
+//下面的代码将针对box容器下div元素的第一个子节点设置背景
+$("#box div").map(function()
+{
+    return this.firstElementChild || this.firstChild;
+}).css("background-color", "green");
+</pre>
+<p><button class="btnShort">执行上面的代码</button></p>
+<pre class="jsCode" style="width:800px;">
+//下面的代码将针对box容器下div元素的最后一个子节点设置背景
+$("#box div").map(function()
+{
+    return this.lastElementChild || this.lastChild;
+}).css("background-color", "orange");
+</pre>
+<p><button class="btnShort">执行上面的代码</button></p>
+<script>
+    (function($)
+    {
+        $("button").eq(0).click(function(){
+            $("#box p").map(function(index, ele)
+            {
+                return index + "：" + $(ele).html();
+            }).each(function(index, ele)
+            {
+                alert(ele);
+            });
+        });
+
+        $("button").eq(1).click(function(){
+            $("#box div").map(function()
+            {
+                return this.firstElementChild || this.firstChild;
+            }).css("background-color", "green");
+        });
+
+        $("button").eq(2).click(function(){
+            $("#box div").map(function()
+            {
+                return this.lastElementChild || this.lastChild;
+            }).css("background-color", "orange");
+        });
+    })(jQuery);
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+    $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+</script>
+</body>
+</html>

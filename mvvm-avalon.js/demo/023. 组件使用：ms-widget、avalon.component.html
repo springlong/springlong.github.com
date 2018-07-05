@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>组件使用：ms-widget、avalon.component</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>组件使用：ms-widget、avalon.component</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>avalon2最引以为豪的东西是，终于有一套强大的类Web Component的组件系统。这个组件系统媲美于React的JSX，并且能更好地控制子组件的传参。</p>
+    <p>avalon自诞生以来，就一直探索如何优雅的定义组件使用组件。从avalon1.4的<code>ms-widget</code>，到avalon1.5的自定义标签。而现在的版本恰好是它们的结合体，并从web component那里借鉴了<code>slot</code>插入点机制及生命周期管理，从react那里抄来了<code>render</code>字符串模板。</p>
+
+    <p>&nbsp;</p>
+    <p>在avalon1.4中，<code>ms-widget</code>指令的值是一个字符串，使用逗号隔开几个有限的元消息:</p>
+<pre>
+&lt;div ms-widget="widgetType, widgetVmID, widgetOption">&lt;/div>
+</pre>
+
+    <p>&nbsp;</p>
+    <p>在avalon1.5中，改成自定义标签做载体，使用<code>config</code>对象属性作为<code>widgetOption</code>, 使用<code>id</code>或<code>identifier</code>属性来指定组件VM的id, 使用标签名来指定组件的类型。</p>
+<pre>
+&lt;ms:button ms-repeat="array" ms-attr-config="x{{$index}}">&lt;/ms:button>
+</pre>
+
+    <p>&nbsp;</p>
+    <p>此外还有其他夹七夹八的东西，功能更强大了，但上手更难了。</p>
+    <p>现在细细回想起来，其中重要的配置项就只有两个<b>组件的ID</b>，<b>组件的类型</b>。其他的配置项需要用更优雅的方式加入去。幸好在开始写新组件指令前，我已经解决了。大家可以回去看一下， ms-attr, ms-css. 让指令的属性值以对象或对象数组的形式存在，不就能放许多东西吗。</p>
+<pre>
+&lt;xmp ms-widget="@obj">&lt;/xmp>
+&lt;xmp ms-widget="{is:'panel', $id:'aaa', title:@title}">&lt;/xmp>
+&lt;xmp ms-widget="[{is:'panel', $id:'aaa', title:@title}, @otherConfig, @thirdConfig]">&lt;/xmp>
+</pre>
+
+    <p>&nbsp;</p>
+    <p>其次是生命周期。avalon2的组件生命周期更完善。</p>
+    <table class="table table-bordered">
+        <tr>
+            <td>avalon1.4</td>
+            <td>avalon1.5</td>
+            <td>avalon2</td>
+            <td>web component</td>
+            <td>xtag</td>
+            <td>react</td>
+        </tr>
+        <tr>
+            <td>$init</td>
+            <td>$init</td>
+            <td>onInit</td>
+            <td>createdCallback</td>
+            <td>created</td>
+            <td>componentWillMount
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>$childReady</td>
+            <td>onReady</td>
+            <td> attachedCallback </td>
+            <td>inserted</td>
+            <td>componentDidMount</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>$ready</td>
+            <td>onViewChange</td>
+            <td> attributeChangedCallback </td>
+            <td>attributeChanged</td>
+            <td> componentWillReceiveProps </td>
+        </tr>
+        <tr>
+            <td>$remove</td>
+            <td>$dispose</td>
+            <td>onDispose</td>
+            <td> detachedCallback </td>
+            <td>removed</td>
+            <td>componentWillUpdate </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>componentDidUpdate </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>componentWillUnmount </td>
+        </tr>
+    </table>
+    <p>从上表可以看到，avalon2与Web Component的生命周期很相近了。</p>
+    <ol>
+        <li><strong>onInit</strong>，这是组件的vm创建完毕就立即调用时，这时它对应的元素节点或虚拟DOM都不存在。只有当这个组件里面不存在子组件或子组件的构造器都加载回来，那么它才开始创建其虚拟DOM。否则原位置上被一个<strong>注释节点</strong>占着。</li>
+        <li><strong>onReady</strong>，当其虚拟DOM构建完毕，它就生成其真实DOM，并用它插入到DOM树，替换掉那个注释节点。相当于其他框架的attachedCallback， inserted, componentDidMount.</li>
+        <li><strong>onViewChange</strong>，当这个组件或其子孙节点的某些属性值或文本内容发生变化，就会触发它。它是比Web Component的attributeChangedCallback更加给力。</li>
+        <li><strong>onDispose</strong>，当这个组件的元素被移出DOM树，就会执行此回调，它会移除相应的事件，数据与vmodel。</li>
+    </ol>
+    <p>我们再来看一下如何定义组件。上面只是说如何添加配置项。<code>onInit</code>, <code>onReady</code>, <code>onViewChagne</code>, <code>onDispose</code>只是其中的四个配置项。</p>
+    <p>avalon2 的默认配置项比avalon1.5 少许多。</p>
+    <ol>
+        <li><strong>is</strong>, 字符串, 指定组件的类型。如果你使用了自定义标签，这个还可以省去。</li>
+        <li><strong>$id</strong>, 字符串, 指定组件vm的$id，这是可选项。</li>
+        <li><strong>define</strong>, 函数, 自己决定如何创建vm，这是可选项。</li>
+        <li><strong>diff</strong>, 函数, 比较组件的前后两个虚拟DOM树，返回true同步到真实DOM中，可选。</li>
+        <li><strong>onInit, onReady, onViewChange, onDispose</strong>四大生命周期钩子。</li>
+    </ol>
+    <p>然后就没有了, 没有replace,slot, template,extend, container,construct, $$template 这些怪怪的东西。</p>
+    <p>说起自定义标签。之前1.5为了兼容IE6－8，是使用旧式的带命名空间的标签作为容器，而Web Component则是使用中间带杠的标签，如<code>&lt;ms-button></code>,风格大相径庭。显然后者是主流，是未来！</p>
+
+    <p>&nbsp;</p>
+    <p>经过一番研究，发掘出三大标签作为组件定义时的容器。</p>
+<pre>
+xmp, wbr, template
+</pre>
+
+    <p>&nbsp;</p>
+    <p><code>xmp</code>是闭合标签，与div一样，需要写开标签与闭标签。但它里面的内容全部作为文本存在，因此在它里面写带杠的自定义标签完全没问题。并且有一个好处时，它是能减少真实DOM的生成（内部就只有一个文本节点）。</p>
+<pre>
+&lt;xmp ms-widget="@config">
+    &lt;ms-button ms-widget="@btn1">&lt;ms-button>
+    &lt;div>&lt;/div>
+    &lt;ms-tab ms-widget="@tab">&lt;ms-tab>
+&lt;/xmp>
+</pre>
+
+
+    <p>&nbsp;</p>
+    <p><code>wbr</code>与xmp一样，是一个很古老的标签。它是一个空标签，或者说是半闭合标签，像br, area, hr, map, col都是空标签。我们知道，自定义标签都是闭合标签，后面部分根本不没有携带更多有用的信息，因此对我们来说，没多大用处。</p>
+<pre>
+&lt;wbr ms-widget="@config" />
+</pre>
+
+
+    <p>&nbsp;</p>
+    <p><code>template</code>是HTML5添加的标签，它在IE9－11中不认，但也能正确解析得出来。它与xmp, wbr都有一个共同特点，能节省我们定义组件时页面上的节点规模。xmp只有一个文本节点作为孩子，wbr没有孩子，template也没有孩子，并且用content属性将内容转换为文档碎片藏起来。</p>
+<pre>
+&lt;template ms-widget="@config" >
+    &lt;ms-dialog ms-widget="@config">&lt;/ms-dialog>
+&lt;/template>
+</pre>
+
+
+    <p>&nbsp;</p>
+    <p>当然如果你不打算兼容IE6－8，可以直接上<code>ms-button</code>这样标签。自定义标签比起上面三大容器标签，只是让你少写了<code>is</code>配置项而已，但多写了一个无用的闭标签。</p>
+<pre>
+&lt;ms-dialog ms-widget="@config" >&lt;ms-panel ms-widget="@config2">&lt;/ms-panel>&lt;/ms-dialog>
+&lt;!--比对下面的写法-->
+&lt;xmp ms-widget="@config" >&lt;wbr ms-widget="@config2"/>&lt;/xmp>
+</pre>
+
+
+    <p>&nbsp;</p>
+    <p>如果你想在页面上使用<code>ms-button</code>组件，只能用于以下四种方式</p>
+<pre>
+&lt;!--在自定义标签中，ms-widget不是必须的-->
+&lt;ms-button>&lt;/ms-button>
+&lt;!--下面三种方式，ms-widget才是存在，其中的is也是必须的-->
+&lt;xmp ms-widget='{is:"ms-button"}'>&lt;/xmp>
+&lt;wbr ms-widget='{is:"ms-button"}'/>
+&lt;template ms-widget='{is:"ms-button"}'>&lt;/template>
+</pre>
+
+
+    <p>&nbsp;</p>
+    <p>在JS中，我们是这样使用它</p>
+<pre>
+&lt;script>
+    var vm1 = avalon.define({
+        $id: 'test',
+        button: {  // 注意这里不能以 $ 开头
+            buttonText: 'VM内容'
+        }
+    });
+
+    avalon.component('ms-button', {
+        template: '，&lt;button type="button"&lt;span>，&lt;slot name="buttonText">，&lt;/slo&lt;/span&lt;/button>',
+        defaults: {
+            buttonText: '默认内容'
+        },
+        soleSlot: 'buttonText'
+    });
+&lt;/script>
+&lt;div ms-controller="test">
+    &lt;!--在自定义标签中，ms-widget不是必须的-->
+    &lt;ms-button>，&lt;/ms-button>
+    &lt;!--下面三种方式，ms-widget才是存在，其中的is也是必须的-->
+    &lt;xmp ms-widget="{is:'ms-button'}&lt;/xmp>
+    &lt;wbr ms-widget="{is:'ms-button'}" />
+    &lt;template ms-widget="{is:'ms-button'}">，&lt;/template>
+&lt;/div>
+</pre>
+
+
+
+    <script>
+        var vm1 = avalon.define({
+            $id: 'test',
+            button: {  // 注意这里不能以 $ 开头
+                buttonText: 'VM内容'
+            }
+        });
+
+        avalon.component('ms-button', {
+            template: '<button type="button"><span><slot name="buttonText"></slot></span></button>',
+            defaults: {
+                buttonText: '默认内容'
+            },
+            soleSlot: 'buttonText'
+        });
+    </script>
+    <div ms-controller="test">
+        <!--在自定义标签中，ms-widget不是必须的-->
+        <ms-button></ms-button>
+        <!--下面三种方式，ms-widget才是存在，其中的is也是必须的-->
+        <xmp ms-widget="{is:'ms-button'}"></xmp>
+        <wbr ms-widget="{is:'ms-button'}" />
+        <template ms-widget="{is:'ms-button'}"></template>
+    </div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>但这样我们就不好控制组件的更新。我们改一改。</p>
+<pre>
+&lt;script>
+    var vm2 = avalon.define({
+        $id: 'test2',
+        button: {  // 注意这里不能以 $ 开头
+            buttonText: '按钮内容'
+        }
+    });
+
+    avalon.component('ms-button', {
+        template: '&lt;button type="button">&lt;span>&lt;slot name="buttonText">&lt;/slot>&lt;/span>&lt;/button>',
+        defaults: {
+            buttonText: 'button'
+        },
+        soleSlot: 'buttonText'
+    })
+&lt;/script>
+&lt;div ms-controller="test2">
+    &lt;!--在自定义标签中，ms-widget不是必须的-->
+    &lt;ms-button ms-widget="@button">&lt;/ms-button>
+    &lt;!--下面三种方式，ms-widget才是存在，其中的is也是必须的-->
+    &lt;xmp ms-widget='[{is:"ms-button"}, @button]'>&lt;/xmp>
+    &lt;wbr ms-widget='[{is:"ms-button"}, @button]'/>
+    &lt;template ms-widget='[{is:"ms-button"}, @button]'>&lt;/template>
+&lt;/div>
+</pre>
+
+
+    <script>
+        var vm2 = avalon.define({
+            $id: 'test2',
+            button: {  // 注意这里不能以 $ 开头
+                buttonText: '按钮内容'
+            }
+        });
+
+        avalon.component('ms-button', {
+            template: '<button type="button"><span><slot name="buttonText"></slot></span></button>',
+            defaults: {
+                buttonText: 'button'
+            },
+            soleSlot: 'buttonText'
+        })
+    </script>
+    <div ms-controller="test2">
+        <!--在自定义标签中，ms-widget不是必须的-->
+        <ms-button ms-widget="@button"></ms-button>
+        <!--下面三种方式，ms-widget才是存在，其中的is也是必须的-->
+        <xmp ms-widget='[{is:"ms-button"}, @button]'></xmp>
+        <wbr ms-widget='[{is:"ms-button"}, @button]'/>
+        <template ms-widget='[{is:"ms-button"}, @button]'></template>
+    </div>
+    <p>&nbsp;</p>
+    <p>然后我们可以直接操作 vm中的button对象中对应属性就能更新组件了。这比原来avalon1.*好用一万倍。</p>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>此外，avalon2还支持Web Components规范中所说的<strong>slot插入点机制</strong>，它是用来配置一些字符串长度很长的属性。比如说<code>ms-tabs</code>组件，通常有一个数组属性，而数组的每个元素都是一个很长的文本，用于对应一个面板。这时我们可以在自定义标签的<code>innerHTML</code>内，添加一些<code>slot</code>元素，并且指定其<code>name</code>就行了。</p>
+
+    <p>&nbsp;</p>
+    <p>当我们不使用<code>slot</code>，又不愿意写面板内部放进vm时，你的页面会是这样的：</p>
+<pre>
+&lt;ms-tabs ms-widget='{panels:[
+    "第一个面板的内部dfsdfsdfsdfdsfdsf",
+    "第二个面板的内部dfsdfsdfsdfdsfdsf"
+    "第三个面板的内部dfsdfsdfsdfdsfdsf"]  }'
+>&lt;/ms-tabs>
+</pre>
+    <p>使用了slot后</p>
+<pre>
+&lt;ms-tabs>
+    &lt;div slot='panels'>第一个面板的内部dfsdfsdfsdfdsfdsf&lt;/div>
+    &lt;div slot='panels'>第二个面板的内部dfsdfsdfsdfdsfdsf&lt;/div>
+    &lt;div slot='panels'>第三个面板的内部dfsdfsdfsdfdsfdsf&lt;/div>
+&lt;/ms-tabs>
+</pre>
+
+    <p>而你的组件是这样定义</p>
+<pre>
+&lt;ms-tabs>
+    &lt;slot name='panels'>&lt;/solt>
+    &lt;slot name='panels'>&lt;/solt>
+    &lt;slot name='panels'>&lt;/solt>
+&lt;/ms-tabs>
+</pre>
+    <p>上面的div会依次替代slot元素。</p>
+    <p>此外，如果我们只有一个插槽，不想在页面上<code>slot</code>属性，那么可以在组件里使用<code>soleSlot</code>。</p>
+    <p>注意 <code>avalon.component</code> 的第二个参数，是一个对象，它里面有三个配置项，<code>template</code>是必须的， <code>defaults</code>、 <code>soleSlot</code>是可选的。</p>
+    <p>组件属性的寻找顺序，会优先找配置对象，然后是<code>innerHTML</code>，然后是<code>defaults</code>中的默认值.</p>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>生命周期回调的例子.</p>
+    <p>avalon是使用多种策略来监听元素是否移除，确保onDispose回调会触发！</p>
+<pre>
+&lt;script>
+    &lt;valon.component('ms-button', {
+        template: '&lt;button type="button">&lt;span>&lt;slot name="buttonText">&lt;/slot>&lt;/span>&lt;/button>',
+        &lt;efaults: {
+            buttonText: "button"
+        },
+        soleSlot: 'buttonText'
+    });
+
+
+    var vm3 = avalon.define({
+        $id: 'test3',
+        config: {
+            buttonText: '按钮',
+            onInit: function(a) {
+                console.log('onInit!');
+            },
+            onReady: function(a) {
+                console.log('onReady!');
+            },
+            onViewChange: function(a) {
+                console.log('onViewChange!');
+            },
+            onDispose: function(a) {
+                console.log('onDispose!');
+            }
+        }
+    });
+
+    setTimeout(function(){
+        vm3.config.buttonText = 'change';
+
+        setTimeout(function(){
+            document.getElementById('test3').innerHTML= '';
+        }, 2000);
+    }, 3000);
+&lt;/script>
+&lt;div id="test3">
+    &lt;div ms-controller='test3' >
+        &lt;div>&lt;wbr ms-widget="[{is:'ms-button'}, @config]"/>&lt;/div>
+    &lt;/div>
+&lt;/div>
+</pre>
+    <script>
+        avalon.component('ms-button', {
+            template: '<button type="button"><span><slot name="buttonText"></slot></span></button>',
+            defaults: {
+                buttonText: "button"
+            },
+            soleSlot: 'buttonText'
+        });
+
+
+        var vm3 = avalon.define({
+            $id: 'test3',
+            config: {
+                buttonText: '按钮',
+                onInit: function(a) {
+                    console.log('onInit!');
+                },
+                onReady: function(a) {
+                    console.log('onReady!');
+                },
+                onViewChange: function(a) {
+                    console.log('onViewChange!');
+                },
+                onDispose: function(a) {
+                    console.log('onDispose!');
+                }
+            }
+        });
+
+        setTimeout(function(){
+            vm3.config.buttonText = 'change';
+
+            setTimeout(function(){
+                document.getElementById('test3').innerHTML= '';
+            }, 2000);
+        }, 3000);
+    </script>
+    <div id="test3">
+        <div ms-controller='test3' >
+            <div><wbr ms-widget="[{is:'ms-button'}, @config]"/></div>
+        </div>
+    </div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

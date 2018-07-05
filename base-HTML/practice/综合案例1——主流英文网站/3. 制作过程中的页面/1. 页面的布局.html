@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>页面的布局</title>
+	<meta name="keywords" content="主流英文网站" />
+	<meta name="description" content="主流英文网站" />
+	<meta name="author" content="Jerry_小猪"  />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<style type="text/css">
+		/*整体设置*/
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		body{
+			font-family:Tahoma, Geneva, sans-serif,Arial, Helvetica, sans-serif;
+			font-size:11px;
+			color:#999;
+			background-color:gray;
+		}
+		
+		/*页面主容器设置*/
+		#mainContainer{
+			width:821px;
+			margin:0px auto;
+			background-color:white;
+		}
+		#header,#navContainer,#contentContainer,#footerContainer{
+			width:791px;
+			margin:0px auto;
+		}
+		
+		/*头部、导航栏、尾部设置*/
+		#header{
+			height:158px;
+			background-color:#063;
+		}
+		#mainNav{
+			width:634px;
+			height:28px;
+			float:right;
+			margin:10px 0px;
+			background-color:#C90;
+		}
+		#contentContainer,#footerContainer{
+			clear:both;
+		}
+		#footerContainer{
+			padding:15px 0px;	/*由于footer前有浮动元素，因此margin属性无效，特加外框设置padding值来留出空白*/
+		}
+		#footer{
+			height:26px;
+			background-color:#F90;
+		}
+		
+		/*内容显示区呈三列布局*/
+		#sideRight{
+			float:right;
+		}
+		#sideLeft{
+			float:left;
+		}
+		#mainContent{
+			float:left;
+			width:429px;
+		}
+		
+		/*内容右部侧栏高度值为：240+347=587px*/
+		#sideRight,#aboutUs,#welcome{
+			width:171px;
+		}
+		#aboutUs{
+			height:240px;
+			margin-bottom:17px;
+			background-color:#CCC;
+		}
+		#welcome{
+			height:347px;
+			background-color:#333;
+		}
+		
+		/*内容左部侧栏高度值为：24+190+363=577px*/
+		#sideLeft,#search,#servicesSide,#news{
+			width:191px;
+		}
+		#search{
+			/*height:30px;*/
+			height:24px;
+			margin-bottom:6px;
+			background-color:#F90;
+		}
+		#servicesSide{
+			height:190px;
+			margin-bottom:17px;
+			background-color:#99C;
+		}
+		#news{
+			height:363px;
+			background-color:#CF0;
+		}
+		
+		/*内容主体高度值为：227+331=558px*/
+		#show,#servicesMain{
+			width:391px;
+			margin:auto;
+		}
+		#show{
+			height:227px;
+			margin-bottom:17px;
+			background-color:#C6C
+		}
+		#servicesMain{
+			height:331px;
+			background-color:#690;
+		}
+		
+		h2{
+			text-align:center;
+			color:#00C;
+		}
+	</style>
+</head>
+<body>
+
+<div id="mainContainer">
+	<div id="header">
+		<h2>Header</h2>
+	</div>
+	<div id="navContainer">
+		<div id="mainNav">
+			<h2>mainNav</h2>
+		</div>
+	</div>
+	<div id="contentContainer">
+		<div id="sideRight">
+			<div id="aboutUs">
+				<h2>about Us</h2>
+			</div>
+			<div id="welcome">
+				<h2>Welcome</h2>
+			</div>
+		</div>
+		<div id="sideLeft">
+			<div id="search">
+				<h2>Search</h2>
+			</div>
+			<div id="servicesSide">
+				<h2>Services</h2>
+			</div>
+			<div id="news">
+				<h2>News</h2>
+			</div>
+		</div>
+		<div id="mainContent">
+			<div id="show">
+				<h2>Show</h2>
+			</div>
+			<div id="servicesMain">
+				<h2>Services</h2>
+			</div>
+		</div>
+	</div>
+	<div id="footerContainer">
+		<div id="footer">
+			<h2>Footer</h2>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,835 @@
+{
+    // 自定义标签的completion列表
+    "custom_completion":  [
+        ["link\tTag", "link rel=\"stylesheet\" type=\"text/css\" href=\"$1\">"],
+        ["style\tTag", "style type=\"text/css\">$0</style>"],
+        ["a\tTag", "a href=\"$1\">$0</a>"],
+        ["area\tTag", "area shape=\"$1\" coords=\"$2\" href=\"$3\">"],
+        ["audio\tTag", "audio src=\"$1\">$0</audio>"],
+        ["base\tTag", "base href=\"$1\">"],
+        ["br\tTag", "br>"],
+        ["col\tTag", "col>"],
+        ["hr\tTag", "hr>"],
+        ["iframe\tTag", "iframe src=\"$1\">$0</iframe>"],
+        ["input\tTag", "input type=\"$1\" name=\"$2\">"],
+        ["img\tTag", "img src=\"$1\">"],
+        ["param\tTag", "param name=\"$1\" value=\"$2\">"],
+        ["progress\tTag", "progress value=\"$1\" max=\"$2\">"],
+        ["source\tTag", "source src=\"$1\" type=\"$2\">"],
+        ["track\tTag", "track kind=\"$1\" src=\"$2\">"],
+        ["wbr\tTag", "wbr>"],
+        ["video\tTag", "video src=\"$1\">$0</video>"],
+        ["meta\tTag", "meta ${1:charset=\"utf-8\"}>"],
+        ["meta:viewport\tTag", "meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no\">"],
+        ["meta:ie\tTag", "meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge,chrome=1\">"],
+        ["meta:webkit\tTag", "meta name=\"renderer\" content=\"webkit\">"],
+        ["meta:apple-mobile-web-app-capable\tTag", "meta name=\"apple-mobile-web-app-capable\" content=\"yes\">"],
+        ["meta:format-detection\tTag", "meta name=\"format-detection\" content=\"telephone=no\">"],
+    ],
+
+    // 标签的全局属性
+    "html_attributes": [
+        "class", "id", "style", "title",
+        "accesskey", "contenteditable", "contextmenu", "dir",
+        "hidden", "lang", "tabindex", "translate",
+    ],
+
+    // Vue 指令
+    "directive": [
+        "slot", "slot-scope", "ref", "name",
+        "v-text", "v-html",
+        "v-for", "key",
+        "v-if", "v-else-if",
+        {"name": "v-else", "type": "prop", "def": "", "desc": ""},
+        "v-show",
+        "v-model", "v-model.lazy", "v-model.number", "v-model.trim",
+        {"name": "v-bind", "type": "prop", "def": "", "desc": ""},
+        {"name": "v-on", "type": "prop", "def": "", "desc": ""},
+        "v-on:click", "v-on:dblclick",
+        "v-on:touchstart", "v-on:touchmove", "v-on:touchend",
+        "v-on:mousedown", "v-on:mouseup", "v-on:mouseenter", "v-on:mouseleave",
+        "v-on:mousemove", "v-on:mouseout", "v-on:mouseover", "v-on:mousewheel",
+        "v-on:keydown", "v-on:keypress", "v-on:keyup",
+        "v-on:blur", "v-on:focus", "v-on:input", "v-on:change", "v-on:select", "v-on:submit",
+        "v-on:load", "v-on:scroll",
+        "v-on:dragstart", "v-on:drag", "v-on:dragend",
+        "v-on:dragenter", "v-on:dragexit", "v-on:dragleave", "v-on:dragover", "v-on:drop",
+        "@click", "@dblclick",
+        "@touchstart", "@touchmove", "@touchend",
+        "@mousedown", "@mouseup", "@mouseenter", "@mouseleave",
+        "@mousemove", "@mouseout", "@mouseover", "@mousewheel",
+        "@keydown", "@keypress", "@keyup",
+        "@blur", "@focus", "@input", "@change", "@select", "@submit",
+        "@load", "@scroll",
+        "@dragstart", "@drag", "@dragend",
+        "@dragenter", "@dragexit", "@dragleave", "@dragover", "@drop",
+    ],
+
+    // Vue中的组件内容
+    "component_data": {
+        "router-link": {
+            "attrs": [
+                {"name": "to", "type": "string", "def": "", "desc": ""},
+                {"name": "replace", "type": "boolean", "def": "false", "desc": ""},
+                {"name": "append", "type": "string", "def": "false", "desc": ""},
+                {"name": "tag", "type": "string", "def": "a", "desc": ""},
+                {"name": "active-class", "type": "string", "def": "router-link-active", "desc": ""},
+                {"name": "exact", "type": "boolean", "def": "false", "desc": ""},
+                {"name": "exact-active-class", "type": "string", "def": "router-link-exact-active", "desc": ""},
+                {"name": "event", "type": "string", "def": "click", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "router-view": {
+            "attrs": [
+                {"name": "name", "type": "string", "def": "default", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "transition": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "enter-active-class", "type": "", "def": "", "desc": ""},
+                {"name": "leave-active-class", "type": "", "def": "", "desc": ""},
+                {"name": "mode", "type": "", "def": "", "desc": ""},
+                {"name": "tag", "type": "", "def": "", "desc": ""},
+                {"name": "appear", "type": "", "def": "", "desc": ""},
+                {"name": ":before-enter", "type": "", "def": "", "desc": ""},
+                {"name": ":enter", "type": "", "def": "", "desc": ""},
+                {"name": ":after-enter", "type": "", "def": "", "desc": ""},
+                {"name": ":before-leave", "type": "", "def": "", "desc": ""},
+                {"name": ":leave", "type": "", "def": "", "desc": ""},
+                {"name": ":after-leave", "type": "", "def": "", "desc": ""},
+                {"name": ":css", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "transition-group": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "enter-active-class", "type": "", "def": "", "desc": ""},
+                {"name": "leave-active-class", "type": "", "def": "", "desc": ""},
+                {"name": "mode", "type": "", "def": "", "desc": ""},
+                {"name": "tag", "type": "", "def": "", "desc": ""},
+                {"name": "appear", "type": "", "def": "", "desc": ""},
+                {"name": ":before-enter", "type": "", "def": "", "desc": ""},
+                {"name": ":enter", "type": "", "def": "", "desc": ""},
+                {"name": ":after-enter", "type": "", "def": "", "desc": ""},
+                {"name": ":before-leave", "type": "", "def": "", "desc": ""},
+                {"name": ":leave", "type": "", "def": "", "desc": ""},
+                {"name": ":after-leave", "type": "", "def": "", "desc": ""},
+                {"name": ":css", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+    },
+
+    // HTML的标签数据
+    "tag_data": {
+
+        // 头部标签
+        "html": {
+            "attrs": [
+                {"name": "manifest", "type": "", "def": "", "desc": ""},
+                {"name": "xmlns", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "head": {
+            "attrs": [
+                {"name": "profile", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "title": {
+            "attrs": [],
+            "docLink": ""
+        },
+        "meta": {
+            "attrs": [
+                {
+                    "name": "name",
+                    "type": "",
+                    "def": "",
+                    "desc": "",
+                    "enum": [
+                        {"value": "viewport", "desc": ""},
+                        {"value": "keywords", "desc": ""},
+                        {"value": "description", "desc": ""},
+                        {"value": "generator", "desc": ""},
+                        {"value": "revised", "desc": ""},
+                        {"value": "author", "desc": ""},
+                    ]
+                },
+                {"name": "content", "type": "", "def": "", "desc": ""},
+                {"name": "charset", "type": "", "def": "", "desc": ""},
+                {
+                    "name": "http-equiv",
+                    "type": "",
+                    "def": "",
+                    "desc": "",
+                    "enum": [
+                        {"value": "content-type", "desc": ""},
+                        {"value": "Cache-Control", "desc": ""},
+                        {"value": "expires", "desc": ""},
+                        {"value": "refresh", "desc": ""},
+                        {"value": "set-cookie", "desc": ""},
+                    ]
+                },
+                {"name": "scheme", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "link": {
+            "attrs": [
+                {"name": "rel", "type": "", "def": "", "desc": "", "enum": [
+                    {"value": "stylesheet", "desc": ""},
+                    {"value": "icon", "desc": ""},
+                    {"value": "alternate", "desc": ""},
+                    {"value": "author", "desc": ""},
+                    {"value": "help", "desc": ""},
+                    {"value": "licence", "desc": ""},
+                    {"value": "next", "desc": ""},
+                    {"value": "pingback", "desc": ""},
+                    {"value": "prefetch", "desc": ""},
+                    {"value": "prev", "desc": ""},
+                    {"value": "search", "desc": ""},
+                    {"value": "sidebar", "desc": ""},
+                    {"value": "tag", "desc": ""},
+                ]},
+                {"name": "type", "type": "", "def": "", "desc": "", "enum": [
+                    {"value": "text/css", "desc": ""},
+                ]},
+                {"name": "href", "type": "", "def": "", "desc": ""},
+                {"name": "hreflang", "type": "", "def": "", "desc": ""},
+                {"name": "media", "type": "", "def": "", "desc": ""},
+                {"name": "sizes", "type": "", "def": "", "desc": ""},
+                {"name": "crossorigin", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "style": {
+            "attrs": [
+                {"name": "type", "type": "", "def": "", "desc": "", "enum": [
+                    {"value": "text/css", "desc": ""},
+                ]},
+                {"name": "media", "type": "", "def": "", "desc": ""},
+                {"name": "disabled", "type": "", "def": "", "desc": ""},
+                {"name": "scoped", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "script": {
+            "attrs": [
+                {"name": "type", "type": "", "def": "", "desc": "", "enum": [
+                    {"value": "text/javascript", "desc": ""},
+                ]},
+                {"name": "src", "type": "", "def": "", "desc": ""},
+                {"name": "async", "type": "", "def": "", "desc": ""},
+                {"name": "defer", "type": "", "def": "", "desc": ""},
+                {"name": "charset", "type": "", "def": "", "desc": ""},
+                {"name": "language", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "base": {
+            "attrs": [
+                {"name": "href", "type": "", "def": "", "desc": ""},
+                {"name": "target", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "body": {"attrs": [], "docLink": ""},
+
+
+        // 常规布局标签
+        "template": {"attrs": [{"name": "content", "type": "", "def": "", "desc": ""} ], "docLink": ""},
+        "main": {"attrs": [], "docLink": ""},
+        "article": {"attrs": [], "docLink": ""},
+        "section": {"attrs": [], "docLink": ""},
+        "header": {"attrs": [], "docLink": ""},
+        "footer": {"attrs": [], "docLink": ""},
+        "aside": {"attrs": [], "docLink": ""},
+        "nav": {"attrs": [], "docLink": ""},
+        "h1": {"attrs": [], "docLink": ""},
+        "h2": {"attrs": [], "docLink": ""},
+        "h3": {"attrs": [], "docLink": ""},
+        "h4": {"attrs": [], "docLink": ""},
+        "h5": {"attrs": [], "docLink": ""},
+        "h6": {"attrs": [], "docLink": ""},
+        "hr": {"attrs": [], "docLink": ""},
+        "div": {"attrs": [], "docLink": ""},
+        "p": {"attrs": [], "docLink": ""},
+        "span": {"attrs": [], "docLink": ""},
+        "dl": {"attrs": [], "docLink": ""},
+        "dt": {"attrs": [], "docLink": ""},
+        "dd": {"attrs": [], "docLink": ""},
+        "br": {"attrs": [], "docLink": ""},
+        "b": {"attrs": [], "docLink": ""},
+        "i": {"attrs": [], "docLink": ""},
+        "strong": {"attrs": [], "docLink": ""},
+        "em": {"attrs": [], "docLink": ""},
+        "dfn": {"attrs": [], "docLink": ""},
+        "code": {"attrs": [], "docLink": ""},
+        "abbr": {"attrs": [], "docLink": ""},
+        "bdo": {"attrs": [], "docLink": ""},
+        "cite": {"attrs": [], "docLink": ""},
+        "kbd": {"attrs": [], "docLink": ""},
+        "mark": {"attrs": [], "docLink": ""},
+        // "rp": {"attrs": [], "docLink": ""},
+        // "rt": {"attrs": [], "docLink": ""},
+        // "rtc": {"attrs": [], "docLink": ""},
+        "var": {"attrs": [], "docLink": ""},
+        "wbr": {"attrs": [], "docLink": ""},
+        "samp": {"attrs": [], "docLink": ""},
+        "small": {"attrs": [], "docLink": ""},
+        "sub": {"attrs": [], "docLink": ""},
+        "sup": {"attrs": [], "docLink": ""},
+        "summary": {"attrs": [], "docLink": ""},
+        "address": {"attrs": [], "docLink": ""},
+        "ins": {"attrs": [{"name": "cite", "type": "", "def": "", "desc": ""}, {"name": "datetime", "type": "", "def": "", "desc": ""} ], "docLink": ""},
+        "del": {"attrs": [{"name": "cite", "type": "", "def": "", "desc": ""}, {"name": "datetime", "type": "", "def": "", "desc": ""} ], "docLink": ""},
+        "blockquote": {"attrs": [{"name": "cite", "type": "", "def": "", "desc": ""} ], "docLink": ""},
+        "q": {"attrs": [{"name": "cite", "type": "", "def": "", "desc": ""} ], "docLink": ""},
+        "pre": {"attrs": [], "docLink": ""},
+        "time": {"attrs": [{"name": "datetime", "type": "", "def": "", "desc": ""}, {"name": "pubdate", "type": "", "def": "", "desc": ""}, ], "docLink": ""},
+        "datalist": {"attrs": [], "docLink": ""},
+        "noframes": {"attrs": [], "docLink": ""},
+        "noscript": {"attrs": [], "docLink": ""},
+        "a": {
+            "attrs": [
+                {"name": "href", "type": "", "def": "", "desc": ""},
+                {"name": "target", "type": "", "def": "", "desc": ""},
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "charset", "type": "", "def": "", "desc": ""},
+                {"name": "coords", "type": "", "def": "", "desc": ""},
+                {"name": "download", "type": "", "def": "", "desc": ""},
+                {"name": "hreflang", "type": "", "def": "", "desc": ""},
+                {"name": "media", "type": "", "def": "", "desc": ""},
+                {"name": "ping", "type": "", "def": "", "desc": ""},
+                {"name": "rel", "type": "", "def": "", "desc": ""},
+                {"name": "rev", "type": "", "def": "", "desc": ""},
+                {"name": "shape", "type": "", "def": "", "desc": ""},
+                {"name": "type", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "ol": {
+            "attrs": [
+                {"name": "type", "type": "", "def": "", "desc": ""},
+                {"name": "start", "type": "", "def": "", "desc": ""},
+                {"name": "compact", "type": "", "def": "", "desc": ""},
+                {"name": "reversed", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "ul": {
+            "attrs": [
+                {"name": "type", "type": "", "def": "", "desc": ""},
+                {"name": "compact", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "li": {
+            "attrs": [
+                {"name": "type", "type": "", "def": "", "desc": ""},
+                {"name": "value", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+
+
+        // 表格标签
+        "table": {
+            "attrs": [
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "border", "type": "", "def": "", "desc": ""},
+                {"name": "cellpadding", "type": "", "def": "", "desc": ""},
+                {"name": "cellspacing", "type": "", "def": "", "desc": ""},
+                {"name": "frame", "type": "", "def": "", "desc": ""},
+                {"name": "rules", "type": "", "def": "", "desc": ""},
+                {"name": "summary", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "thead": {
+            "attrs": [
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "char", "type": "", "def": "", "desc": ""},
+                {"name": "charoff", "type": "", "def": "", "desc": ""},
+                {"name": "valign", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "tbody": {
+            "attrs": [
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "char", "type": "", "def": "", "desc": ""},
+                {"name": "charoff", "type": "", "def": "", "desc": ""},
+                {"name": "valign", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "tfoot": {
+            "attrs": [
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "char", "type": "", "def": "", "desc": ""},
+                {"name": "charoff", "type": "", "def": "", "desc": ""},
+                {"name": "valign", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "caption": {"attrs": [], "docLink": ""},
+        "col": {
+            "attrs": [
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "char", "type": "", "def": "", "desc": ""},
+                {"name": "charoff", "type": "", "def": "", "desc": ""},
+                {"name": "span", "type": "", "def": "", "desc": ""},
+                {"name": "valign", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "colgroup": {
+            "attrs": [
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "char", "type": "", "def": "", "desc": ""},
+                {"name": "charoff", "type": "", "def": "", "desc": ""},
+                {"name": "span", "type": "", "def": "", "desc": ""},
+                {"name": "valign", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "tr": {
+            "attrs": [
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "char", "type": "", "def": "", "desc": ""},
+                {"name": "charoff", "type": "", "def": "", "desc": ""},
+                {"name": "valign", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "th": {
+            "attrs": [
+                {"name": "abbr", "type": "", "def": "", "desc": ""},
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "axis", "type": "", "def": "", "desc": ""},
+                {"name": "char", "type": "", "def": "", "desc": ""},
+                {"name": "charoff", "type": "", "def": "", "desc": ""},
+                {"name": "colspan", "type": "", "def": "", "desc": ""},
+                {"name": "headers", "type": "", "def": "", "desc": ""},
+                {"name": "height", "type": "", "def": "", "desc": ""},
+                {"name": "nowrap", "type": "", "def": "", "desc": ""},
+                {"name": "rowspan", "type": "", "def": "", "desc": ""},
+                {"name": "scope", "type": "", "def": "", "desc": ""},
+                {"name": "valign", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "td": {
+            "attrs": [
+                {"name": "abbr", "type": "", "def": "", "desc": ""},
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "axis", "type": "", "def": "", "desc": ""},
+                {"name": "char", "type": "", "def": "", "desc": ""},
+                {"name": "charoff", "type": "", "def": "", "desc": ""},
+                {"name": "colspan", "type": "", "def": "", "desc": ""},
+                {"name": "headers", "type": "", "def": "", "desc": ""},
+                {"name": "height", "type": "", "def": "", "desc": ""},
+                {"name": "nowrap", "type": "", "def": "", "desc": ""},
+                {"name": "rowspan", "type": "", "def": "", "desc": ""},
+                {"name": "scope", "type": "", "def": "", "desc": ""},
+                {"name": "valign", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+
+
+        // 表单
+        "form": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "action", "type": "", "def": "", "desc": ""},
+                {"name": "method", "type": "", "def": "", "desc": ""},
+                {"name": "target", "type": "", "def": "", "desc": ""},
+                {"name": "accept", "type": "", "def": "", "desc": ""},
+                {"name": "accept-charset", "type": "", "def": "", "desc": ""},
+                {"name": "autocomplete", "type": "", "def": "", "desc": ""},
+                {"name": "enctype", "type": "", "def": "", "desc": ""},
+                {"name": "novalidate", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "fieldset": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "disabled", "type": "", "def": "", "desc": ""},
+                {"name": "form", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "legend": {"attrs": [], "docLink": ""},
+        "input": {
+            "attrs": [
+                {"name": "type", "type": "", "def": "", "desc": ""},
+                {"name": "value", "type": "", "def": "", "desc": ""},
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "size", "type": "", "def": "", "desc": ""},
+                {"name": "tabindex", "type": "", "def": "", "desc": ""},
+                {"name": "checked", "type": "", "def": "", "desc": ""},
+                {"name": "required", "type": "", "def": "", "desc": ""},
+                {"name": "readonly", "type": "", "def": "", "desc": ""},
+                {"name": "disabled", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""},
+                {"name": "height", "type": "", "def": "", "desc": ""},
+                {"name": "accept", "type": "", "def": "", "desc": ""},
+                {"name": "alt", "type": "", "def": "", "desc": ""},
+                {"name": "autocomplete", "type": "", "def": "", "desc": ""},
+                {"name": "autofocus", "type": "", "def": "", "desc": ""},
+                {"name": "autosave", "type": "", "def": "", "desc": ""},
+                {"name": "form", "type": "", "def": "", "desc": ""},
+                {"name": "formaction", "type": "", "def": "", "desc": ""},
+                {"name": "formenctype", "type": "", "def": "", "desc": ""},
+                {"name": "formmethod", "type": "", "def": "", "desc": ""},
+                {"name": "formnovalidate", "type": "", "def": "", "desc": ""},
+                {"name": "formtarget", "type": "", "def": "", "desc": ""},
+                {"name": "inputmode", "type": "", "def": "", "desc": ""},
+                {"name": "ismap", "type": "", "def": "", "desc": ""},
+                {"name": "list", "type": "", "def": "", "desc": ""},
+                {"name": "max", "type": "", "def": "", "desc": ""},
+                {"name": "maxlength", "type": "", "def": "", "desc": ""},
+                {"name": "min", "type": "", "def": "", "desc": ""},
+                {"name": "minlength", "type": "", "def": "", "desc": ""},
+                {"name": "multiple", "type": "", "def": "", "desc": ""},
+                {"name": "pattern", "type": "", "def": "", "desc": ""},
+                {"name": "placeholder", "type": "", "def": "", "desc": ""},
+                {"name": "selectionDirection", "type": "", "def": "", "desc": ""},
+                {"name": "spellcheck", "type": "", "def": "", "desc": ""},
+                {"name": "src", "type": "", "def": "", "desc": ""},
+                {"name": "step", "type": "", "def": "", "desc": ""},
+                {"name": "usemap", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "button": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "id", "type": "", "def": "", "desc": ""},
+                {"name": "type", "type": "", "def": "", "desc": ""},
+                {"name": "value", "type": "", "def": "", "desc": ""},
+                {"name": "autofocus", "type": "", "def": "", "desc": ""},
+                {"name": "disabled", "type": "", "def": "", "desc": ""},
+                {"name": "form", "type": "", "def": "", "desc": ""},
+                {"name": "formaction", "type": "", "def": "", "desc": ""},
+                {"name": "formenctype", "type": "", "def": "", "desc": ""},
+                {"name": "formmethod", "type": "", "def": "", "desc": ""},
+                {"name": "formnovalidate", "type": "", "def": "", "desc": ""},
+                {"name": "formtarget", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "textarea": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "id", "type": "", "def": "", "desc": ""},
+                {"name": "rows", "type": "", "def": "", "desc": ""},
+                {"name": "cols", "type": "", "def": "", "desc": ""},
+                {"name": "required", "type": "", "def": "", "desc": ""},
+                {"name": "readonly", "type": "", "def": "", "desc": ""},
+                {"name": "disabled", "type": "", "def": "", "desc": ""},
+                {"name": "autocomplete", "type": "", "def": "", "desc": ""},
+                {"name": "autofocus", "type": "", "def": "", "desc": ""},
+                {"name": "form", "type": "", "def": "", "desc": ""},
+                {"name": "maxlength", "type": "", "def": "", "desc": ""},
+                {"name": "minlength", "type": "", "def": "", "desc": ""},
+                {"name": "placeholder", "type": "", "def": "", "desc": ""},
+                {"name": "selectionDirection", "type": "", "def": "", "desc": ""},
+                {"name": "selectionEnd", "type": "", "def": "", "desc": ""},
+                {"name": "selectionStart", "type": "", "def": "", "desc": ""},
+                {"name": "spellcheck", "type": "", "def": "", "desc": ""},
+                {"name": "wrap", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "optgroup": {
+            "attrs": [
+                {"name": "disabled", "type": "", "def": "", "desc": ""},
+                {"name": "label", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "select": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "id", "type": "", "def": "", "desc": ""},
+                {"name": "size", "type": "", "def": "", "desc": ""},
+                {"name": "required", "type": "", "def": "", "desc": ""},
+                {"name": "disabled", "type": "", "def": "", "desc": ""},
+                {"name": "autofocus", "type": "", "def": "", "desc": ""},
+                {"name": "multiple", "type": "", "def": "", "desc": ""},
+                {"name": "form", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "option": {
+            "attrs": [
+                {"name": "value", "type": "", "def": "", "desc": ""},
+                {"name": "disabled", "type": "", "def": "", "desc": ""},
+                {"name": "selected", "type": "", "def": "", "desc": ""},
+                {"name": "label", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "progress": {
+            "attrs": [
+                {"name": "value", "type": "", "def": "", "desc": ""},
+                {"name": "max", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "label": {
+            "attrs": [
+                {"name": "for", "type": "", "def": "", "desc": ""},
+                {"name": "form", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "keygen": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "autofocus", "type": "", "def": "", "desc": ""},
+                {"name": "disabled", "type": "", "def": "", "desc": ""},
+                {"name": "challenge", "type": "", "def": "", "desc": ""},
+                {"name": "form", "type": "", "def": "", "desc": ""},
+                {"name": "keytype", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "output": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "for", "type": "", "def": "", "desc": ""},
+                {"name": "form", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+
+
+        // 多媒体标签
+        "img": {
+            "attrs": [
+                {"name": "src", "type": "", "def": "", "desc": ""},
+                {"name": "alt", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""},
+                {"name": "height", "type": "", "def": "", "desc": ""},
+                {"name": "ismap", "type": "", "def": "", "desc": ""},
+                {"name": "usemap", "type": "", "def": "", "desc": ""},
+                {"name": "longdesc", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "map": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "area": {
+            "attrs": [
+                {"name": "href", "type": "", "def": "", "desc": ""},
+                {"name": "target", "type": "", "def": "", "desc": ""},
+                {"name": "shape", "type": "", "def": "", "desc": ""},
+                {"name": "coords", "type": "", "def": "", "desc": ""},
+                {"name": "alt", "type": "", "def": "", "desc": ""},
+                {"name": "download", "type": "", "def": "", "desc": ""},
+                {"name": "hreflang", "type": "", "def": "", "desc": ""},
+                {"name": "media", "type": "", "def": "", "desc": ""},
+                {"name": "nohref", "type": "", "def": "", "desc": ""},
+                {"name": "rel", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "figure": {"attrs": [], "docLink": ""},
+        "figcaption": {"attrs": [], "docLink": ""},
+        "picture": {"attrs": [], "docLink": ""},
+        "video": {
+            "attrs": [
+                {"name": "autoplay", "type": "", "def": "", "desc": ""},
+                {"name": "autobuffer", "type": "", "def": "", "desc": ""},
+                {"name": "buffered", "type": "", "def": "", "desc": ""},
+                {"name": "controls", "type": "", "def": "", "desc": ""},
+                {"name": "crossorigin", "type": "", "def": "", "desc": ""},
+                {"name": "height", "type": "", "def": "", "desc": ""},
+                {"name": "loop", "type": "", "def": "", "desc": ""},
+                {"name": "muted", "type": "", "def": "", "desc": ""},
+                {"name": "played", "type": "", "def": "", "desc": ""},
+                {"name": "preload", "type": "", "def": "", "desc": ""},
+                {"name": "poster", "type": "", "def": "", "desc": ""},
+                {"name": "src", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "audio": {
+            "attrs": [
+                {"name": "autoplay", "type": "", "def": "", "desc": ""},
+                {"name": "buffered", "type": "", "def": "", "desc": ""},
+                {"name": "controls", "type": "", "def": "", "desc": ""},
+                {"name": "loop", "type": "", "def": "", "desc": ""},
+                {"name": "muted", "type": "", "def": "", "desc": ""},
+                {"name": "played", "type": "", "def": "", "desc": ""},
+                {"name": "preload", "type": "", "def": "", "desc": ""},
+                {"name": "src", "type": "", "def": "", "desc": ""},
+                {"name": "volume", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "track": {
+            "attrs": [
+                {"name": "src", "type": "", "def": "", "desc": ""},
+                {"name": "default", "type": "", "def": "", "desc": ""},
+                {"name": "kind", "type": "", "def": "", "desc": ""},
+                {"name": "label", "type": "", "def": "", "desc": ""},
+                {"name": "srclang", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "source": {
+            "attrs": [
+                {"name": "type", "type": "", "def": "", "desc": ""},
+                {"name": "src", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "applet": {
+            "attrs": [
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "alt", "type": "", "def": "", "desc": ""},
+                {"name": "archive", "type": "", "def": "", "desc": ""},
+                {"name": "code", "type": "", "def": "", "desc": ""},
+                {"name": "codebase", "type": "", "def": "", "desc": ""},
+                {"name": "height", "type": "", "def": "", "desc": ""},
+                {"name": "hspace", "type": "", "def": "", "desc": ""},
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "object", "type": "", "def": "", "desc": ""},
+                {"name": "vspace", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "object": {
+            "attrs": [
+                {"name": "align", "type": "", "def": "", "desc": ""},
+                {"name": "archive", "type": "", "def": "", "desc": ""},
+                {"name": "border", "type": "", "def": "", "desc": ""},
+                {"name": "classid", "type": "", "def": "", "desc": ""},
+                {"name": "codebase", "type": "", "def": "", "desc": ""},
+                {"name": "codetype", "type": "", "def": "", "desc": ""},
+                {"name": "data", "type": "", "def": "", "desc": ""},
+                {"name": "declare", "type": "", "def": "", "desc": ""},
+                {"name": "form", "type": "", "def": "", "desc": ""},
+                {"name": "height", "type": "", "def": "", "desc": ""},
+                {"name": "hspace", "type": "", "def": "", "desc": ""},
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "standby", "type": "", "def": "", "desc": ""},
+                {"name": "type", "type": "", "def": "", "desc": ""},
+                {"name": "typemustmatch", "type": "", "def": "", "desc": ""},
+                {"name": "usemap", "type": "", "def": "", "desc": ""},
+                {"name": "vspace", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "param": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "type", "type": "", "def": "", "desc": ""},
+                {"name": "value", "type": "", "def": "", "desc": ""},
+                {"name": "valuetype", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "embed": {
+            "attrs": [
+                {"name": "type", "type": "", "def": "", "desc": ""},
+                {"name": "src", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""},
+                {"name": "height", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "canvas": {
+            "attrs": [
+                {"name": "width", "type": "", "def": "", "desc": ""},
+                {"name": "height", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+
+
+        // 其它标签
+        "details": {
+            "attrs": [
+                {"name": "open", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "meter": {
+            "attrs": [
+                {"name": "value", "type": "", "def": "", "desc": ""},
+                {"name": "min", "type": "", "def": "", "desc": ""},
+                {"name": "max", "type": "", "def": "", "desc": ""},
+                {"name": "low", "type": "", "def": "", "desc": ""},
+                {"name": "high", "type": "", "def": "", "desc": ""},
+                {"name": "optimum", "type": "", "def": "", "desc": ""},
+                {"name": "form", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "menu": {"attrs": [], "docLink": ""},
+        "menuitem": {"attrs": [], "docLink": ""},
+        "iframe": {
+            "attrs": [
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "src", "type": "", "def": "", "desc": ""},
+                {"name": "frameborder", "type": "", "def": "", "desc": ""},
+                {"name": "scrolling", "type": "", "def": "", "desc": ""},
+                {"name": "width", "type": "", "def": "", "desc": ""},
+                {"name": "height", "type": "", "def": "", "desc": ""},
+                {"name": "longdesc", "type": "", "def": "", "desc": ""},
+                {"name": "marginheight", "type": "", "def": "", "desc": ""},
+                {"name": "marginwidth", "type": "", "def": "", "desc": ""},
+                {"name": "sandbox", "type": "", "def": "", "desc": ""},
+                {"name": "seamless", "type": "", "def": "", "desc": ""},
+                {"name": "srcdoc", "type": "", "def": "", "desc": ""},
+            ],
+            "docLink": ""
+        },
+        "frame": {
+            "attrs": [
+                {"name": "frameborder", "type": "", "def": "", "desc": ""},
+                {"name": "longdesc", "type": "", "def": "", "desc": ""},
+                {"name": "marginheight", "type": "", "def": "", "desc": ""},
+                {"name": "marginwidth", "type": "", "def": "", "desc": ""},
+                {"name": "name", "type": "", "def": "", "desc": ""},
+                {"name": "noresize", "type": "", "def": "", "desc": ""},
+                {"name": "scrolling", "type": "", "def": "", "desc": ""},
+                {"name": "src", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+        "frameset": {
+            "attrs": [
+                {"name": "cols", "type": "", "def": "", "desc": ""},
+                {"name": "onunload", "type": "", "def": "", "desc": ""},
+                {"name": "rows", "type": "", "def": "", "desc": ""}
+            ],
+            "docLink": ""
+        },
+    },
+}

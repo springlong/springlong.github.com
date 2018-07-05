@@ -1,0 +1,84 @@
+
+
+// 组件-成功提示框
+.dialog-tip-success {
+	position: relative;
+	box-sizing: border-box;
+	width: 327px;
+	height: 280px;
+	padding-top: 177px;
+	margin: 0 auto;
+	background: rgba(166,161,153,.95);
+	border-radius: 5px;
+}
+
+.dialog-tip-success-icon {
+	position: absolute;
+	left: 50%;
+	top: 62px;
+	width: 116px;
+	height: 85px;
+	margin-left: -58px;
+	background: url(../../src/static/images/icon-sc-tick.png) no-repeat 0 0;
+	background-size: 100% 100%;
+}
+
+.dialog-tip-success-text {
+	font-size: 36px;
+	line-height: 50px;
+	text-align: center;
+	color: #FFFFFF;
+}
+
+// 组件-底部弹出确认框
+.confirm-bottom {
+	font-size: 0;
+	background: #F9F9F9;
+}
+
+.confirm-bottom-cont {
+	font-size: 24px;
+	padding-top: 1px;
+}
+
+.confirm-bottom-btn {
+	display: flex;
+	height: 105px;
+	background: #FFFFFF;
+	border-top: 1px solid #EDEDED;
+}
+
+.confirm-bottom-btn-item {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-grow: 1;
+	position: relative;
+	font-size: 28px;
+	line-height: 1;
+	color: #363636;
+
+	+ .confirm-bottom-btn-item:before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 50%;
+		width: 2px;
+		height: 40px;
+		transform: translateY(-50%);
+		background-color: #cfcfcf;
+	}
+}
+
+.confirm-bottom-close {
+	position: relative;
+	height: 198px;
+}
+
+.confirm-bottom-close-item {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%) translateY(-50%);
+	.less-close(30px, 2px, #7F7F7F);
+}

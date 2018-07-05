@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <style>
+    	body {
+    		padding: 50px 0;
+    	}
+    	.box {
+    		overflow: hidden;
+    		width: 300px;
+    		height: 80px;
+    		border: 5px solid green;
+    		padding: 20px;
+    		margin: 50px auto;
+    		font-size: 14px;
+    		line-height: 20px;
+    		text-indent: 1em;
+    		word-wrap: break-word;
+    	}
+
+    	.textLine {
+    		width: 250px;
+		    height: 18px;
+		    margin: 20px auto 0;
+		    font-size: 16px;
+		    line-height: 18px;
+		    text-align: center;
+		    overflow: hidden;
+		    white-space: nowrap;
+		    text-overflow: ellipsis;
+		    color: green;
+		    text-decoration: none;
+    	}
+
+    	.textLine-2 {
+		    word-wrap: break-word;  /*该属性将导致单行文本在IE中无法处理成功*/
+    	}
+    </style>
+    <script src="http://libs.useso.com/js/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+
+<p class="box">党的十八大以来，以习近平同志为总书记的新一届党中央，高度重视领导干部的作风建设。2014年3月9日，在十二届全国人大二次会议安徽代表团参加审议时，习近平总书记对各级领导干部提出“既严以修身、严以用权、严以律己，又谋事要实、创业要实、做人要实”的要求。此后，习近平进一步指出，“三严三实”要求是共产党人最基本的政治品格和做人准则，也是党员、干部的修身之本、为政之道、成事之要。在此，我们对习近平关于领导干部作风建设，特别是“三严三实”要求的重要论述，摘编如下。</p>
+
+<div class="box">On behalf of President Obama and the American people, I am delighted to extend best wishes to the many people around the world who celebrate the arrival of thethethethe Lunar New Year on January 31. In this festive time, we should all take a moment to pause and reflect on the shared humanity that ties us together – not just here in America, but around the world. As a Pacific nation, the United States is deeply committed to strengthening our partnerships throughout the Asia-Pacific.</div>
+
+<div class="box">sdfasdfasdfsadf asdfasdfasdfjasodjfiojasodijfoiasjdoifjoiasjdfoijasoidjfojasdofjoasdofjoiasjdfoijasoidjfoisa asdfjasodfjoiasjdoifjoaisdjfoijasodjfojasdoifjoiasjdoifjaoisdjfoijasoidfjoiasjdoifjasoidjfoijasdofjoasjdofjaosdjfoijasdofjoasjdofjoasdjfoj   asdofjoiasjdf aosdjfojasdofjoiasjdofijaosidjfoasdf.</div>
+
+<div class="box">2014年3月9日，在十二届全国人大二次会议安徽代表团参加审议时，习近平总书记对各级领导干部提出“既严以修身、严以用权、严以律己，又谋事要实、创业要实、做人要实”的要求。</div>
+
+<div class="textLine"><a href="" target="_blank" title="韩国天然呵护幼儿是真的呵护厂店韩国天然呵护幼儿是真的呵护厂店">韩国天然呵护幼儿是真的呵护厂店韩国天然呵护幼儿是真的呵护厂店</a></div>
+
+<div class="textLine textLine-2"><a href="" target="_blank" title="韩国天然呵护幼儿是真的呵护厂店韩国天然呵护幼儿是真的呵护厂店">韩国天然呵护幼儿是真的呵护厂店韩国天然呵护幼儿是真的呵护厂店</a></div>
+
+<script>
+	/**
+	 * 多行文本省略号
+	 * @param  {string} selector 选择器字符串
+	 * @param  {string} dotstr 省略点字符串
+	 * @return {undefined}
+	 */
+	function doEllipsis(selector, dotstr)
+	{
+		$(selector).each(function(i, ele){
+
+	        var $ele = $(this),
+	        	viewH = $ele.height(),
+	        	scrollHeight = $ele[0].scrollHeight,
+	        	threshold = 5;
+
+        	if(scrollHeight <= viewH + threshold) return;
+
+        	// 保存子节点的html结构
+        	var $child = $ele.children(),
+        		textOld = $ele.text(),
+        		strOld = '';
+
+    		if($child.length === 1 && $child[0].nodeName !== '#text') {
+    			$child.html('');
+    			strOld = $ele.html();
+    		}
+
+			// 添加结构和属性，准备截取字符
+        	var $inner = $ele.wrapInner('<div></div>').children(),
+	        	wholeH = $inner.height(),
+	        	text, midPos, startPos, endPos;
+
+	        text = textOld;
+	        midPos = 0;
+	        startPos = 0;
+	        endPos = text.length - 1;
+
+	        while(startPos <= endPos) {
+
+	            var m = Math.floor( (startPos + endPos) / 2 );
+
+	            if(midPos === m) {
+	            	break;
+	            }
+	            midPos = m;
+
+	            $inner.text( text.substring(0, midPos + 1) + dotstr );
+
+	            if($inner.height() > viewH) {
+
+	                endPos = midPos;
+
+	            }else{
+
+	            	startPos = midPos;
+	            }
+	        }
+
+	        text = $inner.text();
+
+	        // 原html重置
+	        if(strOld !== '') {
+
+		        appendEle = $(strOld).html(text);
+		        $ele.html('').append(appendEle);
+
+	        }else{
+
+	        	$ele.text(text);
+	        }
+		});
+	}
+
+
+
+
+	/**
+	 * 单行文本省略号
+	 * @param  {string} selector 选择器字符串
+	 * @param  {string} dotstr 省略点字符串
+	 * @return {undefined}
+	 */
+	function ellipsisLine(selector, dotstr)
+	{
+		$(selector).each(function(i, ele){
+
+			// 判断是否需要创建省略号
+	        var $ele = $(this),
+	        	viewW = $ele.width(),
+	        	scrollWidth = $ele[0].scrollWidth;
+
+        	if(scrollWidth <= viewW) return;
+
+        	// 保存子节点的html结构
+        	var $child = $ele.children(),
+        		textOld = $ele.text(),
+        		strOld = '';
+
+    		if($child.length === 1 && $child[0].nodeName !== '#text') {
+    			$child.html('');
+    			strOld = $ele.html();
+    		}
+
+    		// 添加结构和属性，准备截取字符
+        	var $inner = $ele.wrapInner('<div></div>').children(),
+	        	viewH = $ele.height(),
+	        	wholeH = $inner.height();
+
+        	$ele.css({ 'overflow': 'visible', 'text-overflow': 'inherit', 'white-space': 'normal'});
+
+        	// 确定最后所得的字符内容
+	        var text = textOld,
+	            midPos = 0,
+	            startPos = 0,
+	            endPos = text.length - 1,
+	            appendEle;
+
+	        while(startPos <= endPos) {
+
+	            var m = Math.floor( (startPos + endPos) / 2 );
+
+	            if(midPos === m) {
+	            	break;
+	            }
+	            midPos = m;
+
+	            $inner.text( text.substring(0, midPos + 1) + dotstr );
+
+	            if($inner.height() > viewH) {
+
+	                endPos = midPos;
+
+	            }else{
+
+	            	startPos = midPos;
+	            }
+	        }
+
+	        text = $inner.text();
+
+	        // 原html重置
+	        if(strOld !== '') {
+
+		        appendEle = $(strOld).html(text);
+		        $ele.html('').append(appendEle);
+
+	        }else{
+
+	        	$ele.text(text);
+	        }
+		});
+	}
+
+    doEllipsis('.box', '...');
+
+    ellipsisLine('.textLine', '...');
+    
+</script>
+</body>
+</html>

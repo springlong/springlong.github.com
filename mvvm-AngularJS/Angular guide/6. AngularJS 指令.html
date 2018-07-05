@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS 指令</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<h1>AngularJS 指令</h1>
+	<div>
+		<p>AngularJS 通过被称为 指令 的新属性来扩展 HTML。</p>
+		<p>AngularJS 通过内置的指令来为应用添加功能。</p>
+		<p>AngularJS 允许你自定义指令。</p>
+	</div>
+
+	<hr>
+	<div>
+		<p>AngularJS 指令是扩展的 HTML 属性，带有前缀 <code>ng-</code>。</p>
+		<p><code>ng-app</code> 指令初始化一个 AngularJS 应用程序。</p>
+		<p><code>ng-init</code> 指令初始化应用程序数据。</p>
+		<p><code>ng-model</code> 指令把元素值（比如输入域的值）绑定到应用程序。</p>
+		<p>完整的指令内容可以参阅 <a href="http://www.runoob.com/angularjs/angularjs-reference.html" targe="_blank">AngularJS 参考手册</a>。</p>
+		<p><code>ng-app</code> 指令告诉 AngularJS，&lt;div> 元素是 AngularJS 应用程序 的"所有者"。</p>
+		<p>一个网页可以包含多个运行在不同元素中的 AngularJS 应用程序。</p>
+	</div>
+<pre>
+&lt;div ng-app="" ng-init="firstName='John'">
+	&lt;p>在输入框中尝试输入：&lt;/p>
+	&lt;p>姓名：&lt;input type="text" ng-model="firstName">&lt;/p>
+	&lt;p>你输入的为： {{ firstName }}&lt;/p>
+&lt;/div>
+</pre>
+	<div ng-app="" ng-init="firstName='John'">
+		<p>在输入框中尝试输入：</p>
+		<p>姓名：<input type="text" ng-model="firstName"></p>
+		<p>你输入的为： {{ firstName }}</p>
+	</div>
+	<hr>
+
+	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+</div>
+</body>
+</html>

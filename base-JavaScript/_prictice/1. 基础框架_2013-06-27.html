@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<title>JS语法巩固练习</title>
+	<base target="_blank" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="robots" content="all" />
+	<meta name="googlebot" content="all" />
+	<meta name="copyright" content="版权所有" />
+	<meta name="generator" content="EditPlus" />
+	<meta name="author"	content="Jerry-小猪" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<style>
+		#container{overflow:hidden;width:980px;margin:0 auto;}
+		#control{float:left;display:inline;overflow:hidden;width:100px;height:690px;}
+		#control button{width:100px;height:30px;margin-bottom:5px;}
+		#dataShow{float:right;display:inline;overflow-x:hidden;overflow-y:auto;width:800px;height:660px;padding:20px;border:2px solid #E8E8E8;}
+	</style>
+</head>
+<body>
+<div id="container">
+	<div id="control">
+		<button onclick="isBissextile()">闰年判断</button>
+		<button onclick="factorial_1()">阶乘输出</button>
+		<button onclick="factorial_2()">阶乘计算</button>
+		<button onclick="tab99()">九九乘法表</button>
+		<button onclick="shape_1()">直角三角形</button>
+		<button onclick="shape_2()">锐角三角形1</button>
+		<button onclick="shape_3()">锐角三角形2</button>
+		<button onclick="shape_4()">矩形输出</button>
+		<button onclick="shape_5()">棱形输出</button>
+		<button onclick="oddOrEven()">奇数与偶数</button>
+		<button onclick="primeOrNot()">质数与合数</button>
+		<button onclick="narcissisticNumber()">水仙花数</button>
+		<button onclick="yangHuiTriangle()">杨辉三角</button>
+	</div>
+	<div id="dataShow"></div>
+</div>
+<script>
+	//根据ID获取目标元素
+	function $$(id){ return typeof(id) == "string" ? document.getElementById(id) : id; }
+
+	//使内容显示区位于水平居中显示
+	var dataShow = $$("dataShow");
+	dataShow.style.left = (document.body.clientWidth - $$("dataShow").offsetWidth) / 2 + "px";
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>图片</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>图片</h1>
+    <p>Bootstrap 提供了三个可对图片应用简单样式的 class：</p>
+    <ul>
+        <li>.img-rounded：添加 border-radius:6px 来获得图片圆角。</li>
+        <li>.img-circle：添加 border-radius:50% 来让整个图片变成圆形。</li>
+        <li>.img-thumbnail：添加一些内边距（padding）和一个灰色的边框。</li>
+    </ul>
+    <div>
+        <img src="http://www.runoob.com/wp-content/uploads/2014/06/download.png" class="img-rounded">
+        <img src="http://www.runoob.com/wp-content/uploads/2014/06/download.png" class="img-circle">
+        <img src="http://www.runoob.com/wp-content/uploads/2014/06/download.png" class="img-thumbnail">
+    </div>
+
+    <h2>响应式图片</h2>
+    <p>通过在 &lt;img> 标签添加 .img-responsive 类来让图片支持响应式设计。 图片将很好地扩展到父元素。</p>
+    <p>.img-responsive 类将 max-width: 100%; 和 height: auto; 样式应用在图片上：</p>
+    <div>        
+        <img src="http://img1.imgtn.bdimg.com/it/u=191698150,3774242073&fm=206&gp=0.jpg" class="img-responsive" alt="响应式图像">
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>$watch方法</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0s/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>$watch方法</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>在avalon早期是, 存在一个对象能mixin进每个VM,让VM具有$watch, $unwatch, $fire, $events等方法或属性. 这有点像jQuery的on, off, trigger方法,只是为了更造近angular等MVVM框架,名字起成这样.</p>
+    <p><strong>此方法是用于监听vm中的对象的属性变化.</strong></p>
+    <p>换言之,它不能监听函数,不能监听简单数组的元素变化(如[1,2,3]变成[4,2,3]).</p>
+    <p>它能监听子级对象的属性变化,能监听对象数组的属性变化(如[{a:1,a:2}]变成[{a:'change',a:2}]), 还有数组的长度属性变化.</p>
+    <p>此外从1.5起,支持"*"通配符,解决对数组元素,子属性的监听.注意,*号只能出现一次.</p>
+
+
+<pre>
+var vm = avalon.define({
+    $id: 'test',
+    array: [1, 2, 3],
+    d: 888,
+    arr: [{a:1}, {a:2}, {a:3}],
+    obj: {a: 1, b:2},
+    a: {
+        b: {
+            c: {
+                d:33
+            }
+        }
+    }
+});
+
+var expect = function(a) {
+    return {
+        to: {
+            be: function(b) {
+                console.log(a == b);
+            }
+        }
+    }
+};
+
+vm.$watch('array.length', function(newValue, oldValue, name) {
+    console.log('第一组 数组长度：', name);
+});
+
+vm.$watch('arr.*.a', function(newValue, oldValue, name){
+    expect(newValue).to.be(99);
+    expect(oldValue).to.be(1);
+    console.log('第二组 数组元素属性（模糊匹配，不知道哪个元素变化）：', name);
+});
+
+vm.$watch('obj.a', function(newValue, oldValue, name){
+    expect(newValue).to.be(111);
+    expect(oldValue).to.be(1);
+    console.log('第三组 属性的属性：', name);
+});
+
+vm.$watch('obj.*', function(newValue, oldValue, name){
+    expect(newValue).to.be(111);
+    expect(oldValue).to.be(1);
+    console.log('第四组 属性的属性（模糊匹配）：', name);
+});
+
+vm.$watch('a.b.c.d', function(newValue, oldValue, name){
+    expect(newValue).to.be(88);
+    expect(oldValue).to.be(33);
+    console.log('第六组 属性的属性的属性（模糊匹配）：', name);
+});
+
+vm.$watch('*', function(newValue, oldValue, name){
+    expect(newValue).to.be(999);
+    expect(oldValue).to.be(888);
+    console.log('第七组 第一层对象的任意属性（模糊匹配）：', name);
+});
+
+// $watch 会返回一个函数，用于解除监听:
+var fnUnWatch = vm.$watch('array.*', function(newValue, oldValue, name){
+    expect(newValue).to.be(6);
+    expect(oldValue).to.be(2);
+});
+fnUnWatch();   // 移除当前 $watch 回调
+
+setTimeout(function(){
+    vm.array.set(1, 6);
+    vm.array.push(99);
+    vm.arr[0].a = 99;
+    vm.obj.a = 111;
+    vm.a.b.c.d = 88;
+    vm.d = 999;
+}, 100);
+</pre>
+    <p>监听函数有三个参数， 第一个是新值， 第二个是旧值， 第三个是发生变动的属性的名字。</p>
+    <p>$watch方法供与其他操作DOM的库一起使用的，如富文本编辑器什么。在$watch回调里更新VM自身的属性是非常危险的事，很容易引发死循环。</p>
+
+
+	<hr>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            array: [1, 2, 3],
+            d: 888,
+            arr: [{a:1}, {a:2}, {a:3}],
+            obj: {a: 1, b:2},
+            a: {
+                b: {
+                    c: {
+                        d:33
+                    }
+                }
+            }
+        });
+
+        var expect = function(a) {
+            return {
+                to: {
+                    be: function(b) {
+                        console.log(a == b);
+                    }
+                }
+            }
+        };
+
+        vm.$watch('array.length', function(newValue, oldValue, name) {
+            console.log('第一组 数组长度：', newValue);
+        });
+
+        vm.$watch('arr.*.a', function(newValue, oldValue, name){
+            expect(newValue).to.be(99);
+            expect(oldValue).to.be(1);
+            console.log('第二组 数组元素属性（模糊匹配，不知道哪个元素变化）：', name);
+        });
+
+        vm.$watch('obj.a', function(newValue, oldValue, name){
+            expect(newValue).to.be(111);
+            expect(oldValue).to.be(1);
+            console.log('第三组 属性的属性：', name);
+        });
+
+        vm.$watch('obj.*', function(newValue, oldValue, name){
+            expect(newValue).to.be(111);
+            expect(oldValue).to.be(1);
+            console.log('第四组 属性的属性（模糊匹配）：', name);
+        });
+
+        vm.$watch('a.b.c.d', function(newValue, oldValue, name){
+            expect(newValue).to.be(88);
+            expect(oldValue).to.be(33);
+            console.log('第五组 属性的属性(模糊匹配)：', name);
+        });
+
+        vm.$watch('a.*.c.d', function(newValue, oldValue, name){
+            expect(newValue).to.be(88);
+            expect(oldValue).to.be(33);
+            console.log('地六组 属性的属性的属性（模糊匹配）：', name);
+        })
+
+        vm.$watch('*', function(newValue, oldValue, name){
+            expect(newValue).to.be(999);
+            expect(oldValue).to.be(888);
+            console.log('第七组 第一层对象的任意属性（模糊匹配）：', name);
+        });
+
+        // $watch 会返回一个函数，用于解除监听:
+        var fnUnWatch = vm.$watch('array.*', function(newValue, oldValue, name){
+            expect(newValue).to.be(6);
+            expect(oldValue).to.be(2);
+        });
+        fnUnWatch();   // 移除当前 $watch 回调
+
+        setTimeout(function(){
+            vm.array.set(1, 6);
+            vm.array.push(99);
+            vm.arr[0].a = 99;
+            vm.obj.a = 111;
+            vm.a.b.c.d = 88;
+            vm.d = 999;
+        }, 100);
+    </script>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

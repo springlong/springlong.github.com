@@ -1,0 +1,28 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "test a case",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "test": "test/test2.js"
+  },
+  "author": "yangtuan",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^2.13.0",
+    "events": "^1.1.1",
+    "fs-extra": "^5.0.0",
+    "http": "^0.0.0",
+    "os": "^0.1.1",
+    "path": "^0.12.7",
+    "querystring": "^0.2.0",
+    "url": "^0.11.0",
+    "util": "^0.10.3",
+    "zlib": "^1.0.5",
+    "open": "^0.0.5"
+  },
+  "devDependencies": {}
+}

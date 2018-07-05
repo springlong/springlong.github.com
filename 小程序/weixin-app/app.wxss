@@ -1,0 +1,23 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10rpx 0;
+  box-sizing: border-box
+}
+
+.list-warp .btn {
+  margin-top: 10px
+}
+
+navigator {
+  display: inline-block;
+  padding: 15px;
+  background-color: #999
+}
+
+.navigator-hover {
+  background-color: #B33232
+}

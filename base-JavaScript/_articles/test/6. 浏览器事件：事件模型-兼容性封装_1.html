@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <base charset="utf-8" />
+    <title>事件模型：兼容性封装_01 - 浏览器事件 - 前端志</title>
+    <meta name="author" content="龙泉|2013-08-13" />
+    <style>
+        *{margin:0;padding:0;}
+        div{margin:0 auto;font-size:24px;line-height:2em;text-align:center;}
+        p{padding:10px 0;text-align:center;}
+        #div1{width:450px;height:450px;background:gray;}
+        #div2{width:300px;height:300px;background:green;}
+        #div3{width:150px;height:150px;background:orange;}
+    </style>
+    <script src="js/jsApp_2013-08-01.js"></script>
+</head>
+<body>
+<div id="div1">
+    div1
+    <div id="div2">
+        div2
+        <div id="div3">
+            div3
+        </div>
+    </div>
+</div>
+<p><a href="http://www.baidu.com/" target="_blank" id="test_link">链接点击！</a></p>
+<script>
+    $.fn.extend({
+        /**
+         * 添加事件绑定
+         * @param  {String} name    事件名称
+         * @param  {Function} handler 事件处理程序
+         * @param  {Boolean} [capture=false] 是否进行事件捕捉
+         * @return {Function}         事件处理程序
+         * @example
+         * var testID_click = $$("#testID").bind("click", function()
+         * {
+         *     alert("点击事件！");
+         * });
+         */
+        bind: function(name, handler, capture)
+        {
+            return jsApp.map(this, function(index, ele)
+            {
+                //兼容事件对象、this关键字
+                var callback = function(e)
+                {
+                    e = e || window.event;
+                    handler.call(e.target || e.srcElement, e);
+                }
+
+                //事件绑定的兼容性操作
+                "addEventListener" in ele ? 
+                    ele.addEventListener(name, callback, capture) : 
+                    ele.attachEvent("on" + name, callback);
+
+                //返回“事件处理程序”，在添加事件绑定时可使用相关变量进行收集，以便进行取消事件绑定操作！
+                return callback;
+            });
+        },
+
+        /**
+         * 解除事件绑定
+         * @param  {String} name    事件名称
+         * @param  {Function} handler 事件处理程序
+         * @param  {Boolean} [capture=false] 是否进行事件捕捉
+         * @example
+         * $$("#testID").unbind("click", testID_click);
+         */
+        unbind: function(name, handler, capture)
+        {
+            return jsApp.map(this, function(index, ele)
+            {
+                //解除绑定的兼容性操作
+                "removeEventListener" in ele ? 
+                    ele.removeEventListener(name, handler, capture) : 
+                    ele.detachEvent("on" + name, handler);
+            });
+        }
+    });
+
+    $.extend({
+        /**
+         * 获取事件目标
+         * @param  {Object} e 事件对象
+         * @return {HTMLElement}   事件目标
+         */
+        target: function(e)
+        {
+            return e.target || e.srcElement;
+        },
+
+        /**
+         * 取消默认行为
+         * @param  {Object} e 事件对象
+         */
+        preventDefault: function(e)
+        {
+            "preventDefault" in e ? e.preventDefault() : (e.returnValue = false);
+        },
+
+        /**
+         * 取消冒泡行为
+         * @param  {Object} e 事件对象
+         */
+        stopPropagation: function(e)
+        {
+            "stopPropagation" in e ? e.stopPropagation() : (e.cancelBubble  = true);
+        }
+    });
+</script>
+<script>
+    $("#div1").bind("click", function(e)
+    {
+        alert("您点击的是：div1");
+        alert("HTML代码-target输出：" + $.target(e).innerHTML);  //测试事件目标的正确性
+        alert("HTML代码-this输出：" + this.innerHTML);         //测试this关键字的正确性
+
+        $.stopPropagation(e);   //取消冒泡行为
+    });
+
+    $("#div2").bind("click", function(e)
+    {
+        alert("您点击的是：div2");
+        $.stopPropagation(e);   //取消冒泡行为
+    });
+
+    $("#div3").bind("click", function(e)
+    {
+        alert("您点击的是：div3");
+        $.stopPropagation(e);   //取消冒泡行为
+    });
+    
+    var event_testLink = $("#test_link").bind("click", function(e)
+    {
+        $.preventDefault(e);    //取消默认行为
+    });
+
+    $(document).bind("dblclick", function(e)
+    {
+        //双击页面取消链接的事件绑定
+        $("#test_link").unbind("click", event_testLink);
+        alert("文本链接的事件绑定已取消，现可点击测试！");
+    });
+</script>
+</body>
+</html>

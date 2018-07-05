@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>简单的依赖收集和触发</title>
+</head>
+<body>
+	<script>
+		let callback = {
+			target: null
+		}
+
+		// 使用Object.defineProperty实现响应式
+		let defineReactive = function (obj, key, value) {
+			// 依赖收集维护在内置的数组中
+			let arr = []
+
+			// 定义getter和setter
+			Object.defineProperty(obj, key, {
+				configurable: true,
+				enumerable: true,
+				get: function () {
+					if (callback.target) {
+						arr.push(callback.target)
+					}
+					return value
+				},
+				set: function (newValue) {
+					if (newValue !== value) {
+						arr.forEach(fn => fn(newValue, value))
+					}
+					value = newValue
+				}
+			})
+		}
+
+		// 创建对象，实现响应式化
+		let obj = {}
+		defineReactive(obj, 'test', 'value-1')
+
+		// 当我们取值的时候，函数自动帮我们添加了针对当前值的依赖
+		callback.target = function (newValue, oldValue) {
+			console.log(`我被添加进去了，新的值是：${newValue}`)
+		}
+		obj.test
+		callback.target = null
+
+		// 当这个值发生变化的时候，处理这些依赖
+		obj.test = 'value-2'
+		obj.test = 'value-3'
+
+		// 第二次依赖
+		callback.target = function (newValue, oldValue) {
+			console.log(`添加第二个函数，新的值是：${newValue}`)
+		}
+		obj.test
+		callback.target = null
+
+		// 当这个值发生变化的时候，处理这些依赖
+		obj.test = 'value-4'
+		obj.test = 'value-5'
+	</script>
+</body>
+</html>

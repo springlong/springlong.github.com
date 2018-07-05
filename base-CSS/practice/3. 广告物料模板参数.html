@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="gb2312" />
+	<title>广告物料模板参数</title>
+	<base target="_blank" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<style>
+		.advertParamsList{overflow:hidden;width:100%;height:auto;padding:0;border:0;margin:0;font-size:13px;color:#333;}
+		.advertParamsList *{padding:0;margin:0;}
+		.advertParamsList .param{clear:both;float:left;display:inline;padding:5px 0;}
+		.advertParamsList .param label{float:left;display:inline;width:150px;padding:0 20px 0 10px;text-align:left;line-height:22px;}
+		.advertParamsList .param div{float:left;display:inline;width:auto;}
+		.advertParamsList .param div input,
+		.advertParamsList .param div select{width:200px;height:22px;padding:0 5px;border:1px solid #7E9DB9;font-size:13px;line-height:22px;}
+		.advertParamsList .param div select{width:210px;}
+		.advertParamsList .param div span{color:#ccc;}
+		.advertParamsList .media .type{width:300px;height:20px;}
+		.advertParamsList .media .type label{float:none;display:inline;padding:0 0 0 5px;line-height:22px;}
+		.advertParamsList .media .type input{width:auto;height:22px;border:none;vertical-align:middle;}
+		.advertParamsList .media .choose,
+		.advertParamsList .media .file{clear:both;width:700px;padding-top:10px;margin-left:180px;}
+		.advertParamsList .media .choose button{width:100px;height:22px;padding-top:2px \9;margin-left:10px;}
+	</style>
+</head>
+<body>
+<div class="advertParamsList">
+	<div class="param">
+		<label for="moduleSelect">广告物料模板：</label>
+		<div>
+			<select id="moduleSelect" name="moduleSelect">
+				<option value="模板1">模板1</option>
+				<option value="模板2">模板2</option>
+				<option value="模板3">模板3</option>
+			</select>
+		</div>
+	</div>
+	<div class="param">
+		<label for="width">宽度（200px）：</label>
+		<div>
+			<input type="text" id="width" name="width" />
+			<span>（选填）</span>
+		</div>
+	</div>
+	<div class="param">
+		<label for="height">高度（300px）：</label>
+		<div>
+			<input type="text" id="height" name="height" />
+			<span>（选填）</span>
+		</div>
+	</div>
+	<div class="param">
+		<label for="effect">效果类型：     =======================================================</label>
+		<div>
+			<input type="text" id="effect" name="effect" />
+			<span>（选填）</span>
+		</div>
+	</div>
+	<div class="param media">
+		<label for="pic1Upload">图片1：</label>
+		<div class="type">
+			<input type="radio" name="pic1Type" id="pic1Upload" checked /><label for="pic1Upload">上传</label>
+			<input type="radio" name="pic1Type" id="pic1URL" /><label for="pic1URL">远程</label>
+		</div>
+		<div class="choose">
+			<input type="text" id="pic1" name="pic1" />
+			<button id="pic1Choose">上传图片文件</button>
+			<span>（图片文件大小&lt;256KB，Flash文件大小&lt;512K）</span>
+		</div>
+		<div class="file" id="pic1File">
+			<img width="600" height="189" src="http://drmcmm.baidu.com/media/id=nHD3rH6srjT4&gp=401&time=nHnvnWTkPHc1P0.jpg" alt="" />
+		</div>
+	</div>
+	<div class="param">
+		<label for="id">容器ID：</label>
+		<div>
+			<input type="text" id="id" name="id" />
+		</div>
+	</div>
+</div>
+</body>
+</html>

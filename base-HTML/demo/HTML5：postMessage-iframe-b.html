@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5：postMessage-iframe-b</title>
+</head>
+</head>
+<body>
+<div class="container">
+	<p>接收到的信息是：<span id="recivedText"></span></p>
+</div>
+<script>
+	var eleBox = document.querySelector('#recivedText');
+
+	// 获取事件数据
+	var recivedHandle = function(ev) {
+		console.log('message事件对象：', ev);
+		eleBox.innerHTML = ev.data;
+	};
+
+	// 通过window的message事件捕捉信息的传递
+	if(window.addEventListener) {
+		window.addEventListener('message', recivedHandle, false);
+	}else if(window.attachEvent) {
+		window.attachEvent('onmessage', recivedHandle); // 兼容IE8
+	}
+</script>
+</body>
+</html>

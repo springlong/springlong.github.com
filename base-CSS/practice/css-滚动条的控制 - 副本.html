@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS应用——滚动条的控制</title>
+	<meta name="keywords" content="CSS应用——滚动条的控制" />
+	<meta name="description" content="CSS应用——滚动条的控制" />
+	<meta name="author" content="Jerry_小猪" />
+	<meta http-equive="Content-Type" content="text/html;charset=gb2312"/>
+	<style type="text/css">
+		body{
+			font-size:100%;
+			white-space:nowrap;
+			}
+
+		.caption{
+			font:oblique small-caps bold  36px/50px "华文行楷" ;
+			}
+
+		.type{
+			color:blue;
+			font-family:"微软雅黑","宋体";
+			font-size:24px;
+			font-weight:bold;
+			font-style:italic;
+			text-transform:capitalize;
+			text-decoration:underline;
+			line-height:2em;
+			}
+
+		.keywords{
+			color:purple;
+			}
+
+		#biaozhun{
+			width:600px;
+			height:100px;
+			border:4px solid silver;
+			overflow:scroll;}
+
+		.scrollbar1{
+			scrollbar-3dlight-color:red;}
+
+		.scrollbar2{
+			scrollbar-highlight-color:blue;}
+
+		.scrollbar3{
+			scrollbar-shadow-color:orange;}
+
+		.scrollbar4{
+			scrollbar-darkshadow-color:orange;}
+
+		.scrollbar5{
+			scrollbar-arrow-color:green;}
+
+		.scrollbar6{
+			scrollbar-track-color:black;}
+
+		.scrollbar7{
+			scrollbar-face-color:orange;}
+
+		.scrollbar8{
+			scrollbar-base-color:cyan;}
+
+		.scrollbar9{
+			scrollbar-base-color:white;
+			scrollbar-face-color:gray;
+			scrollbar-3dlight-color:blue;
+			scrollbar-highlight-color:pink;
+			scrollbar-shadow-color:black;
+			scrollbar-darkshadow-color:orange;
+			scrollbar-arrow-color:green;
+			scrollbar-track-color:black;}
+
+	</style>
+</head>
+<body>
+	<p class="caption">CSS应用-滚动条的控制</p>
+	<p class="caption">CSS应用-滚动条的控制</p>
+	<hr />
+
+	<p class="type">0. 滚动条的默认方式:</p>
+	<p id="biaozhun" >
+		滚动条的颜色<span class="keywords">正常情况下！</span>滚动条的颜色<span class="keywords">正常情况下！</span>滚动条的颜色<span class="keywords">正常情况下！</span>滚动条的颜色<span class="keywords">正常情况下！</span>滚动条的颜色<span class="keywords">正常情况下！</span>
+		<br />滚动条的颜色<span class="keywords">正常情况下！</span>
+		<br />滚动条的颜色<span class="keywords">正常情况下！</span>
+		<br />滚动条的颜色<span class="keywords">正常情况下！</span>
+		<br />滚动条的颜色<span class="keywords">正常情况下！</span>
+		<br />滚动条的颜色<span class="keywords">正常情况下！</span>
+		<br />滚动条的颜色<span class="keywords">正常情况下！</span>
+		<br />滚动条的颜色<span class="keywords">正常情况下！</span>
+		<br />滚动条的颜色<span class="keywords">正常情况下！</span>
+		<br />滚动条的颜色<span class="keywords">正常情况下！</span>
+	</p>
+	<hr />
+	<p class="type">1. scrollbar-3dlight-color属性：</p>
+	<p id="biaozhun" class="scrollbar1">
+		滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+		<br />滚动条3d亮边框颜色：<span class="keywords">scrollbar-3dlight-color:red;</span>（红色的3d亮边框）
+	</p>
+	<hr />
+
+	<p class="type">2. scrollbar-highlight-color属性：</p>
+	<p id="biaozhun" class="scrollbar2">
+		滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）
+		<br />滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）
+		<br />滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）
+		<br />滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）
+		<br />滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）
+		<br />滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）
+		<br />滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）
+		<br />滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）
+		<br />滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）
+		<br />滚动条高亮边框颜色：<span class="keywords">scrollbar-highlight-color:blue;</span>（蓝色的高亮边框）
+	</p>
+	<hr />
+
+	<p class="type">3. scrollbar-shadow-color属性：</p>
+	<p id="biaozhun" class="scrollbar3">
+		滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:orange;</span>（橙色的阴影）
+	</p>
+	<hr />
+
+	<p class="type">4. scrollbar-darkshadow-color属性：</p>
+	<p id="biaozhun" class="scrollbar4">
+		滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+	</p>
+	<hr />
+
+	<p class="type">5. scrollbar-arrow-color属性：</p>
+	<p id="biaozhun" class="scrollbar5">
+		滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+	</p>
+	<hr />
+
+	<p class="type">6. scrollbar-track-color属性：</p>
+	<p id="biaozhun" class="scrollbar6">
+		滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+		<br />滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+		<br />滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+		<br />滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+		<br />滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+		<br />滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+		<br />滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+		<br />滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+		<br />滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+		<br />滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+	</p>
+	<hr />
+
+	<p class="type">7. scrollbar-face-color属性：</p>
+	<p id="biaozhun" class="scrollbar7">
+		滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+		<br />滚动条皮肤颜色：<span class="keywords">scrollbar-face-color:orange;</span>（橙色的皮肤）
+	</p>
+	<hr />
+
+	<p class="type">8. scrollbar-base-color属性：</p>
+	<p id="biaozhun" class="scrollbar8">
+		滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+		<br />滚动条基准色颜色：<span class="keywords">scrollbar-base-color:cyan;</span>（青色的基准色）
+	</p>
+	<hr />
+
+	<p class="type">9. 滚动条综合设置：</p>
+	<p id="biaozhun" class="scrollbar9">
+		滚动条的基准色：<span class="keywords">scrollbar-base-color:white;</span>（白色的基准色）
+		<br />滚动条的皮肤颜色：<span class="keywords">scrollbar-face-color:gray;</span>（灰色的皮肤）滚动条的皮肤颜色：<span class="keywords">scrollbar-face-color:gray;</span>（灰色的皮肤）滚动条的皮肤颜色：<span class="keywords">scrollbar-face-color:gray;</span>（灰色的皮肤）
+		<br />滚动条3d亮边框属性：<span class="keywords">scrollbar-3dlight-color:blue;</span>（蓝色的3d亮边框）
+		<br />滚动条高部亮边框颜色：<span class="keywords">scrollbar-highlight-color:pink;</span>（粉色的高部亮边框）
+		<br />滚动条阴影颜色：<span class="keywords">scrollbar-shadow-color:black;</span>（黑色的阴影）
+		<br />滚动条暗部阴影颜色：<span class="keywords">scrollbar-darkshadow-color:orange;</span>（橙色的暗部阴影）
+		<br />滚动条箭头颜色：<span class="keywords">scrollbar-arrow-color:green;</span>（绿色的箭头）
+		<br />滚动条拖动区颜色：<span class="keywords">scrollbar-track-color:black;</span>（黑色的拖动区）
+	</p>
+	<hr />
+
+</body>
+</html>

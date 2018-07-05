@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+	<meta charset="utf-8">
+	<title>HTML5：Mutation Observer 监听DOM树变化</title>
+	<script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="static/css/main.css">
+</head>
+
+<body>
+	<div class="container">
+		<div id="contBox" name="oldName" class="oldClass" type="oldType">
+			<h1>HTML5：Mutation Observer 监听DOM树变化</h1>
+			<p class="text-item">浏览器支持情况：IE 11+、Firefox 14+、Chrome 27+、Safari 6.1+、Opera 15+、IOS Safari 7.1+、Android 4.4+。</p>
+			<p class="text-item">其中Safari 6.0和Chrome 18-26使用这个API的时候，需要加上WebKit前缀（WebKitMutationObserver）。该事件回调属于Microtask，优先级比Promise的级别低。</p>
+			<div class="pic-box">
+				<a href="https://caniuse.com/#search=Mutation%20Observer" target="_blank"><img src="static/images/Mutation Observer.png" alt="">
+				</a>
+			</div>
+			<div class='pic-box'>
+				<a href="https://caniuse.com/#search=Mutation%20Observer" target="_blank"><img src="static/images/Mutation Observer-2.png" alt="">
+				</a>
+			</div>
+			<div class="text-item">
+				<p>参考链接：
+					<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver" target="_blank">https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserver</a>
+				</p>
+				<p>参考链接：
+					<a href="http://www.cnblogs.com/jscode/p/3600060.html" target="_blank">http://www.cnblogs.com/jscode/p/3600060.html</a>
+				</p>
+			</div>
+			<div class="text-item">
+				<p>
+					<button onclick="editClass();">修改class属性</button>
+					<button onclick="editName();">修改name属性</button>
+					<button onclick="editType();">修改type属性</button>
+					<button onclick="eidtAttr();">修改多个属性</button>
+				</p>
+				<p>
+					<button onclick="addHTML();">添加元素到父容器</button>
+					<button onclick="addHTMLChild();">添加元素到子容器</button>
+				</p>
+				<p>
+					<button id="disconnect">停止观察</button>
+					<button id="takeRecords">清除变动记录</button>
+				</p>
+				<div id="operateBox">
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+
+		// 浏览器兼容
+		var MutationObserver = window.MutationObserver || window.WebkitMutationObserver || window.MozMutationObserver;
+		var supportMutaionObserver = !!MutationObserver;
+
+		if (supportMutaionObserver) {
+
+			$('#contBox').append('<p>该浏览器支持 MutationObserver！ </p>');
+
+			// 构造函数
+			var objObserver = new MutationObserver(function (MutationRecord) {
+
+				// 这里是这个实例的回调函数
+				// MutationRecord对象在每次变动时都会生成一条记录，包含了与变动相关的所有信息，该对象会将每一个变动组成一个数组对象
+				//
+				// 该对象有如下属性：
+				//
+				// type: 观察的变动类型（attribute、characterData或者childList）。
+				// target: 发生变动的DOM对象。
+				// addedNodes: 新增的DOM对象。
+				// removeNodes: 删除的DOM对象。
+				// previousSibling: 前一个同级的DOM对象，如果没有则返回null。
+				// nextSibling: 下一个同级的DOM对象，如果没有就返回null。
+				// attributeName: 发生变动的属性。如果设置了attributeFilter，则只返回预先指定的属性。
+				// oldValue: 变动前的值。这个属性只对attribute和characterData变动有效，如果发生childList变动，则返回null。
+				console.log(MutationRecord);
+			});
+
+
+			// MutationObserver.observe 方法
+			// 用来指定所要观察的DOM元素，以及要观察的特定变动
+			var options = {
+				'childList': true,  	// 是否监听子元素的变动
+				'attributes': true, 	// 是否监听属性的变动
+				'characterData': true,  // 是否监听节点内容或节点文本的变动
+				'subtree': true, 		// 是否监听所有下属节点（包括子节点的子节点的子节点）的变动，注意：不能单独观察subtree变动，必须同时指定childList、attributes和characterData中的一种或多种。
+				'attributeOldValue': true,    	// 是否需要记录变动前的属性值
+				'characterDataOldValue': true,  // 是否需要记录变动前的数据值
+				'attributesFilter': ['class', 'name']    // 一个数组，用来表示需要观察的特定属性
+			};
+			objObserver.observe(document.getElementById('contBox'), options);
+
+
+			// disconnect方法用来停止观察。发生相应变动时，不再调用回调函数。
+			$('#disconnect').on('click', function () {
+				objObserver.disconnect();
+			});
+
+
+			// takeRecord方法用来清空观察者对象的记录队列，并返回里面的内容。
+			$('#takeRecords').on('click', function () {
+				console.log(objObserver.takeRecords());
+			});
+		}
+	</script>
+	<script>
+		function editClass() {
+			$('#contBox').addClass('newCL');
+		}
+
+		function editName() {
+			$('#contBox').attr('name', 'testName');
+		}
+
+		function editType() {
+			$('#contBox').attr('type', 'testType');
+		}
+
+		function eidtAttr() {
+			$('#contBox').attr({ name: 'nName', type: 'nType', 'data-id': 'nId' });
+		}
+
+		function addHTML() {
+			$('#contBox').append('<p>添加html内容：' + $.now() + '</p>');
+		}
+
+		function addHTMLChild() {
+			$('#operateBox').append('<p>添加html内容：' + $.now() + '</p>');
+		}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>QQ咨询</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+</head>
+<body><!--
+    <h2>测试</h2>
+    <p><a href="mqqwpa://im/chat?chat_type=crm&uin=2481579092&version=1&src_type=web&web_src=http://wpa.b.qq.com">mqqwpa://im/chat?chat_type=crm&uin=2481579092&version=1&src_type=web&web_src=http://wpa.b.qq.com</a></p>
+    <p><a href="mqqwpa://im/chat?chat_type=wpa&uin=2481579092&version=1&src_type=web&web_src=http://wpa.b.qq.com">mqqwpa://im/chat?chat_type=wpa&uin=2481579092&version=1&src_type=web&web_src=http://wpa.b.qq.com</a></p>
+    <p><a href="http://wpa.b.qq.com/html/wpa3_preview.html?type=1&key=XzgwMDAxMDA4Ml8xNjY5NDlfODAwMDEwMDgyXw">http://wpa.b.qq.com/html/wpa3_preview.html?type=1&key=XzgwMDAxMDA4Ml8xNjY5NDlfODAwMDEwMDgyXw</a></p>
+    <p><a href="http://qm.qq.com/cgi-bin/qm/qr?k=kCj2ky3hg2sbmaHRDY6h8O21G5WSWo0E">http://qm.qq.com/cgi-bin/qm/qr?k=kCj2ky3hg2sbmaHRDY6h8O21G5WSWo0E</a></p>
+    <p><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1750172286&site=qq&menu=yes">http://wpa.qq.com/msgrd?v=3&uin=1750172286&site=qq&menu=yes</a></p>
+    <p><a target="_blank" href="http://sighttp.qq.com/authd?IDKEY=a6a00ec4625dd3de8cd5f9a212432c15494a2f96566dea20"><img border="0" src="http://wpa.qq.com/imgd?IDKEY=a6a00ec4625dd3de8cd5f9a212432c15494a2f96566dea20&pic=51" alt="点击这里给我发消息" title="点击这里给我发消息"></a></p>
+    <p><a href="http://wpd.b.qq.com/page/info.php?nameAccount=800010082">测试连接：企业QQ</a></p>
+    <p><a href="http://b.qq.com/webc.htm?new=0&sid=800010082&o=&q=7&from=qqwpa">测试连接：企业QQ</a></p>
+    <p><a href="http://wpa.qq.com/msgrd?v=3&uin=2481579092&site=qq&menu=yes">测试连接：个人QQ</a></p> -->
+    <h2>JS接口调用：个人QQ咨询</h2>
+    <p>PC完全兼容，同时在安装了较新版的手机QQ的手机浏览器中被支持。</p>
+    <p>Android 4.5版本支持，4.4、4.3暂无条件测试，4.2不支持；另外Andorid手机QQ4.5版本的内部浏览器也不支持，4.6则支持；微信内置浏览器中支持！</p>
+    <p><a href="javascript:void(0);" target="_self" onclick="qq('569320261')">569320261</a></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="qq('2971055887')">2971055887(喜地QQ)</a></p>
+    <p><a href="http://wpa.qq.com/msgrd?v=3&uin=2971055887&site=www.yuanchanxidi.com&menu=yes" target="_self">2971055887(官网原始url)</a></p>
+    <h2>JS接口调用：企业QQ咨询</h2>
+    <p>PC完全兼容，同时在安装了较新版的手机QQ的手机浏览器中被支持</p>
+    <p>Android 4.5版本支持，4.4、4.3暂无条件测试，4.2不支持；另外Andorid手机QQ4.5版本的内部浏览器也不支持，4.6则支持；同时Androi手机（安装手机QQ4.5）的微信内置浏览器不支持，4.6则支持！</p>
+    <p><a href="javascript:void(0);" target="_self" onclick="qq('800010082')">西安中大：800010082</a></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="qq('800077475')">上海沪申：800077475</a></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="qq('800039505')">杭州博爱：800039505</a></p>
+    <h2>超链接：加入QQ群</h2>
+    <p>PC完全兼容，同时在安装了较新版的手机QQ的手机浏览器中被支持，如果群已添加可直接开启会话。</p>
+    <p>Android 4.2版本即可支持，4.1版本暂无条件测试，4.0版本不支持；同时在微信内置浏览器和手机QQ内置浏览器中测试正常。</p>
+    <a href="http://shang.qq.com/wpa/qunwpa?idkey=f4f0dbc47adb573b67662141ca8b297cc102ce0cfb844bc51f107e06c69c659f" target="_blank"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="文案、策划、程序" title="文案、策划、程序"></a>
+    <h2>超链接：移动个人QQ添加好友（咨询）</h2>
+    <p>上面的个人QQ咨询和企业QQ咨询采用了统一JS接口调用来触发QQ会话，在PC上可以做到完全兼容，但是在手机上需要4.5版本及以上的手机QQ支持方能正常使用。</p>
+    <p>考虑到部分用户并有及时升级手机QQ的需求，所在暂时可以采用扫描二维码加好友的方式来进行操作。</p>
+    <p>该操作在Android 4.2版本中即被支持，4.1版本暂无条件测试，4.0版本不支持；同时在微信内置浏览器和手机QQ内置浏览器中测试正常，另外该方式不支持企业或营销QQ。</p>
+    <p><a href="http://qm.qq.com/cgi-bin/qm/qr?k=_2QxxVpdyV4cyQY5xrzj6AK5CtHYkd6u" target="_blank">个人QQ：569320261</a></p>
+    <h2>超链接：网页版企业QQ</h2>
+    <p>该类链接仅适用于企业QQ或者营销QQ，用于打开它们的网页版窗口进行会话（个人QQ无效）。</p>
+    <p>可惜的是，该链接没有做手机端的界面兼容处理，在手机端访问还有可能加载失败。</p>
+    <p><a href="http://wpd.b.qq.com/page/webchat.html?nameAccount=800010082" target="_blank">西安中大：800010082</a></p>
+    <p><a href="http://wpd.b.qq.com/page/webchat.html?nameAccount=800077475" target="_blank">上海沪申：800077475</a></p>
+    <p><a href="http://wpd.b.qq.com/page/webchat.html?nameAccount=800039505" target="_blank">杭州博爱：800039505</a></p>
+    <h2>参考网站</h2>
+    <p><a href="http://shang.qq.com/v3/widget/consult.html" target="_blank">QQ商家：QQ通讯组件</a>（开启个人QQ的网页咨询链接）</p>
+    <p><a href="http://qun.qq.com/join.html" target="_blank">QQ群：一键加群</a>（通过网页链接直接加入某个特定的群）</p>
+    <p><a href="http://b.qq.com/" target="_blank">企业QQ：开启企业QQ在线咨询</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="http://b.qq.com/m/" target="_blank">企业QQ：手机版网页</a></p>
+    <p><a href="http://wpa.b.qq.com/html/wpa3_preview.html?type=1&key=XzgwMDAxMDA4Ml8xNjY5NDlfODAwMDEwMDgyXw" target="_blank">企业QQ：西安中大营销QQ在线QQ咨询页面</a>（可通过该页面侦测到PC端以及手机端用于触发QQ会话窗口的链接代码）</p>
+    <p><a href="http://jingyan.baidu.com/article/948f592420a413d80ef5f96d.html" target="_blank">如何通过扫描二维码来加QQ好友？</a></p>
+    <script>
+        /**
+         * 在指定iframe中打开url链接
+         * @param  {String} name iframe的name和id属性
+         * @param  {String} url 需要打开的url链接
+         * @return {String} 返回name参数值
+         */
+        function openInIframe(name, url)
+        {
+            var iframe = document.getElementById(name);
+            if(iframe == null){
+                iframe = document.createElement("iframe");
+                iframe.id = name;
+                iframe.name = name;
+                iframe.src = url;
+                iframe.style.cssText = "position:absolute;left:-9999px;overflow:hidden;width:0px;height:0px;";
+                document.body.appendChild(iframe);
+            }else{
+                iframe.src = url;
+            }
+        }
+
+        /**
+         * QQ咨询（手机端的QQ咨询，需要较新版本的手机QQ才能支持）
+         * @param  {String} num QQ号码，既可以是企业QQ也可以是个人QQ
+         * @return {undefined}
+         */
+        function qq(num)
+        {
+            var ua = navigator.userAgent,
+                isMobile = /(nokia|iphone|ipad|ipod|android|ucbrowser|fennec|touchpad|micromessenger|motorola|^mot\-|softbank|foma|docomo|kddi|up\.browser|up\.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam\-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte\-|longcos|pantech|gionee|^sie\-|portalmmm|jig\s browser|hiptop|^ucweb|^benq|haier|^lct|opera\s*mobi|opera\*mini|320x320|240x320|176x220)/i.test(ua),
+                url;
+
+            //匹配咨询URL
+            if(isMobile){
+                var QQReg = /QQ\/(\d+\.\d+)\.\d/i,
+                    OldQQReg = /V1_AND_SQ_(\d+\.\d+)\.\d/i,
+                    match = QQReg.exec(ua) || OldQQReg.exec(ua),
+                    isQQ = !!match,
+                    isQQUse = isQQ && /(?:4\.5|4\.6)/.test(match[1]), //在4.5、4.6的版本中需要使用本地协议的wpa类型来触发会话
+                    wpaURL = "mqqwpa://im/chat?chat_type=wpa&uin=" + num + "&version=1&src_type=web&web_src=http://wpa.b.qq.com",   //较低版本的触发链接
+                    crmURL = "mqqwpa://im/chat?chat_type=crm&uin=" + num + "&version=1&src_type=web&web_src=http://wpa.b.qq.com",   //较新版本的触发链接
+                    start = +new Date();
+
+                if(ua.indexOf("MicroMessenger") > -1){
+
+                    location.href = /^(400|800)/.test(num) ? "http://wpd.b.qq.com/page/info.php?nameAccount=" + num : "http://wpa.qq.com/msgrd?v=3&uin=" + num + "&site=qq&menu=yes";
+
+                }else{
+                    //通过手机QQ本地协议发起QQ会话，均适用于企业QQ和个人QQ（该方法将会直接开启会话，Android平台中QQ4.2不支持，4.3、4.4没有得到测试，QQ4.5则开始支持；而在iPhone平台中由于测试的对象都有及时更新QQ的习惯，所以视为完全支持来进行处理）
+                    location.href = isQQUse ? wpaURL : crmURL;
+                }
+            }else{
+                //企业QQ咨询：会提醒用户是否打开企业QQ进行咨询，然后触发本地协议进行对话
+                //个人QQ咨询：直接通过本地协议进行对话，仅PC端支持，在某些浏览器中无需提醒即可对话
+                url = /^(400|800)/.test(num) ? "http://b.qq.com/webc.htm?new=0&sid=" + num + "&o=&q=7&from=qqwpa" : "tencent://message/?uin=" + num + "&Site=&Menu=yes";
+                openInIframe("openUrl", url);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+
+【Vue-cli构建】
+
+
+	1. 全局安装Vue脚手架
+	
+	npm install -g vue-cli
+
+
+	2. 在当前目录安装Vue项目，项目名称建议小写	
+	Vue init webpack <project name>
+
+
+	3. 切换到项目所在目录
+
+
+	4. 安装项目依赖
+
+	npm install
+
+
+	5. 利用本地node服务器在浏览器中打开并浏览项目页面
+
+	npm run dev
+
+
+

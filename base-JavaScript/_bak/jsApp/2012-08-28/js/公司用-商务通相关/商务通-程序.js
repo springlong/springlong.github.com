@@ -1,0 +1,1434 @@
+var c54;
+var c55;
+c89 -= 20;
+function f16() {
+    try {
+        if (!usetext) {
+            window.resizeBy(712 - document.body.clientWidth, 602 - document.body.clientHeight)
+        }
+    } catch(B) {}
+}
+function f6() {
+    if (document.body) {
+        c54 = document.body.clientWidth;
+        c55 = document.body.clientHeight
+    } else {
+        c54 = innerWidth;
+        c55 = innerHeight
+    }
+    if (c55 < c89) {
+        c55 = c89
+    }
+    if (c54 < c88) {
+        c54 = c88
+    }
+    if(document.getElementById("t_tableContent") === null)
+    {
+        LR_GetObj("chatwordsFrame").style.height = c55 - 110 - 160;    
+    }
+    else
+    {
+        LR_GetObj("chatwordsFrame").style.height = "99%"; 
+    }
+    
+    var B = LR_GetObj("modalDiv_Pingjiaobj");
+    if (B != null && B.style.display != "none") {
+        LR_m_f(LR_m_d, true, false, false);
+        pingjia()
+    }
+    B = LR_GetObj("modalDiv_Chatpreobj");
+    if (B != null && B.style.display != "none") {
+        LR_m_f(LR_m_d, true, false, true);
+        showChatpre()
+    }
+}
+function f17() {}
+var LR_m_d;
+function LR_m_e(p1, p2, p3) {
+    var div = document.createElement("DIV");
+    div.id = "LR_m_h_" + new Date().getTime();
+    with(div.style) {
+        zIndex = 8998;
+        top = "0px";
+        left = "0px";
+        width = "100%";
+        height = "100%";
+        border = "none";
+        margin = padding = 0;
+        position = "absolute";
+        backgroundColor = "#000";
+        opacity = "0.2";
+        filter = "alpha(opacity=20)";
+        duration = 1000
+    }
+    document.body.insertBefore(div, document.body.firstChild);
+    if (!p3) {
+        LR_m_a("SELECT")
+    }
+    if (!p2) {
+        LR_m_a("OBJECT")
+    }
+    if (!p1) {
+        LR_m_a("IFRAME")
+    }
+    LR_m_c(div);
+    return div
+}
+function LR_m_c(F) {
+    F.style.width = "100%";
+    F.style.height = "100%";
+    var E = 0,
+    D = 0;
+    if (document.documentElement && document.documentElement.clientWidth) {
+        E = document.documentElement.clientWidth
+    } else {
+        if (window.innerWidth) {
+            E = window.innerWidth
+        } else {
+            if (document.body) {
+                E = document.body.clientWidth
+            }
+        }
+    }
+    if (window.innerHeight) {
+        D = window.innerHeight
+    } else {
+        if (document.documentElement && document.documentElement.clientHeight) {
+            D = document.documentElement.clientHeight
+        } else {
+            if (document.body) {
+                D = document.body.clientHeight
+            }
+        }
+    }
+    setTimeout(function() {
+        E = Math.max(document.body.scrollWidth, E);
+        D = Math.max(document.body.scrollHeight, D);
+        F.style.width = E + "px";
+        F.style.height = D + "px"
+    },
+    1)
+}
+function LR_m_b(G) {
+    var E = document.getElementsByTagName(G);
+    for (var F = 0,
+    H = E.length; F < H; F++) {
+        if (E[F].id == "LR_Flash") {
+            continue
+        }
+        E[F].style.visibility = E[F].getAttribute("LR_m_g");
+        E[F].removeAttribute("LR_m_g")
+    }
+}
+function LR_m_a(G) {
+    var E = document.getElementsByTagName(G);
+    for (var F = 0,
+    H = E.length; F < H; F++) {
+        if (E[F].id == "LR_Flash") {
+            continue
+        }
+        E[F].setAttribute("LR_m_g", E[F].style.visibility, 0);
+        E[F].style.visibility = "hidden"
+    }
+}
+function LR_m_f(J, I, H, F) {
+    try {
+        if (J) {
+            document.body.removeChild(J);
+            LR_m_d = null
+        }
+        if (!F) {
+            LR_m_b("SELECT")
+        }
+        if (!H) {
+            LR_m_b("OBJECT")
+        }
+        if (!I) {
+            LR_m_b("IFRAME")
+        }
+    } catch(G) {}
+}
+var timerID_title;
+var step_title = 0;
+function flash_title() {
+    if (isFocus) {
+        flash_title1();
+        return
+    }
+    clearTimeout(timerID_title);
+    step_title++;
+    switch (step_title) {
+    case 4:
+        document.title = title1;
+        step_title = 0;
+        break;
+    case 1:
+        document.title = "*" + title1;
+        break;
+    case 2:
+        document.title = "**" + title1;
+        break;
+    case 3:
+        document.title = "***" + title1;
+        break
+    }
+    timerID_title = setTimeout("flash_title()", 200)
+}
+function flash_title1() {
+    if (timerID_title != null) {
+        clearTimeout(timerID_title);
+        timerID_title = null;
+        document.title = title0
+    }
+}
+function showChatpre() {
+    if (typeof(chatpre_show_content) != "undefined") {
+        LR_m_d = LR_m_e(true, false, true);
+        AddmodalDiv("Chatpreobj", chatpre_show_content, 450)
+    } else {
+        LastFunction()
+    }
+}
+function closechat() {
+    _BeforeWinExit = 1;
+    window.location = "closeandcheckinvite.aspx?id=" + c25 + "&sid=" + c47 + "&lng=" + c13
+}
+function submitChatpre(H, K, J, N, L, M) {
+    _BeforeWinExit = 0;
+    LR_m_f(LR_m_d, true, false, true);
+    var I = LR_GetObj("modalDiv_Chatpreobj");
+    I.style.display = "none";
+    if (H) {
+        c104 = H
+    }
+    if (K != "") {
+        c53 = K
+    }
+    if (L) {
+        c102 = L
+    }
+    if (M) {
+        c103 = M
+    }
+    if (J != "") {
+        c31 = J
+    }
+    if (N != "") {
+        c32 = N
+    }
+    LastFunction()
+}
+function LastFunction() {
+    if (c31 != "" && c31 != null) {
+        chatwordsFrame.testclick(c31, c32)
+    }
+    if (c36) {
+        f8("start")
+    } else {
+        _BeforeWinExit = 1;
+        alert(c5.replace("\\r\\n", "\r\n"));
+        window.location = getnoteurl()
+    }
+}
+function LoadDocument() {
+    f17();
+    showChatpre();
+    window.focus();
+    f7();
+    changeadv(c30, c1, c44, LR_sysurl)
+}
+window.onresize = f1;
+function f1() {
+    f6()
+}
+function f2(B) {
+    if (B < 10) {
+        return "0" + B
+    } else {
+        return B.toString()
+    }
+}
+function GetNowTime() {
+    var B = new Date();
+    return f2(B.getMonth() + 1) + "-" + f2(B.getDate()) + " " + f2(B.getHours()) + ":" + f2(B.getMinutes()) + ":" + f2(B.getSeconds())
+}
+function f9(G) {
+    if (G == null) {
+        return ""
+    }
+    var H = 0;
+    var I;
+    var F = G.length;
+    trimstr = "";
+    if (I < 0) {
+        return trimstr
+    }
+    flagbegin = true;
+    flagend = true;
+    while (flagbegin == true) {
+        if (G.charAt(H) == " ") {
+            H++;
+            flagbegin = true
+        } else {
+            flagbegin = false
+        }
+    }
+    I = F - 1;
+    var J = 0;
+    while (flagend == true) {
+        if (G.charAt(I) == " ") {
+            I--;
+            flagend = true;
+            J++
+        } else {
+            flagend = false
+        }
+    }
+    if (G.length == H) {
+        trimstr = "";
+        return trimstr
+    }
+    trimstr = G.substring(H, I + 1);
+    return trimstr
+}
+function f5() {
+    f6();
+    f7()
+}
+function f3(D) {
+    if (D && (D.keyCode == 8 || (D.altKey && D.keyCode == 37))) {
+        var C = (D.target || D.srcElement);
+        if (C.type == "text" || C.type == "textarea") {
+            D.returnValue = true;
+            return
+        }
+        if (window.event) {
+            D.cancelBubble = true
+        } else {
+            D.preventDefault()
+        }
+        D.returnValue = false
+    }
+}
+var isFocus = false;
+var shortcut = "Enter";
+var fontobj = new Object();
+fontobj.fontname = c10;
+fontobj.isbold = false;
+fontobj.isitalic = false;
+fontobj.isstrikethrough = false;
+fontobj.isunderline = false;
+fontobj.fontsize = 12;
+fontobj.fontforecolor = "#ffffff";
+fontobj.fontbackcolor = "#000000";
+var MaxID = 0;
+var wordscheckstring = "|";
+var timerID = null;
+var newtext = "";
+var sendingtext = "";
+var presendtext = "";
+var sendedtemptext = "";
+var sending = 0;
+var iframestyle = c11;
+title0 = unescape(title0.replace(/\+/g, "%20"));
+title1 = unescape(title1.replace(/\+/g, "%20"));
+var autoanswer0_time = 0;
+var autoanswer1_time = 0;
+var autoanswer2_time = 0;
+var autoanswer3_time = 0;
+var chatendcheck = 1;
+var Intervalid = null;
+function excludeE(G) {
+    var H, F, I, J;
+    F = /<.*?onresize.*?>/ig;
+    H = G.match(F);
+    if (H == null) {
+        return G
+    }
+    for (i = 0; i < H.length; i++) {
+        I = H[i];
+        J = I.replace(/onresize/ig, "onresize" + i);
+        G = G.replace(I, J)
+    }
+    return G
+}
+function f18() {
+    if (usetext) {
+        return excludeE(convertToHtml(LR_GetObj("TextBox1_editor").value))
+    } else {
+        return excludeE(FreeTextBox1_editor.document.body.innerHTML)
+    }
+}
+function f18_out() {
+    if (usetext) {
+        return LR_GetObj("TextBox1_editor").value
+    } else {
+        return FreeTextBox1_editor.document.body.outerText
+    }
+}
+var LR_xmlHttp;
+var lastclsid = null;
+var kind0 = true;
+function GetXmlHttpObject(E) {
+    var D = null;
+    if (kind0) {
+        D = GetMSXmlHttp()
+    }
+    if (D != null) {
+        D.onreadystatechange = E
+    } else {
+        kind0 = false;
+        D = new XMLHttpRequest();
+        if (D != null) {
+            try {
+                D.onload = E;
+                D.onerror = E;
+                D.onreadystatechange = E
+            } catch(F) {}
+        }
+    }
+    return D
+}
+function GetMSXmlHttp() {
+    var E = null;
+    if (lastclsid == null) {
+        var F = ["Msxml2.XMLHTTP.6.0", "Msxml2.XMLHTTP.5.0", "Msxml2.XMLHTTP.4.0", "Msxml2.XMLHTTP.3.0", "Msxml2.XMLHTTP.2.6", "Microsoft.XMLHTTP.1.0", "Microsoft.XMLHTTP.1", "Microsoft.XMLHTTP"];
+        for (var D = 0; D < F.length && E == null; D++) {
+            E = CreateXmlHttp(F[D])
+        }
+    } else {
+        E = CreateXmlHttp(lastclsid)
+    }
+    return E
+}
+function CreateXmlHttp(D) {
+    var F = null;
+    try {
+        F = new ActiveXObject(D);
+        lastclsid = D;
+        return F
+    } catch(E) {
+        return null
+    }
+}
+var Ajax_timerID;
+var trypost = 0;
+function PostCall(E, D) {
+    if (LR_xmlHttp != null) {
+        trypost++;
+        if (trypost > 20) {
+            getReady("err2");
+            LR_xmlHttp = null;
+            return
+        }
+        Ajax_timerID = setTimeout("PostCall('" + E + "','" + D + "')", 1000);
+        return
+    }
+    trypost = 0;
+    try {
+        LR_xmlHttp = GetXmlHttpObject(CallbackMethod);
+        if (typeof(LR_xmlHttp.setrequestheader) != "undefined") {
+            LR_xmlHttp.open("POST", E, true);
+            LR_xmlHttp.setrequestheader("content-length", D.length);
+            LR_xmlHttp.setrequestheader("content-type", "application/x-www-form-urlencoded");
+            LR_xmlHttp.send(D)
+        } else {
+            LR_xmlHttp.open("GET", E + "?" + D, true);
+            LR_xmlHttp.send(null)
+        }
+    } catch(F) {
+        getReady("err3");
+        LR_xmlHttp = null
+    }
+}
+function CallbackMethod() {
+    try {
+        if (LR_xmlHttp == null) {
+            return
+        }
+        if (LR_xmlHttp.readyState == 0) {} else {
+            if (LR_xmlHttp.readyState == 1) {} else {
+                if (LR_xmlHttp.readyState == 2) {} else {
+                    if (LR_xmlHttp.readyState == 3) {} else {
+                        if (LR_xmlHttp.readyState == 4 || LR_xmlHttp.readyState == "complete") {
+                            if (LR_xmlHttp.status == 200) {
+                                var C = LR_xmlHttp.responseText;
+                                getReady(C)
+                            } else {
+                                getReady("err4")
+                            }
+                            LR_xmlHttp = null
+                        } else {
+                            if (LR_xmlHttp.status == 404) {
+                                getReady("err5");
+                                LR_xmlHttp = null
+                            } else {
+                                getReady("err6");
+                                LR_xmlHttp = null
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } catch(D) {
+        getReady("err7");
+        LR_xmlHttp = null
+    }
+}
+function f8(F) {
+    var D;
+    if (F == "check") {
+        if (sending) {
+            return
+        }
+        sending = 1;
+        if (sendingtext == "") {
+            var E = ",ACT_TEMP|" + (isFocus ? "1": "0") + "|" + escape(f9(f18_out()).substring(0, 150)).replace(/%E/g, "%u00e");
+            if (parseInt(c109) > 0 && parseInt(autoanswer0_time) > 0 && (new Date().getTime() - parseInt(autoanswer0_time)) > parseInt(c109) * 1000) {
+                c109 = 0;
+                E += ",ACT_r0"
+            }
+            if (parseInt(c110) > 0 && parseInt(autoanswer3_time) > 0 && (new Date().getTime() - parseInt(autoanswer3_time)) > parseInt(c110) * 1000) {
+                autoanswer3_time = 0;
+                E += ",ACT_r1"
+            }
+            if (sendedtemptext != E) {
+                newtext += E;
+                sendedtemptext = E
+            }
+            D = "id=" + c25 + "&sid=" + c47 + "&maxid=" + MaxID + "&_text=" + escape((newtext + presendtext).replace(/\+/g, "%2b")) + "&lng=" + c13;
+            sendingtext = newtext + presendtext;
+            newtext = presendtext = ""
+        } else {
+            D = "id=" + c25 + "&sid=" + c47 + "&maxid=" + MaxID + "&_text=" + escape(sendingtext.replace(/\+/g, "%2b")) + "&lng=" + c13
+        }
+        PostCall(LR_sysurl + "LR/CdCheck.aspx", D + "&d=" + new Date().getTime())
+    } else {
+        if (F == "start") {
+            D = "websiteid=" + LR_websiteid + "&p=" + c50 + "&oname=" + c53 + "&sid=" + c47 + "&cid=" + c48 + "&ex=" + c104 + "&lng=" + c13 + "&un=" + c102 + "&ud=" + c103 + "&skid=" + c31 + "&sk=" + escape(c32);
+            PostCall(LR_sysurl + "LR/CdStart.aspx", D + "&d=" + new Date().getTime())
+        } else {
+            if (F == "end") {
+                D = "id=" + c25 + "&sid=" + c47 + "&lng=" + c13;
+                if (pj != "" && pj != "1") {
+                    D += "&pj=" + pj
+                }
+                PostCall(LR_sysurl + "LR/CdEnd.aspx", D + "&d=" + new Date().getTime())
+            } else {
+                if (F == "end1") {
+                    D = "id=" + c25 + "&sid=" + c47 + "&lng=" + c13 + "&k=1";
+                    PostCall(LR_sysurl + "LR/CdEnd.aspx", D + "&d=" + new Date().getTime())
+                } else {
+                    if (F == "upload") {
+                        D = "uploadid=" + c47 + "&lng=" + c13 + "";
+                        PostCall(LR_sysurl + "LR/CdUpload.aspx", D + "&d=" + new Date().getTime())
+                    }
+                }
+            }
+        }
+    }
+}
+function showTime() {
+    obj = LR_GetObj("pmtdiv");
+    if (obj.style.display == "none") {
+        obj.style.display = "";
+        f6();
+        chatwordsFrame.scroll(0, 50000);
+        c113 = unescape(c113.replace(/\+/g, "%20"))
+    }
+    LR_GetObj("pmtdiv1").innerHTML = c113.replace("%s%", c112.toString());
+    if (c112 == 0) {
+        if (Intervalid != null) {
+            clearInterval(Intervalid);
+            Intervalid = null
+        }
+        f8("end1")
+    }
+    c112--
+}
+function autoanswer() {
+    if (parseInt(c93) > 0 && parseInt(autoanswer0_time) > 0 && (new Date().getTime() - parseInt(autoanswer0_time)) > parseInt(c93) * 1000) {
+        c93 = 0;
+        f20('<p><font class="operatornamefont">' + c101 + "&nbsp;" + GetNowTime() + '</font></p><div style="margin-left:5px" class="operatorfont">' + unescape(c94.replace(/\+/g, "%20")).replace("{0}", getnoteurl() + "&page=3").replace("{1}", getnoteurl() + "&page=FreeTel") + "</div>", true)
+    }
+    if (parseInt(c95) > 0 && parseInt(autoanswer1_time) > 0 && (new Date().getTime() - parseInt(autoanswer1_time)) > parseInt(c95) * 1000 * 60) {
+        autoanswer1_time = 0;
+        f20('<p><font class="operatornamefont">' + c101 + "&nbsp;" + GetNowTime() + '</font></p><div style="margin-left:5px" class="operatorfont">' + unescape(c96.replace(/\+/g, "%20")) + "</div>", true)
+    }
+    if (parseInt(c97) > 0 && parseInt(autoanswer2_time) > 0 && (new Date().getTime() - parseInt(autoanswer2_time)) > parseInt(c97) * 1000 * 60) {
+        autoanswer2_time = 0;
+        f20('<p><font class="operatornamefont">' + c101 + "&nbsp;" + GetNowTime() + '</font></p><div style="margin-left:5px" class="operatorfont">' + unescape(c98.replace(/\+/g, "%20")) + "</div>", true)
+    }
+    if (parseInt(c99) > 0 && parseInt(autoanswer3_time) > 0 && (new Date().getTime() - parseInt(autoanswer3_time)) > parseInt(c99) * 1000) {
+        autoanswer3_time = 0;
+        f20('<p><font class="operatornamefont">' + c101 + "&nbsp;" + GetNowTime() + '</font></p><div style="margin-left:5px" class="operatorfont">' + unescape(c100.replace(/\+/g, "%20")) + "</div>", true)
+    }
+}
+var lurl = "";
+function getReady(J) {
+    sending = 0;
+    if (J == null || J == "r") {
+        if (sendingtext != "") {
+            sendingtext = ""
+        }
+        if (wordscheckstring != null) {
+            clearTimeout(timerID);
+            timerID = null;
+            timerID = setTimeout("f14()", 2000)
+        }
+        autoanswer();
+        return
+    }
+    if (J.indexOf("err") == 0) {
+        if (wordscheckstring != null) {
+            clearTimeout(timerID);
+            timerID = null;
+            timerID = setTimeout("f14()", 2000)
+        }
+        autoanswer();
+        return
+    }
+    var I = J.split(",");
+    for (w = 0; w < I.length; w++) {
+        if (I[w] == "") {
+            continue
+        }
+        if (I[w] == "noinput") {
+            f10(c21 + ":" + shortcut);
+            continue
+        }
+        var G = I[w].split("|");
+        if (G.length > 1 && G[0] == "inputting") {
+            f10(c86.replace("{0}", unescape(G[1].replace(/\+/g, "%20"))));
+            continue
+        }
+        if (G.length > 1 && G[0] == "upload") {
+            if (G[1] == "ReceivingData") {
+                var K = LR_GetObj("progressBar").style;
+                K.width = parseInt(G[2]) / parseInt(G[3]) * 100 + "%";
+                LR_GetObj("progressPmt").innerHTML = G[2] + "/" + G[3];
+                if (uploading) {
+                    uploadTimeID = setTimeout("f30()", 1000)
+                }
+                continue
+            } else {
+                if (G[1] == "Complete") {} else {
+                    if (G[1] == "Error") {
+                        f31()
+                    } else {
+                        if (G[1] == "null") {
+                            if (uploading) {
+                                uploadTimeID = setTimeout("f30()", 5000)
+                            }
+                        }
+                    }
+                }
+            }
+            continue
+        }
+        if (G.length != 6) {
+            continue
+        }
+        if (sendingtext != "") {
+            sendingtext = ""
+        }
+        G[1] = G[1].replace(/\+/g, "%20");
+        G[5] = G[5].replace(/\+/g, "%20");
+        G[1] = f15(unescape(G[1]));
+        G[4] = G[4].replace(/\+/g, "%20");
+        G[4] = unescape(G[4]);
+        G[5] = unescape(G[5]);
+        if (G[0] == "-1") {
+            if (timerID != null) {
+                clearTimeout(timerID);
+                timerID = null
+            }
+            getReady("r");
+            _BeforeWinExit = 1;
+            alert(G[1]);
+            window.location = getnoteurl();
+            return
+        }
+        if (G[3] != "") {
+            if (wordscheckstring.indexOf("|" + G[3] + "|") != -1) {
+                continue
+            }
+            wordscheckstring += G[3] + "|";
+            MaxID = G[3];
+            switch (G[2]) {
+            case "1":
+                if (G[1].toString().indexOf("%name%") > -1) {
+                    G[1] = G[1].toString().replace("%name%", "<b>" + G[5] + "</b>")
+                }
+                f21(G[1]);
+                break;
+            case "37":
+                var L = G[1].split("|");
+                for (ww = 0; ww < L.length; ww++) {
+                    L[ww] = L[ww].replace(/\+/g, "%20");
+                    L[ww] = unescape(L[ww])
+                }
+                if (L[0].length > 0) {
+                    window.document.title = L[0]
+                }
+                if (L[1].length > 0) {
+                    changeadv(L[1], L[2], c44, LR_sysurl)
+                }
+                break;
+            case "17":
+                if (uploading) {
+                    f31()
+                }
+                f20('<p><font class="clientnamefont">' + c23 + " " + GetNowTime() + '</font></p><div style="margin-left:5px" class="clientfont">' + G[1] + "</div>", true);
+                break;
+            case "43":
+                pingjia();
+                break;
+            case "16":
+                if (uploading) {
+                    f31()
+                }
+                G[1] = G[1].toString().replace("%c%", '<b><font class="clientnamefont">' + c23 + "</font></b>");
+                f20('<p><font class="sysfont">' + G[1] + "</font></p>", true);
+                break;
+            case "3":
+                if (chatendcheck && c112 > 0) {
+                    chatendcheck = 0;
+                    Intervalid = window.setInterval("showTime()", 1000)
+                }
+                c93 = -1;
+                autoanswer3_time = 0;
+                autoanswer2_time = autoanswer1_time = new Date().getTime();
+                f20('<p><font class="operatornamefont">' + G[5].replace("HTTP/1.1 100 Continue", "") + "&nbsp;" + GetNowTime() + '</font></p><div style="margin-left:5px" class="operatorfont">' + G[1] + "</div>", true);
+                owordscount++;
+                break;
+            case "20":
+                autoanswer3_time = 0;
+                autoanswer2_time = autoanswer1_time = new Date().getTime();
+                f20(G[1], true);
+                break;
+            case "4":
+                autoanswer3_time = 0;
+                autoanswer2_time = autoanswer1_time = new Date().getTime();
+                var H = G[1].split("|");
+                if (H.length == 2) {
+                    if (H[0] != "") {
+                        alert(unescape(H[0].replace(/\+/g, "%20")))
+                    }
+                    f8("end");
+                    _WinExit = 1;
+                    _BeforeWinExit = 1;
+                    window.onunload = null;
+                    window.onbeforeunload = null;
+                    chatwordsFrame.onunload = null;
+                    chatwordsFrame.onbeforeunload = null;
+                    lurl = unescape(H[1]);
+                    if (lurl.substring(0, 9) == "transfer:") {
+                        lurl = lurl.substring(9, lurl.length)
+                    } else {
+                        lurl = "custom_url.aspx?url=" + unescape(H[1])
+                    }
+                    setTimeout("window.location=lurl;", 1500)
+                } else {
+                    if (H.length == 1) {
+                        window.open(G[1], G[3], "")
+                    }
+                }
+                break;
+            case "22":
+                _WinExit = 1;
+                _BeforeWinExit = 1;
+                window.onunload = null;
+                window.onbeforeunload = null;
+                chatwordsFrame.onunload = null;
+                chatwordsFrame.onbeforeunload = null;
+                window.location = G[1];
+                break;
+            default:
+                break
+            }
+        }
+        switch (G[4]) {
+        case "start":
+            autoanswer0_time = new Date().getTime();
+            f21(G[1]);
+            break;
+        case "start1":
+            c93 = 0;
+            f21(G[1]);
+            break;
+        case "restart":
+            f8("start");
+            return;
+        case "end":
+            if (Intervalid != null) {
+                clearInterval(Intervalid);
+                Intervalid = null
+            }
+            if (timerID != null) {
+                clearTimeout(timerID);
+                timerID = null
+            }
+            if (wordscheckstring == null) {
+                return
+            }
+            wordscheckstring = null;
+            _BeforeWinExit = 1;
+            chatwordsFrame.document.body.innerHTML = chatwordsFrame.document.body.innerHTML.replace(/onclick/g, "ronclick");
+            if (chatwordsFrame.document.body.innerHTML.indexOf(c8) == -1) {
+                f20('<p class="sysfont">' + G[1] + "<BR>" + c8 + "</p>", true)
+            }
+            return;
+        case "print":
+            f21(G[1]);
+            break;
+        case "direct":
+            if (Intervalid != null) {
+                clearInterval(Intervalid);
+                Intervalid = null
+            }
+            if (timerID != null) {
+                clearTimeout(timerID);
+                timerID = null
+            }
+            if (wordscheckstring == null) {
+                return
+            }
+            wordscheckstring = null;
+            _BeforeWinExit = 1;
+            alert(G[1]);
+            chatwordsFrame.document.body.innerHTML = chatwordsFrame.document.body.innerHTML.replace(/onclick/g, "ronclick");
+            f21(G[1]);
+            if (chatwordsFrame1.document.body.innerHTML.indexOf(c8) == -1) {
+                f20('<p class="sysfont">' + G[1] + "<BR>" + c8 + "</p>", true)
+            }
+            return;
+        case "exit":
+            return
+        }
+    }
+    if (sendingtext != "") {
+        sendingtext = ""
+    }
+    clearTimeout(timerID);
+    timerID = null;
+    timerID = setTimeout("f14()", 2000);
+    autoanswer()
+}
+function f10(B) {
+    if (c44) {
+        B = '<img src="imgs/secure.gif" alt="SSL 128 bit"> ' + B
+    }
+    if (LR_GetObj("td_prompt2").innerHTML != B) {
+        LR_GetObj("td_prompt2").innerHTML = B
+    }
+}
+var c74 = 0;
+function User_Send() {
+    if (wordscheckstring == null) {
+        return false
+    }
+    var D = f9(f18_out());
+    var C = f15(f18());
+    if (D == "" && (C.indexOf("IMG") == -1) && (C.indexOf("img") == -1)) {
+        f10(c4);
+        f19("", false);
+        f22();
+        return false
+    }
+    f19("", false);
+    f7();
+    f22();
+    f10(c22);
+    if (newtext != "") {
+        newtext += "," + escape(C).replace(/%E/g, "%u00e")
+    } else {
+        presendtext += "," + escape(C).replace(/%E/g, "%u00e")
+    }
+    f20('<p><font class="clientnamefont">' + c23 + " " + GetNowTime() + '</font></p><div style="margin-left:5px" class="clientfont">' + C + "</div>", true);
+    if (c73 > -1 && pj == "") {
+        c74++;
+        if (c74 >= c73) {
+            pingjia()
+        }
+    }
+    f10(c21 + ":" + shortcut);
+    if (c93 == -1) {
+        autoanswer3_time = new Date().getTime()
+    }
+    return true
+}
+var clearhtml = false;
+function AddLine() {
+    var F = "\r\n";
+    var G = LR_GetObj("TextBox1_editor");
+    if (document.selection && document.selection.type != "Control") {
+        var I = document.selection.createRange();
+        if (I.text.length > 0) {
+            I.text += F
+        } else {
+            I.text = F
+        }
+        I.select()
+    } else {
+        if (G != null && window.getSelection && G.selectionStart > -1) {
+            var H = G.selectionStart;
+            var J = G.selectionEnd;
+            G.value = G.value.substring(0, H) + F + G.value.slice(J);
+            G.selectionStart = H + 2;
+            G.selectionEnd = J + 1
+        }
+    }
+}
+function f11(E) {
+    E = E || window.event;
+    var F = E.keyCode;
+    var H = E.ctrlKey;
+    var G = E.altKey;
+    if (G && E.keyCode == 37) {
+        E.cancelBubble = true;
+        E.returnValue = false;
+        return
+    }
+    if ((F == 13) && shortcut == "Enter" && H) {
+        AddLine();
+        return false
+    }
+    if ((F == 13) && shortcut == "Enter") {
+        clearhtml = User_Send();
+        return false
+    }
+    if (H && (F == 13) && shortcut == "Ctrl + Enter") {
+        clearhtml = User_Send();
+        return false
+    }
+    if (G && (F == 83) && shortcut == "ALT + S") {
+        clearhtml = User_Send();
+        return false
+    }
+    return true
+}
+function f12(B) {
+    if (clearhtml) {
+        f19("", false);
+        f22();
+        clearhtml = false;
+        return false
+    }
+}
+function f13() {
+    f8("end")
+}
+function f14() {
+    if (chatwordsFrame.serverkindname != "") {
+        newtext += ",ACT_SERVERKIND|" + chatwordsFrame.serverkind + "|" + escape(chatwordsFrame.serverkindname);
+        chatwordsFrame.serverkindname = ""
+    }
+    if (GuestTel != "") {
+        newtext += ",ACT_TEL|" + GuestTel;
+        GuestTel = ""
+    }
+    if (pj != "" && pj != "1") {
+        newtext += ",ACT_PJ|" + pj;
+        pj = "1"
+    }
+    f8("check")
+}
+function convertIMG(H) {
+    var G, I, J, F;
+    J = /{img:.*?}/g;
+    G = H.match(J);
+    if (G == null) {
+        return H
+    }
+    for (i = 0; i < G.length; i++) {
+        I = G[i].match(J);
+        if (I == null) {
+            return H
+        }
+        if (I.length == 1) {
+            F = I[0].substring(I[0].indexOf(":") + 1, I[0].indexOf("}"));
+            H = H.replace(I, "<img src=" + F + " border=0>")
+        }
+    }
+    return H
+}
+function convertToHtml(B) {
+    return convertIMG(B.replace(/ /g, "&nbsp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/\r\n/g, "<br>").replace(/\n/g, "<br>").replace(/\"/g, "&quot;").replace(/\'/g, "&#39;"))
+}
+function f15(C) {
+    C = C.replace(/<\/?SPAN[^>]*>/gi, "");
+    C = C.replace(/<(\w[^>]*) class=([^ |>]*)([^>]*)/gi, "<$1$3");
+    C = C.replace(/<(\w[^>]*) lang=([^ |>]*)([^>]*)/gi, "<$1$3");
+    C = C.replace(/<\\?\?xml[^>]*>/gi, "");
+    C = C.replace(/<\/?\w+:[^>]*>/gi, "");
+    C = C.replace(/ /, " ");
+    C = C.replace(/<iframe/gi, "<xiframe");
+    if (c39) {
+        var D = new RegExp("(<P)([^>]*>.*?)(</P>)", "gi");
+        C = C.replace(D, "<div$2</div>")
+    }
+    C = C.replace(/<script.*<\/script>/gi, "");
+    return C
+}
+function f19(D, C) {
+    if (C) {
+        if (usetext) {
+            LR_GetObj("TextBox1_editor").value += D
+        } else {
+            FreeTextBox1_editor.document.body.innerHTML += D
+        }
+    } else {
+        if (usetext) {
+            LR_GetObj("TextBox1_editor").value = D
+        } else {
+            FreeTextBox1_editor.document.body.innerHTML = D
+        }
+    }
+}
+function f7() {
+    if (LR_GetObj("Button1") != null) {
+        try {
+            LR_GetObj("Button1").focus();
+            return
+        } catch(B) {}
+    }
+    window.setTimeout(function() {
+        if (usetext) {
+            LR_GetObj("TextBox1_editor").focus()
+        } else {
+            FreeTextBox1_editor.focus()
+        }
+    },
+    0)
+}
+function f20(E, D) {
+    if (!isFocus) {
+        flash_title();
+        window.focus()
+    }
+    if (D) {
+        chatwordsFrame.document.body.innerHTML += E
+    } else {
+        chatwordsFrame.document.body.innerHTML = E
+    }
+    for (var F = 0; F < 10; F++) {
+        chatwordsFrame.scroll(0, 50000)
+    }
+}
+function f21(B) {
+    if (!isFocus) {
+        flash_title();
+        window.focus()
+    }
+    LR_GetObj("td_prompt1").innerHTML = "&nbsp;" + B
+}
+function OpenDialog(F, E, D) {
+    if (navigator.appName == "Microsoft Internet Explorer") {
+        window.showModalDialog(F, self, "dialogWidth:" + E + "px;dialogHeight:" + D + "px;status:0;scroll:0;location:0;help:0;")
+    } else {
+        window.open(F, "LR_Dialog", "modal=yes,width=" + E + ",height=" + D + ",resizable=no,scrollbars=no,location=no,status=no")
+    }
+}
+function SwitchShortCut() {
+    OpenDialog("ShortCutWin_" + c13 + ".aspx", 210, 135)
+}
+function SwitchShortCut1(B) {
+    if (!B) {
+        return
+    }
+    shortcut = B;
+    f10(c21 + ":" + shortcut);
+    f7()
+}
+function SetFont() {
+    OpenDialog("SetFont_" + c13 + ".aspx", 380, 280)
+}
+function SetFont1(D) {
+    if (usetext) {
+        return
+    }
+    var C = FreeTextBox1_editor.document;
+    if (!D) {
+        return
+    }
+    fontobj = D;
+    C.execCommand("fontname", "", fontobj.fontname);
+    if (fontobj.isbold != C.queryCommandState("bold")) {
+        C.execCommand("bold", "", null)
+    }
+    if (fontobj.isitalic != C.queryCommandState("Italic")) {
+        C.execCommand("Italic", "", null)
+    }
+    C.execCommand("FontSize", "", ConvertFontsize(fontobj.fontsize));
+    if (fontobj.isstrikethrough != C.queryCommandState("strikethrough")) {
+        C.execCommand("strikethrough", "", null)
+    }
+    if (fontobj.isunderline != C.queryCommandState("underline")) {
+        C.execCommand("underline", "", null)
+    }
+    f7()
+}
+function f22() {
+    if (usetext) {
+        return
+    }
+    var B = FreeTextBox1_editor.document;
+    B.execCommand("SelectAll", "", null);
+    B.execCommand("fontname", "", fontobj.fontname);
+    if (fontobj.isbold != B.queryCommandState("bold")) {
+        B.execCommand("bold", "", null)
+    }
+    if (fontobj.isitalic != B.queryCommandState("Italic")) {
+        B.execCommand("Italic", "", null)
+    }
+    B.execCommand("FontSize", "", ConvertFontsize(fontobj.fontsize));
+    if (fontobj.isstrikethrough != B.queryCommandState("strikethrough")) {
+        B.execCommand("strikethrough", "", null)
+    }
+    if (fontobj.isunderline != B.queryCommandState("underline")) {
+        B.execCommand("underline", "", null)
+    }
+}
+function ConvertFontsize(B) {
+    if (B == 8) {
+        return 1
+    }
+    if (B == 10) {
+        return 2
+    }
+    if (B == 12) {
+        return 3
+    }
+    if (B == 14) {
+        return 4
+    }
+    if (B == 18) {
+        return 5
+    }
+    if (B == 24) {
+        return 6
+    }
+    if (B == 36) {
+        return 7
+    }
+}
+function SelSmile() {
+    OpenDialog("Smile_" + c13 + ".aspx", 360, 260)
+}
+function SelSmile1(C) {
+    var D = usetext ? LR_GetObj("TextBox1_editor").value: f18();
+    if (C) {
+        f19(D + (usetext ? "{img:" + C + "}": '<img src="' + C + '" border="0">'), 0);
+        f7()
+    }
+}
+function f23() {
+    var H = chatwordsFrame.document;
+    var E = H.body.innerHTML;
+    var F = window.open("about:blank", "_blank", "top=10000");
+    try {
+        F.document.open();
+        F.document.write('<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><base target="_blank">' + iframestyle + "</head><body></body></html>");
+        F.document.write(E);
+        F.document.close();
+        F.document.execCommand("saveas", "", c6 + ".htm");
+        F.close()
+    } catch(G) {
+        if (F != null) {
+            F.close()
+        }
+    }
+}
+function f24() {
+    var B = chatwordsFrame.document;
+    B.execCommand("print", "", null)
+}
+function HidePingjiaobj() {
+    LR_m_f(LR_m_d, true, false, false);
+    var B = LR_GetObj("modalDiv_Pingjiaobj");
+    B.style.display = "none"
+}
+var pj = "";
+function pingjia() {
+    if (wordscheckstring == null) {
+        return
+    }
+    var D = LR_GetObj("modalDiv_Pingjiaobj");
+    if (D != null && D.style.display != "none") {
+        return
+    }
+    LR_m_d = LR_m_e(true, false, false);
+    if (D == null) {
+        var F = '<table id="Table_pingjia" cellSpacing="5" cellPadding="0" align="center" border="0"><tr><td height="25"><b>' + c76 + "</b></td></tr><tr><td >" + c77 + "</td></tr><tr><td>";
+        var E = c72.split("|");
+        for (w = 0; w < E.length; w++) {
+            if (E[w] == "") {
+                continue
+            }
+            F += '<input type="radio" id="pj' + w.toString() + '" name="pj" value="' + E[w] + '" ' + ((w == 0) ? "checked": "") + " />" + E[w]
+        }
+        F += '</td></tr><tr><td height="25" valign="bottom">' + c78 + '</td></tr><tr><td><TEXTAREA rows="8" cols="42" name="note" id="note" style="BORDER-RIGHT: navy 1px solid; BORDER-TOP: navy 1px solid; FONT-SIZE: 12pt; BORDER-LEFT: navy 1px solid; WIDTH: 100%; BORDER-BOTTOM: navy 1px solid; BORDER-LEFT: navy 1px solid; HEIGHT: 75px"></TEXTAREA></td></tr><tr><td height="5"></td></tr><tr><td align="center" id="td_19"><A onClick="return pingjia1()" href="#">' + c79 + '</A> <A style="margin-left:20px;" onClick="return HidePingjiaobj();" href="#">' + c80 + "</A> </td></tr></table>"
+    }
+    AddmodalDiv("Pingjiaobj", F);
+    LR_GetObj("note").focus()
+}
+function pingjia1() {
+    var E = LR_GetObj("note").value;
+    var F = "";
+    var D = c72.split("|");
+    for (w = 0; w < D.length; w++) {
+        if (D[w] == "") {
+            continue
+        }
+        if (LR_GetObj("pj" + w.toString()).checked) {
+            F += LR_GetObj("pj" + w.toString()).value
+        }
+    }
+    pj = escape(F) + "|" + escape(E);
+    c81 = "";
+    HidePingjiaobj()
+}
+var CaptureCount = 0;
+function Capture() {
+    if (navigator.appVersion.indexOf("MSIE") == -1) {
+        alert(c64);
+        return
+    }
+    var I = null;
+    try {
+        I = new ActiveXObject("CaptureScreen.CapRect.2")
+    } catch(N) {}
+    if (I) {
+        delete I
+    } else {
+        var K = window.open("activex_" + c13 + ".htm", "activex", "");
+        K.moveTo(0, 0);
+        K.focus();
+        return
+    }
+    CaptureCount++;
+    var L;
+    if (window.confirm(c68)) {
+        L = true
+    }
+    var M = chatwordsFrame.document.createElement("P");
+    M.id = "Capture" + CaptureCount;
+    var H = chatwordsFrame.document.createElement("OBJECT");
+    M.appendChild(H);
+    H.width = "390px";
+    H.height = "226px";
+    H.style.margin = "5px 8px";
+    H.id = "CapRect" + CaptureCount;
+    H.classid = "clsid:D9CBC5C0-A9B4-441A-B888-8181D5439CC9";
+    H.HideWindow = L;
+    H.TipBitmap = "jp_" + (c13 == "kr" ? "en": c13) + ".bmp";
+    H.SetButtonOk(13, 123, 81, 25);
+    H.SetButtonCancel(98, 123, 81, 25);
+    if (H.Capture()) {
+        var J = chatwordsFrame.document.createElement("SPAN");
+        J.id = "SPAN" + CaptureCount;
+        J.innerHTML = '<p style="width:' + H.width + ';margin-top:0;" align=center><a href="javascript:void(0)" onClick="parent.Capture_SaveAs(' + CaptureCount + ');return false;">' + c66 + '</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' + LR_sysurl + "site/" + c25 + "/Cupload/" + c47 + H.PngName + '">' + c65 + "</a></p>";
+        M.appendChild(J);
+        chatwordsFrame.document.body.appendChild(M);
+        chatwordsFrame.scroll(0, 50000);
+        if (H.SetPostURL(LR_sysurl + "lr/CaptureUpload1.aspx?uploadId=" + new Date().getTime() + "" + Math.floor(1000 * Math.random()))) {
+            H.AddInput("sid", c47);
+            H.AddInput("siteid", LR_websiteid);
+            H.AddInput("lng", c13);
+            H.Send("PngFile")
+        } else {
+            window.alert(c67)
+        }
+    } else {
+        M.removeChild(H);
+        delete H;
+        delete M
+    }
+}
+function Capture_SaveAs(B) {
+    chatwordsFrame.document.getElementById("CapRect" + B).Save()
+}
+var GuestTel = "";
+function Freecall() {
+    if (wordscheckstring == null) {
+        return
+    }
+    OpenDialog("freecall_" + c13 + ".aspx", 348, 230)
+}
+function Freecall1(C, D) {
+    GuestTel = escape(C) + "|" + escape(D)
+}
+var _WinExit = 0;
+var _BeforeWinExit = 0;
+var owordscount = 0;
+function f25() {
+    if (_BeforeWinExit || _WinExit) {
+        return
+    }
+    _WinExit = 1;
+    if (wordscheckstring == null) {
+        return
+    }
+    f33()
+}
+function f26() {
+    if (_BeforeWinExit || _WinExit) {
+        return
+    }
+    _WinExit = 1;
+    if (wordscheckstring == null) {
+        return
+    }
+    f33()
+}
+function f33() {
+    if (_BeforeWinExit) {
+        return
+    }
+    _WinExit = 1;
+    if (wordscheckstring == null) {
+        return
+    }
+    if (timerID != null) {
+        clearInterval(timerID);
+        timerID = null
+    }
+    f13();
+    if (chatwordsFrame.document.getElementById("CapRect1") != null) {
+        chatwordsFrame.document.getElementById("CapRect1").CleanTemp()
+    }
+    if (c87 != null && navigator.appName == "Microsoft Internet Explorer") {
+        eval(c87);
+        c87 = null
+    } else {
+        alert(c0)
+    }
+}
+function f32() {
+    if (_BeforeWinExit) {
+        return
+    }
+    if (pj == "" && c82) {
+        pingjia()
+    }
+    return c81
+}
+var uploading = false;
+function f27() {
+    if (wordscheckstring == null) {
+        if (uploading) {
+            return
+        }
+    }
+    var G = LR_GetObj("uploadobj").style;
+    if (G.display == "") {
+        return
+    }
+    G.display = "";
+    var E = '<table cellspacing=1 cellpadding=0 width=100% border=0 ID="Table1"><form action="' + LR_sysurl + "lr/ClientUpload.aspx?uploadId=" + c47 + "&siteid=" + LR_websiteid + "&lng=" + c13 + '" method="post" enctype="multipart/form-data" name="Form1" ID="Form1" target="_self"><tr><td colspan=3 height=1 bgcolor="#4c6ca5"></td></tr><tr><td style="WIDTH: 100px;" noWrap>' + c27 + ":</td><td>" + c37 + '</td><td style="width:10px;"><INPUT type="button" value="' + c40 + '" ID="Button2" NAME="Button2" onClick="parent.f28();"></td></tr><tr><td noWrap>' + c41 + ':</td><td colspan=2><INPUT type="file" ID="File1" NAME="File1" style="width:100%;"></td></tr><tr><td noWrap>' + c42 + ':</td><td><INPUT type="text" ID="filenote" NAME="filenote" style="WIDTH: 100%;"></td><td><INPUT type="submit" value="' + c43 + '" ID="Button1" NAME="Button1" onClick="return parent.f29();"></td></tr></form></table>';
+    var H = uploadFrame.document;
+    H.open();
+    H.write("<html><head>" + c11 + "</head><body scroll=no>" + E + "</body></html>");
+    H.close();
+    var F = LR_GetObj("progressBar").style;
+    F.width = "0%";
+    LR_GetObj("progressPmt").innerHTML = "&nbsp;";
+    chatwordsFrame.scroll(0, 50000);
+    f6()
+}
+function f28() {
+    var B = LR_GetObj("uploadobj").style;
+    B.display = "none";
+    f6()
+}
+var uploadTimeID = null;
+function f29() {
+    var F = LR_GetObj("File1", uploadFrame.document).value;
+    if (F == "") {
+        alert(c18);
+        LR_GetObj("File1", uploadFrame.document).focus();
+        return false
+    }
+    var E = LR_GetObj("filenote", uploadFrame.document).value;
+    if (E == "") {
+        LR_GetObj("filenote", uploadFrame.document).value = F.substring(F.lastIndexOf("\\") + 1)
+    }
+    var G = LR_GetObj("uploadobj").style;
+    G.display = "none";
+    var H = LR_GetObj("uploadobj1").style;
+    H.display = "";
+    uploading = true;
+    uploadTimeID = setTimeout("f30()", 1000);
+    return true
+}
+function f30() {
+    f8("upload")
+}
+function f31(F) {
+    var H = uploadFrame.document;
+    H.open();
+    H.write("<html><head></head><body scroll=no></body></html>");
+    H.close();
+    var G = LR_GetObj("uploadobj").style;
+    G.display = "none";
+    var E = LR_GetObj("uploadobj1").style;
+    E.display = "none";
+    if (uploadTimeID != null) {
+        clearTimeout(uploadTimeID);
+        uploadTimeID = null
+    }
+    uploading = false;
+    f6()
+}
+function editfocus() {
+    isFocus = true;
+    flash_title1()
+}
+function editblur() {
+    isFocus = false
+}
+var logoobj = null;
+var logoobj1 = null;
+logoobj = LR_GetObj("firstp").style;
+logoobj.display = "none";
+f16();
+f5();
+if (!usetext) {
+    var obj = LR_GetObj("FreeTextBox1_editor").contentWindow;
+    var obj1 = (navigator.appVersion.indexOf("MSIE 5.0") > -1) ? FreeTextBox1_editor.document: obj.document;
+    obj1.open();
+    obj1.write('<html name="FreeTextBox1_editor_html"><head><base target="_blank"><script language="javascript">if(window.HTMLElement){HTMLElement.prototype.__defineGetter__("outerText",function(){var r=this.ownerDocument.createRange();r.selectNodeContents(this);return r.toString();});}function killErrors(){return true;}window.onerror = killErrors;</script><style type="text/css">body{margin: 0px; padding: 0px 0px 0px 0px; border: 0px;}p { margin-top:0px;margin-bottom:0px;}</style></head><body onkeydown="return parent.f11(event)" onkeyup="return parent.f12(event)" onFocus="return parent.editfocus()" onBlur="return parent.editblur()"></body></html>');
+    obj1.close();
+    if (navigator.userAgent.indexOf("Opera") == -1 && navigator.userAgent.indexOf("Firefox") == -1) {
+        obj1.body.contentEditable = true
+    }
+    if ((navigator.appVersion.indexOf("MSIE 5.5") > -1) || (navigator.appVersion.indexOf("MSIE 6") > -1) || (navigator.appVersion.indexOf("MSIE 7") > -1)) {} else {
+        try {
+            obj1.designMode = "On";
+            if (obj1.addEventListener) {
+                obj1.addEventListener("keydown", f11, false);
+                obj1.addEventListener("keyup", f12, false);
+                obj1.addEventListener("focus", editfocus, false);
+                obj1.addEventListener("blur", editblur, false)
+            } else {
+                if (obj1.attachEvent) {
+                    obj1.attachEvent("onkeydown", f11);
+                    obj1.attachEvent("onkeyup", f12);
+                    obj1.attachEvent("onfocus", editfocus);
+                    obj1.attachEvent("onblur", editblur)
+                }
+            }
+        } catch(e) {}
+    }
+    f22()
+}
+c3 = c3.replace(/%p%/g, c50);
+var chatwordshtml = '<html><head><base target="_blank"><script language="javascript">function killErrors(){return true;}window.onerror = killErrors;var serverkind=0;var serverkindname="";function LR_GetObj(id,theDoc){if(!theDoc){theDoc = document;}if (theDoc.getElementById){return theDoc.getElementById(id);}else if (document.all){return theDoc.all(id);}}function testclick(n,s){serverkind=n;serverkindname=unescape(s);if(LR_GetObj("servicekindlist")!=null)LR_GetObj("servicekindlist").innerHTML="<P>&nbsp;</p>";parent.f21(parent.c2.replace("%s1%",serverkindname));}function f4(e){if (e && (e.keyCode==8 || (e.altKey && e.keyCode==37))){if (window.event) {e.cancelBubble=true; } else{e.preventDefault();}e.returnValue=false;}}</script>' + iframestyle + '</head><body onkeydown="return f4(event)" onUnload="return parent.f25();" onbeforeunload="return parent.f33();">';
+obj = chatwordsFrame.document;
+obj.open();
+obj.write(chatwordshtml + c3 + "</body></html>");
+obj.close();
+chatwordsFrame.scroll(0, 50000);
+f21(c45);

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>.not() - jQuery代码示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<h1>jQuery代码示例：<code>.not()</code></h1>
+<p class="title"><code>.not(selector)</code></p>
+<p class="desc">将符合过滤条件的元素从当前元素集合中过滤掉，并返回余下的元素所构建的新的jQuery对象。（当前元素集合不受影响）（返回类型：jQuery）</p>
+<p class="params">参数selector：<span>（类型：String | DOMElement | Array | jQuery | Function）</span>过滤条件；</p>
+<div id="box">
+    容器（ID：box）
+    <div id="layer1">
+        图层1（ID：layer1）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer2">
+        图层2（ID：layer2）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer3">
+        图层3（ID：layer3）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+</div>
+<p class="content">在右侧大家可以看到一个绿色方框的div容器，在该容器中还有三个div子节点，同时在每个div子节点下还有三个段落p子节点，为了该页面的更好测试，还希望大家首先查看下这个容器的HTML结构！</p>
+<p>为了演示该方法的执行效果，我们为下列按钮的单击事件添加了如按钮文本所示的执行代码，大家可以通过点击不同的按钮来查看该方法每种参数使用的不同结果。</p>
+<p><button class="btnShort">$("#box div").css("background-color", "purple");</button></p>
+<p><button class="btnShort">$("#box div").not(":last-child").css("background-color", "orange");</button></p>
+<p><button class="btnShort">$("#box div").not($("#layer2")).css("background-color", "pink");</button></p>
+<p><button class="btnShort">$("#box div").not(document.getElementById("layer1")).css("background-color", "brown");</button></p>
+<p><button class="btnShort">$("#box div").not([ $("#layer1")[0], $("#layer2")[0] ]).css("background-color", "red");</button></p>
+<p><button class="btnShort">$("#box div").not(function(index){ return index == 0; }).css("background-color", "green");</button></p>
+<p><button class="btnShort">$("#box div").not(function(index, ele){ return ele.id == "layer1"; }).css("background-color", "yellow");</button></p>
+<p><button class="btnShort">$("#box div").not(function(){ return this.id == "layer1"; }).css("background-color", "#333");</button></p>
+<script>
+    (function($)
+    {
+        $("button").eq(0).click(function(){
+            $("#box div").css("background-color", "purple");
+        });
+
+        $("button").eq(1).click(function(){
+            $("#box div").not(":last-child").css("background-color", "orange");
+        });
+
+        $("button").eq(2).click(function(){
+            $("#box div").not($("#layer2")).css("background-color", "pink");
+        });
+
+        $("button").eq(3).click(function(){
+            $("#box div").not([document.getElementById("layer1")]).css("background-color", "brown");
+        });
+
+        $("button").eq(4).click(function(){
+            $("#box div").not([ $("#layer1")[0], $("#layer2")[0] ]).css("background-color", "red");
+        });
+
+        $("button").eq(5).click(function(){
+            $("#box div").not(function(index){ return index == 0; }).css("background-color", "green");
+        });
+
+        $("button").eq(6).click(function(){
+            $("#box div").not(function(index, ele){ return ele.id == "layer1"; }).css("background-color", "yellow");
+        });
+
+        $("button").eq(7).click(function(){
+            $("#box div").not(function(){ return this.id == "layer1"; }).css("background-color", "#333");
+        });
+
+    })(jQuery);
+</script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<title>获取来源关键字+URL指定参数值</title>
+</head>
+<body>
+	<script>
+		//获取来源关键字
+		//参数strDefault：为默认返回值
+		function getKeywords(strDefault)
+		{
+			var strkey = "",
+				strReferrer = document.referrer,
+				strHost = getHost(strReferrer);
+
+			if(strReferrer === "")
+			{
+				return strDefault;
+			}
+
+			//获取来路内容
+			switch(strHost)
+			{
+				 //百度（参数：wd、word）
+				//如：http://www.baidu.com/ssid=0/from=844b/bd_page_type=1/uid=EFFBCC57ACA9D737A0AF4A7DBFBD22E1/s?word=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E&st=11104i&ftime=3080&tn=iphone&pu=sz%401320_2001&rawqs=&sug_edit=0&stime=1370341406739&loadtime=3990&mobile_se=1&dit=0&sa=ib
+				case "www.baidu.com":
+				case "m.baidu.com":
+				{
+					strkey = getQueryValue(strReferrer,"wd,word");
+				}
+				break;
+
+				//搜狗（参数：query）
+				//如：http://www.sogou.com/web?query=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E&_asf=www.sogou.com&_ast=1370398841&w=01019900&p=40040100&ie=utf8&sut=4832&sst0=1370398840992&lkt=0%2C0%2C0
+				case "www.sogou.com":
+				{
+					 strkey = getQueryValue(strReferrer,"query");
+				}
+				break;
+
+				//搜搜（参数：w）
+				//如：http://www.soso.com/q?pid=s.idx&cid=s.idx.se&w=%B9%FD%C3%F4%D0%D4%B1%C7%D1%D7
+				case "www.soso.com":
+				{
+					strkey = getQueryValue(strReferrer,"w");
+				}
+				break;
+
+				//360（参数：q）
+				//如：http://www.so.com/s?ie=utf-8&src=360sou_home&q=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E
+				case "www.so.com":
+				case "so.360.cn":
+				{
+					 strkey = getQueryValue(strReferrer,"q");
+				}
+				break;
+
+				//有道（参数：q）
+				//如：http://www.youdao.com/search?q=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E&ue=utf8&keyfrom=web.index
+				case "www.youdao.com":
+				{
+					strkey = getQueryValue(strReferrer,"q");
+				}
+				break;
+
+				//新浪搜索（参数：q）
+				//如：http://search.sina.com.cn/?q=%B9%FD%C3%F4%D0%D4%B1%C7%D1%D7&c=news&from=index
+				case "search.sina.com.cn":
+				{
+					strkey = getQueryValue(strReferrer,"q");
+				}
+				break;
+
+				//必应搜索（参数：q）
+				//如：http://cn.bing.com/search?q=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E&go=&qs=n&form=QBLH&pq=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E&sc=8-5&sp=-1&sk=
+				case "cn.bing.com":
+				{
+					strkey = getQueryValue(strReferrer,"q");
+				}
+				break;
+
+				//谷歌（参数：q）
+				//如：http://www.google.com.hk/#newwindow=1&safe=strict&site=&source=hp&q=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E&oq=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E&gs_l=hp.3...1051.5053.0.5211.24.13.0.0.0.0.0.0..0.0...0.0...1c.1j4.15.hp.hMy6nCnZ0Xg&bav=on.2,or.&bvm=bv.47380653,d.dGI&fp=62f158920ee1b2e&biw=1920&bih=954
+				case "www.google.com":
+				case "www.google.com.hk":
+				{
+					strkey = getQueryValue(strReferrer,"q");
+				}
+				break;
+
+				//雅虎中国（参数：q）
+				//如：http://search.cn.yahoo.com/s?q=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E&bs=&oq=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E
+				case "search.cn.yahoo.com":
+				{
+					strkey = getQueryValue(strReferrer,"q");
+				}
+				break;
+			}
+
+			return strkey === "" ? strDefault : strkey;
+		}
+
+		//获取URL中指定参数的值
+		//如果找不到目标参数，返回空字符串
+		//参数strUrl：为URL地址
+		//参数strName：为参数名称（可以通过逗号指定多个参数名称来进行匹配读取，即返回第一个符合要求的值）
+		function getQueryValue(strUrl, strName)
+		{
+			var strValue = "";
+			var strSplit = strUrl.split('?');
+			var strQuery = strSplit.length > 1 ? strSplit[1].toLowerCase() : "";
+			var i, len, reg;
+
+			if (strQuery !== "")
+			{
+				//步骤一：组合参数正则表达式
+				strSplit = strName.split(',');
+				strName = "";
+				for (i = 0, len = strSplit.length; i < len; i++)
+				{
+					if (i > 0)
+					{
+						strName += "|";
+					}
+					strName += "(" + strSplit[i] + "=[^&]+)";
+				}
+
+				//步骤二：正则匹配
+				reg = new RegExp(strName, "i");
+
+				strSplit = reg.exec(strQuery);
+
+				if (strSplit.length > 0)
+				{
+					strValue = strSplit[0].split('=')[1];
+				}
+			}
+
+			try
+			{
+				return decodeURIComponent(strValue);
+			}
+			catch(e)
+			{
+				return ""; //使用decodeURIComponent在解码URL中文字符碰到%AF等字符时会抛出URIError: URI malformed异常，虽然可以通过unescape方法解码但最后由于UTF-8编码问题会造成乱码，所以最终所幸输出空字符串。
+			}
+		}
+
+		//获取URL地址中的域名
+		//参数strUrl：为URL地址
+		function getHost(strUrl)
+		{
+			var reg = new RegExp("http:\/\/([^\/]+)/", "i"),
+				strHost = reg.exec(strUrl);
+
+			strHost = strHost !== null ? strHost[1] : "";
+
+			return strHost.split(":")[0];  //排除端口号
+		}
+
+		//模拟测试
+		alert("来源关键词测试：" + getKeywords("strDefault"));
+		alert("域名获取测试：" + getHost("http://www.baidu.com/s?wd=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_sug3=8&rsv_sug=0&rsv_sug4=232&rsv_sug1=4&inputT=2275"));
+		alert("URL参数获取测试：" + getQueryValue("http://www.baidu.com/s?wd=%E8%BF%87%E6%95%8F%E6%80%A7%E9%BC%BB%E7%82%8E&rsv_bp=0&ch=&tn=baidu&bar=&rsv_spt=3&ie=utf-8&rsv_sug3=8&rsv_sug=0&rsv_sug4=232&rsv_sug1=4&inputT=2275", "wd"));
+	</script>
+</body>
+</html>

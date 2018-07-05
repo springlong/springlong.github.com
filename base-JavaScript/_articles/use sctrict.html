@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>use sctrict</title>
+	<style>
+
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+
+		// 支持严格模式的浏览器:
+		// Internet Explorer 10 +、 Firefox 4+ Chrome 13+、 Safari 5.1+、 Opera 12+。
+		// 
+		// "use strict" 指令只运行出现在脚本或函数的开头。
+		// var a = 345;   // 如果 "use strict" 语句前有其他代码，则无效
+
+		"use strict";
+
+		// 严格模式的限制
+		
+		// 不允许使用未声明的变量：
+		// x = 3.14;
+
+		// 不允许删除变量或对象
+		// var x1 = 'abc';
+		// delete x1;
+
+		// 不允许删除函数。
+		// function fn2() {};
+		// delete fn2;
+
+		// 检查对象中的重复键
+		// 在Gecko版本34之前，严格模式要求一个对象内的所有属性名在对象内必须唯一。正常模式下重名属性是允许的，最后一个重名的属性决定其属性值。因为只有最后一个属性起作用，当代码是要改变属性值而却不是修改的最后一个重名属性的时候，复制这个对象就产生一连串的bug。在严格模式下，重名属性被认为是语法错误：
+		// 这个问题在ECMAScript6中已经不复存在
+		// var type = {
+		// 	left: 0,
+		// 	right: 1,
+		// 	left: 2
+		// };
+		// var x3 = 'a';
+		// var x3 = 'b';
+
+		// 不允许函数有重复的参数名
+		// function fn3(a, a){}
+
+		// 不允许使用八进制
+		// var x4 = 010;
+
+		// 不允许对只读属性赋值
+		// var obj = {};
+		// Object.defineProperty(obj, 'x', {value: 0, writable: false});
+		// obj.x = 123;
+
+		// 不允许对一个使用getter方法读取的属性进行赋值
+		// var obj = {
+		// 	get x() {return 0;}
+		// };
+		// obj.x = 123;
+
+		// 不允许删除一个不允许删除的属性
+		// delete Object.prototype;
+
+		// 不允许使用with语句
+		// with(Math) {
+		// 	var x = round('3.14');
+		// }
+
+		// 变量名不能使用 "eval" 字符串
+		// var eval = 3.14;
+
+		// 变量名不能使用 "arguments" 字符串
+		// var arguments = 3.14;
+
+		// 限制函数中的arguments
+		// 严格模式下通过arguments修改参数的值无效，在非严格模式下有效
+		// 严格模式下将不再提供arguments来访问与调用这个函数相关的变量的途径，如arguments.caller/arguments.callee
+		// var run = function(msg) {
+		// 	arguments[0] = 'new-msg';
+		// 	console.log(msg);
+		// 	console.log(arguments.caller);
+		// }
+		// run('test a message');
+
+		// 禁止this关键字指向全局对象
+		// 函数中this在没有通过new调用时，非严格模式下将指向全局对象，严格模式下指向undefined将报错
+		// function fn() {
+		// 	this.a = 123;
+		// }
+		// fn();
+
+		// 为了向将来Javascript的新版本过渡，严格模式新增了一些保留关键字
+		// 未来版本的ECMAScript很有可能会引入新语法，ECMAScript5中的严格模式就提早设置了一些限制来减轻之后版本改变产生的影响。如果提早使用了严格模式中的保护机制，那么做出改变就会变得更容易。
+		// implements
+		// interface
+		// let
+		// package
+		// private
+		// protected
+		// public
+		// static
+		// yield
+		// var yield = 1000
+		;
+	</script>
+</body>
+</html>

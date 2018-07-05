@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>类名处理：ms-class、ms-active、ms-hover</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>类名处理：ms-class、ms-active、ms-hover</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>avalon2的类名操作涉及到<code>ms-class</code>, <code>ms-active</code>, <code>ms-hover</code>，但用法也全变了，行为类似于前两节说的<code>ms-attr</code>, <code>ms-css</code>，目的是将相同行为集中在一起定义。</p>
+    <p>由于ms-class,ms-active, ms-hover语法很相似，我们就以ms-class为例吧。</p>
+    <p><code>ms-class</code>可以对应vm中的一个字符串属性，里面可以有空格（一个空格就是一个类名嘛）</p>
+<pre>
+vm.classes = "aaa bbb ccc"
+&lt;div ms-class="@classes">&lt;/div>
+</pre>
+    <p>显然这不够灵活，我们有时需要在某个场合添加某类名，到另一个场合就要移除它。于是从我们React的classSet与Classnames插件中涉取灵感，让它支持更复杂的数据型。比如布尔对象（键名为类名，值为布尔的对象，值决定是否添加与移除），还有一维数组，里面可以是null, 字符串，布尔，布尔对象，我会根据其真假值或布尔对象的值的真假，合并成一组类名。</p>
+    <p>avalon2则是这样用的</p>
+<pre>
+&lt;div ms-class="[@aaa, @bbb, {xxx: false, yyy: true, zzz: @toggle}, '222']">&lt;/div>
+</pre>
+    <p>如果还不明白，可以翻看avalon2的源码，ms-class的自由度之高，绝对不逊于1.*的新旧风格！</p>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+	<hr>
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: 'test',
+        background: 'red'
+    });
+&lt;/script>
+&lt;div ms-controller="test">
+    &lt;div style="width: 200px; height: 50px;" ms-css="{background: @background}">&lt;/div>
+    &lt;select ms-duplex="@background">
+        &lt;option value="red">红&lt;/option>
+        &lt;option value="yellow">黄&lt;/option>
+        &lt;option value="green">绿&lt;/option>
+    &lt;/select>
+&lt;/div>
+</pre>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            toggle: true,
+            aaa: 'xxx',
+            bbb: 'yyy',
+            ccc: 'zzz'
+        });
+    </script>
+    <div ms-controller="test">
+        <div style="width:100px;height:100px;background:#ddd;" ms-class="{aaa:@toggle}" ms-click="@toggle = !@toggle">点我</div>
+        <div ms-class="'aaa bbb ccc'"> 它的类名是：aaa bbb ccc</div>
+        <div ms-class="[@aaa, @bbb,@ccc]"> 它的类名是：[@aaa, @bbb,@ccc]</div>
+        <div ms-class="[@aaa, @toggle?@bbb:@ccc]">它的类名是： [@aaa, @toggle?@bbb:@ccc]</div>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>我们来看另一个案例：</p>  
+<pre>
+&lt;script>
+    var vm2 = avalon.define({
+        $id: 'test2',
+        w: 500,
+        h: 200,
+        num: '00',
+        className: '点我',
+        changeClassName: function(e){
+            vm2.num = (100*Math.random()).toFixed(0);
+            vm2.className = e.target.className;
+        }
+    });
+&lt;/script>
+&lt;div ms-controller="test2" class="ms-class">
+    &lt;div ms-active="'active'">测试：active&lt;/div>
+    &lt;div ms-hover="'hover'">测试：hover&lt;/div>
+    &lt;div ms-class="['bgRed', 'width'+@w, 'height'+@h]" ms-css="{width: @h}" style="white-space:nowrap;">
+        类名通过差值表达式生成&lt;br>
+        {{@w}} * {{@h}}&lt;br>
+        &lt;input type="text" ms-duplex="@h|change">
+    &lt;/div>
+    &lt;p>&lt;button type="button" ms-class="'test'+@num" ms-click="@changeClassName">{{@className}}&lt;/button>&lt;/p>
+&lt;/div>
+</pre>
+
+    <style>
+        .ms-class div{
+            display:inline-block;
+            width:200px;
+            height:100px;
+            border: 1px solid  black;
+        }
+        .active{
+            background: black;
+            color: white;
+        }
+        .bgRed {
+            background:palegoldenrod;
+        }
+        .hover{
+            background: red;
+            color: white;
+        }
+    </style>
+    <script>
+        var vm2 = avalon.define({
+            $id: 'test2',
+            w: 500,
+            h: 200,
+            num: '00',
+            className: '点我',
+            changeClassName: function(e){
+                vm2.num = (100*Math.random()).toFixed(0);
+                vm2.className = e.target.className;
+            }
+        });
+    </script>
+    <div ms-controller="test2" class="ms-class">
+        <div ms-active="'active'">测试：active</div>
+        <div ms-hover="'hover'">测试：hover</div>
+        <div ms-class="['bgRed', 'width'+@w, 'height'+@h]" ms-css="{width: @h}" style="white-space:nowrap;">
+            类名通过差值表达式生成<br>
+            {{@w}} * {{@h}}<br>
+            <input type="text" ms-duplex="@h|change">
+        </div>
+        <p><button type="button" ms-class="'test'+@num" ms-click="@changeClassName">{{@className}}</button></p>
+    </div>
+
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>我们再来看一个案例：</p>  
+<pre>
+&lt;script>
+    var vm3 = avalon.define({
+        $id: 'test3',
+        color: 'red',
+        toggle: true,
+        switchColor: function(){
+            vm3.color = vm3.color === 'red' ? 'blue' : 'red';
+        }
+    });
+&lt;/script>
+&lt;div ms-controller="test3">
+    &lt;div class="ms-class-test" ms-hover="[@toggle ? 'c-'+@color : '']">&lt;/div>
+    &lt;button ms-click="@switchColor">点我改变类名&lt;/button>
+    &lt;button ms-click="@toggle = !@toggle">点我改变toggle&lt;/button>
+&lt;/div>
+</pre>
+
+    <style>
+        .ms-class-test{
+            background:green;
+            width:300px;
+            height:100px;
+        }
+        .c-red{
+            background: red;
+        }
+        .c-blue{
+            background: blue;
+        }
+    </style>
+    <script>
+        var vm3 = avalon.define({
+            $id: 'test3',
+            color: 'red',
+            toggle: true,
+            switchColor: function(){
+                vm3.color = vm3.color === 'red' ? 'blue' : 'red';
+            }
+        });
+    </script>
+    <div ms-controller="test3">
+        <div class="ms-class-test" ms-hover="[@toggle ? 'c-'+@color : '']"></div>
+        <button ms-click="@switchColor">点我改变类名</button>
+        <button ms-click="@toggle = !@toggle">点我改变toggle</button>
+    </div>
+
+
+
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>ms-class、 ms-hover、 ms-active涵盖了所有与类名相应的需求，并且使用上比jQuery还简单。最后看一下用它实现斑马线的效果吧。</p>  
+<pre>
+&lt;script>
+    avalon.define({
+        $id: "test4",
+        array: avalon.range(0, 14)
+    });
+&lt;/script>
+&lt;div ms-controller="test4">
+    &lt;table class="zebra-table">
+        &lt;tr ms-for="($index, el ) in @array" ms-hover="'tr-hover'" ms-class="{even: $index % 2 == 0}">
+            &lt;td>{{$index}}&lt;/td>
+            &lt;td>{{ new Date - 0 | date("yyyy-MM-dd")}}&lt;/td>
+        &lt;/tr>
+    &lt;/table>
+&lt;/div>
+</pre>
+
+    <style>
+        .zebra-table{
+            border-collapse: collapse;
+            width:400px;
+            border:1px solid black;
+        }
+        .zebra-table td{
+            border:1px solid black;
+            text-indent: 1em;
+        }
+        .zebra-table .even td{
+            background:#ddd;
+            color:white;
+        }
+         .zebra-table .tr-hover td{
+            color: red;
+            font-weight: bolder;
+        }
+    </style>
+    <script>
+        avalon.define({
+            $id: "test4",
+            array: avalon.range(0, 14)
+        });
+    </script>
+    <div ms-controller="test4">
+        <table class="zebra-table">
+            <tr ms-for="($index, el ) in @array" ms-hover="'tr-hover'" ms-class="{even: $index % 2 == 0}">
+                <td>{{$index}}</td>
+                <td>{{ new Date - 0 | date("yyyy-MM-dd")}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

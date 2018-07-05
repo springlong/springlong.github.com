@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>$(html, attributes) - jQuery代码示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body>
+<h1>jQuery代码示例：<code>$(html, attributes)</code></h1>
+<p class="title"><code>$(html, attributes)</code></p>
+<p class="desc">返回新的jQuery对象实例，元素集合中将包含根据提供的html字符串所创建的DOM元素。（返回类型：jQuery）</p>
+<p class="params">参数html：<span>（类型：String）</span>HTML字符串；</p>
+<p class="params">参数attributes：<span>（类型：PlainObject）</span>为创建的DOM元素添加属性赋值；</p>
+<div id="box">
+    容器（ID：box）
+    <div id="layer1">
+        图层1（ID：layer1）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer2">
+        图层2（ID：layer2）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer3">
+        图层3（ID：layer3）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+</div>
+<p class="content">在右侧大家可以看到一个绿色方框的div容器，在该容器中还有三个div子节点，同时在每个div子节点下还有三个段落p子节点，为了该页面的更好测试，还希望大家首先查看下这个容器的HTML结构！</p>
+<p>为了演示该方法的执行效果，我们为下列按钮的单击事件添加了如按钮文本所示的执行代码，大家可以通过点击不同的按钮来查看该方法每种参数使用的不同结果。</p>
+<p><button class="btnShort">$("&lt;div&gt;", {id: "newDIV", name: "newDIV", title: "new div!"}).appendTo("#box")</button></p>
+<p><button class="btnShort">$("&lt;div&gt;新的段落&lt;/div&gt;", {id: "newDIV2", name: "newDIV2", title: "new div2!"}).appendTo("#box")</button></p>
+<p><button class="btnShort">$("#newDIV, #newDIV2").css("background-color", "green")</button></p>
+<script>
+    (function($)
+    {
+        $("button").eq(0).click(function(){
+            $("<div>", {id: "newDIV", name: "newDIV", title: "new div!"}).appendTo("#box");
+        });
+
+        $("button").eq(1).click(function(){
+            $("<div>新的段落</div>", {id: "newDIV2", name: "newDIV2", title: "new div2!"}).appendTo("#box");
+        });
+
+        $("button").eq(2).click(function(){
+            $("#newDIV, #newDIV2").css("background-color", "green");
+        });
+
+    })(jQuery);
+</script>
+</body>
+</html>

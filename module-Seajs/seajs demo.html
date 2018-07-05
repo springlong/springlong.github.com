@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>seajs demo</title>
+    <!-- <script type="text/javascript" src="http://static.xidibuy.com/static/sea-modules/seajs/seajs/2.2.0/sea.js"></script> -->
+    <!-- <script type="text/javascript" src="http://static.xidibuy.com/static/sea-modules/seajs/seajs-flush.js"></script> -->
+    <script type="text/javascript" src="js/sea-2.2.1.js"></script>
+    <script type="text/javascript" src="js/seajs-flush-1.0.1.js"></script>
+    <style>
+        pre{padding:10px;background-color:#eee;}
+    </style>
+</head>
+<body>
+    <h1>seajs demo</h1>
+    <p>IE浏览器在本地路径访问模式下，对seajs的模块加载支持不友好，建议采用本地服务器进行访问加载</p>
+    <script type="text/javascript">
+
+        //seajs-flush 1.1.0跟seajs 2.3.0、2.2.1、2.2.0、2.1.1都不兼容，报错，建议使用seajs-flush 1.0.1
+        //seajs-flush 1.0.1跟seajs 2.3.0不兼容，建议使用seajs 2.2.1
+
+        //Sea.js配置中心
+        seajs.config({
+
+            // 脚本加载的基本路径
+            //
+            // 缺省情况1：当seajs的请求url中包含名为“seajs”的目录，那么最终的基本路径默认为第一个seajs出现的上级目录；
+            //  例如："http://www.xxx.com/static/sea-modules/seajs/seajs/2.2.1/sea.js"的基本路径默认为："http://www.xxx.com/static/sea-modules/"
+            //  
+            // 缺省情况2：当seajs的请求url中不包含名为“seajs”的目录，那么最终的基本路径默认为seajs文件所在的目录；
+            //  例如："http://www.xxx.com/static/script/common/sea.js"的基本路径默认为："http://www.xxx.com/static/script/common/"
+            //  
+            // base: "http://www.abc.com/",  // 指定完整路径
+            // base: "./abc/",  // 相对于当前网页所在目录下的子目录,
+            base: "../modules-Seajs/",  // 相对于当前网页所在目录上一级目录下的子目录,
+
+            // 路径配置（作用于seajs.use、require、define，可在define语句中参与ID命名）
+            // 直接使用名称即可
+            paths: {
+                "local": "js"
+            },
+
+            // 别名配置，即模块ID的别名（需独立使用，或者搭配path使用；作用于use、require、define，可在define语句中参与ID命名）
+            // 直接使用名称即可
+            alias: {
+                "jQueryAlias": "js/jquery-1.7.2",
+                "testAlias": "js/test"
+            },
+
+            // 变量配置（作用于use、require、define，可在define语句中参与ID命名）
+            // 通过一对花括号{}进行引用
+            vars: {
+                "common": "js/"
+            },
+
+            // 在use执行之前，先行加载预加载配置中的模块（值类型为数组，每个数组项的值为需要提前加载的模块ID标识）
+            // preload中的空字符串会被忽略掉。
+            preload: [
+                "jQueryAlias"
+            ],
+
+            // 路径映射，在请求路径时可以将该数组中定义的每一项数组值的索引0的值替换为索引1的值再做加载
+            // 可用于路径转换、在线调试等
+            map: [
+                // [".js", "-debug.js"],                        //（字符串匹配）进入源码调试模式
+                // function(uri){ return uri.replace(/\.js$/i, '.js?t=20141212');}, //通过函数回调的方式替换url
+                // [/^(.*\.(?:js|css))(.*)$/i, "$1?t=20141215"] //（正则匹配）为请求的脚本和样式添加日期戳，可用于解决缓存问题
+            ],
+
+            // 是否处于调试模式，如果是则会保留script的加载（默认为否——会在脚本文件加载完毕后自动移除对应的HTML标签）
+            debug: true,
+
+            // 文件编码（该值既可以是固定的字符串，也可以是一个函数返回的值）
+            // charset: "utf-8"
+            charset: function(url){
+
+                if(url.indexOf("test.js") >= 0){
+                    return "gbk";
+                }
+
+                return "utf-8";
+            }
+
+        });
+
+        // seajs.data 用于访问seajs当前的配置选项
+        console.log('seajs.data:', seajs.data);
+
+        // 加载模块，并执行回调
+        seajs.use(["{common}browser"], function(browser){
+            console.info("browser.js: \n", browser);
+        });
+
+        // 加载模块，不执行回调
+        seajs.use("local/main");
+
+        // Flush插件：将该语句之前，上一个flush()执行之后的所有use引用的脚本在这一时刻一起请求
+        // 如果使用了该插件，却没有使用seajs.flush()，则不会加载use引用的脚本
+        seajs.flush && seajs.flush();
+
+        // seajs.cache 用于访问当前已加载模块的信息
+        console.log('seajs.cache:', seajs.cache);
+
+        
+
+
+
+        //====================================================================================================================
+        //====================================================================================================================
+
+        // 模块定义完整格式
+        // seajs对外的模块定义只有define函数
+        // require,exprots,module都是模块函数体内置的参数对象
+        define("模块标识", ["脚本依赖1", "脚本依赖2"], function(require, exports, module){
+
+            // 将引用的依赖脚本返回的对象保存到变量，方便后续代码进行使用
+            // require引用的脚本文件将在当前模块代码体执行之前就会被优先提取进行加载
+            // 而模块的执行时机，是在require引用的具体位置才执行
+            var r1 = require("脚本依赖1");
+            var r2 = require("脚本依赖2");
+
+            // 在模块内部异步加载某个模块
+            require.async("脚本依赖3", function(data3){
+                // do something
+            });
+
+            // 在模块内部异步加载多个模块
+            require.async(["脚本依赖3", "脚本依赖4"], function(data3, data4){
+                // do something
+            });
+
+            // 使用模块系统内部的路径解析机制来解析并返回模块路径。
+            // 该函数不会加载模块，只返回解析后的绝对路径。
+            // 下面的相对路径的格式同样可以在require()中使用。
+            require.resolve("./b");
+            // ==> E:/360云盘/学习笔记/0. Web版学习笔记/seajs/demo/b.js
+            require.resolve("../b");
+            // ==> E:/360云盘/学习笔记/0. Web版学习笔记/seajs/b.js
+
+            //返回方案1：
+            exports.member1 = function(){ alert(1) }
+            exports.member2 = function(){ alert(2) }
+
+            // 返回方案2：
+            module.exports = {
+                member1: function(){ alert(1) },
+                member2: function(){ alert(2) }
+            }
+
+            // 返回方案3：
+            return {
+                member1: function(){ alert(1) },
+                member2: function(){ alert(2) }
+            };
+
+
+            // 访问module对象参数的属性
+            // module.id：模块的标识ID（String），如："js/browser"
+            // module.uri：根据模块系统的路径解析规则得到的模块绝对路径（String），如："E:/360云盘/学习笔记/0. Web版学习笔记/seajs/demo/js/browser.js"
+            // module.dependencies：是一个数组，表示当前模块的依赖（Array），如：["cookie", "local/browser"]
+
+
+            // 注意事项：exports 仅仅是 module.exports 的一个引用。
+            // 在 factory 内部给 exports 重新赋值时，并不会改变 module.exports 的值。
+            // 因此给 exports 赋值是无效的，不能用来更改模块接口。
+        });
+
+        // 下面的值是一个空对象，用来判断当前页面是否有CMD模块加载器
+        // define.cmd
+
+        //下面是jQuery文件末尾所使用的模块声明
+        if ( typeof define === "function" && define.amd && define.amd.jQuery ) {
+            define( "jquery", [], function () { return jQuery; } );
+        }
+
+        // 如果我们需要使用jQuery模块，那么我们需要去掉define.amd.jQuery的判断（在seajs中，define.amd为undefined，因为seajs的规范为cmd，amd规范是require.js的实现）：
+        // 如果没有使用jquery别名表示jQuery模块的情况下，那么下面的模块ID还需要做变更处理（例如喜地项目的"jquery/jquery/1.7.2/jquery"）
+        // 如果在config中定义了"jquery"为jQuery模块的别名，那么下面的代码就不需要做调整兼容了
+        if ( typeof define === "function" && define.amd ) {
+            define( "jquery", [], function () { return jQuery; } );
+        }
+
+
+
+
+        //====================================================================================================================
+        //====================================================================================================================
+
+        //seajs中模块赋值的代码实现
+        //在函数体中对传递过来的对象参数以及对象参数的后代成员进行成员赋值时，将构成地址引用，而非值引用
+        
+        // //module参数：值引用（操作无效）
+        // function factory(require, exports, module)
+        // {
+        //     module = {
+        //         a: 1,
+        //         b: 2
+        //     };
+        // }
+
+        // //module参数：值引用（操作无效）
+        // function factory(require, exports, module)
+        // {
+        //     exports = {
+        //         a: 1,
+        //         b: 2
+        //     };
+        // }
+
+        // //module参数：值引用（操作有效）
+        // function factory(require, exports, module)
+        // {
+        //     return {
+        //         a: 1,
+        //         b: 2
+        //     }
+        // }
+
+        // //module参数：地址引用（操作有效）
+        // function factory(require, exports, module)
+        // {
+        //     exports.a = 1;
+        //     exports.b = 2;
+        // }
+
+        //module参数：地址引用（操作有效）
+        function factory(require, exports, module)
+        {
+            module.exports = {
+                a: 1,
+                b: 2
+            };
+        }
+
+        //seajs中返回exports对象的代码如下
+        var isFunction = function(){};
+        var mod = {};
+        var factory = mod.factory
+
+        var exports = isFunction(factory) ?
+          factory(require, mod.exports = {}, mod) :
+          factory
+
+        if (exports === undefined) {
+            exports = mod.exports
+        }
+        delete mod.factory
+        mod.exports = exports
+
+    </script>
+</body>
+</html>

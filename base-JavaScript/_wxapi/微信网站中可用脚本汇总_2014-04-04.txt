@@ -1,0 +1,163 @@
+//判断浏览器是否为微信内置浏览器
+================================
+
+if(/micromessenger/i.test(navigator.userAgent))
+{
+   alert("微信浏览器！");
+}
+
+
+===================================================================================
+===================================================================================
+
+
+
+1.1 隐藏右上角按钮
+
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		WeixinJSBridge.call('hideOptionMenu');
+	});
+
+1.2 显示右上角按钮
+
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		WeixinJSBridge.call('showOptionMenu');
+	});
+
+
+===================================================================================
+2.1 隐藏底部导航栏
+
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		WeixinJSBridge.call('hideToolbar');
+	}); 
+
+2.2 显示底部导航栏
+
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+		WeixinJSBridge.call('showToolbar');
+	}); 
+
+
+===================================================================================
+3 获取网络接入类型
+
+	WeixinJSBridge.invoke('getNetworkType', {}, function(e){
+		// 在这里拿到e.err_msg，这里面就包含了所有的网络类型
+		// network_type:wifi         wifi网络
+		// network_type:edge      非wifi,包含3G/2G
+		// network_type:fail         网络断开连接
+		// network_type:wwan     2g或者3g
+		alert(e.err_msg);
+	});
+
+
+
+
+
+===================================================================================
+===================================================================================
+
+
+
+
+
+//===========================================
+//提供给微信分享时所用的信息数据：
+var dataForWeixin = 
+{
+    //appid，默认为空即可（wx66e8aed5cf151039）
+    appId: "",
+
+    //分享时所带的缩略图路径，需要绝对路径
+    TLImg: "http://www.ent120.com/weixin/futuretest/images/content_small.jpg",
+
+    //分享附带链接地址
+    url: "http://www.ent120.com/weixin/futuretest/default.htm",
+
+    //分享的标题
+    title: "测测你五年后的生活状态！",
+
+    //分享的内容
+    desc: "赶快来测试一下吧",
+
+    //分享后将当前页面跳转到指定url
+    loadedURL = "http://mp.weixin.qq.com/s?__biz=MjM5ODYxMDc0MA==&mid=200130258&idx=1&sn=d46fe0a4455f7c1004f9f671ce49cfb9#rd"
+}
+//==================================================================================
+//设置微信分享时的标题、缩略图、url、描述内容（参考地址：http://blog.csdn.net/liangpei2008/article/details/19980093）
+var onBridgeReady = function()
+{
+    // 分享给好友
+    WeixinJSBridge.on('menu:share:appmessage', function(argv)
+    {
+        WeixinJSBridge.invoke('sendAppMessage', 
+        {
+            "appid": dataForWeixin.appId,               //APPID,保持空即可
+            "img_url": dataForWeixin.TLImg,             //分享时所带的缩略图路径
+            "img_width": "120",                         //缩略图宽度
+            "img_height": "120",                        //缩略图高度
+            "link": dataForWeixin.url + '?f=wx_hy_bb',  //分享附带链接地址
+            "title": dataForWeixin.title,               //分享的标题
+            "desc": dataForWeixin.desc                  //分享的内容
+        },
+        function(res)
+        {            
+            if(dataForWeixin.callback !== undefined) dataForWeixin.callback();  //分享成功后的回调功能（Android中貌似不支持，IOS中无论是分享还是取消分享都会被调用，所以不推荐使用）
+        });
+        
+        //分享后将当前页面跳转到指定url
+        if(dataForWeixin.loadedURL !== undefined) setTimeout(function() {location.href = dataForWeixin.loadedURL;}, 1500);
+    });
+
+    // 分享到朋友圈 
+    WeixinJSBridge.on('menu:share:timeline', function(argv)
+    {
+        WeixinJSBridge.invoke('shareTimeline',
+        {
+            "appid": dataForWeixin.appId,               //APPID,保持空即可
+            "img_url": dataForWeixin.TLImg,             //分享时所带的缩略图路径
+            "img_width": "120",                         //缩略图宽度
+            "img_height": "120",                        //缩略图高度
+            "link": dataForWeixin.url + '?f=wx_pyq_bb', //分享附带链接地址
+            "title": dataForWeixin.title,               //分享的标题（朋友圈仅显示标题）
+            "desc": dataForWeixin.desc                  //分享的内容（朋友圈分享不显示该内容）
+        },
+        function(res)
+        {
+            if(dataForWeixin.callback !== undefined) dataForWeixin.callback();  //分享成功后的回调功能（Android中貌似不支持，IOS中无论是分享还是取消分享都会被调用，所以不推荐使用）
+        });
+        
+        //分享后将当前页面跳转到指定url
+        if(dataForWeixin.loadedURL !== undefined) setTimeout(function() {location.href = dataForWeixin.loadedURL;}, 1500);
+    });
+
+    // 分享到微博
+    WeixinJSBridge.on('menu:share:weibo', function(argv)
+    {
+        WeixinJSBridge.invoke('shareWeibo',
+        {
+            "title": dataForWeixin.title,               //分享的标题  
+            "content": dataForWeixin.desc,              //分享的内容
+            "url": dataForWeixin.url + '?f=wx_weibo_bb',//分享附带链接地址
+        },
+        function(res)
+        {
+            if(dataForWeixin.callback !== undefined) dataForWeixin.callback();    //分享成功后的回调功能（Android中貌似不支持，IOS中无论是分享还是取消分享都会被调用，所以不推荐使用）
+        });
+        
+        //分享后将当前页面跳转到指定url
+        if(dataForWeixin.loadedURL !== undefined) setTimeout(function() {location.href = dataForWeixin.loadedURL;}, 1500);
+    });
+};
+
+// 当微信内置浏览器完成内部初始化后会触发WeixinJSBridgeReady事件
+if(document.addEventListener)
+{
+    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+}
+else if(document.attachEvent)
+{
+    document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+}

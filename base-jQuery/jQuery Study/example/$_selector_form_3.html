@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>$(":enabled") - jQuery代码示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body style="height:1200px;">
+<h1>jQuery代码示例：<code>$(":enabled")</code></h1>
+<p class="title"><code>$(":enabled")</code></p>
+<p class="desc">获取处于可用状态的表单元素。</p>
+<div id="box">
+    容器（ID：box）
+    <fieldset>
+        <legend>所属级别</legend>
+        <p><label><input type="radio" name="step" disabled /><span>入门</span></label></p>
+        <p><label><input type="radio" name="step" disabled /><span>初级</span></label></p>
+        <p><label><input type="radio" name="step" /><span>中级</span></label></p>
+        <p><label><input type="radio" name="step" /><span>高级</span></label></p>
+    </fieldset>
+    <fieldset>
+        <legend>掌握内容</legend>
+        <p><label><input type="checkbox" disabled /><span>HTML</span></label></p>
+        <p><label><input type="checkbox" disabled /><span>CSS</span></label></p>
+        <p><label><input type="checkbox" disabled /><span>JavaScript</span></label></p>
+        <p><label><input type="checkbox" /><span>移动建站</span></label></p>
+        <p><label><input type="checkbox" /><span>交互设计</span></label></p>
+        <p><label><input type="checkbox" /><span>网站可用性</span></label></p>
+    </fieldset>
+    <fieldset>
+        <legend>学历情况</legend>
+        <select>
+            <option>博士</option>
+            <option>硕士</option>
+            <option selected>本科</option>
+            <option>大专</option>
+            <option>高中</option>
+            <option>初中</option>
+        </select>
+    </fieldset>
+</div>
+<p class="content">在右侧大家可以看到一个绿色方框的div容器，在该容器下有一些表单元素，为了该页面的更好测试，还希望大家首先查看下这个容器的HTML结构！</p>
+<p>为了演示该方法的执行效果，我们为下列按钮的单击事件添加了如按钮文本所示的执行代码，大家可以通过点击不同的按钮来查看该方法每种参数使用的不同结果。</p>
+<p><button class="btnShort">$("#box input:enabled").next().css("color", "red")</button></p>
+<p><button class="btnShort">$("#box input[type=radio]:enabled").next().css("color", "blue")</button></p>
+<p><button class="btnShort">$("#box input[type=checkbox]:enabled").next().css("color", "orange")</button></p>
+<script>
+    (function($)
+    {
+        $("button").eq(0).click(function(){
+            $("#box input:enabled").next().css("color", "red");
+        });
+        
+        $("button").eq(1).click(function(){
+            $("#box input[type=radio]:enabled").next().css("color", "blue");
+        });
+
+        $("button").eq(2).click(function(){
+            $("#box input[type=checkbox]:enabled").next().css("color", "orange");
+        });        
+
+    })(jQuery);
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>vm作用域：ms-skip、ms-controller、ms-important.html</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0s/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>vm作用域：ms-skip、ms-controller、ms-important.html</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>与vm作用域相关的有三个指令，<code>ms-skip</code>, <code>ms-controller</code>, <code>ms-important</code>。</p>
+    <ol>
+        <li><code>ms-skip</code>，让vm的作用域进不到此元素内部，那么里面的{{}}就不会被替换了。</li>
+        <li><code>ms-controller</code>， 让此vm的作用域进入此元素内部，并且如果它上方已经有ms-controller，那么它们所指向的vm会进行合并。合并方式使用mediatorFactory实现。</li>
+        <li><code>ms-important</code>, 让此vm的作用域进入此元素内部，并且屏蔽上方的ms-controller或ms-important的vm的影响。</li>
+    </ol>
+    
+
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: 'test',
+        aaa: 111,
+        ddd: 444
+    });
+
+    var vm2 = avalon.define({
+        $id: 'test2',
+        ddd: 555
+    });
+
+    var vm3 = avalon.define({
+        $id: 'test3',
+        aaa: 333
+    });
+&lt;/script>
+&lt;div ms-controller="test">
+    &lt;p>{{@aaa}}&lt;/p>
+    &lt;div ms-controller="test2">
+        {{@aaa}} :: {{@ddd}}
+        
+        &lt;div ms-skip="test">
+            {{@aaa}} :: {{@ddd}}
+        &lt;/div>
+    &lt;/div>
+    &lt;div ms-important="test3">
+        {{@aaa}} :: {{@ddd}}
+    &lt;/div>
+&lt;/div>
+</pre>
+
+
+	<hr>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            aaa: 111,
+            ddd: 444
+        });
+
+        var vm2 = avalon.define({
+            $id: 'test2',
+            ddd: 555
+        });
+
+        var vm3 = avalon.define({
+            $id: 'test3',
+            aaa: 333
+        });
+    </script>
+    <div ms-controller="test">
+        <p>{{@aaa}}</p>
+        <div ms-controller="test2">
+            {{@aaa}} :: {{@ddd}}
+
+            <div ms-skip="test">
+                {{@aaa}} :: {{@ddd}}
+            </div>
+        </div>
+        <div ms-important="test3">
+            {{@aaa}} :: {{@ddd}}
+        </div>
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

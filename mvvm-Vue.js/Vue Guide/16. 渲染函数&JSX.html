@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>渲染函数&JSX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>渲染函数&JSX</h1>
+	<div id="testBox">
+		<hr>
+		<p>基本案例</p>
+		<input type="text" name="level" v-model.lazy="level">
+		<anchored-heading v-bind:level="level">hello</anchored-heading>
+		<hr>
+		<p>createElement 参数</p>
+		<my-div id="1314520"></my-div>
+		<hr>
+		<p>约束-VNodes必须唯一：错误示例</p>
+		<arr-div-error></arr-div-error>
+		<hr>
+		<p>约束-VNodes必须唯一：正确示例</p>
+		<arr-div></arr-div>
+		<hr>
+		<p>使用JavaScript代替模板功能</p>
+		<js-list v-bind:items="items"></js-list>
+		<hr>
+		<p>render 函数中没有与 v-model 相应的 api - 你必须自己来实现相应的逻辑：</p>
+		<js-model></js-model>
+		<hr>
+		<p>插槽</p>
+		<js-slots>this is a example!</js-slots>
+		<hr>
+		<p>作用域插槽</p>
+		<js-scoped-slots :message="message"><p slot-scope="props">{{props}}</p></js-scoped-slots>
+		<hr>
+		<p>slots() 和 children 对比</p>
+		<js-slots-children>
+			<div slot="foo">asdfasdfasdfasdf</div>
+			<div>123123123123123</div>
+			<div>asdfa123123asdfa12312</div>
+		</js-slots-children>
+	</div>
+	<script>
+		// 基本案例
+		Vue.component('anchored-heading', {
+			render: function(createElement){
+				return createElement('h'+this.level, this.$slots.default);
+			},
+			props: {
+				level: {
+					type: Number,
+					required: true
+				}
+			}
+		});
+
+		// createElement 参数
+		Vue.component('my-div', {
+			render: function(createElement) {
+				var that = this;
+				return createElement('div', [createElement('a', {
+					// html属性
+					attrs: {
+						name: 'a-name',
+						href: '#a-aname',
+						id: that.id
+					},
+					// class类名，和 v-bind:class 一样的api
+					'class': {
+						foo: true,
+						bar: false
+					},
+					// style样式，和 v-bind:style 一样的api
+					style: {
+						color: 'red',
+						fontSize: '14px'
+					},
+					// DOM属性
+					domProps: {
+						innerHTML: 'this is a link!'
+					},
+					// 绑定事件
+					on: {
+						click: function(){
+							alert('click me!');
+						}
+					}
+				})]);
+			},
+			props: ['id']
+		});
+
+		// 约束-VNodes必须唯一
+		// 如果你真的需要重复很多次的元素/组件，你可以使用工厂函数来实现。例如，下面这个例子 render 函数完美有效地渲染了 20 个重复的段落：
+		Vue.component('arr-div-error', {
+			render: function (createElement) {
+			  var myParagraphVNode = createElement('p', 'hi');
+			  return createElement('div', [
+			    // 错误-重复的 VNodes
+			    myParagraphVNode, myParagraphVNode
+			  ]);
+			}
+		});
+		// 如果你真的需要重复很多次的元素/组件，你可以使用工厂函数来实现。例如，下面这个例子 render 函数完美有效地渲染了 20 个重复的段落：
+		Vue.component('arr-div', {
+			render: function(createElement){
+				return createElement('div', Array.apply(null, {length: 20}).map(function(item, i){
+					return createElement('p', 'hi-' + i);
+				}));
+			}
+		});
+
+		// 使用JavaScript代替模板功能
+		Vue.component('js-list', {
+			render: function(createElement) {
+				if(this.items.length) {
+					return createElement('ul', this.items.map(function(item){
+						return createElement('li', item.name);
+					}));
+				}else{
+					return createElement('p', 'No teims found');
+				}
+			},
+			props: ['items']
+		});
+
+		// render 函数中没有与 v-model 相应的 api - 你必须自己来实现相应的逻辑：
+		Vue.component('js-model', {
+			render: function(createElement) {
+				var that = this;
+				return createElement('input', {
+					domProps: {
+						value: that.value
+					},
+					on: {
+						input: function(event) {
+							that.value = event.target.value;
+							that.$emit('input', event.target.value);
+						}
+					}
+				})
+			}
+		});
+
+		// 插槽
+		Vue.component('js-slots', {
+			render: function(createElement) {
+				return createElement('div', this.$slots.default);
+			}
+		});
+
+		// 作用域插槽
+		Vue.component('js-scoped-slots', {
+	    	props: ['message'],
+			render: function(createElement) {
+				// <div><slot :text="msg"></slot></div>
+				return createElement('div', [
+					this.$scopedSlots.default({
+						text: this.message
+					})
+				]);
+			}
+		});
+
+	    // slots() 和 children 对比
+		Vue.component('js-slots-children', {
+			render: function(createElement) {
+				// <slot="foo"></slot><slot></slot>
+				console.log(this);
+				console.log(this.$children);
+				return createElement('div', [this.$slots.foo, this.$slots.default]);
+			}
+		});
+
+		var vm = new Vue({
+			el: "#testBox",
+			data: {
+				level: 1,
+				message: 'welcome',
+				items: [
+					{name: 'test-a', value: 'hahaha-ddd'},
+					{name: 'test-b', value: 'asdfasdfasdf'},
+					{name: 'test-c', value: '123123123123'},
+				]
+			}
+		});
+	</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Hello world</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0s/avalon.js"></script>
+</head>
+<body>
+<div class="container">
+	<h1>Hello world</h1>
+	<div>
+		<p><em>vm</em>，使用<code>avalon.define</code>方法生成，必须带<code>$id</code>属性。</p>
+		<p><em>指令</em>，以<code>ms-</code>开头的属性及<code>双花括号</code>的插值表达式。</p>
+		<p><em>圈定作用域</em>，使用<code>ms-controller</code>告诉框架，只处理这个范围内的标签。</p>
+		<p><em>引导符</em>，使用<code>@</code>来告诉框架这些变量是来自<code>vm</code>的。</p>
+	</div>
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: "test",
+        name: "龙泉"
+    });
+&lt;/script>
+&lt;div ms-controller="test">
+    &lt;input ms-duplex="@name">
+    &lt;p>Hello,{{@name}}!&lt;/p>
+&lt;/div>
+</pre>
+
+
+	<hr>
+	<script>
+	    var vm = avalon.define({
+	        $id: "test",
+	        name: "龙泉"
+	    });
+	</script>
+    <div ms-controller="test">
+        <input ms-duplex="@name">
+        <p>Hello,{{@name}}!</p>
+    </div>
+</div>
+</body>
+</html>

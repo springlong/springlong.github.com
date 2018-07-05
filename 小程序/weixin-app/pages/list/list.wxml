@@ -1,0 +1,6 @@
+<!--pages/classify/classify.wxml-->
+<view class="container">
+  <view class="list-warp">
+    <navigator url="/pages/detail/detail?type=6" open-type="navigate">查看六级详情页</navigator>
+  </view>
+</view>

@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS应用——滤镜的使用（边缘光晕）</title>
+	<meta name="keywords" content="CSS应用——滤镜的使用" />
+	<meta name="description" content="CSS应用——滤镜的使用" />
+	<meta name="author" content="Jerry_小猪" />
+	<meta http-equive="Content-Type" content="text/html;charset=gb2312"/>
+	<style type="text/css">
+		@import url("css.css");
+		
+		#biaozhun{
+			width:600px;
+			height:30px;
+			border:4px solid silver;}
+			
+}
+    </style>
+</head>
+<body>
+	<p class="caption">CSS应用-滤镜的使用（边缘光晕）</p>
+<p class="caption">CSS应用-滤镜的使用（边缘光晕）</p>
+<hr />
+	<table width="850" border="1" align="center" bordercolor="black" cellspacing="0" cellpadding="5" style="font-size:16px;color:#0033CC">
+    	<!--第一行-->
+    	<tr align="center" height="30" bgcolor="silver">
+        	<td colspan="2" class="type"><span class="caption">边缘光晕</span></td>
+      </tr>
+        <tr height="30">
+        	<td colspan="2" align="center"><span class="keywords">filter:glow(color=?,strength=?)</span></td>
+        </tr>
+    	<!--第二行-->
+    	<tr height="30">
+        	<td>属性</td>
+        	<td>说明</td>
+        </tr>
+    	<!--第三行-->
+    	<tr height="30">
+        	<td>color</td>
+       	  <td>设置边缘光晕的颜色，默认值为红色！</td>
+      </tr>
+    	<!--第四行-->
+    	<tr height="30">
+        	<td height="20">strength</td>
+       	  <td>设置光晕的长度（单位：像素），可设置的值有0~255！</td>
+        </tr>
+    	<!--第五行-->
+    	<tr height="30">
+        	<td>&nbsp;</td>
+       	  <td>注意：边缘光晕必须针对某一区块中的文本或图片，即要设置一个区块的width或height属性，才能正确显示出阴影的效果！</td>
+      	</tr>
+    	<!--第六行-->
+    	<!--第七行-->
+    </table>
+    
+<hr />
+    
+	正常情况下：
+	<p  style="width:600px;height:30px;">
+    	这是边缘光晕的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	0.默认设置下：<span class="keywords">filter:glow();</span>
+	<p  style="width:600px;height:30px;filter:glow();">
+    	这是边缘光晕的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	1.光晕颜色为灰色，光晕强度为0：<span class="keywords">filter:glow(color=gray,strength=0);</span>
+	<p  style="width:600px;height:30px;filter:glow(color=gray,strength=0);">
+    	这是边缘光晕的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	2.光晕颜色为黑色，光晕强度10：<span class="keywords">filter:glow(color=black,strength=10);</span>
+	<p  style="width:600px;height:30px;filter:glow(color=black,strength=10);">
+    	这是边缘光晕的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	3.光晕颜色为蓝色，光晕强度为50：<span class="keywords">filter:glow(color=blue,strength=50);</span>
+	<p  style="width:600px;height:30px;filter:glow(color=blue,strength=50);">
+    	这是边缘光晕的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	4.光晕颜色为青色，光晕强度为100：<span class="keywords">filter:glow(color=cyan,strength=100);</span>
+	<p  style="width:600px;height:30px;filter:glow(color=cyan,strength=100);">
+    	这是边缘光晕的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	5.光晕颜色为红色，光晕强度为150：<span class="keywords">filter:glow(color=red,strength=150);</span>
+	<p  style="width:600px;height:30px;filter:glow(color=red,strength=150);">
+    	这是边缘光晕的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	6.光晕颜色为橙色，光晕强度为200：<span class="keywords">filter:glow(color=orange,strength=200);</span>
+	<p  style="width:600px;height:30px;filter:glow(color=orange,strength=200);">
+    	这是边缘光晕的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	7.光晕颜色为紫色，光晕强度为255：<span class="keywords">filter:glow(color=purple,strength=255);</span>
+	<p  style="width:600px;height:30px;filter:glow(color=purple,strength=255);">
+    	这是边缘光晕的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+    
+    <hr />
+  
+    
+</body>
+</html>

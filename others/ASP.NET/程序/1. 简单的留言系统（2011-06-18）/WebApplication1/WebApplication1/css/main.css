@@ -1,0 +1,93 @@
+﻿a{text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+/*==登陆页面CSS样式==*/
+#frmLogin{width:400px;margin:150px auto;padding:5px;background:gray;}
+#login h1{text-align:center;}
+#login .error{color:#fff;}
+#login label{display:inline-block;width:140px;text-align:right;padding-right:10px;}
+#login input{font-family:宋体;}
+#login p.button{text-align:center;}
+#login p.button a{color:#000;}
+#login p.button a:hover{color:#0846CB;}
+
+/*==注册页面CSS样式==*/
+#frmRegist{width:400px;margin:150px auto;background:gray;}
+#regist h1{text-align:center;}
+#regist .error{color:#fff;}
+#regist label{display:inline-block;width:140px;text-align:right;padding-right:10px;}
+#regist input{font-family:宋体;}
+#regist p.button{text-align:center;}
+#regist p.button a{color:#000;}
+#regist p.button a:hover{color:#0846CB;}
+
+/*==添加留言页面CSS样式==*/
+#addLy{width:600px;margin:20px auto;border:1px solid green;}
+#addLyPage h1{text-align:center;}
+#addLyPage p{padding-bottom:10px;}
+#addLyPage label{display:inline-block;float:left;width:140px;text-align:right;padding-right:10px;}
+#addLyPage #subject{float:left;width:400px;}
+#addLyPage #content{float:left;width:400px;height:10em;}
+#addLyPage p.button{clear:both;margin-left:150px;}
+#addLyPage p.button a{color:#000;}
+#addLyPage p.button a:hover{color:#0846CB;}
+
+/*==留言列表页面CSS样式==*/
+#ly_Default table *{margin:0;padding:0;}
+#ly_Default a{color:Black;text-decoration:none;}
+#ly_Default a:hover{color:#052950;text-decoration:underline;}
+#ly_Default form{width:90%;margin:20px auto;}
+#ly_Default form h1{text-align:center;}
+#ly_Default table.wrapper{width:100%;height:300px;}
+
+#ly_Default .lyInfo{width:90%; height:300px;border:1px solid green;overflow:auto;}
+#ly_Default .lyInfo table{width:100%;border-collapse:collapse;table-layout:fixed;}
+#ly_Default .lyInfo table td{height:30px;text-align:center;overflow:hidden;}
+#ly_Default .lyInfo table td a{white-space:nowrap;overflow:hidden;}
+#ly_Default .lyInfo col{width:10%;}
+#ly_Default .lyInfo table .line1{width:60%;}
+#ly_Default .lyInfo table .line2{width:15%;}
+#ly_Default .lyInfo table .line3{width:15%;}
+#ly_Default .lyInfo table .subject{padding-left:1em;padding-right:2em;text-align:left;}
+#ly_Default .lyInfo table tr{background:#fff;}
+#ly_Default .lyInfo table .dan{background:#E8E9F9;}
+#ly_Default .lyInfo table .caption{height:30px;color:#fff;background:#6690C7;}
+
+#ly_Default .lyManage{width:10%;height:300px;}
+#ly_Default .lyManage table{width:100%;}
+#ly_Default .lyManage table a{display:block;width:100%;margin-bottom:5px;border:1px solid gray;text-align:center;background:#C1AAAA;}
+#ly_Default .lyManage table a:hover{color:#0846CB;}
+#ly_Default .control{text-align:right;margin-right:15%;}
+#ly_Default .control a{display:inline-block;width:50px;margin:0 0.5em;border:1px solid gray;text-align:center;background:none;cursor:pointer;}
+
+#currentPage{width:4em;border:1px solid gray;text-align:right;padding-right:5px;}
+
+/*==回复列表页面CSS样式==*/
+#frmHF *{margin:0;padding:0;}
+#frmHF{width:90%;margin:20px auto;}
+#frmHF h1{text-align:center;margin:0 0 20px 0;}
+#frmHF .currentUser{margin-top:5px;}
+#frmHF .currentUser{margin:10px 0;}
+#frmHF .return_ly{margin-bottom:10px;}
+#frmHF .return_ly a{color:Blue;}
+#frmHF .topCaption{height:32px;line-height:32px;margin-bottom:10px;padding-left:5px;background:#074F89;color:#fff;}
+#frmHF .topCaption h2{float:left;font-size:16px;}
+#frmHF .topCaption #HFPos{float:right;margin-right:5px;color:#39E8C9;cursor:pointer;}
+
+#frmHF table{width:100%;border:1px solid #A9CBEE;border-collapse:collapse;margin-bottom:5px;}
+#frmHF table td.toux{width:180px;border-right:1px solid #A9CBEE;vertical-align:top;text-align:center;padding-bottom:20px;background:#F6F9FE;}
+#frmHF table td.toux img{display:block;width:100px;height:80px;margin:10px auto;}
+
+#frmHF table td.info{height:80%;vertical-align:top;}
+#frmHF table td.info .wrapper{height:24px;border-bottom:1px solid #A9CBEE;}
+#frmHF table td.info .ch{float:right;line-height:24px;padding-right:20px;}
+#frmHF table td.info .time{line-height:24px;padding-left:1em;font-size:12px;}
+#frmHF table td.info .content{margin:20px 20px;}
+#frmHF table .control td{height:10%;text-align:right;vertical-align:bottom;}
+#frmHF table .control td div{height:32px;line-height:32px;border-top:1px solid #A9CBEE;background:#F6F9FE;}
+#frmHF table .control a{color:Black;padding-right:5px;}
+
+#frmHF .replyContent{margin-top:20px;font-weight:bold;}
+#frmHF .replyContent a{display:inline;width:5em;height:1em;border:1px solid gray;background:silver;color:#0A585F;}
+#replyContent{width:50%;height:10em;padding:5px;margin-top:5px;}
+#anchorBottom{width:0px;background:none;}

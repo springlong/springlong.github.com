@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <base charset="utf-8" />
+    <title>事件模型：默认行为案例_2 - 浏览器事件 - 前端志</title>
+    <style>
+        *{margin:0;padding:0;}
+    </style>
+</head>
+<body>
+<a href="http://www.baidu.com/" id="test_a">文本链接</a>
+<script>
+    document.getElementById("test_a").onclick = function(e)
+    {
+        return false;   //取消默认行为的最简方法
+    }
+</script>
+</body>
+</html>

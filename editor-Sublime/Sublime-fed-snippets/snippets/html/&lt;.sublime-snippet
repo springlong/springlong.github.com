@@ -1,0 +1,6 @@
+<snippet>
+	<content><![CDATA[&lt;]]></content>
+	<tabTrigger>,</tabTrigger>
+	<description>&lt;</description>
+    <scope>text</scope>
+</snippet>

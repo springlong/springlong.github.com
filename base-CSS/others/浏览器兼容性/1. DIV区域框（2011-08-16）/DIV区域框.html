@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<base target="_blank" />
+	<meta charset="UTF-8" />
+	<title>浏览器兼容——DIV区域框</title>
+	<style>
+		h1{margin-bottom:20px;text-align:center;}
+		p{line-height:24px;}
+		p span{display:inline-block;width:10px;height:24px;background:gray;}
+		.red{font-weight:normal;color:#c00000;}
+		.browser{color:#0DD327;}
+
+		.f{float:left;_display:inline;margin:0 5px;}
+		.clear{clear:both;}
+		.wrapper{position:relative;width:80%;padding:10px;border:2px groove #27760A;margin:0 auto 20px;}
+		div.solve{height:300px;border-color:#EA6A08;}
+        .result{width:80%;padding:10px;background:#222;color:#FA5505;line-height:24px;border:5px groove #405812;margin:20px auto 0;text-indent:2em;}
+
+		strong.solve{font-size:18px;color:#004BFF;}
+		.question{font-size:18px;color:#F54803;}
+		.btn{width:19px;height:19px;background:url(images/bt4.png) no-repeat;cursor:pointer;}
+		.w1 .btn{float:left;_display:inline;text-indent:-9999px;}
+
+		.w3{height:300px;}
+		.w3 .btn{float:left;margin-top:20px;}
+
+		.w4{position:static;height:300px;}
+		.w4 .btn{float:left;margin-top:20px;}
+
+		.solve .btn{float:left;height:0px;padding-top:19px;overflow:hidden;}
+
+		/*医院荣誉*/
+		.ksjs_yyry{position:relative;width:982px;height:314px;margin:30px auto 0;background:url(images/yyryBG.jpg) no-repeat;}
+		.ksjs_yyry h2{height:60px;text-indent:-9999px;}
+		.ksjs_yyry p{width:942px;height:72px;margin:0 0 0 20px;font-size:14px;line-height:24px;text-indent:2em;overflow:hidden;}
+		.ksjs_yyry strong{color:#c00000;}
+		.ksjs_yyry .btn{float:left;_display:inline;width:23px;height:30px;margin-top:61px;cursor:pointer;}
+		.ksjs_yyry .yyryBtnLeft{margin:61px 9px 0 28px;background:url(images/yyryBtnLeft.jpg) no-repeat;}
+		.ksjs_yyry .yyryBtnRight{margin-left:8px;background:url(images/yyryBtnRight.jpg) no-repeat;}
+		.ksjs_yyry .yyryWrapper{float:left;_display:inline;width:859px;height:138px;margin-top:20px;overflow:hidden;}
+		.ksjs_yyry .yyryWrapper .outer{width:30000px;}
+		.ksjs_yyry .yyryWrapper .inner{float:left;_display:inline;height:138px;}
+		.ksjs_yyry .yyryWrapper img{float:left;_display:inline;width:159px;height:112px;padding-bottom:26px;margin-right:16px;background:url(images/yyry_bg.jpg) no-repeat left bottom;}
+
+		#yyryBtnLeftB,#yyryBtnRightB{height:0;padding-top:30px;overflow:hidden;}
+		.btnInner{float:left;width:0;height:0;overflow:hidden;}
+	</style>
+</head>
+<body>
+<h1>浏览器兼容——DIV区域框</h1>
+
+<div class="wrapper w1">
+	<p>
+		<strong class="question">问题一：</strong>
+		<span></span>在<b class="browser">Firefox</b>浏览器中，当一个浮动（或者是绝对定位）且无文本的DIV区域框前后是一个没有浮动的内容区，连续双击该区域框时将会自动选择前面与其处于同一层次的且连续的所有内容区以及后面与其处于同一层次的第一个内容区；如果前后的内容区都进行了浮动或者仅前面的内容区进行了浮动，则双击该区域框时将会自动选择位于其后的第一个内容区；<span></span>在<b class="browser">IE8</b>浏览器中，当一个浮动（或者是绝对定位）且无文本的DIV区域框的前面是一个没有浮动的内容区，则双击该区域框离前面内容区距离较近的地方时将会自动选择前面与其处于同一层次的第一个内容区；</p>
+	<p><strong>请双击下面的“按钮”区域测试结果：</strong></p>
+	<div class="btn"></div>
+	<p class="clear">测试测试！</p>
+	<p class="clear">测试测试！</p>
+</div>
+
+<div class="wrapper w2">
+	<p>
+		<strong class="question">问题二：</strong>
+		<span></span>在<b class="browser">IE/Firefox/Opera</b>浏览器中，双击或连续双击一个DIV或者段落P区域将自动选择该区域中的所有文本；<span></span>而在Webkit内核的<b class="browser">Chrome</b>和<b class="browser">Safari</b>浏览器中，双击或连续双击一个DIV或者段落P区域将自动选择该区域的整个横向区域！</p>
+	<p><strong>请双击下面的“按钮”区域测试结果：</strong></p>
+	<div class="btn">&nbsp;</div>
+	<p class="clear">测试测试！</p>
+	<p class="clear">测试测试！</p>
+</div>
+
+<div class="wrapper w3">
+	<p class="p1">
+		<strong class="question">问题三：</strong>
+		在Webkit内核的<b class="browser">Chrome</b>和<b class="browser">Safari</b>浏览器中，双击或连续双击一个DIV区域，该元素后没有同级文本内容且父级元素的position定位为relative，而且父级元素后面还存在其他内容区块，如果该DIV为非浮动元素，那么将会自动选择该元素所处父级容器从该元素起余后的所有区域；如果该DIV为浮动元素，那么将会自动选择该DIV父级容器的所有区域！</p>
+	<p><strong>请双击下面的“按钮”区域测试结果：</strong></p>
+	<div class="btn">&nbsp;</div>
+</div>
+
+<div class="wrapper w4">
+	<p class="p1">
+		<strong class="question">问题四：</strong>
+		在Webkit内核的<b class="browser">Chrome</b>和<b class="browser">Safari</b>浏览器中，双击或连续双击一个DIV区域，该DIV元素为浮动状态并且该元素后没有同级文本内容且父级元素的position定位为非relative，而且父级元素后面区块的position定位为relative时，将会自动选择该DIV元素底部至页面头部的所有区域！</p>
+	<p><strong class="red">说明：该问题在页面布局的过程中基本上是不会碰到的，需要解决该问题只需要让DIV元素的条件不成立即可！</strong></p>
+	<p><strong>请双击下面的“按钮”区域测试结果：</strong></p>
+	<div class="btn">&nbsp;</div>
+</div>
+<div style="position:relative;"></div>
+
+<div class="wrapper solve">
+    <p>
+		<strong class="solve">解决方法1——不存在“问题三”</strong>
+		首先将DIV容器中放置一个空格文本或保留原有文本，从而解决了问题一中Firefox和IE8中所遇到的问题；其次将DIV的高度或宽度使用填充代替，如：<code>height:0;padding-top:19px;</code>；由于文本成了溢出文本，需要设置overflow属性为hidden，将其隐藏；至此，“问题一”和“问题二”就被解决了！</p>
+	<p>
+		<strong class="solve">解决方法2——存在“问题三”</strong>
+		首先将原来的DIV容器替换成span，在span的外侧放置一对DIV，并在span中放置一个空格文本或保留原有文本，从而解决了问题一中Firefox和IE8中所遇到的问题；其次将更改后的span的高度或宽度使用填充代替，如：<code>height:0;padding-top:19px;</code>；由于文本成了溢出文本，需要设置overflow属性为hidden，将其隐藏；最后在span后面再添加一个span，并放置一个空格文本，并且设置该span的样式为<code>float:left;width:0;height:0;overflow:hidden;</code> ，将该span隐藏，这样才能彻底解决“问题三”中出现的现象~！</p>
+		<p><strong>请双击下面的“按钮”区域测试结果：</strong></p>
+	<div><span class="btn">&nbsp;</span><span class="btnInner">&nbsp;</span></div>
+</div>
+
+<div class="ksjs_yyry">
+	<h2>医院荣誉</h2>
+	<p><strong>该演示为非兼容测试，请双击下面左右两个按钮进行观看效果！</strong>该演示为非兼容测试，请双击下面左右两个按钮进行观看效果！该演示为非兼容测试，请双击下面左右两个按钮进行观看效果！该演示为非兼容测试，请双击下面左右两个按钮进行观看效果！该演示为非兼容测试，请双击下面左右两个按钮进行观看效果！</p>
+	<div id="yyryBtnLeft" class="yyryBtnLeft btn"></div>
+	<div id="yyryWrapper" class="yyryWrapper">
+	<div class="outer">
+		<div id="yyryInner" class="inner">
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+		</div>
+	</div>
+	</div>
+	<div id="yyryBtnRight" class="yyryBtnRight btn"></div>
+</div>
+
+
+<div class="ksjs_yyry">
+	<h2>医院荣誉</h2>
+	<p><strong>该演示已兼容各大浏览器，请双击下面左右两个按钮进行观看效果！</strong>该演示为非兼容测试，请双击下面左右两个按钮进行观看效果！该演示为非兼容测试，请双击下面左右两个按钮进行观看效果！该演示为非兼容测试，请双击下面左右两个按钮进行观看效果！该演示为非兼容测试，请双击下面左右两个按钮进行观看效果！</p>
+	<div><span id="yyryBtnLeftB" class="yyryBtnLeft btn">&nbsp;</span><span class="btnInner">&nbsp;</span></div>
+	<div id="yyryWrapperB" class="yyryWrapper">
+	<div class="outer">
+		<div id="yyryInnerB" class="inner">
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+			<img width="159px" height="112px" src="images/noPic1.jpg" alt="noPic1" />
+		</div>
+	</div>
+	</div>
+	<div><span id="yyryBtnRightB" class="yyryBtnRight btn">&nbsp;</span><span class="btnInner">&nbsp;</span></div>
+</div>
+
+<div class="result">
+    <p><strong>注意：</strong>在上面的两个演示中，我们使用DIV来表示向左和向右的按钮，这样在实现的过程中，就会遇到前面所述的几点问题。如果需要实现“滚动”的效果，且需要添加点击按钮时，我们可以直接使用&lt;button&gt;标签来代替，这样就不会遇到上面的问题了，而且还更具有语义化！</p>
+    <p><strong>说明：</strong>之所在在实现“滚动”效果时所添加的按钮我用DIV来表示，是因为我不想在没有CSS情况下让用户看见两个不明含义的按钮出现在页面中！</p>
+</div>
+
+<script type="text/javascript" src="js/globle.js"></script>
+<script type="text/javascript">
+    marquee2("yyryWrapper",false,"yyryInner","left",175,10,40,40,2000,90,false,"yyryBtnRight","yyryBtnLeft");
+    marquee2("yyryWrapperB",false,"yyryInnerB","left",175,10,40,40,2000,90,false,"yyryBtnRightB","yyryBtnLeftB");
+</script>
+</body>
+</html>

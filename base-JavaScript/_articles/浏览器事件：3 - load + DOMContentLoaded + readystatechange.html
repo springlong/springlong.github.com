@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器事件（3）：UI事件——load、DOMContentLoaded、readystatechange - JavaScript学习指南 - 前端志</title>
+    <link rel="stylesheet" href="./public/css/main.css" />
+    <link rel="stylesheet" href="./public/css/codeView.css" />
+    <script src="./public/js/jquery.min.js"></script>
+    <script src="./public/js/jquery.extend.js"></script>
+    <script src="./public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+	<h1><span>浏览器事件（3）：UI事件——load、DOMContentLoaded、readystatechange</span></h1>
+    <h2>load事件</h2>
+    <div>
+        <p><strong>该事件在页面完全加载完毕时触发（包括所有图像、脚本、样式等外部资源文件）。</strong></p>
+        <p>该事件需要在window对象上触发。绑定操作如下：</p>
+<pre class="jsCodeNum">
+window.onload = function(e)
+{
+    //load事件处理程序执行代码！
+}
+</pre>
+        <p>另外在HTML代码中，我们还可以将该事件加入到&lt;body&gt;标签中。绑定操作如下：</p>
+<pre class="jsCodeNum">
+&lt;body onload="alert('load事件被触发！');"&gt;
+</pre>
+        <p><b>说明：</b></p>
+        <ol>
+            <li>由于在HTML代码中无法访问window元素，所以在window上面发生的大部分事件都可以在&lt;body&gt;标签中通过相关属性进行绑定。</li>
+            <li>由于通过HTML属性方式添加事件绑定有所限制，所有在后续的所有事件绑定操作中，我们均使用接口方式进行。</li>
+            <li>load事件除了发生在widow上之外，还会发生在img、script等元素上，关于它们的具体应用将在后续部分进行介绍。</li>
+        </ol>
+    </div>
+    <h2>DOMContentLoaded事件</h2>
+    <div>
+        <p><strong>该事件在形成完整的DOM树之后就会触发，而不需要像load事件那样当页面的所有元素全部加载完毕时才会触发。</strong></p>
+        <p>该事件可以在页面下载的早期就添加事件处理程序，这使得用户能够尽早地与页面进行交互。</p>
+        <p>该事件在docuent上触发，但会冒泡给window，所以该事件既可以通过window进行事件绑定，也可以通过document进行事件绑定（建议使用document）。另外该事件无法直接使用DOM属性以及HTML属性的方式添加绑定操作，必须使用接口方式进行。绑定操作如下：</p>
+<pre class="jsCodeNum">
+$(document).bind("DOMContentLoaded", function(e)
+{
+    //DOMContentLoaded事件处理程序执行代码！
+});
+</pre>
+        <p><b>注意：</b>IE9+、Firefox、Chrome、Safari 3.1+以及Opera 9+均支持该事件，但市场份额不小的IE6~8浏览器则不支持该事件，这就需要我们耍点小手段来进行兼容性处理，这个我们稍后再谈。</p>
+    </div>
+    <h2>readystatechange事件</h2>
+    <div>
+        <p><strong>该事件在页面或者相关元素的加载状态发生变更时触发。</strong></p>
+        <p>该事件目前已知的触发对象，一个是document，另一个是XMLHttpRequest，这里我们仅只讲解document对象上触发的事件内容。绑定操作如下：</p>
+<pre class="jsCodeNum">
+$(document).bind("readystatechange", function(e)
+{
+    //readystatechange事件处理程序执行代码！
+});
+</pre>
+        <p>支持readystatechange事件的每个对象都有一个<b>readyState</b>属性，用来表示当前加载的状态。在document对象上，readyState属性可能包含下列状态值：</p>
+        <ol>
+            <li>uninitialized（未初始化）：对象存在但尚未初始化。</li>
+            <li>loading（正在加载）：对象正在加载数据。</li>
+            <li>loaded（加载完毕）：对象加载数据完成。</li>
+            <li>interactive（交互）：可以操作对象了，但还没有完全加载。</li>
+            <li>complete（完成）：对象已经加载完毕。</li>
+        </ol>
+        <p><b>提示：</b></p>
+        <ol>
+            <li>XMLHttpRequest对象用于Ajax异步请求操作，具体内容可参考：<a href="JavaScript学习指南：Ajax的那些事" target="_blank">JavaScript学习指南：Ajax的那些事</a>。</li>
+        </ol>
+    </div>
+    <h2>差异对比</h2>
+    <div>
+        <p>在之前的内容中，我们分别介绍了load、DOMContentLoaded、readystatechange这三个事件的触发方式以及进行事件绑定操作的相关代码示例。通过上述内容的了解，大家应该大致清楚为什么要将这三个事件放到一起进行讲解了——那就是它们都跟页面文档的加载状态有关。</p>
+        <p><b>下面我们先来看一个实例：</b></p>
+<pre class="jsCodeNum">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;base charset="utf-8" /&gt;
+    &lt;title&gt;测试案例_1：load、DOMContentLoaded、readystatechange&lt;/title&gt;
+    &lt;style&gt;
+        *{margin:0;padding:0;}
+        h1{font-size:24px;line-height:1.5em;}
+        p{padding:10px 10px;font-size:14px;line-height:1.5em;}
+        .pic{width:700px;}
+        .pic img{width:100px;height:100px;border:2px solid #eee;margin:10px 0 0 10px;}
+    &lt;/style&gt;
+    &lt;script src="js/jsApp_2013-08-13.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;load、DOMContentLoaded、readystatechange事件的对比情况&lt;/h1&gt;
+    &lt;div class="pic"&gt;
+        &lt;img src="http://farm4.staticflickr.com/3832/9503903237_9abb2a2fd9_o.jpg" alt="" /&gt;
+        &lt;img src="http://farm3.staticflickr.com/2864/9503910629_7b8b7af7ea_o.jpg" alt="" /&gt;
+        &lt;img src="http://farm8.staticflickr.com/7453/9503913045_b216c3beca_o.jpg" alt="" /&gt;
+        &lt;img src="http://farm3.staticflickr.com/2864/9503910629_7b8b7af7ea_o.jpg" alt="" /&gt;
+        &lt;img src="http://farm8.staticflickr.com/7336/9506715892_5e6e5fe541_o.jpg" alt="" /&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;b&gt;加载信息：&lt;/b&gt;&lt;span id="dataInfo"&gt;&lt;/span&gt;&lt;/p&gt;
+    &lt;script&gt;
+        //load事件触发时更新加载信息。
+        $(window).bind("load", function()
+        {
+            $("#dataInfo")[0].innerHTML += "&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;[load]";
+        });
+
+        //DOMContentLoaded事件触发时更新加载信息。
+        $(window).bind("DOMContentLoaded", function()
+        {
+            $("#dataInfo")[0].innerHTML += "&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;[DOMContentLoaded]";
+        });
+
+        //readystatechange事件触发时更新加载信息。
+        $(document).bind("readystatechange", function()
+        {
+            $("#dataInfo")[0].innerHTML += "&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;[readystatechange:" + document.readyState + "]";
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+        <p>在上面的代码中，我们分别对load、DOMContentLoaded、readystatechange这三个事件添加了事件绑定操作。当这些事件被触发时，将在“加载信息”后面输出关于这个事件的文本信息，以此来了解他们被触发的情况以及先后顺序。大家最好将上述代码手动输入测试，当然你也可以点击<a href="test/9. 浏览器事件：事件类型-测试案例_1.html" target="_blank">这里</a>进行快速查看。</p>
+        <p><b>通过上述实例代码的测试，我们可以得到以下结论：</b></p>
+        <ol class="muchContent">
+            <li>在IE6~8浏览器中，DOMContentLoaded事件未被支持，其他诸如IE9+、Firefox、Chrome、Safari、Opera等浏览器均支持DOMContentLoaded事件。</li>
+            <li>通过对IE9+、Firefox、Chrome、Safari、Opera等浏览器的观察，DOMContentLoad事件基本上在页面一打开就触发了（这说明此时浏览器已经将HTML代码解析为了完整的DOM树），而load事件则在所有图片文件全部加载完毕之后才被触发。</li>
+            <li>readystatechange事件中的uninitialized、loading、loaded这三个加载状态基本上不见其身影，所以我们姑且将它们忽略。</li>
+            <li>在Firefox、Chrome、Safari浏览器中，readystatechange事件的interactive状态值（可交互）与DOMContentLoaded事件是一并触发的，且interactive状态值在DOMContentLoaded之前触发；readystatechange事件的complete状态值（已完成）与load事件是一并触发的，且complete状态值在load事件之前触发。基于这三者浏览器而言，我们基本上可以认为：readystatechange事件中的interactive状态与DOMContentLoaded事件等同；readystatechange事件中的complete状态与load事件等同。如果真是这样的话，我们是否可以使用readystatechange事件中的interactive状态来模拟IE6~8中DOMContentLoaded事件的发生呢？为了解答疑惑，我们继续往下看。</li>
+            <li>在Opera、IE10浏览器中，readystatechange事件的interactive状态值无论怎么访问都没有被触发，而complete状态值与load事件一并触发，且complete状态值在load事件之后触发。根据这一特点而言，虽然readystatechange事件在理论上可以同时描述DOMContentLoaded与load事件，但由于浏览器之间处理的差异性，我们不得不放弃使用它。但是我们还需要继续往下看，因为IE6~8的问题依旧没有得到解决。</li>
+            <li>在IE6~9浏览器中，直接访问或者按回车访问将不会触发readystatechange事件的interactive状态值，仅当刷新或者强制刷新时，才会触发interactive状态值（其触发时机与其他浏览器中的DOMContentLoaded事件表现一致）。而无论以什么形式访问，readystatechange事件的complete状态值都与load事件一并触发。</li>
+            <li>到目前为止，我们已经可以肯定的是：readystatechange事件中的interactive状态与DOMContentLoaded事件等同，readystatechange事件中的complete状态与load事件等同。由于各大浏览器的差异性，在实际工作中我们将不会直接使用readystatechange事件，而对于DOMContentLoaded事件的使用，我们还得想办法进行IE6~8浏览器的兼容性处理。</li>
+        </ol>
+    </div>
+    <h2>应用情景</h2>
+    <div>
+        <p><b>通过上面实例代码在不同浏览器中的对比测试，以及对上述结论的分析总结，相信大家对load、DOMContentLoaded以及readystatechange事件的各自作用、之间的联系、以及各大浏览器的兼容性问题都有了一个比较明确的认识。</b></p>
+        <p>DOMContentLoaded事件在DOM树构建完毕时就会触发，而load事件需要在所有外部资源全部加载完毕之后才会触发。通过上面实例代码的测试，可以肯定的是load会在DOMContentLoaded之后触发，而且要远远晚于DOMContentLoaded的触发时间。但更确切地说它们两者表示的都是页面加载两个不同阶段，那么我们应该如何选择其中之一来完成我们的项目所需呢？</p>
+        <p><b>我们先来看下面的这个实例：</b></p>
+<pre class="jsCodeNum">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;base charset="utf-8" /&gt;
+    &lt;title&gt;load、DOMContentLoaded事件应用案例1&lt;/title&gt;
+    &lt;style&gt;
+        *{margin:0;padding:0;}
+        h1{font-size:24px;line-height:1.5em;}
+    &lt;/style&gt;
+    &lt;script src="js/jsApp_2013-08-13.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        $("#title-1")[0].innerHTML = "load、DOMContentLoaded事件应用案例1";
+    &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1 id="title-1"&gt;loading...&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+    </div>
+</article>
+<script src="../public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

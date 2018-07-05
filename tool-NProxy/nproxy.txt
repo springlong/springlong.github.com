@@ -1,0 +1,56 @@
+
+官方文档
+http://goddyzhao.me/nproxy/
+
+GitHub
+https://github.com/goddyZhao/nproxy
+	
+
+================================================
+1. 安装Node.js后，运行下面的命令进行NProxy的安装：
+
+	npm install -g nproxy
+
+	参考：https://github.com/goddyZhao/nproxy/wiki/How-to-install-NProxy
+
+
+================================================
+2. 在使用NProxy之前：
+
+	为Chrome安装Proxy SwitchySharp（代理管理插件），并添加名为“NProxy”的代理。
+	
+	IP：127.0.0.1
+	Prot：8989
+
+	参考：https://github.com/goddyZhao/nproxy/wiki/How-to-set-browser's-proxy
+
+
+================================================
+3. 之后，就可以开始使用NProxy了：
+
+	1. 开启Chrome浏览器的NProxy代理；
+
+	2. 编写好资源的替换规则，建议命名为“rule.js”
+
+		规则的书写，参考模板：https://github.com/goddyZhao/nproxy#template-of-replace-rule-fileshould-be-a-js-file
+
+	3. 将CMD目录，定位到规则文件的所属目录；
+
+		cd d:\wwwroot
+		d:
+
+	4. 运行下面的命令，即可开启NProxy代理监测，NProxy会自动将规则中的文件替换为指定文件进行访问；
+
+		nproxy -l urle.js
+
+		更多命令参考：https://github.com/goddyZhao/nproxy#more-options
+
+	5. 运行效果，可以打开“NProxy抓包处理.png”进行了解。
+
+
+================================================
+4. 使用完毕后，将Chrome浏览器切换回“直接链接”模式，并关闭CMD命令窗口。
+
+
+
+	

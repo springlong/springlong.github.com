@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS应用——滤镜的使用（投影设置）</title>
+	<meta name="keywords" content="CSS应用——滤镜的使用" />
+	<meta name="description" content="CSS应用——滤镜的使用" />
+	<meta name="author" content="Jerry_小猪" />
+	<meta http-equive="Content-Type" content="text/html;charset=gb2312"/>
+	<style type="text/css">
+		@import url("css.css");
+		
+		#biaozhun{
+			width:600px;
+			height:30px;
+			border:4px solid silver;}
+			
+}
+    </style>
+</head>
+<body>
+	<p class="caption">CSS应用-滤镜的使用（投影设置）</p>
+<p class="caption">CSS应用-滤镜的使用（投影设置）</p>
+<hr />
+	<table width="850" border="1" align="center" bordercolor="black" cellspacing="0" cellpadding="5" style="font-size:16px;color:#0033CC">
+    	<!--第一行-->
+    	<tr align="center" height="30" bgcolor="silver">
+        	<td colspan="2" class="type"><span class="caption">投影设置</span></td>
+      </tr>
+        <tr height="30">
+        	<td colspan="2" align="center"><span class="keywords">filter:dropshadow(color=?,offx=?,offy=?,positive=?);</span></td>
+        </tr>
+    	<!--第二行-->
+    	<tr height="30">
+        	<td>属性</td>
+        	<td>说明</td>
+        </tr>
+    	<!--第三行-->
+    	<tr height="30">
+        	<td>color</td>
+       	  <td>设置投影的颜色!如果没有设置，则没有投影效果！</td>
+      </tr>
+    	<!--第四行-->
+    	<tr height="30">
+        	<td height="20">offx</td>
+       	  <td>设置投影x轴方向上的位置。0表示与原元素在同一垂直位置；正数表示位于原元素的右侧位置；负数表示位于原元素的左侧位置！          </td>
+        </tr>
+    	<tr height="30">
+    	  <td height="20">offy</td>
+    	  <td>设置投影y轴方向上的位置。0表示与原元素在同一水平位置；正数表示位于原元素的下侧位置；负数表示位于原元素的上侧位置！ </td>
+  	  </tr>
+    	<tr height="30">
+    	  <td height="20">positive</td>
+    	  <td>是否为透明元素建立投影！true：是的；false：不为透明元素建立投影！</td>
+  	  </tr>
+    	<!--第五行-->
+    	<tr height="30">
+        	<td>&nbsp;</td>
+       	  <td>注意：投影效果必须针对某一区块中的文本或图片，即要设置一个区块的width或height属性，才能正确显示出投影的效果！</td>
+      	</tr>
+    	<!--第六行-->
+    	<!--第七行-->
+    </table>
+    
+<hr />
+    
+	正常情况下：
+	<p  style="width:600px;height:30px;">
+    	这是投影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	0.默认设置下：<span class="keywords">filter:dropdropshadow();</span>
+	<p  style="width:600px;height:30px;filter:dropdropshadow();">
+    	这是投影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+    
+	1.投影颜色为蓝色，投影的x方位值为20<sup>。</sup>：<span class="keywords">filter:dropshadow(color=blue,offx=20);</span>
+	<p  style="width:600px;height:30px;filter:dropshadow(color=blue,offx=20);">
+    	这是投影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	2.投影颜色为红色，投影的x方位值为10<sup>。</sup>：<span class="keywords">filter:dropshadow(color=red,offx=10);</span>
+	<p  style="width:600px;height:30px;filter:dropshadow(color=red,offx=10);">
+    	这是投影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	3.投影颜色为灰色，投影的x方位值为0<sup>。</sup>：<span class="keywords">filter:dropshadow(color=gray,offx=0);</span>
+	<p  style="width:600px;height:30px;filter:dropshadow(color=gray,offx=0);">
+    	这是投影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />    
+    
+	4.投影颜色为蓝色，投影的x方位值为-10<sup>。</sup>：<span class="keywords">filter:dropshadow(color=blue,offx=-10);</span>
+	<p  style="width:600px;height:30px;filter:dropshadow(color=blue,offx=-10);">
+    	这是投影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	5.投影颜色为红色，投影的x方位值为-20<sup>。</sup>：<span class="keywords">filter:dropshadow(color=red,offx=-20);</span>
+	<p  style="width:600px;height:30px;filter:dropshadow(color=red,offx=-20);">
+    	这是投影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	
+    
+    <hr />
+  
+    
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>插件：弹出框（Popover）插件 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>插件：弹出框（Popover）插件</h1>
+    <hr>
+
+    <p>弹出框（Popover）与工具提示（Tooltip）类似，提供了一个扩展的视图。如需激活弹出框，用户只需把鼠标悬停在元素上即可。弹出框的内容完全可使用 Bootstrap 数据 API（Bootstrap Data API）来填充。该方法依赖于工具提示（tooltip）。</p>
+
+    
+    <p>&nbsp;</p>
+    <h2>用法</h2>
+    <p>弹出框（Popover）插件根据需求生成内容和标记，默认情况下是把弹出框（popover）放在它们的触发元素后面。您可以有以下两种方式添加弹出框（popover）：</p>
+    <ul>
+        <li>
+            <p><strong>通过 data 属性</strong>：如需添加一个弹出框（popover），只需向一个锚/按钮标签添加 <code>data-toggle="popover"</code> 即可。锚的 <code>title</code> 即为弹出框（popover）的文本。默认情况下，插件把弹出框（popover）设置在顶部。</p>
+<pre>
+&lt;a href="#" data-toggle="popover" title="Example popover">请悬停在我的上面&lt;/a>
+</pre>
+        </li>
+        <li>
+            <p><strong>通过 JavaScript</strong>：通过 JavaScript 启用弹出框（popover）：</p>
+            <pre>$('#identifier').popover(options)</pre>
+        </li>
+    </ul>
+    <blockquote>
+        <p>弹出框（Popover）插件不像之前所讨论的下拉菜单及其他插件那样，它不是纯 CSS 插件。如需使用该插件，您必须使用 jquery 激活它（读取 javascript）。使用下面的脚本来启用页面中的所有的弹出框（popover）：</p>
+        <pre>$(function () { $("[data-toggle='popover']").popover(); });</pre>
+    </blockquote>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>案例</h2>
+    <div class="container" style="padding: 100px 50px 10px 200px;" >
+       <button type="button" class="btn btn-default" title="Popover title" data-container="body" data-toggle="popover" data-placement="left" data-content="左侧的 Popover 中的一些内容">左侧的 Popover</button>
+       <button type="button" class="btn btn-primary" title="Popover title"  data-container="body" data-toggle="popover" data-placement="top" data-content="顶部的 Popover 中的一些内容">顶部的 Popover</button>
+       <button type="button" class="btn btn-success" title="Popover title"  data-container="body" data-toggle="popover" data-placement="bottom" data-content="底部的 Popover 中的一些内容">底部的 Popover</button>
+       <button type="button" class="btn btn-warning" title="Popover title"  data-container="body" data-toggle="popover" data-placement="right" data-content="右侧的 Popover 中的一些内容">右侧的 Popover</button>
+    </div>
+    <script>
+        $('[data-toggle="popover"]').popover();
+    </script>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <div><img src="images/popover-options.png" alt=""></div>
+    <div><img src="images/popover-methods.png" alt=""></div>
+    <div><img src="images/popover-events.png" alt=""></div>
+    
+    <hr>
+    <h2>案例</h2>
+
+    <div class="container" style="padding: 100px 50px 10px 200px;" >
+       <button type="button" class="btn btn-default popover-show" 
+          title="Popover title" data-container="body" 
+          data-toggle="popover" data-placement="left" 
+          data-content="左侧的 Popover 中的一些内容 —— show 方法">
+          左侧的 Popover
+       </button>
+       <button type="button" class="btn btn-primary popover-hide" 
+          title="Popover title" data-container="body" 
+          data-toggle="popover" data-placement="top" 
+          data-content="顶部的 Popover 中的一些内容 —— hide 方法">
+          顶部的 Popover
+       </button>
+       <button type="button" class="btn btn-success popover-destroy" 
+          title="Popover title" data-container="body" 
+          data-toggle="popover" data-placement="bottom" 
+          data-content="底部的 Popover 中的一些内容 —— destroy 方法">
+          底部的 Popover
+       </button>
+       <button type="button" class="btn btn-warning popover-toggle" 
+          title="Popover title" data-container="body" 
+          data-toggle="popover" data-placement="right" 
+          data-content="右侧的 Popover 中的一些内容 —— toggle 方法">
+          右侧的 Popover
+       </button><br><br>
+       <p class="popover-options">
+          <a href="javascript:void(0);" type="button" class="btn btn-warning" title="<h2>Title</h2>"  
+             data-container="body" data-toggle="popover" data-content="
+             <h4>Popover 中的一些内容 —— options 方法</h4>">
+             Popover
+          </a>
+       </p>
+        <script>
+            $(function () { $('.popover-show').popover('show');});
+            $(function () { $('.popover-hide').popover('hide');});
+            $(function () { $('.popover-destroy').popover('destroy');});
+            $(function () { $('.popover-toggle').popover('toggle');});
+            $(function () { $(".popover-options a").popover({html : true });});
+        </script>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

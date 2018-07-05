@@ -1,0 +1,6 @@
+{
+  "completion_active_list": {
+    "javascript": true,  // JS辅助
+    "css-properties": true, // CSS属性
+  }
+}

@@ -1,0 +1,5 @@
+《JavaScript高级程序设计（第三版）》
+《JavaScript语言精粹》
+《JavaScript模式》
+《JavaScript修炼之道》
+《编写高质量代码：改善JavaScript程序的108个建议》

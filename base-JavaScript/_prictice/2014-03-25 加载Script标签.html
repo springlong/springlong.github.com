@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>加载Script标签，测试！</title>
+</head>
+<body>
+<script>
+    //加载指定的script文件后，执行回调函数
+    function loadScript(url, callback)
+    {
+        /*创建script标签并配置相关属性*/
+        var head = document.getElementsByTagName("head")[0];
+        var script = document.createElement("script");
+        script.setAttribute("type", "text/javascript");
+        script.setAttribute("async", "true");
+        script.setAttribute("src", url);
+
+        /*script加载完毕后执行回调函数并销毁标签*/
+        if("onload" in script)
+        {
+            //标准模式（IE9+、Firefox、Chrome、Safari、Opera
+            script.onload = function()
+            {
+                head.removeChild(this);
+                callback(url);
+            }
+        }
+        else
+        {
+            //IE6~8
+            script.onreadystatechange = function()
+            {
+                var state = this.readyState;
+                if(state === "loaded" || state === "complete")
+                {
+                    head.removeChild(this);
+                    callback(url);
+                }
+            }
+        }
+
+        /*建立url请求*/
+        head.appendChild(script);
+    }
+
+    //测试代码
+    loadScript("http://apps.qq.com/app/yx/cgi-bin/show_fel?hc=8&lc=4&d=365633133&t=" + new Date().getTime(), function()
+    {
+       alert("ready load!");
+    });
+</script>
+</body>
+</html>

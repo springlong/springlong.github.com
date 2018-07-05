@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5：postMessage-iframe-c</title>
+</head>
+</head>
+<body>
+<div class="container">
+	<p>2s后接受消息：<span id="recivedText"></span></p>
+</div>
+<script>
+	// 接受消息
+	window.onmessage = function(ev) {
+		document.querySelector('#recivedText').innerHTML = ev.data;
+	};
+
+	// 加载完毕，给父级来源发送消息
+	window.onload = function(ev) {
+		window.opener.postMessage('load', 'http://127.0.0.1:8080');
+	};
+
+	// 当窗口关闭，告诉父级窗口
+	window.onunload = function(ev) {
+		window.opener.postMessage('closed', 'http://127.0.0.1:8080');
+	};
+</script>
+</body>
+</html>

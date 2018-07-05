@@ -1,0 +1,29 @@
+@mixin css3($attr: transition, $val: ease-out .25s) {
+	-webkit-#{$attr}: $val;
+	   -moz-#{$attr}: $val;
+		-ms-#{$attr}: $val;
+		 -o-#{$attr}: $val;
+		    #{$attr}: $val;
+}
+
+%img-block{
+	display: block;
+	vertical-align: baseline;
+}
+
+%fl{
+	float: left;
+}
+
+%clearfix:after {
+	clear: both;
+	display: block;
+	height: 0;
+	visibility: hidden;
+	line-height: 0;
+	content: '\20';
+}
+%clearfix {
+	*display: table;
+	*zoom: 1;
+}

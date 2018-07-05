@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>二级导航菜单(垂直)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<style type="text/css">
+		body{
+			font-family:"微软雅黑",Arial, Helvetica, sans-serif;
+		}
+		
+		/*设置导航菜单容器*/
+		#mainNav{
+			width:150px;
+		}
+		#mainNav ul{
+			width:150px;
+			margin:0px;
+			padding:0px;
+			list-style:none;
+			border-bottom:1px solid #393;
+			padding-bottom:1px;					/*在非IE6浏览器中,ul的底部边框将会被a标签覆盖,添加一像素的底部填充以解决该问题*/
+			_padding-bottom:0px;				/*在IE6中,不需要*/
+		}
+		/*设置各导航菜单li*/
+		#mainNav li{
+			position:relative;			/*允许容纳其它absolute元素*/
+			height:2em;
+			line-height:2em;
+			text-indent:1em;
+			*float:left;				/*在IE6/7中菜单项的显示有问题，应用该属性设置即可解决*/
+		}
+		/*设置子级导航菜单*/
+		#mainNav li ul{
+			position:absolute;
+			display:none;				/*首先将子导航菜单隐藏*/
+			left:149px;					/*使子菜单左侧的边框与父级菜单右侧的边框重合*/
+			top:0px;
+		}
+		/*设置各导航菜单链接样式*/
+		#mainNav li a{
+			display:block;
+			width:148px;
+			border:1px solid #393;			/*注意：必须使a的宽度与菜单容器ul一致*/
+			border-bottom:0px;
+			color:blue;
+			background:#A5B780;
+			text-decoration:none;
+			cursor:pointer;
+		}
+		#mainNav li a:hover,#mainNav li a.over{
+			color:#F00;
+			background:#363;
+		}
+		/*显示子级导航菜单*/
+		#mainNav li ul.over{
+			display:block;
+		}
+	</style>
+</head>
+<body>
+<div id="mainNav">
+	<ul>
+		<li><a href="#">主页</a></li>
+		<li>
+			<a>关于我们</a>
+			<ul>
+				<li><a href="#">公司简介</a></li>
+				<li><a href="#">公司规划</a></li>
+				<li><a href="#">公司前景</a></li>
+			</ul>
+		</li>
+		<li>
+			<a>服务</a>
+			<ul>
+				<li>
+					<a>HTML</a>
+					<ul>
+						<li><a href="#">入门</a></li>
+						<li><a href="#">提高</a></li>
+						<li><a href="#">精通</a></li>
+					</ul>
+				</li>
+				<li>
+					<a>CSS</a>
+					<ul>
+						<li><a href="#">入门</a></li>
+						<li><a href="#">提高</a></li>
+						<li><a href="#">精通</a></li>
+					</ul>
+				</li>
+				<li>
+					<a>JavaScript</a>
+					<ul>
+						<li><a href="#">入门</a></li>
+						<li><a href="#">提高</a></li>
+						<li><a href="#">精通</a></li>
+					</ul>
+				</li>
+				<li><a href="#">Dreamweaver</a></li>
+				<li><a href="#">Photoshop</a></li>
+				<li><a href="#">Flash</a></li>
+				<li><a href="#">CorelDRAW</a></li>
+			</ul>
+		</li>
+		<li><a href="#">联系我们</a></li>
+	</ul>
+</div>
+</body>
+</html>
+<script language="javascript">
+	/*===========================================
+	 *设置li标签中子级ul标签以及a标签,当鼠标滑过时添加class类为over,当鼠标滑出时则移除名为over的类
+	 *设置子级li标签,当鼠标点击时去除父级ul标签名为over的类
+	 */
+	var node,nodes;
+	nodes=document.getElementById("mainNav").getElementsByTagName("li");	  //获取导航菜单中所有的li标签
+	
+	for(var i=0;i<nodes.length;i++)
+	{
+		//如果li标签中包含ul标签（即含有子级菜单）时
+		if(nodes.item(i).getElementsByTagName("ul").length>=1)
+		{
+			node=nodes.item(i);			//获取当前li标签
+			//当鼠标滑过时
+			node.onmouseover=function(){
+				this.getElementsByTagName("ul").item(0).className="over";//子级ul标签
+				this.getElementsByTagName("a").item(0).className="over";//子级a标签
+				//alert(this.innerHTML);
+			}
+			//当鼠标滑出时
+			node.onmouseout=function(){
+				this.getElementsByTagName("ul").item(0).className="";//子级ul标签
+				this.getElementsByTagName("a").item(0).className="";//子级a标签
+			}
+		}
+		else	//如果li标签中不包含ul标签（即不含子级菜单）时
+		{
+			node=nodes.item(i);			//获取当前li标签
+			//当鼠标点击时
+			node.onclick=function(){
+				this.parentNode.className="";//上级ul标签
+			}
+		}
+	}
+</script>

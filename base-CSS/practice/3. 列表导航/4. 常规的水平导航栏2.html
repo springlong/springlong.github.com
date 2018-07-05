@@ -1,0 +1,54 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>常规的水平导航栏2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+<!--
+	*{
+		margin:0px;
+		padding:0px;
+	}
+	body {
+		font-family: "微软雅黑";
+		color: #000;
+		margin:10px;
+	}
+	
+	#mainNav{
+		list-style:none;
+		width:720px;
+		float:left;											/*当li标签浮动之后，就不会占用文档流中的任何空间，此时#mainNav实际上没有内容，同时应用浮动可以避免这种情况！*/
+		background:url(images/my_NavBg.gif) repeat-x;		/*背景图片的高为：25px;*/
+	}
+	#mainNav li{
+		float:left;
+	}
+	#mainNav a{
+		height:25px;
+		line-height:25px;			/*使行高为背景图片的高度*/
+		padding:0px 2em;			/*导航链接左右填充两个字大小*/
+		background:url(images/my_NavSeparator.gif) no-repeat right top;
+		color:white;
+		text-decoration:none;
+	}
+	#mainNav .a_last{
+		background:none;
+	}
+	#mainNav a:hover{
+		color:#333;
+		text-decoration:underline;
+	}
+-->
+</style>
+</head>
+<body>
+<ul id="mainNav">
+	<li><a href="#">主页</a></li>
+	<li><a href="#">新闻</a></li>
+	<li><a href="#">关于我们</a></li>
+	<li><a href="#">产品</a></li>
+	<li><a href="#" class="a_last">服务</a></li>
+</ul>
+</body>
+</html>

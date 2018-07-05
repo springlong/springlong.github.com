@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Start ECharts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery/1.11.1/jquery.js"></script>
+    <script src="js/echarts.js"></script>
+    <style>
+        #operate {
+            margin-bottom: 30px;
+        }
+
+        #operate a {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #ddd;
+            color: #eee;
+            background: #4D7698;
+            text-decoration: none;
+        }
+
+        #operate a.selected {
+            background: #2C89D3;
+        }
+    </style>
+</head>
+<body>
+<!-- 更换数据源 -->
+<div id="operate">
+    <a href="#" class="j_changeData" data-type="all">全部</a>
+    <a href="#" class="j_changeData" data-type="shiti">实体店</a>
+    <a href="#" class="j_changeData" data-type="taobao">淘宝店铺</a>
+</div>
+
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 600px; height:400px;"></div>
+
+<script>
+    // 初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图标的配置项和数据
+    var option = {
+        // 标题组件，包含主标题和副标题
+        title : {
+            text: 'ECharts 入门示例',           // 文本内容
+            link: 'http://www.xidibuy.com/',    // 链接地址
+            target: '_blank',                   // 目标窗口
+            show: true,                         // 是否显示
+            textStyle: {                        // 文本样式
+                color: '#5A7EB2'
+            }
+        },
+        // 提示框组件
+        tooltip: {
+            show: true,             // 是否显示
+            trigger: 'axis',        // 触发类型：'axis'-坐标轴触发、'item'-数据项触发、'none'-不触发
+            triggerOn: 'mousemove'  // 触发条件：'mousemove'-鼠标移动触发、'click'-鼠标点击触发、'mousemove|click'-同时鼠标移动和点击触发、'none'-不触发
+        },
+        // 图例组件：展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示
+        legend: {
+            show: true,                 // 是否显示
+            align: 'left',              // 图例标记和文本的对齐方式：'auto'-自动（默认）、'lfet'-图例标记在文本左侧、'right'-图例标记在文本右侧
+            selectedMode: 'multiple',   // 图例选择的模式：'single'-单选模式、'multiple'-多选模式、true-开启图例选择（默认，且为多选模式）、false-关闭图例选择
+            // 图例数据
+            data: ['本月销量', '上月销量', '下月预期'],
+            // 图例的选中状态
+            selected: {
+                '本月销量': true,
+                '上月销量': true,
+                '下月预期': false
+            }
+        },
+        // 直角坐标系 grid 中的 x 轴，一般情况下单个 grid 组件最多只能放左右两个 x 轴，多于两个 x 轴需要通过配置 offset 属性防止同个位置多个 x 轴的重叠
+        xAxis: [{
+            // 坐标轴名称
+            name: '服装类型',
+            // 坐标轴名称与轴线之间的距离 [ default: 15 ]
+            nameGap: 10,
+            // 类目数据-所有类目名称列表
+            // data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+            // 类目数据-每一项也可以是具体的配置项，此时取配置项中的 `value` 为类目名
+            data: [{
+                value: '衬衫',
+                textStyle: {
+                    color: 'red'
+                }
+            }, '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+            // 坐标轴标签的相关设置
+            axisLabel: {
+                // 格式化输出-使用字符串，变量使用 {value} 表示
+                formatter: '{value}'
+            },
+        }],
+        // 直角坐标系 grid 中的 y 轴，一般情况下单个 grid 组件最多只能放左右两个 y 轴，多于两个 y 轴需要通过配置 offset 属性防止同个位置多个 Y 轴的重叠
+        yAxis: [{
+            // 坐标轴类型：'value'-数值轴，用于展示数据、'category'-类目轴，通过data字段设置类目数据、'time'-时间轴，适用于连续的时序数据，是数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度
+            type: 'value',
+            // 坐标轴名称
+            name: '件数',
+            // 数值轴最小值
+            min: 0, 
+            // 数值轴最大值
+            max: 70,
+            // 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整（在类目轴中无效，默认：5）
+            splitNumber: 5,
+            // 坐标轴标签的相关设置
+            axisLabel: {
+                // 是否显示，默认true
+                show: true,
+                // 是否朝内显示，默认false
+                inside: false,
+                // 刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间的重叠（旋转的角度从 -90 度到 90 度，默认为0）
+                rotate: 45,
+                // 刻度标签与轴线之间的距离，默认为：8
+                margin: 8,
+                // 格式化输出-使用字符串，变量使用 {value} 表示
+                formatter: '{value} 件',
+                // 格式化输出-使用函数
+                formatter: function(value, index){
+                    return value + ' 件'
+                }
+            }
+        }],
+        // 系列列表。每个系列通过 type 决定自己的图表类型
+        series: [{
+                name: '本月销量',
+                type: 'bar',
+                data: [15, 50, 66, 28, 40, 60]
+            }, {
+                name: '上月销量',
+                type: 'bar',
+                data: [12, 48, 52, 32, 22, 44]
+            }, {
+                name: '下月预期',
+                type: 'bar',
+                data: [21, 52, 33, 22, 45, 58]
+            }
+        ],
+        // 调色盘颜色列表。如果系列没有设置颜色，则会依次循环从该列表中取颜色作为系列颜色
+        color: ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3']
+    };
+
+    // 事件绑定：图例组件选中事件
+    myChart.on('legendselectchanged', function (params) {
+
+        // 打印图例组件选中数据
+        console.log(params);
+
+        // 记录最新的选择状态
+        option.legend.selected = params.selected;
+    });
+
+
+    // 绑定：切换数据源
+    $('.j_changeData').on('click', function(){
+
+        var $that = $(this),
+            type = $that.attr('data-type');
+
+        if($that.hasClass('selected')) return;
+
+        if(type === 'all') {
+
+            option.series = [{
+                    name: '本月销量',
+                    type: 'bar',
+                    data: [15, 50, 66, 28, 40, 60]
+                }, {
+                    name: '上月销量',
+                    type: 'bar',
+                    data: [12, 48, 52, 32, 22, 44]
+                }, {
+                    name: '下月预期',
+                    type: 'bar',
+                    data: [21, 52, 33, 22, 45, 58]
+                }
+            ];
+
+        }else if(type === 'shiti'){
+
+            option.series = [{
+                    name: '本月销量',
+                    type: 'bar',
+                    data: [5, 20, 36, 10, 10, 20]
+                }, {
+                    name: '上月销量',
+                    type: 'bar',
+                    data: [10, 30, 28, 9, 15, 35]
+                }, {
+                    name: '下月预期',
+                    type: 'bar',
+                    data: [12, 32, 25, 5, 20, 28]
+                }
+            ];
+
+        }else if(type === 'taobao') {            
+
+            option.series = [{
+                    name: '本月销量',
+                    type: 'bar',
+                    data: [10, 30, 52, 18, 30, 40]
+                }, {
+                    name: '上月销量',
+                    type: 'bar',
+                    data: [08, 28, 44, 13, 29, 44]
+                }, {
+                    name: '下月预期',
+                    type: 'bar',
+                    data: [20, 32, 25, 5, 20, 28]
+                }
+            ];
+        }
+
+        // 设置数据源选中状态
+        $('.j_changeData').removeClass('selected');
+        $that.addClass('selected');
+
+        // 显示图表
+        myChart.setOption(option);
+    });
+
+    // 打印默认数据
+    $('.j_changeData[data-type="all"]').click();
+</script>
+</body>
+</html>

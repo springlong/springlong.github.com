@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<title>JS语法巩固练习</title>
+	<base target="_blank" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="robots" content="all" />
+	<meta name="googlebot" content="all" />
+	<meta name="copyright" content="版权所有" />
+	<meta name="generator" content="EditPlus" />
+	<meta name="author"	content="Jerry-小猪" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<style>
+		#container{overflow:hidden;width:980px;margin:0 auto;}
+		#control{float:left;display:inline;overflow:hidden;width:100px;height:690px;}
+		#control button{width:100px;height:30px;margin-bottom:5px;}
+		#dataShow{float:right;display:inline;overflow-x:hidden;overflow-y:auto;width:800px;height:660px;padding:20px;border:2px solid #E8E8E8;}
+
+		.yangHuiTriangle{margin-top:20px;}
+		.yangHuiTriangle div{height:25px;text-align:center;}
+		.yangHuiTriangle div span{display:inline-block;width:4em;height:24px;border:1px solid #333;border-width:1px 0 0 1px;font-size:12px;line-height:24px;text-align:center;}
+		.yangHuiTriangle div span.last{border-right-width:1px;}
+		.yangHuiTriangle div.last span{border-bottom:1px solid #333;}
+	</style>
+</head>
+<body>
+<div id="container">
+	<div id="control">
+		<button onclick="isBissextile()">闰年判断</button>
+		<button onclick="factorial_1()">阶乘输出</button>
+		<button onclick="factorial_2()">阶乘计算</button>
+		<button onclick="tab99()">九九乘法表</button>
+		<button onclick="shape_1()">直角三角形</button>
+		<button onclick="shape_2()">锐角三角形1</button>
+		<button onclick="shape_3()">锐角三角形2</button>
+		<button onclick="shape_4()">矩形输出</button>
+		<button onclick="shape_5()">棱形输出</button>
+		<button onclick="oddOrEven()">奇数与偶数</button>
+		<button onclick="primeOrNot()">质数与合数</button>
+		<button onclick="narcissisticNumber()">水仙花数</button>
+		<button onclick="yangHuiTriangle()">杨辉三角</button>
+	</div>
+	<div id="dataShow"></div>
+</div>
+<script>
+	//根据ID获取目标元素
+	function $$(id){ return typeof(id) === "string" ? document.getElementById(id) : id; }
+
+	//使内容显示区位于水平居中显示
+	var dataShow = $$("dataShow");
+	dataShow.style.left = (document.body.clientWidth - $$("dataShow").offsetWidth) / 2 + "px";
+
+	//===========================
+	//进行闰年的判断
+	/*==============
+	 *说明：当符合下述任一项时，即为闰年：
+	 *      1. 能被4整除且不能被100整除。
+	 *      2. 能被400整除。
+	 *==============================================*/
+	function isBissextile()
+	{
+		var result = "不是闰年";
+		var input = prompt("请输入年份：", "2012");
+
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var year = parseInt(input);
+		while(isNaN(year) || year < 0)
+		{
+			input = prompt("请输入正确的年份：", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			year = parseInt(input);
+		}
+
+		if(year % 4 === 0 && year % 100 !== 0 || year % 400 === 0)
+		{
+			result = "是闰年";
+		}
+
+		var text = "<p>您所输入的年份<strong>" + year + "</strong>" + result + "。</p>";
+		text += "<p>————————————————————————————————<br />说明：当符合下述任一项条件时，即为闰年：</p>";
+		text += "<p>1. 能被4整除且不能被100整除。</p>";
+		text += "<p>2. 能被400整除。</p>";
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//输出0~任何大于1的自然数的阶乘运算
+	/*==============
+	 *说明：阶乘(factorial)是基斯顿·卡曼(Christian Kramp, 1760 – 1826)于1808年发明的运算符号。阶乘，也是数学里的一种术语。
+	 *      任何大于1的自然数n的阶乘表示方法为：n! = 1*2*3*....*n 或 n! = n * (n-1)!	
+	 *==============================================*/
+	function factorial_1()
+	{
+		var input = prompt("请输入一个大于0的整数：", 10);
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var num = parseInt(input);
+		while(isNaN(num) || num <= 0)
+		{
+			input = prompt("请输入正确的整数：", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			num = parseInt(input);
+		}
+
+		var text = "<p>阶乘(factorial)是基斯顿·卡曼(Christian Kramp, 1760 – 1826)于1808年发明的运算符号。阶乘，也是数学里的一种术语。阶乘用感叹号（!）表示，10!表示10的阶乘。</p>";
+		text += "<p>————————————————————————————————<br />说明：0的阶乘为1，且任何大于0的自然数n的阶乘可以表示为：n! = 1*2*3*....*n 或 n! = n * (n-1)!。</p>";
+		text += "<p>&nbsp;&nbsp;&nbsp;&nbsp;0~" + num + "的阶乘值如下：</p>";
+		text += "<p>&nbsp;&nbsp;&nbsp;&nbsp;0! = 1</p>"
+		for(var i = 1, base = 1; i <= num; i++)
+		{
+			text += "<p>&nbsp;&nbsp;&nbsp;&nbsp;" + i + "! = " + base * i + "</p>";
+			base *= i;
+		}
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//计算任何大于0的自然数的阶乘
+	function factorial_2()
+	{
+		var input = prompt("请输入一个大于0的整数：", 10);
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var num = parseInt(input);
+		while(isNaN(num) || num <= 0)
+		{
+			input = prompt("请输入正确的整数：", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			num = parseInt(input);
+		}
+
+		for(var i = 1, result = 1; i <= num; i++)
+		{
+			result *= i;
+		}
+		dataShow.innerHTML = "<p>阶乘计算：</p><p>" + num + "! = " + result + "</p>";
+	}
+
+	//===========================
+	//输出九九乘法表
+	function tab99()
+	{
+		var i,j;	//用于循环变量值
+
+		var text = "九九乘法表：";
+		var base = "";
+		for(i = 1; i < 10; i++)
+		{
+			text += "<p>"
+			for(j = 1; j <= i; j++)
+			{
+				text += padStr(j + "x" + i + "=" + j*i + "  ", "r", "10", "&nbsp;");
+			}
+			text += "</p>";
+		}
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//图形输出1——简单的直角三角形输出
+	function shape_1()
+	{
+		var input = prompt("请输入需要显示的行数：", "10");
+
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var rows = parseInt(input);
+		while(isNaN(rows) || rows < 0)
+		{
+			input = prompt("请输入正确的行数：", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			rows = parseInt(input);
+		}
+
+		var text = "";
+		for(var i = 1; i <= rows; i++)
+		{
+			text += "" + strDup("*", i) + "<br />";
+		}
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//图形输出2——简单的锐角三角形输出
+	function shape_2()
+	{
+		var input = prompt("请输入需要显示的行数：", "10");
+
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var rows = parseInt(input);
+		while(isNaN(rows) || rows < 0)
+		{
+			input = prompt("请输入正确的行数：", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			rows = parseInt(input);
+		}
+
+		var space = "";
+		var text = "";
+		for(var i = 1; i <= rows; i++)
+		{
+			space = ((2*rows-1) - (2*i-1)) / 2;
+			text += strDup("&nbsp;", space) + strDup("*", 2*i-1) + strDup("&nbsp;", space) + "<br />";
+		}
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//图形输出3——简单的锐角三角形输出
+
+	function shape_3()
+	{
+		var input = prompt("请输入需要显示的行数：", "10");
+
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var rows = parseInt(input);
+		while(isNaN(rows) || rows < 0)
+		{
+			input = prompt("请输入正确的行数：", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			rows = parseInt(input);
+		}
+
+		var space = "";
+		var text = "";
+		for(var i = 1; i <= rows; i++)
+		{
+			space = ((2*rows-1) - (2*i-1)) / 2;
+			text += strDup("&nbsp;", space) + "*" + (i == rows ? strDup("*", 2*i-3) : strDup("&nbsp;", 2*i-3)) + (i > 1 ? "*" : "") + strDup("&nbsp;", space) + "<br />";
+		}
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//图形输出4——简单的矩形输出
+	function shape_4()
+	{
+		var input = prompt("请输入需要显示的行数（>=3）：", "10");
+
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var rows = parseInt(input);
+		while(isNaN(rows) || rows < 3)
+		{
+			input = prompt("请输入正确的行数（>=3）：", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			rows = parseInt(input);
+		}
+
+		var space = "";
+		var text = "";
+		var lines = 30;
+		var isFirstOrLast = false;
+		for(var i = 1; i <= rows; i++)
+		{
+			isFirstOrLast = i === 1 || i === rows;
+			space = isFirstOrLast ? "" : strDup("&nbsp;", lines - 2);
+			text += isFirstOrLast ? (strDup("*", lines) + "<br />") : ("*" + space + "*<br />");
+		}
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//图形输出4——简单的菱形输出
+	function shape_5()
+	{
+		var input = prompt("请输入需要显示的行数（>=3且为奇数）：", "15");
+
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var rows = parseInt(input);
+		while(isNaN(rows) || rows < 3 || rows % 2 === 0)
+		{
+			input = prompt("请输入正确的行数（>=3且为奇数）：", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			rows = parseInt(input);
+		}
+
+		var spaceLeft = "";
+		var spaceCenter = "";
+		var text = "";
+		var half = (rows - 1) / 2 + 1;
+		for(var i = 1; i <= rows; i++)
+		{
+			if(i < half)
+			{
+				spaceLeft = strDup("&nbsp;", half - i);
+				spaceCenter = strDup("&nbsp;", i === 1 ? 0 : rows - (half - i + 1) * 2);
+			}
+			else if(i > half)
+			{
+				spaceLeft = strDup("&nbsp;", i - half);
+				spaceCenter = strDup("&nbsp;", i === rows ? 0 : rows - (i - half + 1) * 2);
+			}
+			else
+			{
+				spaceLeft = "";
+				spaceCenter = strDup("&nbsp;", rows - 2);
+			}
+			text += spaceLeft + "*" + spaceCenter + (i === 1 || i === rows ? "" : "*") + "<br />";
+		}
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//输出1~100之内的奇数和偶数
+	/*==============
+	 *说明：奇数（odd）和偶数（even）都是数学术语。整数中，能被2整除的数是偶数，不能被2整除的数为奇数。
+	 *==============================================*/
+	function oddOrEven()
+	{
+		var s_odd = "",s_even = "";  //用来保存奇数和偶数的字符串
+		var input = prompt("请输入需要输出奇偶数的最大范围数字（>=0）：", "100");
+
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var maxNum = parseInt(input);
+		while(isNaN(maxNum) || maxNum < 0)
+		{
+			input = prompt("请输入正确的最大范围数字（>=0）", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			maxNum = parseInt(input);
+		}
+
+		for(var i = 0; i <= maxNum; i++)
+		{
+			if(i % 2 == 0)
+			{
+				s_even += i + " ";
+			}
+			else
+			{
+				s_odd += i + " ";
+			}
+		}
+
+		var text = "<p>奇数（odd）和偶数（even）都是数学术语。整数中，能被2整除的数是偶数，不能被2整除的数为奇数。</p>";
+		text += "<p>————————————————————————————————<br />0~" + maxNum + "之间的奇数有：</p><p>" + s_odd + "</p>";
+		text += "<p>————————————————————————————————<br />0~" + maxNum + "之间的偶数有：</p><p>" + s_even + "</p>";
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//输出1~100之内的质数和合数
+	/*==============
+	 *说明：质数又称素数。指在一个大于1的自然数中，除了1和此整数自身外，不能被其他自然数整除的数。比1大但不是素数的数称为合数。0和1既不是质数也不是合数。
+	 *      判断素数的一种简单算法：素数即只能被1和其本身整除的数，判断n是否为素数只需用2~n/2之间的数去除就可以了。因为一个数的一半的平方大于其本身是从5开始的，解方程：n/2的平方>n 。即一个数n的两个因数不能同时比n/2大。就可以说一个数若不是素数则一定在2~n/2之间有因数。
+	 *==============================================*/
+	function primeOrNot()
+	{
+		var i,j; 		//用于循环变量值
+		var isPrime; 	//是否为质数
+		var s_prime = "",s_notPrime = "";  //用来保存质数和合数的字符串
+		var input = prompt("请输入需要输出质合数的最大范围数字（>=2）：", "100");
+
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var maxNum = parseInt(input);
+		while(isNaN(maxNum) || maxNum < 2)
+		{
+			input = prompt("请输入正确的最大范围数字（>=2）", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			maxNum = parseInt(input);
+		}
+
+		for(i = 2; i <= maxNum; i++)
+		{
+			isPrime = true;
+			for(j = 2; j <= i / 2; j++)
+			{
+				if(i % j == 0)
+				{
+					isPrime = false;
+					break;
+				}
+			}
+			isPrime ? s_prime += i + " " : s_notPrime += i + " ";
+		}
+
+		var text = "<p>质数又称素数。指在一个大于1的自然数中，除了1和此整数自身外，不能被其他自然数整除的数。比1大但不是素数的数称为合数。</p>";
+		text += "<p>判断素数的一种简单算法：素数是指只能被1和它本身整除的数，判断n是否为素数只需用2~n/2之间的数去除就可以了。因为一个数的一半的平方大于其本身是从5开始的，解方程：n/2的平方>n 。即一个数n的两个因数不能同时比n/2大，也可以说一个数若不是素数则一定在2~n/2之间有因数。</p>";
+		text += "<p>————————————————————————————————<br />0~" + maxNum + "之间的质数有：</p><p>" + s_prime + "</p>";
+		text += "<p>————————————————————————————————<br />0~" + maxNum + "之间的合数有：</p><p>" + s_notPrime + "</p>";
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//输出1~指定数字之间的所有水仙花数
+	/*==============
+	 *说明：水仙花数是指一个 n 位数 ( n≥3 )，它的每个位上的数字的 n 次幂之和等于它本身。（例如：1^3 + 5^3 + 3^3 = 153）
+	 *==============================================*/
+	function narcissisticNumber()
+	{
+		var i, j, len;
+		var result = "";
+		var everyNums = "";
+		var total = 0;
+		var input = prompt("请输入需要输出水仙花数的最大范围数字（>=100）：", "10000");
+
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var maxNum = parseInt(input);
+		while(isNaN(maxNum) || maxNum < 100)
+		{
+			input = prompt("请输入正确的最大范围数字(>=100)：", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			maxNum = parseInt(input);
+		}
+
+		for(i = 100; i <= maxNum; i++)
+		{
+			everyNums = "" + i;
+			total = 0;
+			for(j = 0, len = everyNums.length; j < len; j++)
+			{
+				total += Math.pow(parseInt(everyNums.charAt(j)), len);
+			}
+			if(total === i)
+			{
+				result += i + " ";
+			}
+		}
+
+		var text = "<p>水仙花数是指一个 n 位数 ( n≥3 )，它的每个位上的数字的 n 次幂之和等于它本身。</p><p>（例如：1^3 + 5^3 + 3^3 = 153）</p>";
+		text += "<p>————————————————————————————————<br />100~" + maxNum + "之间的水仙花数有：</p><p>" + result + "</p>";
+		dataShow.innerHTML = text;
+	}
+
+	//===========================
+	//输出杨辉三角
+	function yangHuiTriangle()
+	{
+		var input = prompt("请输入需要显示的行数（>=3 && <=15）：", "10");
+
+		if(input === null || input === "")
+		{
+			dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+			return 0;
+		}
+
+		var rows = parseInt(input);
+		while(isNaN(rows) || rows < 3 || rows > 15)
+		{
+			input = prompt("请输入正确的行数（>=3 && <=15）：", input);
+			if(input === null || input === "")
+			{
+				dataShow.innerHTML = "<p>本次操作已被取消！</p>";
+				return 0;
+			}
+			rows = parseInt(input);
+		}
+
+		var text = "";
+		var className = "";
+		var arr = [];
+		arr[0] = [1];  //第一行为1
+		arr[1] = [1, 1]; //第二行为两个1
+
+		//保存杨辉三角中每行的数据
+		for(var i = 2; i < rows; i++)
+		{
+			arr[i] = [];
+			arr[i][0] = 1; //每一行最左边的数字为1
+			arr[i][i] = 1; //每一行最右边的数字为1
+			for(var j = 1; j < i; j++)
+			{
+				//每一行中间的某个数字为上一行左右两个数字的和
+				arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j];
+			}
+		}
+
+		//输出杨辉三角的数据
+		text += "<p>杨辉三角形，又称贾宪三角形，帕斯卡三角形，是二项式系数在三角形中的一种几何排列。</p>";
+		text += "<p>杨辉三角形具备如下几点性质：</p>";
+		text += "<ol><li>端点的数为1。</li><li>每个数等于它上方两数之和。</li><li>每行数字左右对称，由1开始逐渐变大。</li></ol>";
+		for(var i = 0; i < rows; i++)
+		{
+			className = i === arr.length -1 ? " class='last'" : "";
+			text += "<div" + className + ">";
+			for(var j = 0; j < arr[i].length; j++)
+			{
+				className = j === arr[i].length - 1 ? " class='last'" : "";
+				text += "<span" + className + ">" + arr[i][j] + "</span>";
+			}
+			text += "</div>";
+		}
+		dataShow.innerHTML = "<div class='yangHuiTriangle'>" + text + "</div>";
+	}
+</script>
+<script>
+	//===========================
+	//填充字符以使目标字符串达到指定长度
+	/*==============
+	 *作者：Jerry_小猪
+	 *QQ：569320261
+	 *创作时间：2012-08-24
+	 *修改时间：2012-08-24
+	 *--------------------------------
+	 *参数说明：
+	 *1. str: 原有字符串；
+	 *2. dir：填充的方向，l——左填充，r——右填充；
+	 *3. len：目标显示长度；
+	 *4. c：用来进行填充的字符，如果是以&开头且长度大于1则作为特殊HTML编码字符来使用；
+	 *==============================================*/
+	function padStr(str, dir, len, c)
+	{
+		if(str && dir && len && c)
+		{
+			var strLen = str.length;
+			if(strLen < len)
+			{
+				var add = "";
+				len = len - strLen;
+				c = (c.charAt(0) === "&" && c.length > 1) ? c : c.charAt(0);
+				for(var i = 0; i < len; i++)
+				{
+					add += c;
+				}
+				if(dir === "l")
+				{
+					return add + str;
+				}
+				return str + add;
+			}
+		}
+		return str;
+	}
+	
+	//===========================
+	//返回n个指定字符串的拼接结果
+	/*==============
+	 *作者：Jerry_小猪
+	 *QQ：569320261
+	 *创作时间：2012-08-24
+	 *修改时间：2012-08-24
+	 *--------------------------------
+	 *参数说明：
+	 *1. str: 目标字符串；
+	 *2. len：需要拼接的次数；
+	 *==============================================*/
+	function strDup(str, len)
+	{
+		var c = "";
+		var result = "";
+
+		if(str && len)
+		{
+			for(var i = 1; i < len; i++)
+			{
+				c += str;
+			}
+			result = str + c;
+		}
+		return result;
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>jQuery函数调用-选择器支持 - jQuery使用文档</title>
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link rel="stylesheet" href="public/css/codeView.css" />
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/jquery.extend.js"></script>
+    <script src="public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+    <h1>jQuery使用文档——jQuery函数调用-选择器支持</h1>
+    <p>在“jQuery函数调用”的上一篇文章中，我们了解到在构建一个jQuery对象实例的时候，可以传递不同的参数类型到jQuery的函数调用中，在这么多的参数类型中，使用得最多且应用最为广泛的就归<strong>选择器字符串</strong>莫属了，这也是这篇文章需要着重讲解的内容。</p>
+    <p>为了让大家了解并掌握在jQuery中到底可以使用哪些选择器，以及这些选择器的作用是什么，我们特别根据浏览器对它们的原生支持度进行了归类汇总。 </p>
+    <h2>传统选择器</h2>
+    <div>
+        <p>这类选择器在IE8+、Firefox3.5+、Safari 3.1+、Chrome和Opera 10+等浏览器中可以通过原生提供的<code>querySelectorAll()</code>方法来获得匹配的DOM元素，同时这些也是CSS2.0中已有的选择器内容。使用该类选择来获取元素，往往能获得比较理想的执行效率。</p>
+        <h3>基本选择器</h3>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$("*")</code></p>
+                <p><b>通配选择器</b>，匹配所有HTML元素，包括html、head、、title、body等标签在内。</p>
+<pre class="jsCodeNum">
+//将当前页面中的所有元素设置背景颜色为：粉红色
+$("*").css("background-color", "pink");
+
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_1.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("element")</code></p>
+                <p><b>html标签选择器</b>，获取指定html标签名的元素。</p>
+<pre class="jsCodeNum">
+//将当前页面中所有的div元素设置背景颜色为：紫色
+$("div").css("background-color", "purple");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_2.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(".class")</code></p>
+                <p><b>类名选择器</b>，获取指定类名的元素。</p>
+<pre class="jsCodeNum">
+//将当前页面中类名为“paragraph1”的所有元素设置背景颜色为：紫色
+$(".paragraph1").css("background-color", "purple");
+
+//将当前页面中类名同时包含“paragraph1”和“p_one”的所有元素设置背景颜色为：橙色
+$(".paragraph1.p_one").css("background-color", "orange");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_3.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("#id")</code></p>
+                <p><b>id选择器</b>，获取id属性为指定值的单个元素。</p>
+<pre class="jsCodeNum">
+//将id为“layer1”的元素设置背景颜色为：紫色
+$("#layer1").css("background-color", "purple")
+
+//将id为“layer2”的元素设置背景颜色为：橙色
+$("#layer2").css("background-color", "orange");
+
+//将id为“layer3”的元素设置背景颜色为：绿色
+$("#layer3").css("background-color", "green")
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_4.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("selector1 &amp; selector2")</code></p>
+                <p><b>交集选择器</b>，获取同时满足多个选择器条件的元素，多个选择器条件之间没有任何间隔字符。</p>
+<pre class="jsCodeNum">
+//将类名为“ragraph1”的段落元素设置背景颜色为：橙色
+$("p.paragraph1").css("background-color", "orange");
+
+//将ID为“layer2”的div元素设置背景颜色为：紫色
+$("div#layer2").css("background-color", "purple");
+
+//将id为“layer3”，且类名为“test”的元素设置背景颜色为：绿色
+$("#layer3.test").css("background-color", "green");
+
+//将id为“layer3”，且类名为“test”的div元素设置背景颜色为：褐色
+$("div#layer3.test").css("background-color", "brown")
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_5.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("selector1, selector2")</code></p>
+                <p><b>组合选择器</b>，获取满足任意选择器条件的元素，多个选择器之间使用逗号隔开（逗号左右允许存在空格）。</p>
+<pre class="jsCodeNum">
+//将ID为“layer1”、以及ID为“layer2”的元素设置背景颜色为：紫色
+$("#layer1, #layer2").css("background-color", "purple");
+
+//将类名为“paragraph1”、以及类名“paragraph2”的元素设置背景颜色颜色为：橙色
+$(".paragraph1, .paragraph2").css("background-color", "orange");
+
+//将类名为“paragraph1”、以及类名“paragraph2”、还有ID为“box”的元素设置背景颜色颜色为：绿色
+$(".paragraph1, .paragraph2, #box").css("background-color", "green")
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_6.html" target="_blank">这里</a>！</p>
+            </li>
+        </ol>
+        <h3>层级关系选择器</h3>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$("ancestor descendant")</code></p>
+                <p><b>后代选择器</b>，获取祖先元素下给定条件的后代元素。祖先与后代的选择器之前使用空格隔开。</p>
+                <p>一个元素的后代元素可能是这个元素的一个孩子，孙子，曾孙等。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中所有的div元素设置背景颜色为：紫色
+$("#box div").css("background-color", "purple");
+
+//将ID为"box"的容器中类名为“paragraph1”的所有元素设置背景颜色为：绿色
+$("#box .paragraph1").css("background-color", "green");
+
+//将ID为“box”的容器中div下面的所有元素设置背景颜色为：橙色
+$("#box div *").css("background-color", "orange");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_7.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("parent > child")</code></p>
+                <p><b>子选择器</b>，获取父级容器下给定条件的子级元素。父级与子级的选择器之间使用右尖括号隔开（尖括号左右允许存在空格）。</p>
+                <p>与后代选择器不同的是，子选择器只考虑父与子的关系，而不会考虑爷与孙、曾孙的关系。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中所有的div子节点设置背景颜色为：紫色
+$("#box > div").css("background-color", "purple");
+
+//将ID为"box"的容器中所有的段落子节点设置背景颜色为：褐色
+$("#box > p").css("background-color", "brown");
+
+//将ID为“box”的容器中div下面的所有段落子节点设置背景颜色为：橙色
+$("#box div > p").css("background-color", "orange");
+
+//将ID为“box”的容器中div下面的所有子节点设置背景颜色为：绿色
+$("#box div > *").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_8.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("prev + next")</code></p>
+                <p><b>相邻选择器</b>，获取“prev”元素的后一相邻的兄弟元素。</p>
+                <p>prev与next之间是兄与弟的关系，prev为兄，next为弟，next紧随prev其后。</p>
+<pre class="jsCodeNum">
+//将ID为“layer1”的容器的后一相邻的div元素设置背景颜色为：紫色
+$("#layer1 + div").css("background-color", "purple");
+
+//将类名为“paragraph1”的元素的后一相邻的段落元素设置背景颜色为：绿色
+$(".paragraph1 + p").css("background-color", "green");
+
+//将类名为“paragraph1”的元素的后一相邻的任意元素设置背景颜色为：橙色
+$(".paragraph1 + *").css("background-color", "orange");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_9.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("prev ~ siblings")</code></p>
+                <p><b>后续兄弟选择器</b>，获取“prev”元素的位于其后的所有兄弟节点。</p>
+                <p>prev与siblings之间是兄与弟的关系，prev为兄，siblings为弟，siblings位于prev其后。与相邻选择器不同的是，相邻选择器中的弟最多只有1个且相对于兄来说排行老二；而后续兄弟选择器中，弟有可能存在多个且“出生”只要晚于兄即可。</p>
+<pre class="jsCodeNum">
+//将ID为“layer1”的容器的所有后续兄弟节点中标签名为div的元素设置背景颜色为：紫色
+$("#layer1 ~ div").css("background-color", "purple");
+
+//将类名为“paragraph1”的元素的所有后续兄弟节点中标签名为p的元素设置背景颜色为：绿色
+$(".paragraph1 ~ p").css("background-color", "green");
+
+//将类名为“paragraph1”的元素的所有后续兄弟节点设置背景颜色为：橙色
+$(".paragraph1 ~ *").css("background-color", "orange");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_10.html" target="_blank">这里</a>！</p>
+            </li>
+        </ol>
+        <h3>属性选择器</h3>
+        <p>属性选择器，就是用来判断一个元素是否书写了某个属性，或者这个属性的值它是一个怎样的存在格式，如果符合这个规则就将包含这个元素。所有的属性选择器都可以同时进行多个属性名称的匹配，在后续内容的讲解中将不做补充说明，但会有部分代码示例。</p>
+        <p>对于属性值的书写既可以是纯文本，也可以是一个带有引号的字符串，可根据自己的爱好和习惯进行选择使用。</p>
+        <p>属性选择器拥有很多的匹配规则，现罗列如下：</p>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$("[attribute]")</code></p>
+                <p>获取具有指定属性的所有元素，该属性可以是任意值。</p>
+<pre class="jsCodeNum">
+//将带有name属性的所有元素设置背景颜色为：紫色
+$("[name]").css("background-color", "purple");
+
+//将即带有name属性，又带有id属性的所有元素设置背景颜色为：深灰色
+$("[name][id]").css("background-color", "#333");
+
+//将ID为“box”的容器中带有ID属性的所有元素设置背景颜色为：橙色
+$("#box [id]").css("background-color", "orange");
+
+//将ID为“box”的容器中带有ID属性的div元素设置背景颜色为：绿色
+$("#box div[id]").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_attr1.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("[attribute='value']")</code></p>
+                <p>获取具有指定属性且属性值等于value的所有元素。（在等号左右允许存在空格）</p>
+                <p>以"[name='box']"为例，匹配的name属性的值只能是"box"，不可以是其他任何形式。</p>
+<pre class="jsCodeNum">
+//将name属性值为“box”的所有元素设置背景颜色为：紫色
+$("[name='box']").css("background-color", "purple");
+
+//将name属性值为“box”，同时id属性值为“box”的所有元素设置背景颜色为：深灰色
+$("[name='box'][id='box']").css("background-color", "#333");
+
+//将name属性值为“box”，同时id属性值为“box”的div元素设置背景颜色为：橙色
+$("div[name='box'][id='box']").css("background-color", "orange");
+</pre>
+                <p>上面示例代码中的<code>$("[name='box'][id='box']")</code>，其实我们可以将其简化为：<code>$("#box[name='box']")</code>，在这里我们只是用于演示使用。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_attr2.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("[attribute*='value']")</code></p>
+                <p>获取具有指定属性且属性值中包含value的所有元素。（"*="的两侧允许存在空格）</p>
+                <p>以"[name*='box']"为例，匹配的name属性的值可以是："box"、"box321"、"123box"、"123box321"、"123 box 321"、"123-box-321"等形式。</p>
+<pre class="jsCodeNum">
+//将class属性值中包含“Lay”的所有元素设置背景颜色为：紫色
+$("[class*=Lay]").css("background-color", "purple");
+
+//将class属性值中包含“graph”的所有元素设置背景颜色为：绿色
+$("[class*=graph]").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_attr3.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("[attribute~='value']")</code></p>
+                <p>获取具有指定属性且属性值等于value或者包含以空格隔开的value的所有元素。（"~="的两侧允许存在空格）</p>
+                <p>以"[name~='box']"为例，匹配的name属性的值可以是："box"、"box 321"、"123 box"、"123 box 321"等形式。</p>
+<pre class="jsCodeNum">
+//将class属性值等于“paragraph”，或者属性值中包含以空格隔开的“paragraph”的所有元素设置背景颜色为：紫色
+$("[class~=paragraph]").css("background-color", "purple");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_attr4.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("[attribute|='value']")</code></p>
+                <p>获取具有指定属性且属性值等于value或者包含以连字符（-）隔开的value的所有元素。（"|="的两侧允许存在空格）</p>
+                <p>以"[name|='box']"为例，匹配的name属性的值可以是："box"、"box-321"、"123-box"、"123-box-321"等形式。</p>
+<pre class="jsCodeNum">
+//将class属性值等于“paragraph”，或者属性值中包含以连字符（-）隔开的“paragraph”的所有元素设置背景颜色为：紫色
+$("[class|=paragraph]").css("background-color", "purple");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_attr5.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("[attribute^='value']")</code></p>
+                <p>获取具有指定属性且属性值以value开头的所有元素。（"^="的两侧允许存在空格）</p>
+                <p>以"[name^='box']"为例，匹配的name属性的值可以是："box"、"box321"等形式。</p>
+<pre class="jsCodeNum">
+//将class属性值以“paragraph”开头的所有元素设置背景颜色为：紫色
+$("[class^=paragraph]").css("background-color", "purple");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_attr6.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$("[attribute$='value']")</code></p>
+                <p>获取具有指定属性且属性值以value结尾的所有元素。（"$="的两侧允许存在空格）</p>
+                <p>以"[name$='box']"为例，匹配的name属性的值可以是："box"、"123box"等形式。</p>
+<pre class="jsCodeNum">
+//将class属性值以“paragraph”开头的所有元素设置背景颜色为：紫色
+$("[class^=paragraph]").css("background-color", "purple");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_attr7.html" target="_blank">这里</a>！</p>
+            </li>
+        </ol>
+    </div>
+    <h2>CSS3选择器</h2>
+    <div>
+        <p>这类选择器在IE9+、以及较新版本的Firefox、Chrome、Safari、Opera等浏览器中可以通过原生提供的<code>querySelectorAll()</code>方法来获得匹配的DOM元素，同时也是CSS3.0中已有的选择器内容。</p>
+        <p>如果你的访客群体中，已经基本上抛弃了IE6、7、8的用户，那么你可以放心大胆地使用接下来所罗列的选择器，因为这类选择器在该条件下能够低资源占用、高效率地获取到目标元素。而如果你的访客群体中，IE6、7、8还占据了相当一部分比重，且对性能有一定要求的话，那么就不要频繁使用这些选择器去获取元素，而应尽量使用ID、标签、类名等传统选择器来实现。</p>
+        <h3>子元素查找</h3>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$(":first-child")</code></p>
+                <p>获取父元素下的第一个子节点。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中作为第一个子节点的所有元素设置背景颜色为：紫色
+$("#box :first-child").css("background-color", "purple");
+
+//将ID为“box”的容器中作为第一个子节点的所有段落设置背景颜色为：绿色
+$("#box p:first-child").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_css3_1.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":last-child")</code></p>
+                <p>获取父元素下的最后一个子节点。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中作为最后一个子节点的所有元素设置背景颜色为：紫色
+$("#box :last-child").css("background-color", "purple");
+
+//将ID为“box”的容器中作为最后一个子节点的所有段落设置背景颜色为：绿色
+$("#box p:last-child").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_css3_2.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":only-child")</code></p>
+                <p>获取父元素下仅有的一个子节点。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中作为唯一子节点的所有元素设置背景颜色为：紫色
+$("#box :only-child").css("background-color", "purple");
+
+//将ID为“box”的容器中作为作为唯一子节点的所有段落设置背景颜色为：绿色
+$("#box p:only-child").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_css3_5.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":nth-child(n)")</code></p>
+                <p>获取父元素下指定索引位置（索引从1开始）的一个或多个子节点。</p>
+                <p>括号中的n可以是数字、even、odd、乘积表达式中的任意一种。说明如下：</p>
+                <ul>
+                    <li>当为数字时，表示具体位置的那个子节点，例如1表示第一个子节点，2表示第二个子节点，如果是0或者负数将没有匹配的结果；</li>
+                    <li>当为even时，表示索引位置为偶数的那些子节点，例如第二个子节点，第四个子节点等都属于该值的匹配范围；</li>
+                    <li>当为odd时，表示索引位置为奇数的那些子节点，例如第一个子节点，第三个子节点等都属于该值的匹配范围；</li>
+                    <li>当为1n、2n、3n等值时，其实就是乘积表达式。拿3n来说，该值匹配的结果将包含索引位置为3的倍数的那些子节点；</li>
+                </ul>
+<pre class="jsCodeNum">
+//由于索引从1开始，所以下面的语句将没有需要操作的匹配元素
+$("#box p:nth-child(0)").css("background-color", "purple");
+
+//将ID为“box”的容器中作为第一个子节点且为段落标签的元素设置背景颜色为：褐色
+$("#box p:nth-child(1)").css("background-color", "brown");
+
+//将ID为“box”的容器中索引位置为奇数且为段落标签的所有元素设置背景颜色为：橙色
+$("#box p:nth-child(odd)").css("background-color", "orange");
+
+//将ID为“box”的容器中索引位置为偶数且为段落标签的所有元素设置背景颜色为：绿色
+$("#box p:nth-child(even)").css("background-color", "green");
+
+//将ID为“box”的容器中索引位置为3的倍数且为段落标签的所有元素设置背景颜色为：粉红色
+$("#box p:nth-child(3n)").css("background-color", "pink");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_css3_3.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":nth-last-child(n)")</code></p>
+                <p>获取父元素下倒数的指定索引位置（索引从1开始）的一个或多个子节点。</p>
+                <p>括号中的n可以是数字、even、odd、乘积表达式中的任意一种，具体作用同<code>$(":nth-child(n)")</code>，在此不作赘述。</p>
+                <p>此处的示例代码省略，请直接点击<a href="example/$_selector_css3_4.html" target="_blank">这里</a>进行效果的查阅！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":first-of-type")</code></p>
+                <p>获取祖先元素下位于某个层级中第一次出现的某类元素。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器下位于某个层级中第一次出现的所有类型元素的背景颜色设置为：紫色
+$("#box :first-of-type").css("background-color", "purple");
+
+//将ID为“box”的容器下位于某个层级中第一次出现的段落元素的背景颜色设置为：橙色
+$("#box p:first-of-type").css("background-color", "orange");
+
+//将ID为“box”的容器下位于某个层级中第一次出现的div元素的背景颜色设置为：绿色
+$("#box div:first-of-type").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_css3_6.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":last-of-type")</code></p>
+                <p>获取祖先元素下位于某个层级中最后一次出现的某类元素。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器下位于某个层级中最后一次出现的所有类型元素的背景颜色设置为：紫色
+$("#box :last-of-type").css("background-color", "purple");
+
+//将ID为“box”的容器下位于某个层级中最后一次出现的段落元素的背景颜色设置为：橙色
+$("#box p:last-of-type").css("background-color", "orange");
+
+//将ID为“box”的容器下位于某个层级中最后一次出现的div元素的背景颜色设置为：绿色
+$("#box div:last-of-type").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_css3_7.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":only-of-type")</code></p>
+                <p>获取祖先元素下位于某个层级中出现的唯一一个某类元素。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器下位于某个层级中出现的唯一一个类型的元素设置背景颜色为：紫色
+$("#box :only-of-type").css("background-color", "purple");
+
+//将ID为“box”的容器下位于某个层级中出现的唯一一个段落元素设置背景颜色为：橙色
+$("#box p:only-of-type").css("background-color", "orange");
+
+//将ID为“box”的容器下位于某个层级中出现的唯一一个div元素设置背景颜色为：绿色
+$("#box div:only-of-type").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_css3_8.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":nth-of-type(n)")</code></p>
+                <p>获取祖先元素下位于某个层级中同类型标签第n次出现的一个或多个元素。</p>
+                <p>括号中的n可以是数字、even、odd、乘积表达式中的任意一种，作用同<code>$(":nth-child(n)")</code>，在此不再复述。</p>
+<pre class="jsCodeNum">
+//由于索引从1开始，所以下面的语句将没有需要操作的匹配元素
+$("#box p:nth-of-type(0)").css("background-color", "purple");
+
+//将ID为“box”的容器下位于某个层级中第一次出现的段落元素设置背景颜色为：褐色
+$("#box p:nth-of-type(1)").css("background-color", "brown");
+
+//将ID为“box”的容器下位于某个层级中且在同类型标签中出现的先后顺序为奇数的段落元素设置背景颜色为：橙色
+$("#box p:nth-of-type(odd)").css("background-color", "orange");
+
+//将ID为“box”的容器下位于某个层级中且在同类型标签中出现的先后顺序为偶数的段落元素设置背景颜色为：绿色
+$("#box p:nth-of-type(even)").css("background-color", "green");
+
+//将ID为“box”的容器下位于某个层级中且在同类型标签中出现的先后顺序为3的倍数的段落元素设置背景颜色为：粉红色
+$("#box p:nth-of-type(3n)").css("background-color", "pink");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_css3_9.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":nth-last-of-type(n)")</code></p>
+                <p>获取祖先元素下位于某个层级中同类型标签最后第n次出现的一个或多个元素。</p>
+                <p>括号中的n可以是数字、even、odd、乘积表达式中的任意一种，作用同<code>$(":nth-child(n)")</code>，在此不再复述。</p>
+<pre class="jsCodeNum">
+//由于索引从1开始，所以下面的语句将没有需要操作的匹配元素
+$("#box p:nth-of-type(0)").css("background-color", "purple");
+
+//将ID为“box”的容器下位于某个层级中最后一次出现的段落元素设置背景颜色为：褐色
+$("#box p:nth-of-type(1)").css("background-color", "brown");
+
+//将ID为“box”的容器下位于某个层级中且在同类型标签中出现的倒数顺序为奇数的段落元素设置背景颜色为：橙色
+$("#box p:nth-of-type(odd)").css("background-color", "orange");
+
+//将ID为“box”的容器下位于某个层级中且在同类型标签中出现的倒数顺序为偶数的段落元素设置背景颜色为：绿色
+$("#box p:nth-of-type(even)").css("background-color", "green");
+
+//将ID为“box”的容器下位于某个层级中且在同类型标签中出现的倒数顺序为3的倍数的段落元素设置背景颜色为：粉红色
+$("#box p:nth-of-type(3n)").css("background-color", "pink");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_css3_10.html" target="_blank">这里</a>！</p>
+            </li>
+        </ol>
+        <h3>内容筛选</h3>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$(":root")</code></p>
+                <p>获取该文档的根元素。在HTML中，根元素始终是html标签。</p>
+<pre class="jsCodeNum">
+//将文档中的HTML元素设置背景颜色为：绿色
+$(":root").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_filter_1.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":empty")</code></p>
+                <p>获取没有任何子节点（包括文本节点）的所有元素。</p>
+<pre class="jsCodeNum">
+//将文档中没有任何子节点的元素设置背景颜色为：绿色
+$(":empty").css("background-color", "green");
+
+//将文档中没有任何子节点的段落p元素设置背景颜色为：橙色
+$("p:empty").css("background-color", "orange");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_filter_2.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":target")</code></p>
+                <p>获取由文档URL中的hash标识符表示的目标元素。</p>
+                <p>假设当前文档的url为“http://www.baidu.com/#foo”，那么<code>$("p:target")</code>匹配的元素将是<code>&lt;p id="foo"&gt;</code>。</p>
+<pre class="jsCodeNum">
+//如果当前文档URL中存在hash标识符，则将该标识符表示的目标元素的背景颜色设置为：绿色
+$(":target").css("background-color", "purple");
+
+//如果当前文档URL中存在hash标识符，且该标识符表示的目标元素的类型为div，则将其背景颜色设置为：橙色
+$("div:target").css("background-color", "orange");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_filter_3.html#box" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":lang(language)")</code></p>
+                <p>获取指定了特定语言类型的所有元素，language可以是：“zh-cn”—简体中文、“en”—英语、“en-us”—美式英语等。</p>
+                <p>括号中language指定的语言值，将匹配语言类型等于该值，或者以改值开始同时后面紧跟“-”的语言类型。</p>
+                <p>对于HTML元素，语言值由lang属性决定，也可能由来自meta元素或HTTP头信息决定。这种用法的进一步讨论可以在<a href="http://www.w3.org/TR/css3-selectors/#lang-pseudo" target="_blank">W3C CSS规范</a>中找到。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中语言类型为“zh-cn”的所有段落元素设置背景颜色为：紫色
+$("#box p:lang(zh-cn)").css("background-color", "purple");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_filter_4.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":not(selector)")</code></p>
+                <p>获取符合选择器条件之外的所有元素。</p>
+                <p>括号中的selector可以是所有的选择器。例如：<code>:not(div a)</code>、<code>:not(div, p)</code>、<code>:not(:first-child)</code>等。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器下除了div之外的所有元素设置背景颜色为：橙色
+$("#box :not(div)").css("background-color", "orange");
+
+//将ID为“box”的容器下除了段落p之外的所有元素设置背景颜色为：绿色
+$("#box :not(p)").css("background-color", "green");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_filter_5.html" target="_blank">这里</a>！</p>
+            </li>
+        </ol>
+        <h3>表单状态</h3>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$(":checked")</code></p>
+                <p>获取处于选中状态的复选框、单选框、以及option元素。</p>
+                <p>在jQuery中使用该选择器时，请在其前面加上一个标签名称或者其它选择器，例如：<code>input:checked</code>、<code>option:checked</code>，这样可以在不支持CSS3的浏览器中获得较高的执行效率，否则相当于<code>*:checked</code>——jQuery将会在所有元素中进行查询匹配。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中处于选中状态的复选框以及单选框的相邻元素设置字体颜色为：红色
+$("#box input:checked").next().css("color", "red");
+
+//将ID为“box”的容器中处于选中状态的单选框的相邻元素设置字体颜色为：红色
+$("#box input[type=radio]:checked").next().css("color", "blue");
+
+//将ID为“box”的容器中处于选中状态的复选框的相邻元素设置字体颜色为：橙色
+$("#box input[type=checkbox]:checked").next().css("color", "orange");
+
+//将ID为“box”的容器中第一个处于选中状态的下拉菜单项的文本内容，作为提示文本通过alert进行弹出
+alert($("#box option:checked").text());
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_form_1.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":disabled")</code></p>
+                <p>获取处于禁用状态的表单元素。</p>
+                <p>该选择器仅可用于支持disabled属性的HTML元素（即表单元素），如：button、input、optgroup、option、select、textarea等。</p>
+                <p>在jQuery中使用该选择器时，请在其前面加上一个标签名称或者其它选择器，例如：<code>input:disabled</code>，这样可以在不支持CSS3的浏览器中获得较高的执行效率，否则相当于<code>*:disabled</code>——jQuery将会在所有元素中进行查询匹配。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中处于禁用状态的input标签的相邻元素设置字体颜色为：红色
+$("#box input:disabled").next().css("color", "red");
+
+//将ID为“box”的容器中处于禁用状态的单选框的相邻元素设置字体颜色为：红色
+$("#box input[type=radio]:disabled").next().css("color", "blue");
+
+//将ID为“box”的容器中处于禁用状态的复选框的相邻元素设置字体颜色为：橙色
+$("#box input[type=checkbox]:disabled").next().css("color", "orange");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_form_2.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":enabled")</code></p>
+                <p>获取处于可用状态的表单元素。</p>
+                <p>该选择器仅可用于支持enabled属性的HTML元素（即表单元素），如：button、input、optgroup、option、select、textarea等。</p>
+                <p>在jQuery中使用该选择器时，请在其前面加上一个标签名称或者其它选择器，例如：<code>input:enabled</code>，这样可以在不支持CSS3的浏览器中获得较高的执行效率，否则相当于<code>*:enabled</code>——jQuery将会在所有元素中进行查询匹配。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中处于可用状态的input标签的相邻元素设置字体颜色为：红色
+$("#box input:enabled").next().css("color", "red");
+
+//将ID为“box”的容器中处于可用状态的单选框的相邻元素设置字体颜色为：红色
+$("#box input[type=radio]:enabled").next().css("color", "blue");
+
+//将ID为“box”的容器中处于可用状态的复选框的相邻元素设置字体颜色为：橙色
+$("#box input[type=checkbox]:enabled").next().css("color", "orange");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_form_3.html" target="_blank">这里</a>！</p>
+            </li>
+        </ol>
+    </div>
+    <h2>扩展选择器</h2>
+    <div>
+        <p>该类选择器，并不是CSS2.0或者CSS3.0中原本就支持的，是jQuery为了功能的扩展而自定义的伪类。由于在进行<code>$(selector)</code>操作中如果出现该类选择器，将无法在现代浏览器中发挥原生DOM提供的<code>querySelectorAll()</code>方法的性能优势，所以应避免在jQuery函数调用中使用这些选择器。</p>
+        <p>当然，jQuery提供这些伪类选择器自有它发挥的地方，不过为了保持现代浏览器的性能优势，我们通常只是在<code>.filter()</code>、<code>.is()</code>等筛选过滤方法中去使用它们。</p>
+        <h3>索引筛选</h3>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$(":eq(index)")</code></p>
+                <p>在原先匹配的元素集合中，获取索引值为index的元素（索引值从0开始计数）。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中，第二个出现的段落p元素设置背景颜色为：绿色
+$("#box p:eq(1)").css("background-color", "green")
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.eq(index)</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_index_1.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":first")</code></p>
+                <p>在原先匹配的元素集合中，获取第一个索引元素。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中，第一个出现的段落p元素设置背景颜色为：绿色
+$("#box p:first").css("background-color", "green");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.first()</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_index_2.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":last")</code></p>
+                <p>在原先匹配的元素集合中，获取最后一个索引元素。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中，最后一个出现的段落p元素设置背景颜色为：绿色
+$("#box p:last").css("background-color", "green");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.last()</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_index_3.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":odd")</code></p>
+                <p>在原先匹配的元素集合中，获取索引值为奇数的元素（索引值从0开始计数，奇数位置将包括1、3、5等）。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器下，所有段落p元素中索引值为奇数的元素设置背景颜色为：绿色
+$("#box p:odd").css("background-color", "green");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":odd")</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_index_4.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":even")</code></p>
+                <p>在原先匹配的元素集合中，获取索引值为偶数的元素（索引值从0开始计数，偶数位置将包括0、2、4等）。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器下，所有段落p元素中索引值为偶数的元素设置背景颜色为：绿色
+$("#box p:even").css("background-color", "green");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":even")</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_index_5.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":lt(index)")</code></p>
+                <p>在原先匹配的元素集合中，获取索引值小于index的元素（索引值从0开始计数）。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器下，所有段落p元素中索引值小于6的元素设置背景颜色为：绿色
+$("#box p:lt(6)").css("background-color", "green");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.slice(0, index)</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_index_6.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":gt(index)")</code></p>
+                <p>在原先匹配的元素集合中，获取索引值大于index的元素（索引值从0开始计数）。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器下，所有段落p元素中索引值大于6的元素设置背景颜色为：绿色
+$("#box p:gt(6)").css("background-color", "green");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.slice(index+1)</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_index_7.html" target="_blank">这里</a>！</p>
+            </li>
+        </ol>
+        <h3>内容筛选</h3>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$(":header")</code></p>
+                <p>获取所有的标题元素，包括h1、h2、h3、h4、h5、h6六类标签。</p>
+<pre class="jsCodeNum">
+//将当前文档中的所有标题元素设置背景颜色为：粉红色
+$(":header").css("background-color", "pink");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":header")</code>代替。</p>
+                <p>如果需要为文档中的所有标题元素进行操作，可使用组合选择器来进行：<code>$("h1,h2,h3,h4,h5,h6")</code>。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_extend_content_1.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":parent")</code></p>
+                <p>获取含有子元素或者相关文本的所有父元素，该选择器与CSS3选择器中的:empty相反。</p>
+                <p></p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中作为父元素的段落p元素设置背景颜色为；绿色
+$("#box p:parent").css("background-color", "green");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":parent")</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_extend_content_2.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":has(selector)")</code></p>
+                <p>获取含有指定后代节点的所有父元素，其中后代节点由selector进行匹配。</p>
+                <p></p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中含有段落p的所有div元素设置背景颜色为：绿色
+$("#box div:has(p)").css("background-color", "green");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.has("selector")</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_extend_content_3.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":contains(text)")</code></p>
+                <p>获取包含指定文本内容的所有元素。</p>
+                <p>括号中的文本既可以是纯文本内容，也可以使用引号包围。</p>
+                <p></p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中包含“paragraph1”文本内容的段落元素设置背景颜色为：绿色
+$("#box p:contains(paragraph1)").css("background-color", "green");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":contains(text)")</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_extend_content_4.html" target="_blank">这里</a>！</p>
+            </li>
+        </ol>
+        <h3>功能筛选</h3>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$(":animated")</code></p>
+                <p>获取所有正在执行动画效果的元素。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中正在运动的div原色的背景颜色设置为：绿色
+$("#box div:animated").css("background-color", "green");
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":animated")</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_func_1.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":hidden")</code></p>
+                <p>获取所有隐藏的元素。</p>
+                <p>在jQuery中，:hidden匹配的元素可能是以下几种情况：</p>
+                <ul>
+                    <li>他们的CSS display值是none；</li>
+                    <li>他们是type="hidden"的表单元素；</li>
+                    <li>它们的宽度和高度都显式设置为0；</li>
+                    <li>一个祖先元素是隐藏的，因此该元素是不会在页面上显示；</li>
+                </ul>
+                <p>注意：元素<code>visibility:hidden</code>或<code>opacity:0</code>被认为是可见的，因为他们仍然占据布局空间。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中处于隐藏状态的段落元素将其显示并设置背景颜色为：绿色
+$("#box p:hidden").css({"display": "block", "background-color": "green"});
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":hidden")</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_func_2.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":visible")</code></p>
+                <p>获取所有可见的元素。</p>
+                <p>如果元素占据文档中一定的空间，那么该元素被认为是可见的。可见元素的宽度或高度大于零。另外元素的<code>visibility:hidden</code>或<code>opacity:0</code>被认为是可见的，因为他们仍然占用空间布局。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中处于可见状态的段落元素设置其背景颜色为：绿色
+$("#box p:visible").css("background-color", "green")
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":visible")</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_func_3.html" target="_blank">这里</a>！</p>
+            </li>
+        </ol>
+        <h3>表单匹配</h3>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$(":text")</code></p>
+                <p>获取所有类型为文本输入框的表单元素。</p>
+                <p>与<code>$(":text")</code>等价的一个CSS选择器是：<code>$("[type=text]")</code>。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>[type=text]</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":password")</code></p>
+                <p>获取所有类型为密码框的表单元素。</p>
+                <p>与<code>$(":password")</code>等价的一个CSS选择器是：<code>$("[type=password]")</code>。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>[type=password]</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":radio")</code></p>
+                <p>获取所有类型为单选按钮的表单元素。</p>
+                <p>与<code>$(":radio")</code>等价的一个CSS选择器是：<code>$("[type=radio]")</code>。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>[type=radio]</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":checkbox")</code></p>
+                <p>获取所有类型为复选框的表单元素。</p>
+                <p>与<code>$(":checkbox")</code>等价的一个CSS选择器是：<code>$("[type=checkbox]")</code>。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>[type=checkbox]</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":button")</code></p>
+                <p>获取所有的按钮元素以及类型为按钮的表单元素。</p>
+                <p>与<code>$(":button")</code>等价的一个CSS选择器是：<code>$("button,input[type=button]")</code>。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":button")</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中处于可见状态的段落元素设置其背景颜色为：绿色
+$("#box p:visible").css("background-color", "green")
+</pre>
+            <li>
+                <p class="title"><code>$(":submit")</code></p>
+                <p>获取所有类型为提交按钮的表单元素。</p>
+                <p>与<code>$(":submit")</code>等价的一个CSS选择器是：<code>$("[type=submit]")</code>。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>[type=submit]</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":reset")</code></p>
+                <p>获取所有类型为重置按钮的表单元素。</p>
+                <p>与<code>$(":reset")</code>等价的一个CSS选择器是：<code>$("[type=reset]")</code>。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>[type=reset]</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":image")</code></p>
+                <p>获取所有类型为图像按钮的表单元素。</p>
+                <p>与<code>$(":image")</code>等价的一个CSS选择器是：<code>$("[type=image]")</code>。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>[type=image]</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":file")</code></p>
+                <p>获取所有类型为文件选择框的表单元素。</p>
+                <p>与<code>$(":file")</code>等价的一个CSS选择器是：<code>$("[type=file]")</code>。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>[type=file]</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":input")</code></p>
+                <p>获取所有的表单元素，例如：input、textarea、select、button等。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":input")</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":selected")</code></p>
+                <p>获取select下拉列表中处于选择状态的所有元素。</p>
+                <p>与<code>$(":selected")</code>等价的一个CSS选择器是：<code>$("option:checked")</code>。</p>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>option:checked</code>代替。</p>
+                <p>该选择器没有其他需要说明，且容器理解明白，故不作代码演示。</p>
+            </li>
+            <li>
+                <p class="title"><code>$(":focus")</code></p>
+                <p>获取当前获得焦点的元素，包括文本框、锚链接等可获得焦点的元素。</p>
+<pre class="jsCodeNum">
+//将ID为“box”的容器中的文本框、下拉框、锚链接添加获得焦点、失去焦点的事件处理程序
+//如果目标元素获得焦点，那么添加“focused”类名，否则移除“focused”类名
+$("#box").delegate("input,select,a", "focus blur", function()
+{
+    var $this = $(this);
+    setTimeout(function()
+    {
+        //在这里之所以需要使用定时器，是因为事件被触发后，表单元素并不能马上反映出获得焦点的状态
+        $this.toggleClass("focused", $this.is(":focus"));
+    }, 0);       
+});
+</pre>
+                <p>为了在现代浏览器中获得最佳的性能，请使用<code>.filter(":focus")</code>代替。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_selector_focus.html" target="_blank">这里</a>！</p>
+            </li>
+        </ol>
+    </div>
+</article>
+<script src="public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5：MessageChannel-iframe-b</title>
+</head>
+</head>
+<body>
+<div class="container">
+	<p>接收到的信息是：<span id="recivedText"></span></p>
+</div>
+<script>
+	var eleBox = document.querySelector('#recivedText');
+
+	// 通过window的message事件捕捉信息的传递
+	window.onmessage = function(ev) {
+		console.log('message事件对象：', ev);
+		eleBox.innerHTML = ev.data;
+
+		// 如果有传递通道端口
+		// 则通过端口的message事件获取别的端口传递过来的消息
+		if(ev.ports.length > 0) {
+
+			ev.ports[0].onmessage = function(ev) {
+				console.log(ev);
+				eleBox.innerHTML = ev.data;
+			};
+
+			// 可以关闭通道，这样就不会再接收到另一个端口发送过来的消息
+			// ev.ports[0].close();
+		}
+	};
+
+	// 向父窗口传递消息
+	console.log('postMessage fromB');
+	window.parent.postMessage('fromB', '*');
+</script>
+</body>
+</html>

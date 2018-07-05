@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+	<title>节点的获取操作 - jsApp</title>
+    <script src="jsApp.js"></script>
+	<style>
+		body,p,ul,ol,li{margin:0;padding:0;}
+        p{padding-left:2em;font-size:16px;line-height:2em;}
+        #test{width:300px;height:300px;border:2px solid green;margin:20px;}
+	</style>
+</head>
+<body>
+<h1>节点的获取操作</h1>
+<h2>元素的遍历</h2>
+<p><strong>.eq(index)</strong>：获取指定元素集合中指定索引的元素！</p>
+<p><strong>.first()</strong>：获取指定元素集合中的第一个元素！</p>
+<p><strong>.last()</strong>：获取指定元素集合中的最后一个元素！</p>
+<p><strong>.each(function)</strong>：遍历元素集合中的每一个元素！</p>
+<p><strong>.next()</strong>：获取元素集合中每个元素后一相邻节点所组成的新的jsApp对象！</p>
+<p><strong>.nextAll()</strong>：获取位于元素集合中每个元素之后的所有兄弟节点所组成的新的jsApp对象！</p>
+<p><strong>.prev()</strong>：获取元素集合中每个元素前一相邻节点所组成的新的jsApp对象！</p>
+<p><strong>.prevAll()</strong>：获取位于元素集合中每个元素之前的所有兄弟节点所组成的新的jsApp对象！</p>
+<p><strong>.siblings()</strong>：获取元素集合中每个元素所有兄弟节点所组成的新的jsApp对象！</p>
+<p><strong>.children()</strong>：获取元素集合中每个元素所有子节点所组成的新的jsApp对象！</p>
+<p><strong>.parent()</strong>：获取元素集合中每个元素的父节点所组成的新的jsApp对象！</p>
+<p><strong>.parents()</strong>：获取元素集合中每个元素的所有父节点所组成的新的jsApp对象！</p>
+<p><strong>.find(selector)</strong>：筛选出元素集合中与选择器相匹配的所有元素所组成的新的jsApp对象！</p>
+<h2>元素的操作</h2>
+<div id="test">
+    <div id="a">元素：a</div>
+    <div id="b">元素：b</div>
+    <div id="c">元素：c</div>
+    <div id="d">元素：d</div>
+    <div id="e">元素：e</div>
+</div>
+<div id="control">
+    <button id="c1">第一个子节点</button>
+    <button id="c2">最后一个子节点</button>
+    <button id="c3">上一个兄弟节点</button>
+    <button id="c4">下一个兄弟节点</button>
+    <button id="c5">所有子节点总数</button>
+    <button id="c6">父节点</button>
+</div>
+<script type="text/javascript">
+    var ele = $$("test");
+
+    $$("c1").node.onclick = function(){
+        //首个子节点
+        alert(ele.firstChild().innerHTML);
+    }
+
+    $$("c2").node.onclick = function(){
+        //最后一个子节点
+        alert(ele.lastChild().innerHTML);
+    }
+
+    $$("c3").node.onclick = function(){
+        //上一个兄弟节点
+        alert(ele.prev().innerHTML);
+    }
+
+    $$("c4").node.onclick = function(){
+        //下一个兄弟节点
+        alert(ele.next().innerHTML);
+    }
+
+    $$("c5").node.onclick = function(){
+        //所有子节点
+        alert(ele.children().length);
+    }
+
+    $$("c6").node.onclick = function(){
+        //父节点
+        alert(ele.parent().innerHTML);
+    }
+</script>
+</body>
+</html>

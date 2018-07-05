@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gb2312">
+    <title>元素属性的获取与赋值 - jsApp</title>
+    <script type="text/javascript" src="jsApp.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body{padding-bottom:50px;font-size:14px;line-height:24px;}
+        section{display:block;}
+        p{margin:20px 0;}
+
+        #container{margin:10px auto 0;background:gray;}
+        #control{width:380px;margin:10px auto;}
+        #control button{display:block;width:380px;height:30px;margin-top:10px;}
+        #info{width:980px;margin:10px auto;text-align:center;}
+    </style>
+</head>
+<body>
+<div id="container" tabindex="1" style="width:100px;height:100px;"></div>
+<div id="control">
+    <button onclick="alert($$('#container').attr('style'));showAttr();" title="alert($$('#container').attr('style'));">.attr("style");</button>
+    <button onclick="$$('#container').attr('style', 'width:50px;height:50px;');showAttr();" title="$$('#container').attr('style', 'width:50px;height:50px;');">.attr("style", "width:50px;height:50px;");</button>
+    <button onclick="$$('#container').removeAttr('style');showAttr();" title="$$('#container').removeAttr('style');">.removeAttr("style");</button>
+</div>
+<p id="info"></p>
+<script type="text/javascript">
+    function showAttr()
+    {
+        var attrStr = "当前style属性：" + $$("#container").attr("style");
+        $$("#info").html(attrStr);
+    }
+    showAttr();
+</script>
+</body>
+</html>

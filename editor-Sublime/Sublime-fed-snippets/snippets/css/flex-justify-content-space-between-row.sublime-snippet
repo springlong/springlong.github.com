@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[display: flex;
+justify-content: space-between;]]></content>
+	<tabTrigger>flx-ld</tabTrigger>
+    <description>flex两端对齐</description>
+    <scope>source.css, source.less, source.scss, source.stylus</scope>
+</snippet>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <base charset="utf-8" />
+    <title>事件模型：兼容性封装_03 - 浏览器事件 - 前端志</title>
+    <style>
+        *{margin:0;padding:0;}
+        div{margin:0 auto;font-size:24px;line-height:2em;text-align:center;}
+        p{padding:10px 0;text-align:center;}
+        #div1{width:450px;height:450px;background:gray;}
+        #div2{width:300px;height:300px;background:green;}
+        #div3{width:150px;height:150px;background:orange;}
+    </style>
+    <script src="js/jsApp_2013-08-13.js"></script>
+</head>
+<body>
+<div id="div1">
+    div1
+    <div id="div2">
+        div2
+        <div id="div3">
+            div3
+        </div>
+    </div>
+</div>
+<p><a href="http://www.baidu.com/" target="_blank" id="test_link">链接点击！</a></p>
+<script>
+    $("#div1").bind("click", function(e)
+    {
+        alert("您点击的是：div1");
+        alert("HTML代码-target输出：" + e.target.innerHTML);  //测试事件目标的正确性
+        alert("HTML代码-this输出：" + this.innerHTML);         //测试this关键字的正确性
+
+        e.stopPropagation();   //取消冒泡行为
+    });
+
+    $("#div2").bind("click", function(e)
+    {
+        alert("您点击的是：div2");
+        e.stopPropagation();   //取消冒泡行为
+    });
+
+    $("#div3").bind("click", function(e)
+    {
+        alert("您点击的是：div3");
+        e.stopPropagation();   //取消冒泡行为
+    });
+    
+    var event_testLink = $("#test_link").bind("click", function(e)
+    {
+        e.preventDefault();    //取消默认行为
+    });
+
+    $(document).bind("dblclick", function(e)
+    {
+        //双击页面取消链接的事件绑定
+        $("#test_link").unbind("click", event_testLink);
+        alert("文本链接的事件绑定已取消，现可点击测试！");
+    });
+</script>
+</body>
+</html>

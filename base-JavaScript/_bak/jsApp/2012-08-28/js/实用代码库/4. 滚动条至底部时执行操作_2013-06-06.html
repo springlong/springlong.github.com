@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<title>滚动条至底部时执行操作</title>
+	<style>
+		body{height:3000px;padding:0;margin:0;}
+	</style>
+</head>
+<body>
+<script>
+	//滚动条至底部时执行操作
+	/*----------------------------------
+	 *【参数】
+     *1. callback: （类型：function，必备）回调函数
+     *2. distance：（类型：number，可选）距离底部多少像素时即可被认定为到达底部，默认值为0
+     *--------------------------------------------------------------------------------------------------------------------*/
+	function doOnScrollToBottom(callback)
+	{
+		var handler, i, len;
+
+		if(window.doOnSTBCallbacks)
+		{
+			window.doOnSTBCallbacks.push(callback);	
+		}
+		else
+		{
+			window.doOnSTBCallbacks = [callback];
+			
+			//无论文档中调用了多少次doOnScrollToBottom方法，事件绑定仅只执行一次
+			handler = function()
+			{
+				var doOnSTBCallbacks = window.doOnSTBCallbacks, func;
+				if((document.body.scrollTop || document.documentElement.scrollTop) + document.documentElement.clientHeight == document.documentElement.scrollHeight)
+				{
+					for(i = 0, len = doOnSTBCallbacks.length; i < len; i++)
+					{
+						doOnSTBCallbacks[i].call();
+					}
+				}
+			};
+			document.addEventListener ? window.addEventListener("scroll", handler) : window.attachEvent("onscroll", handler);
+		}
+	}
+
+	doOnScrollToBottom(function()
+	{
+		document.body.style.height = document.documentElement.scrollHeight + 1000 + "px";
+	});
+	doOnScrollToBottom(function()
+	{
+		document.body.style.cssText += ";background:url(images/pic1.jpg);";
+	});
+</script>
+</body>
+</html>

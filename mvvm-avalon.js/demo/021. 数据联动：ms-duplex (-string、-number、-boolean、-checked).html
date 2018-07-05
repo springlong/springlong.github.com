@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>数据联动：ms-duplex (-string、-number、-boolean、-checked)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>数据联动：ms-duplex (-string、-number、-boolean、-checked)</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>在许多表单应用，我们经常遇到点击一个复选框（或下拉框）会引发旁边的复选框（或下拉框）发生改变，这种联动效果用avalon来做是非常简单的。因为avalon拥有经典MVVM框架的一大利器，双向绑定！绝大部分的指令是从vm单向拍到页面，而双向绑定，则通过监听元素的value值变化，反向同步到vm中。如果没有这种机制，则需要引入额外的机制(flux云云)来处理此事。</p>
+    <p>在avalon中，双向绑定是由双工指设，<code>ms-duplex</code>实现的。这个指令在1.0中已经不断增强，到2.0，它的服务对象已经不局限于表单元素，还扩展到可编辑元素（contenteditable＝true）上了。</p>
+    <p>此外<code>ms-duplex</code>还可以与新加入的<code>ms-validate</code>指令一起使用。因此双工指令是集成数据转换，数据格式化，数据验证，光标处理4大功能。</p>
+    <p>&nbsp;</p>
+    <p>数据转换与之前1.5一样，使用四大转换器：</p>
+<pre>
+ms-duplex-string="@aaa"
+ms-duplex-number="@aaa"
+ms-duplex-boolean="@aaa"
+ms-duplex-checked="@aaa"
+</pre>
+    <p>前三个是将元素的value值转换成<code>string</code>, <code>number</code>, <code>boolean</code>（只有为'false'时转换为false），最后是根据当前元素（它只能是radio或checkbox）的checked属性值转换为vm对应属性的值。</p>
+    <p>它们都是放在属性名上。当数据从元素节点往vmodel同步时，转换成预期的数据。</p>
+    <p>数据格式化是放在属性值时，以过滤器形式存在，如：</p>
+<pre>
+ms-duplex='@aaa | uppercase'
+ms-duplex='@aaa | date('YYYY:MM:dd')'
+</pre>
+    <p>&nbsp;</p>
+    <p>此外还存在两个控制同步时机的过滤器，<code>change</code>与<code>debounce</code>。</p>
+    <p>change过滤器相当于之前的data-duplex-event="change".debounce是对频繁输入进行节流处理。它既不像那oninput事件那样密集（由于使用了虚拟DOM，每一个字符，都会重新短成一个全新的虚拟DOM树），也不像onchange事件那么滞后。这在自动元素的suggest组件中非常有用。debounce可以传参，为毫秒数</p>
+<pre>
+ms-duplex='@aaa | debounce(300)'
+</pre>
+
+
+    <p>&nbsp;</p>
+    <p>然后是数据验证，这必须在所有表单元素的上方，加上ms-validate才会生效。这时每个表单元素要加上data-duplex-validator.</p>
+<pre>
+&lt;form ms-validate="@validation">
+    &lt;input ms-duplex='@aaa' 
+       data-validators='require,email,maxlength' 
+       data-maxlength='4' 
+       data-maxlength-message='太长了' >
+&lt;/form>
+</pre>
+    <p>最后是光标处理，目的是确保光标不会一下子跑到最前还是最后。</p>
+
+
+    <p>&nbsp;</p>
+    <p>除此之后，<code>ms-duplex</code>还有一个回调，<code>data-duplex-changed</code>，用于与事件绑定一样，默认第一个参数为事件对象。如果传入多个参数，那么使用$event为事件对象占位。</p>
+
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>全选与非全选</p>
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: 'test',
+        data: [{checked: false}, {checked:false}, {checked:false}],
+        allChecked: false,
+        checkAll: function(e){
+            var checked = e.target.checked;
+            vm.data.forEach(function(el){
+                el.checked = checked;
+            });
+        },
+        checkOne: function(e) {
+            var checked = e.target.checked;
+            if(!checked){
+                vm.allChecked = false;
+            }else{
+                console.log('checkOne');
+                vm.allChecked = vm.data.every(function(el){
+                    return el.checked;
+                });
+            }
+        }
+    });
+&lt;/script>
+&lt;div ms-controller="test">        
+    &lt;table class="border table-bordered">
+        &lt;tr>&lt;td>&lt;input type="checkbox" ms-duplex-checked="@allChecked" data-duplex-changed="@checkAll">全选&lt;/td>&lt;/tr>
+        &lt;tr ms-for="(index, item) in @data">&lt;td>&lt;input type="checkbox" ms-duplex-checked="item.checked" data-duplex-changed="@checkOne">{{index}}::{{item.checked}}&lt;/td>&lt;/tr>
+    &lt;/table>
+&lt;/div>
+</pre>
+
+
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            data: [{checked: false}, {checked:false}, {checked:false}],
+            allChecked: false,
+            checkAll: function(e){
+                var checked = e.target.checked;
+                vm.data.forEach(function(el){
+                    el.checked = checked;
+                });
+            },
+            checkOne: function(e) {
+                var checked = e.target.checked;
+                if(!checked){
+                    vm.allChecked = false;
+                }else{
+                    console.log('checkOne');
+                    vm.allChecked = vm.data.every(function(el){
+                        return el.checked;
+                    });
+                }
+            }
+        });
+    </script>
+    <div ms-controller="test">        
+        <table class="border table-bordered">
+            <tr><td><input type="checkbox" ms-duplex-checked="@allChecked" data-duplex-changed="@checkAll">全选</td></tr>
+            <tr ms-for="(index, item) in @data"><td><input type="checkbox" ms-duplex-checked="item.checked" data-duplex-changed="@checkOne">{{index}}::{{item.checked}}</td></tr>
+        </table>
+    </div>
+
+    <p>&nbsp;</p>
+    <p>我们仔细分析其源码，allchecked是用来控制最上面的复选框的打勾情况，数组中的checked是用来控制下面每个复选框的下勾情况。由于是使用ms-duplex，因此会监听用户行为，当复选框的状态发生改变时，就会触发data-duplex-changed回调，将当前值传给回调。但这里我们不需要用它的value值，只用它的checked值。</p>
+    <p>最上面的复选框对应的回调是checkAll，它是用来更新数组的每个元素的checked属性，因此一个forEach循环赋值就是。</p>
+    <p>下面的复选框对应的checkOne，它们是用来同步最上面的复选框，只要它们有一个为false上面的复选框就不能打勾，当它们被打勾了，它们就得循环整个数组，检查是否所有元素都为true，是才给上面的checkall属性置为true。</p>
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>现在 我们学了循环指令，结合它来做一个表格看看。现在有了强大无比的<code>orderBy</code>, <code>limitBy</code>, <code>filterBy</code>, <code>selectBy</code>。我们做高性能的大表格是得心应手的！</p>
+<pre>
+&lt;script>
+    var vm2 = avalon.define({
+        $id: 'test2',
+        selected: 'name',
+        options: ['name', 'size', 'date'],
+        trend: 1,
+        data: [
+            {name: 'aaa', size: 213, date: Date.now() + 20},
+            {name: 'bbb', size: 111, date: Date.now() + 30},
+            {name: 'ccc', size: 222, date: Date.now() + 40},
+            {name: 'ddd', size: 333, date: Date.now() + 50},
+            {name: 'eee', size: 666, date: Date.now() + 10}
+        ]
+    });
+&lt;/script>
+&lt;div ms-controller="test2">
+    &lt;div style="color:red;">
+        &lt;p>本例子用于显示如何做一个简单的表格排序&lt;/p>
+    &lt;/div>
+    &lt;p>
+        &lt;select ms-duplex="@selected">
+            &lt;option ms-for="val in @options" ms-text="val">&lt;/option>
+        &lt;/select>
+        &lt;select ms-duplex-number="@trend">
+            &lt;option value="1">up&lt;/option>
+            &lt;option value="-1">down&lt;/option>
+        &lt;/select>
+    &lt;/p>
+    &lt;table class="table table-bordered">
+        &lt;tr>
+            &lt;th>name&lt;/th>
+            &lt;th>size&lt;/th>
+            &lt;th>date&lt;/th>
+        &lt;/tr>
+        &lt;tr ms-for="item in @data | orderBy(@selected, @trend)">
+            &lt;td>{{item.name}}&lt;/td>
+            &lt;td>{{item.size}}&lt;/td>
+            &lt;td>{{item.date}}&lt;/td>
+        &lt;/tr>
+    &lt;/table>
+&lt;/div>
+</pre>
+
+
+    <script>
+        var vm2 = avalon.define({
+            $id: 'test2',
+            selected: 'name',
+            options: ['name', 'size', 'date'],
+            trend: 1,
+            data: [
+                {name: 'aaa', size: 213, date: Date.now() + 20},
+                {name: 'bbb', size: 111, date: Date.now() + 30},
+                {name: 'ccc', size: 222, date: Date.now() + 40},
+                {name: 'ddd', size: 333, date: Date.now() + 50},
+                {name: 'eee', size: 666, date: Date.now() + 10}
+            ]
+        });
+    </script>
+    <div ms-controller="test2">
+        <div style="color:red;">
+            <p>本例子用于显示如何做一个简单的表格排序</p>
+        </div>
+        <p>
+            <select ms-duplex="@selected">
+                <option ms-for="val in @options" ms-text="val"></option>
+            </select>
+            <select ms-duplex-number="@trend">
+                <option value="1">up</option>
+                <option value="-1">down</option>
+            </select>
+        </p>
+        <table class="table table-bordered" style="width: 300px;">
+            <tr>
+                <th>name</th>
+                <th>size</th>
+                <th>date</th>
+            </tr>
+            <tr ms-for="item in @data | orderBy(@selected, @trend)">
+                <td>{{item.name}}</td>
+                <td>{{item.size}}</td>
+                <td>{{item.date}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>我们再来一个文本域与下拉框的联动例子，它只用到ms-duplex，不过两个控件都是绑定同一个属性。</p>
+<pre>
+&lt;script>
+    avalon.define({
+        $id: "fruit",
+        options: ["苹果", "香蕉", "桃子", "雪梨", "葡萄", "哈蜜瓜", "橙子", "火龙果", "荔技", "黄皮"],
+        selected: "桃子"
+    });
+&lt;/script>
+&lt;div ms-controller="fruit">    
+    &lt;h3>文本域与下拉框的联动&lt;/h3>
+    &lt;input  ms-duplex="@selected" />
+    &lt;select ms-duplex="@selected" >
+        &lt;option ms-for="el in @options" ms-attr="{value: el}" >{{el}}&lt;/option>
+    &lt;/select>
+&lt;/div>
+</pre>
+
+
+    <script>
+        avalon.define({
+            $id: "fruit",
+            options: ["苹果", "香蕉", "桃子", "雪梨", "葡萄", "哈蜜瓜", "橙子", "火龙果", "荔技", "黄皮"],
+            selected: "桃子"
+        });
+    </script>
+    <div ms-controller="fruit">    
+        <h3>文本域与下拉框的联动</h3>
+        <input  ms-duplex="@selected" />
+        <select ms-duplex="@selected" >
+            <option ms-for="el in @options" ms-attr="{value: el}" >{{el}}</option>
+        </select>
+    </div>
+
+
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+<pre>
+&lt;script>
+    var map = {
+        "中国": ["江南四大才子", "初唐四杰", "战国四君子"],
+        "日本": ["日本武将", "日本城堡", "幕府时代"],
+        "欧美": ["三大骑士团", "三大魔幻小说", "七大奇迹"],
+
+        "江南四大才子": ["祝枝山", "文征明", "唐伯虎", "周文宾"],
+        "初唐四杰": ["王勃", "杨炯", "卢照邻", "骆宾王"],
+        "战国四君子": ["楚国春申君黄歇", "齐国孟尝君田文", "赵国平原君赵胜", "魏国信陵君魏无忌"],
+
+        "日本武将": ["织田信长", "德川家康", "丰臣秀吉"],
+        "日本城堡": ["安土城", "熊本城", "大坂城", "姬路城"],
+        "幕府时代": ["镰仓", "室町", "丰臣", "江户"],
+        
+        "三大骑士团": ["圣殿骑士团", "医院骑士团", "条顿骑士团"],
+        "三大魔幻小说": ["冰与火之歌", "时光之轮", "荆刺与白骨之王国"],
+        "七大奇迹": ["埃及胡夫金字塔", "奥林匹亚宙斯巨像", "阿尔忒弥斯月神殿", "摩索拉斯陵墓", "亚历山大港灯塔", "巴比伦空中花园", "罗德岛太阳神巨像"]
+    };
+
+    var vmLinkage = avalon.define({
+        $id: 'linkage',
+        first: ["中国", "日本", "欧美"],
+        second: map['日本'].concat(),
+        third: map['日本武将'].concat(),
+        firstSelected: "日本",
+        secondSelected: "日本武将",
+        thirdSelected: "织田信长"
+    });
+
+    vmLinkage.$watch('firstSelected', function(newVal){
+        vmLinkage.second = map[newVal].concat();
+        vmLinkage.secondSelected = vmLinkage.second[0];
+    });
+
+    vmLinkage.$watch('secondSelected', function(newVal){
+        vmLinkage.third = map[newVal].concat();
+        vmLinkage.thirdSelected = vmLinkage.third[0];
+    });
+&lt;/script>
+&lt;div ms-controller="linkage">    
+    &lt;h3>下拉框三级联动&lt;/h3>
+    &lt;select ms-duplex="@firstSelected" >
+        &lt;option ms-for="el in @first" ms-attr="{value:el}">{{el}}&lt;/option>
+    &lt;/select>
+    &lt;select ms-duplex="@secondSelected" >
+        &lt;option ms-for="el in @second" ms-attr="{value:el}">{{el}}&lt;/option>
+    &lt;/select>
+    &lt;select ms-duplex="@thirdSelected" >
+        &lt;option ms-for="el in @third" ms-attr="{value:el}">{{el}}&lt;/option>
+    &lt;/select>
+&lt;/div>
+</pre>
+
+
+    <script>
+        var map = {
+            "中国": ["江南四大才子", "初唐四杰", "战国四君子"],
+            "日本": ["日本武将", "日本城堡", "幕府时代"],
+            "欧美": ["三大骑士团", "三大魔幻小说", "七大奇迹"],
+
+            "江南四大才子": ["祝枝山", "文征明", "唐伯虎", "周文宾"],
+            "初唐四杰": ["王勃", "杨炯", "卢照邻", "骆宾王"],
+            "战国四君子": ["楚国春申君黄歇", "齐国孟尝君田文", "赵国平原君赵胜", "魏国信陵君魏无忌"],
+
+            "日本武将": ["织田信长", "德川家康", "丰臣秀吉"],
+            "日本城堡": ["安土城", "熊本城", "大坂城", "姬路城"],
+            "幕府时代": ["镰仓", "室町", "丰臣", "江户"],
+
+            "三大骑士团": ["圣殿骑士团", "医院骑士团", "条顿骑士团"],
+            "三大魔幻小说": ["冰与火之歌", "时光之轮", "荆刺与白骨之王国"],
+            "七大奇迹": ["埃及胡夫金字塔", "奥林匹亚宙斯巨像", "阿尔忒弥斯月神殿", "摩索拉斯陵墓", "亚历山大港灯塔", "巴比伦空中花园", "罗德岛太阳神巨像"]
+        };
+
+        var vmLinkage = avalon.define({
+            $id: 'linkage',
+            first: ["中国", "日本", "欧美"],
+            second: map['日本'].concat(),
+            third: map['日本武将'].concat(),
+            firstSelected: "日本",
+            secondSelected: "日本武将",
+            thirdSelected: "织田信长"
+        });
+
+        vmLinkage.$watch('firstSelected', function(newVal){
+            vmLinkage.second = map[newVal].concat();
+            vmLinkage.secondSelected = vmLinkage.second[0];
+        });
+
+        vmLinkage.$watch('secondSelected', function(newVal){
+            vmLinkage.third = map[newVal].concat();
+            vmLinkage.thirdSelected = vmLinkage.third[0];
+        });
+    </script>
+    <div ms-controller="linkage">    
+        <h3>下拉框三级联动</h3>
+        <select ms-duplex="@firstSelected" >
+            <option ms-for="el in @first" ms-attr="{value:el}">{{el}}</option>
+        </select>
+        <select ms-duplex="@secondSelected" >
+            <option ms-for="el in @second" ms-attr="{value:el}">{{el}}</option>
+        </select>
+        <select ms-duplex="@thirdSelected" >
+            <option ms-for="el in @third" ms-attr="{value:el}">{{el}}</option>
+        </select>
+    </div>
+
+    <p>&nbsp;</p>
+    <p>这里的技巧在于使用$watch回调来同步下一级的数组与选中项。注意，使用concat方法来复制数组。</p>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>图片懒加载-背景图-无效果</title>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="../jquery.lazyload.js"></script>
+    <style>
+    	*{padding:0;margin:0;}
+
+        h1{font-size:24px;line-height:2em;text-align:center;}
+        #header{width:600px;margin:20px auto;}
+        #header .jsCodeNum{padding:10px;border:1px solid #ddd;border-radius:4px;margin-top:20px;background:#fdfdfd;font-size:14px;font-family:"Courier New";text-align:center;}
+
+        #container{overflow:hidden;width:500px;margin:20px auto;}
+        #container ul{overflow:hidden;}
+        #container ul li{float:left;display:inline;width:150px;height:200px;margin:40px 0 0 65px;text-indent:-9999px;background:#999 no-repeat center center;}
+        #container ul li img{display:block;width:100%;height:100%;}
+    </style>
+    <base target="_blank" />
+</head>
+<body>
+<div id="header">
+    <h1>图片懒加载：背景图-无效果</h1>
+    <pre class="jsCodeNum">
+$("li[data-src]").lazyload();
+</pre>
+</div>
+<div id="container">
+    <ul>
+        <li data-src="images/book_1_1_1.jpg">描述文本</li>
+        <li data-src="images/book_1_1_2.jpg">描述文本</li>
+        <li data-src="images/book_1_1_3.jpg">描述文本</li>
+        <li data-src="images/book_1_1_4.jpg">描述文本</li>
+        <li data-src="images/book_1_1_5.jpg">描述文本</li>
+        <li data-src="images/book_1_2_1.jpg">描述文本</li>
+        <li data-src="images/book_1_2_2.jpg">描述文本</li>
+        <li data-src="images/book_1_2_3.jpg">描述文本</li>
+        <li data-src="images/book_1_2_4.jpg">描述文本</li>
+        <li data-src="images/book_1_2_5.jpg">描述文本</li>
+        <li data-src="images/book_1_3_1.jpg">描述文本</li>
+        <li data-src="images/book_1_3_2.jpg">描述文本</li>
+        <li data-src="images/book_1_3_3.jpg">描述文本</li>
+        <li data-src="images/book_1_3_4.jpg">描述文本</li>
+        <li data-src="images/book_1_3_5.jpg">描述文本</li>
+        <li data-src="images/book_1_4_1.jpg">描述文本</li>
+        <li data-src="images/book_1_4_2.jpg">描述文本</li>
+        <li data-src="images/book_1_4_3.jpg">描述文本</li>
+        <li data-src="images/book_1_4_4.jpg">描述文本</li>
+        <li data-src="images/book_1_4_5.jpg">描述文本</li>
+        <li data-src="images/book_2_1_1.jpg">描述文本</li>
+        <li data-src="images/book_2_1_2.jpg">描述文本</li>
+        <li data-src="images/book_2_1_3.jpg">描述文本</li>
+        <li data-src="images/book_2_1_4.jpg">描述文本</li>
+        <li data-src="images/book_2_1_5.jpg">描述文本</li>
+        <li data-src="images/book_2_2_1.jpg">描述文本</li>
+        <li data-src="images/book_2_2_2.jpg">描述文本</li>
+        <li data-src="images/book_2_2_3.jpg">描述文本</li>
+        <li data-src="images/book_2_2_4.jpg">描述文本</li>
+        <li data-src="images/book_2_2_5.jpg">描述文本</li>
+        <li data-src="images/book_2_3_1.jpg">描述文本</li>
+        <li data-src="images/book_2_3_2.jpg">描述文本</li>
+        <li data-src="images/book_2_3_3.jpg">描述文本</li>
+        <li data-src="images/book_2_3_4.jpg">描述文本</li>
+        <li data-src="images/book_2_3_5.jpg">描述文本</li>
+        <li data-src="images/book_2_4_1.jpg">描述文本</li>
+        <li data-src="images/book_2_4_2.jpg">描述文本</li>
+        <li data-src="images/book_2_4_3.jpg">描述文本</li>
+        <li data-src="images/book_2_4_4.jpg">描述文本</li>
+        <li data-src="images/book_2_4_5.jpg">描述文本</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    jQuery(function($)
+    {
+        $("li[data-src]").lazyload();
+    });
+</script>
+</body>
+</html>

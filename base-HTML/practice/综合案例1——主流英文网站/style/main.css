@@ -1,0 +1,257 @@
+/*============================
+ *页面的公共样式
+ *2011-2-14
+ *============================*/
+
+
+
+/*===================================================================================================
+ *===============================页面的默认设置========================================================
+ *===================================================================================================*/
+		
+		*{
+			margin:0px;
+			padding:0px;
+		}
+		body{
+			font-family:Tahoma, Geneva, sans-serif,Arial, Helvetica, sans-serif;
+			font-size:11px;
+			color:#58595b;
+			background-color:gray;
+			line-height:1.6em;
+		}
+		.clear{
+			clear:both;
+		}
+		
+		ul{
+			list-style:none;
+		}
+		
+		a{
+			color:#58595b;
+			text-decoration:none;
+		}
+		a:hover{
+			text-decoration:underline;
+		}
+		
+		
+/*===================================================================================================
+ *===============================页面总体布局==========================================================
+ *===================================================================================================*/
+		 
+		/*页面主容器设置*/
+		#mainContainer{
+			width:821px;
+			margin:0px auto;
+			background-color:White;
+		}
+		#header,#navContainer,#contentContainer,#footerContainer{
+			width:791px;
+			margin:0px auto;
+		}
+		
+		/*头部、导航栏、尾部设置*/
+		#header{
+			height:158px;
+		}
+		/*======*/
+		#mainNav,#mainNavOuter{
+			width:634px;
+		}
+		#mainNavOuter{
+			float:right;
+			margin:10px 0px;
+		}
+		#mainNav{
+			height:28px;
+		}
+		/*======*/
+		#footerContainer{
+			padding:15px 0px;	/*由于footer前有浮动元素，因此margin属性无效，特加外框设置padding值来留出空白*/
+		}
+		#footer{
+			height:26px;
+		}
+		
+		/*内容显示区呈三列布局*/
+		#sideLeft{
+			float:left;
+		}
+		#mainContent{
+			float:left;
+			width:429px;
+		}
+		#sideRight{
+			float:left;
+		}
+		
+		/*内容左部侧栏高度值为：240(30+27+183)+377(27+350)+17=634px*/
+		#sideLeft,#search,#servicesSide,#news{
+			width:191px;
+		}
+		#search{
+			height:30px;
+		}
+		/*======*/
+		#servicesSide{
+			margin-bottom:17px;
+		}
+		#servicesSide_caption,#news_caption,#servicesMain_caption,#aboutUs_caption,#newsroomCaption{
+			height:21px;
+		}
+		#servicesSide_content{
+			height:183px;
+		}
+		/*======*/
+		#news_content{
+			height:345px;
+			padding-top:5px;		/*使内容与标题隔一段距离*/
+		}
+		
+		/*内容中部主体样式被放置在另一个文件*/
+		/*内容右部侧栏样式被放置在另一个文件*/
+				
+/*===================================================================================================
+ *===============================页面的大体外观========================================================
+ *===================================================================================================*/
+		#header{
+			background:url(../images/top.jpg) no-repeat;
+		}
+		/*===导航===*/
+		#mainNavOuter{
+			background:url(../images/bg_Nav2.gif) repeat-x;
+		}
+		#mainNav{
+			background:url(../images/bg_Nav1.gif) no-repeat left bottom;
+		}
+		/*===查询===*/
+		#search .regExp{
+			width:130px;
+			height:20px;
+		}
+		#search .submit{
+			width:49px;
+			height:20px;
+			border:none;
+			background:url(../images/search.gif) no-repeat;
+			cursor: hand;
+		}
+		/*===左部侧栏 服务===*/
+		#servicesSide_captionOuter{
+			background-color:#006699;
+		}
+		#servicesSide_caption{
+			background:url(../images/bg_servicesSide1.gif) no-repeat left top;
+		}
+		#servicesSide_content{
+			background-color:#e0edf3;
+		}
+		/*===左部侧栏 新闻===*/
+		#news_caption{
+			background-color:#006699;
+		}
+		#news_content{
+			background-color:#cde3ec;
+		}
+		
+		/*中部主体样式被放置在另一个文件*/
+		/*右部侧栏样式被放置在另一个文件*/
+		
+		/*===尾部===*/
+		#footerOuter{
+			background-color:#006699;
+		}
+		#footerInner{
+			background:url(../images/bg_Footer1.gif) no-repeat left bottom;
+		}
+		#footer{
+			background:url(../images/bg_Footer2.gif) no-repeat right bottom;
+		}
+		
+		
+/*===================================================================================================
+ *===============================页面的文本控制========================================================
+ *===================================================================================================*/
+ 		/*页面头内容部*/
+		.header_content{
+			text-align:right;
+			color:white;
+			padding:5px;
+		}
+		.header_content a{
+			color:white;
+		}
+		
+		/*页面导航栏*/
+		#mainNav ul li{
+			font-size:13px;
+			font-weight:bold;
+			color:white;
+			float:left;
+			padding:0px 5px;
+		}
+		#mainNav ul a{
+			color:white;
+		}
+		#mainNav ul{
+			padding:5px 0px 0px 50px;
+		}	
+		
+		/*主体内容中标题、内容的大体设置*/
+		#aboutUs_caption,#servicesSide_caption,#news_caption,#servicesMain_caption,#newsroomCaption{
+			font-family:"Times New Roman", Times, serif;
+			font-size:15px;
+			font-weight:bold;
+			color:white;
+			padding-left:20px;
+			padding-top:6px;			/*设置该值时，请注意保持高度为27*/
+		}
+		#aboutUs_content,#aboutUs_footer,#servicesSide_content,#news_content,#newsroomSideRight_content{
+			padding-left:10px;
+			padding-right:10px;
+		}
+		#aboutUs_caption,#servicesMain_caption{
+			color:#cc0000;
+		}
+		
+		/*左部侧栏 Service*/
+		#servicesSide_content ul{
+			list-style:url(../images/ar.gif) inside;
+			line-height:2em;
+			padding-top:10px;
+		}
+		#servicesSide_content ul a{
+			font-size:13px;
+			color:#549cca;
+		}
+		
+		/*左部侧栏 News*/
+		.news_wrapper{
+			width:100%;
+			padding-bottom:20px;
+			border-top:1px dashed;
+		}
+		.news_wrapper .newsTitle{
+			color:#024592;
+			font-weight:bold;
+			text-decoration:underline;
+		}
+		
+		/*中部主体样式被放置在另一个文件*/
+		/*右部侧栏样式被放置在另一个文件*/
+		
+		/*页面尾部*/
+		#footer{
+			color:white;
+			font-weight:bold;
+		}
+		.footer_contentLeft{
+			float:left;
+			padding-left:20px;
+		}
+		.footer_contentRight{
+			float:right;
+			padding-right:20px;
+		}

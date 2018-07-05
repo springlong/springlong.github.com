@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>开发库核心：集合的遍历筛选-辅助工具 - jQuery使用文档</title>
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link rel="stylesheet" href="public/css/codeView.css" />
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/jquery.extend.js"></script>
+    <script src="public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+    <h1>jQuery使用文档——开发库核心：集合的遍历筛选-辅助工具</h1>
+    <p>在之前的两篇文档中，我们学习并演示了关于元素集合的筛选操作和关系查找，这些方法的将帮助我们在原有元素集合的基础上再进一步地获得我们想要的新的元素集合。通过对这些方法的使用，更加发挥了并加强了对DOM查找的强大功能。不过通过接下来的这些辅助方法，相信更能让你在实际工作中得心应手。</p>
+    <ol class="list">
+        <li>
+            <p class="title"><code>.each(function(){index, ele})</code></p>
+            <p>遍历元素集合，为每个元素执行一次回调函数，并返回原jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数function(){index, ele}：<span>（类型：Function）</span>回调函数；</p>
+                <p class="level2">回调函数——参数index：元素集合当前项的索引值。</p>
+                <p class="level2">回调函数——参数ele：元素集合当前项的值。</p>
+                <p class="level2">回调函数——this：元素集合当前项的值。</p>  
+            </div>
+<pre class="jsCodeNum">
+//下面的代码将针对box容器下的所有后代元素中，索引值为偶数（0、2、4...）的段落p的背景颜色设置为绿色
+$("#box p").each(function(index, ele)
+{
+    if(index % 2 === 0)
+    {
+        $(ele).css("background-color", "green");
+        //上面的语句可以使用this来代替ele：
+        //$(this).css("background-color", "green");
+    }
+});
+
+//上面的代码功能可以转换为如下语句
+$("#box p").filter(":even").css("background-color", "green");
+</pre>
+            <p>通过上面的代码示例，我们不仅演示了<code>.each()</code>的使用，还希望大家知道在jQuery中的很多实用方法其实都使用了该方法来进行遍历执行的。</p>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/each.html" target="_blank">这里</a>！</p>
+        </li>
+        <li>
+            <p class="title"><code>.map(function(){index, ele})</code></p>
+            <p>遍历元素集合，将通过回调函数返回的值构建为一个新的jQuery对象并返回（不包含null和undefined）。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数function(){index, ele}：<span>（类型：Function）</span>回调函数；</p>
+                <p class="level2">回调函数——参数index：元素集合当前项的索引值。</p>
+                <p class="level2">回调函数——参数ele：元素集合当前项的值。</p>
+                <p class="level2">回调函数——this：元素集合当前项的值。</p>
+            </div>
+            <p>在该方法的回调函数中，如果返回值是0、""等值时也将包含进新的jQuery对象，而null和undefined这两个特殊值除外。</p>
+<pre class="jsCodeNum">
+//下面的代码将针对box容器下div元素的第一个子节点设置背景
+$("#box div").map(function()
+{
+    return this.firstElementChild || this.firstChild;
+}).css("background-color", "green");
+</pre>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/map.html" target="_blank">这里</a>！</p>
+        </li>
+        <li>
+            <p class="title"><code>.add(selector[, context])</code></p>
+            <p>将新的内容加入到当前的元素集合中并以新的jQuery对象返回。（原jQuery对象的内容不受影响）（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String | DOMElement | Array | jQuery）</span>一个选择器，用来表示需要添加到元素集合的内容；</p>
+                <p>参数context：<span>（类型：DOMElement，可选）</span>指定选择器查找元素所在的上下文，同$(selector, context)方法中的context参数；</p>
+            </div>
+            <p>选择器参数selector可以是传递给<code>$()</code>方法的所有类型，所表示的元素都将加入到现有的元素集合中，同时在返回的最终结果中将会对合并的内容和之前的内容进行去重处理。</p>
+<pre class="jsCodeNum">
+//首先，将box容器下的div元素设置背景颜色为橙色
+//然后，将box容器下的div和段落p元素设置1像素的深灰色实线边框
+$("#box div").css("background-color", "orange")
+             .add("#box p")
+             .css("border", "1px solid #333");
+</pre>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/add.html" target="_blank">这里</a>！</p>
+        </li>
+        <li>
+            <p class="title"><code>.addBack([selector])</code></p>
+            <p>将堆栈中的内容加入到当前的元素集合中并以新的jQuery对象返回。（原jQuery对象的内容不受影响）（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String | DOMElement | Array | jQuery，可选）</span>过滤条件；</p>
+            </div>
+            <p>当提供selector参数时，相当于对堆栈中内容进行<code>.filter(selector)</code>处理后再加入到当前的元素集合中。</p>
+            <p>所谓的堆栈，指的是jQuery中的一种机制。当我们执行<code>.filter()</code>、<code>.next()</code>、<code>.map()</code>等遍历筛选操作时，在返回最新的jQuery对象之前，jQuery都会将原来的jQuery对象保存至新jQuery对象的prevObject属性中。而<code>.addBack()</code>方法的作用，就是将当前对象的prevObject对象的元素集合加入到当前的元素集合中去，并在返回结果之前做去重处理。</p>
+            <p>如果是直接通过<code>$()</code>方法构建的jQuery对象，那么其堆栈内容为undefined。</p>
+<pre class="jsCodeNum">
+//首先，将box容器下的div元素设置背景颜色为橙色
+//然后，将box容器下div元素的所有子节点设置背景颜色为绿色
+//最后，将box容器下的div元素以及div元素的子节点设置1像素的深灰色实线边框
+$("#box div").css("background-color", "orange")
+             .children().css("background-color", "green")
+             .addBack().css("border", "1px solid #333");
+</pre>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/addBack.html" target="_blank">这里</a>！</p>
+        </li>
+        <li>
+            <p class="title"><code>.end()</code></p>
+            <p>终止最新的过滤操作，并返回堆栈中的jQuery对象。（返回类型：jQuery）</p>
+<pre class="jsCodeNum">
+//首先，将box容器下的div元素设置背景颜色为橙色
+//然后，将box容器下div元素的所有子节点设置背景颜色为绿色
+//最后，将box容器下的div元素设置1像素的深灰色实线边框
+$("#box div").css("background-color", "orange")
+             .children().css("background-color", "green")
+             .end().css("border", "1px solid #333");
+</pre>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/end.html" target="_blank">这里</a>！</p>
+        </li>
+    </ol>
+</article>
+<section class="codeView">
+    <h2>程序代码：jQuery中的遍历筛选-其他</h2>
+    <pre class="jsCodeNum">
+jQuery.fn = jQuery.prototype = {
+
+    // Take an array of elements and push it onto the stack
+    // (returning the new matched element set)
+    pushStack: function( elems ) {
+
+        // Build a new jQuery matched element set
+        var ret = jQuery.merge( this.constructor(), elems );
+
+        // Add the old object onto the stack (as a reference)
+        ret.prevObject = this;
+        ret.context = this.context;
+
+        // Return the newly-formed element set
+        return ret;
+    },
+
+    // Execute a callback for every element in the matched set.
+    // (You can seed the arguments with an array of args, but this is
+    // only used internally.)
+    each: function( callback, args ) {
+        return jQuery.each( this, callback, args );
+    },
+
+    map: function( callback ) {
+        return this.pushStack( jQuery.map(this, function( elem, i ) {
+            return callback.call( elem, i, elem );
+        }));
+    },
+
+    end: function() {
+        return this.prevObject || this.constructor(null);
+    }
+};
+
+jQuery.fn.extend({
+
+    add: function( selector, context ) {
+        var set = typeof selector === "string" ?
+                jQuery( selector, context ) :
+                jQuery.makeArray( selector &amp;&amp; selector.nodeType ? [ selector ] : selector ),
+            all = jQuery.merge( this.get(), set );
+
+        return this.pushStack( jQuery.unique(all) );
+    },
+
+    addBack: function( selector ) {
+        return this.add( selector == null ?
+            this.prevObject : this.prevObject.filter(selector)
+        );
+    }
+};
+</pre>
+</section>
+<script src="public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

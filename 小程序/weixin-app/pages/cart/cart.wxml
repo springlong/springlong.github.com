@@ -1,0 +1,6 @@
+<!--pages/classify/classify.wxml-->
+<view class="container">
+  <view class="list-warp">
+    <navigator url="/pages/order/ordercheck/ordercheck?type=8" open-type="navigate">查看八级结算页面</navigator>
+  </view>
+</view>

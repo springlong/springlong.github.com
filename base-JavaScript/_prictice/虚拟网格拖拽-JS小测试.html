@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>虚拟网格拖拽-JS小测试</title>
+    <style>
+    	*{padding:0; margin:0;}
+
+    	#content{position:relative;width:900px; margin: 20px auto;}
+        #content:after{clear: both;display: block;height: 0;visibility: hidden;line-height: 0;content: '\20';}
+
+        .logo{width:80px;height:80px;}
+        .logoInner{width:80px;height:80px;line-height: 80px;font-weight:bold;text-align:center;color:#fff;background:#333;cursor:pointer;}
+        .logoInner.moveState{background:#2CAFE5;}
+        .logoInner.exsitState{background:#056289;}
+
+		#viewOuter{float: left;}
+		#viewBox{position:relative;width:500px;height:500px;border: 1px solid #ddd;}
+        #viewBox .logo{position:absolute;}
+		#viewTitle{width:502px;height: 30px;font-size: 16px;line-height: 30px;text-align: center;color: #fff; background:#6290FF;}
+
+        #createOuter{float: right;}
+        #createBox{overflow: auto; width:320px;height:500px;border: 1px solid #ddd;}
+        #createBox .logo{float:left;margin:10px;}
+        #createTitle{width:322px;height: 30px;font-size: 16px;line-height: 30px;text-align: center;color: #fff; background:#FF9562;}
+        #createBtn{width:100px;height: 30px;margin-top: 10px;}
+    </style>
+    <script src="http://lib.baomitu.com/jquery/1.12.4/jquery.js"></script>
+</head>
+<body>
+<div id="content">
+    <div id="viewOuter">
+    	<div id="viewBox"></div>
+    	<div id="viewTitle">Logo排列区</div>
+    </div>
+    <div id="createOuter">
+        <div id="createBox"></div>
+        <div id="createTitle">Logo存储区</div>
+        <button id="createBtn">创建新logo</button>
+    </div>
+</div>
+<script>
+
+    // 固定信息
+    var $doc = $('body'),
+        $content = $('#content'),
+        $viewBox = $('#viewBox'),
+        $createBox = $('#createBox'),
+        viewWidth = $viewBox.width(),
+        viewHeight = $viewBox.height(),
+        storageWidth = $createBox.width(),
+        storageHeight = $createBox.height(),
+        storageLeft = $createBox.position().left,
+        storageTop = $createBox.position().top,
+        moveStateClass = 'moveState',  // logo处于移动状态时的附加类名
+        exsitStateClass = 'exsitState',  // 已存在的logo提示性类名
+        rows = 5,       // 虚拟网格行数
+        cols = 5,       // 虚拟网格列数
+        gridSize = 100, // 虚拟网格的尺寸
+        logoSize = 80;  // logo的尺寸
+
+
+    // 绑定创建logo
+    bindCreateLogo();
+    
+
+    // 绑定logo的拖拽功能
+    bindLogoDrag()
+
+
+    /**
+     * 绑定创建logo
+     * @return {undefined}
+     */
+    function bindCreateLogo()
+    {
+        var max = 15,           // 最多允许创建16个
+            count = 0,          // 计数
+            startASCII = 65;    // 起始字符A的ASCII
+
+        $doc.on('click', '#createBtn', function(ev){
+
+            var strChar = String.fromCharCode(startASCII + count);
+
+            if($createBox.find('.logo').length >= max) {
+                alert('存储区已满！');
+                return;
+            }
+
+            $createBox.append('<div class="logo"><div class="logoInner">' + strChar + '</div></div>');
+            count++;
+        });
+    }
+
+
+    // 绑定logo的拖拽功能
+    function bindLogoDrag()
+    {
+        // 信息存储
+        var recordOffsetX = undefined,
+            recordOffsetY = undefined,
+            isInView = false,
+            $recordLogo = undefined,
+            $recordLogoInner = undefined,
+            $recordMove = undefined;
+
+
+        // step1
+        // 鼠标点击logo，记录当前logo信息
+        $doc.on('mousedown', '.logo', function(ev){
+
+            $recordLogo = $(this);
+            $recordLogoInner = $recordLogo.find('.logoInner');
+                
+            isInView = $recordLogo.parent().is($viewBox);
+
+            if(isInView){
+                $recordLogo.css('zIndex', 2);
+                $recordMove = $recordLogo;
+                $recordMove.data('recordLeft', parseInt($recordMove.css('left')));
+                $recordMove.data('recordTop', parseInt($recordMove.css('top')));
+            }else{                
+                $recordMove = $recordLogoInner;
+            }
+
+            recordOffsetX = ev.offsetX,
+            recordOffsetY = ev.offsetY;
+
+            return false;
+        });
+
+
+        // step2
+        // 鼠标移动时，目标logo跟随移动
+        $doc.on('mousemove', function(ev){
+
+            if($recordLogo === undefined) return;
+
+            var contOffset = $content.offset(),   // 内容区相对于文档的坐标
+                contOffsetLeft = contOffset.left,
+                contOffsetTop = contOffset.top,
+                leftValue = ev.pageX - contOffsetLeft - recordOffsetX,
+                topValue = ev.pageY - contOffsetTop - recordOffsetY;
+
+            $recordMove.css({
+                'position': 'absolute',
+                'left': leftValue,
+                'top': topValue
+            });
+
+            $recordLogoInner.addClass(moveStateClass);
+
+            // 检测当前位置是否在排列区
+            // 如果存在logo，则给出标识突出显示
+            checkExist($recordMove);
+        });
+
+
+        // step3
+        // 松开鼠标，将目标移动至目标区域
+        $doc.on('mouseup', function(ev){
+
+            if($recordLogo === undefined) return;
+
+            // logo相对于排列区的坐标位置
+            var position = checkPosition($recordMove);
+
+            // 如果logo被移动到排列区，则将logo切换到排列区
+            if(position.type === 1) {
+
+                adjustLogoPositionInView($recordMove, position, recoverOperate); // 调整logo元素在排列区的位置显示
+            }
+            // 如果从排列区移回存储区
+            else if(isInView && position.type === 2) {
+
+                $createBox.append($recordLogo);
+                $recordLogo.removeAttr('style');
+                $recordLogoInner.removeClass(moveStateClass);
+                $createBox.scrollTop($createBox[0].scrollHeight);
+            }
+            // 否则还原logo的位置
+            else{
+                
+                recoverOperate();
+            }
+
+            // 完成拖拽处理，清空记录
+            $recordLogo = undefined;
+        });
+
+
+        /**
+         * 恢复拖拽操作
+         * @return {undefined}
+         */
+        function recoverOperate()
+        {
+            if(isInView){
+
+                $recordMove.animate({
+                    'left': $recordMove.data('recordLeft'),
+                    'top': $recordMove.data('recordTop')
+                }, 200, function(){
+                    $recordMove.css('zIndex', 0);
+                });
+
+            }else{
+
+                $recordMove.removeAttr('style').removeClass(moveStateClass);   
+            }
+
+            $viewBox.find('.' + exsitStateClass).removeClass(exsitStateClass);
+        }
+    }
+
+    /**
+     * 调整logo元素在排列区的位置显示
+     * @param  {jQuery} $recordMove 移动中的logo元素
+     * @param  {Object} position 坐标位置
+     * @param  {function} recoverCallback    还原处理
+     * @return {undefined}
+     */
+    function adjustLogoPositionInView($recordMove, position, recoverCallback)
+    {
+        var isInView = false, $logo, $logoInner, $exsitEle = checkExist($recordMove);
+
+        // logo容器
+        if($recordMove.hasClass('logoInner')){
+            $logo = $recordMove.parent();
+            $logoInner = $recordMove;
+        }else{
+            $logo = $recordMove;
+            $logoInner = $logo.find('.logoInner');
+            isInView = true;
+        }
+
+        // 目标网格中不存在logo
+        if($exsitEle === undefined){
+
+            // 设置logo显示位置
+            $logo.css({
+                'zIndex': '0',
+                'position': 'absolute',
+                'left': $recordMove.css('left'),
+                'top': $recordMove.css('top')
+            });
+
+            $logoInner.removeAttr('style');
+
+            $logo.animate({
+                'left': position.left,
+                'top': position.top
+            }, 200);
+
+            // 将logo移动到排列区
+            !isInView && $viewBox.append($logo);
+        }
+        // 目标网格中存在logo，如果是排列区的logo移动，则两两互换
+        else if(isInView){
+
+            $logo.css('zIndex', '0');
+            $exsitEle.find('.logoInner').removeClass(exsitStateClass);
+
+            $logo.animate({
+                'left': position.left,
+                'top': position.top
+            }, 200);
+
+            $exsitEle.animate({
+                'left': $recordMove.data('recordLeft'),
+                'top': $recordMove.data('recordTop')
+            }, 200);
+        }
+        // 否则取消本次拖拽处理
+        else{
+            typeof recoverCallback === 'function' && recoverCallback();
+        }
+    }
+
+
+    /**
+     * 检测当前logo应该放置的位置 
+     * @param  {jQuery} $recordMove 移动中的logo元素
+     * @return {Object|Boolean}     {left: 'left属性值', top: 'top属性值'}
+     */
+    function checkPosition($recordMove)
+    {
+        var x = parseInt($recordMove.css('left')),  // logo元素相对于排列区的x坐标
+            y = parseInt($recordMove.css('top')),   // logo元素相对于排列区的y坐标
+            isInView = x > -logoSize && x < viewWidth && y > -logoSize && y < viewHeight, // 判断logo是否在排列区域
+            isInStorage = x > storageLeft - logoSize/2 && x < storageLeft + storageWidth && y > storageTop && y < storageTop + storageHeight;   // 判断logo是否在存储区域
+
+        // 如果在存储区域
+        if(isInStorage) {
+            return {type: 2};
+        }
+        // 如果不在排列区
+        else if(!isInView) {
+            return {type: 0};
+        }
+
+        var placeWidth = x + logoSize,  // logo在排列区占用的横向宽度
+            placeHeight = y + logoSize, // logo在排列区占用的横向高度
+            xTimes = Math.round(placeWidth / gridSize) - 1,  // 得到logo应当放置的x轴网络
+            yTimes = Math.round(placeHeight / gridSize) - 1,  // 得到logo应当放置的y轴网络
+            leftValue, topValue,
+            haveAready = false;
+
+        xTimes = xTimes < 0 ? 0 : xTimes;
+        xTimes = xTimes >= cols ? cols - 1 : xTimes;
+
+        yTimes = yTimes < 0 ? 0 : yTimes;
+        yTimes = yTimes >= rows ? rows - 1 : yTimes;
+
+        leftValue = xTimes * gridSize + (gridSize - logoSize)/2;
+        topValue = yTimes * gridSize + (gridSize - logoSize)/2;
+
+        return {
+            'type': 1,
+            'left': leftValue,
+            'top': topValue
+        };
+    }
+
+
+    /**
+     * 检测指定位置是否存在logo
+     * @param  {jQuery} $recordMove 移动中的logo元素
+     * @return {Boolean|undefined} 如果存在指定logo则返回logo的jQuery对象，否则undefined
+     */
+    function checkExist($recordMove)
+    {
+        var position = checkPosition($recordMove),
+            $exsitEle;
+
+        // 移除当前标识类名
+        $viewBox.find('.' + exsitStateClass).removeClass(exsitStateClass);
+
+        // logo不在排列区范围内
+        if(position.type !== 1) return false;
+
+        // 遍历排列区的所有logo
+        $viewBox.find('.logo').each(function(){
+
+            var $that = $(this),
+                left = parseInt($that.css('left')),
+                top = parseInt($that.css('top'));
+
+            if(left === position.left && top === position.top) {
+                $exsitEle = $that;
+                return false;
+            }
+        });
+
+        // 如果存在logo
+        if($exsitEle !== undefined) {
+            $exsitEle.find('.logoInner').addClass(exsitStateClass);
+        }
+
+        // 返回检测结果
+        return $exsitEle;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+@charset "utf-8";
+
+$screen-sm: 768px; // 小型设备-竖向展示的平板电脑
+$screen-md: 992px; // 中型设备-分辨率为1024*768的台式电脑（考虑到滚动条宽度）或者横向展示的平板电脑
+$screen-lg: 1200px; // 大型设备-分辨率在1366*768及以上的台式电脑
+$baseSplit: 15px; // 基本间距
+$baseSplit-sm: 15px; // 基本间距-小型设备
+$baseSplit-md: 15px; // 基本间距-中型设备
+$baseSplit-lg: 15px; // 基本间距-大型设备
+
+
+// @mixins
+//--------------------------------------------------------------------------
+@mixin css3($attr: transition, $val: ease-out .25s) {
+	-webkit-#{$attr}: $val;
+	   -moz-#{$attr}: $val;
+		-ms-#{$attr}: $val;
+		 -o-#{$attr}: $val;
+		    #{$attr}: $val;
+}
+
+// 兼容IE8的透明度设置
+@mixin opacity($opacity: 1) {
+	opacity: $opacity;
+	filter: alpha(opacity=$opacity / 100);
+}
+
+
+// 兼容IE的背景颜色透明设置
+@mixin bgOpacity($color, $opacity){
+
+    $color: rgba($color, $opacity);
+    $iecolor: ie-hex-str($color); 
+    
+    background-color: $color;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#{$iecolor}', endColorstr='#{$iecolor}');
+
+    :root &{
+    	filter: none;
+    }
+}
+
+%anim {
+	@include css3(transition, ease-out .25s);
+}
+
+
+// css画实心三角形
+%triangle {
+	display: block;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	content: " ";
+}
+@mixin triangle($direction: right, $width: 5px, $color: #ddd) {
+	@if($direction == top) {
+		$direction: bottom;
+	}
+	@else if($direction == right) {
+		$direction: left;
+	}
+	@else if($direction == bottom) {
+		$direction: top;
+	}
+	@else if($direction == left) {
+		$direction: right;
+	}
+
+	@extend %triangle;
+	border: $width solid transparent;
+	border-#{$direction}-color: $color;
+}
+
+
+// css画三角形箭头
+%arrow-basic {
+    position: relative;
+    display: inline-block;
+}
+%arrow-basic:before,
+%arrow-basic:after { 
+    content: ''; 
+    position: absolute; 
+    height: 0; 
+    width: 0;
+}
+@mixin arrow-maker($direction: top, $width: 5px, $color: #A2A2A2, $size: 1px, $defaltColor: #fff){
+
+    &{
+        @extend %arrow-basic;     
+    }
+
+    @if($direction == top){
+
+        &{
+            width: $width * 2;
+            height: $width;  
+        }        
+        &:before{
+            top: -$width;
+            left: 0;       
+        }
+        &:after{
+            top: -$width + $size;
+            left: 0;
+        }
+    }
+    @else if($direction == bottom){
+
+        &{
+            width: $width * 2;
+            height: $width;  
+        }     
+        &:before{
+            top: 0;
+            left: 0;
+        }
+        &:after{
+            top: -$size;
+            left: 0;
+        }
+
+    }
+    @else if($direction == left){
+
+        &{
+            width: $width;
+            height: $width * 2;  
+        }     
+        &:before{
+            top: 0;
+            left: -$width;
+        }
+        &:after{
+            top: 0;
+            left: -$width + $size;
+        }
+
+    }
+    @else if($direction == right){
+
+        &{
+            width: $width;
+            height: $width * 2;   
+        }     
+        &:before{
+            top: 0;
+            left: 0;
+        }
+        &:after{
+            top: 0;
+            left: -$size;
+        }
+
+    }
+
+    $direction: reverseDirection($direction);
+
+    &:before,
+    &:after{
+        border: $width solid transparent;
+        border-#{$direction}-color: $color;
+    }
+
+    &:after{
+        border-#{$direction}-color: $defaltColor;
+    }
+}
+
+
+
+// functions
+//--------------------------------------------------------------------------
+
+// reverse the direction value
+// left => right, right => left, top => bottom, bottom => top
+@function reverseDirection($direction: left){
+    @if($direction == left){
+        @return right;
+    }
+    @if($direction == right){
+        @return left;
+    }
+    @if($direction == top){
+        @return bottom;
+    }
+    @if($direction == bottom){
+        @return top;
+    }
+    @return $direction;
+}
+
+// 计算百分比
+@function caclPercent($value: 0, $base: 1080){
+    @return unquote($value / $base * 100 + '%');
+}
+
+
+// %placeholders
+//--------------------------------------------------------------------------
+@mixin clearfix(){
+    *zoom: 1;
+    &:after{
+        content: "";
+        clear: both;
+        display: block;
+        height: 0;
+    }
+}
+%clearfix{
+    @include clearfix();
+}
+
+%hide {
+	float: left;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+}
+
+%img-block {
+	display: block;
+	vertical-align: baseline;
+}
+
+%inline-block {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+%ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+%justify {
+	text-align: justify;
+	text-justify: inter-ideograph;
+}
+
+%center-block {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+%middle-block-box {
+	@extend %inline-block;
+
+	position: relative;
+	vertical-align: middle;
+}
+
+%middle-block {	
+	display: inline-block;
+	width: 1px;
+	height: 1px;
+	margin-left: -1px;
+	font-size: 0;
+	line-height: 0;
+	vertical-align: middle;
+	*zoom: 1;
+	*display: inline;
+}

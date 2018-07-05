@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<div class="container">
+</div>
+<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
+<script src="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>"></script>
+<% } %>
+<script>
+
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+#slideParallax{width:100%;height:630px;position:relative;margin-top:20px;overflow:hidden;}
+#slideParallax .banner-bg{position:absolute;top:0px;left:0px;width:100%;height:630px;background:#fff url(../images/9_N1bg.jpg);}
+#slideParallax .banner-nav{position:absolute;top:500px;left:50%;width:100px;margin:0px;}
+#slideParallax .banner-nav li{float:left;display:inline;width:20px;height:20px;background:#c00000;margin:0 5px;cursor:pointer;}
+#slideParallax .banner-nav .sele{background:blue;}
+
+#slideParallax .banner-wrap{position:relative;width:1180px;margin:0 auto;height:100%;}
+#slideParallax .banner-wrap div{position:absolute;width:100%;height:630px;}
+#slideParallax .banner-wrap .d_1{background:url(../images/9_N1c.png) no-repeat;}
+#slideParallax .banner-wrap .d_2{background:url(../images/9_N1b.png) no-repeat;}
+#slideParallax .banner-wrap .d_3{background:url(../images/9_N1a.png) no-repeat;}
+
+#slideParallax .banner-wrap .d_4{background:url(../images/find5c.png) no-repeat;}
+#slideParallax .banner-wrap .d_5{background:url(../images/find5b.png) no-repeat;}
+#slideParallax .banner-wrap .d_6{background:url(../images/find5a.png) no-repeat;}
+
+#slideParallax .banner-wrap .d_7{background:url(../images/color1.png) no-repeat;}
+#slideParallax .banner-wrap .d_8{background:url(../images/color2.png) no-repeat;}
+#slideParallax .banner-wrap .d_9{background:url(../images/color3.png) no-repeat;}

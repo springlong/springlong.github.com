@@ -1,0 +1,16 @@
+*{padding:0;margin:0;}
+h1{width:980px;margin:30px auto;font-size:26px;text-align:center;}
+.jsCodeNum{width:960px;padding:10px;border:1px solid #ddd;border-radius:4px;margin:20px auto;background:#fdfdfd;font-size:14px;font-family:"Courier New";text-align:center;}
+
+#all{width:980px;margin:0 auto;font-size:16px;line-height:4em;text-align:center;color:#fefefe;}
+#header{height:120px;margin-bottom:10px;background-color:#3E5805;}
+#footer{height:300px;margin-top:10px;background-color:#333;}
+
+#contentWrapper{overflow:hidden;}
+#main{float:left;width:720px;height:3000px;background-color:#6F6F36;}
+#aside{float:right;width:249px;}
+#aside-1,#aside-2,#aside-3,#aside-4{width:249px;margin-top:10px;}
+#aside-1{height:200px;border-bottom:5px solid #402136;margin-top:0;background-color:#7C4064;}
+#aside-2{height:400px;border-bottom:5px solid #312746;background-color:#584879;}
+#aside-3{height:400px;border-bottom:5px solid #213B3B;background-color:#396467;}
+#aside-4{height:300px;border-bottom:5px solid #433427;background-color:#83644B;}

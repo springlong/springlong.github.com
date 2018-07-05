@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style type="text/css">
+
+	/*====================================================
+	  页面的整体控制========================================*/
+	*{
+		margin-bottom:10px;
+	}
+	
+	body{
+		font-family:"微软雅黑",Arial, Helvetica, sans-serif;
+		margin:-10px 0px 0px 0px;
+	}
+	#mainContainer{
+		margin:0px auto;
+	}
+	
+	#mainContainer,#header,#contentContainer,#footer{
+		width:800px;
+	}
+	#header{
+		height:50px;
+		background-color:silver;
+	}
+	#footer{
+		height:100px;
+		clear:both;
+		background-color:#066;
+		margin:0px;
+	}
+	#sideLeft,#sideRight,#main{
+		height:400px;
+	}
+	
+	#sideLeft{
+		width:100px;
+		float:left;
+		background-color:orange;
+	}
+	#main{
+		width:580px;
+		float:left;
+		margin:0px 10px;
+		background-color:gray;
+	}
+	#sideRight{
+		width:100px;
+		float:right;
+		background-color:orange;
+	}
+	
+	h2{
+		text-align:center;
+	}
+	
+	/*===================================================
+	  导航栏的设置=========================================*/
+	#mainNav{
+		list-style:none;
+		padding:15px 0px 0px 40px;
+	}
+	#mainNav li{
+		float:left;
+	}
+	#mainNav li a{
+		color:#060;
+		text-decoration:none;
+		padding:10px 32px;
+		margin-right:10px;
+		background-color:#9F0;
+	}
+	#mainNav li a:visited{
+		color:#060;
+	}
+	#mainNav li a:hover{
+		background-color:#093;
+		color:#C90;
+	}
+	#mainNav li a:active{
+		background-color:#030;                                                   
+	}
+
+		
+	
+</style>
+</head>
+
+<body>
+
+<div id="mainContainer">
+	<div id="header">
+		<ul id="mainNav">
+			<li><a href="">导航1</a></li>
+			<li><a href="">导航2</a></li>
+			<li><a href="">导航3</a></li>
+			<li><a href="">导航4</a></li>
+			<li><a href="">导航5</a></li>
+		</ul>
+	</div>
+	
+	<div id="contentContainer">
+		<div id="sideRight">
+			<h2>Side Right</h2>
+		</div>
+		<div id="sideLeft">
+			<h2>Side Left</h2>
+		</div>
+		<div id="main">
+			<h2>Main</h2>
+		</div>
+	</div>
+	
+	<div id="footer">
+		<h2>Footer</h2>
+	</div>	
+</div>
+
+</body>
+</html>

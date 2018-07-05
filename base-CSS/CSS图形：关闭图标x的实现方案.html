@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<style>
+    .closeBox {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        border: 1px solid #ddd;
+    }
+    .close {
+        display: block;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        cursor: pointer;
+    }
+
+    .close:before {
+        content: '';
+        width: 2px;
+        height: 100%;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        margin-left: -1px;
+        background-color: #ddd;
+    }
+
+    .close:after {
+        content: '';
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -1px;
+        background-color: #ddd;
+    }
+
+    .close:hover {
+        background: url(about:blank);
+    }
+    .close:hover:before {
+        background-color: #4ED6D1;
+    }
+
+    .close:hover:after {
+        background-color: #4ED6D1;
+    }
+
+
+
+    .close-ie {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        font-size: 40px;
+        line-height: 20px;
+        font-family: "Segoe UI","Lucida Grande",Helvetica,Arial;
+        cursor: pointer;
+        color: #ddd;
+    }
+
+    .close-ie:hover {
+        color: #4ed6d1;
+    }
+</style>
+    <div class="closeBox">
+        <span class="close" id="closeIcon"></span>
+        <span class="close-ie" id="closeIcon">&times;</span>
+    </div>
+</body>
+</html>

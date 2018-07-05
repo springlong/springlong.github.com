@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>表单控件绑定</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>表单控件绑定</h1>
+	<div id="testBox">
+		<hr>
+		<p>文本框：</p>
+		<input type="text" placeholder="edit me" v-model="inputValue">
+		<p>the inputValue is: {{inputValue}}</p>
+		<hr>
+		<p>多行文本框：</p>
+		<textarea placeholder="edit me" v-model="textareaValue"></textarea>
+		<p>the textareaValue is: {{textareaValue}}</p>
+		<hr>
+		<p>单个复选框：</p>
+		<input type="checkbox" v-model="checked" id="right" name="right" value="right">
+		<label for="right">{{checked}}</label>
+		<hr>
+		<p>多个复选框绑定到同一个数组：</p>
+		<input type="checkbox" v-model="checkedNames" id="jack" name="jack" value="Jack">
+		<label for="jack">Jack</label>
+		<input type="checkbox" v-model="checkedNames" id="john" name="john" value="John">
+		<label for="john">John</label>
+		<input type="checkbox" v-model="checkedNames" id="mike" name="mike" value="Mike">
+		<label for="mike">Mike</label>
+		<br>
+		<p>the checkNames: {{checkedNames}}</p>
+		<hr>
+		<p>单选按钮：</p>
+		<input type="radio" v-model="picked" id="number-one" name="number" value="one">
+		<label for="number-one">one</label>
+		<input type="radio" v-model="picked" id="number-two" name="number" value="two">
+		<label for="number-two">two</label>
+		<br>
+		<p>the picked is: {{picked}}</p>
+		<hr>
+		<p>选择列表-单选列表：</p>
+		<select v-model="selected">
+			<option disabled value="">Please select one</option>
+			<option>A</option>
+			<option>B</option>
+			<option>C</option>
+		</select>
+		<br>
+		<p>the selected is: {{selected}}</p>
+		<hr>
+		<p>选择列表-多选列表（绑定到一个数组）：</p>
+		<select v-model="selectedValues" multiple>
+			<option>A</option>
+			<option>B</option>
+			<option>C</option>
+		</select>
+		<br>
+		<p>the selectedValues is: {{selectedValues}}</p>
+		<hr>
+		<p>选择列表-动态选项，用v-for渲染：</p>
+		<select v-model="selectedVal">
+			<option v-for="item in options" :value="item.value">{{item.text}}</option>
+		</select>
+		<br>
+		<p>the selectedVal is: {{selectedVal}}</p>
+		<hr>
+		<p>修饰符：<code>.lazy</code>，在change事件执行更新！</p>
+		<input v-model.lazy="lazyInput">
+		<br>
+		<p>the lazyInput value is: {{lazyInput}}</p>
+		<hr>
+		<p>修饰符：<code>.number</code>，返回Number类型（如果原值的转换结果为 NaN 则返回原值）</p>
+		<input v-model.number="numberValue">
+		<br>
+		<p>the numberValue value is: {{numberValue+1}}</p>
+		<hr>
+		<p>修饰符：<code>.trim</code>，自动过滤用户输入的首尾空格，</p>
+		<input v-model.trim="trimValue">
+		<br>
+		<p>the trimValue value is: {{trimValue}}</p>
+	</div>
+	<script>
+	    var vm = new Vue({
+	    	el: '#testBox',
+	        data: {
+	        	inputValue: '',
+	        	textareaValue: '',
+	        	checked: false,
+	        	checkedNames: [],
+	        	picked: '',
+	        	selected: '',
+	        	selectedValues: [],
+	        	selectedVal: '',
+	        	options: [
+	        		{text: 'one', value: 'A'},
+	        		{text: 'two', value: 'B'},
+	        		{text: 'three', value: 'C'}
+	        	],
+	        	lazyInput: '',
+	        	numberValue: 0,
+	        	trimValue: '',
+	        }
+	    });
+	</script>
+</div>
+</body>
+</html>

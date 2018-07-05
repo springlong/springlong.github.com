@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>node.getElementsByTagName(tag) - jQuery代码示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+</head>
+<body style="height:1200px;">
+<h1>jQuery代码示例：<code>node.getElementsByTagName(tag)</code></h1>
+<p class="title"><code>node.getElementsByTagName(tag)</code></p>
+<p class="desc">获取目标节点的后代元素中标签名称为指定值的一个或多个元素所构成的节点列表。（返回类型：NodeList）</p>
+<div id="box">
+    容器（ID：box）
+    <div id="layer1" name="wrap">
+        图层1（ID：layer1）（name：wrap）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer2" name="wrap">
+        图层2（ID：layer2）（name：wrap）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer3" name="wrap">
+        图层3（ID：layer3）（name：wrap）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+</div>
+<p class="content">在右侧大家可以看到一个绿色方框的div容器，在该容器中还有三个div子节点，同时在每个div子节点下还有三个段落p子节点，为了该页面的更好测试，还希望大家首先查看下这个容器的HTML结构！</p>
+<p>为了演示该方法的执行效果，我们为下列按钮的单击事件添加了如按钮文本所示的执行代码，大家可以通过点击不同的按钮来查看该方法每种参数使用的不同结果。</p>
+<p>由于部分执行代码在某些浏览器中不被支持，如果浏览器报错，我们将通过window的error事件将错误信息进行弹出提示。</p>
+<p><button class="btnShort">document.getElementsByTagName("div")[0].style.backgroundColor = "#333"</button></p>
+<p><button class="btnShort">document.getElementById("box").getElementsByTagName("div")[0].style.backgroundColor = "orange"</button></p>
+<p><button class="btnShort btnError" title="由于box容器下没有span元素，该语句获取的节点列表的长度为0。因此索引为0的操作对象将为undefined，所以会抛出错误异常！">document.getElementById("box").getElementsByTagName("span")[0].style.backgroundColor = "green"</button></p>
+<script>
+    (function($)
+    {
+        $("button").eq(0).click(function(){
+            document.getElementsByTagName("div")[0].style.backgroundColor = "#333";
+        });
+        
+        $("button").eq(1).click(function(){
+            document.getElementById("box").getElementsByTagName("div")[0].style.backgroundColor = "orange";
+        });
+        
+        $("button").eq(2).click(function(){
+            document.getElementById("box").getElementsByTagName("span")[0].style.backgroundColor = "green";
+        });
+
+    })(jQuery);
+
+    //将报错信息弹出
+    window.onerror = function(msg)
+    {
+        alert("[Error] " + msg);
+        return true;
+    }
+</script>
+</body>
+</html>

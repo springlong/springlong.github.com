@@ -1,0 +1,441 @@
+/*
+=== Sohu Blog StyleSheet File ================================
+	Style Name: default
+	Version: 1.0
+	Author: Todd Lee
+	Last Update: 2005-10-31
+==============================================================
+*/
+
+/****** General Styles ******/
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: "ËÎÌו",Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #cccccc;
+	line-height: 130%
+	background-color: #11191E;
+}
+a {
+	color: #F5651F;
+	text-decoration: underline;
+}
+a:hover {
+	color: #f4f4f4;
+	text-decoration: underline;
+}
+img {
+	border: none;
+}
+.arrow-up {
+	height: 11px;
+	width: 11px;
+	background: url(../images/arrow_up.gif) no-repeat center;
+	cursor: pointer;
+}
+
+
+
+
+/****** Form Controls Styles ******/
+	
+
+/* a style which makes div touch the bottom of content */
+.clear{
+	border-top:1px solid transparent !important;
+	margin-top:-1px !important;
+	border-top:0;
+	margin-top:0;
+	clear:both;
+	visibility:hidden;
+}
+/****** Main Layout Styles ******/
+#wrapper {
+	margin: 0px auto;
+	width: 993px;
+	background-image: url(../images/sohu10_01.jpg);
+	background-position: left top;
+	background-repeat: no-repeat;
+}
+
+#mainWrapper {
+	background-image: url(../images/sohu10_04_01.gif);
+}
+#navBar {
+	background-image: url(../images/sohu10_02.gif);
+}
+#footer {
+	background-image: url(../images/sohu10_10_01.gif);
+}
+
+
+#header {
+	height: 374px;
+}
+#innerHeader {
+	width: 983px;
+	padding-left: 10px;
+}
+
+
+#blogTitle {
+	float: left;
+}
+#blogTitle, #blogTitle a {
+	color: #ffffff;
+	font-size: 16px;
+	line-height: 16px;
+	text-decoration: none;
+	margin-top: 15px;
+	padding-left: 70px;
+}
+#blogTitle a:hover {
+	color: #F5651F;
+}
+#blogUrl {
+	color: #ffffff;
+	padding-top: 15px;
+}
+#blogUrl a {
+	color: #ffffff;
+	padding-left: 10px;
+}
+#blogUrl a:hover {
+	color: #F5651F;
+}
+#blogDesc {
+	color: #ffffff;
+	width: 400px;
+	word-break: break-all;
+	padding-top: 15px;
+	padding-left: 140px;
+}
+
+
+
+
+
+
+
+
+#navBar {
+	height: 82px;
+	background-image: url(../images/sohu10_02.gif);
+	background-repeat: no-repeat;
+}
+#innerNavBar {
+	width: 710px;
+	margin-left: 170px;
+	margin-top: 23px;
+}
+#mainNav {
+	float: left;
+	margin: 0px;
+	padding: 0px;
+}
+#mainNav li {
+	float: left;
+	list-style: none;
+	margin: 0px;
+	padding: 32px 0px 2px;
+}
+#mainNav li a {
+	padding: 32px 12px 0px;
+	background-position: center top;
+	background-repeat: no-repeat;
+	text-decoration: none;
+	color: #ffffff;
+}
+#mainNav .navHome { background-image: url(../images/icoMenu_home.gif);}
+#mainNav .navHome:hover { background-image: url(../images/icoMenu_home_over.gif);}
+#mainNav .navHome-active { background-image: url(../images/icoMenu_home_over.gif); color: #ffffff; cursor: default;}
+
+#mainNav .navBlog { background-image: url(../images/icoMenu_blog.gif);}
+#mainNav .navBlog:hover { background-image: url(../images/icoMenu_blog_over.gif);}
+#mainNav .navBlog-active { background-image: url(../images/icoMenu_blog_over.gif); color: #ffffff; cursor: default;}
+
+#mainNav .navImg { background-image: url(../images/icoMenu_img.gif);}
+#mainNav .navImg:hover { background-image: url(../images/icoMenu_img_over.gif);}
+#mainNav .navImg-active { background-image: url(../images/icoMenu_img_over.gif); color: #ffffff; cursor: default;}
+
+#mainNav .navSound { background-image: url(../images/icoMenu_sound.gif);}
+#mainNav .navSound:hover { background-image: url(../images/icoMenu_sound_over.gif);}
+#mainNav .navSound-active { background-image: url(../images/icoMenu_sound_over.gif); color: #ffffff; cursor: default;}
+
+#mainNav .navVideo { background-image: url(../images/icoMenu_video.gif);}
+#mainNav .navVideo:hover { background-image: url(../images/icoMenu_video_over.gif);}
+#mainNav .navVideo-active { background-image: url(../images/icoMenu_video_over.gif); color: #ffffff; cursor: default;}
+
+#mainNav .navProfile { background-image: url(../images/icoMenu_profile.gif);}
+#mainNav .navProfile:hover { background-image: url(../images/icoMenu_profile_over.gif);}
+#mainNav .navProfile-active { background-image: url(../images/icoMenu_profile_over.gif); color: #ffffff; cursor: default;}
+
+#mainNav .navshipin { background-image: url(../images/video.gif);}
+#mainNav .navshipin:hover { background-image: url(../images/videoblack.gif);}
+#mainNav .navshipin-active { background-image: url(../images/videoblack.gif); color: #ffffff; cursor: default;}
+
+#mainNav .navfriend { background-image: url(../images/friend.gif);}
+#mainNav .navfriend:hover { background-image: url(../images/friendblack.gif);}
+#mainNav .navfriend-active { background-image: url(../images/friendblack.gif); color: #ffffff; cursor: default;}
+
+
+
+
+
+
+#mainWrapper {
+	background-image: url(../images/sohu10_04.gif);
+	background-repeat: repeat-y;
+	width: 993px;
+}
+#footer {
+	clear: both;
+	background-image: url(../images/sohu10_10.gif);
+	background-repeat: no-repeat;
+	height: 165px;
+}
+#innerFooter{
+	color: #f4f4f4;
+	padding-top: 86px;
+	text-align: center;
+}
+#innerFooter a{
+	color: #f4f4f4;
+	text-decoration:none;
+}
+#innerFooter a:hover{
+	color:#F5651F;
+	text-decoration:underline;
+}
+#contact {
+	margin: 0px auto;
+	margin-bottom: 15px;
+	width: 400px;
+}
+#contact td {
+	color: #f4f4f4;
+	padding: 0 10px;
+}
+#contact a {
+	color: #f4f4f4;
+	text-decoration: underline;
+}
+#contact a:hover {
+	color: #F5651F;
+}
+
+
+/****** Header Elements Styles ******/
+
+
+.collect {
+	margin: 3px;
+	width: 50px;
+	height: 70px;
+	float: left;
+	position: relative;
+	overflow: hidden;
+}
+.collect img {
+	position: absolute;
+	border: 1px solid #ccc;
+	vertical-align: middle;
+	height: 48px;
+}
+.collect span {
+	margin-top: 50px;
+	display: block;
+	width: 48px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: center;
+	cursor: pointer;
+}
+
+
+
+
+/****** NavBar Elements Styles ******/
+#mainNav {
+	float: left;
+}
+#optionNav {
+	float: right;
+}
+
+/****** Content Layout ******/
+/* content */
+#content {
+	float: left;
+	width: 530px;
+	overflow: hidden;
+	margin-top:-20px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 125px;
+}
+#innerContent {
+	width: 500px;
+	overflow: hidden;
+	padding:10px 0;
+}
+
+
+#contentLabelBox {
+	padding-top: 20px;
+	padding-right: 5px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #5E696F;
+}
+
+
+/* item box */
+
+
+
+
+/****** Sidebar Layout ******/
+#sidebar {
+	float: right;
+	width: 181px;
+	overflow: hidden;
+	margin-top:-10px;
+	padding-right: 120px;
+}
+#innerSidebar {
+	overflow: hidden;
+}
+
+.panel {
+	margin-bottom: 5px;
+	line-height:20px;
+} 
+
+.panel-title{
+	color:#F4F4F4;
+	height: 20px;
+	padding-top: 8px;
+}
+.panel-title h3 {
+	font-size: 14px;
+	float: left;
+	margin: 0px;
+	padding-top: 3px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+}
+.panel-title h3 a {
+	font-size: 14px;
+}
+.panel-menu{
+	padding-right: 3px;
+	padding-left: 3px;
+	float: right;
+}
+
+.panel-content {
+	clear: both;
+	margin-top: 0px;
+	margin-right: 5px;
+	margin-bottom: 0px;
+	margin-left: 5px;
+	padding-top: 5px;
+	color: #cccccc;
+}
+.panel-content a{
+	color: #cccccc;
+}
+.panel-content a:hover{
+	color: #F5651F;
+}
+.panel-content-hidden {
+	margin: 1px 3px;
+	overflow: hidden;
+	height:0px;
+	border-bottom: 1px solid #97ACB6;
+}
+
+.panel-pic{
+	float:left;
+	padding-right:6px;
+	margin-bottom:4px;
+	margin-top:-4px;
+}
+.panel-content hr {
+	margin: 5px 0px;
+	height: 1px;
+	border: none;
+	border-top: 1px solid #97ACB6;
+	clear:both;
+}
+.panel-content ul {
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+	width: 100%;
+	white-space: nowrap;
+}
+.panel-content li {
+	list-style: none;
+}
+.panel-content li a{
+	text-decoration: none;
+}
+
+
+.show img{
+  text-align:center;
+  border:1px solid #fff;
+  width:120px;
+  height:120px;
+}  
+
+/****** article content ******/
+
+
+
+/****** templete content ******/
+
+/****** other ******/
+
+
+/****** music by baicai ******/
+
+
+/****** gwb by baicai ******/
+
+/****** diary by baicai ******/
+
+#diarytitle{
+	width: 100%;
+	float:left;
+	font-size:14px;
+	font-weight:bold;
+	color:#eeeeee;
+	padding: 5px;
+	border-bottom: 1px dashed #97ACB6;
+}
+
+#diarycontent{
+	width: 100%;
+	float:left;
+	font-size:12px;
+	color:#dddddd;
+	padding: 5px;
+	line-height:180%;
+	padding-bottom:15px;
+}
+#diarybottom{
+	width: 100%;
+	float:left;
+	font-size:12px;
+	color:#eeeeee;
+	padding: 5px;
+}
+
+

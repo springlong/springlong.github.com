@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS应用——滤镜的使用（遮罩+透明）</title>
+	<meta name="keywords" content="CSS应用——滤镜的使用" />
+	<meta name="description" content="CSS应用——滤镜的使用" />
+	<meta name="author" content="Jerry_小猪" />
+	<meta http-equive="Content-Type" content="text/html;charset=gb2312"/>
+	<style type="text/css">
+		@import url("css.css");
+
+		#biaozhun{
+			width:600px;
+			height:30px;
+			border:4px solid silver;}
+
+}
+    </style>
+</head>
+<body>
+	<p class="caption">CSS应用-滤镜的使用（遮罩+透明）</p>
+<p class="caption">CSS应用-滤镜的使用（遮罩+透明）</p>
+<hr />
+	<table width="850" border="1" align="center" bordercolor="black" cellspacing="0" cellpadding="5" style="font-size:16px;color:#0033CC">
+    	<!--第一行-->
+    	<tr align="center" height="30" bgcolor="silver">
+        	<td colspan="2" class="type"><span class="caption">遮罩+透明</span></td>
+      </tr>
+        <tr height="30">
+        	<td colspan="2" align="center"><p class="keywords">filter:mask(color=?);</p>
+       	    <p class="keywords">filter:chroma(color=?);</p></td>
+        </tr>
+    	<!--第二行-->
+    	<tr height="30">
+        	<td>属性</td>
+        	<td>说明</td>
+        </tr>
+    	<!--第三行-->
+    	<tr height="30">
+        	<td>color</td>
+       	  <td>设置遮障或透明的颜色！</td>
+      </tr>
+    	<tr height="30">
+    	  <td>&nbsp;</td>
+    	  <td>遮障：在一个区块中应用了遮障效果，则该区块将被指定的颜色所覆盖，被覆盖的元素（包括文字和图片）都将呈透明显示，即页面的背景颜色是什么，则他们就显示为什么颜色！</td>
+  	  </tr>
+    	<tr height="30">
+    	  <td>&nbsp;</td>
+    	  <td>透明：在一个区块中应用了透明效果，则该区块中与该颜色一样的元素都将呈透明显示（注：边缘部分显示为原本的颜色），即页面的背景颜色是什么，则他们就显示为什么颜色！</td>
+  	  </tr>
+    	<!--第四行-->
+    	<!--第五行-->
+    	<tr height="30">
+        	<td>&nbsp;</td>
+       	  <td>注意：边缘光晕必须针对某一区块中的文本或图片，即要设置一个区块的width或height属性，才能正确显示出阴影的效果！</td>
+      	</tr>
+    	<!--第六行-->
+    	<!--第七行-->
+    </table>
+
+<hr />
+
+	正常情况下：
+	<p  style="width:600px;height:30px;">
+    	这是正常情况下的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+
+	0.默认设置下：<span class="keywords">filter:mask();</span>
+	<p  style="width:600px;height:30px;filter:mask();">
+    	这是遮罩的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+
+	1.遮罩颜色为灰色：<span class="keywords">filter:mask(color=gray);</span>
+	<p  style="width:600px;height:30px;filter:mask(color=gray);">
+    	这是遮罩的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+
+	2.遮罩颜色为蓝色：<span class="keywords">filter:mask(color=blue);</span>
+	<p  style="width:600px;height:30px;filter:mask(color=blue);">
+    	这是遮罩的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+
+	3.遮罩颜色为橙色：<span class="keywords">filter:mask(color=orange);</span>
+	<p  style="width:600px;height:30px;filter:mask(color=orange);">
+    	这是遮罩的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+
+	4.遮罩颜色为白色：<span class="keywords">filter:mask(color=white);</span>
+	<p  style="width:600px;height:30px;filter:mask(color=white);">
+    	这是遮罩的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+
+    <hr />
+    <p>
+    <hr />
+    <p>
+    <hr />
+
+	0.默认设置下：<span class="keywords">filter:chroma();</span>
+<p  style="background:silver;width:600px;height:30px;font-size:36px;color:black;font-weight:bolder;filter:chroma();">
+    	这是透明的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+</p>
+    <hr />
+
+	1.透明颜色为黑色：<span class="keywords">filter:chroma(color=black);</span>
+	<p  style="background:silver;width:600px;height:30px;font-size:36px;color:black;font-weight:bolder;filter:chroma(color=black);">
+    	这是透明的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+
+	2.透明颜色为灰色：<span class="keywords">filter:chroma(color=gray);</span>
+	<p  style="background:silver;width:600px;height:30px;font-size:36px;color:black;font-weight:bolder;filter:chroma(color=gray);">
+    	这是透明的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+
+
+    <hr />
+    <hr />
+<hr />
+
+
+    <hr />
+
+
+</body>
+</html>

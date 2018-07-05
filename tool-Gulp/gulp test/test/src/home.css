@@ -1,0 +1,43 @@
+.market-nav-pic img {
+  display: block;
+  vertical-align: baseline;
+}
+
+.market-nav-pic, .market-countrys {
+  float: left;
+}
+
+.market-nav:after {
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+  line-height: 0;
+  content: '\20';
+}
+
+.market-nav {
+  *display: table;
+  *zoom: 1;
+}
+
+/*--------------------------
+ * module: nav
+ *-----------------------------------------------------------------------------*/
+.market-nav {
+  margin-top: 36px;
+  margin-bottom: 6px;
+}
+
+.market-nav-pic img {
+  width: 503px;
+  height: 327px;
+}
+
+.market-countrys {
+  margin-left: 30px;
+}
+.market-countrys .opened li,
+.market-countrys .opensoon li {
+  margin-bottom: 20px;
+}

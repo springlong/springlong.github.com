@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>日期操作：生日倒计时（不考虑农历）</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:360px;}
+    </style>
+</head>
+<body>
+<h1>日期操作：生日倒计时（不考虑农历）</h1>
+<h2>运行测试</h2>
+<div id="wrapper">
+    <p><label for="inputDate">请输入你的出生日期：</label><input id="inputDate" value="1990-06-24" /><button id="btnCheck">点击判断</button></p>
+</div>
+<h2>脚本函数</h2>
+<pre class="jsCode autoHeight">
+/**
+ * 输入一个表示出生日期的字符串，计算出下一个生日是多少周岁，且还有多少天过生日（如果是无效日期则最终返回Null）。
+ * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
+ * @param  {String|Date} dateStr 日期字符串
+ * @return {Object}      {year: 下一次生日所在的年份(Number), age: 多少周岁(Number), left: 还有多少天过生日(Number)}
+ */
+function calcuBirthday(dateStr)
+{
+    var bornDate = new Date(typeof dateStr === "string" ? dateStr.replace(/-/g, "/") : dateStr),
+        bornYear = bornDate.getFullYear(),
+        now = new Date(),
+        nextBirthDate = new Date(bornDate),
+        nextBirthYear, age, left;
+
+    if(isNaN(bornYear)) return null;
+
+    now = new Date(now.getFullYear(), now.getMonth(), now.getDate());   //忽略掉当前系统日期时间的时间部分
+    nextBirthDate.setFullYear(now.getFullYear());                       //将下一个生日的时间重置为今年的那个出生日期
+    nextBirthYear = nextBirthDate.getFullYear();                        //下一个生日所在的年份
+    if(nextBirthDate &lt; now) nextBirthDate.setFullYear(++nextBirthYear); //如果今天生日已过，则下一次生日是在下一年
+
+    age = nextBirthYear - bornYear;
+    left = Math.floor((nextBirthDate - now) / (1000*60*60*24));
+
+    return {year: nextBirthYear, age: age, left: left};
+}
+</pre>
+<h2>执行代码</h2>
+<pre class="jsCode">
+document.getElementById("btnCheck").onclick = function()
+{
+    var frmDate = document.getElementById("inputDate"),
+        dateStr = frmDate.value,
+        birthday = calcuBirthday(dateStr);
+
+    if(birthday === null){
+        alert("你填写的出生日期不正确，请重新填写！");
+        frmDate.focus();
+        frmDate.select();
+        return;
+    }
+    alert(birthday.left === 0 ? "哇，恭喜你，{ " + birthday.age + " }周岁生日快乐！" : "离你{ " + birthday.year + " }年{ " + birthday.age + " }周岁的生日还有{ " + birthday.left + " }天！");
+};
+</pre>
+<script>
+    /**
+     * 输入一个表示出生日期的字符串，计算出下一个生日是多少周岁，且还有多少天过生日（如果是无效日期则最终返回Null）。
+     * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
+     * @param  {String|Date} dateStr 日期字符串
+     * @return {Object}      {year: 下一次生日所在的年份(Number), age: 多少周岁(Number), left: 还有多少天过生日(Number)}
+     */
+    function calcuBirthday(dateStr)
+    {
+        var bornDate = new Date(typeof dateStr === "string" ? dateStr.replace(/-/g, "/") : dateStr),
+            bornYear = bornDate.getFullYear(),
+            now = new Date(),
+            nextBirthDate = new Date(bornDate),
+            nextBirthYear, age, left;
+
+        if(isNaN(bornYear)) return null;
+
+        now = new Date(now.getFullYear(), now.getMonth(), now.getDate());   //忽略掉当前系统日期时间的时间部分
+        nextBirthDate.setFullYear(now.getFullYear());                       //将下一个生日的时间重置为今年的那个出生日期
+        nextBirthYear = nextBirthDate.getFullYear();                        //下一个生日所在的年份
+        if(nextBirthDate < now) nextBirthDate.setFullYear(++nextBirthYear); //如果今天生日已过，则下一次生日是在下一年
+
+        age = nextBirthYear - bornYear;
+        left = Math.floor((nextBirthDate - now) / (1000*60*60*24));
+
+        return {year: nextBirthYear, age: age, left: left};
+    }
+
+    //代码测试
+    document.getElementById("btnCheck").onclick = function()
+    {
+        var frmDate = document.getElementById("inputDate"),
+            dateStr = frmDate.value,
+            birthday = calcuBirthday(dateStr);
+
+        if(birthday === null){
+            alert("你填写的出生日期不正确，请重新填写！");
+            frmDate.focus();
+            frmDate.select();
+            return;
+        }
+        alert(birthday.left === 0 ? "哇，恭喜你，{ " + birthday.age + " }周岁生日快乐！" : "离你{ " + birthday.year + " }年{ " + birthday.age + " }周岁的生日还有{ " + birthday.left + " }天！");
+    };
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

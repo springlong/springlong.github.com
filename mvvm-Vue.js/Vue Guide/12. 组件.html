@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>组件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>组件</h1>
+	<div id="testBox">
+		<div><b>public-component</b></div>
+		<public-component></public-component>
+		<hr>
+		<div><b>private-component</b></div>
+		<private-component></private-component>
+		<hr>
+		<p><b>my-row</b></p>
+		<p>在<code>table</code>、<code>ul</code>、<code>ol</code>、<code>select</code>等html标签含有特定内部结构的标签元素，使用组件会导致一些问题：</p>
+		<table>
+			<my-row></my-row>
+		</table>
+		<p>解决方案是使用<code>is</code>属性：</p>
+		<table>
+			<tr is="my-row"></tr>
+		</table>
+		<hr>
+		<p><b>simple-counter-error</b></p>
+		<p>组件中的<code>data</code>必须是一个函数:</p>
+		<simple-counter-error></simple-counter-error>
+		<simple-counter-error></simple-counter-error>
+		<simple-counter-error></simple-counter-error>
+		<br>
+		<br>
+		<p><b>simple-counter-right</b></p>
+		<simple-counter-right></simple-counter-right>
+		<simple-counter-right></simple-counter-right>
+		<simple-counter-right></simple-counter-right>
+		<hr>
+		<p><b>child</b></p>
+		<p>使用<code>Props</code>传递数据：</p>
+		<child message="Welcome!"></child>
+		<hr>
+		<p><b>child2</b></p>
+		<p>在js中使用的驼峰式属性，在html中需要使用串联式命名：</p>
+		<child2 my-message="Welcome!"></child2>
+		<hr>
+		<p><b>child3</b></p>
+		<p>动态Props:</p>
+		<input v-model="text">
+		<br>
+		<child3 v-bind:message="text"></child3>
+		<hr>
+		<p><b>child4</b></p>
+		<p>动态Props-将对象的所有属性都作为props传递:</p>
+		<child4 v-bind="allprops"></child4>
+		<child4 v-bind:name="allprops.name" v-bind:age="allprops.age"></child4>
+		<hr>
+		<p><b>child5</b></p>
+		<p>字面量传值 Vs 动态传值:</p>
+		<child5 age="1"></child5>
+		<child5 v-bind:age="1"></child5>
+		<hr>
+		<p><b>child7</b></p>
+		<p>非prop属性，将作为html属性添加到组件实例中:</p>
+		<child7 message="test a message" data-id="888"></child7>
+		<hr>
+		<p><b>child8</b></p>
+		<p>替换/合并现有的属性:</p>
+		<child8 class="rest-a-name"></child8>
+		<hr>
+		<b><b>button-counter</b></b>
+		<p>使用v-on的自定义事件:</p>
+		<p>{{total}}</p>
+		<button-counter v-on:increment="incrementTotal"></button-counter>
+		<button-counter v-on:increment="incrementTotal"></button-counter>
+		<hr>
+		<p><b>button-counter</b></p>
+		<p>添加<code>.native</code>事件修饰符为组件绑定原生事件:</p>
+		<button-counter v-on:click.native="show('.native修饰符')"></button-counter>
+		<hr>
+		<p><b>使用slot分发内容</b></p>
+		<public-component>a test content!</public-component>
+		<div class="parentClass">
+			<h1>我是父组件的标题</h1>
+			<my-slot>
+				<p>在组件中定义的内容1</p>
+				<p>在组件中定义的内容2</p>
+			</my-slot>
+		</div>
+		<hr>
+		<p><b>具名slot</b></p>
+		<app-layout>
+			<h1 slot="header">这里是页面标题</h1>
+			<p>这里是内容段落1</p>
+			<p>这里是内容段落2</p>
+			<p slot="footer">这里是尾部信息</p>
+		</app-layout>
+		<hr>
+		<p><b>作用域插槽</b></p>
+		<my-list :items="items">
+			<li slot="item" slot-scope="props">{{props}}</li>
+		</my-list>
+		<hr>
+		<p><b>my-list2</b></p>
+		<p>自定义列表</p>
+		<my-list2 :items="items">
+			<li v-for="item in items">{{item.text}}</li>
+		</my-list2>
+		<hr>
+		<p><b>keep-alive</b></p>
+		<p>动态组件</p>
+		<keep-alive>
+			<component v-bind:is="currentView"></component>
+		</keep-alive>
+		<hr>
+		<p><b>my-list2</b></p>
+		<p>子组件索引ref引用</p>
+		<my-list2 :items="items" ref="myList">
+			<li v-for="item in items">{{item.text}}</li>
+		</my-list2>
+	</div>
+	<script>
+	    // 全局注册组件
+	    Vue.component('public-component', {
+	    	template: '<div>A custom public-component!</div>'
+	    });
+	    Vue.component('my-row', {
+	    	template: '<tr><td>1</td><td>2</td></tr>'
+	    });
+
+	    var counterData = {counter: 0};
+
+	    // 如果组件中的数据使用的是同一个对象（对象指向的地址相同）
+	    // 那么多个组件使用时会发生各组件之间数据联动的情况
+	    Vue.component('simple-counter-error', {
+	    	template: '<button v-on:click="counter+=1">{{counter}}</button>',
+	    	data: function(){
+	    		return counterData;
+	    	}
+	    });
+
+	    // 组件的数据必须通过函数返回新的对象
+	    // 这样组件多个相同组件使用时，各组件的数据将不会受到影响
+	    Vue.component('simple-counter-right', {
+	    	template: '<button v-on:click="counter+=1">{{counter}}</button>',
+	    	data: function(){
+	    		return {
+	    			counter: 0
+	    		};
+	    	}
+	    });
+
+	    // 使用Props声明子组件希望从父组件接收的数据
+	    Vue.component('child', {
+	    	props: ['message'],
+	    	template: '<div>{{message}}</div>'
+	    });
+
+	    // 在js中使用的驼峰式属性，在html中需要使用串联式命名
+	    Vue.component('child2', {
+	    	props: ['myMessage'],
+	    	template: '<div>{{myMessage}}</div>'
+	    });
+
+	    // 动态Props
+	    Vue.component('child3', {
+	    	props: ['message'],
+	    	template: '<div>{{message}}</div>'
+	    });
+
+	    // 动态Props-将对象的所有属性都作为props传递
+	    Vue.component('child4', {
+	    	props: ['name', 'age'],
+	    	template: '<div>{{name}} - {{age}}</div>'
+	    });
+
+	    // 字面量传值 Vs 动态传值
+	    Vue.component('child5', {
+	    	props: ['age'],
+	    	template: '<div>{{age+1}}</div>'
+	    });
+
+	    // prop验证
+	    // type可以是下原生构造函数之一:
+	 	// String
+		// Number
+		// Boolean
+		// Function
+		// Object
+		// Array
+		// Symbol
+	    Vue.component('child6', {
+	    	props: {
+	    		// 基本类型检查（null表示接受所有类型
+	    		propA: Number,
+	    		// 多种可能的类型
+	    		propB: [String, Number],
+	    		// 必须传递，字符串
+	    		propC: {
+	    			type: String,
+	    			required: true
+	    		},
+	    		// 数字类型，有默认值
+	    		propD: {
+	    			type: Number,
+	    			default: 100
+	    		},
+	    		// 数组/对象类型
+	    		// 应该默认返回一个工厂函数
+	    		propE: {
+	    			type: Object,
+	    			default: function(){
+	    				return {message: 'hello!'};
+	    			}
+	    		},
+	    		// 自定义验证函数
+	    		propF: {
+	    			validator: function(value) {
+	    				return value > 10;
+	    			}
+	    		}
+	    	},
+	    	template: '<div></div>'
+	    });
+
+	    // 非prop属性
+	    Vue.component('child7', {
+	    	props: ['message'],
+	    	template: '<div>{{message}}</div>'
+	    });
+
+	    // 替换/合并现有的属性
+	    Vue.component('child8', {
+	    	template: '<div class="old-class-name">test a message</div>'
+	    });
+
+	    // 使用v-on的自定义事件
+	    Vue.component('button-counter', {
+	    	template: '<button v-on:click="incrementCounter">{{counter}}</button>',
+	    	data: function(){
+	    		return {
+	    			counter: 0
+	    		}
+	    	},
+	    	methods: {
+	    		incrementCounter: function(){
+	    			this.counter += 1;
+	    			this.$emit('increment');
+	    		}
+	    	}
+	    });
+
+	    // 使用Slot分发内容
+	    Vue.component('my-slot', {
+	    	template: '<div class="childClass">\
+	    					<h2>我是子组件的标题</h2>\
+	    					<slot>\
+	    						只有在没有要分发的内容是才会显示\
+	    					</slot>\
+	    				</div>'
+	    });
+
+	    // 具名slot
+	    Vue.component('app-layout', {
+	    	template: '<div class="container">\
+						  <header>\
+						    <slot name="header"></slot>\
+						  </header>\
+						  <main>\
+						    <slot></slot>\
+						  </main>\
+						  <footer>\
+						    <slot name="footer"></slot>\
+						  </footer>\
+						</div>',
+	    });
+
+	    // 作用域插槽
+	    Vue.component('my-list', {
+	    	props: ['items'],
+	    	template: '<ul>\
+	    				<slot name="item" \
+	    					v-for="item in items" \
+	    					:text="item.text"\
+	    					:_name="item.name">\
+	    					<!--这里是备用内容-->\
+	    				</slot>\
+	    				</ul>'
+	    });
+
+	    // 自定义列表
+	    Vue.component('my-list2', {
+	    	props: ['items'],
+	    	template: '<ul><slot></slot></ul>'
+	    });
+
+	    var vm = new Vue({
+	    	el: '#testBox',
+	        data: {
+	        	total: 0,
+	        	text: 'Hello Vue!',
+	        	allprops: {
+	        		name: 'yangtuan',
+	        		age: 26
+	        	},
+	        	currentView: 'home',
+	        	items: [
+	        		{name: 'a', text: 'a-text'},
+	        		{name: 'b', text: 'b-text'},
+	        		{name: 'c', text: 'c-text'},
+	        	]
+	        },
+	        methods: {
+	        	incrementTotal: function(){
+	        		this.total += 1;
+	        	},
+	        	show: function(msg){
+	        		alert(msg);
+	        	}
+	        },
+	        components: {
+	        	'private-component': {
+	        		template: '<div>A custom private-component!</div>'
+	        	},
+	        	'home': {
+	        		template: '<div class="home-class">this is home</div>'
+	        	},
+	        	'test': {
+	        		template: '<div class="test-class">this is test</div>'
+	        	},
+	        	'do': {
+	        		template: '<div class="do-class">this is do</div>'
+	        	}
+	        }
+	    });
+	</script>
+</div>
+</body>
+</html>

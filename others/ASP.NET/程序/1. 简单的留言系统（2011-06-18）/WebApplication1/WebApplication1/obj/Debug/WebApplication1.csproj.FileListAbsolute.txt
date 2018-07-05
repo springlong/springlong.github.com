@@ -1,0 +1,20 @@
+C:\Users\Administrator\Desktop\WebApplication1\WebApplication1\bin\WebApplication1.dll
+C:\Users\Administrator\Desktop\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+C:\Users\Administrator\Desktop\WebApplication1\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\Administrator\Desktop\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Documents and Settings\Administrator\桌面\WebApplication1\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Documents and Settings\Administrator\桌面\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Documents and Settings\Administrator\桌面\WebApplication1\WebApplication1\bin\WebApplication1.dll
+C:\Documents and Settings\Administrator\桌面\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+D:\我的文档\公司任务\7. 简单的留言系统（2011-06-18）\WebApplication1\WebApplication1\bin\WebApplication1.dll
+D:\我的文档\公司任务\7. 简单的留言系统（2011-06-18）\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+D:\我的文档\公司任务\7. 简单的留言系统（2011-06-18）\WebApplication1\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+D:\我的文档\公司任务\7. 简单的留言系统（2011-06-18）\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+D:\我的文档\公司任务\7. 简单的留言系统（2011-06-18）\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+D:\我的文档\公司任务\复件 7. 简单的留言系统（2011-06-18）\WebApplication1\WebApplication1\bin\WebApplication1.dll
+D:\我的文档\公司任务\复件 7. 简单的留言系统（2011-06-18）\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+D:\我的文档\公司任务\复件 7. 简单的留言系统（2011-06-18）\WebApplication1\WebApplication1\obj\Debug\ResolveAssemblyReference.cache
+D:\我的文档\公司任务\复件 7. 简单的留言系统（2011-06-18）\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+D:\我的文档\公司任务\复件 7. 简单的留言系统（2011-06-18）\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb

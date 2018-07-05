@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS 表达式</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<h1>AngularJS 表达式</h1>
+	<div>
+		<p>AngularJS 表达式写在双大括号内：<code>{{ expression }}</code>。</p>
+		<p>AngularJS 表达式把数据绑定到 HTML，这与 <code>ng-bind</code> 指令有异曲同工之妙。</p>
+		<p>AngularJS 将在表达式书写的位置"输出"数据。</p>
+		<p>AngularJS 表达式 很像 JavaScript 表达式：它们可以包含文字、运算符和变量。</p>
+	</div>
+<pre>
+&lt;div ng-app="">
+	&lt;!-- AngularJS 数字 -->
+	&lt;hr>
+	&lt;div>
+ 		&lt;p>两数之和： {{ 5 + 5 }}&lt;/p>
+	&lt;/div>
+	&lt;div ng-init="quantity=1;cost=5">
+		&lt;p>总价： {{ quantity * cost }}&lt;/p>
+	&lt;/div>
+	&lt;!-- AngularJS 字符串 -->
+	&lt;hr>
+	&lt;div>
+		&lt;input type="text" ng-model="firstName" ng-init="firstName='Jerry'" placeholder="firstName">
+		+
+		&lt;input type="text" ng-model="lastName" ng-init="lastName='Sun'" placeholder="lastName">
+ 		&lt;p>您的名字： {{ firstName + ' ' + lastName }}&lt;/p>
+	&lt;/div>
+	&lt;!-- AngularJS 对象 -->
+	&lt;hr>
+	&lt;div ng-init="person={firstName:'Jerry', lastName:'Sun'}">
+		&lt;p>姓啥： {{ person.lastName }}&lt;/p>
+	&lt;/div>		
+	&lt;!-- AngularJS 数组 -->
+	&lt;hr>
+	&lt;div ng-init="points=[1,15,19,2,40]">
+		&lt;p>第三个值为 {{ points[2] }}&lt;/p>
+	&lt;/div>
+&lt;/div>
+</pre>
+	<hr>
+	<div ng-app="">
+		<!-- AngularJS 数字 -->
+		<hr>
+		<div>
+	 		<p>两数之和： {{ 5 + 5 }}</p>
+ 		</div>
+		<div ng-init="quantity=1;cost=5">
+			<p>总价： {{ quantity * cost }}</p>
+		</div>
+		<!-- AngularJS 字符串 -->
+		<hr>
+		<div>
+			<input type="text" ng-model="firstName" ng-init="firstName='Jerry'" placeholder="firstName">
+			+
+			<input type="text" ng-model="lastName" ng-init="lastName='Sun'" placeholder="lastName">
+	 		<p>您的名字： {{ firstName + ' ' + lastName }}</p>
+		</div>
+		<!-- AngularJS 对象 -->
+		<hr>
+		<div ng-init="person={firstName:'Jerry', lastName:'Sun'}">
+			<p>姓啥： {{ person.lastName }}</p>
+		</div>		
+		<!-- AngularJS 数组 -->
+		<hr>
+		<div ng-init="points=[1,15,19,2,40]">
+			<p>第三个值为 {{ points[2] }}</p>
+		</div>
+	</div>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+
+
+	<hr>
+	<h2>AngularJS 表达式 与 JavaScript 表达式</h2>
+	<p>类似于 JavaScript 表达式，AngularJS 表达式可以包含字母，操作符，变量。</p>
+	<p>与 JavaScript 表达式不同，AngularJS 表达式可以写在 HTML 中。</p>
+	<p>与 JavaScript 表达式不同，AngularJS 表达式不支持条件判断，循环及异常。</p>
+	<p>与 JavaScript 表达式不同，AngularJS 表达式支持过滤器。</p>
+	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gb2312">
+    <title>Class类名的操作 - jsApp</title>
+    <script type="text/javascript" src="jsApp.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body{padding-bottom:50px;font-size:14px;line-height:24px;}
+        section{display:block;}
+        p{margin:20px 0;}
+
+        #container{margin:10px auto 0;}
+        .width{width:100px;}
+        .height{height:100px;}
+        .border{border:5px solid #666;}
+        .borderRed{border-color:red;}
+        .bgGray{background:gray;}
+        #control{width:280px;margin:10px auto;}
+        #control button{display:block;width:280px;height:30px;margin-top:10px;}
+        #info{width:980px;margin:10px auto;text-align:center;}
+    </style>
+</head>
+<body>
+<div id="container" class="width height border"></div>
+<div id="control">
+    <button onclick="$$('#container').addClass('borderRed');showClass();" title="$$('#container').addClass('borderRed');">.addClass("borderRed");</button>
+    <button onclick="$$('#container').removeClass('borderRed');showClass();" title="$$('#container').removeClass('borderRed');">.removeClass("borderRed");</button>
+    <button onclick="$$('#container').toggleClass('bgGray');showClass();" title="$$('#container').toggleClass('bgGray');">.toggleClass("bgGray");</button>
+    <button onclick="alert($$('#container').hasClass('bgGray'));showClass();" title="alert($$('#container').hasClass('bgGray'));">.hasClass("bgGray");</button>
+    <button onclick="alert($$('#container').attr('class'));" title="alert($$('#container').attr('class'));">.attr("class")</button>
+    <button onclick="$$('#container').attr('class', 'width height border');showClass();" title="$$('#container').attr('class', 'width height border');">.attr("class", "width height border");</button>
+    <button onclick="$$('#container').removeAttr('class');showClass();" title="$$('#container').removeAttr('class');">.removeAttr("class");</button>
+</div>
+<p id="info"></p>
+<script type="text/javascript">
+    function showClass()
+    {
+        var classStr = "当前class属性：" + $$("#container").attr("class");
+        $$("#info").html(classStr);
+    }
+    showClass();
+</script>
+</body>
+</html>

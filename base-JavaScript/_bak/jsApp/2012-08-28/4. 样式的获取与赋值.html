@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gb2312">
+    <title>样式的获取与赋值 - jsApp</title>
+    <script type="text/javascript" src="jsApp.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body{padding-bottom:50px;font-size:14px;line-height:24px;}
+        section{display:block;}
+        p{margin:20px 0;}
+
+        #container{left:15px;width:100px;height:100px;margin:10px auto 0;background:gray;}
+        #control{width:280px;margin:10px auto;}
+        #control button{display:block;width:280px;height:30px;margin-top:10px;}
+        #info{width:980px;margin:10px auto;text-align:center;}
+    </style>
+</head>
+<body>
+<div id="container"></div>
+<div id="control">
+    <button onclick="alert($$('#container').css('opacity'));showcss();" title="alert($$('#container').css('opacity'));">.css("opacity");</button>
+    <button onclick="$$('#container').css('opacity', '0.5');showcss();" title="$$('#container').css('opacity', '0.5');">.css("opacity", "0.5");</button>
+    <button onclick="$$('#container').css('opacity', '0.1');showcss();" title="$$('#container').css('opacity', '0.1');">.css("opacity", "0.1");</button>
+    <button onclick="$$('#container').css('opacity', '0');showcss();" title="$$('#container').css('opacity', '0');">.css("opacity", "0");</button>
+</div>
+<p id="info"></p>
+<script type="text/javascript">
+    function showcss()
+    {
+        var attrStr = "当前css中的opacity属性值：" + $$("#container").css("opacity");
+        $$("#info").html(attrStr);
+    }
+    showcss();
+</script>
+</body>
+</html>

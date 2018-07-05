@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>JS根据图片宽度等比例调整大图的尺寸大小</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <base target="_blank" />
+</head>
+<body>
+<script>
+	(function(){
+		var i,
+			img,
+			base = 290,
+			content = document.getElementById("newsContent"),
+			pictures = content.getElementsByTagName("img");
+
+		var adjust = function(obj){
+			var width = obj.width,
+				height = obj.height,
+				ratio = width / base;
+
+			if(width > base)
+			{
+				//obj.width = base;
+				obj.height = parseInt(height / ratio);
+			}
+		}
+
+		for(i = 0; i < pictures.length; i++)
+		{
+			img = pictures[i];
+			if(img.width == 0 || img.height == 0)
+			{
+				img.onload = function()
+				{
+					this.onload = null;
+					adjust(this);
+				}
+			}
+			else
+			{
+				adjust(img);
+			}
+		}
+	})();
+</script>
+</body>
+</html>

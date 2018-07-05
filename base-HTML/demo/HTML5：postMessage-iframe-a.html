@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5：postMessage-iframe-a</title>
+</head>
+</head>
+<body>
+<div class="container">
+	<div><input id="name" value="发送消息"></div>
+	<br>
+	<div><button id="send">确认</button></div>
+</div>
+<script>
+	var eleSend = document.querySelector('#send');
+	eleSend.onclick = function(){
+		var message = document.querySelector('#name').value;
+		// iframe之间的访问，存在同源策略的限制
+		// 但是window.postMessage允许不同域名下进行信息传递
+		window.parent.frames[1].postMessage(message, '*');
+	};
+</script>
+</body>

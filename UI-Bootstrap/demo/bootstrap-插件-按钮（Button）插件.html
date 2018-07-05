@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>插件：按钮（Button）插件 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>插件：按钮（Button）插件</h1>
+    <hr>
+
+    <p>按钮（Button）在 Bootstrap 按钮 一章中介绍过。通过按钮（Button）插件，您可以添加进一些交互，比如控制按钮状态，或者为其他组件（如工具栏）创建按钮组。</p>
+
+    
+    <p>&nbsp;</p>
+    <h2>加载状态</h2>
+    <p>如需向按钮添加加载状态，只需要简单地向 button 元素添加 <code>data-loading-text="Loading..."</code> 作为其属性即可，如下面实例所示：</p>
+    <div><button id="fat-btn" class="btn btn-primary" data-loading-text="Loading..." type="button">加载状态</button></div>
+    <p>&nbsp;</p>
+<pre>
+    $(".btn").click(function(){
+        $(this).button('loading').delay(1000).queue(function() {
+            $(this).button('reset');
+        });        
+    });
+</pre>
+    <script>
+        $(".btn").click(function(){
+            $(this).button('loading').delay(1000).queue(function() {
+                $(this).button('reset');
+            });        
+        });
+    </script>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>单个切换</h2>
+    <p>如需激活单个按钮的切换（即改变按钮的正常状态为按压状态，反之亦然），只需向 button 元素添加 <code>data-toggle="button"</code> 作为其属性即可，如下面实例所示：</p>
+
+    <div><button type="button" class="btn btn-primary"  data-toggle="button"> 单个切换 </button></div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>复选框（Checkbox）</h2>
+    <p>您可以创建复选框组，并通过向 <code>btn-group</code> 添加 data 属性 <code>data-toggle="buttons"</code> 来添加复选框组的切换。</p>
+
+    <div class="btn-group" data-toggle="buttons">
+       <label class="btn btn-primary">
+          <input type="checkbox"> 选项 1
+       </label>
+       <label class="btn btn-primary">
+          <input type="checkbox"> 选项 2
+       </label>
+       <label class="btn btn-primary">
+          <input type="checkbox"> 选项 3
+       </label>
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>单选按钮（Radio）</h2>
+    <p>类似地，您可以创建单选按钮组，并通过向 <code>btn-group</code> 添加 data 属性 <code>data-toggle="buttons"</code> 来添加单选按钮组的切换。</p>
+
+    <div class="btn-group" data-toggle="buttons">
+       <label class="btn btn-primary">
+          <input type="radio" name="options" id="option1"> 选项 1
+       </label>
+       <label class="btn btn-primary">
+          <input type="radio" name="options" id="option2"> 选项 2
+       </label>
+       <label class="btn btn-primary">
+          <input type="radio" name="options" id="option3"> 选项 3
+       </label>
+    </div>   
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <div><img src="images/button-methods.png" alt=""></div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>点击每个按钮查看方法效果</h2>
+    <h4>演示 .button('toggle') 方法</h4>
+    <div id="myButtons1" class="bs-example">
+       <button type="button" class="btn btn-primary">原始</button>
+    </div>
+
+    <h4>演示 .button('loading') 方法</h4>
+    <div id="myButtons2" class="bs-example">
+       <button type="button" class="btn btn-primary" 
+          data-loading-text="Loading...">原始
+       </button>
+    </div>
+
+    <h4>演示 .button('reset') 方法</h4>
+    <div id="myButtons3" class="bs-example">
+       <button type="button" class="btn btn-primary" 
+          data-loading-text="Loading...">原始
+       </button>
+    </div>
+
+    <h4>演示 .button(string) 方法</h4>
+    <button type="button" class="btn btn-primary" id="myButton4" 
+       data-complete-text="Loading finished">请点击我
+    </button>
+    <script type="text/javascript">
+       $(function () {
+          $("#myButtons1 .btn").click(function(){
+             $(this).button('toggle');
+          });
+       });
+       $(function() { 
+          $("#myButtons2 .btn").click(function(){
+             $(this).button('loading').delay(1000).queue(function() {
+             });        
+          });
+       });   
+       $(function() { 
+          $("#myButtons3 .btn").click(function(){
+             $(this).button('loading').delay(1000).queue(function() {
+                $(this).button('reset');
+             });        
+          });
+       });  
+       $(function() { 
+          $("#myButton4").click(function(){
+             $(this).button('loading').delay(1000).queue(function() {
+                $(this).button('complete');
+             });        
+          });
+       }); 
+    </script> 
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

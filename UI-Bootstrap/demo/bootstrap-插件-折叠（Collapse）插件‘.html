@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>插件：折叠（Collapse）插件 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>插件：折叠（Collapse）插件</h1>
+    <hr>
+
+    <p>折叠（Collapse）插件可以很容易地让页面区域折叠起来。无论您用它来创建折叠导航还是内容面板，它都允许很多内容选项。</p>
+
+    
+    <p>&nbsp;</p>
+    <h2>创建可折叠的分组或折叠面板（accordion）</h2>
+    <div class="panel-group" id="accordion">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" 
+              href="#collapseOne">
+              点击我进行展开，再次点击我进行折叠。第 1 部分
+            </a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse in">
+          <div class="panel-body">
+            Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+            cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
+            vice lomo.
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" 
+              href="#collapseTwo">
+              点击我进行展开，再次点击我进行折叠。第 2 部分
+            </a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+          <div class="panel-body">
+            Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+            cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
+            vice lomo.
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" 
+              href="#collapseThree">
+              点击我进行展开，再次点击我进行折叠。第 3 部分
+            </a>
+          </h4>
+        </div>
+        <div id="collapseThree" class="panel-collapse collapse">
+          <div class="panel-body">
+            Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+            cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
+            vice lomo.
+          </div>
+        </div>
+      </div>
+    </div>
+    <ol>
+        <li><code>data-toggle="collapse"</code> 添加到您想要展开或折叠的组件的链接上。</li>
+        <li><code>href</code> 或 <code>data-target</code> 属性添加到父组件，它的值是子组件的 id。</li>
+        <li><code>data-parent</code> 属性把折叠面板（accordion）的 id 添加到要展开或折叠的组件的链接上。</li>
+    </ol>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>创建不带 accordion 标记的简单的可折叠组件（collapsible）</h2>
+    <button type="button" class="btn btn-primary" data-toggle="collapse" 
+       data-target="#demo">
+       简单的可折叠组件：默认显示
+    </button>
+    <p>&nbsp;</p>
+
+    <div id="demo" class="collapse in">
+      Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+      cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
+      vice lomo.
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <button type="button" class="btn btn-primary" data-toggle="collapse" 
+       data-target="#demo2">
+       简单的可折叠组件：默认隐藏
+    </button>
+    <p>&nbsp;</p>
+
+    <div id="demo2" class="collapse">
+      Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+      cred nesciunt sapiente ea proident. Ad vegan excepteur butcher 
+      vice lomo.
+    </div>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <div><img src="images/collapse-use.png" alt=""></div>
+    <div><img src="images/collapse-options.png" alt=""></div>
+    <div><img src="images/collapse-methods.png" alt=""></div>
+    <p>&nbsp;</p>
+
+    <div class="panel-group" id="accordion2">
+       <div class="panel panel-default">
+          <div class="panel-heading">
+             <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion2" 
+                   href="#collapse2One">
+                   点击我进行展开，再次点击我进行折叠。第 1 部分--hide 方法
+                </a>
+             </h4>
+          </div>
+          <div id="collapse2One" class="panel-collapse collapse in">
+             <div class="panel-body">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                lomo.
+             </div>
+          </div>
+       </div>
+       <div class="panel panel-success">
+          <div class="panel-heading">
+             <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion2" 
+                   href="#collapse2Two">
+                   点击我进行展开，再次点击我进行折叠。第 2 部分--show 方法
+                </a>
+             </h4>
+          </div>
+          <div id="collapse2Two" class="panel-collapse collapse">
+             <div class="panel-body">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                lomo.
+             </div>
+          </div>
+       </div>
+       <div class="panel panel-info">
+          <div class="panel-heading">
+             <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion2" 
+                   href="#collapse2Three">
+                   点击我进行展开，再次点击我进行折叠。第 3 部分--toggle 方法
+                </a>
+             </h4>
+          </div>
+          <div id="collapse2Three" class="panel-collapse collapse">
+             <div class="panel-body">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                lomo.
+             </div>
+          </div>
+       </div>
+       <div class="panel panel-warning">
+          <div class="panel-heading">
+             <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion2" 
+                   href="#collapse2Four">
+                   点击我进行展开，再次点击我进行折叠。第 4 部分--options 方法
+                </a>
+             </h4>
+          </div>
+          <div id="collapse2Four" class="panel-collapse collapse">
+             <div class="panel-body">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred 
+                nesciunt sapiente ea proident. Ad vegan excepteur butcher vice 
+                lomo.
+             </div>
+          </div>
+       </div>
+    </div>
+    <script type="text/javascript">
+
+       $(function () { $('#collapse2Four').collapse({
+          toggle: false
+       })});
+
+       $(function () { $('#collapse2Two').collapse('show')});
+       $(function () { $('#collapse2Three').collapse('toggle')});
+       $(function () { $('#collapse2One').collapse('hide')});
+    </script>  
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <div><img src="images/collapse-events.png" alt=""></div>
+
+    <p>&nbsp;</p>
+    <div class="panel-group" id="accordion3">
+       <div class="panel panel-info">
+          <div class="panel-heading">
+             <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion3" 
+                   href="#collapse3example">
+                   点击我进行展开，再次点击我进行折叠。--shown 事件
+                </a>
+             </h4>
+          </div>
+          <div id="collapse3example" class="panel-collapse collapse">
+             <div class="panel-body">
+                Nihil anim keffiyeh helvetica, craft beer labore wes anderson 
+                cred nesciunt sapiente ea proident. 
+                Ad vegan excepteur butcher vice lomo.
+             </div>
+          </div>
+       </div>
+    </div>
+
+    <script type="text/javascript">
+        $('#collapse3example').on('show.bs.collapse', function () {
+            alert('show.bs.collapse');
+        });
+        $('#collapse3example').on('shown.bs.collapse', function () {
+            alert('shown.bs.collapse');
+        });
+        $('#collapse3example').on('hide.bs.collapse', function () {
+            alert('hide.bs.collapse');
+        });
+        $('#collapse3example').on('hidden.bs.collapse', function () {
+            alert('hidden.bs.collapse');
+        });
+    </script> 
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

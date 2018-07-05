@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>$(":nth-of-type(n)") - jQuery代码示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+</head>
+<body style="height:1200px;">
+<h1>jQuery代码示例：<code>$(":nth-of-type(n)")</code></h1>
+<p class="title"><code>$(":nth-of-type(n)")</code></p>
+<p class="desc">获取祖先元素下位于某个层级中同类型标签第n次出现的一个或多个元素。</p>
+<div id="box">
+    容器（ID：box）
+    <div id="layer1">
+        图层1（ID：layer1）
+        <div class="div1">图层（class：div1）</div>
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer2">
+        图层2（ID：layer2）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <div class="div1">图层（class：div1）</div>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <div class="div2">图层（class：div2）</div>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer3">
+        图层3（ID：layer3）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+        <div class="div1">图层（class：div1）</div>
+        <div class="div2">图层（class：div2）</div>
+    </div>
+</div>
+<p class="content">在右侧大家可以看到一个绿色方框的div容器，在该容器中还有作为后代元素的div以及p标签。为了该页面的更好测试，还希望大家首先查看下这个容器的HTML结构！</p>
+<p>为了演示该方法的执行效果，我们为下列按钮的单击事件添加了如按钮文本所示的执行代码，大家可以通过点击不同的按钮来查看该方法每种参数使用的不同结果。</p>
+<p><button class="btnShort">$("#box p:nth-of-type(0)").css("background-color", "purple");</button></p>
+<p><button class="btnShort">$("#box p:nth-of-type(1)").css("background-color", "purple");</button></p>
+<p><button class="btnShort">$("#box p:nth-of-type(odd)").css("background-color", "orange");</button></p>
+<p><button class="btnShort">$("#box p:nth-of-type(even)").css("background-color", "green");</button></p>
+<p><button class="btnShort">$("#box p:nth-of-type(3n)").css("background-color", "pink");</button></p>
+<script>
+    (function($)
+    {
+        $("button").eq(0).click(function(){
+            $("#box p:nth-of-type(0)").css("background-color", "purple");
+        });
+
+        $("button").eq(1).click(function(){
+            $("#box p:nth-of-type(1)").css("background-color", "brown");
+        });
+
+        $("button").eq(2).click(function(){
+            $("#box p:nth-of-type(odd)").css("background-color", "orange");
+        });
+
+        $("button").eq(3).click(function(){
+            $("#box p:nth-of-type(even)").css("background-color", "green");
+        });
+
+        $("button").eq(4).click(function(){
+            $("#box p:nth-of-type(3n)").css("background-color", "pink");
+        });
+
+    })(jQuery);
+</script>
+</body>
+</html>

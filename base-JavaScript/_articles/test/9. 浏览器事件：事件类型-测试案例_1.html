@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <base charset="utf-8" />
+    <title>测试案例_1：load、DOMContentLoaded、readystatechange - 浏览器事件 - 前端志</title>
+    <style>
+        *{margin:0;padding:0;}
+        h1{font-size:24px;line-height:1.5em;}
+        p{padding:10px 10px;font-size:14px;line-height:1.5em;}
+        .pic{width:700px;}
+        .pic img{width:100px;height:100px;border:2px solid #eee;margin:10px 0 0 10px;}
+    </style>
+    <script src="js/jsApp_2013-08-13.js"></script>
+</head>
+<body>
+    <h1>load、DOMContentLoaded、readystatechange事件的对比情况</h1>
+    <div class="pic">
+        <img id="pic1" src="http://farm4.staticflickr.com/3832/9503903237_9abb2a2fd9_o.jpg" alt="" />
+        <img src="http://farm3.staticflickr.com/2864/9503910629_7b8b7af7ea_o.jpg" alt="" />
+        <img src="http://farm8.staticflickr.com/7453/9503913045_b216c3beca_o.jpg" alt="" />
+        <img src="http://farm3.staticflickr.com/2864/9503910629_7b8b7af7ea_o.jpg" alt="" />
+        <img src="http://farm8.staticflickr.com/7336/9506715892_5e6e5fe541_o.jpg" alt="" /><!-- 
+        <img src="http://farm4.staticflickr.com/3672/9503917019_5049108796_o.jpg" alt="" />
+        <img src="http://farm6.staticflickr.com/5480/9503918911_002f51979c_o.jpg" alt="" />
+        <img src="http://farm8.staticflickr.com/7445/9503920075_632254b58f_o.jpg" alt="" />
+        <img src="http://farm3.staticflickr.com/2854/9506718918_cd23b16ebd_o.jpg" alt="" />
+        <img src="http://farm8.staticflickr.com/7406/9506719606_5d142c53ba_o.jpg" alt="" />
+        <img src="http://farm8.staticflickr.com/7456/9503923411_b5a576bd60_o.jpg" alt="" />
+        <img src="http://farm4.staticflickr.com/3711/9506721932_67c235b1d5_o.jpg" alt="" />
+        <img src="http://farm8.staticflickr.com/7299/9503922905_e5d82162e7_o.jpg" alt="" />
+        <img src="http://farm8.staticflickr.com/7415/9506721040_306afd65f4_o.jpg" alt="" />
+        <img src="http://farm6.staticflickr.com/5446/9503922019_5e233d495a_o.jpg" alt="" /> -->
+    </div>
+    <p><b>加载信息：</b><span id="dataInfo"></span></p>
+    <script>
+        //load事件触发时更新加载信息。
+        $(window).bind("load", function()
+        {
+            $("#dataInfo")[0].innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;[load]";
+        });
+
+        //DOMContentLoaded事件触发时更新加载信息。
+        $(window).bind("DOMContentLoaded", function()
+        {
+            $("#dataInfo")[0].innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;[DOMContentLoaded]";
+        });
+
+        //readystatechange事件触发时更新加载信息。
+        $(document).bind("readystatechange", function()
+        {
+            $("#dataInfo")[0].innerHTML += "&nbsp;&nbsp;&nbsp;&nbsp;[readystatechange:" + document.readyState + "]";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<title>JS语法巩固练习</title>
+	<base target="_blank" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="robots" content="all" />
+	<meta name="googlebot" content="all" />
+	<meta name="copyright" content="版权所有" />
+	<meta name="generator" content="EditPlus" />
+	<meta name="author"	content="Jerry-小猪" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<style>
+		#container{overflow:hidden;width:980px;margin:0 auto;}
+		#control{float:left;display:inline;overflow:hidden;width:100px;height:690px;}
+		#control button{width:100px;height:30px;margin-bottom:5px;}
+		#dataShow{float:right;display:inline;overflow-x:hidden;overflow-y:auto;width:800px;height:660px;padding:20px;border:2px solid #E8E8E8;}
+
+		.yangHuiTriangle{margin-top:20px;}
+		.yangHuiTriangle div{height:25px;text-align:center;}
+		.yangHuiTriangle div span{display:inline-block;width:4em;height:24px;border:1px solid #333;border-width:1px 0 0 1px;font-size:12px;line-height:24px;text-align:center;}
+		.yangHuiTriangle div span.last{border-right-width:1px;}
+		.yangHuiTriangle div.last span{border-bottom:1px solid #333;}
+	</style>
+</head>
+<body>
+<div id="container">
+	<div id="control">
+		<button onclick="isBissextile()">闰年判断</button>
+		<button onclick="factorial_1()">阶乘输出</button>
+		<button onclick="factorial_2()">阶乘计算</button>
+		<button onclick="tab99()">九九乘法表</button>
+		<button onclick="shape_1()">直角三角形</button>
+		<button onclick="shape_2()">锐角三角形1</button>
+		<button onclick="shape_3()">锐角三角形2</button>
+		<button onclick="shape_4()">矩形输出</button>
+		<button onclick="shape_5()">棱形输出</button>
+		<button onclick="oddOrEven()">奇数与偶数</button>
+		<button onclick="primeOrNot()">质数与合数</button>
+		<button onclick="narcissisticNumber()">水仙花数</button>
+		<button onclick="yangHuiTriangle()">杨辉三角</button>
+	</div>
+	<div id="dataShow"></div>
+</div>
+<script>
+	//根据ID获取目标元素
+	function $$(id){ return typeof(id) === "string" ? document.getElementById(id) : id; }
+
+	//使内容显示区位于水平居中显示
+	var dataShow = $$("dataShow");
+	dataShow.style.left = (document.body.clientWidth - $$("dataShow").offsetWidth) / 2 + "px";
+</script>
+<script>
+	function isBissextile(){var a="不是闰年";var b=prompt("请输入年份：","2012");if(b===null||b===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var c=parseInt(b);while(isNaN(c)||c<0){b=prompt("请输入正确的年份：",b);if(b===null||b===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}c=parseInt(b)}if(c%4===0&&c%100!==0||c%400===0){a="是闰年"}var d="<p>您所输入的年份<strong>"+c+"</strong>"+a+"。</p>";d+="<p>————————————————————————————————<br />说明：当符合下述任一项条件时，即为闰年：</p>";d+="<p>1. 能被4整除且不能被100整除。</p>";d+="<p>2. 能被400整除。</p>";dataShow.innerHTML=d}function factorial_1(){var a=prompt("请输入一个大于0的整数：",10);if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var b=parseInt(a);while(isNaN(b)||b<=0){a=prompt("请输入正确的整数：",a);if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}b=parseInt(a)}var e="<p>阶乘(factorial)是基斯顿·卡曼(Christian Kramp, 1760 – 1826)于1808年发明的运算符号。阶乘，也是数学里的一种术语。阶乘用感叹号（!）表示，10!表示10的阶乘。</p>";e+="<p>————————————————————————————————<br />说明：0的阶乘为1，且任何大于0的自然数n的阶乘可以表示为：n! = 1*2*3*....*n 或 n! = n * (n-1)!。</p>";e+="<p>&nbsp;&nbsp;&nbsp;&nbsp;0~"+b+"的阶乘值如下：</p>";e+="<p>&nbsp;&nbsp;&nbsp;&nbsp;0! = 1</p>";for(var c=1,d=1;c<=b;c++){e+="<p>&nbsp;&nbsp;&nbsp;&nbsp;"+c+"! = "+d*c+"</p>";d*=c}dataShow.innerHTML=e}function factorial_2(){var b=prompt("请输入一个大于0的整数：",10);if(b===null||b===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var c=parseInt(b);while(isNaN(c)||c<=0){b=prompt("请输入正确的整数：",b);if(b===null||b===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}c=parseInt(b)}for(var d=1,a=1;d<=c;d++){a*=d}dataShow.innerHTML="<p>阶乘计算：</p><p>"+c+"! = "+a+"</p>"}function tab99(){var b,a;var d="九九乘法表：";var c="";for(b=1;b<10;b++){d+="<p>";for(a=1;a<=b;a++){d+=padStr(a+"x"+b+"="+a*b+"  ","r","10","&nbsp;")}d+="</p>"}dataShow.innerHTML=d}function shape_1(){var a=prompt("请输入需要显示的行数：","10");if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var c=parseInt(a);while(isNaN(c)||c<0){a=prompt("请输入正确的行数：",a);if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}c=parseInt(a)}var d="";for(var b=1;b<=c;b++){d+=""+strDup("*",b)+"<br />"}dataShow.innerHTML=d}function shape_2(){var a=prompt("请输入需要显示的行数：","10");if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var d=parseInt(a);while(isNaN(d)||d<0){a=prompt("请输入正确的行数：",a);if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}d=parseInt(a)}var c="";var e="";for(var b=1;b<=d;b++){c=((2*d-1)-(2*b-1))/2;e+=strDup("&nbsp;",c)+strDup("*",2*b-1)+strDup("&nbsp;",c)+"<br />"}dataShow.innerHTML=e}function shape_3(){var a=prompt("请输入需要显示的行数：","10");if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var d=parseInt(a);while(isNaN(d)||d<0){a=prompt("请输入正确的行数：",a);if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}d=parseInt(a)}var c="";var e="";for(var b=1;b<=d;b++){c=((2*d-1)-(2*b-1))/2;e+=strDup("&nbsp;",c)+"*"+(b==d?strDup("*",2*b-3):strDup("&nbsp;",2*b-3))+(b>1?"*":"")+strDup("&nbsp;",c)+"<br />"}dataShow.innerHTML=e}function shape_4(){var b=prompt("请输入需要显示的行数（>=3）：","10");if(b===null||b===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var f=parseInt(b);while(isNaN(f)||f<3){b=prompt("请输入正确的行数（>=3）：",b);if(b===null||b===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}f=parseInt(b)}var e="";var g="";var a=30;var d=false;for(var c=1;c<=f;c++){d=c===1||c===f;e=d?"":strDup("&nbsp;",a-2);g+=d?(strDup("*",a)+"<br />"):("*"+e+"*<br />")}dataShow.innerHTML=g}function shape_5(){var a=prompt("请输入需要显示的行数（>=3且为奇数）：","15");if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var f=parseInt(a);while(isNaN(f)||f<3||f%2===0){a=prompt("请输入正确的行数（>=3且为奇数）：",a);if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}f=parseInt(a)}var e="";var c="";var g="";var d=(f-1)/2+1;for(var b=1;b<=f;b++){if(b<d){e=strDup("&nbsp;",d-b);c=strDup("&nbsp;",b===1?0:f-(d-b+1)*2)}else{if(b>d){e=strDup("&nbsp;",b-d);c=strDup("&nbsp;",b===f?0:f-(b-d+1)*2)}else{e="";c=strDup("&nbsp;",f-2)}}g+=e+"*"+c+(b===1||b===f?"":"*")+"<br />"}dataShow.innerHTML=g}function oddOrEven(){var e="",d="";var a=prompt("请输入需要输出奇偶数的最大范围数字（>=0）：","100");if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var c=parseInt(a);while(isNaN(c)||c<0){a=prompt("请输入正确的最大范围数字（>=0）",a);if(a===null||a===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}c=parseInt(a)}for(var b=0;b<=c;b++){if(b%2==0){d+=b+" "}else{e+=b+" "}}var f="<p>奇数（odd）和偶数（even）都是数学术语。整数中，能被2整除的数是偶数，不能被2整除的数为奇数。</p>";f+="<p>————————————————————————————————<br />0~"+c+"之间的奇数有：</p><p>"+e+"</p>";f+="<p>————————————————————————————————<br />0~"+c+"之间的偶数有：</p><p>"+d+"</p>";dataShow.innerHTML=f}function primeOrNot(){var f,c;var g;var e="",a="";var b=prompt("请输入需要输出质合数的最大范围数字（>=2）：","100");if(b===null||b===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var d=parseInt(b);while(isNaN(d)||d<2){b=prompt("请输入正确的最大范围数字（>=2）",b);if(b===null||b===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}d=parseInt(b)}for(f=2;f<=d;f++){g=true;for(c=2;c<=f/2;c++){if(f%c==0){g=false;break}}g?e+=f+" ":a+=f+" "}var h="<p>质数又称素数。指在一个大于1的自然数中，除了1和此整数自身外，不能被其他自然数整除的数。比1大但不是素数的数称为合数。</p>";h+="<p>判断素数的一种简单算法：素数是指只能被1和它本身整除的数，判断n是否为素数只需用2~n/2之间的数去除就可以了。因为一个数的一半的平方大于其本身是从5开始的，解方程：n/2的平方>n 。即一个数n的两个因数不能同时比n/2大，也可以说一个数若不是素数则一定在2~n/2之间有因数。</p>";h+="<p>————————————————————————————————<br />0~"+d+"之间的质数有：</p><p>"+e+"</p>";h+="<p>————————————————————————————————<br />0~"+d+"之间的合数有：</p><p>"+a+"</p>";dataShow.innerHTML=h}function narcissisticNumber(){var d,c,e;var k="";var a="";var f=0;var g=prompt("请输入需要输出水仙花数的最大范围数字（>=100）：","10000");if(g===null||g===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var b=parseInt(g);while(isNaN(b)||b<100){g=prompt("请输入正确的最大范围数字(>=100)：",g);if(g===null||g===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}b=parseInt(g)}for(d=100;d<=b;d++){a=""+d;f=0;for(c=0,e=a.length;c<e;c++){f+=Math.pow(parseInt(a.charAt(c)),e)}if(f===d){k+=d+" "}}var h="<p>水仙花数是指一个 n 位数 ( n≥3 )，它的每个位上的数字的 n 次幂之和等于它本身。</p><p>（例如：1^3 + 5^3 + 3^3 = 153）</p>";h+="<p>————————————————————————————————<br />100~"+b+"之间的水仙花数有：</p><p>"+k+"</p>";dataShow.innerHTML=h}function yangHuiTriangle(){var b=prompt("请输入需要显示的行数（>=3 && <=15）：","10");if(b===null||b===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}var f=parseInt(b);while(isNaN(f)||f<3||f>15){b=prompt("请输入正确的行数（>=3 && <=15）：",b);if(b===null||b===""){dataShow.innerHTML="<p>本次操作已被取消！</p>";return 0}f=parseInt(b)}var g="";var e="";var a=[];a[0]=[1];a[1]=[1,1];for(var d=2;d<f;d++){a[d]=[];a[d][0]=1;a[d][d]=1;for(var c=1;c<d;c++){a[d][c]=a[d-1][c-1]+a[d-1][c]}}g+="<p>杨辉三角形，又称贾宪三角形，帕斯卡三角形，是二项式系数在三角形中的一种几何排列。</p>";g+="<p>杨辉三角形具备如下几点性质：</p>";g+="<ol><li>端点的数为1。</li><li>每个数等于它上方两数之和。</li><li>每行数字左右对称，由1开始逐渐变大。</li></ol>";for(var d=0;d<f;d++){e=d===a.length-1?" class='last'":"";g+="<div"+e+">";for(var c=0;c<a[d].length;c++){e=c===a[d].length-1?" class='last'":"";g+="<span"+e+">"+a[d][c]+"</span>"}g+="</div>"}dataShow.innerHTML="<div class='yangHuiTriangle'>"+g+"</div>"}function padStr(g,b,a,h){if(g&&b&&a&&h){var e=g.length;if(e<a){var f="";a=a-e;h=(h.charAt(0)==="&"&&h.length>1)?h:h.charAt(0);for(var d=0;d<a;d++){f+=h}if(b==="l"){return f+g}return g+f}}return g}function strDup(e,b){var f="";var a="";if(e&&b){for(var d=1;d<b;d++){f+=e}a=e+f}return a};
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>插件：警告框（Alert）插件 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>插件：警告框（Alert）插件</h1>
+    <hr>
+
+    <p>警告框（Alert）消息大多是用来想终端用户显示诸如警告或确认消息的信息。使用警告框（Alert）插件，您可以向所有的警告框消息添加可取消（dismiss）功能。</p>
+
+    
+    <p>&nbsp;</p>
+    <h2>用法</h2>
+    <p>您可以有以下两种方式启用警告框的可取消（dismissal）功能：</p>
+    <ul>
+        <li>
+            <p><strong>通过 data 属性</strong>：通过数据 API（Data API）添加可取消功能，只需要向关闭按钮添加 <code>data-dismiss="alert"</code>，就会自动为警告框添加关闭功能。</p>
+            <pre>&lt;a class="close" data-dismiss="alert" href="#" aria-hidden="true">&times;&lt;/a></pre>
+        </li>
+        <li>
+            <p><strong>通过 JavaScript</strong>：通过 JavaScript 添加可取消功能：</p>
+            <pre>$(".alert").alert()</pre>
+        </li>
+        <li>如需在关闭时启用动画效果，请确保添加了 <code>.fade</code> 和 <code>.in</code> class。</li>
+    </ul>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>案例</h2>
+    <div class="alert alert-warning">
+       <a href="#" class="close" data-dismiss="alert">
+          &times;
+       </a>
+       <strong>警告！</strong>您的网络连接有问题。
+    </div>
+    <div class="alert alert-info fade in">
+       <a href="#" class="close" data-dismiss="alert">
+          &times;
+       </a>
+       <strong>提示！</strong>您的网络连接有问题。
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <div><img src="images/alert-methods.png" alt=""></div>
+    <div><img src="images/alert-events.png" alt=""></div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

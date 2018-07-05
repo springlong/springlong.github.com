@@ -1,0 +1,82 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>构建URL实体类</title>
+	<style>
+		body{font-size:14px;line-height:2em;}
+	</style>
+</head>
+<body>
+	<script>
+		//构建URL实体类
+		//缺陷：为对域名进行严格判断，但考虑到实际使用时基本上是认为传递的参数，所以姑且原谅。
+		function uri(url)
+		{
+			var regURL = /^(http:|https:)\/\/([^:\/\?#]+)(:\d+)?(\/[^?#:]*)(\?*[^#]*)(#*.*)$/gi.exec(url);
+
+			if(regURL === null)
+			{
+				this.isURL = false;
+				return;
+			}
+
+
+			//是否为合法URL
+			this.isURL = true;
+
+			//协议
+			this.protocol = regURL[1];
+
+			//域名名称
+			this.hostname = regURL[2];
+
+			//端口号
+			this.port = regURL[3] ? regURL[3].substring(1) : "";
+
+			//域名+端口
+			this.host = this.hostname + (this.port ? (":" + this.port) : "");
+
+			//页面路径
+			this.pathname = regURL[4];
+
+			//?后面的文本
+			this.search = regURL[5];
+
+			//#后面的文本
+			this.hash = regURL[6];
+		}
+
+		//url测试
+		var i, j, len, obj, testURLs = ["http://www.baidu.com/",
+										"https://www.baidu.com/",
+										"http://www.baidu.com/?abc=12!&3?a=@321#1!23#123",
+										"http://www.baidu.com/web/index/123.php?name=testJerry#abc12314544", 
+										"http:///www.baidu.com:88:88//??testJerry=321@label=32#bottom",
+										"http://localhost:8888/index.php"];
+
+		for(i = 0, len = testURLs.length; i < len; i++)
+		{
+			obj = new uri(testURLs[i]);
+			if(obj.isURL)
+			{
+				document.write("<strong>" + testURLs[i] + "</strong><br/>");
+				document.write("当前URL为合法地址。<br />");
+				document.write("协议：" + obj.protocol + "<br/>");
+				document.write("域名：" + obj.hostname + "<br/>");
+				document.write("端口：" + obj.port + "<br/>");
+				document.write("域名+端口：" + obj.host + "<br/>");
+				document.write("页面路径：" + obj.pathname + "<br/>");
+				document.write("?后面得文本：" + obj.search + "<br/>");
+				document.write("#后面的文本：" + obj.hash);
+				document.write("<hr />");
+			}
+			else
+			{
+				document.write(testURLs[i] + "<br/>");
+				document.write("当前URL不合法。");
+				document.write("<hr />");
+			}
+		}
+	</script>
+</body>
+</html>

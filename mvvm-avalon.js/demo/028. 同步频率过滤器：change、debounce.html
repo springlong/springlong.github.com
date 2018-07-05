@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>同步频率过滤器：change、debounce</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>同步频率过滤器：change、debounce</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>这两个过滤器只用于 <code>ms-duplex</code>。</p>
+    <hr>
+    <h2>change</h2>
+    <p>在文本域或文本区使用 <code>ms-duplex</code> 时，默认是每输入一个字符就同步一次。当我们想在失去焦点时才进行同步, 那么可以使用此过滤器。</p>
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: 'change',
+        name: 'Jerry',
+        age: 24
+    })
+&lt;/script>
+&lt;div ms-controller="change">
+    &lt;p>&lt;input type="text" ms-duplex="@name"> &lt;span ms-text="@name">&lt;/span>&lt;/p>
+    &lt;p>&lt;input type="text" ms-duplex="@age | change"> &lt;span ms-text="@age">&lt;/span>&lt;/p>
+&lt;/div>
+</pre>
+    <script>
+        var vmChange = avalon.define({
+            $id: 'change',
+            name: 'Jerry',
+            age: 24
+        })
+    </script>
+    <div ms-controller="change">
+        <p><input type="text" ms-duplex="@name"> <span ms-text="@name"></span></p>
+        <p><input type="text" ms-duplex="@age | change"> <span ms-text="@age"></span></p>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>debounce</h2>
+    <p>当我们实现搜索框的自动完成时, 每输入一个字符可能就会向后台请求一次(请求关键字列表), 这样太频繁,后端撑不住,但使用 <code>change</code> 过滤器,则又太慢了。为每隔几十毫秒请求一次就最好. 基于此常用需要开发出此过滤器. 拥有一个参数.</p>
+    <ul>
+        <li><code>debounceTime</code> : 数字（毫秒）, 不写默认是300, 不能少于4, 否则做无效处理。</li>
+    </ul>
+<pre>
+&lt;script>
+    var vmDebounce = avalon.define({
+        $id: 'debounce',
+        name: 'Jerry'
+    });
+
+    vmDebounce.$watch('name', function(newValue, oldValue, name){
+        console.log(name + ':' + newValue);
+    });
+&lt;/script>
+&lt;div ms-controller="debounce">
+    &lt;p>&lt;input type="text" ms-duplex="@name | debounce(200)"> &lt;span ms-text="@name">&lt;/span>&lt;/p>
+&lt;/div>
+
+</pre>
+    <script>
+        var vmDebounce = avalon.define({
+            $id: 'debounce',
+            name: 'Jerry'
+        });
+
+        vmDebounce.$watch('name', function(newValue, oldValue, name){
+            console.log(name + ':' + newValue);
+        });
+    </script>
+    <div ms-controller="debounce">
+        <p><input type="text" ms-duplex="@name | debounce(200)"> <span ms-text="@name"></span></p>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

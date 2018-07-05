@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>插入移除：ms-if</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+
+
+        button{
+            margin:1em 3em;
+        }
+        .panel div{
+            height:200px;
+            background: #a9ea00;
+        }
+        .panel .panel2{
+            height:200px;
+            background: green;
+        }
+        .panel .panel3{
+            display:block;
+            width:100%;
+            height:200px;
+            background: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>插入移除：ms-if</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>本节介绍的<code>ms-if</code>指令与<code>ms-visible</code>很相似，都是让某元素“看不见”，不同的是<code>ms-visible</code>是通过CSS实现，<code>ms-if</code>是通过移除插入节点实现。</p>
+    <p><code>ms-if</code>的用法与1.×时别无二致，只要值是真，就插入，为假时，就在原位置上替换为一个注释节点做占位符。</p>
+    <blockquote>注意： 在avalon1.*中，存在一个叫ms-if-loop的辅助指令，这个在2.0移除了，这个直接使用filterBy过滤器就能实现相似功能。</blockquote>
+
+
+<pre>
+&lt;script>
+    var vmodel = avalon.define({
+        $id: 'test',
+        object: {}
+    });
+
+    setTimeout(function(){
+        vmodel.object = {id: '132', message: '显示！！'};
+    }, 3000);
+
+    setTimeout(function(){
+        vmodel.object = {};
+    }, 5000);
+&lt;/script>
+&lt;div ms-controller="test">
+    这是比较输出结果： {{@object.id != null}}
+    &lt;div ms-visible="@object.id != null">
+        这是visible的：&lt;span>{{@object.message}}&lt;/span>
+    &lt;/div>
+    &lt;div ms-if="@object.id != null">
+        这是if的：&lt;span>{{@object.message}}&lt;/span>
+    &lt;/div>
+&lt;/div>
+</pre>
+
+
+	<hr>
+    <script>
+        var vmodel = avalon.define({
+            $id: 'test',
+            object: {}
+        });
+
+        setTimeout(function(){
+            vmodel.object = {id: '132', message: '显示！！'};
+        }, 3000);
+
+        setTimeout(function(){
+            vmodel.object = {};
+        }, 5000);
+    </script>
+    <div ms-controller="test">
+        这是比较输出结果： {{@object.id != null}}
+        <div ms-visible="@object.id != null">
+            这是visible的：<span>{{@object.message}}</span>
+        </div>
+        <div ms-if="@object.id != null">
+            这是if的：<span>{{@object.message}}</span>
+        </div>
+    </div>
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>现在我们用ms-if重新做一下切换卡吧：</p>
+<pre>
+&lt;script>
+    var vm2 = avalon.define({
+        $id: 'test2',
+        curIndex: 0,  // 默认显示第一个
+        buttons: ['aaa', 'bbb', 'ccc'],
+        panels: ['&lt;div class="panel1">面板1&lt;/div>', '&lt;div class="panel2">面板2&lt;/div>', '&lt;div class="panel3">面板3&lt;/div>']
+    });
+&lt;/script>
+&lt;div ms-controller="test2">
+    &lt;div>
+        &lt;button ms-for="(i, el) in @buttons" ms-click="@curIndex = i" ms-text="el">&lt;/button>
+    &lt;/div>
+    &lt;div class="panel" ms-for="(i, el) in @panels" ms-if="i === @curIndex" ms-html="el">&lt;/div>
+&lt;/div>
+</pre>
+
+
+    <script>
+        var vm2 = avalon.define({
+            $id: 'test2',
+            curIndex: 0,  // 默认显示第一个
+            buttons: ['aaa', 'bbb', 'ccc'],
+            panels: ['<div class="panel1">面板1</div>', '<div class="panel2">面板2</div>', '<div class="panel3">面板3</div>']
+        });
+    </script>
+    <div ms-controller="test2">
+        <div>
+            <button ms-for="(i, el) in @buttons" ms-click="@curIndex = i" ms-text="el"></button>
+        </div>
+        <div class="panel" ms-for="(i, el) in @panels" ms-if="i === @curIndex" ms-html="el"></div>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

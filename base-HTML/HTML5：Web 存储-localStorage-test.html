@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5：Web 存储-localStorage</title>
+</head>
+<body>
+<script>
+	var str = 'a',
+		result = '';
+
+	for(var i = 0; i < 5*1024*1000; i++) {
+		result += str;
+	}
+
+	// 当设置的数据超过浏览器最大限额，将报错
+	localStorage.setItem('str', result);
+
+	// 三秒后延迟存储，将报错
+	setTimeout(function(){
+		localStorage.setItem('str2', result);	
+	}, 3000);
+</script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<title>日期操作：判断一个日期字符串所表示的日期是否有效</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+    	body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+		code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+		span.code{display:inline-block;width:360px;}
+    </style>
+</head>
+<body>
+<h1>日期操作：判断一个日期字符串所表示的日期是否有效</h1>
+<h2>运行结果</h2>
+<div id="wrapper"></div>
+<h2>脚本函数</h2>
+<pre class="jsCode autoHeight">
+/**
+ * 判断一个日期字符串是否有效（该函数仅支持2014-01-01、2014-1-1、2014/01/01、2014/1/1这四种日期格式）
+ * @param  {String}  dateStr 日期字符串
+ * @return {Boolean}
+ */
+function isDateStr(dateStr)
+{
+    var year, month, day, oDate;
+
+    //第一步：通过正则表达式判断日期字符串格式的合法性
+    if(!/^(\d+)(-|\/)(\d{1,2})(-|\/)(\d{1,2})$/.test(dateStr)) return false;
+    year = RegExp.$1 - 0,
+    month = RegExp.$3 - 1,
+    day = RegExp.$5 - 0;
+
+    //第二步：将日期字符串构建后的Date对象的年、月、日同日期字符串中的各组成部分进行比较来得出最终结果
+    oDate = new Date(year, month, day);
+    return oDate.getFullYear() === year &amp;&amp; oDate.getMonth() === month &amp;&amp; oDate.getDate() === day;
+}
+</pre>
+<h2>调用代码</h2>
+<pre class="jsCode">
+var str = '&lt;p>&lt;span class="code">&lt;code>isDateStr("2014-0-1")&lt;/code>&lt;/span>&lt;span class="result">' + isDateStr("2014-0-1") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>isDateStr("2014-02-29")&lt;/code>&lt;/span>&lt;span class="result">' + isDateStr("2014-02-29") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>isDateStr("2014-06-31")&lt;/code>&lt;/span>&lt;span class="result">' + isDateStr("2014-06-31") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>isDateStr("2014-2-28")&lt;/code>&lt;/span>&lt;span class="result">' + isDateStr("2014-2-28") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>isDateStr("2014-02-28")&lt;/code>&lt;/span>&lt;span class="result">' + isDateStr("2014-02-28") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>isDateStr("2014/3/20")&lt;/code>&lt;/span>&lt;span class="result">' + isDateStr("2014/3/20") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>isDateStr("2014/05/31")&lt;/code>&lt;/span>&lt;span class="result">' + isDateStr("2014/05/31") + '&lt;/span>&lt;/p>';
+document.getElementById("wrapper").innerHTML = str;
+</pre>
+<script>
+    /**
+     * 判断一个日期字符串是否有效（该函数仅支持2014-01-01、2014-1-1、2014/01/01、2014/1/1这四种日期格式）
+     * @param  {String}  dateStr 日期字符串
+     * @return {Boolean}
+     */
+    function isDateStr(dateStr)
+    {
+        var year, month, day, oDate;
+
+        //第一步：通过正则表达式判断日期字符串格式的合法性
+        if(!/^(\d{4})(-|\/)(\d{1,2})(-|\/)(\d{1,2})$/.test(dateStr)) return false;
+        year = RegExp.$1 - 0,
+        month = RegExp.$3 - 1,
+        day = RegExp.$5 - 0;
+
+        //第二步：将日期字符串构建后的Date对象的年、月、日同日期字符串中的各组成部分进行比较来得出最终结果
+        oDate = new Date(year, month, day);
+        return oDate.getFullYear() === year && oDate.getMonth() === month && oDate.getDate() === day;
+    }
+
+    //=====================================================================
+    //测试代码
+    var str = '<p><span class="code"><code>isDateStr("2014-0-1")</code></span><span class="result">' + isDateStr("2014-0-1") + '</span></p>';
+    str += '<p><span class="code"><code>isDateStr("2014-02-29")</code></span><span class="result">' + isDateStr("2014-02-29") + '</span></p>';
+    str += '<p><span class="code"><code>isDateStr("2014-06-31")</code></span><span class="result">' + isDateStr("2014-06-31") + '</span></p>';
+    str += '<p><span class="code"><code>isDateStr("2014-2-28")</code></span><span class="result">' + isDateStr("2014-2-28") + '</span></p>';
+    str += '<p><span class="code"><code>isDateStr("2014-02-28")</code></span><span class="result">' + isDateStr("2014-02-28") + '</span></p>';
+    str += '<p><span class="code"><code>isDateStr("2014/3/20")</code></span><span class="result">' + isDateStr("2014/3/20") + '</span></p>';
+    str += '<p><span class="code"><code>isDateStr("2014/05/31")</code></span><span class="result">' + isDateStr("2014/05/31") + '</span></p>';
+    document.getElementById("wrapper").innerHTML = str;
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

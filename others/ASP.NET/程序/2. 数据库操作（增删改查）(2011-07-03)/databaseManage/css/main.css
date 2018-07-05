@@ -1,0 +1,6 @@
+﻿a{text-decoration:none;color:#084646;}
+a:hover{text-decoration:underline;color:#9B340A;}
+#stuInfo table{width:60%;border-collapse:collapse;}
+#stuInfo table th{width:20%;background:#9D9881;}
+#stuInfo table th,#stuInfo table td{height:30px;border:1px solid gray;text-align:center;}
+#stuInfo table tr.even td{background:#EDEAE0;}

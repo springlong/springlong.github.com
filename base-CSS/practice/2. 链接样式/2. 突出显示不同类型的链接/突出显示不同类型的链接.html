@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>突出显示不同类型的链接</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		body{
+			font-size:18px;
+			line-height:2em;
+		}
+		
+		a{
+			color:#030;
+		}
+		a[href^="http://"]{
+			padding-right:10px;
+			background:url(images/externalLink.gif) no-repeat right top;
+		}
+		a[href^="mailto:"]{
+			padding-right:15px;
+			background:url(images/email.png) no-repeat right top;
+		}
+		
+			
+	</style>
+</head>
+<body>
+
+<a href="http://www.baidu.com">这是一个外部链接</a>
+<br /><a href="mailto:yangtuan2009@126.com">这是一个邮件链接</a>
+
+</body>
+</html>

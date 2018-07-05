@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>将HTML标签属性的数组内容，转换为Sublime插件中需要的数据</title>
+	<script type="text/javascript" src="./data.js"></script>
+	<script>
+		const tag_attributes = {}
+
+		for (let [name, item] of Object.entries(data)) {
+			let tagName = name
+			tag_attributes[tagName] = {}
+			tag_attributes[tagName].attrs = []
+			tag_attributes[tagName].docLink = ''
+
+			let attrs = item || []
+
+			for (let attr of attrs) {
+				let attrObj = {
+					name: attr,
+					type: '',
+					def: '',
+					desc: '',
+				}
+
+				tag_attributes[tagName].attrs.push(attrObj)
+			}
+		}
+
+		console.log(JSON.stringify(tag_attributes))
+		console.log(tag_attributes)
+	</script>
+</head>
+<body>
+
+</body>
+</html>

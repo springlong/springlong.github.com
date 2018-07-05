@@ -1,0 +1,5 @@
+D:\我的文档\公司任务\12. 新闻发布系统\xwfbxt\bin\xwfbxt.dll
+D:\我的文档\公司任务\12. 新闻发布系统\xwfbxt\bin\xwfbxt.pdb
+D:\我的文档\公司任务\12. 新闻发布系统\xwfbxt\obj\Debug\ResolveAssemblyReference.cache
+D:\我的文档\公司任务\12. 新闻发布系统\xwfbxt\obj\Debug\xwfbxt.dll
+D:\我的文档\公司任务\12. 新闻发布系统\xwfbxt\obj\Debug\xwfbxt.pdb

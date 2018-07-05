@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>折线图</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery/1.11.1/jquery.js"></script>
+    <script src="js/echarts.js"></script>
+    <style>
+        #operate {
+            margin-bottom: 30px;
+        }
+
+        #operate a {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #ddd;
+            color: #eee;
+            background: #4D7698;
+            text-decoration: none;
+        }
+
+        #operate a.selected {
+            background: #2C89D3;
+        }
+    </style>
+</head>
+<body>
+<h1>十一黄金周销量情况</h1>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 800px; height:400px;"></div>
+
+<script>
+    // 初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图标的配置项和数据
+    var option = {
+        // 提示框组件
+        tooltip: {
+            show: true,             // 是否显示
+            trigger: 'axis',        // 触发类型：'axis'-坐标轴触发、'item'-数据项触发、'none'-不触发
+            triggerOn: 'mousemove'  // 触发条件：'mousemove'-鼠标移动触发、'click'-鼠标点击触发、'mousemove|click'-同时鼠标移动和点击触发、'none'-不触发
+        },
+        // 图例组件：展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示
+        legend: {
+            show: true,                 // 是否显示
+            align: 'left',              // 图例标记和文本的对齐方式：'auto'-自动（默认）、'lfet'-图例标记在文本左侧、'right'-图例标记在文本右侧
+            selectedMode: 'multiple',   // 图例选择的模式：'single'-单选模式、'multiple'-多选模式、true-开启图例选择（默认，且为多选模式）、false-关闭图例选择
+            // 图例数据
+            data: ['澳大利亚', '韩国', '日本', '新西兰', '芬兰', '法国', '西班牙', '巴西', '荷兰'],
+            selected: {
+                '澳大利亚': true,
+                '韩国': true,
+                '日本': true,
+                '新西兰': false,
+                '芬兰': false,
+                '法国': false,
+                '西班牙': false,
+                '巴西': false,
+                '荷兰': false
+            }
+        },
+        // 直角坐标系 grid 中的 x 轴，一般情况下单个 grid 组件最多只能放左右两个 x 轴，多于两个 x 轴需要通过配置 offset 属性防止同个位置多个 x 轴的重叠
+        xAxis: [{
+            // 坐标轴名称
+            name: '日期',
+            // 坐标轴名称与轴线之间的距离 [ default: 15 ]
+            nameGap: 10,
+            // 类目数据-所有类目名称列表
+            data: ['2016-10-01', '2016-10-02', '2016-10-03', '2016-10-04', '2016-10-05', '2016-10-06', '2016-10-07'],
+            // 坐标轴标签的相关设置
+            axisLabel: {
+                // 格式化输出-使用函数
+                formatter: function(value, index){
+                    var oDate = new Date(value);
+                    return (oDate.getMonth() + 1) + '.' + oDate.getDate();
+                }
+            },
+        }],
+        // 直角坐标系 grid 中的 y 轴，一般情况下单个 grid 组件最多只能放左右两个 y 轴，多于两个 y 轴需要通过配置 offset 属性防止同个位置多个 Y 轴的重叠
+        yAxis: [{
+            // 坐标轴类型：'value'-数值轴，用于展示数据、'category'-类目轴，通过data字段设置类目数据、'time'-时间轴，适用于连续的时序数据，是数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度
+            type: 'value',
+            // 坐标轴名称
+            name: '销量',
+            // 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整（在类目轴中无效，默认：5）
+            // splitNumber: 5,
+            // 坐标轴标签的相关设置
+            axisLabel: {
+                // 是否显示，默认true
+                show: true,
+                // 是否朝内显示，默认false
+                inside: false,
+                // 刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间的重叠（旋转的角度从 -90 度到 90 度，默认为0）
+                rotate: 0,
+                // 刻度标签与轴线之间的距离，默认为：8
+                margin: 8,
+                // 格式化输出-使用字符串，变量使用 {value} 表示
+                formatter: '{value} 万元',
+                // 格式化输出-使用函数
+                formatter: function(value, index){
+                    return value + ' 万元'
+                }
+            }
+        }],
+        // 系列列表。每个系列通过 type 决定自己的图表类型
+        series: [{
+                name: '澳大利亚',
+                type: 'line',
+                data: [15, 50, 66, 28, 40, 60, 10]
+            }, {
+                name: '韩国',
+                type: 'line',
+                data: [22, 33, 64, 23, 23, 15, 42]
+            }, {
+                name: '日本',
+                type: 'line',
+                data: [13, 12, 35, 67, 89, 22, 45]
+            }, {
+                name: '新西兰',
+                type: 'line',
+                data: [25, 45, 15, 65, 25, 58, 45]
+            }, {
+                name: '芬兰',
+                type: 'line',
+                data: [33, 44, 32, 54, 32, 21, 32]
+            }, {
+                name: '法国',
+                type: 'line',
+                data: [32, 23, 42, 23, 42, 12, 32]
+            }, {
+                name: '西班牙',
+                type: 'line',
+                data: [23, 45, 62, 12, 32, 32, 44]
+            }, {
+                name: '巴西',
+                type: 'line',
+                data: [32, 35, 42, 23, 21, 32, 56]
+            }, {
+                name: '荷兰',
+                type: 'line',
+                data: [33, 22, 33, 23, 45, 62, 70]
+            }
+        ],
+        // 调色盘颜色列表。如果系列没有设置颜色，则会依次循环从该列表中取颜色作为系列颜色
+        color: ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3']
+    };
+
+    // 显示图表
+    myChart.setOption(option);
+</script>
+</body>
+</html>

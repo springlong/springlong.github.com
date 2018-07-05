@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>布局组件：进度条 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>布局组件：进度条</h1>
+    <hr>
+
+    <p>本章将讲解 Bootstrap 进度条。在本教程中，您将看到如何使用 Bootstrap 创建加载、重定向或动作状态的进度条。</p>
+    <blockquote>Bootstrap 进度条使用 CSS3 过渡和动画来获得该效果。Internet Explorer 9 及之前的版本和旧版的 Firefox 不支持该特性，Opera 12 不支持动画。</blockquote>
+
+    <p>&nbsp;</p>
+    <h2>默认的进度条</h2>
+    <p>创建一个基本的进度条的步骤如下：</p>
+    <ul>
+        <li>添加一个带有 class <code>.progress</code> 的 <code>&lt;div></code>。</li>
+        <li>接着，在上面的 <code>&lt;div></code> 内，添加一个带有 class <code>.progress-bar</code> 的空的 <code>&lt;div></code>。</li>
+        <li>添加一个带有百分比表示的宽度的 <code>style</code> 属性，例如 <code>style="60%"</code> 表示进度条在 60% 的位置。</li>
+    </ul>
+    <div class="progress">
+       <div class="progress-bar" role="progressbar" aria-valuenow="60" 
+          aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+          <span class="sr-only">40% 完成</span>
+       </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+
+
+
+    <hr>
+    <h2>交替的进度条</h2>
+    <p>创建不同样式的进度条的步骤如下：</p>
+    <ul>
+        <li>添加一个带有 class <code>.progress</code> 的 <code>&lt;div></code>。</li>
+        <li>接着，在上面的 <code>&lt;div></code> 内，添加一个带有 class <code>.progress-bar</code> 和 class <code>progress-bar-*</code> 的空的 <code>&lt;div></code>。其中，* 可以是 <code>success</code>、<code>info</code>、<code>warning</code>、<code>danger</code>。</li>
+        <li>添加一个带有百分比表示的宽度的 <code>style</code> 属性，例如 <code>style="60%"</code> 表示进度条在 60% 的位置。</li>
+    </ul>
+    <div class="progress">
+       <div class="progress-bar progress-bar-info" role="progressbar" 
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  
+          style="width: 30%;">
+          <span class="sr-only">30% 完成（信息）</span>
+       </div>
+    </div>
+    <div class="progress">
+       <div class="progress-bar progress-bar-warning" role="progressbar" 
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 
+          style="width: 20%;">
+          <span class="sr-only">20% 完成（警告）</span>
+       </div>
+    </div>
+    <div class="progress">
+       <div class="progress-bar progress-bar-danger" role="progressbar" 
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  
+          style="width: 10%;">
+          <span class="sr-only">10% 完成（危险）</span>
+       </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+
+
+
+    <hr>
+    <h2>条纹的进度条</h2>
+    <p>创建一个条纹的进度条的步骤如下：</p>
+    <ul>
+        <li>添加一个带有 class <code>.progress</code> 和 <code>.progress-striped</code> 的 <code>&lt;div></code>。</li>
+        <li>接着，在上面的 <code>&lt;div></code> 内，添加一个带有 class <code>.progress-bar</code> 和 class <code>progress-bar-*</code> 的空的 <code>&lt;div></code>。其中，* 可以是 <code>success</code>、<code>info</code>、<code>warning</code>、<code>danger</code>。</li>
+        <li>添加一个带有百分比表示的宽度的 <code>style</code> 属性，例如 <code>style="60%"</code> 表示进度条在 60% 的位置。</li>
+    </ul>
+    <div class="progress progress-striped">
+       <div class="progress-bar progress-bar-success" role="progressbar" 
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  
+          style="width: 90%;">
+          <span class="sr-only">90% 完成（成功）</span>
+       </div>
+    </div>
+    <div class="progress progress-striped">
+       <div class="progress-bar progress-bar-info" role="progressbar"
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  
+          style="width: 30%;">
+          <span class="sr-only">30% 完成（信息）</span>
+       </div>
+    </div>
+    <div class="progress progress-striped">
+       <div class="progress-bar progress-bar-warning" role="progressbar" 
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  
+          style="width: 20%;">
+          <span class="sr-only">20% 完成（警告）</span>
+       </div>
+    </div>
+    <div class="progress progress-striped">
+       <div class="progress-bar progress-bar-danger" role="progressbar" 
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  
+          style="width: 10%;">
+          <span class="sr-only">10% 完成（危险）</span>
+       </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+
+
+
+    <hr>
+    <h2>动画的进度条</h2>
+    <p>创建一个动画的进度条的步骤如下：</p>
+    <ul>
+        <li>添加一个带有 class <code>.progress</code> 和 <code>.progress-striped</code> 的 <code>&lt;div></code>。同时添加 class <code>.active</code>。</li>
+        <li>接着，在上面的 <code>&lt;div></code> 内，添加一个带有 class <code>.progress-bar</code> 的空的 <code>&lt;div></code>。</li>
+        <li>添加一个带有百分比表示的宽度的 <code>style</code> 属性，例如 <code>style="60%"</code> 表示进度条在 60% 的位置。</li>
+    </ul>
+    <p>这将会使条纹具有从右向左的运动感。</p>
+    <div class="progress progress-striped active">
+       <div class="progress-bar progress-bar-success" role="progressbar" 
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 
+          style="width: 40%;">
+          <span class="sr-only">40% 完成</span>
+       </div>
+    </div>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+
+
+
+
+    <hr>
+    <h2>堆叠的进度条</h2>
+    <p>您甚至可以堆叠多个进度条。把多个进度条放在相同的 <code>.progress</code> 中即可实现堆叠，如下面的实例所示：</p>
+    <div class="progress">
+       <div class="progress-bar progress-bar-success" role="progressbar" 
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" 
+          style="width: 40%;">
+          <span class="sr-only">40% 完成</span>
+       </div>
+       <div class="progress-bar progress-bar-info" role="progressbar" 
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  
+          style="width: 30%;">
+          <span class="sr-only">30% 完成（信息）</span>
+       </div>
+       <div class="progress-bar progress-bar-warning" role="progressbar" 
+          aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"  
+          style="width: 20%;">
+          <span class="sr-only">20% 完成（警告）</span>
+       </div>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

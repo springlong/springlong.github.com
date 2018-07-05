@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<title>PIE-圆角+渐变+阴影——让IE6/7/8支持圆角、阴影、渐变</title>
+	<base target="_blank" />
+	<meta charset="gbk" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="robots" content="all" />
+	<meta name="googlebot" content="all" />
+	<meta name="copyright" content="版权所有" />
+	<meta name="generator" content="EditPlus" />
+	<meta name="author"	content="Jerry-小猪" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		#container{
+			width:980px;
+			margin:20px auto;
+		}
+
+		#testBox
+		{
+			position:relative; /*必须设置该元素为定位元素，否则在IE中有可能造成渲染不成功。*/
+			float:left;
+			display:inline;
+			width:200px;
+			height:200px;
+			border:10px solid #086C8B;
+			border-radius:10px 20px 30px 40px;
+			box-shadow:4px 4px 10px #B2B70F;
+			background:#EEFF99; /*for old browsers*/
+			background:-webkit-gradient(linear, 0 0, 0 bottom, from(#EEFF99), to(#66EE33)); /*for Chrome 10+, Safari 5.1+*/
+			background:-moz-linear-gradient(#EEFF99, #66EE33); /*for Firefox 3.6+*/
+			background:-o-linear-gradient(#EEFF99, #66EE33); /*for Opera 11.10+*/
+			background:-ms-linear-gradient(#EEFF99, #66EE33); /*for IE 10+*/
+			-pie-background: linear-gradient(#EEFF99, #66EE33); /*for IE6~9*/
+			/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#EEFF99', endColorstr='#66EE33', GradientType=0 ); /*for IE6~9 (注意：该滤镜可用于实现IE中的渐变效果，但与pie.htc有冲突！)*/
+			behavior:url(pie.htc); /*使用behavior属性引用pie.htc文件即可在IE中实现对border-radius、box-shadow的支持。*/
+		}
+		#control{
+			float:right;
+			display:inline;
+			width:600px;
+			padding:10px;
+			border:4px groove gray;
+			margin-left:20px;
+			font-size:14px;
+			line-height:28px;
+		}
+		#control ol{
+			padding-left:25px;
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+	<div id="testBox">这里是测试模块！</div>
+	<div id="control">
+		<p>官方网站：<a href="http://css3pie.com/" target="_blank">http://css3pie.com/</a></p>
+		<p>参考文章：<a href="http://www.zhangxinxu.com/wordpress/2010/07/pie使ie支持css3圆角盒阴影与渐变渲染/" target="_blank">http://www.zhangxinxu.com/wordpress/2010/07/pie使ie支持css3圆角盒阴影与渐变渲染/</a></p>
+		<p>参考文章：<a href="让IE 6,7,8支持CSS3的部分属性" target="_blank">http://www.hujuntao.com/archives/ie-css3-support.html</a></p>
+		<p><strong>注意事项：</strong></p>
+		<ol>
+			<li>.htc格式的文件可以理解为一个封装的js，仅只IE浏览器支持，在CSS中需要通过behavior属性来进行引用。</li>
+			<li>与PIE.htc类似的辅助工具为IE-CSS3.htc，官网为：<a href="http://fetchak.com/ie-css3/" target="_blank">http://fetchak.com/ie-css3/</a>。该文件仅能实现border-radius和box-shadow属性，且阴影颜色只能为黑色。因局限性过大，所以不建议使用，即使它的文件大小仅只11KB。</li>
+			<li>在IE中使用阴影效果，目标容器会被添加额外的背景，背景的颜色即为所设定的阴影颜色。如果不需要这个附加的背景颜色，则需要设置容器的background属性来覆盖它。</li>
+			<li><strong>z-index相关问题：</strong>使用PIE在IE下实现CSS3效果是借助于VML，由VML绘制圆角或是投影效果的容器元素，然后这个容器元素作为目标元素的后兄弟节点插入，如果目标元素position:absolute 或是 position:relative，则这个css3-container元素将会设置与之一样的z-index值，在DOM tree中，同级的元素总是后面的覆盖前面的，所以这样就实现了覆盖，又避免了可能有其他元素正好插入其中。<br />所以，问题来了，如果目前元素的position属性为static，也就是默认属性，则z-index属性是没有用的，无覆盖可言，所以此时IE浏览器下CSS3的渲染是不会成功的。要解决也很简单，设置目标元素position:relative或是设置祖先元素position:relative并赋予一个z-index值（不可为-1）。</li>
+			<li><strong>相对路径的问题：</strong>IE浏览器的behavior 属性是相对于HTML文档而言的，与CSS其他的属性不一样，不是相对于CSS文档而言的。这使得使用pie.htc文件不怎么方面。如果绝对路径于根目录，则CSS文件不方便移动；如果相对路径与HTML文档，则pie.htc文件在不同HTML页面见的重用性大大降低。同时，诸如border-image后面的URL属性路径也不好处理。</li>
+			<li><strong>缩写的问题：</strong>使用PIE实现IE下的CSS3渲染（其他方法也是一样），只能使用缩写的形式，例如圆角效果，我们可以设置border-top-left-radius表示左上圆角，但是PIE确实不支持这种写法的，只能是老老实实的缩写。</li>
+			<li><strong>提供正确的Content-Type：</strong>要想让IE浏览器支持htc文件，需要一个有着”text/x-component” 字样的content-type 头部，否则，会忽视behavior。绝大数web服务器提供了正确的content-type，但是还有一部分则有问题。</li>
+			<li><strong>影响：</strong>使用该工具来实现圆角、阴影、渐变效果时，由于它是使用JS通过VML绘制的，所以在元素的交互性操作方面会有一定的影响。（例如：在IE6中向a标签添加PIE效果，将导致连接无法点击，所以应避免在a标签上使用PIE实现CSS3效果。）</li>
+		</ol>
+	</div>
+</div>
+</body>
+</html>

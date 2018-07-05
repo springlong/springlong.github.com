@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>表格的常规使用_嵌套</title>
+	<style type="text/css">
+		body{
+			font-family:"微软雅黑";
+			background:black;
+		}
+		
+		/*=============================================================================
+		 *表格的大概定位与设置
+		 *======================*/
+		#tableOuter{
+			width:950px;
+			margin:0px auto;
+		}
+		#nesting{
+			width:950px;
+			height:400px;
+			background:url(背景1.jpg);
+			border:4px silver outset;
+			text-align:center;	
+		}
+		#nesting caption{
+			color:#F93;
+			line-height:2em;
+		}
+		#nesting .row1{
+			height:40px;			/*如果不设置高度话，在某些浏览器中将会使顶级表格的两行设置为均等高度*/
+		}
+		#nesting .row2{
+			height:300px;			/*注意：必须使两行的总高度以及单元格间距的总和约等于表格的Height属性值(行1+行2+单元格间距=40+300+20*3=400)*/
+		}
+		#nesting col{
+			width:25%;			/*使表格中四个单元格的宽度各占四分之一*/
+		}
+		#nesting th,td{
+			border:1px inset;
+		}
+		#nesting .row1,#nesting table{
+			background:silver;	/*这样设置是因为顶级表格的单元格不需要背景色*/
+		}
+		
+		/*========================================================================
+		 *子级表格的设置
+		 *=================*/
+		#nesting table{
+			width:100%;
+			height:300px;			/*必须使该高度等于上级表格单元格的height值*/
+			border:1px ouset #A1A1A1;
+		}
+		#nesting table th{
+			width:1em;
+			padding:0px 0.5em;
+		}
+		#nesting table th,#nesting table td{
+			border:1px inset #A1A1A1;	
+		}
+	</style>
+</head>
+<body>
+
+<div id="tableOuter">
+<table id="nesting" cellspacing="20">
+	<col />
+	<col />
+	<col />
+	<col />
+	<caption>嵌套表格的应用</caption>
+	<tr class="row1">
+		<th colspan="4">计算机专业相关课程概要</th>
+	</tr>	
+	<tr class="row2">
+		<td>
+			<table>
+				<tr>
+					<th rowspan="5">计算机基础</th>
+					<td>计算机组装与维修</td> 
+				</tr>
+				<tr>  
+					<td>Windows XP</td> 
+				</tr>
+				<tr>  
+					<td>Office办公软件</td> 
+				</tr>
+				<tr>  
+					<td>DOS命令行</td> 
+				</tr>
+				<tr>  
+					<td>注册表+组策略</td> 
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table>
+				<tr>
+					<th rowspan="5">软件编程</th>
+					<td>C语言</td> 
+				</tr>
+				<tr>  
+					<td>C++</td> 
+				</tr>
+				<tr>  
+					<td>Java</td> 
+				</tr>
+				<tr>  
+					<td>C#</td> 
+				</tr>
+				<tr>  
+					<td>VB</td> 
+				</tr>
+			</table>
+
+		</td>
+		<td>
+			<table>
+				<tr>
+					<th rowspan="5">网络编程</th>
+					<td>HTML+CSS</td> 
+				</tr>
+				<tr>  
+					<td>JavaScript</td> 
+				</tr>
+				<tr>  
+					<td>ASP.NET</td> 
+				</tr>
+				<tr>  
+					<td>JSP</td> 
+				</tr>
+				<tr>  
+					<td>PHP</td> 
+				</tr>
+			</table>
+		</td>
+		<td>
+			<table>
+				<tr>
+					<th rowspan="5">网页设计</th>
+					<td>HTML+CSS</td> 
+				</tr>
+				<tr>  
+					<td>JavaScript</td> 
+				</tr>
+				<tr>  
+					<td>PhotoShop</td> 
+				</tr>
+				<tr>  
+					<td>Dreamweaver</td> 
+				</tr>
+				<tr>  
+					<td>Flash</td> 
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+</div>
+</body>
+</html>

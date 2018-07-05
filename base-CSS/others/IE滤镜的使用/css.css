@@ -1,0 +1,23 @@
+		body{
+			font-size:100%;
+			white-space:nowrap;
+			}
+
+		.caption{
+			font:oblique small-caps bold  36px/50px "华文行楷" ;
+			}
+
+		.type{
+			color:blue;
+			font-family:"微软雅黑","宋体";
+			font-size:24px;
+			font-weight:bold;
+			font-style:italic;
+			text-transform:capitalize;
+			text-decoration:underline;
+			line-height:2em;
+			}
+
+		.keywords{
+			color:purple;
+			}

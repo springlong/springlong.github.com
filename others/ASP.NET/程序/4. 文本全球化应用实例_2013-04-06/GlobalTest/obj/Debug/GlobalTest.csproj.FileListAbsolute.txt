@@ -1,0 +1,5 @@
+C:\Users\Administrator\Desktop\框架练习\test\GlobalTest\GlobalTest\bin\GlobalTest.dll
+C:\Users\Administrator\Desktop\框架练习\test\GlobalTest\GlobalTest\bin\GlobalTest.pdb
+C:\Users\Administrator\Desktop\框架练习\test\GlobalTest\GlobalTest\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\框架练习\test\GlobalTest\GlobalTest\obj\Debug\GlobalTest.dll
+C:\Users\Administrator\Desktop\框架练习\test\GlobalTest\GlobalTest\obj\Debug\GlobalTest.pdb

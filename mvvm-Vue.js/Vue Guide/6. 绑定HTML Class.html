@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>绑定HTML Class</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <style>
+		#testBox {
+			width: 200px;
+			height: 200px;
+			background-color: #eee;
+		}
+
+		#testBox.color {
+			background-color: orange;
+		}
+
+		.hide {
+			display: none;
+		}
+    </style>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>绑定HTML Class</h1>
+	<p><code>v-bind:class</code> 绑定，不影响原有<code>class</code>属性，原有<code>class</code>属性将会被合并。</p>
+	<div id="testBox" class="defClass" v-bind:class="{color: colorType}">
+		<div v-bind:class="objClassInfo">使用计算属性</div>
+		<div v-bind:class="[class1, class2]">使用数组</div>
+		<div v-bind:class="[{hide: isHide}, class2]">数组中使用对象语法</div>
+	</div>
+	<script>
+	    var vm = new Vue({
+	    	el: '#testBox',
+	        data: {
+	        	colorType: 1,
+	        	isHide: false,
+	        	class1: 'test1',
+	        	class2: 'test2'
+	        },
+	        computed: {
+	        	objClassInfo: function(){
+	        		return {
+	        			hide: this.isHide && this.colorType === 0
+	        		}
+	        	}
+	        }
+	    });
+
+	    setTimeout(function(){
+	    	vm.colorType = 0;
+	    	vm.class1 = 'abc1';
+	    }, 2000);
+
+	    setTimeout(function(){
+	    	vm.isHide = true;
+	    }, 5000);
+	</script>
+</div>
+</body>
+</html>

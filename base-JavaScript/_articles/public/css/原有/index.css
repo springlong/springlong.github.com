@@ -1,0 +1,24 @@
+html{overflow:hidden;width:100%;height:100%;}
+body{overflow:hidden;width:100%;height:100%;background-color:#333;}
+a{-moz-transition:background-color 100ms linear;-webkit-transition:background-color 100ms linear;-o-transition:background-color 100ms linear;}
+
+#containerOuter{width:98%;height:98%;border:1px solid #ccc;margin:0.4% auto 0;background:#fff;}
+#contentWrapper{width:100%;height:100%;position:relative;}
+#main{height:100%;margin-left:240px;}
+#main iframe{display:block;width:100%;height:100%;padding:0;border:none;margin:0;}
+
+#aside{position:absolute;left:0;top:0;width:220px;background:gray;}
+#aside li{float:left;display:inline;}
+#aside li .title2{background: url(../images/downup.png) no-repeat 192px 0;}
+#aside li .title{display:block;width:220px;height:38px;font:bold 16px/38px "\5fae\8f6f\96c5\9ed1";text-indent:28px;color:#fff;background-color:#919191;cursor:pointer;}
+#aside li .title:hover,
+#aside li .sele{text-decoration:none;background-color:#2C83B9;}
+#aside li .sele{background-position:192px -40px;}
+
+#aside li ul{display:none;overflow:hidden;width:100%;padding:12px 0;background:#F2F2F2;}
+#aside li ul.show{display:block;}
+#aside li ul li{float:left;display:inline;width:130px;height:20px;margin:5px 0 0 25px;}
+#aside li ul li.first{margin-top:0;}
+#aside li ul li a{display:block;width:100%;height:100%;font-size:14px;line-height:20px;color:#666;}
+#aside li ul li a:hover,
+#aside li ul li a.sele{text-decoration:none;color:#fff;background:#2C83B9;}

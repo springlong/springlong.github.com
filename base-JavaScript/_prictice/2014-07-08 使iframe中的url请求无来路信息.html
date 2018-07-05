@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>使iframe中的url请求无来路信息</title>
+    <style>
+        *{padding:0;margin:0;}
+        body{padding:20px;}
+        h1{margin:20px 0;}
+    </style>
+</head>
+<body>
+	<h1>使iframe中的url请求无来路信息（请上传FTP后，使用控制台查看url的请求信息）</h1>
+    <script>
+        var iframeStr = '<p>通过img图片加载QQ空间地址：</p><p><img src="http://user.qzone.qq.com/569320261" /></p>';
+    </script>
+    <iframe src="javascript:parent.iframeStr" style="width:980px;height:600px;margin:0 auto;"></iframe>
+</body>
+</html>

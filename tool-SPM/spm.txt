@@ -1,0 +1,65 @@
+
+spm官网：http://spmjs.io/
+
+spm中文官方帮助文档：http://docs.spmjs.org/doc/
+
+Package.json配置说明：http://docs.spmjs.org/doc/package
+
+
+===========
+===========
+npm install spm -g
+
+	安装 SPM
+
+
+===========
+===========
+spm install
+
+	安装seajs模块
+
+	spm install seajs		
+
+		安装seajs模块（最新版）
+		将seajs的相关文件创建在当前文件夹的“/sea-modules/seajs/seajs/2.2.1/”目录下（其中版本号默认为最新版）。
+		
+
+	spm install jquery@1.11.1
+
+		安装jquery模块（指定版本号为1.11.1)
+		将jquery的相关文件创建在当前文件夹的“/sea-modules/jquery/jquery/1.11.1/”目录下（其中版本号为指定的1.11.1）
+
+	
+	
+===========
+===========
+spm init
+
+	初始化目录结构
+
+	spm init 这个命令, 实际上就是将 C:\Documents and Settings\Administrator\.spm\init\cmd\root 和 C:\Documents and Settings\Administrator\.spm\themes\cmd 文件夹下的文件, 通过在一些模板文件中替换掉一些在交互阶段得到的参数, 然后复制到你执行spm init 命令的模块目录里, 比如D:\projects\box 等等.
+
+
+
+
+===========
+===========
+spm build
+
+	将指定目录下的模块文件进行打包，即将文件依赖的其他模块与当前模块进行整合。
+
+
+
+===========
+===========
+spm deploy
+
+	将打包好的模块进行部署。
+
+	部署配置：C:\Users\Administrator\AppData\Roaming\npm\node_modules\spm-deploy\Gruntfile.js
+
+	
+
+
+

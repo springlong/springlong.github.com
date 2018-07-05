@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Date日期对象：日期对象的创建</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script src="../../public/js/jquery.min.js"></script>
+    <script src="../../public/js/jquery.extend.js"></script>
+    <script src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';} 
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        p{margin-top:20px;line-height:2em;}
+        code{padding:5px 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:360px;}
+
+        #wrapper div{display:inline-block;font-size:21px;font-weight:bold;color:#3B834D;}
+    </style>
+</head>
+<body>
+<h1>Date日期对象：日期对象的创建</h1>
+<script>
+    document.write("<h2>无参数</h2>");
+    document.write("<p><code>new Date()</code>：" + new Date());
+    document.write("<h2>毫秒级快照（UTC）</h2>");
+    document.write("<p><code>new Date(3600000)</code>：" + new Date(3600000));
+    document.write("<p><code>new Date(1407657600000)</code>：" + new Date(1407657600000));
+    document.write("<h2>日期字符串</h2>");
+    document.write("<p><code>new Date(\"2014/8/10 08:00:00\")</code>：" + new Date("2014/8/10 08:00:00"));
+    document.write("<p><code>new Date(\"2014/8/10\")</code>：" + new Date("2014/8/10"));
+    document.write("<p><code>new Date(\"2014/12/32 8:00:00\")</code>：" + new Date("2014/12/32 8:00:00"));
+    document.write("<p><code>new Date(\"2014/12/31 24:00:00\")</code>：" + new Date("2014/12/31 24:00:00"));
+    document.write("<p><code>new Date(\"2014--12--31\")</code>：" + new Date("2014--12--31"));
+    document.write("<h2>日期时间组成部分</h2>");
+    document.write("<p><code>new Date(2014, 7, 10, 8, 0, 0)</code>：" + new Date(2014, 7, 10, 8, 0, 0));
+    document.write("<p><code>new Date(2014, 7, 10)</code>：" + new Date(2014, 7, 10));
+    document.write("<p><code>new Date(2014, 7, 32)</code>：" + new Date(2014, 7, 32));
+    document.write("<h2>日期对象</h2>");
+    document.write("<p><code>new Date( new Date(\"2014/8/10\") )</code>：" + new Date( new Date("2014/8/10") ));
+
+
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

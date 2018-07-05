@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>插值</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>插值</h1>
+	<div class="text-item">
+		<p>通过<code>{{}}</code>这样一对双大括号的Mustache语法在HTML代码中插入文本值。可以使用过滤器对文本内容进行处理。Mustache语法中，Vue.js提供了完全的JavaScript表达式支持。需要注意的是，Mustache语法不能作用在HTML特性上，遇到这类情况需要使用<code>v-bind</code>指令。</p>
+		<p>通过<code>v-text</code>指令绑定标签需要输出的文本内容。无法使用过滤器。（支持完全的JavaScript表达式）</p>
+		<p>通过<code>v-html</code>指令绑定标签需要输出的HTML代码。无法使用过滤器。（支持完全的JavaScript表达式）</p>
+	</div>
+<pre style="max-height:160px;">
+    var vueData = {
+        data: {
+            hello: '你好&amp;nbsp;"hello"!',
+            name: 'kenny_Mom&amp;#039;s Love',
+            html: '&lt;b>加粗文本&lt;/b>',
+            htmlText: '&amp;lt;b&amp;gt;加;&amp;amp;粗&amp;nbsp&lt;br>文本&amp;lt;/b&amp;gt;'
+        }
+    };
+
+    var vm = new Vue({
+        el: '#testBox',
+        data: vueData,
+        filters: {
+            unescape: function (html) {
+                return html
+                  .replace(/&nbsp;/g, ' ')
+                  .replace(/&lt;/g, '&lt;')
+                  .replace(/&gt;/g, '>')
+                  .replace(/&quot;/g, '\"')
+                  .replace(/&#39;/g, '\'')
+                  .replace(/&#039;/g, '\'')
+                  .replace(/&amp;/g, '&');
+            }
+        }
+    });
+</pre>
+	<hr>
+	<div id="testBox">
+	    <h2>v-text输出</h2>
+	    <div v-text="data.hello"></div>
+	    <div v-text="data.name"></div>
+	    <div v-text="data.html"></div>
+	    <div v-text="data.htmlText || unescape"></div>
+	    <hr>
+	    <h2>{{}}+过滤器</h2>
+	    <div>{{data.hello | unescape}}</div>
+	    <div>{{data.name | unescape}}</div>
+	    <div>{{data.html | unescape}}</div>
+	    <div>{{data.htmlText | unescape}}</div>
+	    <hr>
+	    <h2>v-html输出</h2>
+	    <div v-html="data.hello"></div>
+	    <div v-html="data.name"></div>
+	    <div v-html="data.html"></div>
+	    <div v-html="data.htmlText"></div>
+	    <hr>
+	    <h2>Mustache语法中，Vue.js提供了完全的JavaScript表达式支持</h2>
+	    <div><code>3*2+4/2</code>: {{3*2+4/2}}</div>
+	    <div><code>new Date()</code>: {{new Date()}}</div>
+	    <hr>
+	    <h2>Mustache语法不能作用在HTML特性上，遇到这类情况需要使用<code>v-bind</code>指令。</h2>
+	    <div title="{{new Date()}}">这是一段我文本！鼠滑上来看看有什么提示！</div>
+	    <div v-bind:title="new Date()">这是一段我文本！鼠滑上来看看有什么提示！</div>
+	</div>
+	<script>
+	    var vueData = {
+	        data: {
+	            hello: '你好&nbsp;"hello"!',
+	            name: 'kenny_Mom&#039;s Love',
+	            html: '<b>加粗文本</b>',
+	            htmlText: '&lt;b&gt;加&amp;粗&nbsp;<br>文本&lt;/b&gt;'
+	        }
+	    };
+
+	    var vm = new Vue({
+	        el: '#testBox',
+	        data: vueData,
+	        // 过滤器配置
+	        filters: {
+	        	// 文本非转义显示
+	            unescape: function (html) {
+	                return html
+	                  .replace(/&nbsp;/g, ' ')
+	                  .replace(/&lt;/g, '<')
+	                  .replace(/&gt;/g, '>')
+	                  .replace(/&quot;/g, '\"')
+	                  .replace(/&#39;/g, '\'')
+	                  .replace(/&#039;/g, '\'')
+	                  .replace(/&amp;/g, '&');
+	            }
+	        }
+	    });
+	</script>
+</div>
+</body>
+</html>

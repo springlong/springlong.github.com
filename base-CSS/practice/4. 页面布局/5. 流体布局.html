@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+	<title>流体布局</title>
+	<base target="_blank" />
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<meta name="robots" content="all" />
+	<meta name="googlebot" content="all" />
+	<meta name="copyright" content="版权所有" />
+	<meta name="generator" content="EditPlus" />
+	<meta name="author"	content="Jerry-小猪" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<style>
+		* {
+			margin:0;
+			padding:0;
+		}
+		body {
+			font-size:100%;
+		}
+		div {
+			border:2px solid gray;
+		}
+		p {
+			text-indent:2em;
+		}
+
+		#wrapper {/*外围容器*/
+			width:72%;
+			max-width:1200px;
+			min-width:720px;
+			padding:10px;
+			margin:20px auto;
+			border:1px dotted red;
+		}
+		#content {/*主体内容容器*/
+			width:78%;
+			height:400px;
+			margin-bottom:1em;
+			border:none;
+			float:right;
+			display:inline;
+		}
+		#side {/*侧栏部分*/
+			width:20%;
+			height:400px;
+			float:left;
+		}
+		#main {/*主要内容部分*/
+			width:71%;
+			height:400px;
+			float:left;
+		}
+		#secondary {/*次要内容部分*/
+			width:26%;
+			height:400px;
+			float:right;
+		}
+		#footer {/*底部部分*/
+			height:100px;
+			clear:both;
+		}
+
+		#main p {
+			font-size:24px;
+			color:#1a681c;
+		}
+</style>
+</head>
+<body>
+    <div id="wrapper">
+      <div id="content">
+        <div id="main"> #main
+          <p><img src="images/pic1.jpg" alt="图片" /></p>
+          <p>所谓“流体”布局指的是通过以“百分比”来作为容器宽度的单位，使用该单位进行布局的页面会随着浏览器窗体大小的调整而自适应！</p>
+          <p>使用该单位进行布局，需要使用“px”为单位设置容器宽度的最小值和最大值，以防止容器宽度过小或过大！</p>
+        </div>
+        <div id="secondary"> #secondary
+          <p>所谓“流体”布局指的是通过以“百分比”来作为容器宽度的单位，使用该单位进行布局的页面会随着浏览器窗体大小的调整而自适应！</p>
+          <p>使用该单位进行布局，需要使用“px”为单位设置容器宽度的最小值和最大值，以防止容器宽度过小或过大！</p>
+        </div>
+      </div>
+      <div id="side"> #side
+          <p>所谓“流体”布局指的是通过以“百分比”来作为容器宽度的单位，使用该单位进行布局的页面会随着浏览器窗体大小的调整而自适应！</p>
+          <p>使用该单位进行布局，需要使用“px”为单位设置容器宽度的最小值和最大值，以防止容器宽度过小或过大！</p>
+      </div>
+      <div id="footer"> #footer
+          <p>所谓“流体”布局指的是通过以“百分比”来作为容器宽度的单位，使用该单位进行布局的页面会随着浏览器窗体大小的调整而自适应！</p>
+          <p>使用该单位进行布局，需要使用“px”为单位设置容器宽度的最小值和最大值，以防止容器宽度过小或过大！</p>
+      </div>
+    </div>
+</body>
+</html>

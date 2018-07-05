@@ -1,0 +1,6 @@
+<!--pages/order/orderpay/orderpay.wxml-->
+<view class="container">
+  <view class="list-warp">
+    <navigator url="/pages/order/orderdetail/orderdetail?type=4" open-type="navigate">查看十级订单详情页</navigator>
+  </view>
+</view>

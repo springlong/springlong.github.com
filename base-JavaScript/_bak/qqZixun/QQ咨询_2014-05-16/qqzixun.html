@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gb2312">
+    <title>QQ咨询-公共版</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+</head>
+<body>
+    <h2>点击咨询：个人QQ</h2>
+    <p><a href="javascript:void(0);" target="_self" onclick="qq('2481579092')">2481579092</a></p>
+    <p><a href="http://qm.qq.com/cgi-bin/qm/qr?k=_2QxxVpdyV4cyQY5xrzj6AK5CtHYkd6u" target="_blank">569320261</a></p>
+    <h2>点击咨询：企业QQ咨询</h2>
+    <p><a href="javascript:void(0);" target="_self" onclick="qq('800010082')">西安中大：800010082</a></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="qq('800077475')">上海沪申：800077475</a></p>
+    <p><a href="javascript:void(0);" target="_self" onclick="qq('800039505')">杭州博爱：800039505</a></p>
+    <script>
+        /**
+         * 在指定iframe中打开url链接
+         * @param  {String} name iframe的name和id属性
+         * @param  {String} url 需要打开的url链接
+         * @return {String} 返回name参数值
+         */
+        function openInIframe(name, url)
+        {
+            var iframe = document.getElementById(name);
+            if(iframe == null){
+                iframe = document.createElement("iframe");
+                iframe.id = name;
+                iframe.name = name;
+                iframe.src = url;
+                iframe.style.cssText = "position:absolute;left:-9999px;overflow:hidden;width:0px;height:0px;";
+                document.body.appendChild(iframe);
+            }else{
+                iframe.src = url;
+            }
+        }
+
+        /**
+         * QQ咨询（手机端的QQ咨询，需要较新版本的手机QQ才能支持）
+         * @param  {String} num QQ号码，既可以是企业QQ也可以是个人QQ
+         * @return {undefined}
+         */
+        function qq(num)
+        {
+            var ua = navigator.userAgent,
+                isMobile = /(nokia|iphone|ipad|ipod|android|ucbrowser|fennec|touchpad|micromessenger|motorola|^mot\-|softbank|foma|docomo|kddi|up\.browser|up\.link|htc|dopod|blazer|netfront|helio|hosin|huawei|novarra|CoolPad|webos|techfaith|palmsource|blackberry|alcatel|amoi|ktouch|nexian|samsung|^sam\-|s[cg]h|^lge|ericsson|philips|sagem|wellcom|bunjalloo|maui|symbian|smartphone|midp|wap|phone|windows ce|iemobile|^spice|^bird|^zte\-|longcos|pantech|gionee|^sie\-|portalmmm|jig\s browser|hiptop|^ucweb|^benq|haier|^lct|opera\s*mobi|opera\*mini|320x320|240x320|176x220)/i.test(ua),
+                url;
+
+            //匹配咨询URL
+            if(isMobile){
+                var QQReg = /QQ\/(\d+\.\d+)\.\d/i,
+                    OldQQReg = /V1_AND_SQ_(\d+\.\d+)\.\d/i,
+                    match = QQReg.exec(ua) || OldQQReg.exec(ua),
+                    isQQ = !!match,
+                    isQQUse = isQQ && /(?:4\.5|4\.6)/.test(match[1]), //在4.5、4.6的版本中需要使用本地协议的wpa类型来触发会话
+                    wpaURL = "mqqwpa://im/chat?chat_type=wpa&uin=" + num + "&version=1&src_type=web&web_src=http://wpa.b.qq.com",   //较低版本的触发链接
+                    crmURL = "mqqwpa://im/chat?chat_type=crm&uin=" + num + "&version=1&src_type=web&web_src=http://wpa.b.qq.com",   //较新版本的触发链接
+                    start = +new Date();
+
+                if(ua.indexOf("MicroMessenger") > -1){
+                    location.href = /^(400|800)/.test(num) ? "http://wpd.b.qq.com/page/info.php?nameAccount=" + num : "http://wpa.qq.com/msgrd?v=3&uin=" + num + "&site=qq&menu=yes";
+                }else{
+                    //通过手机QQ本地协议发起QQ会话，均适用于企业QQ和个人QQ（该方法将会直接开启会话，Android平台中QQ4.2不支持，4.3、4.4没有得到测试，QQ4.5则开始支持；而在iPhone平台中由于测试的对象都有及时更新QQ的习惯，所以视为完全支持来进行处理）
+                    openInIframe("openUrl", isQQUse ? wpaURL : crmURL);
+                    !isQQ && setTimeout(function(){
+                        if(+new Date() - start < 1000){
+                            openInIframe("openUrl", wpaURL); //延时低于1000视为触发失败，尝试使用低版本链接进行触发
+                        };
+                    }, 800);
+                }
+            }else{
+                //企业QQ咨询：会提醒用户是否打开企业QQ进行咨询，然后触发本地协议进行对话
+                //个人QQ咨询：直接通过本地协议进行对话，仅PC端支持，在某些浏览器中无需提醒即可对话
+                url = /^(400|800)/.test(num) ? "http://b.qq.com/webc.htm?new=0&sid=" + num + "&o=&q=7&from=qqwpa" : "tencent://message/?uin=" + num + "&Site=&Menu=yes";
+                openInIframe("openUrl", url);
+            }
+        }
+
+        //一打开页面开启QQ咨询会话
+        // qq('2481579092');
+        openInIframe("openUrl", "http://qm.qq.com/cgi-bin/qm/qr?k=_2QxxVpdyV4cyQY5xrzj6AK5CtHYkd6u");
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<html>
+<head>
+	<title>表格制作实例2</title>
+	<meta name="keywords" content="表格制作实例2" />
+	<meta name="description" content="表格的制作实例2" />
+	<meta name="author" content="Jerry_小猪" />
+	<meta http-equiv="Content-Type" content="text/html;charset=GB2312" />
+</head>
+<body>
+<!--合并之前的表格-->
+<table border="1" align="center">
+	<caption>合并单元格的使用(前)</caption>
+	<!--第1行-->
+	<tr height="100">
+		<th width="100">A</th>
+		<th width="100">B</th>
+		<th width="100">&nbsp;</th>
+	</tr>
+	<!--第2行-->
+	<tr  height="100">
+		<th>&nbsp;</th>
+		<th>E</th>
+		<th>C</th>
+	</tr>
+	<!--第3行-->
+	<tr  height="100">
+		<th>D</th>
+		<th>&nbsp;</th>
+		<th>&nbsp;</th>
+	</tr>
+</table>
+
+<p>&nbsp;</p>
+
+<!--合并之和的表格-->
+<table border="1" align="center">
+	<caption>合并单元格的使用(后)</caption>
+	<!--第1行-->
+	<tr height="100">
+		<th rowspan="2" width="100">A</th>
+		<th colspan="2" width="200">B</th>
+		<!--该单元格并合并-->
+	</tr>
+	<!--第2行-->
+	<tr  height="100">
+		<!--该单元格并合并-->
+		<th>E</th>
+		<th rowspan="2">C</th>
+	</tr>
+	<!--第3行-->
+	<tr  height="100">
+		<th colspan="2">D</th>
+		<!--该单元格并合并-->
+		<!--该单元格并合并-->
+	</tr>
+</table>
+
+</body>
+</html>

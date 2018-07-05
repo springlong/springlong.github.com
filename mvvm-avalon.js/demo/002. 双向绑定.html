@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>双向绑定</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0s/avalon.js"></script>
+</head>
+<body>
+<div class="container">
+	<h1>双向绑定</h1>
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: "databind",
+        name: "龙泉",
+        fruit: "火龙果"
+    });
+&lt;/script>
+&lt;div ms-controller="databind">
+    &lt;p>&lt;input ms-duplex="@name">&lt;strong ms-text='@name'>&lt;/strong>&lt;/p>
+    &lt;p>
+        &lt;select ms-duplex='@fruit'>
+            &lt;option>苹果&lt;/option>
+            &lt;option>香蕉&lt;/option>
+            &lt;option>火龙果&lt;/option>
+        &lt;/select>
+        &lt;span>{{@fruit}}&lt;/span>
+    &lt;/p>
+&lt;/div>
+</pre>
+
+
+	<hr>
+    <script>
+        var vm = avalon.define({
+            $id: 'databind',
+            name: '龙泉',
+            fruit: '火龙果'
+        });
+    </script>
+    <div ms-controller="databind">
+        <p><input ms-duplex="@name"><strong ms-text="@name"></strong></p>
+        <p>
+            <select ms-duplex="@fruit">
+                <option>苹果</option>
+                <option>香蕉</option>
+                <option>火龙果</option>
+            </select>
+            <span>{{@fruit}}</span>
+        </p>
+    </div>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

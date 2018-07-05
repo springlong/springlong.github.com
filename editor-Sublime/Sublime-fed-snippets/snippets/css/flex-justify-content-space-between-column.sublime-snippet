@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[display: flex;
+flex-direction: column;
+justify-content: space-between;]]></content>
+	<tabTrigger>flx-ld-c</tabTrigger>
+    <description>flex两端对齐(column)</description>
+    <scope>source.css, source.less, source.scss, source.stylus</scope>
+</snippet>

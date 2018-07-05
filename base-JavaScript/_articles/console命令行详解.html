@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>console命令行详解</title>
+	<style>
+
+	</style>
+</head>
+<body>
+
+	<script type="text/javascript">
+		// 【console命令行详解】
+
+		// ========================================================
+		// 一般信息输出
+		console.log("文本记录，用于替代alert或者document.write");
+
+		console.info("一般信息");
+
+		console.debug("调试信息");
+
+		console.warn("警告提示");
+
+		console.error("错误提示");
+
+		//上面的五个方法支持占位符输出（%s——字符、%d——整数、%f——浮点数、%o——对象）：
+		console.log("%d年%d月%d日", 2011, 3, 26);
+		console.log("圆周率是%f", 3.1415926);
+
+
+		// ========================================================
+		// 分组：
+		console.group("第一组信息");
+
+		　　console.log("第一组第一条");
+		　　console.log("第一组第二条");
+
+		console.groupEnd();
+
+		console.group("第二组信息");
+
+		　　console.log("第二组第一条");
+		　　console.log("第二组第二条");
+
+		console.groupEnd();
+
+
+		// ========================================================
+		// 表格
+		var dataArr = [
+			[111, 222, 333],
+			[222, 333, 444]
+		]
+		console.table(dataArr)
+
+		var dataJson = [
+			{'a': '111', 'b': '333'},
+			{'a': '222', 'b': '222'},
+			{'a': '333', 'b': '111'},
+		]
+		console.table(dataJson)
+
+
+		// ========================================================
+		// 函数调用轨迹跟踪：
+		// 在控制台中将由下至上一次输出： funa >> func >> funb >> 匿名函数
+		function funa(num)
+		{
+		    console.trace();
+		    return ++num;
+		}
+		function funb(n1, n2)
+		{
+		    func(n1, n2);
+		}
+		function func(n1, n2)
+		{
+		    funa(n1 + n2);
+		}
+		funb(1, 20);
+
+
+		// ========================================================
+		// 计时功能，用于显示代码的运行时间：
+		console.time("计时器")
+		for(var i = 0, value = 0; i < 100000; i++)
+		{
+		    value++;
+		    value--;;
+		}
+		console.timeEnd("计时器")
+
+
+		// ========================================================
+		// 统计次数
+		function countFn() {
+			console.count('count');
+		}
+		for(var i = 0; i < 10; i++) {
+			countFn()
+		}
+
+
+		// ========================================================
+		// 性能分析，用于显示命令行之间的代码运行时所执行的所有函数的调用、调用次数、所用时间等信息：
+		console.profile("性能分析器");
+		function fn1(num)
+		{
+		    return ++num;
+		}
+		function fnb(n1, n2)
+		{
+		    fnc(n1, n2);
+		}
+		function fnc(n1, n2)
+		{
+		    fn1(n1 + n2);
+		}
+		fnb(1, 20);
+		console.profileEnd("性能分析器");
+
+
+		// ========================================================
+		// 其他：
+
+		// 输出对象的所有属性和方法
+		console.dir({a: 1, b: 2});
+
+		// 清理控制台
+		// console.clear();
+
+	</script>
+</body>
+</html>

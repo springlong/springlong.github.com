@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>日期操作：在文本框中输入日期字符串，要求所填的日期不能低于某个特定日期</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:360px;}
+    </style>
+</head>
+<body>
+<h1>日期操作：在文本框中输入日期字符串，要求所填的日期不能低于某个特定日期</h1>
+<h2>运行测试</h2>
+<div id="wrapper">
+    <p><label for="inputDate">请输入一个日期字符串：</label><input id="inputDate" value="2014-08-10" /><button id="btnCheck">点击判断</button></p>
+</div>
+<h2>脚本函数</h2>
+<pre class="jsCode autoHeight">
+/**
+ * 判断一个日期字符串是否有效，如果提供了一个用于比较的日期参数则该日期字符串不能低于该日期参数。
+ * 该函数仅支持2014-01-01、2014-1-1、2014/01/01、2014/1/1这四种日期格式。
+ * @param  {String} dateStr 日期字符串
+ * @param  {Date|String} compare 比较日期（可以是日期字符串也可以是日期对象）
+ * @return {Boolean} 返回值除了true和false之外，还可能是0，此时表示日期字符串为无效格式（由于0在进行布尔值判断时将自动作为false处理，所以不影响对结果值作为布尔类型的使用）
+ */
+function checkDateStr(dateStr, compare)
+{
+    var year, month, day, oDate;
+
+    //步骤一，step1：通过正则表达式判断日期字符串格式的合法性
+    if(!/^(\d{4})(-|\/)(\d{1,2})(-|\/)(\d{1,2})$/.test(dateStr)) return 0;
+    year = RegExp.$1 - 0,
+    month = RegExp.$3 - 1,
+    day = RegExp.$5 - 0;
+
+    //步骤一，step2：将日期字符串构建后的Date对象的年、月、日同日期字符串中的各组成部分进行比较来得出日期字符串的有效性
+    oDate = new Date(year, month, day);
+    if(!(oDate.getFullYear() === year &amp;&amp; oDate.getMonth() === month &amp;&amp; oDate.getDate() === day)) return 0;
+
+    //步骤二：与compare参数进行比较
+    if(compare == undefined) return true;
+    compare = new Date(compare);
+    return oDate >= new Date(compare.getFullYear(), compare.getMonth(), compare.getDate());
+}
+</pre>
+<h2>执行代码</h2>
+<pre class="jsCode">
+document.getElementById("btnCheck").onclick = function()
+{
+    var frmDate = document.getElementById("inputDate"),
+        dateStr = frmDate.value,
+        checkState = checkDateStr(dateStr, new Date()),
+        tipsStr = checkState === 0 ? "日期不正确！" : (checkState ? "恭喜，日期有效！" : "不能是过往日期！");
+
+    if(!checkState){
+        alert(tipsStr);
+        frmDate.focus();
+        frmDate.select();
+        return;
+    }
+    alert(tipsStr);
+};
+</pre>
+<script>
+    /**
+     * 判断一个日期字符串是否有效，如果提供了一个用于比较的日期参数则该日期字符串不能低于该日期参数。
+     * 该函数仅支持2014-01-01、2014-1-1、2014/01/01、2014/1/1这四种日期格式。
+     * @param  {String} dateStr 日期字符串
+     * @param  {Date|String} compare 比较日期（可以是日期字符串也可以是日期对象）
+     * @return {Boolean} 返回值除了true和false之外，还可能是0，此时表示日期字符串为无效格式（由于0在进行布尔值判断时将自动作为false处理，所以不影响对结果值作为布尔类型的使用）
+     */
+    function checkDateStr(dateStr, compare)
+    {
+        var year, month, day, oDate;
+
+        //步骤一，step1：通过正则表达式判断日期字符串格式的合法性
+        if(!/^(\d{4})(-|\/)(\d{1,2})(-|\/)(\d{1,2})$/.test(dateStr)) return 0;
+        year = RegExp.$1 - 0,
+        month = RegExp.$3 - 1,
+        day = RegExp.$5 - 0;
+
+        //步骤一，step2：将日期字符串构建后的Date对象的年、月、日同日期字符串中的各组成部分进行比较来得出日期字符串的有效性
+        oDate = new Date(year, month, day);
+        if(!(oDate.getFullYear() === year && oDate.getMonth() === month && oDate.getDate() === day)) return 0;
+
+        //步骤二：与compare参数进行比较
+        if(compare == undefined) return true;
+        compare = new Date(compare);
+        return oDate >= new Date(compare.getFullYear(), compare.getMonth(), compare.getDate());
+    }
+
+    //代码测试
+    document.getElementById("btnCheck").onclick = function()
+    {
+        var frmDate = document.getElementById("inputDate"),
+            dateStr = frmDate.value,
+            checkState = checkDateStr(dateStr, new Date()),
+            tipsStr = checkState === 0 ? "日期不正确！" : (checkState ? "恭喜，日期有效！" : "不能是过往日期！");
+
+        if(!checkState){
+            alert(tipsStr);
+            frmDate.focus();
+            frmDate.select();
+            return;
+        }
+        alert(tipsStr);
+    };
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

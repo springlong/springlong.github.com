@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>固定框架的使用</title>
+	<meta name="keywords" content="框架的使用">
+	<meta name="description" content="框架的使用">
+	<meta name="author" content="Jerry Sun">
+	<meta http-equiv="content-type" content="text/html;charset=GB2312;">
+</head>
+
+<frameset rows="100,*" frameborder="yes" framespacing="1" bordercolor="silver">
+	<frame src="top.html" noresize="noresize" scrolling="no"></frame>
+	<frameset cols="180,*">
+		<frame src="left.html" noresize="noresize">
+		<frame src="pages/表格制作实例1.html" name="right">
+	</frameset>
+	<noframe>
+		<body>对不起，你的浏览器不支持框架显示......</body>
+	</noframe>
+</frameset>
+
+</html>

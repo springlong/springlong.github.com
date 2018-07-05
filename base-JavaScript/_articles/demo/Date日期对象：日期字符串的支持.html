@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Date日期对象：日期字符串的支持</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script src="../../public/js/jquery.min.js"></script>
+    <script src="../../public/js/jquery.extend.js"></script>
+    <script src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';} 
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        p{margin-top:20px;line-height:2em;}
+        code{padding:5px 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:360px;}
+
+        #wrapper div{display:inline-block;font-size:21px;font-weight:bold;color:#3B834D;}
+    </style>
+</head>
+<body>
+<h1>Date日期对象：日期字符串的支持</h1>
+<script>
+    document.write("<h2>美国习惯：</h2>");
+    document.write("<p><code>Date.parse(\"8/10/2014 20:00:00\")</code>：" + Date.parse("8/10/2014 20:00:00"));
+    document.write("<p><code>Date.parse(\"8/10/2014 8:00:00 pm\")</code>：" + Date.parse("8/10/2014 8:00:00 PM"));
+    document.write("<p><code>Date.parse(\"8/10/2014 0:00:00\")</code>：" + Date.parse("8/10/2014 0:00:00"));
+    document.write("<p><code>Date.parse(\"8/10/2014\")</code>：" + Date.parse("8/10/2014"));
+    document.write("<p><code>Date.parse(\"August 10,2014 20:00:00\")</code>：" + Date.parse("August 10,2014 20:00:00"));
+    document.write("<p><code>Date.parse(\"August 10,2014 8:00:00 PM\")</code>：" + Date.parse("August 10,2014 8:00:00 PM"));
+    document.write("<p><code>Date.parse(\"August 10,2014 0:00:00\")</code>：" + Date.parse("August 10,2014 0:00:00"));
+    document.write("<p><code>Date.parse(\"August 10,2014\")</code>：" + Date.parse("August 10,2014"));
+
+    document.write("<h2>中国习惯：</h2>");
+    document.write("<p><code>Date.parse(\"2014/8/10 8:00:00\")</code>：" + Date.parse("2014/8/10 8:00:00"));
+    document.write("<p><code>Date.parse(\"2014/8/10 0:00:00\")</code>：" + Date.parse("2014/8/10 0:00:00"));
+    document.write("<p><code>Date.parse(\"2014/8/10\")</code>：" + Date.parse("2014/8/10"));
+
+    document.write("<h2>中国习惯（不被支持）：</h2>");
+    document.write("<p><code>Date.parse(\"2014-8-10 8:00:00\")</code>：" + Date.parse("2014-8-10 8:00:00"));
+    document.write("<p><code>Date.parse(\"2014-8-10\")</code>：" + Date.parse("2014-8-10"));
+    document.write("<p><code>Date.parse(\"2014.8.10 8:00:00\")</code>：" + Date.parse("2014.8.10 8:00:00"));
+    document.write("<p><code>Date.parse(\"2014.8.10\")</code>：" + Date.parse("2014.8.10"));
+
+    document.write("<h2>无效日期时间</h2>");
+    document.write("<p><code>Date.parse(\"2014/12/32 8:00:00\")</code>：" + Date.parse("2014/12/32 8:00:00"));
+    document.write("<p><code>Date.parse(\"2014/12/31 24:00:00\")</code>：" + Date.parse("2014/12/31 24:00:00"));
+    document.write("<p><code>Date.parse(\"2014--12--31\")</code>：" + Date.parse("2014--12--31"));
+
+
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

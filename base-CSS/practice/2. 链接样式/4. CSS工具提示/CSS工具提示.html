@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>CSS工具提示</title>
+	<style type="text/css">
+		body{
+			font-size:18px;
+			color:#333;
+		}
+		
+		.toolTip{
+			display:inline-block;
+			position:relative;
+		}
+		.toolTip span{
+			display:none
+		}
+		a.toolTip span{
+			display:block;
+			position:absolute;
+			left:2em;
+			top:1em;
+			color:black;
+			background-color:#FF0;
+			border:1px solid #666;
+			padding:0.2em;
+		}
+	</style>
+</head>
+<body>
+
+<a href="#" class="toolTip">HTML<span>超文本标记语言</span></a>是我们学习网页设计的基础!
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<title>日期操作：计算两个日期字符串相差多少天</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+    	body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+		code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+		span.code{display:inline-block;width:360px;}
+    </style>
+</head>
+<body>
+<h1>日期操作：计算两个日期字符串相差多少天</h1>
+<h2>运行结果</h2>
+<div id="wrapper"></div>
+<h2>脚本函数</h2>
+<pre class="jsCode autoHeight">
+/**
+ * 计算两个日期字符串之间相差了多少天，如果其中一方为无效日期则最终返回NaN。
+ * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
+ * @param  {String|Date} dateStr1 日期字符串1
+ * @param  {String|Date} dateStr2 日期字符串2
+ * @return {Number}       
+ */
+function dateDiff(dateStr1, dateStr2)
+{
+    var reg = /-/g,
+        dt1 = new Date(typeof dateStr1 === "string" ? dateStr1.replace(reg, "/") : dateStr1).getTime(),
+        dt2 = new Date(typeof dateStr2 === "string" ? dateStr2.replace(reg, "/") : dateStr2).getTime(),
+        isValid = !isNaN(dt1) &amp;&amp; !isNaN(dt2);
+
+    return isValid ? Math.floor(Math.abs(dt1 - dt2) / (1000*60*60*24)) : NaN;
+}
+</pre>
+<h2>调用代码</h2>
+<pre class="jsCode">
+var str = '&lt;p>&lt;span class="code">&lt;code>dateDiff("2014-05-23", "2014-05-23")&lt;/code>&lt;/span>&lt;span class="result">' + dateDiff("2014-05-23", "2014-05-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateDiff("2014-05-23", "2014-05-24")&lt;/code>&lt;/span>&lt;span class="result">' + dateDiff("2014-05-23", "2014-05-24") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateDiff("2014-05-23", "2014-06-23")&lt;/code>&lt;/span>&lt;span class="result">' + dateDiff("2014-05-23", "2014-06-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateDiff("2014-05-23", "2015-01-01")&lt;/code>&lt;/span>&lt;span class="result">' + dateDiff("2014-05-23", "2015-01-01") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateDiff("2014-05-23", "2013-05-23")&lt;/code>&lt;/span>&lt;span class="result">' + dateDiff("2014-05-23", "2013-05-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateDiff("2014-05-23", new Date())&lt;/code>&lt;/span>&lt;span class="result">' + dateDiff("2014-05-23", new Date()) + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateDiff("2014-05-23", "2013-05-23-18")&lt;/code>&lt;/span>&lt;span class="result">' + dateDiff("2014-05-23", "2013-05-23-18") + '&lt;/span>&lt;/p>';
+document.getElementById("wrapper").innerHTML = str;
+</pre>
+<script>
+    /**
+     * 计算两个日期字符串之间相差了多少天，如果其中一方为无效日期则最终返回NaN。
+     * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
+     * @param  {String|Date} dateStr1 日期字符串1
+     * @param  {String|Date} dateStr2 日期字符串2
+     * @return {Number}
+     */
+    function dateDiff(dateStr1, dateStr2)
+    {
+        var reg = /-/g,
+            dt1 = new Date(typeof dateStr1 === "string" ? dateStr1.replace(reg, "/") : dateStr1).getTime(),
+            dt2 = new Date(typeof dateStr2 === "string" ? dateStr2.replace(reg, "/") : dateStr2).getTime(),
+            isValid = !isNaN(dt1) && !isNaN(dt2);
+
+        return isValid ? Math.floor(Math.abs(dt1 - dt2) / (1000*60*60*24)) : NaN;
+    }
+
+    //=====================================================================
+    //测试代码
+    var str = '<p><span class="code"><code>dateDiff("2014-05-23", "2014-05-23")</code></span><span class="result">' + dateDiff("2014-05-23", "2014-05-23") + '</span></p>';
+    str += '<p><span class="code"><code>dateDiff("2014-05-23", "2014-05-24")</code></span><span class="result">' + dateDiff("2014-05-23", "2014-05-24") + '</span></p>';
+    str += '<p><span class="code"><code>dateDiff("2014-05-23", "2014-06-23")</code></span><span class="result">' + dateDiff("2014-05-23", "2014-06-23") + '</span></p>';
+    str += '<p><span class="code"><code>dateDiff("2014-05-23", "2015-01-01")</code></span><span class="result">' + dateDiff("2014-05-23", "2015-01-01") + '</span></p>';
+    str += '<p><span class="code"><code>dateDiff("2014-05-23", "2013-05-23")</code></span><span class="result">' + dateDiff("2014-05-23", "2013-05-23") + '</span></p>';
+    str += '<p><span class="code"><code>dateDiff("2014-05-23", new Date())</code></span><span class="result">' + dateDiff("2014-05-23", new Date()) + '</span></p>';
+    str += '<p><span class="code"><code>dateDiff("2014-05-23", "2013-05-23-18")</code></span><span class="result">' + dateDiff("2014-05-23", "2013-05-23-18") + '</span></p>';
+    document.getElementById("wrapper").innerHTML = str;
+    
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

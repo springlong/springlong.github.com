@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Vue实例！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container">
+	<h1>Vue实例！</h1>
+	<div class="text-item">
+		<p>通过<code>new Vue({})</code>创建一个Vue的实例。</p>
+		<p>请在编辑器中查看源代码，熟悉Vue实例化之后的更多内容！</p>
+	</div>
+	<hr>
+	<div id="vueTest">
+		<div>name: {{name}}</div>
+		<div>age: {{age}}</div>
+		<div>sex: {{sex}}</div>
+		<div>addr: {{addr}}</div>
+	</div>
+	<script>
+		// 数据
+		var vueData = {
+				name: '阳团',
+				age: '26',
+				sex: '男',
+				addr: '上海市浦东新区'
+			};
+
+		// Vue实例化
+		var vm = new Vue({
+			// 指定一个DOM元素作为Vue实例的挂载目标，可以是css选择器，也可以是一个HTMLElement对象
+			// 在实例挂载之后，元素可以用 vm.$el 访问。
+			el: '#vueTest',
+			// Vue实例的数据对象
+			data: vueData,
+			// 在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用。
+			beforeCreate() {
+				console.group('生命周期: beforeCreate')
+				console.log('this.$el', this.$el) // 无法访问
+				console.log('this.$data:', this.$data)
+				console.groupEnd()
+			},
+			// 在实例创建完成后被立即调用。
+			// 在这一步，实例已完成以下的配置：数据观测 (data observer)，属性和方法的运算，watch/event 事件回调。
+			// 然而，挂载阶段还没开始，$el 属性目前不可见。
+			created() {
+				console.group('生命周期: created')
+				console.log('this.$el', this.$el) // 无法访问
+				console.log('this.$data:', this.$data)
+				console.groupEnd()
+			},
+			// 在挂载开始之前被调用：相关的 render 函数首次被调用。
+			beforeMount() {
+				console.group('生命周期: beforeMount')
+				console.log('this.$el', this.$el) // 页面中当前存在的挂载目标
+				console.log('this.$el.innerHTML', this.$el.innerHTML) // 原始内容
+				console.groupEnd()
+			},
+			// 挂载完成，el 被新创建的 vm.$el 替换
+			mounted() {
+				console.group('生命周期: mounted')
+				console.log('this.$el', this.$el) // 被渲染完成之后的新DOM元素
+				console.log('this.$el.innerHTML', this.$el.innerHTML) // 使用数据渲染后的内容
+				console.groupEnd()
+			},
+			// 数据更新时调用，发生在虚拟 DOM 重新渲染和打补丁之前。
+			// 你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。
+			beforeUpdate() {
+				console.group('生命周期: beforeUpdate')
+				console.log('this.$el.innerHTML', this.$el.innerHTML)
+				console.groupEnd()
+			},
+			// 由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子。
+			// 当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。
+			updated() {
+				console.group('生命周期: updated')
+				console.log('this.$el.innerHTML', this.$el.innerHTML)
+				console.groupEnd()
+			},
+			// 实例销毁之前调用。在这一步，实例仍然完全可用。
+			beforeDestroy() {
+				console.group('生命周期: beforeDestroy')
+				console.groupEnd()
+			},
+			// Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。
+			destroyed() {
+				console.group('生命周期: destroyed')
+				console.groupEnd()
+			},
+		});
+
+		// 实例创建之后，可以通过 vm.$data 访问原始数据对象。
+		// Vue 实例也代理了 data 对象上所有的属性，因此访问 vm.a 等价于访问 vm.$data.a。
+		// 以 _ 或 $ 开头的属性 不会 被 Vue 实例代理，因为它们可能和 Vue 内置的属性、API 方法冲突。
+		// 你可以使用例如 vm.$data._property 的方式访问这些属性。
+		console.log('vm.$data.name: ' + vm.$data.name);
+		console.log('vm.name: ' + vm.name);
+
+		// vueData 和 vm.$data 引用的是相同的对象
+		console.log('vm.$data === vueData: ' + (vm.$data === vueData));
+
+		// 可以通过 vueData 和 vm.$data 变更属性值触发vue的数据响应
+		vueData.name = '小团团';
+		vm.$data.age = 18;
+
+		// 对vueData进行重新赋值不会改变Vue的数据响应
+		vueData = {
+			name: '欧阳',
+			age: '62',
+			sex: '女',
+			addr: '中国'
+		};
+
+		// 可以通过 vm.$el 访问DOM元素
+		vm.$el.style.backgroundColor = '#333';
+		vm.$el.style.color = '#fff';
+
+		// 可以使用 vm.$options 访问配置选项
+		console.log('vm.$options:', vm.$options);
+
+		setTimeout(function(){
+			// 完全销毁一个实例。清理它与其它实例的连接，解绑它的全部指令及事件监听器。
+			// 在大多数场景中你不应该调用这个方法。最好使用 v-if 和 v-for 指令以数据驱动的方式控制子组件的生命周期。
+			vm.$destroy();
+
+			// 实例对象销毁后，vm依旧可访问，但是对相关属性的更改不会再更新到DOM
+			vm.$data.name = '销毁王';
+
+		}, 3000);
+	</script>
+</div>
+</body>
+</html>

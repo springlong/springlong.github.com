@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)http://www.css88.com/jqapi-1.9/jQuery.hasData/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>jQuery.hasData() | jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)</title>
+
+<meta name="keywords" content="jQuery,API,中文版,中文文档,中文手册,chm">
+<meta name="description" content="jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)">
+<link rel="shortcut icon" type="image/x-icon" href="http://www.css88.com/jqapi-1.9/favicon.ico">
+
+<!--<link rel="stylesheet" type="text/css" media="screen" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />-->
+<link rel="stylesheet" type="text/css" media="screen" href="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/main.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/style.css">
+<link rel="stylesheet" type="text/css" media="screen" href="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/jquery.css">
+<script type="text/javascript" async="" src="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/ga.js"></script><script type="text/javascript" src="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/jquery.min.js"></script>
+<script type="text/javascript" src="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/highlight.js"></script>
+<script type="text/javascript" src="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/jquery.ba-bbq.min.js"></script>
+<script type="text/javascript" src="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/jquery.ba-dotimeout.min.js"></script>
+<script type="text/javascript" src="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/main.js"></script>
+<!--<script type="text/javascript" src="js/main.min.js"></script>-->
+</head>
+
+<body>
+<div id="header_warp">
+
+<div class="header-box">
+  <div class="logo">
+    <h1><a href="http://www.css88.com/jqapi-1.9/" title="jQuery API 中文文档(适用jQuery 1.0 - jQuery 2.0)">jQuery API中文文档（新版）</a></h1>
+  </div>
+  <ul class="header-nav">
+  <li><a href="http://www.css88.com/jqapi-1.9/old.html" class="nav-link" title="jQuery API中文文档（旧版）">返回旧版</a></li>
+    <li><a href="https://chrome.google.com/webstore/detail/jquery-api-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3/akjolgafanmdedmbfkppllnokicficbj" class="nav-link">Chrome 插件</a></li>
+    <li><a href="https://chrome.google.com/webstore/detail/jquery-19-%E4%B8%AD%E6%96%87api/akgcdalfjglabfljlcnklbdndmogiebg" class="nav-link chrome_app">下载Chrome App</a></li>
+    <li><a href="http://www.css88.com/" class="nav-link">博客首页</a></li>
+  </ul>
+  <input type="search" placeholder="搜索API" autosave="searchdoc" results="10" id="search-field" autocomplete="off">
+</div>
+<div id="googleguanggao">
+    <script type="text/javascript"><!--
+google_ad_client = "ca-pub-1668200119690891";
+/* jqapi1.9 */
+google_ad_slot = "5447962697";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+    <script type="text/javascript" src="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px"><ins id="aswift_0_anchor" style="display:block;border:none;height:60px;margin:0;padding:0;position:relative;visibility:visible;width:468px"><iframe width="468" height="60" frameborder="0" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins>
+  </div> <div id="searchList" style="display: none;"></div></div>
+<div id="navigation">
+	
+<aside id="categories" class="widget">
+    <ul>
+      <li class="cat-item cat-item-1 current-cat-parent"><a href="http://www.css88.com/jqapi-1.9/category/ajax/" title="The jQuery library has a full suite of AJAX capabilities. The functions and methods therein allow us to load data from the server without a browser page refresh.">Ajax</a>
+        <ul class="children">
+          <li class="cat-item cat-item-2"><a href="http://www.css88.com/jqapi-1.9/category/ajax/global-ajax-event-handlers/" title="These methods register handlers to be called when certain events, such as initialization or completion, take place for any AJAX request on the page. The global events are fired on each AJAX request if the global property in jQuery.ajaxSetup() is true, which it is by default. Note: Global events are never fired for cross-domain script or JSONP requests, regardless of the value of global.">全局Ajax事件处理程序</a> </li>
+          <li class="cat-item cat-item-3"><a href="http://www.css88.com/jqapi-1.9/category/ajax/helper-functions/" title="These functions assist with common idioms encountered when performing AJAX tasks.">辅助函数</a> </li>
+          <li class="cat-item cat-item-4 current-cat"><a href="http://www.css88.com/jqapi-1.9/category/ajax/low-level-interface/" title="These methods can be used to make arbitrary AJAX requests.">底层接口</a> </li>
+          <li class="cat-item cat-item-5"><a href="http://www.css88.com/jqapi-1.9/category/ajax/shorthand-methods/" title="These methods perform the more common types of AJAX requests in less code.">快捷方法</a> </li>
+        </ul>
+      </li>
+      <li class="cat-item cat-item-6"><a href="http://www.css88.com/jqapi-1.9/category/attributes/" title="These methods get and set DOM attributes of elements.">属性</a> </li>
+      <li class="cat-item cat-item-7"><a href="http://www.css88.com/jqapi-1.9/category/callbacks-object/" title="The jQuery.Callbacks() function, introduced in version 1.7, returns a multi-purpose object that provides a powerful way to manage callback lists. It supports adding, removing, firing, and disabling callbacks.">回调对象</a> </li>
+      <li class="cat-item cat-item-8"><a href="http://www.css88.com/jqapi-1.9/category/core/" title="View all posts filed under Core">核心</a> </li>
+      <li class="cat-item cat-item-9"><a href="http://www.css88.com/jqapi-1.9/category/css/" title="These methods get and set CSS-related properties of elements.">CSS</a> </li>
+      <li class="cat-item cat-item-10"><a href="http://www.css88.com/jqapi-1.9/category/data/" title="These methods allow us to associate arbitrary data with specific DOM elements.">数据</a> </li>
+      <li class="cat-item cat-item-11"><a href="http://www.css88.com/jqapi-1.9/category/deferred-object/" title="The Deferred object, introduced in jQuery 1.5, is a chainable utility object created by calling the jQuery.Deferred() method. It can register multiple callbacks into callback queues, invoke callback queues, and relay the success or failure state of any synchronous or asynchronous function.
+    The Deferred object is chainable, similar to the way a jQuery object is chainable, but it has its own methods. After creating a Deferred object, you can use any of the methods below by either chaining directly from the object creation or saving the object in a variable and invoking one or more methods on that variable.">延迟对象</a> </li>
+      <li class="cat-item cat-item-87"><a href="http://www.css88.com/jqapi-1.9/category/deprecated/" title="View all posts filed under Deprecated">弃用</a>
+        <ul class="children">
+          <li class="cat-item cat-item-89"><a href="http://www.css88.com/jqapi-1.9/category/deprecated/deprecated-1.8/" title="All the aspects of the API that were deprecated in the corresponding version of jQuery.
+        For more information, see the Release Notes/Changelog at http://blog.jquery.com/2012/08/09/jquery-1-8-released/">弃用 1.8</a> </li>
+        </ul>
+      </li>
+      <li class="cat-item cat-item-12"><a href="http://www.css88.com/jqapi-1.9/category/dimensions/" title="These methods are used to get and set the CSS dimensions for the various properties.">尺寸</a> </li>
+      <li class="cat-item cat-item-13"><a href="http://www.css88.com/jqapi-1.9/category/effects/" title="The jQuery library provides several techniques for adding animation to a web page. These include simple, standard animations that are frequently used, and the ability to craft sophisticated custom effects.">效果</a>
+        <ul class="children">
+          <li class="cat-item cat-item-14"><a href="http://www.css88.com/jqapi-1.9/category/effects/basics/" title="View all posts filed under Basics">基础</a> </li>
+          <li class="cat-item cat-item-15"><a href="http://www.css88.com/jqapi-1.9/category/effects/custom-effects/" title="These methods allow you to create effects that are not provided &quot;out of the box&quot; by jQuery.">自定义</a> </li>
+          <li class="cat-item cat-item-16"><a href="http://www.css88.com/jqapi-1.9/category/effects/fading/" title="These methods adjust the opacity of elements.">渐变</a> </li>
+          <li class="cat-item cat-item-17"><a href="http://www.css88.com/jqapi-1.9/category/effects/sliding/" title="View all posts filed under Sliding">滑动</a> </li>
+        </ul>
+      </li>
+      <li class="cat-item cat-item-18"><a href="http://www.css88.com/jqapi-1.9/category/events/" title="These methods are used to register behaviors to take effect when the user interacts with the browser, and to further manipulate those registered behaviors.">事件</a>
+        <ul class="children">
+          <li class="cat-item cat-item-19"><a href="http://www.css88.com/jqapi-1.9/category/events/browser-events/" title="View all posts filed under Browser Events">浏览器事件</a> </li>
+          <li class="cat-item cat-item-20"><a href="http://www.css88.com/jqapi-1.9/category/events/document-loading/" title="View all posts filed under Document Loading">文档加载</a> </li>
+          <li class="cat-item cat-item-21"><a href="http://www.css88.com/jqapi-1.9/category/events/event-handler-attachment/" title="View all posts filed under Event Handler Attachment">事件绑定</a> </li>
+          <li class="cat-item cat-item-22"><a href="http://www.css88.com/jqapi-1.9/category/events/event-object/" title="jQuery&#39;s event system normalizes the event object according to W3C standards. The event object is guaranteed to be passed to the event handler. Most properties from the original event are copied over and normalized to the new event object.
+
+          jQuery.Event Constructor
+          The jQuery.Event constructor is exposed and can be used when calling trigger. The new operator is optional.
+          Check trigger&#39;s documentation to see how to combine it with your own event object.
+          Example:
+
+            //Create a new jQuery.Event object without the &quot;new&quot; operator.
+  var e = jQuery.Event(&quot;click&quot;);
+
+  // trigger an artificial click event
+  jQuery(&quot;body&quot;).trigger( e );
+
+
+          As of jQuery 1.6, you can also pass an object to jQuery.Event() and its properties will be set on the newly created Event object.
+          Example:
+
+              // Create a new jQuery.Event object with specified event properties.
+  var e = jQuery.Event(&quot;keydown&quot;, { keyCode: 64 });
+
+  // trigger an artificial keydown event with keyCode 64
+  jQuery(&quot;body&quot;).trigger( e );
+
+
+          Event Properties
+          jQuery normalizes the following properties for cross-browser consistency:
+
+
+              target
+
+
+              relatedTarget
+
+
+              pageX
+
+
+              pageY
+
+
+              which
+
+
+              metaKey
+
+
+          The following properties are also copied to the event object, though some of their values may be undefined depending on the event:
+          altKey, bubbles, button, cancelable, charCode, clientX, clientY, ctrlKey, currentTarget, data, detail, eventPhase, metaKey, offsetX, offsetY, originalTarget, pageX, pageY, prevValue, relatedTarget, screenX, screenY, shiftKey, target, view, which
+          OtherProperties
+          Certain events may have properties specific to them. Those can be accessed as properties of the event.originalEvent object. To make special properties available in all event objects, they can be added to the jQuery.event.props array. This is not recommended, since it adds overhead to every event delivered by jQuery.
+          Example:
+
+
+  // add the dataTransfer property for use with the native `drop` event
+  // to capture information about files dropped into the browser window
+  jQuery.event.props.push(&quot;dataTransfer&quot;);
+
+
+        ">事件对象</a> </li>
+          <li class="cat-item cat-item-23"><a href="http://www.css88.com/jqapi-1.9/category/events/form-events/" title="View all posts filed under Form Events">表单事件</a> </li>
+          <li class="cat-item cat-item-24"><a href="http://www.css88.com/jqapi-1.9/category/events/keyboard-events/" title="View all posts filed under Keyboard Events">键盘事件</a> </li>
+          <li class="cat-item cat-item-25"><a href="http://www.css88.com/jqapi-1.9/category/events/mouse-events/" title="View all posts filed under Mouse Events">鼠标事件</a> </li>
+        </ul>
+      </li>
+      <li class="cat-item cat-item-26"><a href="http://www.css88.com/jqapi-1.9/category/forms/" title="These methods and event handlers handle forms and their various elements.">表单</a> </li>
+      <li class="cat-item cat-item-27"><a href="http://www.css88.com/jqapi-1.9/category/internals/" title="Although this category is referred to as &#39;internal&#39;, any methods documented within the API site should be considered public and may be freely used.">内部构件</a> </li>
+      <li class="cat-item cat-item-28"><a href="http://www.css88.com/jqapi-1.9/category/manipulation/" title="All of the methods in this section manipulate the DOM in some manner. A few of them simply change one of the attributes of an element (also listed in the Attributes category), while others set an element&#39;s style properties (also listed in the CSS category). Still others modify entire elements (or groups of elements) themselves?inserting, copying, removing, and so on. All of these methods are referred to as &quot;setters,&quot; as they change the values of properties.
+			A few of these methods?such as .attr(), .html(), and .val()?also act as &quot;getters,&quot; retrieving information from DOM elements for later use.">操作</a>
+        <ul class="children">
+          <li class="cat-item cat-item-29"><a href="http://www.css88.com/jqapi-1.9/category/manipulation/class-attribute/" title="These methods inspect and manipulate the CSS classes assigned to elements.">css类属性</a> </li>
+          <li class="cat-item cat-item-30"><a href="http://www.css88.com/jqapi-1.9/category/manipulation/copying/" title="This method allows us to make copies of elements.">Copying</a> </li>
+          <li class="cat-item cat-item-32"><a href="http://www.css88.com/jqapi-1.9/category/manipulation/dom-insertion-around/" title="These methods allow us to insert new content surrounding existing content.">DOM 插入, 包裹</a> </li>
+          <li class="cat-item cat-item-33"><a href="http://www.css88.com/jqapi-1.9/category/manipulation/dom-insertion-inside/" title="These methods allow us to insert new content inside an existing element.">DOM 插入, 内部插入</a> </li>
+          <li class="cat-item cat-item-34"><a href="http://www.css88.com/jqapi-1.9/category/manipulation/dom-insertion-outside/" title="These methods allow us to insert new content outside an existing element.">DOM 插入, 外部插入</a> </li>
+          <li class="cat-item cat-item-35"><a href="http://www.css88.com/jqapi-1.9/category/manipulation/dom-removal/" title="These methods allow us to delete elements from the DOM.">DOM 移除</a> </li>
+          <li class="cat-item cat-item-36"><a href="http://www.css88.com/jqapi-1.9/category/manipulation/dom-replacement/" title="These methods are used to remove content from the DOM and replace it with new content.">DOM 替换</a> </li>
+          <li class="cat-item cat-item-37"><a href="http://www.css88.com/jqapi-1.9/category/manipulation/general-attributes/" title="These methods get and set DOM attributes of elements">一般属性</a> </li>
+          <li class="cat-item cat-item-38"><a href="http://www.css88.com/jqapi-1.9/category/manipulation/style-properties/" title="These methods get and set CSS-related properties of elements.">Style 属性</a> </li>
+        </ul>
+      </li>
+      <li class="cat-item cat-item-39"><a href="http://www.css88.com/jqapi-1.9/category/miscellaneous/" title="View all posts filed under Miscellaneous">杂项</a>
+        <ul class="children">
+          <li class="cat-item cat-item-40"><a href="http://www.css88.com/jqapi-1.9/category/miscellaneous/collection-manipulation/" title="View all posts filed under Collection Manipulation">集合操作</a> </li>
+          <li class="cat-item cat-item-41"><a href="http://www.css88.com/jqapi-1.9/category/miscellaneous/data-storage/" title="These methods allow us to associate arbitrary data with specific DOM elements.">数据存储</a> </li>
+          <li class="cat-item cat-item-42"><a href="http://www.css88.com/jqapi-1.9/category/miscellaneous/dom-element-methods/" title="View all posts filed under DOM Element Methods">DOM 元素方法</a> </li>
+          <li class="cat-item cat-item-43"><a href="http://www.css88.com/jqapi-1.9/category/miscellaneous/setup-methods/" title="View all posts filed under Setup Methods">设置方法</a> </li>
+        </ul>
+      </li>
+      <li class="cat-item cat-item-44"><a href="http://www.css88.com/jqapi-1.9/category/offset/" title="View all posts filed under Offset">位置</a> </li>
+      <li class="cat-item cat-item-45"><a href="http://www.css88.com/jqapi-1.9/category/properties/" title="View all posts filed under Properties">特性</a>
+        <ul class="children">
+          <li class="cat-item cat-item-46"><a href="http://www.css88.com/jqapi-1.9/category/properties/jquery-object-instance-properties/" title="Each jQuery object created with the jQuery() function contains a number of properties alongside its methods. These properties allow us to inspect various attributes of the object.">jQuery 对象实例特性</a> </li>
+          <li class="cat-item cat-item-47"><a href="http://www.css88.com/jqapi-1.9/category/properties/global-jquery-object-properties/" title="These properties are associated with the global jQuery object.">全局jQuery 对象特性</a> </li>
+        </ul>
+      </li>
+      <li class="cat-item cat-item-48"><a href="http://www.css88.com/jqapi-1.9/category/selectors/" title="Borrowing from CSS 1?3, and then adding its own, jQuery offers a powerful set of tools for matching a set of elements in a document.
+      To use any of the meta-characters ( such as  !&quot;#$%&amp;&#39;()*+,./:;&lt;=&gt;?@[\]^`{|}~ ) as a literal part of a name, it must be escaped with with two backslashes: \\. For example, an element with id=&quot;foo.bar&quot;, can use the selector $(&quot;#foo\\.bar&quot;). The W3C CSS specification contains the complete set of rules regarding valid CSS selectors. Also useful is the blog entry by Mathias Bynens on CSS character escape sequences for identifiers.">选择器</a>
+        <ul class="children">
+          <li class="cat-item cat-item-49"><a href="http://www.css88.com/jqapi-1.9/category/selectors/attribute-selectors/" title="The CSS specification allows elements to be identified by their attributes. While not supported by some older browsers for the purpose of styling documents, jQuery allows you to employ them regardless of the browser being used.
+        When using any of the following attribute selectors, you should account for attributes that have multiple, space-separated values. Since these selectors see attribute values as a single string, this selector, for example, $(&quot;a[rel=&#39;nofollow&#39;]&quot;), will select &lt;a href=&quot;example.html&quot; rel=&quot;nofollow&quot;&gt;Some text&lt;/a&gt; but not &lt;a href=&quot;example.html&quot; rel=&quot;nofollow foe&quot;&gt;Some text&lt;/a&gt;.
+        Attribute values in selector expressions must follow the rules for W3C CSS selectors; in general, that means anything other than a valid identifier should be surrounded by quotation marks.
+
+          double quotes inside single quotes: $(&#39;a[rel=&quot;nofollow self&quot;]&#39;)
+          single quotes inside double quotes: $(&quot;a[rel=&#39;nofollow self&#39;]&quot;)
+          escaped single quotes inside single quotes: $(&#39;a[rel=\&#39;nofollow self\&#39;]&#39;)
+          escaped double quotes inside double quotes: $(&quot;a[rel=\&quot;nofollow self\&quot;]&quot;)
+
+        The variation you choose is generally a matter of style or convenience.
+
+        Note: In jQuery 1.3 [@attr] style selectors were removed (they were previously deprecated in jQuery 1.2). Simply remove the &quot;@&quot; symbol from your selectors in order to make them work again.">属性</a> </li>
+          <li class="cat-item cat-item-50"><a href="http://www.css88.com/jqapi-1.9/category/selectors/basic-css-selectors/" title="The following selectors are based on the Cascading Style Sheet 1 specification, as outlined by the W3C. For more information about the specifications, visit http://www.w3.org/Style/CSS/#specs.">基础</a> </li>
+          <li class="cat-item cat-item-51"><a href="http://www.css88.com/jqapi-1.9/category/selectors/basic-filter-selectors/" title="View all posts filed under Basic Filter">基础筛选</a> </li>
+          <li class="cat-item cat-item-52"><a href="http://www.css88.com/jqapi-1.9/category/selectors/child-filter-selectors/" title="View all posts filed under Child Filter">子元素筛选</a> </li>
+          <li class="cat-item cat-item-53"><a href="http://www.css88.com/jqapi-1.9/category/selectors/content-filter-selector/" title="View all posts filed under Content Filter">内容筛选</a> </li>
+          <li class="cat-item cat-item-54"><a href="http://www.css88.com/jqapi-1.9/category/selectors/form-selectors/" title="View all posts filed under Form">表单</a> </li>
+          <li class="cat-item cat-item-55"><a href="http://www.css88.com/jqapi-1.9/category/selectors/hierarchy-selectors/" title="View all posts filed under Hierarchy">层级</a> </li>
+          <li class="cat-item cat-item-56"><a href="http://www.css88.com/jqapi-1.9/category/selectors/jquery-selector-extensions/" title="jQuery has extended the CSS3 selectors with the following selectors.  Because these selectors are jQuery extension and not part of the CSS specification, queries using them cannot take advantage of the performance boost provided by the native DOM querySelectorAll() method. To achieve the best performance when using these selectors, first select some elements using a pure CSS selector, then use .filter().">jQuery 扩展</a> </li>
+          <li class="cat-item cat-item-57"><a href="http://www.css88.com/jqapi-1.9/category/selectors/visibility-filter-selectors/" title="View all posts filed under Visibility Filter">可见性筛选</a> </li>
+        </ul>
+      </li>
+      <li class="cat-item cat-item-58"><a href="http://www.css88.com/jqapi-1.9/category/traversing/" title="View all posts filed under Traversing">遍历</a>
+        <ul class="children">
+          <li class="cat-item cat-item-59"><a href="http://www.css88.com/jqapi-1.9/category/traversing/filtering/" title="View all posts filed under Filtering">筛选</a> </li>
+          <li class="cat-item cat-item-60"><a href="http://www.css88.com/jqapi-1.9/category/traversing/miscellaneous-traversal/" title="View all posts filed under Miscellaneous Traversing">其他遍历</a> </li>
+          <li class="cat-item cat-item-61"><a href="http://www.css88.com/jqapi-1.9/category/traversing/tree-traversal/" title="View all posts filed under Tree Traversal">树遍历</a> </li>
+        </ul>
+      </li>
+      <li class="cat-item cat-item-63"><a href="http://www.css88.com/jqapi-1.9/category/utilities/" title="View all posts filed under Utilities">使用工具</a> </li>
+      <li class="cat-item cat-item-64"><a href="http://www.css88.com/jqapi-1.9/category/version/" title="View all posts filed under Version">版本</a>
+        <ul class="children">
+          <li class="cat-item cat-item-65"><a href="http://www.css88.com/jqapi-1.9/category/version/1.0/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.0 Release Notes.">Version 1.0</a> </li>
+          <li class="cat-item cat-item-66"><a href="http://www.css88.com/jqapi-1.9/category/version/1.0.4/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				Release Notes: 1.0.1, 1.0.2, 1.0.3, 1.0.4.">Version 1.0.4</a> </li>
+          <li class="cat-item cat-item-67"><a href="http://www.css88.com/jqapi-1.9/category/version/1.1/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.1 Release Notes.">Version 1.1</a> </li>
+          <li class="cat-item cat-item-68"><a href="http://www.css88.com/jqapi-1.9/category/version/1.1.2/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.1.2 Release Notes.">Version 1.1.2</a> </li>
+          <li class="cat-item cat-item-69"><a href="http://www.css88.com/jqapi-1.9/category/version/1.1.3/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.1.3 Release Notes">Version 1.1.3</a> </li>
+          <li class="cat-item cat-item-70"><a href="http://www.css88.com/jqapi-1.9/category/version/1.1.4/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.1.4 Release Notes.">Version 1.1.4</a> </li>
+          <li class="cat-item cat-item-71"><a href="http://www.css88.com/jqapi-1.9/category/version/1.2/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.2 Release Notes">Version 1.2</a> </li>
+          <li class="cat-item cat-item-72"><a href="http://www.css88.com/jqapi-1.9/category/version/1.2.3/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				Release Notes: 1.2.1, 1.2.2, 1.2.3.">Version 1.2.3</a> </li>
+          <li class="cat-item cat-item-73"><a href="http://www.css88.com/jqapi-1.9/category/version/1.2.6/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.2.6 Release Notes.">Version 1.2.6</a> </li>
+          <li class="cat-item cat-item-74"><a href="http://www.css88.com/jqapi-1.9/category/version/1.3/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				Release Notes: 1.3, 1.3.1, 1.3.2">Version 1.3</a> </li>
+          <li class="cat-item cat-item-75"><a href="http://www.css88.com/jqapi-1.9/category/version/1.4/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.4 Release Notes.">Version 1.4</a> </li>
+          <li class="cat-item cat-item-76"><a href="http://www.css88.com/jqapi-1.9/category/version/1.4.1/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.4.1 Release Notes.">Version 1.4.1</a> </li>
+          <li class="cat-item cat-item-77"><a href="http://www.css88.com/jqapi-1.9/category/version/1.4.2/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.4.2 Release Notes.">Version 1.4.2</a> </li>
+          <li class="cat-item cat-item-78"><a href="http://www.css88.com/jqapi-1.9/category/version/1.4.3/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+				jQuery 1.4.3 Release Notes.">Version 1.4.3</a> </li>
+          <li class="cat-item cat-item-79"><a href="http://www.css88.com/jqapi-1.9/category/version/1.4.4/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery. jQuery 1.4.4 Release Notes.">Version 1.4.4</a> </li>
+          <li class="cat-item cat-item-80"><a href="http://www.css88.com/jqapi-1.9/category/version/1.5/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.
+        jQuery 1.5 also includes a large rewrite of the Ajax module, which has a number of extensibility improvements. You can find out more about those improvements in the Extending Ajax documentation.
+        Additionally jQuery 1.5 includes a new Deferred callback management system you can learn more about in in the Deferred Object documentation.">Version 1.5</a> </li>
+          <li class="cat-item cat-item-81"><a href="http://www.css88.com/jqapi-1.9/category/version/1.5.1/" title="Aspects of the API that were changed in the corresponding version of jQuery. API changes in jQuery 1.5.1 dealt primarily with jQuery.ajax settings and jQuery.support properties.">Version 1.5.1</a> </li>
+          <li class="cat-item cat-item-82"><a href="http://www.css88.com/jqapi-1.9/category/version/1.6/" title="All the aspects of the API that were added, or had a new signature added, in the corresponding version of jQuery.">Version 1.6</a> </li>
+          <li class="cat-item cat-item-83"><a href="http://www.css88.com/jqapi-1.9/category/version/1.7/" title="Aspects of the API that were changed in the corresponding version of jQuery. API changes in jQuery 1.7.0 dealt primarily with the new
+				Event APIs: .on() and .off()
+				Better Support for HTML5 in IE6/7/8
+				jQuery.Callbacks()
+				Toggling Animations Work Intuitively
+
+        For more information, see the Release Notes/Changelog at http://blog.jquery.com/2011/11/03/jquery-1-7-released/
+        ">Version 1.7</a> </li>
+          <li class="cat-item cat-item-84"><a href="http://www.css88.com/jqapi-1.9/category/version/1.8/" title="Aspects of the API that were changed in the corresponding version of jQuery. API changes in jQuery 1.8.0 dealt primarily with animations and the removal of some methods such as deferred.isResolved(), deferred.isRejected(), $.curCSS(), $.attrFn(), and $(element).closest(Array) returning Array.
+
+        For more information, see the Release Notes/Changelog at http://blog.jquery.com/2012/08/09/jquery-1-8-released/
+        ">Version 1.8</a> </li>
+          <li class="cat-item cat-item-86"><a href="http://www.css88.com/jqapi-1.9/category/version/1.9/" title="Aspects of the API that were changed in the corresponding version of jQuery. Changes in jQuery 1.9 dealt primarily removal or modification of several APIs that behaved inconsistently or inefficiently in the past. A jQuery Migrate Plugin was offered to help developers with a transitional upgrade path.
+
+        For more information, see the jQuery Core 1.9 Upgrade guide and the Release Notes/Changelog
+        ">Version 1.9</a> </li>
+        </ul>
+      </li>
+    </ul>
+  </aside>
+
+
+</div>
+<div id="content_box">
+  <div id="content">
+	
+<div class="inner" role="main">
+<article id="post-335" class="post-335 post type-post status-publish format-standard hentry category-data category-15">
+  <header class="entry-header">
+    <h1 class="entry-title">jQuery.hasData()</h1>
+    <hr>
+        <div class="entry-meta">
+      分类: <span class="category"><a href="http://www.css88.com/jqapi-1.9/category/data/" title="View all posts in Data">Data</a></span>    </div><!-- .entry-meta -->
+      </header><!-- .entry-header -->
+
+  <div class="entry-content">
+    <article id="jQuery-hasData1" class="entry method"><h2 class="section-title">
+<span class="name">jQuery.hasData( element )</span><span class="returns">返回: <a href="http://www.css88.com/jqapi-1.9/Types#Boolean">Boolean</a></span>
+</h2>
+<div class="entry-wrapper">
+<p class="desc"><strong>描述: </strong>确定任何一个元素是否有与之相关的jQuery数据。</p>
+<ul class="signatures"><li class="signature" id="jQuery-hasData-element">
+<h4 class="name">
+<span class="version-details">添加的版本: <a href="http://www.css88.com/category/version/1.5/">1.5</a></span>jQuery.hasData( element )</h4>
+<ul><li>
+<div><strong>element</strong></div>
+<div>类型: <a href="http://www.css88.com/jqapi-1.9/Types#Element">Element</a>
+</div>
+<div>一个用于进行检查数据的DOM元素。</div>
+</li></ul>
+</li></ul>
+<div class="longdesc" id="entry-longdesc">
+    <p><code>jQuery.hasData()</code>方法提供了一种方法来确定一个元素是否有任何数据，这些数据是使用<a href="http://www.css88.com/jqapi-1.9/jQuery.data"><code>jQuery.data()</code></a>设置的。如果一个元素没有数据（没有在所有数据对象或数据对象是空的），该方法返回<code>false</code> ;否则返回<code>true</code> 。</p>
+    <p><code>jQuery.hasData(element)</code> 的主要优点是它并不创建 data 对象。如果元素上没有 data 对象，那么该方法也不会与元素上的 data 对象关联。相反，<code>jQuery.data(element)</code>总是向调用者返回一个 data 对象，即使该元素上不含有 data 对象，它也会创建一个。</p>
+    <p>
+      请注意，jQuery的事件系统是使用jQuery数据 存储事件处理程序的。
+      因此，使用<code>.on()</code>, <code>.bind()</code>, <code>.live()</code>, <code>.delegate()</code>，或一个速记事件方法 绑定事件到一个元素上的时候，也会在那个元素上关联一个 data 对象。</p>
+  </div>
+<section class="entry-examples" id="entry-examples"><header><h2 class="underline">例子:</h2></header><div class="entry-example" id="example-0">
+<h4><span class="desc">元素上设置数据，看到hasData的结果。</span></h4>
+<div class="syntaxhighlighter xml ">
+  <table>
+    <tbody>
+      <tr>
+        <td class="gutter">
+          
+            <div class="line n1">1</div>
+          
+            <div class="line n2">2</div>
+          
+            <div class="line n3">3</div>
+          
+            <div class="line n4">4</div>
+          
+            <div class="line n5">5</div>
+          
+            <div class="line n6">6</div>
+          
+            <div class="line n7">7</div>
+          
+            <div class="line n8">8</div>
+          
+            <div class="line n9">9</div>
+          
+            <div class="line n10">10</div>
+          
+            <div class="line n11">11</div>
+          
+            <div class="line n12">12</div>
+          
+            <div class="line n13">13</div>
+          
+            <div class="line n14">14</div>
+          
+            <div class="line n15">15</div>
+          
+            <div class="line n16">16</div>
+          
+            <div class="line n17">17</div>
+          
+            <div class="line n18">18</div>
+          
+            <div class="line n19">19</div>
+          
+            <div class="line n20">20</div>
+          
+            <div class="line n21">21</div>
+          
+            <div class="line n22">22</div>
+          
+            <div class="line n23">23</div>
+          
+            <div class="line n24">24</div>
+          
+            <div class="line n25">25</div>
+          
+            <div class="line n26">26</div>
+          
+            <div class="line n27">27</div>
+          
+        </td>
+        <td class="code">
+          <pre><div class="container"><div class="line"><code><span class="doctype">&lt;!DOCTYPE html&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">html</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">script</span> <span class="attribute">src</span>=<span class="value">"http://code.jquery.com/jquery-latest.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">head</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code>  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Results: <span class="tag">&lt;/<span class="title">p</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript"></span></code></div></div><div class="container"><div class="line"><code><span class="keyword">var</span> $p = jQuery(<span class="string">"p"</span>), p = $p[<span class="number">0</span>];</code></div></div><div class="container"><div class="line"><code>$p.append(jQuery.hasData(p)+<span class="string">" "</span>); <span class="comment">/* false */</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>$.data(p, <span class="string">"testing"</span>, <span class="number">123</span>);</code></div></div><div class="container"><div class="line"><code>$p.append(jQuery.hasData(p)+<span class="string">" "</span>); <span class="comment">/* true*/</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>$.removeData(p, <span class="string">"testing"</span>);</code></div></div><div class="container"><div class="line"><code>$p.append(jQuery.hasData(p)+<span class="string">" "</span>); <span class="comment">/* false */</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>$p.on(<span class="string">'click'</span>, <span class="keyword">function</span>() {});</code></div></div><div class="container"><div class="line"><code>$p.append(jQuery.hasData(p)+<span class="string">" "</span>); <span class="comment">/* true */</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code>$p.off(<span class="string">'click'</span>);</code></div></div><div class="container"><div class="line"><code>$p.append(jQuery.hasData(p)+<span class="string">" "</span>); <span class="comment">/* false */</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">script</span>&gt;</span></code></div></div><div class="container"><div class="line"><code> </code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">body</span>&gt;</span></code></div></div><div class="container"><div class="line"><code><span class="tag">&lt;/<span class="title">html</span>&gt;</span></code></div></div></pre>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h4>Demo:</h4>
+<div class="demo code-demo"><iframe width="100%" height="250"></iframe></div>
+</div></section>
+</div></article>  </div><!-- .entry-content -->
+
+</article>        
+</div>
+
+
+  </div>
+</div>
+<script type="text/javascript" src="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/search.js"></script>
+<script type="text/javascript" src="./jQuery.hasData()   jQuery API中文文档(适用jQuery 1.0 - jQuery 2.0)_files/gotop.min.js"></script>
+<script type="text/javascript">
+	goToTop.init();
+</script><a href="http://www.css88.com/jqapi-1.9/jQuery.hasData/#" class="go_to_top" style="display: none">回到顶部</a>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3448069-8']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+<div id="chrome-hosts-manager-ipaddr" title="当前标签页IP：点击隐藏">117.25.129.149</div><div id="window-resizer-tooltip"><a href="http://www.css88.com/jqapi-1.9/jQuery.hasData/#" title="Edit settings" style="background-image: url(chrome-extension://kkelicaakdanhinjdeammmilcgefonfh/images/icon_19.png);"></a><span class="tooltipTitle">Window size: </span><span class="tooltipWidth" id="winWidth"></span> x <span class="tooltipHeight" id="winHeight"></span><br><span class="tooltipTitle">Viewport size: </span><span class="tooltipWidth" id="vpWidth"></span> x <span class="tooltipHeight" id="vpHeight"></span></div></body></html>

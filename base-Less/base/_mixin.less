@@ -1,0 +1,230 @@
+@charset "utf-8";
+
+// $vars
+//--------------------------------------------------------------------------
+@color-primary: #333;           // 主要文字
+@color-secondary: #666;         // 次要文字
+@color-muted: #999;             // 减弱文字
+@color-success: #4ed6d1;        // 成功
+@color-warning: #f33;           // 警告
+@color-error: #f33;             // 错误
+@color-info: #ff7300;           // 提示文字
+@color-link: #6f55c0;           // 超链接
+@color-link-hover: #6f55c0;     // 超链接-鼠标悬浮
+@color-price: #6f55c0;          // 价格
+
+
+
+// mixins
+// ==================================================================================
+
+// 三角形生成器
+.less-triangle-basic(){
+  overflow: hidden;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  line-height: 0;
+}
+.less-triangle(top, @width: 5px, @color: #A2A2A2){
+  .less-triangle-basic();
+  border: @width solid transparent;
+  border-top: none;
+  border-bottom-color: @color;
+}
+.less-triangle(bottom, @width: 5px, @color: #A2A2A2){
+  .less-triangle-basic();
+  border: @width solid transparent;
+  border-bottom: none;
+  border-top-color: @color;
+}
+.less-triangle(left, @width: 5px, @color: #A2A2A2){
+  .less-triangle-basic();
+  border: @width solid transparent;
+  border-left: none;
+  border-right-color: @color;
+}
+.less-triangle(right, @width: 5px, @color: #A2A2A2){
+  .less-triangle-basic();
+  border: @width solid transparent;
+  border-right: none;
+  border-left-color: @color;
+}
+
+// 箭头生成器
+.less-arrow-basic(){
+  position: relative;
+  display: inline-block;
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    height: 0;
+    width: 0;
+  }
+}
+.less-arrow(top, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
+  .less-arrow-basic();
+  &{
+    width: @width * 2;
+    height: @width;
+  }
+  &:before{
+    top: -@width;
+    left: 0;
+  }
+  &:after{
+    top: -@width + @size;
+    left: 0;
+  }
+  &:before,
+  &:after{
+    border: @width solid transparent;
+    border-bottom-color: @color;
+  }
+
+  &:after{
+    border-bottom-color: @defaltColor;
+  }
+}
+.less-arrow(bottom, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
+  .less-arrow-basic();
+  &{
+    width: @width * 2;
+    height: @width;
+  }
+  &:before{
+    top: 0;
+    left: 0;
+  }
+  &:after{
+    top: -@size;
+    left: 0;
+  }
+  &:before,
+  &:after{
+    border: @width solid transparent;
+    border-top-color: @color;
+  }
+
+  &:after{
+    border-top-color: @defaltColor;
+  }
+}
+.less-arrow(left, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
+  .less-arrow-basic();
+  &{
+    width: @width;
+    height: @width * 2;
+  }
+  &:before{
+    top: 0;
+    left: -@width;
+  }
+  &:after{
+    top: 0;
+    left: -@width + @size;
+  }
+  &:before,
+  &:after{
+    border: @width solid transparent;
+    border-right-color: @color;
+  }
+
+  &:after{
+    border-right-color: @defaltColor;
+  }
+}
+.less-arrow(right, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
+  .less-arrow-basic();
+  &{
+    width: @width;
+    height: @width * 2;
+  }
+  &:before{
+    top: 0;
+    left: 0;
+  }
+  &:after{
+    top: 0;
+    left: -@size;
+  }
+  &:before,
+  &:after{
+    border: @width solid transparent;
+    border-left-color: @color;
+  }
+
+  &:after{
+    border-left-color: @defaltColor;
+  }
+}
+
+// 关闭X
+.less-close(@width: 40px, @border: 2px, @color: #A2A2A2) {
+  @widthClose: @width * 1.5;
+
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  width: @width;
+  height: @width;
+  cursor: pointer;
+
+  &:before {
+    content: '';
+    width: @border;
+    height: @widthClose;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: rotate(45deg) translateY(-50%);
+    transform-origin: 0 0;
+    margin-left: -(@border/2);
+    background-color: @color;
+  }
+
+  &:after {
+    content: '';
+    width: @widthClose;
+    height: @border;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: rotate(45deg) translateX(-50%);
+    transform-origin: 0 0;
+    margin-top: -(@border/2);
+    background-color: @color;
+  }
+}
+
+
+
+// placeholder
+// ==================================================================================
+
+// 清除浮动
+.less-clearfix(){
+  &:after{
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+  }
+}
+
+// 单行省略号
+.less-ellipsis(){
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行省略号
+.less-ellipsis-lines() {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}

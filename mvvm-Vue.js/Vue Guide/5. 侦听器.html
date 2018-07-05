@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>侦听器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>侦听器</h1>
+	<div>
+		<p class="text-item">Vue提供了<code>vm.$watch</code>方法来观察Vue实例的变化。</p>
+	</div>
+	<div id="testBox">
+	  <p>姓名：{{name}}</p>
+	  <p>年龄：{{info.age}}</p>
+	</div>
+	<script>
+	    var vm = new Vue({
+	    	el: '#testBox',
+	        data: {
+	        	name: 'yangtuan',
+	        	info: {
+	        		sex: '男',
+	        		age: '26'
+	        	}
+	        }
+	    });
+
+	    // vm.$watch() 返回一个取消观察函数，用来停止触发回调
+	    var unwatch = vm.$watch('name', function(newVal, oldVal){
+	    	console.log('watch-name: newVal:' + newVal + '; oldVal:' + oldVal);
+	    });
+
+	    // 属性名称多层级
+	    // 选项参数-immediate，当该选项值为true时，将立即以属性的当前值触发回调
+	    vm.$watch('info.age', function(newVal, oldVal){
+	    	console.log('watch-info.age: newVal:' + newVal + '; oldVal:' + oldVal);
+	    }, {immediate: true});
+
+	    // 默认情况下info.age的变更不会触发info的监听器，这里需要使用选项参数-deep来设置，从而可以监听到对象内部值的变化（注意：监听数组的变化不需要这么做）
+	    vm.$watch('info', function(newVal, oldVal){
+	    	console.log('watch-info: newVal:' + newVal + '; oldVal:' + oldVal);
+	    }, {deep: true});
+
+		setTimeout(function(){
+			vm.name = 'a new name';
+			vm.info.age = 18;
+		}, 2000);
+	</script>
+</div>
+</body>
+</html>

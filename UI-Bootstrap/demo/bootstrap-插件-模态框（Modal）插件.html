@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>插件：模态框（Modal）插件 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>插件：模态框（Modal）插件</h1>
+    <hr>
+
+    <p>模态框（Modal）是覆盖在父窗体上的子窗体。通常，目的是显示来自一个单独的源的内容，可以在不离开父窗体的情况下有一些互动。子窗体可提供信息、交互等。</p>
+
+    
+    <p>&nbsp;</p>
+    <h2>用法</h2>
+    <p>您可以切换模态框（Modal）插件的隐藏内容：</p>
+    <ul>
+        <li><strong>通过 data 属性</strong>：在控制器元素（比如按钮或者链接）上设置属性 <code>data-toggle="modal"</code>，同时设置 <code>data-target="#myModal"</code> 或 <code>href="#myModal"</code> 来指定要切换的特定的模态框（带有 <code>id="myModal"</code>）。</li>
+        <li>
+            <strong>通过 JavaScript</strong>：使用这种技术，您可以通过简单的一行 JavaScript 来调用带有 id="myModal" 的模态框：
+            <pre>$('#myModal').modal(options);</pre>
+        </li>
+        <li><strong>测试后备注</strong>：Modal模态框初始化只能进行一次，之后无论怎么改变配置都仅使用首次初始化的设置。</li>
+    </ul>
+
+    <!-- 按钮触发模态框 -->
+    <div><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">开始演示模态框</button></div>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">
+                       模态框（Modal）标题
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    在这里添加一些文本
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary j_modalConfirm">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <div><img src="images/modal-option.png" alt=""></div>
+    
+    <p>&nbsp;</p>
+
+    <!-- 按钮触发模态框 -->
+    <div><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-backdrop="false" data-keyboard="false" data-show="false">模态框：data-toggle="modal" data-target="#myModal" data-backdrop="false" data-keyboard="false" data-show="false"</button></div>
+    <p>&nbsp;</p>
+    <div><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" data-backdrop="true" data-keyboard="true" data-show="true">模态框：data-toggle="modal" data-target="#myModal" data-backdrop="true" data-keyboard="true" data-show="true"</button></div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <div><img src="images/modal-methods.png" alt=""></div>
+    
+    <p>&nbsp;</p>
+
+    <!-- 按钮触发模态框 -->
+    <div><button class="btn btn-primary btn-lg" onclick="$('#myModal').modal({'keyboard': false, 'backdrop': false})">模态框：$('#myModal').modal({keyboard: false, backdrop: false})</button></div>
+    <p>&nbsp;</p>
+    <div><button class="btn btn-primary btn-lg" onclick="$('#myModal').modal('show')">模态框：$('#myModal').modal('show')</button></div>
+    <p>&nbsp;</p>
+    <div><button class="btn btn-primary btn-lg" onclick="$('#myModal').modal('hide')">模态框：$('#myModal').modal('hide')</button></div>
+    <p>&nbsp;</p>
+    <div><button class="btn btn-primary btn-lg" onclick="$('#myModal').modal('toggle')">模态框：$('#myModal').modal('toggle')</button></div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <div><img src="images/modal-events.png" alt=""></div>
+    <div><button class="btn btn-primary btn-lg" onclick="bindEvent(); $('#myModal').modal('show');">测试事件：点击后会先执行下面的代码，再打开模态框</button></div>
+    <p>&nbsp;</p>
+<pre>
+$('#myModal').on('show.bs.modal', function(){
+    alert('EVENT show.bs.modal , 在调用 show 方法后触发！');
+});
+
+$('#myModal').on('shown.bs.modal', function(){
+    alert('EVENT shown.bs.modal , 当模态框对用户可见时触发（将等待css过渡效果完成）。');
+});
+
+$('#myModal').on('hide.bs.modal', function(){
+    alert('EVENT hide.bs.modal , 在调用 hide 方法后触发！');
+});
+
+$('#myModal').on('hidden.bs.modal', function(){
+    alert('EVENT hidden.bs.modal , 当模态框完全对用户隐藏时触发。');
+});
+</pre>
+    <script>
+        function bindEvent()
+        {
+            $('#myModal').on('show.bs.modal', function(){
+                alert('EVENT show.bs.modal , 在调用 show 方法后触发！');
+            });
+
+            $('#myModal').on('shown.bs.modal', function(){
+                alert('EVENT shown.bs.modal , 当模态框对用户可见时触发（将等待css过渡效果完成）。');
+            });
+
+            $('#myModal').on('hide.bs.modal', function(){
+                alert('EVENT hide.bs.modal , 在调用 hide 方法后触发！');
+            });
+
+            $('#myModal').on('hidden.bs.modal', function(){
+                alert('EVENT hidden.bs.modal , 当模态框完全对用户隐藏时触发。');
+            });
+        }
+    </script>
+    
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>回调函数</h2>
+    <p>上面介绍的事件，虽然可以针对模态框打开到关闭的四种状态做回调处理，但是却不能对用户是否做了“点击确定按钮”的事件作出相应。因此这里我们需要手动添加。</p>
+    <div><button class="btn btn-primary btn-lg" onclick="bindConfirm(); $('#myModal').modal('show');">测试事件：点击后会先执行下面的代码，再打开模态框</button></div>
+    <p>&nbsp;</p>
+<pre>
+function bindConfirm()
+{
+    $('.j_modalConfirm').on('click', function(){
+        alert('点击确定按钮！');
+        $('#myModal').modal('hide');
+    });
+}
+</pre>
+    <script>
+        var didBindConfirm = false;
+        function bindConfirm()
+        {
+            if(didBindConfirm) return;
+
+            $('.j_modalConfirm').on('click', function(){
+                alert('点击确定按钮！');
+                $('#myModal').modal('hide');
+            });
+
+            didBindConfirm = true;
+        }
+    </script>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

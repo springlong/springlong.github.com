@@ -1,0 +1,14 @@
+{
+    "family": "static/about",
+    "name": "about",
+    "version": "1.0.0",
+    "author": "author",
+    
+    "spm": {
+        "include": "self",
+        "output": [
+            "about.css",
+            "about.js"
+        ]
+    }
+}

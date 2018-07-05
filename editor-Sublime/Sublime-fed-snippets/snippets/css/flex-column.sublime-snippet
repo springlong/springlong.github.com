@@ -1,0 +1,7 @@
+<snippet>
+	<content><![CDATA[display: flex;
+flex-direction: column;]]></content>
+	<tabTrigger>flx-c</tabTrigger>
+    <description>flex垂直排列</description>
+    <scope>source.css, source.less, source.scss, source.stylus</scope>
+</snippet>

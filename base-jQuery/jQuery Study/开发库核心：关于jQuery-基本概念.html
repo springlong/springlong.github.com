@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>开发库核心：关于jQuery-基本概念 - jQuery使用文档</title>
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link rel="stylesheet" href="public/css/codeView.css" />
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/jquery.extend.js"></script>
+    <script src="public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+    <h1>jQuery使用文档——开发库核心：关于jQuery-基本概念</h1>
+    <section>
+        <h2>jQuery简介</h2>
+        <div>
+            <p>jQuery是<a target="_blank" href="http://baike.baidu.com/view/3141971.htm" title="点击访问John Resing的百度百科">John Resig</a>于2006年8月开发并发布的一款JavaScript开发库（jQuery 1.0），其最初的想法是实现跨浏览器的DOM遍历和操纵，以提供一个简洁、强大而且富有表现力的HTML文档管理API。在jQuery发布的7年后，这个JavaScript库依然在持续进化。到目前为止，jQuery不仅提供了多浏览器支持，解决了各大浏览器之间那些烦人的bug和兼容性问题，还提供了丰富且高性能的CSS选择器、事件处理、Ajax交互、动画接口等实用API。</p>
+            <p>jQuery秉承write less,do more（写得更少，做得更多）的核心理念，深受广大Web开发者的追捧和青睐。截止2013年，Top 100000的网站中有一半以上使用了jQuery，成为这个互联网上最流行的JavaScript开发库。</p>
+            <p><b>2013年04月18日</b>，jQuery正式发布了2.0版本，jQuery从此迎来了版本系列的分水岭。自此之后，jQuery将提供jQuery 2.x系列和jQuery 1.x系列两套版本供用户选择。</p>
+            <p><strong>jQuery 2.x系列</strong>为了解决很多开发需求不需要老版本IE环境的问题，将不再支持IE6/7/8浏览器。在抛弃对IE6/7/8的支持后，jQuery 2.x系列更快也更轻量了，对于特定平台的HTML应用来说尤其合适。目前jQuery 2.x系列的最新版本为2.1.0。</p>
+            <p><strong>jQuery 1.x系列</strong>将继续支持IE6/7/8浏览器，你可以继续使用它来兼容IE的低版本浏览器，同时jQuery团队也将继续对1.x版本进行维护。目前jQuery 1.x系列的最新版本为1.11.0。</p>
+            <p>jQuery开发库的核心内容是jQuery对象，不过你也可以使用$来表示它——$作为别名指向jQuery对象（$===jQuery）。jQuery对象不仅提供了一系列属性和方法供开发者使用，开发者们也可以向该对象中添加自己的扩展。</p>
+            <p>jQuery的基本书写格式如下：</p>
+<pre class="jsCodeNum">
+//下一语句为id属性为“acBox”的元素设置width样式为200px，并添加了类名字符串show
+jQuery("#acBox").css("width", "200px").addClass("show");
+
+//上面的语句可以简化如下（推荐）：
+$("#acBox").css("width", "200px").addClass("show");
+</pre>
+            <p><b>注意：</b></p>
+            <ol>
+                <li>请注意jQuery标准名称的书写：第一个字母j小写，第二个字母Q大写。这是被大部分jQuery学习者忽略的问题，还望各位注意。</li>
+                <li>为了书写的方便，在后续文档的代码书写中，jQuery对象一律使用$进行书写。</li>
+                <li>为了获得高性能、高兼容性，符合当下趋势的使用体验，建议使用jQuery 1.9以及后续的版本。</li>
+            </ol>
+        </div>
+    </section>
+    <section>
+        <h2>jQuery的内容组成</h2>
+        <div>
+            <p>jQuery提供了很多非常实用的用于操纵DOM的接口调用以及其他的一些功能函数，要想完全掌握并利用好这些内容并不是一件容易的事情，这就需要我们花费大量的时间和精力来学习并测试这些函数的使用和应用场景。为了对jQuery开发库有一个较为详细且明确的了解和认识，帮助我们更好地学习和使用jQuery，下面我们将从实例成员和静态成员这两个方面进行简要说明，希望能够对你有所帮助。</p>
+            <h3>实例成员</h3>
+            <div>
+                <p>即需要对jQuery对象进行实例化之后才能使用的方法或属性。实例化操作如下：</p>
+<pre class="jsCode">
+var $div = $("div");  //传递一个字符串参数进行实例化操作
+</pre>
+                <p>看了上面的代码，可能有同学会郁闷了，对象实例化不是需要使用new吗？应该这样写才对啊——<code>var $div = new $("div")</code>，怎么可以直接通过函数调用的方式来进行呢？为了解答大家的疑惑，我们来看下jQuery开发库中的部分源代码：</p>
+<pre class="jsCodeNum">
+//jQuery的所有代码都书写在下面的这个匿名函数中，主要用于防止过多的垃圾变量污染Window对象。
+(function( window, undefined ) {
+
+var
+    //声明一个jQuery对象，并在构造函数中初始化并返回jQuery.fn.init的一个对象实例。
+    //按照jQuery作者的原话来讲：jQuery对象实际上只是jQuery.fn.init构造函数的“增强”。
+    jQuery = function( selector, context ) {
+        return new jQuery.fn.init( selector, context, rootjQuery );
+    };
+
+//将jQuery.fn指向jQuery对象的原型，正是如此我们才可以使用$.fn.newMember=function(){}的形式来扩展jQuery对象的实例成员
+jQuery.fn = jQuery.prototype = {
+    init: function( selector, context, rootjQuery ) {},
+    //....
+};
+
+//将jQuery.fn.init的原型指向jQuery对象的原型，这样我们通过new jQuery.fn.init()构建的对象实例将可以访问jQuery对象的所有原型成员
+jQuery.fn.init.prototype = jQuery.fn;
+
+//将jQuery对象全局化，同时$符号作为jQuery的别名存在
+window.jQuery = window.$ = jQuery;
+
+})( window );
+</pre>
+                <p><b>通过上面的代码，相信大家已经有了较为明确的答案。之所以在jQuery开发库中可以使用函数调用的形式来进行jQuery对象的实例化操作，是因为在jQuery构造函数中返回的是jQuery.fn.init的对象实例，而jQuery.fn.init的原型又指向了jQuery的原型，那么在执行jQuery的函数调用后（即<code>jQuery()</code>）所返回的对象将可以访问jQuery对象原型的所有成员，所以在通过这一系列看似“比较绕”的赋值操作后实现了在jQuery的函数调用中完成了对“自己”的实例化操作。</b></p>
+                <p>如果要我自己来实现直接通过函数调用来初始化对象实例的这一操作，由于自己的能力有限，同时也为了自己和他人更容易理解代码，我可能会这样写：</p>
+<pre class="jsCodeNum">
+//声明一个jQuery对象，在构造函数中返回jQuery.init的一个对象实例
+var jQuery = function( selector, context ) {
+    return new jQuery.init( selector, context, rootjQuery );
+};
+
+//jQuery.init的构造函数
+jQuery.init = function( selector, context, rootjQuery ) {};
+//jQuery.init的原型赋值
+jQuery.init.prototype = {};
+</pre>
+                <p><strong>相信通过上面的内容，能够帮助大家了解jQuery对象实例化操作的方法和相关原理，下面我们继续新的话题：</strong></p>
+                <p>在jQuery中，对象实例化的过程我们将其称为对“<strong>元素集合</strong>”的封装。具体的操作就是在jQuery函数调用中传递一个<strong>选择器参数</strong>，最终的执行结果将返回符合这个选择器的所有HTML元素所组成的“<strong>伪数组</strong>”对象，即大家所说的<strong>jQuery对象</strong>。在返回的这个jQuery对象实例中，我们可以通过索引来访问那些被封装的元素集合。例如，下面的语句获取了文档中所有的div标签所组成的元素集合：</p>
+<pre class="jsCode">
+var $div = $("div");  //获取标签名称为div的元素集合
+</pre>
+                <p>当元素集合获取完毕后之后，我们就可以通过相关属性和方法去操作它了：</p>
+<pre class="jsCode">
+var divLen = $div.length;  //获取元素集合的长度（即存在多少个DIV元素）
+var divFirst = $div[0];    //获取元素集合中的第一个DOM元素
+$div.css("color", "red");  //将元素集合中的每一个元素的color样式设置为红色
+</pre>
+                <p>看了上面的示例代码，大家可能会误认为jQuery函数调用返回的结果，就是通过<code>document.getElementsByTagName</code>、<code>document.getElementById</code>等方法获得的结果。实际上，通过<code>document.getElementsByTagName</code>获得的结果是一个节点列表，通过<code>document.getElementById</code>获得的结果是一个DOM元素，而jQuery函数调用返回的结果则是jQuery的一个对象实例。在这个jQuery对象实例中，确实包含了通过<code>document.getElementsByTagName</code>等方法获得的结果（即上面所说的元素集合），但这只是jQuery对象实例的一个很小的组成部分，jQuery对象实例还具备了节点列表、DOM元素等并不具备的其他特性。</p>
+                <p>为了进一步加强对jQuery对象实例的认识，下面罗列了jQuery对象实例所具备的的一些主要特性：</p>
+                <ol>
+                    <li>
+                        <strong>伪数组</strong>
+                        <p>当一个对象具备了数组的两大特征——length属性和索引访问后，我们就可以将其称之为“伪数组”，伪数组并不是真正的数组，其并不具备数组的其他特性，如push、pop等操作。</b></p>
+                        <p>当jQuery通过选择器进行实例化之后，主要完成了元素集合（即符合选择器的所有HTML元素）的封装操作。这一操作使得jQuery的对象实例具备了length属性和索引访问的特性。length属性表示元素集合的个数，而索引访问则可以通过“[0]”的形式去访问元素集合中的值。</p>
+                        <p>如果你刚从原生JavaScript转战JS开发库，那么你极有可能对元素集合的使用和对document.getElementById等方法获得的结果的使用存在一些认知误区。下面的代码将带你走出迷惑：</p>
+<pre class="jsCodeNum">
+/*原生JavaScript的代码*/
+var obj = document.getElementById("acBox");     //获取ID为acBox的DOM元素
+var len = obj.length;   //获取长度信息（结果值为：undefined。因为obj此时是DOM元素，并不具备length属性）
+var id = obj.id;        //获取元素的id属性（结果值为：acBox）
+obj.title = "tips";     //为元素设置title属性
+
+/*jQuery中的代码*/
+var $obj = $("#acBox");  //获取ID为acBox的元素集合
+var len = $obj.length;   //这里的值要么是0（不存在时），要么为1（存在时）
+var id = $obj[0].id;     //获取元素的id属性（结果值为：acBox）
+$obj[0].title = "tips";  //为元素设置title属性
+</pre>
+                        <p>在上面代码中的jQuery部分，如果你试图访问<code>$obj.id</code>，那么其返回值将是undefined。jQuery函数调用获得的元素集合其实是在document.getElementById等方法获得的结果的基础上对其套了一个“外壳”，你无法直接通过jQuery函数调用的返回结果去操作它们的DOM属性和方法，除非通过索引访问或者使用jQuery自己提供的一些方法。</p>
+                    </li>
+                    <li>
+                        <strong>容错处理</strong>
+                        <p>下面的代码，在页面中没有acBox元素的情况下将抛出脚本异常，导致后续代码无法继续执行：</p>
+<pre class="jsCode">
+document.getElementById("acBox").id = "acBoxNew";
+</pre>
+                        <p>在jQuery中，可将上面的代码书写如下。在页面没有acBox元素的情况下并不会抛出异常，而是忽略attr方法的执行，对后续代码没有任何影响：</p>
+<pre class="jsCode">
+$("#acBox").attr("id", "acBoxNew");
+</pre>
+                    </li>
+                    <li>
+                        <strong>浏览器兼容</strong>
+                        <p>我们都知道，IE6~8浏览器与IE9+、Firefox、Chrome等浏览器存在诸多差异，因此在我们的开发工作中需要花费大量的时间去处理这些兼容性问题。jQuery专门针对这些兼容问题进行了处理和优化，使开发者们不再担心浏览器的兼容问题。例如，原先的事件绑定操作是这样的：</p>
+<pre class="jsCodeNum">
+if("addEventListener" in document)
+{
+    //针对标准的事件绑定
+    document.addEventListener("click", function(e)
+    {
+        alert("单击事件被触发！");
+    }, 0);
+}
+else
+{
+    //针对IE6~8的非标准的事件绑定
+    document.attachEvent("onclick", function(e)
+    {
+        alert("单击事件被触发！");
+    });
+}
+</pre>
+                        <p>现在，你可以这样来添加事件绑定：</p>
+<pre class="jsCode">
+$(document).on("click", function(e)
+{
+    alert("单击事件被触发！");
+});
+</pre>
+                    </li>
+                    <li>
+                        <strong>功能加强</strong>
+                        <p>JavaScript原生提供的属性或者方法比较有限，很难满足项目快速开发的需求。为此，jQuery针对相关操作的处理进行了加强。例如，原先操作CSS的代码如下：</p>
+<pre class="jsCode">
+var ele = document.getElementById("acBox");
+ele.style.width = "980px";  //为acBox元素设置宽度为980px
+ele.style.height = "320px"; //为acBox元素设置高度为320px
+</pre>
+                            <p>现在，你可以这样来进行书写：</p>
+<pre class="jsCode">
+$("#acBox").css({"width": "980px", "height": "320px"});
+</pre>
+                    </li>
+                    <li>
+                        <strong>链式操作</strong>
+                        <p>什么是链式操作，就是指可以对一个对象不断进行方法的执行操作（即每一次方法执行完毕之后，都会将原对象进行返回）。例如，原先的代码可能是这样写的：</p>
+<pre class="jsCode">
+var ele = document.getElementById("acBox");
+ele.style.backgroundColor = "gray";
+ele.className += " show";
+ele.title = "new tips";
+</pre>
+                        <p>现在，你可以这样来进行书写：</p>
+<pre class="jsCode">
+$("#acBox").css("backgroundColor", "gray").addClass("show").attr("title", "new tips");
+</pre>
+                    </li>
+                </ol>
+                <p><b>上面的内容主要对jQuery对象的实例化以及元素集合的基本概念和相关特性进行了相关讲解，有关jQuery对象更多的实例成员的使用，将在后续文档中进行演示。</b></p>
+            </div>
+            <h3>静态成员</h3>
+            <div>
+                <p>即可以通过jQuery对象直接进行访问的属性或方法。使用方式如下：</p>
+<pre class="jsCode">
+var result = $.trim("  abc   ");   //执行代码后result的值为：将目标字符串去除两端的空白字符后所得的结果——"abc"
+</pre>
+                <p>jQuery中的静态成员主要可分为以下几类：</p>
+                <ul>
+                    <li><strong>类型判断</strong>：<code>$.isArray()</code>、<code>$.isEmptyObject()</code>、<code>$.isFunction()</code>、<code>$.isNumeric()</code>...</li>
+                    <li><strong>浏览器支持</strong>：<code>$.support.boxModel</code>、<code>$.support.cssFloat </code>、<code>$.support.checkOn</code>...</li>
+                    <li><strong>字符串扩展</strong>：<code>$.trim()</code>...</li>
+                    <li><strong>数组扩展</strong>：<code>$.each()</code>、<code>$.makeArray()</code>、<code>$.map()</code>、<code>$.merge()</code>...</li>
+                    <li><strong>实用工具</strong>：<code>$.now()</code>、<code>$.parseHTML()</code>、<code>$.parseJSON()</code>、<code>$.parseXML()</code>、<code>$.contains()</code>、<code>$.noConflict()</code>...</li>
+                    <li><strong>Ajax交互</strong>：<code>$.ajax()</code>、<code>$.ajaxSetup()</code>、<code>$.get()</code>、<code>$.getJSON()</code>、<code>$.getScript()</code>、<code>$.post()</code>...</li>
+                    <li><strong>动画接口</strong>：<code>$.dequeue()</code>、<code>$.queue()</code>...</li>
+                </ul>
+                <p>说明：为了在以后的文本描述中能够正确区分jQuery中的实例成员和静态成员，特将静态成员使用<code>$.each()</code>的形式进行书写，而实例成员则使用<code>.each()</code>的形式进行书写。</p>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2>jQuery中元素集合的访问</h2>
+        <div>
+            <p>在上面的内容中，我们知道jQuery的大部分操作都是针对元素集合进行的，也希望上面的内容能够让大家正确理解元素集合的概念——元素集合是jQuery通过选择器查找获取得到的所有符合条件的DOM元素的汇总，元素集合是jQuery对象实例的主要组成内容，同时jQuery也提供了很多的原型方法用于操纵这些元素集合，或者用来对这些元素集合中的DOM元素进行相关处理。</p>
+            <p>在上面的演示代码中，我们看到可以通过索引访问元素集合中的某个具体的DOM元素，代码如下：</p>
+<pre class="jsCode">
+var firstDOM = $("div")[0];  //获取所有div元素所组成的元素集合中的第一个div元素
+</pre>
+            <p>除了索引访问外，jQuery还提供了其他操作方式：</p>
+            <ol class="list">
+                <li>
+                    <p class="title"><code>.selector</code></p>
+                    <p>返回jQuery对象实例中的元素集合是通过什么选择器字符串进行查询匹配的，如果jQuery对象实例不是通过选择器参数构建的结果，那么该属性将返回空字符串。（返回类型：String）</p>
+                </li>
+                <li>
+                    <p class="title"><code>.length</code></p>
+                    <p>返回jQuery对象实例中元素集合的长度（个数），0表示该对象实例的元素集合为空。（返回类型：Number）</p>
+                </li>               
+                <li>
+                    <p class="title titleNo"><code>.size()</code></p>
+                    <p>返回jQuery对象实例中元素集合的长度（个数），0表示该对象实例的元素集合为空。（返回类型：Number）</p>
+                    <p>该方法返回的的结果即<code>.length</code>属性返回的结果，从jQuery 1.8版本开始就已经被遗弃，不赞成使用。因为该方法相对于<code>.length</code>属性来说，增加了额外的函数调用的成本。</p>
+                </li>
+                <li>
+                    <p class="title"><code>.toArray()</code></p>
+                    <p>将jQuery对象实例中的元素集合以数组形式返回。（返回类型：Array）</p>
+                    <p>注意：使用该方法后，元素集合将是一个普通的DOM元素的数组，将不再具备jQuery中原型方法的相关功能。</p>
+                </li>
+                <li>
+                    <p class="title"><code>.get(index)</code></p>
+                    <p>获取元素集合中指定索引的DOM元素。（返回类型：Element）</p>
+                    <div class="params">
+                        <p>参数index：<span>（类型：Number）</span>DOM元素的所在的索引位置；</p>
+                    </div>
+                    <p>1. 当index参数的值为负数时，表示的是倒数第几个索引位置的DOM元素。</p>
+                    <p>2. 如果给定的索引参数超出了元素集合的长度范围，则返回值为undefined。</p>
+                    <p>3. 如果不需要使用该方法的参数为负数，那么请优先使用索引访问，这样效率更高，代码量也更少。</p>
+<pre class="jsCode">
+var $div = $("div");            //假设页面中有5个div元素
+var firstDOM = $div.get(0);     //返回元素集合中的第一个DOM元素，相当于$div[0]
+var lastDOM = $div.get(-1);     //返回元素结合中最后一个DOM元素，相当于$div[4]
+</pre>
+                    <p class="title title2"><code>.get()</code></p>
+                    <p>在<code>.get()</code>方法没有提供参数时，则相当于<code>.toArray()</code>方法，将返回jQuery对象实例中元素集合的数组形式。（返回类型：Array）</p>
+                </li>
+                <li>
+                    <p class="title"><code>.index()</code></p>
+                    <p>返回元素集合中第一个元素作为子节点相对于父级容器的索引位置。（返回类型：Number）</p>
+                    <p>如果该方法的参数为null、undefined、0、""、false等空值时，也将执行本功能模块。</p>
+<pre class="jsCode">
+var $div = $("#acBox");         //假设ID为acBox的元素在父级容器中作为第5个子节点存在
+var index = $div.index();       //最终返回的索引位置为：4
+</pre>
+                    <p class="title title2"><code>.index(selector)</code></p>
+                    <p>返回元素集合中第一个元素相对于选择器匹配结果中的索引位置，如果不在匹配的结果中则返回-1。（返回类型：Number）</p>
+                    <div class="params">
+                        <p>参数selector：<span>（类型：String）</span>选择器字符串；</p>
+                    </div>
+<pre class="jsCode">
+var $div = $("#acBox");         //假设ID为acBox的div元素在文档中处于第5个DIV节点
+var index = $div.index("div");  //最终返回的索引值为：4
+var index2 = $div.index("p");   //最终返回的索引位置为：-1，表示不存在
+</pre>
+                    <p class="title title2"><code>.index(element)</code></p>
+                    <p>返回目标参数表示的DOM元素相对于元素集合中的索引位置，如果元素集合中不存在这个DOM
+                        元素则返回-1。（返回类型：Number）</p>
+                    <div class="params">
+                        <p>参数element：<span>（类型：DOMElement | jQuery）</span>需要查找的DOM元素；</p>
+                    </div>
+                    <p>如果该方法传递的参数是一个jQuery对象实例，则取该对象的第一个DOM元素用于查找。</p>
+<pre class="jsCode">
+var $div = $("div");                    //假设ID为acBox的div元素在文档中处于第5个DIV节点
+var index = $div.index($("#acBox"));    //最终返回的索引值为：4
+</pre>
+                </li>
+            </ol>
+        </div>
+    </section>
+<section class="codeView">
+    <h2>程序代码：jQuery中元素集合的访问</h2>
+    <pre class="jsCodeNum">
+jQuery.fn = jQuery.prototype = {
+
+    // Start with an empty selector
+    selector: "",
+
+    // The default length of a jQuery object is 0
+    length: 0,
+
+    // The number of elements contained in the matched element set
+    size: function() {
+        return this.length;
+    },
+
+    toArray: function() {
+        return core_slice.call( this );
+    },
+
+    // Get the Nth element in the matched element set OR
+    // Get the whole matched element set as a clean array
+    get: function( num ) {
+        return num == null ?
+
+            // Return a 'clean' array
+            this.toArray() :
+
+            // Return just the object
+            ( num &lt; 0 ? this[ this.length + num ] : this[ num ] );
+    }
+};
+
+jQuery.fn.extend({
+
+    // Determine the position of an element within
+    // the matched set of elements
+    index: function( elem ) {
+
+        // No argument, return index in parent
+        if ( !elem ) {
+            return ( this[0] &amp;&amp; this[0].parentNode ) ? this.first().prevAll().length : -1;
+        }
+
+        // index in selector
+        if ( typeof elem === "string" ) {
+            return jQuery.inArray( this[0], jQuery( elem ) );
+        }
+
+        // Locate the position of the desired element
+        return jQuery.inArray(
+            // If it receives a jQuery object, the first element is used
+            elem.jquery ? elem[0] : elem, this );
+    }
+});
+</pre>
+</section>
+</article>
+<script src="public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

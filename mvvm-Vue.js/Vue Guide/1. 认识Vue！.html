@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>认识Vue！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container">
+	<h1>认识Vue！</h1>
+	<div class="text-item">
+		<p>通过<code>new Vue({})</code>创建一个Vue的实例。</p>
+		<p>通过<code>v-model</code>指令进行表单数据的双向绑定。</p>
+		<p>通过<code>{{}}</code>这样一对双大括号的“Mustache”语法在HTML代码中插入文本值。</p>
+		<p>通过<code>v-text</code>指令绑定标签需要输出的文本内容。</p>
+		<p>通过<code>v-html</code>指令绑定标签需要输出的HTML代码。</p>
+	</div>
+<pre>
+&lt;div id="vueTest">
+ 	&lt;p>请在这里输出内容：&lt;input type="text" size="50" v-model="message" placeholder="Hello World！">&lt;/p>
+ 	&lt;p>“Mustache”语法 (双大括号) 的文本插值：{{message || 'Hello World！'}}&lt;/p>
+ 	&lt;p>通过v-text指令输出普通文本：&lt;span v-text="message">&lt;/span>&lt;/p>
+ 	&lt;p>通过v-html指令输出HTML代码：&lt;span v-html="message">&lt;/span>&lt;/p>
+&lt;/div>
+&lt;script>
+	// Vue实例化
+	var vm = new Vue({
+		el: '#vueTest',
+		data: {
+			message: '&lt;b>三种内容输出方式的对比&lt;/b>'
+		}
+	});
+&lt;/script>
+</pre>
+	<hr>
+	<div id="vueTest">
+	 	<p>请在这里输出内容：<input type="text" size="50" v-model="message" placeholder="Hello World！"></p>
+	 	<p>“Mustache”语法 (双大括号) 的文本插值：{{message || 'Hello World！'}}</p>
+	 	<p>通过v-text指令输出普通文本：<span v-text="message"></span></p>
+	 	<p>通过v-html指令输出HTML代码：<span v-html="message"></span></p>
+	</div>
+	<script>
+		// Vue实例化
+		var vm = new Vue({
+			el: '#vueTest',
+			data: {
+				message: '<b>三种内容输出方式的对比</b>&amp;My&#039;s'
+			}
+		});
+	</script>
+</div>
+</body>
+</html>

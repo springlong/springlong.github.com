@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>获取网页来路地址的浏览器兼容处理</title>
+    <style>
+        *{padding:0;margin:0;}
+        body{padding:20px;}
+        h1{margin:20px 0;}
+    </style>
+</head>
+<body>
+	<h1>获取网页来路地址的浏览器兼容处理</h1>
+    <script>
+        //虽然可以使用document.referrer来获取当前页面的来路地址，但是在部分浏览器中使用window.open打开的页面将没有来路信息
+        //此时需要根据当前页面的前一个窗口的location信息来获取
+        var referrer = document.referrer;
+        if(!referrer){
+           try{
+               if(window.opener){
+                   referrer = window.opener.location.href; //IE下如果跨域则抛出权限异常，Safari和Chrome下window.opener.location没有任何属性
+               }
+           }
+           catch(e){}
+        }
+
+        //输出测试：
+        document.write("当前网页的来路地址：" + referrer);
+    </script>
+</body>
+</html>

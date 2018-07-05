@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>滑动式水平导航栏</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<style type="text/css">
+<!--
+	*{
+		margin:0px;
+		padding:0px;
+	}
+	body {
+		font-family: "微软雅黑";
+		color: #000;
+		margin:10px;
+	}
+	
+	#mainNav{
+		float:left;
+		width:720px;
+		list-style:none;
+	}
+	#mainNav li{
+		float:left;
+		background:url(images/my_Tab-right.gif) no-repeat right top;
+	}
+	#mainNav a{
+		float:left;			/*锚点链接也采用浮动可以使其左背景图片完全遮住li的背景*/
+		height:2em;
+		line-height:2em;
+		padding:0px 2em;
+		margin-right:1px;	/*添加1像素的右边距可以避免点击链接时虚线边框不完整的缺陷*/
+		color:white;
+		background:url(images/my_Tab-left.gif) no-repeat left top;
+		text-decoration:none;
+	}
+	#mainNav a:hover{
+		color:black;
+		text-decoration:underline;
+	}
+
+-->
+</style>
+</head>
+<body>
+<ul id="mainNav">
+	<li><a href="#">主页</a></li>
+	<li><a href="#">新闻</a></li>
+	<li><a href="#">关于我们</a></li>
+	<li><a href="#">产品</a></li>
+	<li><a href="#">服务</a></li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>数据填充：ms-text、ms-html、{{prop}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>数据填充：ms-text、ms-html、{{prop}}</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>在avalon1中，存在四种数据填充的手段：</p>
+    <blockquote>{{expr}}, {{expr|html}}, ms-text, ms-html</blockquote>
+    <p>其实第一种与第三种一样，用于输出纯文本，第二种与第四种一样，如果用户的数据是一些HTML标签，那么会转换成元素节点插入到当前位置。</p>
+    <p>在avalon2中，只有三种数据填充的手段，原第二种使用html过滤器的方式由于在虚拟DOM不好实现，被移除。</p>
+    
+
+<pre>
+&lt;script>
+    var vm1 = avalon.define({
+        $id: 'test',
+        a: 111,
+        b: 222
+    });
+&lt;/script>
+&lt;div ms-controller="test">
+    &lt;p>&lt;input ms-duplex="@a" /> {{@a}} &lt;strong ms-text="@a">&lt;/strong>&lt;/p>
+    &lt;p>&lt;input ms-duplex="@b" /> &lt;span>{{@b}}&lt;/span> &lt;span ms-html="@b">&lt;/span>&lt;/p>
+&lt;/div>
+</pre>
+
+
+	<hr>
+    <script>
+        var vm1 = avalon.define({
+            $id: 'test',
+            a: 111,
+            b: 222,
+            c: {
+                a: 'ca',
+                b: 'cb'
+            }
+        });
+    </script>
+    <div ms-controller="test" class="ms-controller">
+        <p><input ms-duplex="@a" /> {{@a}} <strong ms-text="@a"></strong></p>
+        <p><input ms-duplex="@c.a" /> {{@c.a}} <strong ms-text="@c.a"></strong></p>
+        <p><input ms-duplex="@b" /> <span>{{@b}}</span> <span ms-html="@b"></span></p>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

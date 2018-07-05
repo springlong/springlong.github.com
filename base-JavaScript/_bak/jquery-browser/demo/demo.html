@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>集成于jQuery中，用于浏览器相关的操作处理</title>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="../jquery.browser.js"></script>
+    <link rel="stylesheet" href="main.css" />
+</head>
+<body>
+<section id="instruction">
+    <h1>集成于jQuery中，用于浏览器相关的操作处理</h1>
+    <p><code>jquery-browser.js</code>的目的并不是用于取代原有的<code>$.browser</code>对象，况且该对象在1.9以及之后的版本中已经被摒弃。该插件的目的，主要用于提供与浏览器相关的操作和判断。同时，该插件该提供了对IE6~8浏览器对于基本的HTML5语义标签的兼容性处理。此外，还解决了IE6浏览器不缓存背景图片的Bug、以及IE6中固定定位元素在滚动条滑动时的闪屏问题。</p>
+    <p>如果你在IE6~8浏览器中能够看到该页面的主体内容被边框包裹着且能看到正常布局，那么说明该插件已经成功完成了基本的HTML5语义标签的兼容处理。这样，你就可以放心使用header、footer、nav、section等标签了。</p>
+    <p>该插件提供了以下判断和处理：</p>
+    <ol class="list">
+        <li>
+            <p class="title"><code>$.isIE6</code></p>
+            <p>浏览器是否为IE6。（返回类型：Boolean）</p>
+            <p class="demo">
+                <code>$.isIE6</code>
+                <span class="result"><code id="browserIE6"></code></span>
+            </p>
+        </li>
+        <li>
+            <p class="title"><code>$.isLessIE9</code></p>
+            <p>浏览器是否为IE，且低于9.0版本。（返回类型：Boolean）</p>
+            <p class="demo">
+                <code>$.isLessIE9</code>
+                <span class="result"><code id="browserLessIE9"></code></span>
+            </p>
+        </li>
+        <li>
+            <p class="title"><code>$.isMobile</code></p>
+            <p>客户端是否为移动设备。（返回类型：Boolean）</p>
+            <p class="demo">
+                <code>$.isMobile</code>
+                <span class="result"><code id="browserIsMobile"></code></span>
+            </p>
+        </li>
+        <li>
+            <p class="title"><code>$.canFlash()</code></p>
+            <p>浏览器是否支持Flash插件。（返回类型：Boolean）</p>
+            <p class="demo">
+                <code>$.canFlash()</code>
+                <span class="result"><code id="browserCanFlash"></code></span>
+            </p>
+        </li>
+        <li>
+            <p class="title"><code>$.setHome()</code></p>
+            <p>将当前页面设为浏览器的首页。（返回类型：undefined）</p>
+            <p>该方法目前仅针对IE浏览器有效，但必须是一个完整的网页地址才能正常触发设为首页操作。</p>
+            <p>如果该方法没有执行成功，则提示用户需要手动添加首页。</p>
+            <p class="button"><button id="setHome">$.setHome()</button></p>
+        </li>
+        <li>
+            <p class="title"><code>$.addFavorite()</code></p>
+            <p>将当前页面加入浏览器收藏夹。（返回类型：undefined）</p>
+            <p>该方法目前仅支持IE、Firefox这两个浏览器。在IE中由于安全问题，本地文件将无法正常执行该操作。而在Firefox中，必须是一个绝对路径且有效的网站地址才能正常触发加入收藏操作。</p>
+            <p>如果该方法没有执行成功，则提示用户需要可按Ctrl+d进行完成。</p>
+            <p class="button"><button id="addFavorite">$.addFavorite()</button></p>
+        </li>
+    </ol>
+</section>
+<script>
+    jQuery(function($)
+    {
+        $("#browserIE6").html($.isIE6 + "");
+        $("#browserLessIE9").html($.isLessIE9 + "");
+        $("#browserIsMobile").html($.isMobile + "");
+
+        $("#browserCanFlash").html($.canFlash() + "");
+        $("#setHome").on("click", function(){
+            console.info('did once');
+            $.setHome();
+        });
+        $("#addFavorite").on("click", function(){
+            $.addFavorite();
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+
+不会冒泡的事件有：
+
+	focus
+
+	blur
+
+	mouseenter
+
+	mouseleave
+

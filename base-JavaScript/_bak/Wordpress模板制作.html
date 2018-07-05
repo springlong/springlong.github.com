@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Wordpress模板制作</title>
+    <link rel="stylesheet" href="../public/css/main.css" />
+    <link rel="stylesheet" href="../public/css/codeView.css" />
+    <script src="../public/js/jquery.min.js"></script>
+    <script src="../public/js/jquery.extend.js"></script>
+    <script src="../public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+	<h1><span>Wordpress模板制作</span></h1>
+    <p>JavaScript中的日期对象——Date，是JavaScript常用内置对象的成员之一，它为我们提供了对客户端系统时间的访问，也提供了大量的属性和方法方便我们对特定的日期或者时间进行处理。例如显示在网页中的电子时钟、又或者是某项活动的倒计时，再者复杂到一个日期显示插件等都需要通过Date对象来进行辅助处理。</p>
+    <p>在JavaScript中，每个Date对象的实例都是通过一个叫作“<b>时间戳</b>”的概念来保存日期时间的。时间戳是指自UTC（Coordinated Universal Time，国际协调时间）1970年1月1日午夜（0时）开始到现在所经过的毫秒数，而这个时间点我们为了方便描述而将其称为JavaScript中的<b>时间基点</b>。在使用这种方式存储时间的条件下，一个Date对象保存的日期可以精确到1970年1月1日之前或之后的285,616年。</p>
+    <h2>PHP基本语法</h2>
+    <p>基本格式：</p>
+<pre class="jsCode">
+&lt;?php 执行代码; ?>
+</pre>
+    <p>判断语句：</p>
+<pre class="jsCode">
+&lt;?php if(条件): ?>
+    
+&lt;?php else: ?>
+    
+&lt;?php endif; ?>
+</pre>
+    <p>循环语句：</p>
+<pre class="jsCode">
+&lt;?php while(条件): ?>
+
+&lt;?php endwhile; ?>
+</pre>
+    <h2>Wordpress的模板结构</h2>
+    <div>
+        <p></p>
+    </div>
+    <h2>模板文件的加载</h2>
+    <p>Wordpress提供了系列方法用来在页面中导入指定的模板内容，方法如下：</p>
+<pre class="jsCodeNum">
+get_header();   //加载"header.php"模板文件
+get_footer();   //加载"footer.php"模板文件
+get_sidebar();  //加载"sidebar.php"模板文件
+</pre>
+    <p>在该系列方法中，可以提供一个字符串参数用来加载对应的子模板，例如：</p>
+<pre class="jsCodeNum">
+get_footer();           //加载"footer.php"模板文件
+get_footer('content');  //加载"footer-content.php"模板文件
+get_footer('copyright');//加载"footer-copyright.php"模板文件
+</pre>
+    <h2>博客信息的读取</h2>
+    <p>Wordpress提供了<code>bloginfo()</code>方法来获取博客的相关信息，该方法接受一个字符串参数，根据传值的不同将返回不同的内容：</p>
+<pre class="jsCodeNum">
+bloginfo('name');           //博客标题，如：前端人生_专注Web前端开发
+bloginfo('description');    //博客副标题，如：挖掘前端乐趣，铸就前端梦！
+bloginfo('url');            //博客地址，如：http://www.qianduanlife.com/
+
+bloginfo('html_type');      //HTML类型，通常为text/html
+bloginfo('charset');        //网页编码，如：gb2312、gbk、utf-8
+bloginfo('version');        //使用的Wordpress版本
+
+bloginfo('stylesheet_url'); //style.css的路径地址
+bloginfo('template_url');   //模板文件的路径
+bloginfo('atom_url');       //Atom Url
+bloginfo('pingback_url');   //PingBack Url 
+bloginfo('rss2_url');       //RSS 2.o Url
+</pre>
+    <h2>日志内容的输出</h2>
+    <h3>核心代码结构</h3>
+    <p>博客的主要价值就是文章，在Wordpress中，无论是首页和栏目页的文章列表，还是文章页的主体内容，都需要在下面所示的代码块中进行输出：</p>
+<pre class="jsCodeNum">
+&lt;?php if( have_posts() ): ?>
+    &lt;?php while( have_posts() ) : the_post(); ?>
+        日志内容的输出区域
+    &lt;?php endwhile; ?>
+&lt;?php else: ?>
+    没有日志时的输出内容
+&lt;?php endif; ?>
+</pre>
+    <p>
+        <code>if( have_posts() ):</code>
+        用来判断数据库中是否存在日志，只有当存在日志的情况下才允许文章的读取操作。
+    </p>
+    <p>
+        <code>while( have_posts() ) :</code>
+        用来循环读取本次页面请求所返回的日志列表，例如首页通常是10篇，而文章页则只有1篇。
+    </p>
+    <p>
+        <code>the_posts()</code>
+        调用具体的日志来进行显示。
+    </p>
+    <h3>日志内容的输出区域</h3>
+    <p>在“日志内容的输出区域”，可以执行下列方法来输出日志的具体信息：</p>
+<pre class="jsCodeNum">
+the_ID();           //日志的ID
+the_permalink();    //日志的链接地址
+the_title();        //日志的标题
+the_content();      //日志的文章内容
+
+the_category();     //日志所在栏目的链接列表（默认以“ul>li>a”的列表形式进行输出）
+the_category(',');  //日志所在栏目的链接列表（传递任意非空字符串的参数后将仅以行内的锚链接进行输出）
+
+the_author();       //日志的作者
+the_time('Y-m-d');  //将日志的发布时间输出为“年-月-日”的格式
+
+the_tags('', ' ', '');  //日志的标签列表（参数1：前置的HTML；参数2：间隔符；参数3：后置HTML）
+</pre>
+    <p><b>注意：</b>一篇日志可以同存属于多个栏目，所以<code>the_category()</code>方法将输出日志所在的所有栏目的链接列表。</p>
+    <h3>特殊内容的输出</h3>
+    <ul>
+        <li>
+            <code>comments_popup_link()</code>
+<pre class="jsCode">
+&lt;?php comments_popup_link('No Comments »', '1 Comment »', '% Comments »'); ?>
+</pre>
+            <p>该方法可以输出文章评论的显示链接，该方法提供三个参数（如上图所示）。</p>
+            <p>其中“No Comments”是在没有评论时的输出内容，“1 Comment »”是在仅有一条评论时的输出内容，“% Comments »”则是在存在多条评论时的输出内容（其中%表示具体的评论条数）。</p>
+        </li>
+        <li>
+            <code>comments_template()</code>
+<pre class="jsCode">
+<?php comments_template(); ?>
+</pre>
+            <p>该方法用来调取文章的评论内容。</p>
+        </li>
+        <li>
+            <code>edit_post_link()</code>
+<pre class="jsCode">
+&lt;?php edit_post_link('Edit', '|', ''); ?> 
+</pre>
+            <p>该方法用于在用户登陆后台的情况下，允许点击该方法输出的文本链接直接进入对应文章的编辑页面，这样就可以让我们不必去管理界面搜寻该日志就能直接编辑。该方法提供三个参数，第一个参数是快捷编辑链接的文本显示内容，第二个参数是显示在快捷链接前面的文本，第三个参数是显示在快捷链接后面的文本。</p>
+        </li>
+        <li>
+            <code>posts_nav_link()</code>
+<pre class="jsCode">
+&lt;?php posts_nav_link('in between', 'befor', 'after'); ?>
+</pre>
+            <p>该方法用于显示首页和栏目页的分页链接（前一页，后一页）。该方法同样提供三个参数，第一个参数用于在两个链接之间显示的文本内容，第二个参数用于在两个链接之前显示的文本内容，而第三个参数则用于在两个链接之后显示的文本内容。</p>
+        </li>
+    </ul>
+</article>
+<script src="../public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

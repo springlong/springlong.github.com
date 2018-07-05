@@ -1,0 +1,10 @@
+<snippet>
+	<content><![CDATA[
+wx.onSocketClose((res) => {
+	${1}
+})
+]]></content>
+	<tabTrigger>wx.onSocketClose</tabTrigger>
+	<description>(监听WebSocket关闭)</description>
+	<scope>source.js</scope>
+</snippet>

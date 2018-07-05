@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5：MessageChannel-iframe-a</title>
+</head>
+</head>
+<body>
+<div class="container">
+	<div><input id="name" value="发送消息"></div>
+	<br>
+	<div><button id="send">确认</button></div>
+</div>
+<script>
+	// 定义通道端口
+	var channelPort;
+
+	// 通过通道发送消息
+	document.querySelector('#send').onclick = function(){
+		var message = document.querySelector('#name').value;
+		if(channelPort === undefined) {
+			alert('信息发送失败，暂无可用的通道端口')
+		}else{
+			channelPort.postMessage(message);
+		}
+	};
+
+	// 接收消息
+	window.onmessage = function(ev) {
+		if(ev.origin === 'http://127.0.0.1:8080') {
+			console.log('消息来源可靠!', ev);
+
+			// ev.ports，是消息发送来源传递过来的通道端口
+			channelPort = ev.ports[0];
+		}else{
+			console.log('消息源不可靠！')
+		}
+	};
+
+	// 向父窗口传递消息
+	console.log('postMessage fromA');
+	window.parent.postMessage('fromA', '*');
+</script>
+</body>

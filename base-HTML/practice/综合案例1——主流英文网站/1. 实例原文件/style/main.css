@@ -1,0 +1,334 @@
+/* 基础样式 */
+
+*{
+	margin: 0px;
+	padding: 0px;
+	font-family: Tahoma, Verdana, Geneva, Arial, Helvetica, sans-serif;
+	color:#58595B;
+	font-size:11px;
+	list-style-type: none;
+	text-decoration: none;}
+body{
+	height: 100%;
+	background-color:#5c5c5c;}	
+img{
+	border:none;}
+a {
+	color: #ffffff;
+	text-decoration: none;}
+a:link{
+    text-decoration:none;}	
+a:hover {
+	text-decoration: underline;}
+form {
+	margin: 0px;
+	padding: 0px;}
+.clear{
+    line-height:1px;
+	clear:both;
+	visibility:hidden;}	
+#main{
+    width:820px;
+	margin:0 auto;
+	background-color:#ffffff;}				
+	
+/* head style */
+
+#header{
+   width:790px;
+   height:155px;
+   margin:0 auto;/* 定义居中 */
+   background:url(../images/top.jpg) no-repeat right top;}
+.link{
+   float:right;
+   margin:5px 5px 0 0;
+   color:#ffffff;}
+   
+#menu{
+   width:790px;
+   margin:0 auto;
+   padding:10px 0 5px 0;}
+.menulist{
+   width:620px;
+   float:right;
+   height:28px;
+   background:url(../images/index_20.gif) repeat-x;}
+.menuleft{
+   float:right;
+   width:13px;
+   height:28px;
+   background:url(../images/index_19.gif) no-repeat;}
+.menucontent ul li{
+   color:#ffffff;
+   font-weight:bold;
+   float:left;
+   margin-top:5px;
+	margin-left:10px;
+	padding:0px;}
+.menucontent ul li a{
+	font-weight:bold;
+   color:#ffffff;
+   margin-bottom:7px;
+   font-size:13px;}
+#nav { 
+	margin-left:20px; 
+	line-height: 16px; 
+	list-style-type: none;
+	font-size:14px;}
+     
+
+/* line1 style */
+#content{
+   width:790px;
+   margin:0 auto 16px;
+   padding-top:5px;}
+/*========左侧样式===========*/   
+.left{
+   float:left;
+   width:191px;}    
+.titlewhite{
+   margin-left:18px;
+   font-size:14px;
+   color:#ffffff;
+   font-weight:bold;
+   font-family: "Times New Roman", Times, serif;}
+.titlewhite a{
+   font-size:14px;
+   font-weight:bold;
+   font-family: "Times New Roman", Times, serif;}  
+.titlered{
+    margin-left:15px;
+	font-size:14px;
+	font-weight:bold;
+	color:#cc0000;
+	font-family: "Times New Roman", Times, serif;}
+
+/*========搜索样式===========*/	    
+  
+.search{
+   margin-bottom:8px;
+   width:191px;}     
+.search input{
+   margin-left:5px;
+   height:18px;}
+.botton_left{
+   float:left;
+   display:block;}    
+.botton{
+   float:left;
+   margin:0 0 4px 2px;}    
+   
+/*========服务样式===========*/	   
+.services_lefttop{
+   width:191px;
+   background:url(../images/index_37.gif) no-repeat;
+   background-color:#ffffff;
+   height:5px;
+   font-size:0;}
+.services_lefttitle{
+   background-color:#006699;
+   height:20px;}  
+.services_leftcontent{
+   background-color:#e0edf3;
+   height:140px;
+   padding:10px 0 14px 10px;}   
+.services_leftcontent li{
+   margin-bottom:10px;
+   font-size:12px;
+   padding-left:20px;
+   background:url(../images/ar.gif) no-repeat left;}      
+.services_leftcontent li a{
+   color:#539CC0;
+   font-size:12px;}
+   
+ /*========新闻样式===========*/	  
+.newstitle{
+   width:181px;
+   margin:16px 0 0;
+   background-color:#006699;
+   padding:5px;}
+.newscontentbig{
+  width:184px;
+  height:327px;
+  padding:5px 0 3px 7px;
+  background-color:#CDE3EC;}
+.newscontent{
+  width:177px;
+  border-top:#666666 1px dashed;
+  padding:3px 0 20px 0;
+  line-height:16px;} 
+.newscontent a{
+   color:#58595B;}  
+.newscontenttitle a{
+   text-decoration:underline;
+   color:#024592;
+   font-weight:bold;}
+   
+  
+  /*======================中间部分样式====================*/  
+.middle{
+    float:left;
+	margin-left:18px;}
+.middle img{
+    float:left;}	
+.middle a{
+    color:#58595b;}	
+.middle_show{
+   width:390px; 
+   height:227px;}
+   
+   	
+.middletitle{
+   width:390px;
+   margin:16px 0 8px;}
+   
+.middleleft{
+   float:left;
+   padding-bottom:5px;
+   border-right:#666666 1px dashed;
+   border-bottom:#666666 1px dashed;
+   width:194px;}
+
+.middleright{
+   float:left;
+   padding-bottom:5px;
+   border-bottom:#666666 1px dashed;
+   width:194px;}   
+.middleright img{
+   margin-left:10px;}
+.middlecenter{
+   border-bottom:#666666 1px dashed;
+   width:390px;
+   line-height:15px;
+   padding:5px 0 10px;}         
+
+
+.piccontent{
+   float:left;
+   line-height:15px;
+   margin:3px 0 4px 10px;
+   width:90px;
+   height:80px;}       
+.pictitle a{
+   color:#58595b;
+   font-size:11px;
+   font-weight:bold;}    
+
+                                     
+.piccontentcenter{
+   float:left;
+   width:295px;
+   margin-left:5px;
+   height:80px;}
+   	
+	
+	
+  /*======================右侧部分样式====================*/ 	
+	
+.right{
+    float:right;}
+.right a{
+    color:#58595B;}
+.home_right{
+   width:171px;}				
+.aboutustop	{
+	height:6px;
+	background: url(../images/index_29.gif) no-repeat;
+	font-size:0;} 
+.aboutustitle{
+	height:20px;
+	background-color:#CDE3EC;}
+		
+.aboutuscontent{
+    background-color:#cde3ec;
+	height:186px;
+	padding:0 10px;
+    line-height:18px;}
+.aboutusmore{
+    background-color:#cde3ec;}	
+.more{
+    float:right;
+	margin:0 10px 10px 0;}	
+.aboutusbottom{
+	height:4px;
+	font-size:0px;
+	background:url(../images/index_53.gif) no-repeat;}
+	
+	
+.welcomecontent{
+	background-color:#E0EDF3;
+	height:126px;
+	text-align:center;
+	padding:10px;}	
+.welcomepic{
+    margin-top:16px;}	
+	
+/* footer style */
+.footer{
+  margin:0 auto;
+  width:790px;
+  height:36px;
+  padding-bottom:5px;}	             			                
+.footerleft{
+   float:left;
+   background:url(../images/index_83.gif) no-repeat left;
+   width:5px;
+   height:26px;} 
+.footercontent{
+   float:left;
+   width:780px;
+   height:26px;
+   background-color:#006699;}
+.footercontentleft{
+   float:left;
+   margin:3px 0 0 10px;
+   color:#ffffff;
+   font-weight:bold;}
+.footercontentright{
+   float:right;
+   margin:3px 0 0 10px;
+   color:#ffffff;
+   font-weight:bold;}   
+      
+.footerright{
+   float:left;
+   background:url(../images/index_86.gif) no-repeat right;
+   width:5px;
+   height:26px;} 
+   
+/* menulist */  
+
+
+
+/* other */
+.titleblue{
+    margin-left:10px;
+	font-size:18px;
+	color:#006599;
+	font-family:Arial, Helvetica, sans-serif;}
+.two_showpic{
+    width:416px;
+	height:87px;}	   
+.two_middletitle{
+  margin-top:16px;}	  	
+.spaceline{
+   height:22px;
+   width:400px;
+   margin:6px 0 10px 10px;
+   background-color:#E0EDF3;}
+   
+   
+.two_rightcontent{
+    background-color:#cde3ec;
+	width:136px;
+	height:590px;
+	padding:10px 10px 0;}
+.two_rightcontent img{
+    margin:40px 0 0 16px;}	 
+.two_rightcontent li{
+    line-height:20px;}	         
+.two_rightcontent a{
+    color:#006699;
+	text-decoration:underline;
+	font-size:11px;}       	   	   
+    	            

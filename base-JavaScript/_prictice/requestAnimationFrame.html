@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>requestAnimationFrame Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    	body {
+    		height: 2000px;
+    	}
+
+    	#scrollButton {
+			margin-top: 2000px;
+			margin-bottom: 100px;
+    	}
+    </style>
+</head>
+<body>
+<button id="scrollButton">来回滚动浏览器</button>
+<script>
+
+	// 按照浏览器绘制间隔进行缓动处理
+	document.getElementById("scrollButton").onclick = function() 
+	{
+		var nowScroll = document.body.scrollTop,
+			flag = "up";
+
+		var funScroll = function() {
+
+			var top = document.body.scrollTop;
+
+			if (flag == "up") {
+
+				top -= 20;
+
+				if (top <=0) {
+					top = 0;
+					flag = "down";
+				}				
+			}
+			else if (flag == "down") {
+				top += 20;
+				if(top >= nowScroll) {
+					top = nowScroll;  
+					flag = "stop";
+				}				
+			}
+			else {		// asdfasdf
+				return; // asdfasdfasdf
+			}
+			
+			document.body.scrollTop = top;
+			requestAnimationFrame(funScroll); // 浏览器兼容性 http://caniuse.com/#feat=requestanimationframe
+		};
+		if (nowScroll) {funScroll()};	
+	};
+
+
+	/* requestAnimationFrame.js
+	 * by zhangxinxu 2013-09-30
+	*/
+	(function() {
+	    var lastTime = 0;
+	    var vendors = ['webkit', 'moz'];
+	    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+	        window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+	        window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||    // name has changed in Webkit
+	                                      window[vendors[x] + 'CancelRequestAnimationFrame'];
+	    }
+
+	    if (!window.requestAnimationFrame) {
+	        window.requestAnimationFrame = function(callback, element) {
+	            var currTime = new Date().getTime();
+	            var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+	            var id = window.setTimeout(function() {
+	                callback(currTime + timeToCall);
+	            }, timeToCall);
+	            lastTime = currTime + timeToCall;
+	            return id;
+	        };
+	    }
+	    if (!window.cancelAnimationFrame) {
+	        window.cancelAnimationFrame = function(id) {
+	            clearTimeout(id);
+	        };
+	    }
+	}());
+</script>
+</p>
+</body>
+</html>

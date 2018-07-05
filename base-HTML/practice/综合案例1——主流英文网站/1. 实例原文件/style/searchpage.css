@@ -1,0 +1,31 @@
+/* CSS Document */
+.search_list{
+   margin-left:15px;
+   width:400px;
+   line-height:18px;}
+.search_list a{
+   color:#58595b;}     
+.search_listtop{
+   margin-top:12px;
+   color:#006699;
+   width:400px;
+   font-weight:bold;
+   margin-left:15px;} 
+.search_listtop a{
+   color:#006699;
+   font-weight:bold;
+   text-decoration:underline;} 
+.search_listtitle{
+   margin-top:22px;
+   color:#006699;
+   width:400px;
+   font-weight:bold;
+   margin-left:15px;}
+.search_listtitle a{
+   color:#006699;
+   font-weight:bold;
+   text-decoration:underline;}
+.middle_big_2{
+  padding-left:0px !important;
+  float:right;
+  margin-right:5px;}                 

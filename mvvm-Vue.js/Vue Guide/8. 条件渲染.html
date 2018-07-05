@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>条件渲染</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>条件渲染</h1>
+	<div id="testBox">
+		<div v-if="num === 1">这是1</div>
+		<div v-else-if="num === 2">这是2</div>
+		<div v-else>这是3</div>
+		<div v-show="num === 1">该元素一直存在，通过v-show切换显示</div>
+	</div>
+	<script>
+	    var vm = new Vue({
+	    	el: '#testBox',
+	        data: {
+	        	num: 1
+	        }
+	    });
+
+	    setTimeout(function(){
+	    	vm.num = 2;
+	    }, 1000);
+
+	    setTimeout(function(){
+	    	vm.num = 3;
+	    }, 2000);
+	</script>
+</div>
+</body>
+</html>

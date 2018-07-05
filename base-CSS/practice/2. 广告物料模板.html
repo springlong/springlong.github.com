@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<base target="_blank" />
+	<title>广告物料模板代码</title>
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<style>
+		*{padding:0;margin:0;}
+
+		#wl_wrapper{position:relative;width:98%;margin:10px auto 75px;font-size:12px;color:#333;}
+		#wl_wrapper h3{height:30px;border:1px solid #9ECAE8;border-bottom:0;font-size:12px;line-height:30px;font-weight:bold;text-indent:20px;color:#1C4A79;background:#C7DEED;}
+		#wl_wrapper form{padding-bottom:20px;border:1px solid #9ECAE8;background:#fff;}
+		#wl_wrapper form div{clear:both;overflow:hidden;padding:10px 0 0 40px;margin-top:5px;}
+		#wl_wrapper form label{float:left;display:inline;width:108px;height:30px;padding-right:5px;line-height:30px;}
+		#wl_wrapper form input{float:left;display:inline;width:231px;padding:5px 5px;border:1px solid #7E9DB9;font-size:12px;}
+		#wl_wrapper form textarea{float:left;display:inline;width:231px;padding:5px;border:1px solid #7E9DB9;font-size:12px;}
+		#wl_wrapper form #wl_code{width:365px;min-width:365px;height:210px;min-height:210px;}
+		#wl_wrapper form #wl_desc{height:100px;resize:none;}
+		#wl_wrapper .tips{float:left;display:inline;padding-left:10px;color:#ccc;}
+		#wl_wrapper .syntax{width:290px;line-height:26px;letter-spacing:1px;word-break:break-all;}
+		#wl_wrapper .button{position:absolute;left:30px;bottom:-45px;width:200px;height:30px;padding:0;}
+		#wl_wrapper .button button{float:left;display:inline;width:80px;height:30px;}
+		#wl_wrapper .button button:hover{cursor:pointer;}
+		#wl_wrapper .button a{float:left;display:inline;margin-left:30px;font-size:14px;line-height:30px;font-weight:bold;text-decoration:underline;color:#3377AA;}
+		#wl_wrapper .button a:hover{color:#24557C;}
+	</style>
+</head>
+<body>
+<div id="wl_wrapper">
+	<h3>物料模板名称</h3>
+	<form action="" method="post">
+		<div>
+			<label for="wl_name">广告物料模板名称：</label>
+			<input id="wl_name" name="wl_name" />
+		</div>
+		<div>
+			<label for="wl_code">代码：</label>
+				<textarea id="wl_code" name="wl_code"></textarea>
+				<p class="tips syntax">
+					常用语法规则：
+					<br />(1)声明参数：var 参数名:数据类型=0或1;//参数含义说明数据类型包括media(图片或Flash)、link(点击链接)、text(文本)、number (数值) 0或1表示是否必填，0为选填，1为必填例如，var imglink:link=1;//图片点击链接。
+					<br />(2)引用参数：${参数名}例如，&lt;a href="${imglink}" target="_blank"&gt;…&lt;/a&gt;
+				</p>
+		</div>
+		<div>
+			<label for="wl_desc">说明：</label>
+			<textarea id="wl_desc" name="wl_desc"></textarea>
+			<span class="tips">（选填）</span>
+		</div>
+		<div class="button">
+			<button type="submit">完成</button>
+			<a href="">返回</a>
+		</div>
+	</form>
+</div>
+</body>
+</html>

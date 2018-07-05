@@ -1,0 +1,8 @@
+gulp-scp2	通过scp命令将本地文件部署到服务器
+
+
+gulp-clean	执行文件的清理
+
+gulp-cmd-pack	seajs的cmd模块合并打包工具	https://github.com/baihuibo/gulp-cmd-pack
+
+gulp-strip-debug 移除console

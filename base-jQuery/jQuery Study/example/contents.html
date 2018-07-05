@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>.contents() - jQuery代码示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../../public/js/jquery.extend.js"></script>
+    <script src="../../public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<h1>jQuery代码示例：<code>.contents()</code></h1>
+<p class="title"><code>.contents([selector])</code></p>
+<p class="desc">返回元素集合中每个元素的所有子节点（包含文字和注释节点）所构建的新的jQuery对象。（返回类型：jQuery）</p>
+<p class="params">参数selector：<span>（类型：String，可选）</span>过滤条件；</p>
+<div id="box">
+    容器（ID：box）
+    <div id="layer1">
+        图层1（ID：layer1）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer2">
+        图层2（ID：layer2）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer3">
+        图层3（ID：layer3）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+</div>
+<p class="content">在右侧大家可以看到一个绿色方框的div容器，在该容器中还有三个div子节点，同时在每个div子节点下还有三个段落p子节点，为了该页面的更好测试，还希望大家首先查看下这个容器的HTML结构！</p>
+<p style="font-weight:bold;">由于该方法获取的结果中将包含文本节点和注释节点，而这些节点无法设置css样式来做视觉观察，所以我们使用了下面这段代码来进行测试操作：</p>
+<pre class="jsCode" style="width:600px;">
+//筛选出box容器下div的子级元素中的文本节点（去除空文本节点），并外套一个段落容器
+$("#box div").contents().filter(function()
+{
+    return this.nodeType === 3 &amp;&amp; !/^\s+$/.test(this.nodeValue); 
+})
+.wrap("&lt;p&gt;&lt;/p&gt;");
+</pre>
+<p><button class="btnShort">执行上面的代码</button></p>
+<script>
+    (function($)
+    {
+        $("button").eq(0).click(function(){
+            $("#box div").contents().filter(function()
+            {
+                return this.nodeType === 3 && !/^\s+$/.test(this.nodeValue); 
+            })
+            .wrap("<p></p>");
+        });
+    })(jQuery);
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+    $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+html{background:#fff;}
+body{padding:0 10px 20px;font:14px/2em "Microsoft YaHei";background:#fff;}
+h1{font-size:24px;margin:30px 0;}
+h2{font-size:18px;padding:10px 0 10px 10px;border-left:4px solid #5F890A;margin:30px 0;background:#f5f5f5;}
+h2+div{padding:0 14px;}
+h3{font-size:15px;margin:20px 0;}
+p{text-indent:2em;}
+strong{color:#c00000;}
+em,i{font-weight:bold;font-style:italic;}
+code{padding:0 4px;border:1px solid #dddddd;border-radius:2px;margin:0 2px;font-family:"Consolas","monospace";background:#F8F8F8;}
+
+a{color:#0D71D1;text-decoration:underline;}
+a:hover{color:#E5760D;}
+a.external{padding-right:16px;margin:0 2px;background:url("../images/public/link_external.png") right center no-repeat;}
+.pic{margin:1em 0;}
+.pic img{border:5px solid #C1C1C1;}
+.pic2{text-indent:0;}
+.pic3{margin:0;}
+.picOpacity img{opacity:0.9;filter:ahpha(opacity=90);}
+.txtIndent{margin-left:2em;}
+.credit{color:green;}
+.credit strong{color:green;}
+.credit b{font-weight:normal;color:#c00000;}
+
+ul,ol{overflow:visible;padding-left:50px;margin:10px 0;}
+li{overflow:visible;}
+li ul,li ol{padding-left:20px;}
+ul>li{list-style:square;}
+ul ul>li{list-style:disc;}
+ol>li{list-style:decimal;}
+li p{text-indent:0;}
+li .title{margin:10px 0;}
+ol.muchContent li,ul.muchContent li{margin-top:10px;}
+ol.muchContent li:nth-child(odd),ul.muchContent li:nth-child(odd){background:#eee;}
+ol.questions li{margin-top:15px;}
+ol.questions li p:first-child{margin-bottom:10px;}
+
+#introduction h1{height:80px;padding-bottom:20px;font-size:36px;line-height:80px;font-weight:bold;text-align:center;}
+#introduction ol{width:60%;margin:0 auto;}
+
+.html_code{position:relative;overflow:hidden;padding:10px;border:1px solid #ccc;border-radius:5px;margin:1em auto;margin-left:2em;font:12px/1.5em "Courier New";color:#333;background:#fafafa;}
+.html_code pre{overflow:auto;font-family:"Courier New";white-space:pre-wrap;word-wrap:break-word;}
+.html_code pre code{font-family:"Courier New";white-space:pre-wrap;}
+.html_code pre span.label,
+.html_code pre span.html,
+.html_code pre span.css_value{color:#0000ff;}
+.html_code pre span.attr,
+.html_code pre span.css_attr{color:#c00000;}
+.html_code pre span.value{color:#277C90;}
+.html_code pre span.comments,
+.html_code pre span.comments *{color:#087E1A !important;}
+
+.html_code pre span.js_method{color:#E00F0F;}
+.html_code pre span.js_object{font-weight:bold;color:#009900;}
+.html_code pre span.js_keywords{color:#0000ff;}
+.html_code pre span.js_str{color:#FF33CC;}
+
+.height_code .showMore{position:absolute;right:1px;bottom:1px;width:80px;height:30px;border-radius:5px;font-family:"Simsun";font-size:14px;line-height:30px;text-align:center;color:#fff;background:gray;cursor:pointer;opacity:0.5;}
+.height_code .showMore:hover{opacity:0.8;}
+
+li .html_code{margin-left:0;}
+
+.book_list{overflow:hidden;}
+.book_list li{float:left;display:inline;width:172px;height:200px;margin:20px 10px 0 0;}
+.book_list li a{display:block;width:100%;height:100%;/*text-decoration:none;color:#333;*/}
+.book_list li img{display:block;width:120px;height:150px;border:1px solid #9DA0A1;margin:0 auto;vertical-align:baseline;}
+.book_list li span{display:block;width:152px;height:45px;padding:5px 0 0 10px;font-size:12px;line-height:20px;text-align:center;}
+
+.dictory{float:left;display:inline;width:auto;min-width:280px;padding:5px 5px 0;border:1px solid #DEDFE1;margin-top:26px;}
+.dictory strong{display:block;border-bottom:1px dashed #DCDCDC;font-size:16px;text-indent:0.5em;color:#333;}
+.dictory ul{padding:10px 0 0 0;}
+.dictory li{overflow:hidden;padding-left:25px;line-height:1.8em;font-family:"";background:url(../images/public/dictory_icon.png) no-repeat 10px center;}
+.dictory li a{display:block;width:100%;height:100%;}
+
+table{border:1px solid #333;margin:15px 0;}
+table caption{border:1px solid #333;border-bottom:0;font-weight:bold;background:#F3F3F3;}
+table td,table th{border:1px solid #333;text-align:center;}
+table.alignLeft td{padding:0 10px;text-align:left;}
+table.alignLeft th{padding:0 10px;}
+table.table2 td{text-align:center;padding:10px;}
+table .seperator{border-right:3px solid #333;}
+table span{color:#2929F5;}
+table tr:hover{background:#eee;}
+
+.wordlist li{margin-top:1em;}
+.wordlist em, .wordlist i{font-style:italic;}
+.wordlist .word{padding-bottom:0.5em;}
+.wordlist .word b{display:inline-block;width:10em;}
+.wordlist .word i{font-size:9px;}
+
+#backToTop{position:fixed;right:10px;bottom:10px;width:40px;height:40px;_position:absolute;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-10));}
+/*使按钮显示在主体内容右侧边缘处：*//*#backToTop{position:fixed;left:50%;bottom:10px;width:40px;height:40px;margin-left:490px;_position:absolute;_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-10));}*/
+#backToTop a{display:block;width:100%;height:100%;background:url(../images/public/toTop.png) no-repeat;opacity:0.5;filter:alpha(opacity=50);}
+#backToTop a:hover{opacity:1;filter:alpha(opacity=100);}

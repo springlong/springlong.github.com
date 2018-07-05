@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>事件过滤器：esc、tab、enter、space、del、up、down、left、right、prevent、stop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>事件过滤器：esc、tab、enter、space、del、up、down、left、right、prevent、stop</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>事件过滤器只要是对一些常用操作进行简化处理。</p>
+    <ul>
+        <li>对按键事件(keyup,keydown,keypress)到底按下了哪些功能键 或方向键进行友好的处理.许多人都记不清回车退格的keyCode是多少。</li>
+        <li>对阻止默认行为与防止冒泡进行封装。</li>
+    </ul>
+    <p>页面的过滤器只能用于事件绑定。</p>
+    <hr>
+    <h2>esc</h2>
+    <p>当用户按下 <code>esc</code> 键时,执行你的回调。</p>
+    <p>&nbsp;</p>
+
+    
+    <h2>tab</h2>
+    <p>当用户按下 <code>tab</code> 键时,执行你的回调。</p>
+    <p>&nbsp;</p>
+
+    
+    <h2>enter</h2>
+    <p>当用户按下 <code>enter</code> 键时,执行你的回调。</p>
+    <p>&nbsp;</p>
+
+    
+    <h2>space</h2>
+    <p>当用户按下 <code>space</code> 键时,执行你的回调。</p>
+    <p>&nbsp;</p>
+
+    
+    <h2>del</h2>
+    <p>当用户按下 <code>del</code> 键时,执行你的回调。</p>
+    <p>&nbsp;</p>
+
+    
+    <h2>up</h2>
+    <p>当用户按下 <code>up</code> 键时,执行你的回调。</p>
+    <p>&nbsp;</p>
+
+    
+    <h2>down</h2>
+    <p>当用户按下 <code>down</code> 键时,执行你的回调。</p>
+    <p>&nbsp;</p>
+
+    
+    <h2>left</h2>
+    <p>当用户按下 <code>left</code> 键时,执行你的回调。</p>
+    <p>&nbsp;</p>
+
+
+    <h2>right</h2>
+    <p>当用户按下 <code>right</code> 键时,执行你的回调。</p>
+    <p>&nbsp;</p>
+
+
+
+    <h2>prevent</h2>
+    <p>阻止默为行为，多用于 form 的 submit 事件防止页面跳转，相当于调用了 <code>event.preventDefault</code>。</p>
+    <p>&nbsp;</p>
+
+
+
+
+    <h2>stop</h2>
+    <p>阻止事件冒泡，相当于调用了 <code>event.stopPropagation</code>。</p>
+    <p>&nbsp;</p>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>案例</p>
+<pre>
+&lt;script>
+    var vmEvent = avalon.define({
+        $id: 'event',
+        name: 'Jerry',
+        fnClick: function(){
+            alert('click me!');
+        }
+    })
+&lt;/script>
+&lt;div ms-controller="event">
+    &lt;p>&lt;a href="http://www.baidu.com/" target="_blank" ms-click="@fnClick">链接地址&lt;/a>&lt;/p>
+    &lt;p>&lt;a href="http://www.baidu.com/" target="_blank" ms-click="@fnClick | prevent">链接地址 with prevent&lt;/a>&lt;/p>
+&lt;/div>
+</pre>
+    <script>
+        var vmEvent = avalon.define({
+            $id: 'event',
+            name: 'Jerry',
+            fnClick: function(){
+                alert('click me!');
+            }
+        })
+    </script>
+    <div ms-controller="event">
+        <p><a href="http://www.baidu.com/" target="_blank" ms-click="@fnClick">链接地址</a></p>
+        <p><a href="http://www.baidu.com/" target="_blank" ms-click="@fnClick | prevent">链接地址 with prevent</a></p>
+    </div>
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

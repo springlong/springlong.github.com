@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>开发库核心：集合的遍历筛选-筛选操作 - jQuery使用文档</title>
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link rel="stylesheet" href="public/css/codeView.css" />
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/jquery.extend.js"></script>
+    <script src="public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+    <h1>jQuery使用文档——开发库核心：集合的遍历筛选-筛选操作</h1>
+    <p>jQuery提供了很多非常实用的原型方法用于元素集合的遍历筛选。在这篇文档中，我们先来了解那些用于筛选操作的方法。这些方法的作用，就是筛选出当前元素集合中符合特定条件的元素部分，然后将它们构建为新的jQuery对象并返回，在这个过程中原jQuery对象的内容不受影响。</p>
+    <h2>索引筛选</h2>
+    <ol class="list">
+        <li>
+            <p class="title"><code>.slice([start[, end]])</code></p>
+            <p>获取当前元素集合中索引值从start起始位置到end结束位置之间（不包括end）的所有元素构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数start：<span>（类型：Number，可选）</span>起始位置；</p>
+                <p>参数end：<span>（类型：Number，可选）</span>结束位置；</p>
+            </div>
+            <p><b>说明：</b></p>
+            <p>1. 在过滤之前，start和end会尽可能被转换为数字再做处理。（true转换为1，false、undefined、window、NaN等一律转换为0）</p>
+            <p>2. 当参数为0或正数时，表示的是具体的索引位置。</p>
+            <p>3. 当参数为负数时，表示的则是倒数第几个索引位置。</p>
+            <p>4. 在处理过程中首先会将start和end这两个参数转换为非负数的索引位置，然后再做以下情况的处理：</p>
+            <ul>
+                <li>start必须为有效的索引位置，否则获取的结果为空；</li>
+                <li>start必须位于end之前，否则获取的结果为空；</li>
+                <li>end可以超出元素集合的长度也可以不提供该参数，此时的结果表示从start位置开始一直到元素集合的最后一个元素（包括该元素）；</li>
+                <li>start和end参数都可以不提供，此时表示元素集合中的所有元素；</li>
+            </ul>
+<pre class="jsCodeNum">
+var $div = $("div");            //假设$div结果的元素集合中包含了3个DOM元素，表示为：[a, b, c]
+var $new1 = $div.slice();       //最终结果为：[a, b, c]
+var $new2 = $div.slice(1);      //最终结果为：[b, c]
+var $new3 = $div.slice(1, 4);   //最终结果为：[b, c]
+var $new4 = $div.slice(1, 3);   //最终结果为：[b, c]
+var $new5 = $div.slice(1, 2);   //最终结果为：[b]
+var $new6 = $div.slice(2, 1);   //最终结果为：[]
+var $new7 = $div.slice(3);      //最终结果为：[]
+var $new8 = $div.slice(-1);     //最终结果为：[c]
+var $new9 = $div.slice(-3);     //最终结果为：[a, b, c]
+var $new10 = $div.slice(-4);            //最终结果为：[a, b, c]
+var $new11 = $div.slice(-2, -1);        //最终结果为：[b, c]
+var $new12 = $div.slice(false, true);   //最终结果为：[a]
+</pre>
+            <p><code>.slice()</code>方法的实现主要是通过<code>Array.prototype.slice</code>方法来实现的，如果对该方法熟悉的同学应该很好理解<code>.slice()</code>的使用！</p>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/slice.html" target="_blank">这里</a>！</p>
+        </li>
+        <li>
+            <p class="title"><code>.eq(index)</code></p>
+            <p>获取当前元素集合中指定索引的元素构建的新的jQuery对象。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数index：<span>（类型：Number）</span>索引位置；</p>
+            </div>
+            <p><b>说明：</b></p>
+            <p>1. 如果参数为空，最后所得结果为空。</p>
+            <p>2. 如果参数为非有效数字，最后所得结果为空。</p>
+            <p>3. 如果参数不在索引范围内，最后所得结果为空。</p>
+            <p>4. 如果参数为一些特殊值，则处理结果有所不同：true等值与1，false、null、""等值于0，而undefined、window、"abc"等则等值于NaN。</p>
+            <p>5. 如果参数为0或正数时，表示的是具体的索引位置。</p>
+            <p>6. 如果参数为负数时，表示的则是倒数第几个索引位置。</p>
+<pre class="jsCodeNum">
+var $div = $("div");            //假设$div结果的元素集合中包含了3个DOM元素，表示为：[a, b, c]
+var $new1 = $div.eq();          //最终结果为：[]
+var $new2 = $div.eq(window);    //最终结果为：[]
+var $new3 = $div.eq(2);         //最终结果为：[e]
+var $new4 = $div.eq(3);         //最终结果为：[]
+var $new5 = $div.eq(true);      //最终结果为：[b]
+var $new6 = $div.eq(-1);        //最终结果为：[c]
+</pre>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/eq.html" target="_blank">这里</a>！</p>
+        </li>
+        <li>
+            <p class="title"><code>.first()</code></p>
+            <p>获取当前元素集合中第一个元素构建的新的jQuery对象。（返回类型：jQuery）</p>
+<pre class="jsCodeNum">
+var $div = $("div");            //假设$div结果的元素集合中包含了3个DOM元素，表示为：[a, b, c]
+var $new1 = $div.first();       //最终结果为：[a]
+</pre>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/first.html" target="_blank">这里</a>！</p>
+        </li>
+        <li>
+            <p class="title"><code>.last()</code></p>
+            <p>获取当前元素集合中最后一个元素构建的新的jQuery对象。（返回类型：jQuery）</p>
+<pre class="jsCodeNum">
+var $div = $("div");            //假设$div结果的元素集合中包含了3个DOM元素，表示为：[a, b, c]
+var $new1 = $div.last();        //最终结果为：[c]
+</pre>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/last.html" target="_blank">这里</a>！</p>
+        </li>
+    </ol>
+    <h2>条件筛选</h2>
+    <ol class="list">
+        <li>
+            <p class="title"><code>.filter(selector)</code></p>
+            <p>将当前元素集合中符合查询条件的所有元素构建为新的jQuery对象并返回。（当前元素集合不受影响）（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String | DOMElement | Array | jQuery | Function）</span>查询条件；</p>
+            </div>
+            <p>该方法的selector参数既可以是一个选择器字符串，也可以是一个jQuery对象，可以是一个或多个DOM元素，还可以是一个回调函数：</p>
+            <ul>
+                <li>当参数类型为String时，表示与选择器字符串相匹配的所有元素。</li>
+                <li>当参数类型为DOMElement时，如果该元素是当前元素集合中某个元素，则返回结果就是该元素，否则为空。</li>
+                <li>当参数类型为Array时，通常为一个DOM元素的数组，如果该数组中的某些元素位于当前元素集合中，则返回结果将包含这些元素，否则为空。</li>
+                <li>当参数类型为jQuery对象时，如果该jQuery对象中的某些元素位于当前元素集合中，则返回结果将包含这些元素，否则为空。</li>
+                <li>
+                    <p class="desc">当参数类型为Function时，表示回调函数返回true的所有元素（window、1、"abc"等作为true；0、null、undefined、""则作为false）。</p>
+                    <p>回调函数：<code>function(index, ele){}</code></p>
+                    <p>回调函数——参数index：元素集合当前项的索引值。</p>
+                    <p>回调函数——参数ele：元素集合当前项的值。</p>
+                    <p>回调函数——this：元素集合当前项的值。</p>  
+                </li>
+            </ul>
+<pre class="jsCodeNum">
+var $new1 = $("div").filter(":last-child");     //筛选出作为最后一个子节点的元素
+var $new2 = $("div").filter($("#layer2"));      //筛选出id为"layer2"的元素
+var $new3 = $("div").filter(document.getElementById("layer1"));         //筛选出id为"layer1"的元素
+var $new4 = $("div").filter([ $("#layer1")[0], $("#layer2")[0] ]);      //筛选出id为"layer1"、"layer2"的元素
+var $new5 = $("div").filter(function(index){ return index == 0; });     //筛选出元素集合中索引为0的元素
+var $new6 = $("div").filter(function(index, ele){ return ele.id == "layer1"; });    //筛选出id为"layer1"的元素
+var $new7 = $("div").filter(function(){ return this.id == "layer1"; });             //筛选出id为"layer1"的元素
+</pre>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/filter.html" target="_blank">这里</a>！</p>
+        </li>
+        <li>
+            <p class="title"><code>.not(selector)</code></p>
+            <p>将符合过滤条件的元素从当前元素集合中过滤掉，并返回余下的元素所构建的新的jQuery对象。（当前元素集合不受影响）（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String | DOMElement | Array | jQuery | Function）</span>过滤条件；</p>
+            </div>
+            <p>该方法的selector参数既可以是一个选择器字符串，也可以是一个jQuery对象，可以是一个或多个DOM元素，还可以是一个回调函数：</p>
+            <ul>
+                <li>当参数类型为String时，表示过滤掉与选择器字符串相匹配的元素。</li>
+                <li>当参数类型为DOMElement时，表示过滤掉该元素。</li>
+                <li>当参数类型为Array时，通常为一个DOM元素的数组，表示过滤掉该数组中的所有DOM元素。</li>
+                <li>当参数类型为jQuery对象时，表示过滤掉该jQuery对象中的所有元素。</li>
+                <li>
+                    <p class="desc">当参数类型为Function时，表示过滤掉回调函数返回true的元素。</p>
+                    <p>回调函数：<code>function(index, ele){}</code></p>
+                    <p>回调函数——参数index：元素集合当前项的索引值。</p>
+                    <p>回调函数——参数ele：元素集合当前项的值。</p>
+                    <p>回调函数——this：元素集合当前项的值。</p>  
+                </li>
+            </ul>
+<pre class="jsCodeNum">
+var $new1 = $("div").not(":last-child");     //过滤掉作为最后一个子节点的元素
+var $new2 = $("div").not($("#layer2"));      //过滤掉id为"layer2"的元素
+var $new3 = $("div").not(document.getElementById("layer1"));         //过滤掉id为"layer1"的元素
+var $new4 = $("div").not([ $("#layer1")[0], $("#layer2")[0] ]);      //过滤掉id为"layer1"、"layer2"的元素
+var $new5 = $("div").not(function(index){ return index == 0; });     //过滤掉元素集合中索引为0的元素
+var $new6 = $("div").not(function(index, ele){ return ele.id == "layer1"; });    //过滤掉id为"layer1"的元素
+var $new7 = $("div").not(function(){ return this.id == "layer1"; });             //过滤掉id为"layer1"的元素
+</pre>
+            <p>该方法的功能与<code>.filter()</code>方法是相对立的，两者之间除了返回结果相反之外，其他的参数类型和注意事项均是一致。</p>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/not.html" target="_blank">这里</a>！</p>
+        </li>
+        <li>
+            <p class="title"><code>.has(selector)</code></p>
+            <p>将当前元素集合中“拥有满足查询条件的后代节点”的元素构建为新的jQuery对象并返回。（返回类型：jQuery）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String | DOMElement | Array | jQuery）</span>查询条件；</p>
+            </div>
+            <p>该方法首先会根据selector参数构建一个基于原jQuery对象的后代的子级jQuery对象（该对象的元素集合将仅包含原jQuery对象的后代节点），然后对当前元素集合进行遍历操作，在遍历中逐个判断这个子级jQuery对象中是否存在当前索引元素的后代节点，如果存在则将当前索引的元素包含在最后返回的新jQuery对象中。</p>
+            <p>如需测试该方法的使用情况，请点击<a href="example/has.html" target="_blank">这里</a>！</p>
+        </li>
+        <li>
+            <p class="title"><code>.is(selector)</code></p>
+            <p>判断当前元素集合中是否含有满足目标条件的元素，如果有至少一个元素匹配则返回true。（返回类型：Boolean）</p>
+            <div class="params">
+                <p>参数selector：<span>（类型：String | DOMElement | Array | jQuery | Function）</span>目标条件；</p>
+            </div>
+            <p>该方法的selector参数既可以是一个选择器字符串，也可以是一个jQuery对象，可以是一个或多个DOM元素，还可以是一个回调函数：</p>
+            <ul>
+                <li>当参数类型为String时，表示当前元素集合中是否含有与选择器字符串相匹配的元素，如果有则返回true。</li>
+                <li>当参数类型为DOMElement时，表示该DOM元素是否存在于当前元素集合中，如果是则返回true。</li>
+                <li>当参数类型为Array时，通常为一个DOM元素的数组，表示该数组中的某个DOM元素是否存在于当前元素集合中，如果是则返回true。</li>
+                <li>当参数类型为jQuery对象时，表示该jQuery对象中的某个元素是否存在于当前元素集合中，如果是则返回true。</li>
+                <li>
+                    <p class="desc">当参数类型为Function时，表示回调函数只要有一项返回true，则结果为true。</p>
+                    <p>回调函数：<code>function(index, ele){}</code></p>
+                    <p>回调函数——参数index：元素集合当前项的索引值。</p>
+                    <p>回调函数——参数ele：元素集合当前项的值。</p>
+                    <p>回调函数——this：元素集合当前项的值。</p>  
+                </li>
+            </ul>
+<pre class="jsCodeNum">
+var bln1 = $(".paragraph1").is("div");      //是否含有div元素
+var bln2 = $(".paragraph1").is("p");        //是否含有段落p元素
+var bln3 = $(".paragraph1").is(document.getElementById("layer1"));          //是否含有id为"layer1"的元素
+var bln4 = $(".paragraph1").is([ $("#box div")[0], $("#box p")[0] ]);       //是否含有id为"box"的容器下的第一个div元素或第一个段落p元素
+var bln5 = $(".paragraph1").is($("#box p"));                                //是否含有id为"box"的容器下的段落p元素
+var bln6 = $(".paragraph1").is(function(index, ele){ return ele.id === "layer1" });     //是否含有id为"layer1"的元素
+var bln7 = $(".paragraph1").is(function(){ return this.className === "paragraph1" });   //是否含有类名为"paragraph1"的元素
+</pre>
+            <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/is.html" target="_blank">这里</a>！</p>
+        </li>
+    </ol>
+</article>
+<section class="codeView">
+    <h2>程序代码：jQuery中的遍历筛选-筛选操作</h2>
+    <pre class="jsCodeNum">
+jQuery.fn = jQuery.prototype = {
+
+    // Take an array of elements and push it onto the stack
+    // (returning the new matched element set)
+    pushStack: function( elems ) {
+
+        // Build a new jQuery matched element set
+        var ret = jQuery.merge( this.constructor(), elems );
+
+        // Add the old object onto the stack (as a reference)
+        ret.prevObject = this;
+        ret.context = this.context;
+
+        // Return the newly-formed element set
+        return ret;
+    },
+
+    slice: function() {
+        return this.pushStack( core_slice.apply( this, arguments ) );
+    },
+
+    first: function() {
+        return this.eq( 0 );
+    },
+
+    last: function() {
+        return this.eq( -1 );
+    },
+
+    eq: function( i ) {
+        var len = this.length,
+            j = +i + ( i &lt; 0 ? len : 0 );
+        return this.pushStack( j >= 0 &amp;&amp; j &lt; len ? [ this[j] ] : [] );
+    }
+};
+
+jQuery.fn.extend({
+
+    has: function( target ) {
+        var i,
+            targets = jQuery( target, this ),
+            len = targets.length;
+
+        return this.filter(function() {
+            for ( i = 0; i &lt; len; i++ ) {
+                if ( jQuery.contains( this, targets[i] ) ) {
+                    return true;
+                }
+            }
+        });
+    },
+
+    not: function( selector ) {
+        return this.pushStack( winnow(this, selector, false) );
+    },
+
+    filter: function( selector ) {
+        return this.pushStack( winnow(this, selector, true) );
+    },
+
+    is: function( selector ) {
+        return !!selector &amp;&amp; (
+            typeof selector === "string" ?
+                // If this is a positional/relative selector, check membership in the returned set
+                // so $("p:first").is("p:last") won't return true for a doc with two "p".
+                rneedsContext.test( selector ) ?
+                    jQuery( selector, this.context ).index( this[0] ) >= 0 :
+                    jQuery.filter( selector, this ).length > 0 :
+                this.filter( selector ).length > 0 );
+    }
+});
+
+// Implement the identical functionality for filter and not
+function winnow( elements, qualifier, keep ) {
+
+    // Can't pass null or undefined to indexOf in Firefox 4
+    // Set to 0 to skip string check
+    qualifier = qualifier || 0;
+
+    if ( jQuery.isFunction( qualifier ) ) {
+        return jQuery.grep(elements, function( elem, i ) {
+            var retVal = !!qualifier.call( elem, i, elem );
+            return retVal === keep;
+        });
+
+    } else if ( qualifier.nodeType ) {
+        return jQuery.grep(elements, function( elem ) {
+            return ( elem === qualifier ) === keep;
+        });
+
+    } else if ( typeof qualifier === "string" ) {
+        var filtered = jQuery.grep(elements, function( elem ) {
+            return elem.nodeType === 1;
+        });
+
+        if ( isSimple.test( qualifier ) ) {
+            return jQuery.filter(qualifier, filtered, !keep);
+        } else {
+            qualifier = jQuery.filter( qualifier, filtered );
+        }
+    }
+
+    return jQuery.grep(elements, function( elem ) {
+        return ( jQuery.inArray( elem, qualifier ) >= 0 ) === keep;
+    });
+}
+</pre>
+</section>
+<script src="public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

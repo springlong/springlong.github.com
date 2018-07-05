@@ -1,0 +1,6 @@
+<!--pages/classify/classify.wxml-->
+<view class="container">
+  <view class="list-warp">
+    <navigator url="/pages/cart/cart?type=7" open-type="navigate">查看七级购物车</navigator>
+  </view>
+</view>

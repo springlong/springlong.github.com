@@ -1,0 +1,252 @@
+/***页面公共属性设置***/
+body{
+	margin-top:0px;
+	font-size:12px;
+	line-height:1.5em;
+	color:#CCC;
+	}
+	
+img{
+	border:none;
+	}
+
+a{
+	text-decoration:none;
+	}
+
+a:link,a:visited{
+	color:#ccc;
+	}
+
+a:hover,a:active{
+	color:#F63;
+	}
+
+div{
+	margin:0px auto;
+	}
+
+
+
+
+/***页面头部属性设置***/
+#pHead{
+	width:993px;
+	height:374px;
+	background:url(../images/1bg_top.jpg) no-repeat left top;
+	}
+
+#pHCaption,#pHLink{
+	padding-top:20px;
+	}
+	
+#pHCaption,#pHContent{
+	padding-left:140px;
+	}
+	
+#pHCaption{
+	float:left;
+	font-size:16px;
+	font-weight:bold;
+	}
+	
+#pHLink a{
+	text-decoration:underline;
+	}
+	
+#pHContent{
+	margin-top:10px;
+	}
+	
+/*页面的导航属性设置*/
+#pNav{
+	width:993px;
+	height:91px;
+	background:url(../images/2bg_Nav.gif) no-repeat left top;
+	}
+
+#pNContent{
+	padding-left:140px;
+	padding-top:5px;
+	}
+
+
+#pNContent li{
+	float:left;
+	list-style:none;
+	padding:32px 5px 0px;
+	}/*注解：通过设置列表左侧浮动达到列表水平水平摆放的效果！*/
+	
+#pNContent li a{
+	padding:32px 5px 0px;
+	}/*注解：通过设置链接标签的填充来扩展链接的热点区域，以到达放置背景图片的目的*/
+	
+#pNContent a:hover{
+	color:#ccc;
+	}
+
+#pNContent .home{
+	background:url(../images/nav_Home.gif) no-repeat top center;
+	}
+
+#pNContent .home:hover{
+	background:url(../images/nav_Home_over.gif) no-repeat top center;
+	}
+
+#pNContent .diary{
+	background:url(../images/nav_Diary.gif) no-repeat top center;
+	}
+
+#pNContent .diary:hover{
+	background:url(../images/nav_Diary_over.gif) no-repeat top center;
+	}
+
+#pNContent .music{
+	background:url(../images/nav_Music.gif) no-repeat top center;
+	}
+
+#pNContent .music:hover{
+	background:url(../images/nav_Music_over.gif) no-repeat top center;
+	}
+
+#pNContent .photo{
+	background:url(../images/nav_Photo.gif) no-repeat top center;
+	}
+
+#pNContent .photo:hover{
+	background:url(../images/nav_Photo_over.gif) no-repeat top center;
+	}
+
+#pNContent .file{
+	background:url(../images/nav_File.gif) no-repeat top center;
+	}
+
+#pNContent .file:hover{
+	background:url(../images/nav_File_over.gif) no-repeat top center;
+	}
+
+#pNContent .friend{
+	background:url(../images/nav_Friend.gif) no-repeat top center;
+	}
+
+#pNContent .friend:hover{
+	background:url(../images/nav_Friend_over.gif) no-repeat top center;
+	}
+
+#pNContent .video{
+	background:url(../images/nav_Video.gif) no-repeat top center;
+	}
+
+#pNContent .video:hover{
+	background:url(../images/nav_Video_over.gif) no-repeat top center;
+	}
+	
+/*页面主体内容的相关属性设置(公共部分）*/
+#pMain{
+	width:993px;
+	height:780px;
+	background:url(../images/3bg_Main.gif) repeat-y;
+	}
+	
+#pMDiary{
+	float:left;
+	width:500px;
+	margin-left:124px;
+	border-top:thin solid #999;
+	padding-top:10px;
+	}
+	
+#pMPanel{
+	float:right;
+	width:170px;
+	margin-right:124px;
+	}
+
+/*页面主体内容的相关属性设置（日志部分）*/
+#pMDPart{
+	padding-bottom:20px;
+	}
+
+#pMDPLink a{
+	color:#F63;
+	}
+	
+#pMDPLink a:hover{
+	color:#ccc;
+	}
+	
+#pMDPTime{
+	color:white;
+	height:20px;
+	font-size:16px;
+	font-weight:bold;
+	border-bottom:1px dashed #ccc;
+	}
+
+/*页面主体内容的相关属性设置（侧栏部分）*/
+#pMPanel .pMPanel_Type{
+	margin-bottom:20px;
+	}
+	
+#pMPanel #pMPCaption{
+	color:white;
+	font-size:16px;
+	font-weight:bold;
+	margin-bottom:5px;
+	}
+	
+#pMPgrdn #pMPCaption{
+	padding-bottom:5px;
+	margin-bottom:10px;
+	border-bottom:thin solid #999;
+	}
+	
+.pMPgrdn_img{
+	width:130px;
+	height:140px;
+	border:1px solid white;
+	margin-top:5px;
+	}
+
+#pMPUpdate ul{
+	margin-left:-40px;
+	}
+	
+#pMPUpdate li{
+	float:left;
+	list-style:none;
+	padding:0px 2px;
+	}
+	
+#pMPUpdate li a{
+	text-decoration:underline;
+	}
+
+#pMPUpdate li img{
+	width:45px;
+	height:50px;
+	border:1px solid white;
+	}
+	
+#pMPCount{
+	clear:both;
+	padding-top:20px;
+	}/*注解：由于上一图层使用了浮动，因此上一图层的margin-bottom属性失效，在此使用padding-top属性来进行代替！*/
+	
+	
+	
+/*页面的底部内容的相关属性设置*/
+#pBottom{
+	width:993px;
+	height:182px;
+	background:url(../images/4bg_Bottom.gif) no-repeat top center;
+	}
+	
+#pBContent{
+	text-align:center;
+	padding-top:80px;
+	}
+	
+#pBContent a{
+	text-decoration:underline;
+	}

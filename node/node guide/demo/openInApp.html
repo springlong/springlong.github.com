@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>open in app</title>
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+</head>
+
+<body>
+  <button onclick="handleOpenInApp()" style="width: 200px;height:100px;border: 1px solid #ddd">open in app 5</button>
+  <div>
+    <!-- <p><a href="tencent://Message/?Uin=910521727&websiteName=www.qq.com&Menu=yes">tencent://Message/?Uin=910521727&websiteName=www.qq.com&Menu=yes</a></p> -->
+    <!-- <p><a href="UNApatmentGuestApp://">UNApatmentGuestApp://</a></p> -->
+    <!-- <p><a href="UNApatmentGuestAppUnInstallTest://">UNApatmentGuestAppUnInstallTest://</a></p> -->
+    <p><a href="https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169">https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169</a></p>
+    <!-- <p><a href="http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2">http://sj.qq.com/myapp/detail.htm?apkName=com.unovo.apartment.v2</a></p> -->
+  </div>
+  <div id="output"></div>
+  <script>
+    var output = document.getElementById('output')
+
+    function handleOpenInApp() {
+      OpenApp.open({
+        androidAppUrl: 'lianjiabeike://rentplat/main/home?key=310000',
+        androidDownloadUrl: 'http://image.intebox.com/appstore/android/lianyuplus_guest_2017112801.apk',
+        androidThirdUrl: 'http://sj.qq.com/myapp/detail.htm?apkName=com.lianjia.beike',
+        iosAppUrl: 'lianjiabeike://rentplat/main/home?key=310000',
+        iosDownloadUrl: 'https://itunes.apple.com/us/app/bai-yun-shen/id1090374169?l=zh&ls=1&mt=8',
+        // iosDownloadUrl: 'https://itunes.apple.com/cn/app/id1253355672?mt=8',
+        // iosDownloadUrl: 'https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169',
+        // iosDownloadUrl: 'https://itunes.apple.com/cn/app/id1347663353',
+        // iosUniversalLink: 'https://linkm.ke.com/?schema=lianjiabeike%253A%252F%252Frentplat%252Fmain%252Fhome%253Fkey%253D310000&redirect_url=http%253A%252F%252Fupload.sensors.lianjia.com%252Fr%252FCc&ssid=e40007f3-bfea-4387-8be9-db1178c643d0&uuid=ffcb080d-ea71-4b63-b9b4-4486b46a72c1&refer=&current_url=https%253A%252F%252Fm.ke.com%252Fchuzu%252Fsh%252F&sign=4663a96f9d37a35db408ea9616f6eeb7',
+      })
+      // OpenApp.open({
+      //   androidAppUrl: 'UNApatmentGuestApp://',
+      //   androidDownloadUrl: 'http://image.intebox.com/appstore/android/lianyuplus_guest_2017112801.apk',
+      //   androidThirdUrl: 'http://sj.qq.com/myapp/detail.htm?apkName=com.lianjia.beike',
+      //   iosAppUrl: 'UNApatmentGuestApp://',
+      //   iosDownloadUrl: 'https://itunes.apple.com/cn/app/bai-yun-shen/id1090374169',
+      //   // iosUniversalLink: 'https://linkm.ke.com/?schema=lianjiabeike%253A%252F%252Frentplat%252Fmain%252Fhome%253Fkey%253D310000&redirect_url=http%253A%252F%252Fupload.sensors.lianjia.com%252Fr%252FCc&ssid=e40007f3-bfea-4387-8be9-db1178c643d0&uuid=ffcb080d-ea71-4b63-b9b4-4486b46a72c1&refer=&current_url=https%253A%252F%252Fm.ke.com%252Fchuzu%252Fsh%252F&sign=4663a96f9d37a35db408ea9616f6eeb7',
+      // })
+    }
+
+    // IOS9以及后续版本不再支持使用iframe打开scheme链接
+    // 使用打开app造成timeout延迟的方法来判断app是否打开已经失效，
+    // 在较新版本的浏览器和手机系统中，打开app，以及打开app时的提醒弹窗，将不再阻塞timeout的执行
+    var OpenApp = {
+      open: function (options) {
+        var opts = Object.assign({
+          // 安卓的打开链接
+          androidAppUrl: '',
+          // 安卓的下载链接，开启第三方下载url时无效
+          androidDownloadUrl: '',
+          // 安卓使用第三方下载url
+          androidThirdUrl: '',
+          // IOS的打开链接
+          iosAppUrl: '',
+          // IOS的下载链接
+          iosDownloadUrl: '',
+          // IOS使用Universal Links(通用链接)
+          // 这是iOS9推出的一项功能
+          iosUniversalLink: '',
+        }, options)
+
+        var userAgent = navigator.userAgent
+        var isAndroid = /Android/i.test(userAgent)
+        var isIOS = /iPhone|iPad|iPd/i.test(userAgent)
+
+        var openUrl = ''
+        var downUrl = ''
+
+        if (isIOS) {
+          openUrl = opts.iosUniversalLink || opts.iosAppUrl || ''
+          downUrl = opts.iosDownloadUrl || ''
+        } else if (isAndroid) {
+          openUrl = opts.androidAppUrl || ''
+          downUrl = opts.androidThirdUrl || opts.androidDownloadUrl || ''
+        } else {
+          downUrl = opts.androidThirdUrl || ''
+        }
+
+        if (openUrl) {
+          this.trigger(openUrl, downUrl)
+        } else if(downUrl) {
+          window.location.href = downUrl
+        }
+      },
+      trigger: function (openUrl, downUrl) {
+        this.check((isOpened) => {
+          if (!isOpened) {
+            window.location.href = downUrl
+          }
+        })
+        window.location.href = openUrl
+      },
+      check: function(callback) {
+        var startTime = +new Date()
+        var endTime = startTime + 3000
+        var timerId
+
+        timerId = setInterval(() => {
+          let hidden = document.hidden || document.webkitHidden || false
+          output.innerHTML += `<p>${+new Date()}:${hidden}</p>`
+          if (+new Date() > endTime || hidden) {
+            clearInterval(timerId)
+            callback(hidden)
+          }
+        }, 100)
+      },
+      clickByTag(url, target) {
+        const ele = document.createElement('a')
+        ele.innerHTML = 'adsfasd'
+        ele.setAttribute('href', url)
+        ele.setAttribute('target', target || '_self')
+        ele.style.display = 'none'
+        document.body.appendChild(ele)
+
+        const objEvent = document.createEvent("MouseEvents")
+        objEvent.initMouseEvent('click', true, false)
+        ele.dispatchEvent(objEvent)
+      }
+    }
+  </script>
+</body>
+
+</html>

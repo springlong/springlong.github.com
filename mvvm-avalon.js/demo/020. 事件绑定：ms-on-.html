@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>事件绑定：ms-on-*</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>事件绑定：ms-on-*</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>avalon2的事件指令，比起avalon1来强大多了。</p>
+    <p>首先其内部是使用事件代理实现的，能冒泡的事件全部绑定document上。只有旧式IE的几个事件还绑定在原元素上。</p>
+    <p>其次，<code>this</code>直接指向<code>vmodel</code>，元素节点则通过<code>e.target</code>获取。如果要传入多个参数，需要指定事件对象，还是与原来一样使用<code>$event</code>：</p>
+<pre>
+&lt;div ms-click='@fn(111,222,$event)'>{{@ddd}}&lt;/div>
+</pre>
+    <p>再次，添加了一些专门针对事件回调的过滤器：</p>
+    <ol>
+        <li>对按键进行限制的过滤器<code>esc</code>，<code>tab</code>，<code>enter</code>，<code>space</code>，<code>del</code>，<code>up</code>，<code>left</code>，<code>right</code>，<code>down</code>.</li>
+        <li>对事件方法stopPropagation, preventDefault进行简化的过滤器<code>stop</code>, <code>prevent</code></li>
+    </ol>
+    <p>最后，对事件回调进行缓存，防止重复生成。</p>
+
+    <p>&nbsp;</p>
+    <p>事件绑定是使用<code>ms-on-*</code>绑定来实现，但avalon也提供了许多快捷方式，让用户能直接以<code>ms-eventName</code>调用那些常用事件，如下</p>
+<pre>
+animationend、 blur、 change、 input、 click、 dblclick、 focus、 
+<br>keydown、 keypress、 keyup、 mousedown、 mouseenter、 mouseleave、 mousemove、 mouseout、 mouseover、 mouseup、 scan、 scroll、 submit
+</pre>
+
+    <p>&nbsp;</p>
+    <p>avalon的事件绑定支持多投事件机制（同一个元素可以绑定N个同种事件，如ms-click=fn, ms-click-1=fn2, ms-click-2=fn3）。</p>
+
+
+	<hr>
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: 'test',
+        firstName: 'Sun',
+        array: ['aaa', 'bbb', 'ccc'],
+        argsClick: function(e, a, b) {
+            alert([].slice.call(arguments).join(' '));
+        },
+        loopClick: function(a, e) {
+            alert(a + ' ' + e.type);
+        },
+        status: '',
+        callback: function(e) {
+            vm.status = e.type;
+        },
+        field: '',
+        check: function(e) {
+            vm.field = e.target.value + ' ' + e.type;
+        },
+        submit: function(e) {
+            var data = vm.$model;
+            if(window.JSON) {
+                setTimeout(function(){
+                    alert(JSON.stringify(data));
+                });
+            }
+        }
+    });
+&lt;/script>
+&lt;fieldset ms-controller="test">
+    &lt;legend>有关事件回调传参&lt;/legend>
+    &lt;div ms-mouseenter="@callback" ms-mouseleave="@callback" style="width: 300px;height:100px;background:#ddd;">
+        {{@status}}
+        &lt;br>&lt;input type="text" ms-on-input="@check"> {{@field}}
+    &lt;/div>
+    &lt;div ms-click="@argsClick($event, 100, @firstName)">点我&lt;/div>
+    &lt;div ms-for="(index, val) in @array">
+        &lt;p ms-click="@loopClick(val, $event)">{{val}}&lt;/p>
+    &lt;/div>
+    &lt;button ms-click="@submit">点我&lt;/button>
+&lt;/fieldset>
+</pre>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            firstName: 'Sun',
+            array: ['aaa', 'bbb', 'ccc'],
+            argsClick: function(e, a, b) {
+                alert([].slice.call(arguments).join(' '));
+            },
+            loopClick: function(a, e) {
+                alert(a + ' ' + e.type);
+            },
+            status: '',
+            callback: function(e) {
+                vm.status = e.type;
+            },
+            field: '',
+            check: function(e) {
+                vm.field = e.target.value + ' ' + e.type;
+            },
+            submit: function(e) {
+                var data = vm.$model;
+                if(window.JSON) {
+                    setTimeout(function(){
+                        alert(JSON.stringify(data));
+                    });
+                }
+            }
+        });
+    </script>
+    <fieldset ms-controller="test">
+        <legend>有关事件回调传参</legend>
+        <div ms-mouseenter="@callback" ms-mouseleave="@callback" style="width: 300px;height:100px;background:#ddd;">
+            {{@status}}
+            <br><input type="text" ms-on-input="@check"> {{@field}}
+        </div>
+        <div ms-click="@argsClick($event, 100, @firstName)">点我</div>
+        <div ms-for="(index, val) in @array">
+            <p ms-click="@loopClick(val, $event)">{{val}}</p>
+        </div>
+        <button ms-click="@submit">点我</button>
+    </fieldset>
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+<pre>
+&lt;script>
+    var count = 0;
+    var vm2 = avalon.define({
+        $id: 'test2',
+        str1: '1',
+        str2: '2',
+        str3: '3',
+        click0: function(){
+            vm2.str1 = 'xxxxxxxx' + (count++);
+        },
+        click1: function(){
+            vm2.str2 = 'xxxxxxxx' + (count++);
+        },
+        click2: function(){
+            vm2.str3 = 'xxxxxxxx' + (count++);
+        },
+    });
+
+
+    avalon.define({
+        $id: "xxx",
+        fn: function() {
+            console.log("11111111")
+        },
+        fn1: function() {
+            console.log("2222222")
+        },
+        fn2: function() {
+            console.log("3333333")
+        }
+    });
+&lt;/script>
+&lt;fieldset ms-controller="test2">
+    &lt;legend>一个元素绑定多个同种事件的回调&lt;/legend>
+    &lt;div ms-click="@click0" ms-click-1="@click1" ms-click-2="@click2">请点我&lt;/div>
+    &lt;div>{{@str1}}&lt;/div>
+    &lt;div>{{@str2}}&lt;/div>
+    &lt;div>{{@str3}}&lt;/div>
+&lt;/fieldset>
+&lt;div ms-controller="xxx" 
+     ms-on-mouseenter-6="@fn"
+     ms-on-mouseenter-2="@fn1"
+     ms-on-mouseenter-1="@fn2"
+     style="width:100px;height:100px;background: red;">
+     &nbsp;
+&lt;/div>
+</pre>
+
+
+    <script>
+        var count = 0;
+        var vm2 = avalon.define({
+            $id: 'test2',
+            str1: '1',
+            str2: '2',
+            str3: '3',
+            click0: function(){
+                vm2.str1 = 'xxxxxxxx' + (count++);
+            },
+            click1: function(){
+                vm2.str2 = 'xxxxxxxx' + (count++);
+            },
+            click2: function(){
+                vm2.str3 = 'xxxxxxxx' + (count++);
+            },
+        });
+
+
+        avalon.define({
+            $id: "xxx",
+            fn: function() {
+                console.log("11111111");
+            },
+            fn1: function() {
+                console.log("2222222");
+            },
+            fn2: function() {
+                console.log("3333333");
+            }
+        });
+    </script>
+    <fieldset ms-controller="test2">
+        <legend>一个元素绑定多个同种事件的回调</legend>
+        <div ms-click="@click0" ms-click-1="@click1" ms-click-2="@click2">请点我</div>
+        <div>{{@str1}}</div>
+        <div>{{@str2}}</div>
+        <div>{{@str3}}</div>
+    </fieldset>
+    <div ms-controller="xxx" 
+         ms-on-mouseenter-6="@fn"
+         ms-on-mouseenter-2="@fn1"
+         ms-on-mouseenter-1="@fn2"
+         style="width:100px;height:100px;background: red;">
+         &nbsp;
+    </div>
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>avalon已经对<code>ms-mouseenter</code>, <code>ms-mouseleave</code>进行修复，可以在这里与这里了解这两个事件。到chrome30时，所有浏览器都原生支持这两个事件。</p>
+<pre>
+&lt;script>
+    var vm3 = avalon.define({
+        $id: "test3",
+        fn1: function(e) {
+            console.log(e.type);
+            console.log(e.target);
+        },
+        fn2: function(e) {
+            console.log(e.type);
+            console.log(e.target);
+        }
+    });
+&lt;/script>
+&lt;div ms-controller="test3">
+    &lt;div ms-mouseenter="@fn1" ms-mouseleave="@fn2" style="background: red;width:200px;height: 200px;padding:20px;">
+        &lt;div style="background: blue;width:120px;height:120px;margin:20px;">&lt;/div>
+    &lt;/div>
+&lt;/div>
+</pre>
+
+
+    <script>
+        var vm3 = avalon.define({
+            $id: "test3",
+            fn1: function(e) {
+                console.log(e.type);
+                console.log(e.target);
+            },
+            fn2: function(e) {
+                console.log(e.type);
+                console.log(e.target);
+            }
+        });
+    </script>
+    <div ms-controller="test3">
+        <div ms-mouseenter="@fn1" ms-mouseleave="@fn2" style="background: red;width:200px;height: 200px;padding:20px;">
+            <div style="background: blue;width:120px;height: 120px;margin:20px;"></div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>最后是<code>mousewheel</code>事件的修改，主要问题是出现firefox上，它死活也不愿意支持mousewheel，在avalon里是用<code>DOMMouseScroll</code>或<code>wheel</code>实现模拟的。我们在事件对象通过<code>wheelDelta</code>属性是否为正数判定它在向上滚动。</p>
+<pre>
+&lt;script>
+    var vm4 = avalon.define({
+        $id: 'test4',
+        text: '',
+        callback: function(e) {
+            vm4.text = e.wheelDelta + ' ' + e.type;
+        }
+    })
+&lt;/script>
+&lt;div ms-controller="test4">    
+    &lt;div ms-on-mousewheel="@callback" id="aaa" style="background: red;width:200px;height: 200px;">
+        {{@text}}
+    &lt;/div>
+&lt;/div>
+</pre>
+
+
+    <script>
+        var vm4 = avalon.define({
+            $id: 'test4',
+            text: '',
+            callback: function(e) {
+                vm4.text = e.wheelDelta + ' ' + e.type;
+            }
+        })
+    </script>
+    <div ms-controller="test4">    
+        <div ms-on-mousewheel="@callback" id="aaa" style="background: red;width:200px;height: 200px;">
+            {{@text}}
+        </div>
+    </div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>此外avalon还对<code>input</code>，<code>animationend</code>事件进行修复，大家也可以直接用<code>avalon.bind</code>, <code>avalon.fn.bind</code>来绑定这些事件。但建议都用<code>ms-on</code>绑定来处理。</p>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

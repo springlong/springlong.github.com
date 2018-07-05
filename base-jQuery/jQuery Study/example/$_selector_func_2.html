@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>$(":hidden") - jQuery代码示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <style>
+        #box .paragraph1,#layer3{display:none;}
+    </style>
+</head>
+<body style="height:1200px;">
+<h1>jQuery代码示例：<code>$(":hidden")</code></h1>
+<p class="title"><code>$(":hidden")</code></p>
+<p class="desc">获取所有隐藏的元素。</p>
+<div id="box">
+    容器（ID：box）
+    <div id="layer1">
+        图层1（ID：layer1）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer2">
+        图层2（ID：layer2）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer3">
+        图层3（ID：layer3）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+</div>
+<p class="content">在右侧大家可以看到一个绿色方框的div容器，在该容器中还有三个div子节点，同时在每个div子节点下还有三个段落p子节点，为了该页面的更好测试，还希望大家首先查看下这个容器的HTML结构！</p>
+<p>为了演示该方法的执行效果，我们为下列按钮的单击事件添加了如按钮文本所示的执行代码，大家可以通过点击不同的按钮来查看该方法每种参数使用的不同结果。</p>
+<p><button class="btnShort">$("#box p:hidden").css({"display": "block", "background-color": "green"})</button></p>
+<p><button class="btnShort">$("#box div").filter(":hidden").css({"display": "block""background-color": "orange"})</button></p>
+<script>
+    (function($)
+    {
+        $("button").eq(0).click(function(){
+            $("#box p:hidden").css({"display": "block", "background-color": "green"});
+        });
+
+        $("button").eq(1).click(function(){
+            $("#box div").filter(":hidden").css({"display": "block", "background-color": "orange"});
+        });
+    })(jQuery);
+</script>
+</body>
+</html>

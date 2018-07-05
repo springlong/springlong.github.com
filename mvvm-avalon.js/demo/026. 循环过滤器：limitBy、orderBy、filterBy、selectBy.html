@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>循环过滤器：limitBy、orderBy、filterBy、selectBy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>循环过滤器：limitBy、orderBy、filterBy、selectBy</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>limitBy</h2>
+    <p>只能用于 <code>ms-for</code> 循环，对数组与对象都有效, 限制输出到页面的个数, 有两个参数。</p>
+    <ul>
+        <li><b>limit</b> : 最大个数,必须是数字或字符, 当个数超出数组长或键值对总数时, 等于后面</li>
+        <li><b>begin</b> : 开始循环的个数, 可选, 默认0</li>
+    </ul>
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: 'limitBy',
+        array: [1, 2, 3, 4, 5, 6],
+        object: {a:1, b:2, c:3, d:4, e:5},
+        num: 3;
+    });
+&lt;/script>
+&lt;div ms-controller="limitBy">
+    &lt;select ms-duplex-number='@num'>
+        &lt;option>&lt;/option>
+        &lt;option>&lt;/option>
+        &lt;option>&lt;/option>
+        &lt;option>&lt;/option>
+    &lt;/select>
+    &lt;ul>
+        &lt;li ms-for="val in @array" ms-text="val">&lt;/li>
+    &lt;/ul>
+    &lt;ul>
+        &lt;li ms-for="val in @object" ms-text="val>&lt;/li>
+    &lt;/ul>
+&lt;/div>
+</pre>
+    <script>
+        var vm = avalon.define({
+            $id: 'limitBy',
+            array: [1, 2, 3, 4, 5, 6],
+            object: {a:1, b:2, c:3, d:4, e:5},
+            num: 3
+        });
+    </script>
+    <div ms-controller="limitBy">
+        <select ms-duplex-number='@num'>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+        <ul>
+            <li ms-for="val in @array | limitBy(@num)" ms-text="val"></li>
+        </ul>
+        <ul>
+            <li ms-for="val in @object | limitBy(@num)" ms-text="val"></li>
+        </ul>
+    </div>
+
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>orderBy</h2>
+    <p>只能用于 <code>ms-for</code> 循环, 对数组与对象都有效, 用于排序, 有两个参数。</p>
+    <ul>
+        <li><b>key</b> : 要排序的属性名</li>
+        <li><b>dir</b> : 1 升序, -1 降序，可选, 默认1</li>
+    </ul> 
+<pre>
+&lt;script>
+    avalon.define({
+        $id: "orderBy",
+        array: [{a: 1, b: 33}, {a: 2, b: 22}, {a: 3, b: 11}],
+        order: 'a',
+        dir: -1
+    });
+&lt;/script>
+&lt;div ms-controller="orderBy">
+    &lt;select ms-duplex='@order'>
+        &lt;option>a&lt;/option>
+        &lt;option>b&lt;/option>
+    &lt;/select>
+    &lt;select ms-duplex-number='@dir'>
+        &lt;option>1&lt;/option>
+        &lt;option>-1&lt;/option>
+    &lt;/select>
+    &lt;table class="table table-bordered" style='width: 200px;'>
+        &lt;tr ms-for="el in @array | orderBy(@order, @dir)">
+            &lt;td ms-for='elem in el'>{{elem}}&lt;/td>
+        &lt;/tr>
+    &lt;/table>
+&lt;/div>
+</pre>
+    <script>
+        avalon.define({
+            $id: "orderBy",
+            array: [{a: 1, b: 33}, {a: 2, b: 22}, {a: 3, b: 11}],
+            order: 'a',
+            dir: -1
+        });
+    </script>
+    <div ms-controller="orderBy">
+        <select ms-duplex='@order'>
+            <option>a</option>
+            <option>b</option>
+        </select>
+        <select ms-duplex-number='@dir'>
+            <option>1</option>
+            <option>-1</option>
+        </select>
+        <table class="table table-bordered" style='width: 200px;'>
+            <tr ms-for="el in @array | orderBy(@order, @dir)">
+                <td ms-for='elem in el'>{{elem}}</td>
+            </tr>
+        </table>
+        <br>
+    </div>
+
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>filterBy</h2>
+    <p>只能用于 <code>ms-for</code> 循环, 对数组与对象都有效, 用于获取它们的某一子集, 有至少一个参数。</p>
+    <ul>
+        <li><b>search</b> : 如果为函数时, 通过返回true决定成为子集的一部分; 如果是字符串或数字, 将转换成正则；如果数组元素或对象键值匹配它，则成为子集的一部分；但如果是空字符串则返回原对象; 其他情况也返回原对象。</li>
+        <li>其他参数, 只有当search为函数时有效, 这时其参数依次是数组元素或对象的<code>键值</code>, <code>索引值</code>, 多余的参数。</li>
+    </ul> 
+    <p>此过滤多用于自动完成的模糊匹配！</p>
+<pre>
+&lt;script>
+    avalon.define({
+        $id: "filterBy",
+        array: ['aaaa', 'aab', 'acb', 'ccc', 'dddd'],
+        object: {a: 'aaaa', b: 'aab', c: 'acb', d: 'ccc', e: 'dddd'},
+        search: "a",
+        searchFn: function (el, i) {
+            return i > 2;
+        },
+        searchFn2: function (el, i) {
+            return el.length === 4;
+        },
+        searchFn3: function (el, i) {
+            return this.key === 'b' || this.key === 1;
+        }
+    });
+&lt;/script>
+&lt;div ms-controller='filterBy'>
+    &lt;select ms-duplex='@search'>
+        &lt;option>a&lt;/option>
+        &lt;option>b&lt;/option>
+        &lt;option>c&lt;/option>
+    &lt;/select>
+    &lt;p>&lt;button ms-click="@search = @searchFn | prevent">@search = @searchFn | prevent&lt;/button>&lt;/p>
+    &lt;p>&lt;button ms-click="@search = @searchFn2 | prevent">@search = @searchFn2 | prevent&lt;/button>&lt;/p>
+    &lt;p>&lt;button ms-click="@search = @searchFn3 | prevent">@search = @searchFn3 | prevent&lt;/button>&lt;/p>
+    &lt;ul>
+        &lt;li ms-for='el in @array | filterBy(@search)'>{{el}}&lt;/li>
+    &lt;/ul>
+    &lt;ul>
+        &lt;li ms-for='el in @object | filterBy(@search)'>{{el}}&lt;/li>
+    &lt;/ul>
+&lt;/div>
+</pre>
+
+    <script>
+        avalon.define({
+            $id: "filterBy",
+            array: ['aaaa', 'aab', 'acb', 'ccc', 'dddd'],
+            object: {a: 'aaaa', b: 'aab', c: 'acb', d: 'ccc', e: 'dddd'},
+            search: "a",
+            searchFn: function (el, i) {
+                return i > 2;
+            },
+            searchFn2: function (el, i) {
+                return el.length === 4;
+            },
+            searchFn3: function (el, i) {
+                return this.key === 'b' || this.key === 1;
+            }
+        });
+    </script>
+    <div ms-controller='filterBy'>
+        <select ms-duplex='@search'>
+            <option>a</option>
+            <option>b</option>
+            <option>c</option>
+        </select>
+        <p><button ms-click="@search = @searchFn | prevent">@search = @searchFn | prevent</button></p>
+        <p><button ms-click="@search = @searchFn2 | prevent">@search = @searchFn2 | prevent</button></p>
+        <p><button ms-click="@search = @searchFn3 | prevent">@search = @searchFn3 | prevent</button></p>
+        <ul>
+            <li ms-for='el in @array | filterBy(@search)'>{{el}}</li>
+        </ul>
+        <ul>
+            <li ms-for='el in @object | filterBy(@search)'>{{el}}</li>
+        </ul>
+    </div>
+
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>selectBy</h2>
+    <p>只能用于 <code>ms-for</code> 循环, 对数组与对象都有效, 用于抽取目标对象的几个值，构成新数组返回。</p>
+    <ul>
+        <li><b>array</b> : 要抽取的属性名。</li>
+        <li><b>defaults</b> : 如果目标对象不存在这个属性，那么从这个默认对象中得到默认值，否则为空字符串，可选。</li>
+    </ul> 
+    <p>这个多用于表格, 每一列的对象可能存在属性顺序不一致或缺少的情况</p>
+<pre>
+&lt;script>
+    avalon.define({
+        $id: "selectBy",
+        obj: {a: 'aaa', b: 'bbb', c: 'ccc', d: 'ddd', e: 'eee'},
+        grid: [{a: 1, b: 2, c: 3}, {c: 11, b: 22, a: 33}, {b: 23, a: 44}],
+        defaults: {
+            a:'@@@',
+            b:'$$$',
+            c:'###'
+        }
+    });
+&lt;/script>
+&lt;div ms-controller='selectBy'>
+   &lt;ul>
+       &lt;li ms-for='el in @obj | selectBy(["c","a","b"])'>{{el}}&lt;/li>
+   &lt;/ul>
+   &lt;table border='1' width='200'>
+       &lt;tr ms-for="tr in @grid">
+           &lt;td ms-for="td in tr | selectBy(['a','b','c'], @defaults)">{{td}}&lt;/td>
+       &lt;/tr>
+   &lt;/table>
+&lt;/div>
+</pre>
+
+
+    <script>
+        avalon.define({
+            $id: "selectBy",
+            obj: {a: 'aaa', b: 'bbb', c: 'ccc', d: 'ddd', e: 'eee'},
+            grid: [{a: 1, b: 2, c: 3}, {c: 11, b: 22, a: 33}, {b: 23, a: 44}],
+            defaults: {
+                a:'@@@',
+                b:'$$$',
+                c:'###'
+            }
+        });
+    </script>
+    <div ms-controller='selectBy'>
+       <ul>
+           <li ms-for='el in @obj | selectBy(["c","a","b"])'>{{el}}</li>
+       </ul>
+       <table border='1' width='200'>
+           <tr ms-for="tr in @grid">
+               <td ms-for="td in tr | selectBy(['a','b','c'], @defaults)">{{td}}</td>
+           </tr>
+       </table>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

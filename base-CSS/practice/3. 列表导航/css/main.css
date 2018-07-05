@@ -1,0 +1,41 @@
+
+		*{
+			margin:0px;
+			padding:0px;
+			color:black;
+		}
+		
+		body{
+			font-family:"微软雅黑";
+			margin:10px;
+		}
+
+		#caption{
+			position:absolute;
+			left:300px;
+			top:10px;
+			text-align:center;
+			font-size:32px;
+			color:#093;
+		}
+		
+		#mainNav{
+			list-style:none;
+		}
+		#mainNav a{
+			display:block;
+			width:150px;
+			height:39px;
+			line-height:39px;
+			padding-left:50px;
+			text-decoration:none;
+			background:url(../images/pixy-rollover.gif) no-repeat left top;
+		}
+		#mainNav .last{
+			height:40px;
+			line-height:40px;
+		}
+		#mainNav a:hover,#pageSelected a{
+			color:white;
+			background:url(../images/pixy-rollover.gif) no-repeat right top;
+		}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>使用Object.defineProperty实现响应式系统的基础</title>
+</head>
+<body>
+	<script>
+		let obj = {}
+		let test = 'test1'
+
+		// 定义对象属性的getter和setter
+		// 取得属性读取可观察
+		Object.defineProperty(obj, 'test', {
+			configurable: true,
+			enumerable: true,
+			get: function () {
+				console.log('enter get')
+				return test
+			},
+			set: function (newValue) {
+				console.log('enter set')
+				test = newValue
+			}
+		})
+
+		// enter get
+		obj.test
+
+		// enter set
+		obj.test = 'test2'
+	</script>
+</body>
+</html>

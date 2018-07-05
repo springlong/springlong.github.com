@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>事件处理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>事件处理</h1>
+	<div id="testBox">
+		<button v-on:click="counter+=1">Add+1</button>
+		<p>当前的计数是：{{counter}}</p>
+		<br>
+		<button v-on:click="getInfo">事件处理方法</button>
+		<br>
+		<br>
+		<button v-on:click="show('内联处理器中的方法')">内联处理器中的方法</button>
+		<br>
+		<br>
+		<div v-on:click="show('父级容器点击事件')" style="border: 1px solid #333;padding:10px;">
+			<a href="#" v-on:click.prevent="show('.prevent 取消事件默认行为')">事件修饰符(.prevent 取消事件默认行为)</a>
+			<br>
+			<br>
+			<button v-on:click.stop="show('.stop 阻止事件传播')">事件修饰符(.stop 阻止事件传播)</button>
+			<br>
+			<br>
+			<button v-on:click.once="show('.once 事件只执行一次')">事件修饰符(.once 事件只执行一次)</button>
+			<br>
+			<br>
+			<div v-on:click.self="show('.self 仅当event.target为当前元素本身时触发')">事件修饰符(.self 仅当event.target为当前元素本身时触发)<span style="color:gray">这里是子元素点击区域</span></div>
+			<br>
+			<br>
+			<button v-on:click.capture="show('.capture 采用事件捕获')">事件修饰符(.capture 采用事件捕获)</button>
+			<br>
+			<br>
+			<button v-on:click.passive="show('.passive 告诉浏览器这个事件的默认行为不会被取消')">事件修饰符(.passive 告诉浏览器这个事件的默认行为不会被取消)</button>
+		</div>
+		<br>
+		<br>
+		<div>
+			<p>按键修饰符：</p>
+			<input v-on:keyup.13="show('enter')" value="当keyCode为13时调用">
+			<br>
+			<br>
+			<input v-on:keyup.enter="show('enter')" value="当按键为回车时调用">
+			<br>
+			<br>
+			<input v-on:keyup.tab="show('tab')" value="当按键为tab时调用">
+			<br>
+			<br>
+			<input v-on:keyup.delete="show('delete')" value="当按键为delete时调用">
+			<br>
+			<br>
+			<input v-on:keyup.esc="show('esc')" value="当按键为esc时调用">
+			<br>
+			<br>
+			<input v-on:keyup.space="show('space')" value="当按键为space时调用">
+			<br>
+			<br>
+			<input v-on:keyup.up="show('up')" value="当按键为up时调用">
+			<br>
+			<br>
+			<input v-on:keyup.down="show('down')" value="当按键为down时调用">
+			<br>
+			<br>
+			<input v-on:keyup.left="show('left')" value="当按键为left时调用">
+			<br>
+			<br>
+			<input v-on:keyup.right="show('right')" value="当按键为right时调用">
+			<br>
+			<br>
+			<input v-on:keyup.f1="show('f1')" value="当按键为F1时调用">
+			<br>
+			<br>
+			<input v-on:keyup.page-down="show('pageDown')" value="直接将 KeyboardEvent.key 暴露的任意有效按键名转换为 kebab-case 来作为修饰符" size="80">
+			<br>
+			<br>
+			<input @keyup.ctrl="show('ctrl+')" value="系统修饰键.ctrl">
+			<br>
+			<br>
+			<input @keyup.alt="show('alt+')" value="系统修饰键.alt">
+			<br>
+			<br>
+			<input @keyup.shift="show('shift+')" value="系统修饰键.shift">
+		</div>
+		<br>
+		<br>
+		<div>
+			<p>鼠标按钮修饰符：</p>
+			<button @click.left="show('.left 鼠标左键')">鼠标按钮修饰符：(.left 鼠标左键)</button>
+			<button @click.right="show('.right 鼠标右键')">鼠标按钮修饰符：(.right 鼠标右键)</button>
+			<button @click.middle="show('.middle 鼠标中键')">鼠标按钮修饰符：(.middle 鼠标中键)</button>
+			<br>
+			<br>
+		</div>
+	</div>
+	<script>
+	    var vm = new Vue({
+	    	el: '#testBox',
+	        data: {
+	        	counter: 0
+	        },
+	        methods: {
+	        	getInfo: function(event){
+	        		// this指向当前Vue实例
+	        		alert('type:' + event.type + ' counter:' + this.counter);
+	        	},
+	        	show: function(info) {
+	        		alert(info);
+	        	}
+	        }
+	    });
+
+	    // 自定义按键修饰符别名
+	    Vue.config.keyCodes.f1 = 112;
+	</script>
+</div>
+</body>
+</html>

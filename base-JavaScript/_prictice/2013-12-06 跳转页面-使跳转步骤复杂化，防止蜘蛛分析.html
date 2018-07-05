@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="gb2312" />
+	<title>页面跳转，使跳转步骤更为复杂，防止蜘蛛分析！</title>
+</head>
+<body>
+<script type="text/javascript">
+	// 该页面的目的是为了做页面跳转，在不影响原来页面收录的情况下，根据需求跳转到另外一个页面。为了防止蜘蛛分析这个跳转过程，特别使JS代码复杂化。
+	// 为了使跳转步骤更为复杂，还可以考虑再使用一个JS文件单独执行下面的代码。
+	// 通常该段代码需要放在页面文件的头部进行调用，使跳转延时尽可能地小。
+	// 为了在跳转之前不显示原有页面的内容，需要将body的样式设置为“display:none”。由于在IE浏览器中，无法在head中通过执行代码来获取body对象，所以在此通过输出内联样式来进行设置。
+	document.writeln("<form id=\"c_jumpurl\" target=\"_self\" method=\"post\" action=\"http://so.360.cn/\"><\/form>");
+	function doSubmit()
+	{
+		document.writeln("<style type=\"text/css\">body{display:none;}</style>");
+		document.getElementById("c_jumpurl").submit();
+	}
+	doSubmit();
+</script>
+</body>
+</html>

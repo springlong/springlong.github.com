@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>增加一个观察者（优化）</title>
+</head>
+<body>
+	<script>
+		// 观察者 Watcher
+		const Watcher = function (obj, getter, callback) {
+			this.obj = obj
+			this.getter = getter
+			this.cb = callback
+			// 声明成数组
+			this.deps = []
+			this.value = undefined
+
+			// 取值，发布订阅
+			this.get = function () {
+				Dep.target = this
+				// 将取值方式改成函数调用
+				let value = this.getter.call(obj)
+				Dep.target = null
+				return value
+			}
+
+			// 更新
+			this.update = function () {
+				const value = this.obj[this.getter]
+				const oldValue = this.value
+				this.value = value
+				this.cb.call(this.obj, value, oldValue)
+			}
+
+			// 添加对Dep的引用
+			this.addDep = function (dep) {
+				// 将 dep 推入数组中
+				this.deps.push(dep)
+			}
+
+			this.teardown = function () {
+				let i = this.deps.length
+				while (i--) {
+					this.deps[i].removeSub(this)
+				}
+				this.deps = []
+			}
+
+			this.value = this.get()
+		}
+
+		// 订阅者 Dep
+		const Dep = function () {
+			this.subs = []
+
+			this.addSub = function (sub) {
+				this.subs.push(sub)
+			}
+
+			this.removeSub = function (sub) {
+				const index = this.subs.indexOf(sub)
+				if (index > -1) {
+					this.subs.splice(index, 1)
+				}
+			}
+
+			this.notify = function () {
+				this.subs.forEach(watcher => watcher.update())
+			}
+		}
+
+		Dep.target = null
+
+		const defineReactive = function (obj, key, value) {
+			const dep = new Dep()
+
+			Object.defineProperty(obj, key, {
+				configurable: true,
+				enumerable: true,
+				get: function () {
+					if (Dep.target) {
+						dep.addSub(Dep.target)
+
+						// 添加 watcher 对 dep 的引用
+						Dep.target.addDep(dep)
+					}
+					return value
+				},
+				set: function (newValue) {
+					if (newValue != value) {
+						value = newValue
+						dep.notify()
+					}
+				}
+			})
+		}
+
+		let obj = {}
+		defineReactive(obj, 'test', 'test-1')
+		defineReactive(obj, 'test2', 'test2-1')
+
+		let watcher = new Watcher(obj, function(){
+			console.log(obj)
+			return this.test + this.test2
+		}, function(newValue, oldValue) {
+			console.log(`监听函数：${newValue}`)
+		})
+		obj.test = 'tt-1'
+		obj.test2 = 'tt-2'
+	</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>简单的表单布局</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="generator" content="EditPlus" />
+	<meta name="author" content="Jerry_糊涂" />
+	<style type="text/css">
+		*{
+			font-family:"微软雅黑";
+			font-size:12px;
+		}
+
+		#loginOuter{
+			width:600px;
+			margin:0px auto;
+		}
+		#login{
+			padding:1em;
+			border:1px solid gray;
+			background:#f9f9f9;
+		}
+		#login fieldset{
+			margin:1em 0px;	/*使各表单分组前后相隔一段距离*/
+			padding:1em;	/*使各表单分组中的控件与边框相隔一定的距离*/
+			border:1px solid gray;
+		}
+		#login legend{
+			font-weight:bold;
+		}
+		#login label{
+			display:block;			/*使标签文本与表单控件分行显示*/
+		}
+		#login .require{/*必填提示星号（*）的显示*/
+			color:red;
+		}
+		#login input{/*总体设置表单元素的宽度*/
+			width:200px;
+			height:1.5em;
+		}
+		#login #introduce{/*设置自我介绍文本区域的大小*/
+			width:400px;
+			height:100px;
+		}
+		#login input.button{/*设置按钮的大小*/
+			width:5em;
+			height:2em;
+		}
+		#login .customStyle:focus{/*相应表单项在焦点时改变背景颜色以突出显示*/
+			background:#fff7b9;
+		}
+	</style>
+</head>
+<body>
+<div id="loginOuter">
+<form name="login" id="login" action="" method="post">
+	<fieldset>
+		<legend>用户注册</legend>
+		<p>
+			<label for="userName"><strong class="require">*</strong>用户名称:</label>
+			<input type="text" id="userName" name="userName" class="customStyle" />
+		</p>
+		<p>
+			<label for="password1"><strong class="require">*</strong>用户密码:</label>
+			<input type="password" id="password1" name="password1" class="customStyle" />
+		</p>
+		<p>
+			<label for="password2"><strong class="require">*</strong>密码确认:</label>
+			<input type="password" id="password2" name="password2" class="customStyle" />
+		</p>
+	</fieldset>
+	<fieldset>
+		<legend>个人资料</legend>
+		<p>
+			<label for="introduce">自我介绍：</label>
+			<textarea id="introduce" name="introduce" class="customStyle"></textarea>
+		<p>
+	</fieldset>
+	<p>
+		<input type="submit" value="注册" class="button" />
+		<input type="reset" value="取消" class="button" />
+	</p>
+</form>
+</div>
+</body>
+</html>

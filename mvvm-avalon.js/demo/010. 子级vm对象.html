@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>子级VM对象</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0s/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>子级VM对象</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    
+
+<pre>
+var vm1 = avalon.define({
+    $id: 'test',
+    a: 11,
+    b: {
+        c: 22
+    }
+});
+
+console.log('vm1.b:');
+console.log(vm1.b);
+</pre>
+    <p>vm.b就是一个子vm，它与顶层vm有些区别，首先其$id为顶层vm的$id加上其属性名构成， 即"test.b"。它少了一些系统属性，如$element, $render, $watch, $fire, $events(这个在avalon.next存在)，可以说是一个轻量的vm。它的数据发生改动时，它不会自己处理$watch回调，而是交由顶层的vm来处理，因为所有回调都放在顶层vm的$events上。</p>
+
+
+	<hr>
+    <script>
+        var vm1 = avalon.define({
+            $id: 'test',
+            a: 11,
+            b: {
+                c: 22
+            }
+        });
+
+        console.log('vm1.b:');
+        console.log(vm1.b);
+    </script>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+<pre>
+var vm2 = avalon.define({
+    $id: 'test2',
+    a: 11,
+    arr: [{b:1}, {b:2}, {b:3}]
+});
+
+console.log('vm2.arr:');
+console.log(vm2.arr);
+</pre>
+    <p>如果vm的子级属性是一个数组，那么与1.4一样，转换为监控数组。监控数组就是一个push, unshift, splice, pop, shift, sort, reverse等方法被重写的数组。它在内部是由<strong>arrayFactory</strong>方法生成的。</p>
+    <p>如果监控数组的每个元素是一个对象，那么它们会转换为顶层vm, 由<strong>masterFactory</strong>生成，它们的$id名都叫做test.arr.*。这时你们明白$hashcode的用处了吧（如去重，排序）。</p>
+
+
+    <hr>
+    <script>
+        var vm2 = avalon.define({
+            $id: 'test2',
+            a: 11,
+            arr: [{b:1}, {b:2}, {b:3}]
+        });
+
+        console.log('vm2.arr:');
+        console.log(vm2.arr);
+    </script>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

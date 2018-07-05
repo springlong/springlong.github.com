@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Date日期对象：字符串输出</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script src="../../public/js/jquery.min.js"></script>
+    <script src="../../public/js/jquery.extend.js"></script>
+    <script src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';} 
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        p{margin-top:20px;line-height:2em;}
+        code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:360px;}
+
+        #wrapper div{display:inline-block;font-size:21px;font-weight:bold;color:#3B834D;}
+    </style>
+</head>
+<body>
+<h1>Date日期对象：字符串输出</h1>
+<h2>执行代码：</h2>
+<pre class="jsCodeNum">
+var dt = new Date("2014/8/10 8:00:00");
+document.write("&lt;p>&lt;b>.toString()&lt;/b>&lt;/br>" + dt.toString());
+document.write("&lt;p>&lt;b>.toDateString()&lt;/b>&lt;/br>" + dt.toDateString());
+document.write("&lt;p>&lt;b>.toTimeString()&lt;/b>&lt;/br>" + dt.toTimeString());
+document.write("&lt;p>&lt;b>.toLocaleString()&lt;/b>&lt;/br>" + dt.toLocaleString());
+document.write("&lt;p>&lt;b>.toLocaleDateString()&lt;/b>&lt;/br>" + dt.toLocaleDateString());
+document.write("&lt;p>&lt;b>.toLocaleTimeString()&lt;/b>&lt;/br>" + dt.toLocaleTimeString());
+document.write("&lt;p>&lt;b>.toUTCString()&lt;/b>&lt;/br>" + dt.toUTCString());
+document.write("&lt;p>&lt;b>.toGMTString()&lt;/b>&lt;/br>" + dt.toGMTString());
+</pre>
+<h2>输出结果：</h2>
+<script>
+    var dt = new Date("2014/8/10 8:00:00");
+    document.write("<p><b>.toString()</b></br>" + dt.toString());
+    document.write("<p><b>.toDateString()</b></br>" + dt.toDateString());
+    document.write("<p><b>.toTimeString()</b></br>" + dt.toTimeString());
+    document.write("<p><b>.toLocaleString()</b></br>" + dt.toLocaleString());
+    document.write("<p><b>.toLocaleDateString()</b></br>" + dt.toLocaleDateString());
+    document.write("<p><b>.toLocaleTimeString()</b></br>" + dt.toLocaleTimeString());
+    document.write("<p><b>.toUTCString()</b></br>" + dt.toUTCString());
+    document.write("<p><b>.toGMTString()</b></br>" + dt.toGMTString());
+
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

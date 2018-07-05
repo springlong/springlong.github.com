@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>循环操作：ms-for</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>循环操作：ms-for</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>avalon2的循环指令的用法完全改变了。avalon最早期从knockout那样抄来ms-each,ms-with，分别用于数组循环与对象循环。它们都是针对元素内容进行循环。后来又从angular那里抄来了ms-repeat， 这是循环元素内部的。</p>
+    <p>到avalon2，这三个指令合并成一个<code>ms-for</code>指令 ，用法与angular更相似，但没有<code>$index</code>, <code>$last</code>, <code>$first</code>, <code>$middle</code>.</p>
+
+
+
+<pre>
+
+</pre>
+
+
+	<hr>
+    <script>
+    </script>
+    <div ms-controller="test">
+
+    </div>
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>dfasdfasdfasdfasdfasdfasdf</p>
+<pre>
+
+</pre>
+
+
+    <script>
+
+    </script>
+    <div ms-controller="test2">
+    
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<title>日期操作：电子时钟</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+    	body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';} 
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+		code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+		span.code{display:inline-block;width:360px;}
+
+		#wrapper div{display:inline-block;font-size:21px;font-weight:bold;color:#3B834D;}
+    </style>
+</head>
+<body>
+<h1>日期操作：电子时钟</h1>
+<h2>运行结果</h2>
+<div id="wrapper">
+	<strong>现在是：</strong>
+	<div></div>
+</div>
+<h2>执行代码</h2>
+<pre class="jsCode">
+var weekStr = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+	box = document.getElementById("wrapper").getElementsByTagName("div")[0];
+
+setInterval(function()
+{
+	var oDate = new Date(),
+		year = oDate.getFullYear(),
+		month = oDate.getMonth() + 1,
+		day = oDate.getDate(),
+		hours = oDate.getHours(),
+		minutes = oDate.getMinutes(),
+		seconds = oDate.getSeconds(),
+		weekDay = weekStr[oDate.getDay()];
+
+	month = month &lt; 10 ? "0" + month : month;
+	day = day &lt; 10 ? "0" + day : day;
+	hours = hours &lt; 10 ? "0" + hours : hours;
+	minutes = minutes &lt; 10 ? "0" + minutes : minutes;
+	seconds = seconds &lt; 10 ? "0" + seconds: seconds;
+
+	box.innerHTML = year + "年" + month + "月" + day + "日 " + weekDay + " " + hours + ":" + minutes + ":" + seconds; 
+}, 1000);
+</pre>
+<script>
+	var weekStr = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+		box = document.getElementById("wrapper").getElementsByTagName("div")[0];
+
+	setInterval(function()
+	{
+		var oDate = new Date(),
+			year = oDate.getFullYear(),
+			month = oDate.getMonth() + 1,
+			day = oDate.getDate(),
+			hours = oDate.getHours(),
+			minutes = oDate.getMinutes(),
+			seconds = oDate.getSeconds(),
+			weekDay = weekStr[oDate.getDay() - 1];
+
+		month = month < 10 ? "0" + month : month;
+		day = day < 10 ? "0" + day : day;
+		hours = hours < 10 ? "0" + hours : hours;
+		minutes = minutes < 10 ? "0" + minutes : minutes;
+		seconds = seconds < 10 ? "0" + seconds: seconds;
+
+		box.innerHTML = year + "年" + month + "月" + day + "日 " + weekDay + " " + hours + ":" + minutes + ":" + seconds; 
+	}, 1000);
+	
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

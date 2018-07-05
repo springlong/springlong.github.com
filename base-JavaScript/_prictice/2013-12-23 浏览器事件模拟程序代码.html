@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gb2312">
+    <title>ä¯ÀÀÆ÷ÊÂ¼þÄ£Äâ³ÌÐò´úÂë</title>
+    <style>
+		#test{width:200px;background:#333;color:#fff;}
+    </style>
+</head>
+<body>
+	<div id="test"></div>
+	<script>
+		var test = document.getElementById("test");
+		test.onclick = function(e)
+		{
+			alert("click");
+			e = e || window.event;
+			test.innerHTML = "clientX£º" + e.clientX;
+			test.innerHTML += "<br>clientY£º" + e.clientY;
+			test.innerHTML += "<br>screenX£º" + e.screenX;
+			test.innerHTML += "<br>screenY£º" + e.screenY;
+			test.innerHTML += "<br>pageX£º" + e.pageX;
+			test.innerHTML += "<br>pageY£º" + e.pageY;
+			test.innerHTML += "<br>offsetX£º" + e.offsetX;
+			test.innerHTML += "<br>offsetY£º" + e.offsetY;
+			test.innerHTML += "<br>ctrlKey£º" + e.ctrlKey;
+			test.innerHTML += "<br>altKey£º" + e.altKey;
+			test.innerHTML += "<br>shiftKey£º" + e.shiftKey;
+			test.innerHTML += "<br>metaKey£º" + e.metaKey;
+			test.innerHTML += "<br>button£º" + e.button;
+			test.innerHTML += "<br>keyCode£º" + e.keyCode;
+			test.innerHTML += "<br>charCode£º" + e.charCode;
+		}
+		test.ondblclick = function()
+		{
+			alert("dblclick");
+		}
+		test.onmousedown = function()
+		{
+			alert("mousedown");
+		}
+		test.onmouseup = function()
+		{
+			alert("mouseup");
+		}
+		test.onmouseover = function()
+		{
+			alert("mouseover");
+		}
+		test.onmouseenter = function()
+		{
+			alert("mouseenter");
+		}
+		test.onmousemove = function()
+		{
+			alert("mousemove");
+		}
+		test.onmouseout = function()
+		{
+			alert("mouseout");
+		}
+		test.onmouseleave = function()
+		{
+			alert("mouseleave");
+		}
+		test.onmousewheel = function()
+		{
+			alert("mousewheel");
+		}
+		test.DOMNodeInserted = function()
+		{
+			alert("DOMNodeInserted");
+		}
+		document.body.onkeydown = function(e)
+		{
+			alert("keydown");
+			e = e || window.event;
+			test.innerHTML = "clientX£º" + e.clientX;
+			test.innerHTML += "<br>clientY£º" + e.clientY;
+			test.innerHTML += "<br>screenX£º" + e.screenX;
+			test.innerHTML += "<br>screenY£º" + e.screenY;
+			test.innerHTML += "<br>pageX£º" + e.pageX;
+			test.innerHTML += "<br>pageY£º" + e.pageY;
+			test.innerHTML += "<br>offsetX£º" + e.offsetX;
+			test.innerHTML += "<br>offsetY£º" + e.offsetY;
+			test.innerHTML += "<br>ctrlKey£º" + e.ctrlKey;
+			test.innerHTML += "<br>altKey£º" + e.altKey;
+			test.innerHTML += "<br>shiftKey£º" + e.shiftKey;
+			test.innerHTML += "<br>metaKey£º" + e.metaKey;
+			test.innerHTML += "<br>button£º" + e.button;
+			test.innerHTML += "<br>keyCode£º" + e.keyCode;
+			test.innerHTML += "<br>charCode£º" + e.charCode;
+		}
+		document.body.onkeypress = function(e)
+		{
+			alert("press");
+			e = e || window.event;
+			test.innerHTML = "clientX£º" + e.clientX;
+			test.innerHTML += "<br>clientY£º" + e.clientY;
+			test.innerHTML += "<br>screenX£º" + e.screenX;
+			test.innerHTML += "<br>screenY£º" + e.screenY;
+			test.innerHTML += "<br>pageX£º" + e.pageX;
+			test.innerHTML += "<br>pageY£º" + e.pageY;
+			test.innerHTML += "<br>offsetX£º" + e.offsetX;
+			test.innerHTML += "<br>offsetY£º" + e.offsetY;
+			test.innerHTML += "<br>ctrlKey£º" + e.ctrlKey;
+			test.innerHTML += "<br>altKey£º" + e.altKey;
+			test.innerHTML += "<br>shiftKey£º" + e.shiftKey;
+			test.innerHTML += "<br>metaKey£º" + e.metaKey;
+			test.innerHTML += "<br>button£º" + e.button;
+			test.innerHTML += "<br>keyCode£º" + e.keyCode;
+			test.innerHTML += "<br>charCode£º" + e.charCode;
+		}
+		document.body.onkeyup = function(e)
+		{
+			alert("keyup");
+			e = e || window.event;
+			test.innerHTML = "clientX£º" + e.clientX;
+			test.innerHTML += "<br>clientY£º" + e.clientY;
+			test.innerHTML += "<br>screenX£º" + e.screenX;
+			test.innerHTML += "<br>screenY£º" + e.screenY;
+			test.innerHTML += "<br>pageX£º" + e.pageX;
+			test.innerHTML += "<br>pageY£º" + e.pageY;
+			test.innerHTML += "<br>offsetX£º" + e.offsetX;
+			test.innerHTML += "<br>offsetY£º" + e.offsetY;
+			test.innerHTML += "<br>ctrlKey£º" + e.ctrlKey;
+			test.innerHTML += "<br>altKey£º" + e.altKey;
+			test.innerHTML += "<br>shiftKey£º" + e.shiftKey;
+			test.innerHTML += "<br>metaKey£º" + e.metaKey;
+			test.innerHTML += "<br>button£º" + e.button;
+			test.innerHTML += "<br>keyCode£º" + e.keyCode;
+			test.innerHTML += "<br>charCode£º" + e.charCode;
+		}
+
+		/**
+		 * Ä£ÄâÊÂ¼þµÄÖ´ÐÐ
+		 * ==============
+		 * @param  {HTMLElement} ele  Ä¿±êHTMLÔªËØ
+		 * @param  {String} type ÊÂ¼þÃû³Æ
+		 * @param  {Object} param ²ÎÊýÅäÖÃ
+		 * @return {undefined}
+		 */
+		function fireEvent(ele, type, param)
+		{
+			var event,
+				item, 
+				cfg = {
+					canBubble: true,
+					cancelable: true,
+					view: document.defaultView,
+					detail: 0,
+					screenX: 0,
+					screenY: 0,
+					clientX: 0,
+					clientY: 0,
+					pageX: 0,
+					pageY: 0,
+					ctrlKey: false,
+					altKey: false,
+					shiftKey: false,
+					metaKey: false,
+					button: 0,
+					keyCode: 0,
+					charCode: 0,
+					relatedTarget: null,
+					prevValue: null,
+					newValue: null,
+					attrName: null,
+					attrChange: 0
+				};
+
+			//È·±£²ÎÊýeleÊÇÒ»¸öºÏ·¨µÄHTML±êÇ©ÔªËØ
+			if(!(ele && ele.nodeType === 1)) return;
+
+			//²ÎÊýÅäÖÃ
+			for(item in param)
+			{
+				cfg[item] !== undefined && (cfg[item] = param[item]);
+			}
+
+			//Õë¶ÔIE10¼°¸üµÍ°æ±¾µÄIEä¯ÀÀÆ÷
+			if(document.createEventObject)
+			{
+				event = document.createEventObject();
+				for(item in cfg)
+				{
+					event[item] = cfg[item];
+				}
+				ele.fireEvent("on" + type, event);
+				return;
+			}
+
+			//Õë¶ÔÆäËûä¯ÀÀÆ÷
+			switch(type)
+			{
+				//Êó±êÊÂ¼þ£¨MouseEvents£©
+				case "click":
+				case "dblclick":
+				case "mousedown":
+				case "mouseup":
+				case "mouseover":
+				case "mouseenter":
+				case "mousemove":
+				case "mouseout":
+				case "mouseleave":
+				case "mousewhee":
+				{
+					/* 
+					 *£¨Õë¶ÔIE11+¡¢Firefox¡¢Chrome¡¢Safari¡¢Opera£©
+					 * -------------------------------------------
+					 * initMouseEvent·½·¨ÖÐ¸÷²ÎÊýµÄº¬ÒåÈçÏÂ£º
+					 * =====================================
+					 * type£º£¨ÀàÐÍ£ºstring£©Òª´¥·¢µÄÊÂ¼þÀàÐÍ£¬ÀýÈç¡°click¡±¡£
+					 * bubbles£º£¨ÀàÐÍ£ºBoolean£©±íÊ¾ÊÂ¼þÊÇ·ñÓ¦¸ÃÃ°ÅÝ£¬Õë¶ÔÊó±êÊÂ¼þÄ£Äâ£¬¸ÃÖµÓ¦¸Ã±»ÉèÖÃÎªtrue¡£
+					 * cancelable£º£¨ÀàÐÍ£ºBoolean£©±íÊ¾¸ÃÊÂ¼þÊÇ·ñÄÜ¹»±»È¡Ïû£¬Õë¶ÔÊó±êÊÂ¼þÄ£Äâ£¬¸ÃÖµÓ¦¸Ã±»ÉèÖÃÎªtrue¡£
+					 * view³éÏóÊÓÍ¼£ºÊÂ¼þÊÚÓèµÄÊÓÍ¼£¬Õâ¸öÖµ¼¸ºõÈ«ÊÇdocument.defaultView¡£
+					 * detail£º£¨ÀàÐÍ£ºNumber£©¸½¼ÓµÄÊÂ¼þÐÅÏ¢Õâ¸ö³õÊ¼»¯Ê±Ò»°ãÓ¦¸ÃÄ¬ÈÏÎª0¡£
+					 * screenX£º£¨ÀàÐÍ£ºNumber£©ÊÂ¼þ¾àÀëÆÁÄ»×ó±ßµÄX×ø±ê
+					 * screenY£º£¨ÀàÐÍ£ºNumber£©ÊÂ¼þ¾àÀëÆÁÄ»ÉÏ±ßµÄy×ø±ê
+					 * clientX£º£¨ÀàÐÍ£ºNumber£©ÊÂ¼þ¾àÀë¿ÉÊÓÇøÓò×ó±ßµÄX×ø±ê
+					 * clientY£º£¨ÀàÐÍ£ºNumber£©ÊÂ¼þ¾àÀë¿ÉÊÓÇøÓòÉÏ±ßµÄy×ø±ê
+					 * ctrlKey£º£¨ÀàÐÍ£ºBoolean£©´ú±íctrl¼üÊÇ·ñ±»°´ÏÂ£¬Ä¬ÈÏÎªfalse¡£
+					 * altKey£º£¨ÀàÐÍ£ºBoolean£©´ú±íalt¼üÊÇ·ñ±»°´ÏÂ£¬Ä¬ÈÏÎªfalse¡£
+					 * shiftKey£º£¨ÀàÐÍ£ºBoolean£©´ú±íshif¼üÊÇ·ñ±»°´ÏÂ£¬Ä¬ÈÏÎªfalse¡£
+					 * metaKey£º£¨ÀàÐÍ£ºBoolean£©´ú±ímeta key ÊÇ·ñ±»°´ÏÂ£¬Ä¬ÈÏÊÇfalse¡£
+					 * button£º£¨ÀàÐÍ£ºNumber£©±íÊ¾±»°´ÏÂµÄÊó±ê¼ü£¨0¡ª×ó¼ü£»1¡ªÖÐ¼ä¼ü£»2¡ªÓÒ¼ü£©£¬Ä¬ÈÏÊÇ0¡£
+					 * relatedTarget£º£¨ÀàÐÍ£ºObject£©ÊÂ¼þµÄ¹ØÁª¶ÔÏó£¬Ö»ÓÐÔÚÄ£ÄâmouseoverºÍmouseoutÊ±ÓÃµ½¡£
+					 */
+					event = document.createEvent("MouseEvents");
+					event.initMouseEvent(type, cfg.canBubble, cfg.cancelable, cfg.view, cfg.detail, cfg.screenX, cfg.screenY, cfg.clientX, cfg.clientY, cfg.ctrlKey, cfg.altKey, cfg.shiftKey, cfg.metaKey, cfg.button, cfg.relatedTarget);
+				}
+				break;
+
+				//±ä¶¯ÊÂ¼þ£¨MutationEvents£©
+				case "DOMAttrModified":
+	            case "DOMNodeInserted":
+	            case "DOMNodeRemoved":
+	            case "DOMCharacterDataModified":
+	            case "DOMNodeInsertedIntoDocument":
+	            case "DOMNodeRemovedFromDocument":
+	            case "DOMSubtreeModified":
+				{
+					event = document.createEvent("MutationEvents");
+					event.initMutationEvent(type, cfg.canBubble, cfg.cancelable, cfg.relatedTarget, cfg.prevValue, cfg.newValue, cfg.attrName, cfg.attrChange);
+				}
+	            break;
+
+				//Í¨ÓÃÊÂ¼þ
+				default:
+				{
+					event = document.createEvent("Events");
+					event.initEvent(type, cfg.canBubble, cfg.cancelable);
+					for(item in cfg)
+					{
+						event[item] = cfg[item];
+					}
+				}
+				break;
+			}
+			ele.dispatchEvent(event);
+		}
+
+		//Ä£Äâ²âÊÔ
+		fireEvent(test, "click");
+	</script>
+</body>
+</html>

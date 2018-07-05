@@ -1,0 +1,112 @@
+/*============================
+ *index.html页面独立样式
+ *针对中部主体、右部侧栏样式
+ *2011-2-14
+ *============================*/
+ 
+ 
+ 
+ /*===================================================================================================
+ *===============================页面的总体布局========================================================
+ *===================================================================================================*/ 
+ 		
+		/*内容主体高度值为：261(227+34)+303(100*3+3)=564px*/
+		#show,#servicesMain{
+			width:391px;
+			margin:auto;
+		}
+		#show{
+			height:227px;
+			margin-bottom:34px;
+		}
+		/*======*/
+		#servicesMain_service1,#servicesMain_service2,#servicesMain_service3,#servicesMain_service4{
+			width:195px;
+			height:100px;
+		}
+		#servicesMain_service5{
+			width:391px;
+			height:100px;
+			border-bottom:1px dashed;
+		}
+		#servicesMain_service1,#servicesMain_service3{
+			float:left;
+			border-right:1px dashed;
+			border-bottom:1px dashed;
+		}
+		#servicesMain_service2,#servicesMain_service4{
+			float:right;
+			border-bottom:1px dashed;
+		}
+		
+		/*内容右部侧栏高度值为：240(27+186+27)+377+17=634px*/
+		#sideRight,#aboutUs,#welcome{
+			width:171px;
+		}
+		/*======*/
+		#aboutUsOuter{
+			margin-bottom:17px;
+		}
+		#aboutUs_content{
+			height:186px;	
+		}
+		#aboutUs_footer{
+			height:27px;
+		}
+		#welcome{
+			height:377px;
+		}
+		
+		
+ /*===================================================================================================
+ *===============================页面的大体外观========================================================
+ *===================================================================================================*/
+		
+		/*===右部侧栏 关于我们===*/
+		#aboutUsOuter{
+			background-color:#cde3ec;
+		}
+		#aboutUsInner{
+			background:url(../images/bg_aboutUs1.gif) no-repeat left top;
+		}
+		#aboutUs{
+			background:url(../images/bg_aboutUs2.gif) no-repeat left bottom;
+		}
+		/*===右部侧栏欢迎===*/
+		#welcome{
+			background-color:#e0edf3;
+		}
+
+
+/*===================================================================================================
+ *===============================页面的文本控制========================================================
+ *===================================================================================================*/
+		
+		/*中部主体 Service*/
+		#servicesMain .serviceTitle{
+			font-weight:bold;
+		}
+		#servicesMain img,.servicesMain_serviceContent{
+			padding-top:10px;
+		}
+		#servicesMain img{
+			float:left;
+			margin-right:10px;
+		}
+		#servicesMain_service2 img,#servicesMain_service4 img{
+			margin-left:10px;
+		}
+		
+		/*右部侧栏About Us*/
+		#aboutUs_footer p{
+			text-align:right;
+		}
+		#aboutUs_footer .more{
+			padding-right:11px;
+			background:url(../images/more.gif) no-repeat right center;
+		}
+		
+		/*右部侧栏welcome*/
+		#welcome p{
+			text-align:center;		
+		}

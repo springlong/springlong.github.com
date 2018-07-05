@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8" />
+	<title>滚动条至底部时执行操作</title>
+    <link rel="stylesheet" href="../public/css/codeView.css" />
+    <script type="text/javascript" src="../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/js/jquery.snippet.min.js"></script>
+    <style>
+    	body{height:1500px;padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+		code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+		span.code{display:inline-block;width:360px;}
+    </style>
+</head>
+<body>
+<h1>滚动条至底部时执行操作</h1>
+<h2>脚本函数</h2>
+<pre class="jsCode autoHeight">
+/**
+ * 滚动条至底部时执行操作
+ * @param  {Function} callback       回调函数
+ * @return {undefined}
+ */
+function doOnScrollToBottom(callback)
+{
+	var handler, i, len;
+
+	if(window.doOnSTBCallbacks)
+	{
+		window.doOnSTBCallbacks.push(callback);	
+	}
+	else
+	{
+		window.doOnSTBCallbacks = [callback];
+		
+		//无论文档中调用了多少次doOnScrollToBottom方法，事件绑定仅只执行一次
+		handler = function()
+		{
+			var doOnSTBCallbacks = window.doOnSTBCallbacks, func;
+			if((document.body.scrollTop || document.documentElement.scrollTop) + document.documentElement.clientHeight == document.documentElement.scrollHeight)
+			{
+				for(i = 0, len = doOnSTBCallbacks.length; i &lt; len; i++){
+					doOnSTBCallbacks[i].call();
+				}
+			}
+		};
+		document.addEventListener ? window.addEventListener("scroll", handler) : window.attachEvent("onscroll", handler);
+	}
+}
+</pre>
+<h2>调用代码</h2>
+<pre class="jsCode">
+doOnScrollToBottom(function(){
+	document.body.style.height = document.documentElement.scrollHeight + 1000 + "px";
+});
+doOnScrollToBottom(function(){
+	document.body.style.cssText += ";background:url(images/pic1.jpg);";
+});
+</pre>
+<script>
+    /**
+     * 滚动条至底部时执行操作
+     * @param  {Function} callback       回调函数
+     * @return {undefined}
+     */
+	function doOnScrollToBottom(callback)
+	{
+		var handler, i, len;
+
+		if(window.doOnSTBCallbacks)
+		{
+			window.doOnSTBCallbacks.push(callback);	
+		}
+		else
+		{
+			window.doOnSTBCallbacks = [callback];
+			
+			//无论文档中调用了多少次doOnScrollToBottom方法，事件绑定仅只执行一次
+			handler = function()
+			{
+				var doOnSTBCallbacks = window.doOnSTBCallbacks, func;
+				if((document.body.scrollTop || document.documentElement.scrollTop) + document.documentElement.clientHeight == document.documentElement.scrollHeight)
+				{
+					for(i = 0, len = doOnSTBCallbacks.length; i < len; i++){
+						doOnSTBCallbacks[i].call();
+					}
+				}
+			};
+			document.addEventListener ? window.addEventListener("scroll", handler) : window.attachEvent("onscroll", handler);
+		}
+	}
+
+    //=====================================================================
+    //测试代码
+	doOnScrollToBottom(function(){
+		document.body.style.height = document.documentElement.scrollHeight + 1000 + "px";
+	});
+	doOnScrollToBottom(function(){
+		document.body.style.cssText += ";background:url(images/pic1.jpg);";
+	});
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

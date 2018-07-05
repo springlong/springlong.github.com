@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>AngularJS 应用</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="js/angular-1.0.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+	<h1>Hello World!</h1>
+	<div>
+		<p>AngularJS 模块（Module） 定义了 AngularJS 应用。</p>
+		<p>AngularJS 控制器（Controller） 用于控制 AngularJS 应用。</p>
+		<p><code>ng-app</code>指令定义了应用, <code>ng-controller</code> 定义了控制器。</p>
+	</div>
+<pre>
+&lt;div ng-app="myApp" ng-controller="myCtrl">
+	firstName: &lt;input type="text" ng-model="firstName">
+	&lt;br>lastName: &lt;input type="text" ng-model="lastName">
+	&lt;br>
+	&lt;br>姓名: {{firstName + " " + lastName}}
+&lt;/div>
+&lt;script>
+	var app = angular.module('myApp', []);
+	app.controller('myCtrl', function($scope) {
+	    $scope.firstName= "John";
+	    $scope.lastName= "Doe";
+	});
+&lt;/script>
+</pre>
+	<hr>
+	<div ng-app="myApp" ng-controller="myCtrl">
+		firstName: <input type="text" ng-model="firstName">
+		<br><br>lastName: <input type="text" ng-model="lastName">
+		<br>
+		<br>姓名: {{firstName + " " + lastName}}
+	</div>
+	<script>
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope) {
+		    $scope.firstName= "John";
+		    $scope.lastName= "Doe";
+		});
+	</script>
+	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+</div>
+</body>
+</html>

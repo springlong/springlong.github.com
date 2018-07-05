@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Date日期对象：Date.now()</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script src="../../public/js/jquery.min.js"></script>
+    <script src="../../public/js/jquery.extend.js"></script>
+    <script src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+    	body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';} 
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+		code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+		span.code{display:inline-block;width:360px;}
+
+		#wrapper div{display:inline-block;font-size:21px;font-weight:bold;color:#3B834D;}
+    </style>
+</head>
+<body>
+<h1>Date日期对象：Date.now()</h1>
+<h2>执行代码：</h2>
+<pre class="jsCodeNum">
+//兼容IE6~8：返回当前日期时间的毫秒级快照
+Date.now === undefined &amp;&amp; (Date.now = function(){
+    return new Date().getTime();
+});
+
+//执行代码
+document.write( Date.now() );
+</pre>
+<h2>输出结果：</h2>
+<script>
+    //兼容IE6~8：返回当前日期时间的毫秒级快照
+    Date.now === undefined && (Date.now = function(){
+        return new Date().getTime();
+    });
+
+    //执行代码
+    document.write( Date.now() );
+
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

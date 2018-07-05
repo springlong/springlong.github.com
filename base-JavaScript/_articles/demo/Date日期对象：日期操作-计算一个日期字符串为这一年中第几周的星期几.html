@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>日期操作：计算一个日期字符串为这一年中第几周的星期几</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:360px;}
+    </style>
+</head>
+<body>
+<h1>日期操作：计算一个日期字符串为这一年中第几周的星期几</h1>
+<h2>运行结果</h2>
+<div id="wrapper"></div>
+<h2>脚本函数</h2>
+<pre class="jsCode autoHeight">
+/**
+ * 计算一个日期字符串为这一年中第几周的星期几，如果是无效日期则最终返回Null。
+ * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
+ * @param  {String|Date} dateStr 日期字符串
+ * @return {Object}      {year: 基于哪一年(Number), weekth: 第几周(Number), weekday: 星期几(String)}          
+ */
+function getWeekInfo(dateStr)
+{
+    var oDate = new Date(typeof dateStr === "string" ? dateStr.replace(/-/g, "/") : dateStr),
+        year = oDate.getFullYear();
+
+    if(isNaN(year)) return null;
+
+    var first = new Date(year, 0, 1),
+        firstWeekday = first.getDay(),
+        next = new Date(year+1, 0, 1),
+        nextWeekday = next.getDay(),
+
+        dateDiff = Math.floor((oDate.getTime() - first.getTime()) / (1000*60*60*24)),  //与1月1日相差的天数
+        weekth = Math.floor((dateDiff + firstWeekday) / 7) + 1,  //1月1日所处的周为一年的第一周，通过与1月1日相差的天数和1月1日所处的星期几相加再除以1周的基数7即可获得当前日期位于一年的第几周
+        weekday = "星期" + ["日", "一", "二", "三", "四", "五", "六"][oDate.getDay()];  //当前前日期所表示的星期几
+
+    //与下一年1月1日所处在同一周的最后几天作将为下一年的第一周，而不是最后一周
+    if(nextWeekday !== 0 &amp;&amp; oDate.getMonth() === 11 &amp;&amp; oDate.getDate() > 31 - nextWeekday){
+        year++;
+        weekth = 1;
+    }
+
+    return {year: year, weekth: weekth, weekday: weekday };
+}
+
+/**
+ * 根据传递过来的日期字符串，通过调用getWeekInfo函数获得周与星期的相关信息，然后通过字符串组合来打印文本信息
+ * @param  {String|Date} dateStr 日期字符串
+ * @return {String|null}
+ */
+function printWeekInfo(dateStr)
+{
+    var data = getWeekInfo(dateStr);
+    return data === null ? null : (data.year + "年第" + data.weekth + "周，" + data.weekday);
+}
+</pre>
+<h2>调用代码</h2>
+<pre class="jsCode autoHeight">
+var str = '&lt;p>&lt;span class="code">&lt;code>getWeekInfo(new Date())&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo(new Date()) + '&lt;/span>&lt;/p>';
+str += '-------------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2013-12-27")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2013-12-27") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2013-12-28")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2013-12-28") + '&lt;/span>&lt;/p>';
+str += '-------------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2013-12-29")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2013-12-29") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2013-12-30")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2013-12-30") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2013-12-31")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2013-12-31") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-01-04")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-01-04") + '&lt;/span>&lt;/p>';
+str += '-------------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-01-05")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-01-05") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-01-11")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-01-11") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-01-12")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-01-12") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-05-01")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-05-01") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-06-01")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-06-01") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-07-01")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-07-01") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-12-25")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-12-25") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-12-26")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-12-26") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-12-27")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-12-27") + '&lt;/span>&lt;/p>';
+str += '-------------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-12-28")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-12-28") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-12-29")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-12-29") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-12-30")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-12-30") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-12-31")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-12-31") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2015-01-01")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2015-01-01") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getWeekInfo("2014-10-10-18")&lt;/code>&lt;/span>&lt;span class="result">' + printWeekInfo("2014-10-10-18") + '&lt;/span>&lt;/p>';
+document.getElementById("wrapper").innerHTML = str;
+</pre>
+<script>
+    /**
+     * 计算一个日期字符串为这一年中第几周的星期几，如果是无效日期则最终返回Null。
+     * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
+     * @param  {String|Date} dateStr 日期字符串
+     * @return {Object}      {year: 基于哪一年(Number), weekth: 第几周(Number), weekday: 星期几(String)}       
+     */
+    function getWeekInfo(dateStr)
+    {
+        var oDate = new Date(typeof dateStr === "string" ? dateStr.replace(/-/g, "/") : dateStr),
+            year = oDate.getFullYear();
+
+        if(isNaN(year)) return null;
+
+        var first = new Date(year, 0, 1),
+            firstWeekday = first.getDay(),
+            next = new Date(year+1, 0, 1),
+            nextWeekday = next.getDay(),
+
+            dateDiff = Math.floor((oDate.getTime() - first.getTime()) / (1000*60*60*24)),  //与1月1日相差的天数
+            weekth = Math.floor((dateDiff + firstWeekday) / 7) + 1,  //1月1日所处的周为一年的第一周，通过与1月1日相差的天数和1月1日所处的星期几相加再除以1周的基数7即可获得当前日期位于一年的第几周
+            weekday = "星期" + ["日", "一", "二", "三", "四", "五", "六"][oDate.getDay()];  //当前前日期所表示的星期几
+
+        //与下一年1月1日所处在同一周的最后几天作将为下一年的第一周，而不是最后一周
+        if(nextWeekday !== 0 && oDate.getMonth() === 11 && oDate.getDate() > 31 - nextWeekday){
+            year++;
+            weekth = 1;
+        }
+
+        return {year: year, weekth: weekth, weekday: weekday };
+    }
+
+    /**
+     * 根据传递过来的日期字符串，通过调用getWeekInfo函数获得周与星期的相关信息，然后通过字符串组合来打印文本信息
+     * @param  {String|Date} dateStr 日期字符串
+     * @return {String|null}
+     */
+    function printWeekInfo(dateStr)
+    {
+        var data = getWeekInfo(dateStr);
+        return data === null ? null : (data.year + "年第" + data.weekth + "周，" + data.weekday);
+    }
+
+    //=====================================================================
+    //测试代码
+    var str = '<p><span class="code"><code>getWeekInfo(new Date())</code></span><span class="result">' + printWeekInfo(new Date()) + '</span></p>';
+    str += '-------------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>getWeekInfo("2013-12-27")</code></span><span class="result">' + printWeekInfo("2013-12-27") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2013-12-28")</code></span><span class="result">' + printWeekInfo("2013-12-28") + '</span></p>';
+    str += '-------------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>getWeekInfo("2013-12-29")</code></span><span class="result">' + printWeekInfo("2013-12-29") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2013-12-30")</code></span><span class="result">' + printWeekInfo("2013-12-30") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2013-12-31")</code></span><span class="result">' + printWeekInfo("2013-12-31") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-01-04")</code></span><span class="result">' + printWeekInfo("2014-01-04") + '</span></p>';
+    str += '-------------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>getWeekInfo("2014-01-05")</code></span><span class="result">' + printWeekInfo("2014-01-05") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-01-11")</code></span><span class="result">' + printWeekInfo("2014-01-11") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-01-12")</code></span><span class="result">' + printWeekInfo("2014-01-12") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-05-01")</code></span><span class="result">' + printWeekInfo("2014-05-01") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-06-01")</code></span><span class="result">' + printWeekInfo("2014-06-01") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-07-01")</code></span><span class="result">' + printWeekInfo("2014-07-01") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-12-25")</code></span><span class="result">' + printWeekInfo("2014-12-25") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-12-26")</code></span><span class="result">' + printWeekInfo("2014-12-26") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-12-27")</code></span><span class="result">' + printWeekInfo("2014-12-27") + '</span></p>';
+    str += '-------------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>getWeekInfo("2014-12-28")</code></span><span class="result">' + printWeekInfo("2014-12-28") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-12-29")</code></span><span class="result">' + printWeekInfo("2014-12-29") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-12-30")</code></span><span class="result">' + printWeekInfo("2014-12-30") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-12-31")</code></span><span class="result">' + printWeekInfo("2014-12-31") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2015-01-01")</code></span><span class="result">' + printWeekInfo("2015-01-01") + '</span></p>';
+    str += '<p><span class="code"><code>getWeekInfo("2014-10-10-18")</code></span><span class="result">' + printWeekInfo("2014-10-10-18") + '</span></p>';
+    document.getElementById("wrapper").innerHTML = str;
+    
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

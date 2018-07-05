@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>过滤器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+<div class="container" style="padding-bottom: 50px;">
+	<h1>过滤器</h1>
+	<p class="text-item">Vue.js 允许你自定义过滤器，可被用于一些常见的文本格式化。过滤器可以用在两个地方：双花括号插值和 v-bind 表达式 (后者从 2.1.0+ 开始支持)。过滤器应该被添加在 JavaScript 表达式的尾部，由“管道”符号指示：</p>
+	<hr>
+	<div id="testBox">
+		<div>{{price | toFixed(2)}}</div>
+		<div>{{word | capitalize | addtext}}</div>
+		<div :id="id | uppercase">查看id属性</div>
+	</div>
+	<script>
+		// 全局过滤器
+		Vue.filter('uppercase', function(value) {
+			return (value+'').toUpperCase();
+		});
+
+		var vm = new Vue({
+			el: "#testBox",
+			data: {
+				price: 13333.123123123,
+				id: 'vueExample',
+				word: 'hello'
+			},
+			// 本地过滤器
+			filters: {
+				capitalize: function(value) {
+					if(!value) return '';
+					value = value.toString();
+					return value.charAt(0).toUpperCase() + value.slice(1);
+				},
+				addtext: function(value) {
+					return value + ' addtext';
+				},
+				toFixed: function(value, xiaoshu) {
+					var num = parseFloat(value) || 0;
+					return num.toFixed(xiaoshu);
+				}
+			}
+		});
+	</script>
+</div>
+</body>
+</html>

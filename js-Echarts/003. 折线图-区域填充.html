@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>折线图-区域填充</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery/1.11.1/jquery.js"></script>
+    <script src="js/echarts.js"></script>
+    <style>
+        #operate {
+            margin-bottom: 30px;
+        }
+
+        #operate a {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #ddd;
+            color: #eee;
+            background: #4D7698;
+            text-decoration: none;
+        }
+
+        #operate a.selected {
+            background: #2C89D3;
+        }
+    </style>
+</head>
+<body>
+<h1>十一黄金周销量情况</h1>
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 400px; height:150px;margin-left: 10px;"></div>
+
+<script>
+    // 初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图标的配置项和数据
+    var option = {
+        // 提示框组件
+        tooltip: {
+            show: true,             // 是否显示
+            trigger: 'axis',        // 触发类型：'axis'-坐标轴触发、'item'-数据项触发、'none'-不触发
+            triggerOn: 'mousemove'  // 触发条件：'mousemove'-鼠标移动触发、'click'-鼠标点击触发、'mousemove|click'-同时鼠标移动和点击触发、'none'-不触发
+        },
+        // 直角坐标系 grid 中的 x 轴，一般情况下单个 grid 组件最多只能放左右两个 x 轴，多于两个 x 轴需要通过配置 offset 属性防止同个位置多个 x 轴的重叠
+        xAxis: [{
+            // 坐标轴名称
+            name: '日期',
+            // 坐标轴名称与轴线之间的距离 [ default: 15 ]
+            nameGap: 10,
+            // 类目数据-所有类目名称列表
+            data: ['2016-10-01', '2016-10-02', '2016-10-03', '2016-10-04', '2016-10-05', '2016-10-06', '2016-10-07'],
+            // 坐标轴标签的相关设置
+            axisLabel: {
+                // 格式化输出-使用函数
+                formatter: function(value, index){
+                    var oDate = new Date(value);
+                    return (oDate.getMonth() + 1) + '.' + oDate.getDate();
+                }
+            },
+        }],
+        // 直角坐标系 grid 中的 y 轴，一般情况下单个 grid 组件最多只能放左右两个 y 轴，多于两个 y 轴需要通过配置 offset 属性防止同个位置多个 Y 轴的重叠
+        yAxis: [{
+            // 坐标轴类型：'value'-数值轴，用于展示数据、'category'-类目轴，通过data字段设置类目数据、'time'-时间轴，适用于连续的时序数据，是数值轴相比时间轴带有时间的格式化，在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度
+            type: 'value',
+            // 坐标轴名称
+            // name: '销量',
+            // 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整（在类目轴中无效，默认：5）
+            // splitNumber: 5,
+            // 数值轴最小值
+            min: 0, 
+            // 数值轴最大值
+            max: 200,
+            // 坐标轴线的相关设置
+            axisLine: {
+                // 是否显示坐标轴线，默认为：true
+                show: false
+            },
+            // 坐标轴在 grid 区域中的分割线
+            splitLine: {
+                // 是否显示分割线，默认为：true
+                show: false,
+                // 分割线样式设置
+                lineStyle: {
+                    // 分割线宽度，默认为1px
+                    width: 1,
+                    // 分割线类型，可选择：'solid'-实线（默认）、'dashed'-按-平铺型、'dotted'-按点平铺型
+                    type: 'solid',
+                    // 分隔线颜色，可以设置成单个颜色。也可以设置成颜色数组，分隔线会按数组中颜色的顺序依次循环设置颜色。
+                    color: ['#ddd']
+                }
+            },
+            // 坐标轴标签的相关设置
+            axisLabel: {
+                // 是否显示，默认true
+                show: true,
+                // 是否朝内显示，默认false
+                inside: false,
+                // 刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间的重叠（旋转的角度从 -90 度到 90 度，默认为0）
+                rotate: 0,
+                // 刻度标签与轴线之间的距离，默认为：8
+                margin: 8,
+                // 格式化输出-使用字符串，变量使用 {value} 表示
+                formatter: '{value} 万元',
+                // 格式化输出-使用函数
+                formatter: function(value, index){
+                    return value + ' 万元'
+                }
+            }
+        }],
+        // 通过设置坐标系的绘图网格的四个位置值为零，将轴线隐藏
+        grid: {
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0
+        },
+        // 系列列表。每个系列通过 type 决定自己的图表类型
+        series: [{
+                name: '销量',
+                type: 'line',
+                smooth: true,  // 是否平滑曲线显示，默认为：false
+                // 线条样式
+                lineStyle: {
+                    normal: {
+                        color: '#710AAD',   // 颜色
+                        type: 'solid',      // 线条类型：'solid' 'dashed' 'dotted'
+                        width: 1            // 宽度，默认2px
+                    }
+                },
+                // 区域填充样式
+                areaStyle: {
+                    normal: {
+                        // 纯色
+                        color: '#000',
+                        // 线性渐变，前四个参数分别是 x0, y0, x2, y2, 范围从 0 - 1，相当于在图形包围盒中的百分比，如果 globalCoord 为 `true`，则该四个值是绝对的像素位置
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0, color: '#58AFD8' // 0% 处的颜色
+                            }, {
+                                offset: 1, color: '#034B74' // 100% 处的颜色
+                            }],
+                            globalCoord: false // 缺省为 false
+                        },
+                        // 径向渐变，前三个参数分别是圆心 x, y 和半径，取值同线性渐变
+                        // color: {
+                        //     type: 'radial',
+                        //     x: 0.5,
+                        //     y: 0.5,
+                        //     r: 0.5,
+                        //     colorStops: [{
+                        //         offset: 0, color: 'red' // 0% 处的颜色
+                        //     }, {
+                        //         offset: 1, color: 'blue' // 100% 处的颜色
+                        //     }],
+                        //     globalCoord: false // 缺省为 false
+                        // }
+                    }
+                },
+                data: [15, 50, 66, 28, 40, 60, 10]
+            }
+        ],
+        // 调色盘颜色列表。如果系列没有设置颜色，则会依次循环从该列表中取颜色作为系列颜色
+        color: ['#0A52C9']
+    };
+
+    // 显示图表
+    myChart.setOption(option);
+</script>
+</body>
+</html>

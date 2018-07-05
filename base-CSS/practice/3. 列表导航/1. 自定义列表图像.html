@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>自定义列表图像</title>
+	<style type="text/css">
+		body{
+			font-size:18px;
+			color:#333;
+		}
+		
+		ul{
+			margin:0px;
+			padding:0px;		/*说明：由于列表默认采用了一定的padding和margin值，所以在这里进行清除！*/
+			list-style:none;
+		}
+		li{
+			padding-left:30px;
+			line-height:1.5;
+			background:url(images/bullet.gif) no-repeat left center;	/*说明：为什么不使用list-style-image属性设置列表图像呢，那是因为使用该属性设置图像不能调整图像的位置，所以使用背景来代替！*/
+		}
+		
+	</style>
+</head>
+<body>
+<ul>
+	<li>主页</li>
+	<li>公司简介</li>
+	<li>公司规划</li>
+	<li>公司前景</li>
+</ul>
+
+
+
+</body>
+</html>

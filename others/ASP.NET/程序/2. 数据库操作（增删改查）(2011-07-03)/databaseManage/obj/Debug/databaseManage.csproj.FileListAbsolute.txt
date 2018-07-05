@@ -1,0 +1,15 @@
+D:\我的文档\公司任务\12. 新闻发布系统\databaseManage\bin\databaseManage.dll
+D:\我的文档\公司任务\12. 新闻发布系统\databaseManage\bin\databaseManage.pdb
+D:\我的文档\公司任务\12. 新闻发布系统\databaseManage\obj\Debug\ResolveAssemblyReference.cache
+D:\我的文档\公司任务\12. 新闻发布系统\databaseManage\obj\Debug\databaseManage.dll
+D:\我的文档\公司任务\12. 新闻发布系统\databaseManage\obj\Debug\databaseManage.pdb
+D:\我的文档\公司任务\13. 数据库操作（增删改查）\databaseManage\bin\databaseManage.dll
+D:\我的文档\公司任务\13. 数据库操作（增删改查）\databaseManage\bin\databaseManage.pdb
+D:\我的文档\公司任务\13. 数据库操作（增删改查）\databaseManage\obj\Debug\ResolveAssemblyReference.cache
+D:\我的文档\公司任务\13. 数据库操作（增删改查）\databaseManage\obj\Debug\databaseManage.dll
+D:\我的文档\公司任务\13. 数据库操作（增删改查）\databaseManage\obj\Debug\databaseManage.pdb
+D:\360云盘\公司任务\4. ASP.NET后台\2. 数据库操作（增删改查）(2011-07-03)\databaseManage\bin\databaseManage.dll
+D:\360云盘\公司任务\4. ASP.NET后台\2. 数据库操作（增删改查）(2011-07-03)\databaseManage\bin\databaseManage.pdb
+D:\360云盘\公司任务\4. ASP.NET后台\2. 数据库操作（增删改查）(2011-07-03)\databaseManage\obj\Debug\ResolveAssemblyReference.cache
+D:\360云盘\公司任务\4. ASP.NET后台\2. 数据库操作（增删改查）(2011-07-03)\databaseManage\obj\Debug\databaseManage.dll
+D:\360云盘\公司任务\4. ASP.NET后台\2. 数据库操作（增删改查）(2011-07-03)\databaseManage\obj\Debug\databaseManage.pdb

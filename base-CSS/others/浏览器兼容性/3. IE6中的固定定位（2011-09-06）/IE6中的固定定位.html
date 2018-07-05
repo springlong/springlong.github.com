@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8" />
+	<base target="_blank" />
+	<title>IE6中实现固定定位</title>
+	<style>
+		*{margin:0;padding:0;}
+		p{text-indent:2em;line-height:1.5em;}
+		code{word-break:break-all;word-wrap:break-word;}
+		#wrapper{height:2000px;}
+
+		#top{position:fixed;left:0;top:0;width:300px;height:400px;padding:10px;border:10px groove blue;overflow:auto;}
+		* html #top{position:absolute;left:0;bottom:auto;top:expression(eval(document.documentElement.scrollTop));}
+
+		#bottom{position:fixed;right:0;bottom:0;width:50px;height:50px;background:green;border:5px outset red;}
+		* html #bottom{position:absolute;right:0;bottom:auto;top:expression(eval(document.documentElement.clientHeight+document.documentElement.scrollTop-this.offsetHeight));}
+
+		#center{position:fixed;left:50%;top:50%;width:100px;height:130px;margin-left:-50px;margin-top:-65px;background:orange;}
+		* html #center{position:absolute;left:50%;bottom:0;top:expression(eval(document.documentElement.scrollTop+parseInt(document.documentElement.clientHeight-this.offsetHeight)/2));margin-top:0;}
+
+		*html{background-image:url(about:blank);background-attachment:fixed;}
+	</style>
+</head>
+<body>
+<div id="wrapper"></div>
+<div id="top">
+	<p>将图层固定在浏览器的指定位置处，可以通过position:fixed轻易解决，但是IE6不支持固定定位，所以，在此还得借助CSS Hack将目标元素以body为参照物进行绝对定位来解决：</p>
+	<p>
+		<strong>实现顶部定位：</strong>
+		<code>
+			<br />_position:absolute;
+			<br />_left:0;
+			<br />_bottom:auto;
+			</br />_top:expression(eval(document.documentElement.scrollTop));
+		</code>
+	</p>
+	<p>
+		<strong>实现底部定位：</strong>
+		<code>
+			<br />_position:absolute;
+			<br />_left:0;
+			<br />_bottom:auto;
+			</br />_top:expression(eval(document.documentElement.clientHeight + document.documentElement.scrollTop - this.offsetHeight));
+		</code>
+	</p>
+	<p>
+		<strong>实现中央定位：</strong>
+		<code>
+			<br />_position:absolute;
+			<br />_left:50%;
+			<br />_bottom:0;
+			<br />_top:expression(eval(document.documentElement.scrollTop+parseInt(document.documentElement.clientHeight-this.offsetHeight)/2));
+			<br />margin-left:目标元素宽度一半的相反数;
+			<br />margin-top:0;
+		</code>
+	</p>
+	<p>
+		<strong>通过上面的代码可以实现IE6的固定定位，但滚动浏览器的滚动条时，将会出现闪动的效果，通过以下代码即可解决：</strong>
+		<code>
+			<br />*html{background-image:url(about:blank);background-attachment:fixed;}
+		</code>
+	</p>
+	<p>
+		<strong>位置的偏移：</strong>
+		<br />如果需要将目标元素定位到页面中的相应位置，必须先将其定位到顶部或尾部或中央，然后再通过margin来对该元素进行偏移，切记！
+	</p>
+</div>
+<div id="center"></div>
+<div id="bottom"></div>
+</body>
+</html>

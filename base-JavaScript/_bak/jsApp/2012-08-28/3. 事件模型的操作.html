@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gb2312">
+    <title>事件模型的操作 - jsApp</title>
+    <script type="text/javascript" src="jsApp.js"></script>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        body{padding-bottom:50px;font-size:14px;line-height:24px;}
+        section{display:block;}
+        p{margin:20px 0;}
+
+        #control{width:400px;margin:10px auto;}
+        #control button{width:180px;height:30px;margin-top:10px;}
+        #btnExec,#btnUnbind3{margin-left:90px;}
+
+        .div1{width:200px;height:200px;line-height:2em;background:#98C43E;}
+        .div2{width:150px;height:150px;background:#0D6489;}
+        .div3{width:100px;height:100px;background:#666;}
+
+        #info{width:980px;margin:10px auto;text-align:center;}
+    </style>
+</head>
+<body>
+    <img width="20" height="20" src="http://www.er021.com/images/banner/header_banner.jpg" />
+    <img width="20" height="20" src="http://www.er021.com/Img.aspx?i=/uploads/2012/1125/2012112517385946165.jpg" alt="" />
+    <img width="20" height="20" src="http://www.er021.com/Img.aspx?i=/uploads/2012/1209/2012120916282690003.jpg" alt="" />
+    <img width="20" height="20" src="http://www.er021.com/Img.aspx?i=/uploads/2012/1125/2012112516482187303.jpg" alt="" />
+    <img width="20" height="20" src="http://www.er021.com/Img.aspx?i=/uploads/2012/1125/2012112516484926637.jpg" alt="" />
+    <img width="20" height="20" src="http://www.er021.com/Img.aspx?i=/uploads/2012/1125/2012112516565553353.jpg" alt="" />
+    <img width="20" height="20" src="http://www.er021.com/Img.aspx?i=/uploads/2012/1125/2012112517322195469.jpg" alt="" />
+    <img width="20" height="20" src="http://www.er021.com/Img.aspx?i=/uploads/2012/1126/2012112614100381127.jpg" alt="治愈鼾症,鼻炎&nbsp;夫妻欢喜把家还" />
+    <img width="20" height="20" src="http://www.er021.com/Img.aspx?i=/uploads/thumes/20120624170724.jpg" alt="治愈过敏性鼻炎&nbsp;别让孩子输在起跑线" />
+    <img width="20" height="20" src="http://www.er021.com/images/public/aside_ztnner1.jpg" alt="美国ART安泰低温等离子疗法，低温，无痛治疗" />
+    <img width="20" height="20" src="http://www.er021.com/images/public/aside_ztnner6.jpg" alt="康乐TTS/DTS系统疗法，让耳鸣耳聋患者绝处逢声" />
+    <img width="20" height="20" src="http://www.er021.com/images/public/aside_ztnner8.jpg" alt="三镜合壁技术，安全，微创，高效" />
+    <p id="showKeypress">1. 你按下键盘上的字母或者数字键，这里将输出你所按的字符（双击空白区域可取消这个功能）：</p>
+    <p id="showLoad">2. 这里显示的是浏览器load与DOMContentLoaded的先后顺序：</p>
+    <p id="showInfo">3. 点击下面三个图层，可促进对事件流的理解。</p>
+    <div id="box-a" class="div1" style="position:relative;">
+        div1
+        <div id="box-b" class="div2">
+            div2
+            <div id="box-c" class="div3">
+                div3
+            </div>
+        </div>
+    </div>
+    <script>
+        var showInfo = $$("#showInfo"),
+            showKey = $$("#showKeypress"),
+            callback;
+
+        //事件的常规绑定方式 + event对象的操作方式
+        callback = $$(document).bind("keypress", function(e)
+        {
+            showKey.node.innerHTML += " " + String.fromCharCode(e.keyCode);
+        });
+        $$(document).bind("dblclick", function(e)
+        {
+            $$(document).unbind("keypress", callback);  //解除事件绑定
+        });
+
+        //理解事件模型中的事件流 + 事件冒泡，以及事件绑定的快捷方式
+        $$("#box-a").click(function(e)
+        {
+            alert("您点击的是：div1");
+        });
+        $$("#box-b").click(function(e)
+        {
+            alert("您点击的是：div2");
+        });
+        $$("#box-c").click(function(e)
+        {
+            alert("您点击的是：div3");
+        });
+
+        //DOMContentLoaded事件的兼容性验证：
+        $$(window).load(function(e)
+        {
+            //页面加载完毕之后执行
+            $$("#showLoad").node.innerHTML += "load ";
+        });
+        $$(function(e)
+        {
+            //DOM树构建完毕之后执行
+            $$("#showLoad").node.innerHTML += "DOMContentLoaded ";
+        });
+    </script>
+</body>
+</html>

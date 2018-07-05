@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS应用——滤镜的使用（阴影设置）</title>
+	<meta name="keywords" content="CSS应用——滤镜的使用" />
+	<meta name="description" content="CSS应用——滤镜的使用" />
+	<meta name="author" content="Jerry_小猪" />
+	<meta http-equive="Content-Type" content="text/html;charset=gb2312"/>
+	<style type="text/css">
+		@import url("css.css");
+		
+		#biaozhun{
+			width:600px;
+			height:30px;
+			border:4px solid silver;}
+			
+}
+    </style>
+</head>
+<body>
+	<p class="caption">CSS应用-滤镜的使用（阴影设置）</p>
+<p class="caption">CSS应用-滤镜的使用（阴影设置）</p>
+<hr />
+	<table width="850" border="1" align="center" bordercolor="black" cellspacing="0" cellpadding="5" style="font-size:16px;color:#0033CC">
+    	<!--第一行-->
+    	<tr align="center" height="30" bgcolor="silver">
+        	<td colspan="2" class="type"><span class="caption">阴影设置</span></td>
+      </tr>
+        <tr height="30">
+        	<td colspan="2" align="center"><span class="keywords">filter:shadow(color=?,direction=?);</span></td>
+        </tr>
+    	<!--第二行-->
+    	<tr height="30">
+        	<td>属性</td>
+        	<td>说明</td>
+        </tr>
+    	<!--第三行-->
+    	<tr height="30">
+        	<td>color</td>
+       	  <td>设置阴影的颜色！默认颜色为：黑色。</td>
+      </tr>
+    	<!--第四行-->
+    	<tr height="30">
+        	<td height="20">direction</td>
+       	  <td>设置阴影渐变的方向，从0<sup>。</sup>开始，每45<sup>。</sup>为一个单位，默认值为225<sup>。</sup>。
+          	  <br />0<sup>。</sup>—正上方；45<sup>。</sup>—右上角方向；90<sup>。</sup>—右侧方向；135<sup>。</sup>—右下角方向；
+              <br />180<sup>。</sup>—正下方；225<sup>。</sup>—左下角方向；270<sup>。</sup>—左侧方向；315<sup>。</sup>—左上角方向；360<sup>。</sup>—正上方。
+          </td>
+        </tr>
+    	<!--第五行-->
+    	<tr height="30">
+        	<td>&nbsp;</td>
+       	  <td>注意：阴影效果必须针对某一区块中的文本或图片，即要设置一个区块的width或height属性，才能正确显示出阴影的效果！</td>
+      	</tr>
+    	<!--第六行-->
+    	<!--第七行-->
+    </table>
+    
+<hr />
+    
+	正常情况下：
+	<p  style="width:600px;height:30px;">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	0.默认设置下：<span class="keywords">filter:shadow();</span>
+	<p  style="width:600px;height:30px;filter:shadow();">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	1.阴影颜色为灰色，渐变方向为0<sup>。</sup>：<span class="keywords">filter:shadow(color=gray,direction=0);</span>
+	<p  style="width:600px;height:30px;filter:shadow(color=gray,direction=0);">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	2.阴影颜色为红色，渐变方向为45<sup>。</sup>：<span class="keywords">filter:shadow(color=red,direction=45);</span>
+	<p  style="width:600px;height:30px;filter:shadow(color=red,direction=45);">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	3.阴影颜色为蓝色，渐变方向为90<sup>。</sup>：<span class="keywords">filter:shadow(color=blue,direction=90);</span>
+	<p  style="width:600px;height:30px;filter:shadow(color=blue,direction=90);">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	4.阴影颜色为黑色，渐变方向为135<sup>。</sup>：<span class="keywords">filter:shadow(color=black,direction=135);</span>
+	<p  style="width:600px;height:30px;filter:shadow(color=black,direction=135);">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	5.阴影颜色为青色，渐变方向为180<sup>。</sup>：<span class="keywords">filter:shadow(color=cyan,direction=180);</span>
+	<p  style="width:600px;height:30px;filter:shadow(color=cyan,direction=180);">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	6.阴影颜色为橙色，渐变方向为225<sup>。</sup>：<span class="keywords">filter:shadow(color=orange,direction=225);</span>
+	<p  style="width:600px;height:30px;filter:shadow(color=orange,direction=225);">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	7.阴影颜色为紫色，渐变方向为270<sup>。</sup>：<span class="keywords">filter:shadow(color=purple,direction=270);</span>
+	<p  style="width:600px;height:30px;filter:shadow(color=purple,direction=270);">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	8.阴影颜色为yellow，渐变方向为315<sup>。</sup>：<span class="keywords">filter:shadow(color=yellow,direction=315);</span>
+	<p  style="width:600px;height:30px;filter:shadow(color=yellow,direction=315);">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+	9.阴影颜色为黑色，渐变方向为360<sup>。</sup>：<span class="keywords">filter:shadow(color=black,direction=360);</span>
+	<p  style="width:600px;height:30px;filter:shadow(color=black,direction=360);">
+    	这是阴影的显示效果！<img src="../images/pic3.jpg" width="100" height="90" />
+    </p>
+    <hr />
+    
+    <hr />
+  
+    
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>日期操作：计算一个日期字符串所处的当月有多少天</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:360px;}
+    </style>
+</head>
+<body>
+<h1>日期操作：计算一个日期字符串所处的当月有多少天</h1>
+<h2>运行结果</h2>
+<div id="wrapper"></div>
+<h2>脚本函数</h2>
+<pre class="jsCode autoHeight">
+/**
+ * 计算一个日期字符串所处的当月有多少天，如果是无效日期则最终返回NaN。
+ * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
+ * @param  {String|Date} dateStr 日期字符串
+ * @return {Number}       
+ */
+function getMonthDays(dateStr)
+{
+    var oDate = new Date(typeof dateStr === "string" ? dateStr.replace(/-/g, "/") : dateStr),
+        month = oDate.getMonth() + 1;
+
+    //new Date(2014, 12, 0).getDate()的返回值是2014年11月的最后一天
+    return isNaN(month) ? NaN : new Date(oDate.getFullYear(), month, 0).getDate();
+}
+</pre>
+<h2>调用代码</h2>
+<pre class="jsCode">
+var str = '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-01-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-01-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-02-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-02-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-03-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-03-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-04-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-04-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-05-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-05-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-06-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-06-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-07-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-07-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-08-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-08-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-09-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-09-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-10-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-10-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-11-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-11-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2014-12-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2014-12-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays(new Date())&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays(new Date()) + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2012-02-23")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2012-02-23") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>getMonthDays("2012-02-23-18")&lt;/code>&lt;/span>&lt;span class="result">' + getMonthDays("2012-02-23-18") + '&lt;/span>&lt;/p>';
+document.getElementById("wrapper").innerHTML = str;
+</pre>
+<script>
+    /**
+     * 计算一个日期字符串所处的当月有多少天，如果是无效日期则最终返回NaN。
+     * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
+     * @param  {String|Date} dateStr 日期字符串
+     * @return {Number}       
+     */
+    function getMonthDays(dateStr)
+    {
+        var oDate = new Date(typeof dateStr === "string" ? dateStr.replace(/-/g, "/") : dateStr),
+            month = oDate.getMonth() + 1;
+
+        //new Date(2014, 12, 0).getDate()的返回值是2014年11月的最后一天
+        return isNaN(month) ? NaN : new Date(oDate.getFullYear(), month, 0).getDate();
+    }
+    // function getMonthDays(dateStr)
+    // {
+    //     var oDate = new Date(typeof dateStr === "string" ? dateStr.replace(/-/g, "/") : dateStr),
+    //         month = oDate.getMonth() + 1,
+    //         days, year;
+
+    //     if(isNaN(month)){
+    //         return NaN;  
+    //     }else if(",1,3,5,7,8,10,12,".indexOf(month = "," + month + ",") >= 0){
+    //         days = 31;
+    //     }else if(",4,6,9,11,".indexOf(month) >= 0){
+    //         days = 30;
+    //     }else{
+    //         year = oDate.getFullYear();
+    //         days = year % 400 === 0 || year % 4 === 0 && year % 100 !== 0 ? 29 : 28;
+    //     }
+    //     return days;
+    // }
+
+    //=====================================================================
+    //测试代码
+    var str = '<p><span class="code"><code>getMonthDays("2014-01-23")</code></span><span class="result">' + getMonthDays("2014-01-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-02-23")</code></span><span class="result">' + getMonthDays("2014-02-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-03-23")</code></span><span class="result">' + getMonthDays("2014-03-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-04-23")</code></span><span class="result">' + getMonthDays("2014-04-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-05-23")</code></span><span class="result">' + getMonthDays("2014-05-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-06-23")</code></span><span class="result">' + getMonthDays("2014-06-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-07-23")</code></span><span class="result">' + getMonthDays("2014-07-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-08-23")</code></span><span class="result">' + getMonthDays("2014-08-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-09-23")</code></span><span class="result">' + getMonthDays("2014-09-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-10-23")</code></span><span class="result">' + getMonthDays("2014-10-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-11-23")</code></span><span class="result">' + getMonthDays("2014-11-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2014-12-23")</code></span><span class="result">' + getMonthDays("2014-12-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays(new Date())</code></span><span class="result">' + getMonthDays(new Date()) + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2012-02-23")</code></span><span class="result">' + getMonthDays("2012-02-23") + '</span></p>';
+    str += '<p><span class="code"><code>getMonthDays("2012-02-23-18")</code></span><span class="result">' + getMonthDays("2012-02-23-18") + '</span></p>';
+    document.getElementById("wrapper").innerHTML = str;
+    
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

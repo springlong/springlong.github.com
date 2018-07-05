@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gb2312">
+    <title>创建Iframe加载相关内容</title>
+</head>
+<body>
+<script>
+	(function()
+	{
+		var iframe = document.createElement("iframe"), iframeHTML = "<img  src='http://www.baidu.com/' style='display:none'/>";
+		iframe.src = "about:blank";
+		iframe.style.cssText = "position:absolute;left:-1000px;top:0;overflow:hidden;";
+		iframe.onload = function()
+		{
+			this.contentWindow.document.body.innerHTML = iframeHTML; //针对非IE6~8
+		}
+		iframe.onreadystatechange = function()
+		{
+			this.readyState === "complete" && (this.contentWindow.document.body.innerHTML = iframeHTML); //IE6~8不支持onload事件
+		}
+		document.body.appendChild(iframe);
+	})();
+</script>
+</body>
+</html>

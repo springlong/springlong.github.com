@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>事件流：事件捕获阶段、处于目标阶段、事件冒泡阶段</title>
+	<style>
+		.outer {width: 300px;height: 300px;padding:20px;background: #333;}
+		.inner {width: 200px;height: 200px;padding:20px;background: #eee;}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner">
+			<p class="buttonWrap"><button class="button">click me!</button></p>
+			<p class="inputWrap"><input class="input"></p>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		function $$(selector) {
+			return document.querySelector(selector);
+		}
+
+		// 点击事件
+		document.body.addEventListener('click', function(ev){
+			console.log('body click', ev.target);
+		});
+		$$('.outer').addEventListener('click', function(ev){
+
+			console.log('.outer click', ev.target);
+		}, true); // 事件捕获
+		$$('.inner').addEventListener('click', function(ev){
+			console.log('.inner click', ev.target);
+		});
+		$$('.buttonWrap').addEventListener('click', function(ev){
+			console.log('.buttonWrap click', ev.target);
+		});
+		$$('.button').addEventListener('click', function(ev){
+			console.log('.button click', ev.target);
+		});
+		$$('.inputWrap').addEventListener('click', function(ev){
+			console.log('.inputWrap click', ev.target);
+		});
+		$$('.input').addEventListener('click', function(ev){
+			ev.stopPropagation();  // 仅针对click事件阻止冒泡
+			console.log('.input click', ev.target);
+		});
+
+		// focus事件不会冒泡
+		document.body.addEventListener('focus', function(ev){
+			console.log('body focus', ev.target);
+		});
+		$$('.outer').addEventListener('focus', function(ev){
+			console.log('.outer focus', ev.target);
+		});
+		$$('.input').addEventListener('focus', function(ev){
+			console.log('.input focus', ev.target);
+		});
+
+		// blur事件不会冒泡
+		document.body.addEventListener('blur', function(ev){
+			console.log('body blur', ev.target);
+		});
+		$$('.outer').addEventListener('blur', function(ev){
+			console.log('.outer blur', ev.target);
+		});
+		$$('.input').addEventListener('blur', function(ev){
+			console.log('.input blur', ev.target);
+		});
+
+		// 键盘事件系列会进行冒泡
+		document.body.addEventListener('keyup', function(ev){
+			console.log('body keyup', ev.target);
+		});
+		$$('.outer').addEventListener('keyup', function(ev){
+			console.log('.outer keyup', ev.target);
+		});
+		$$('.input').addEventListener('keyup', function(ev){
+			console.log('.input keyup', ev.target);
+		});
+
+		// change事件会进行冒泡
+		document.body.addEventListener('change', function(ev){
+			console.log('body change', ev.target);
+		});
+		$$('.outer').addEventListener('change', function(ev){
+			console.log('.outer change', ev.target);
+		});
+		$$('.input').addEventListener('change', function(ev){
+			console.log('.input change', ev.target);
+		});
+	</script>
+</body>
+</html>

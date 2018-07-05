@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>循环操作：ms-for</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://cdn.bootcss.com/avalon.js/2.0.7/avalon.js"></script>
+    <style>
+        /* 一般情况下，我们在使用ms-controller/ms-important绑定时，需要添加一个ms-controller类名， 目的是为了防止网速慢时将花括号暴露出来。 */
+        .ms-controller {
+           visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<h1>循环操作：ms-for</h1>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>avalon2的循环指令的用法完全改变了。avalon最早期从knockout那样抄来ms-each,ms-with，分别用于数组循环与对象循环。它们都是针对元素内容进行循环。后来又从angular那里抄来了ms-repeat， 这是循环元素内部的。</p>
+    <p>到avalon2，这三个指令合并成一个<code>ms-for</code>指令 ，用法与angular更相似，但没有<code>$index</code>, <code>$last</code>, <code>$first</code>, <code>$middle</code>.</p>
+    
+    <p>&nbsp;</p>
+    <p>如果想得到数组元素或对象的键值，在in关键字前指定一个新变量</p>
+<pre>
+&lt;div ms-for="el in @arrayOrObject">{{el}}&lt;/div>
+</pre>
+
+    <p>&nbsp;</p>
+    <p>如果要指定数组索引值或对象的键名，那么需要加一个小括号</p>
+<pre>
+&lt;div ms-for="(index,el) in @arrayOrObject">{{el}}&lt;/div>
+</pre>
+
+    <p>&nbsp;</p>
+    <p>我们可以用limitBy, filterBy， orderBy, selectBy过滤器生成新的循环体</p>
+<pre>
+&lt;div ms-for="(index,el) in @arrayOrObject ｜ filterBy('name')">{{el}}&lt;/div>
+</pre>
+
+    <p>&nbsp;</p>
+    <p>如果用limitBy过滤器，那么数组的长度或对象的大小会变小，那我们现在就不知道现在的长度，因此我们需要另一个变量引用新对象新数组</p>
+<pre>
+&lt;div ms-for="(index,el) in @arrayOrObject as newArray｜ filterBy('name')">{{el}}::{{newArray.length}}&lt;/div>
+</pre>
+
+    <p>&nbsp;</p>
+    <p>如果想实现之前的$fist, $last效果，那就需要用到js指令</p>
+<pre>
+&lt;div ms-for="(index,el) in @arrayOrObject  as newArray｜ filterBy('name')">
+&lt;!--ms-js:var $first = $index === 0 -->
+&lt;!--ms-js:var $last = $index === new Array -2 -->
+&lt;/div>
+</pre>
+    <p>这是我们第一次见到以注释节点存在的指令了。实质上，ms-if的值为false，创建的注释节点也算是一种注释指令。</p>
+
+    <p>&nbsp;</p>
+    <p>而avalon2是没有像angular那样的ng-repeat-start, ng-repeat-end这样圈 定某个范围的辅助指令。换言之，不能像ms-repeat那样循环多个元素。</p>
+    <p>这时我们需要了解一下其内部机制。这个以元素属性存在的ms-for指令，会翻译成以注释节点存在的ms-for指令。</p>
+<pre>
+&lt;div class='panel' ms-for="($index, el) in @array">{{el}}::{{$index}}&lt;/div>
+</pre>
+    <p>等价于</p>
+<pre>
+&lt;!--ms-for:($index,el) in @array-->
+&lt;div class='panel'>{{el}}::{{$index}}&lt;/div>
+&lt;!--ms-for-end:-->
+</pre>
+
+    <p>这有点复杂，但可以解决我们循环多个元素的问题</p>
+<pre>
+&lt;!--ms-for:($index,el) in @array-->
+&lt;td>{{el.td1}}&lt;/td>
+&lt;td>{{el.td2}}&lt;/td>
+&lt;!--ms-for-end:-->
+</pre>
+
+    <p>&nbsp;</p>
+    <blockquote>注意，avalon2的监控数组已经移除size()方法，由于内部使用了虚拟DOM，你直接使用@array.length就能得知道当前长度了。</blockquote>
+    <blockquote>avalon2也没有angular的track by机制，或像React那样强制使用key.这种为优化排序性能的方法，avalon内部帮你搞定，就不需要你多写什么了。</blockquote>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+<pre>
+&lt;script>
+    var vm = avalon.define({
+        $id: 'test',
+        array: ['aaa', 'bbb', 'ccc']
+    });
+
+    setTimeout(function(){
+        vm.array = ['ccc', 'dd1', 'dd2', 'dd3'];
+    }, 5000);
+&lt;/script>
+&lt;div ms-controller="test">
+    &lt;ul>
+        &lt;li ms-for="(index, item) in @array">{{item}} --- {{index}}&lt;/li>
+    &lt;/ul>
+&lt;/div>
+</pre>
+
+
+    <hr>
+    <script>
+        var vm = avalon.define({
+            $id: 'test',
+            array: ['aaa', 'bbb', 'ccc']
+        });
+
+        setTimeout(function(){
+            vm.array = ['ccc', 'dd1', 'dd2', 'dd3'];
+        }, 5000);
+    </script>
+    <div ms-controller="test">
+        <ul>
+            <li ms-for="(index, item) in @array">{{item}} --- {{index}}</li>
+        </ul>
+    </div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+<pre>
+&lt;script>
+    var vm2 = avalon.define({
+        $id: 'test2',
+        array: [[1,2,3,4], [5,6,7,8],[9,10,11,12]]
+    });
+
+    setTimeout(function(){
+        vm2.array.set(0, [13,14,15,16]);
+    }, 5000);
+&lt;/script>
+&lt;div ms-controller="test2">
+    &lt;table class="table ">
+        &lt;tr ms-for="(index, item) in @array">
+            &lt;td ms-for="val in item">{{val}} 它位于第&lt;b>{{index}}&lt;/b>行&lt;/td>
+        &lt;/tr>
+    &lt;/table>
+&lt;/div>
+</pre>
+
+
+    <hr>
+    <script>
+        var vm2 = avalon.define({
+            $id: 'test2',
+            array: [[1,2,3,4], [5,6,7,8],[9,10,11,12]]
+        });
+
+        setTimeout(function(){
+            vm2.array.set(0, [13,14,15,16]);
+        }, 5000);
+    </script>
+    <div ms-controller="test2">
+        <table class="table table-bordered">
+            <tr ms-for="(index, item) in @array">
+                <td ms-for="val in item">{{val}} 它位于第<b>{{index}}</b>行</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>我们再看一个经典的例子，如何通过操作数组为列表添加或移除某一项！另，大家也可以对照<a href="http://www.html-js.com/article/Avalon-tutorial-11-circulating-operation" target="_blank">这里看看avalon1</a>是怎么实现的，你就明白avalon2在这方面的巨大优势与便利。</p>
+<pre>
+
+</pre>
+
+
+	<hr>
+    <script>
+        var definition = {
+            $id: 'test3',
+            array: ['1', '2', '3', '4'],
+            removeAt: function(e) {
+                var elem = e.target;
+
+                if(isFinite(elem.value)) {  // elem 为 input 元素
+                    var a = ~~elem.value;
+                    this.array.removeAt(a);
+                    elem.value = '';
+                }
+            }
+        };
+
+        'push,unshift,remove,ensure'.replace(avalon.rword, function(method){
+            definition[method] = function(e){
+                //avalon2中,所有通过ms-on-* 及其变体绑定的事件,其this都是指向vm,
+                //而元素本身则通过e.targeta得到
+                var elem = e.target;
+                if(elem.value) {
+                    this.array[method](elem.value);
+                    elem.value = '';
+                }
+            };
+        });
+
+        'pop,shift,sort,reverse'.replace(avalon.rword, function(method){
+            definition[method] = function(e){
+                this.array[method]();
+            }
+        });
+
+        var vm3 = avalon.define(definition);
+    </script>
+    <div ms-controller="test3">        
+        <p>监控数组拥有以下方法，我们可以操作它们就能同步对应的区域</p>
+        <blockquote>
+            push, shift, unshift, pop, slice, splice, remove, removeAt, removeAll, clear, ensure, pushArray, sort, reverse, set
+        </blockquote>
+        <ul>
+            <li ms-for="(index, item) in @array">数组的第{{index}}个元素为{{item}}</li>
+        </ul>
+        <p>对数组进行 push 操作，并回车<input type="text" ms-keypress="@push | enter"></p>
+        <p>对数组进行 unshift 操作，并回车<input type="text" ms-keypress="@unshift | enter"></p>
+        <p>对数组进行 ensure 操作，并回车<input type="text" ms-keypress="@ensure | enter">(只有数组不存在此元素才push进去)</p>
+        <p>对数组进行 remove 操作，并回车<input type="text" ms-keypress="@remove | enter"></p>
+        <p>对数组进行 removeAt 操作，并回车<input type="text" ms-keypress="@removeAt | enter"></p>        
+        <p><button type="button" ms-click="@sort">对数组进行sort操作</button></p>
+        <p><button type="button" ms-click="@reverse">对数组进行reverse操作</button></p>
+        <p><button type="button" ms-click="@shift">对数组进行shift操作</button></p>
+        <p><button type="button" ms-click="@pop">对数组进行pop操作</button></p>
+        <p>当前数组的长度为<span style="color:red">{{@array.length}}</span>。</p>
+    </div>
+
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <p>之前avalon的大表格渲染时存在性能问题，现在大大得到改进了。</p>
+<pre>
+&lt;script>
+    var vm4 = avalon.define({
+        $id: 'test4',
+        header: ['name', 'age', 'sex'],
+        list: []
+    });
+
+    var sexMap = {
+        true: '男',
+        false: '女'
+    };
+
+    function genData(n)
+    {
+        var ret = [];
+
+        for(var i =0 ; i &lt; n; i++) {
+            ret.push({
+                name: Math.random(), 
+                age: 3+ Math.ceil((Math.random() *30)),
+                sex: sexMap[1-Math.random() > 0.5],
+                desc: Math.random()
+            });
+        }
+
+        return ret;
+    }
+
+   setInterval(function(){
+        var t1 = Date.now();
+        vm4.list = genData(100);
+        console.log('total ' + (Date.now() - t1) + ' ms');
+    }, 70);
+&lt;/script>
+&lt;div ms-controller="test4">
+    &lt;table class="border table-bordered">
+        &lt;tr>&lt;td ms-for="val in @header">{{val}}&lt;/td>&lt;/tr>
+        &lt;tr ms-for="item in @list">
+            &lt;td ms-for="ele in item | selectBy(['name', 'age', 'sex'])">{{ele}}&lt;/td>
+        &lt;/tr>
+    &lt;/table>
+&lt;/div>
+</pre>
+
+
+    <script>
+        var vm4 = avalon.define({
+            $id: 'test4',
+            header: ['name', 'age', 'sex'],
+            list: []
+        });
+
+        var sexMap = {
+            true: '男',
+            false: '女'
+        };
+
+        function genData(n)
+        {
+            var ret = [];
+
+            for(var i =0 ; i< n; i++) {
+                ret.push({
+                    name: Math.random(), 
+                    age: 3+ Math.ceil((Math.random() *30)),
+                    sex: sexMap[1-Math.random() > 0.5],
+                    desc: Math.random()
+                });
+            }
+
+            return ret;
+        }
+
+       setInterval(function(){
+            var t1 = Date.now();
+            vm4.list = genData(100);
+            console.log('total ' + (Date.now() - t1) + ' ms');
+        }, 70);
+    </script>
+    <div ms-controller="test4">
+        <table class="border table-bordered">
+            <tr><td ms-for="val in @header">{{val}}</td></tr>
+            <tr ms-for="item in @list">
+                <td ms-for="ele in item | selectBy(['name', 'age', 'sex'])" ms-attr="{align: ele === 'age' ? 'left' : 'right'}">{{ele}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

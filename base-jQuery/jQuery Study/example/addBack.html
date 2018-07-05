@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>.addBack() - jQuery代码示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../../public/js/jquery.extend.js"></script>
+    <script src="../../public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<h1>jQuery代码示例：<code>.addBack()</code></h1>
+<p class="title"><code>.addBack([selector])</code></p>
+<p class="desc">将堆栈中的内容加入到当前的元素集合中并以新的jQuery对象返回。（原jQuery对象的内容不受影响）（返回类型：jQuery）</p>
+<p class="params">参数selector：<span>（类型：String | DOMElement | Array | jQuery，可选）</span>过滤条件；</p>
+<div id="box">
+    容器（ID：box）
+    <div id="layer1">
+        图层1（ID：layer1）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer2">
+        图层2（ID：layer2）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+    <div id="layer3">
+        图层3（ID：layer3）
+        <p class="paragraph1">段落（class： paragraph1）</p>
+        <p class="paragraph2">段落（class： paragraph2）</p>
+        <p class="paragraph3">段落（class： paragraph3）</p>
+    </div>
+</div>
+<pre class="jsCode" style="width:800px;">
+//首先，将box容器下的div元素设置背景颜色为橙色
+//然后，将box容器下div元素的所有子节点设置背景颜色为绿色
+//最后，将box容器下的div元素以及div元素的子节点设置1像素的深灰色实线边框
+$("#box div").css("background-color", "orange")
+             .children().css("background-color", "green")
+             .addBack().css("border", "1px solid #333");
+</pre>
+<p><button class="btnShort">执行上面的代码</button></p>
+<script>
+    (function($)
+    {
+        $("button").eq(0).click(function(){
+            $("#box div").css("background-color", "orange")
+                         .children().css("background-color", "green")
+                         .addBack().css("border", "1px solid #333");
+        });
+    })(jQuery);
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+    $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+</script>
+</body>
+</html>

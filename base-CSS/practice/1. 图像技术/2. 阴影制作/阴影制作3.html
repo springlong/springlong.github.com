@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>图片阴影的制作3</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		#img-wrapper{
+			background:url(images/shadow.gif) no-repeat bottom right;
+			float:left;
+		}
+		
+		#img-outer{
+			background:url(images/bottom-left.gif) no-repeat bottom left;
+		}
+		
+		#img-inner{
+			background:url(images/top-right.gif) no-repeat top right;
+			padding:0px 5px 5px 0px;
+		}
+		
+		#img-wrapper img{
+			border:1px silver solid;
+			background-color:white;
+			padding:4px;
+			display:block;
+		}
+	</style>
+</head>
+<body>
+<div id="img-wrapper">
+<div id="img-outer">
+<div id="img-inner">
+	<img src="images/pic1.jpg" width="234" height="234" />
+</div>
+</div>
+</div>
+</body>
+</html>

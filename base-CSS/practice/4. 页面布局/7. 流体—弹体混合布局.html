@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+	<title>流体——弹性混合布局</title>
+	<base target="_blank" />
+	<meta charset="UTF-8" />
+	<style>
+		* {
+			margin:0;
+			padding:0;
+		}
+		body {
+			font-size:100%;
+		}
+		div {
+			border:2px solid gray;
+		}
+		p {
+			text-indent:2em;
+		}
+
+		#wrapper {/*外围容器*/
+			width:72em;
+			max-width:100%;
+			margin:20px auto;
+			border:1px dotted red;
+		}
+		#content {/*主体内容容器*/
+			width:52em;
+			max-width:72%;
+			height:400px;
+			border:none;
+			margin-bottom:1em;
+			float:right;
+			display:inline;
+		}
+		#side {/*侧栏部分*/
+			width:18em;
+			max-width:25%;
+			height:400px;
+			float:left;
+		}
+		#main {/*主要内容部分*/
+			width:32em;
+			max-width:62%;
+			height:400px;
+			float:left;
+			overflow:hidden;
+		}
+		#secondary {/*次要内容部分*/
+			width:18em;
+			max-width:35%;
+			height:400px;
+			float:right;
+		}
+		#footer {/*底部部分*/
+			height:100px;
+			clear:both;
+		}
+
+		#main p {
+			font-size:24px;
+			color:#1a681c;
+		}
+		#main img {
+			width:80%;
+			max-width:232px;
+		}
+	</style>
+</head>
+<body>
+    <div id="wrapper">
+      <div id="content">
+        <div id="main"> #main
+          <p><img src="images/pic1.jpg" alt="图片" /></p>
+          <p>所谓“流体—弹性混合”布局指的是通过以“em”来作为容器宽度的单位（弹体），而以“百分比”来做为容器最大宽度的单位（流体）。这样就能保证容器宽度会按照字体的大小自适应而不会超出浏览器窗体的显示大小！</p>
+        </div>
+        <div id="secondary"> #secondary
+          <p>所谓“流体—弹性混合”布局指的是通过以“em”来作为容器宽度的单位（弹体），而以“百分比”来做为容器最大宽度的单位（流体）。这样就能保证容器宽度会按照字体的大小自适应而不会超出浏览器窗体的显示大小！</p>
+        </div>
+      </div>
+      <div id="side"> #side
+          <p>所谓“流体—弹性混合”布局指的是通过以“em”来作为容器宽度的单位（弹体），而以“百分比”来做为容器最大宽度的单位（流体）。这样就能保证容器宽度会按照字体的大小自适应而不会超出浏览器窗体的显示大小！</p>
+      </div>
+      <div id="footer"> #footer
+          <p>所谓“流体—弹性混合”布局指的是通过以“em”来作为容器宽度的单位（弹体），而以“百分比”来做为容器最大宽度的单位（流体）。这样就能保证容器宽度会按照字体的大小自适应而不会超出浏览器窗体的显示大小！</p>
+      </div>
+    </div>
+	<script>
+		function $(id){return (typeof(id) == "string") ? document.getElementById(id) : id;}
+		//添加事件监听器
+		function addEvent(id, eventName, func, isCapture)
+		{
+			/*参数说明：
+			 *1. id: 目标对象引用或ID属性值
+			 *2. eventName: 事件名称（如：onscroll、onclick、ondblclick等等）
+			 *3. func:      事件触发所需执行的函数
+			 *4. isCapture: 是否进行事件捕捉（默认值为false，表示不进行事件捕捉；当设置该值为true时，则进行事件的捕捉）
+			 *--------------------------------------------------------------------------------------------------------------------*/
+			var obj = $(id);
+			if(obj)
+			{
+				isCapture = (isCapture == true) ? isCapture : 0;
+				eventName = eventName.toLowerCase();
+				eventName = (eventName.substring(0,2) == "on") ? eventName.substring(2,eventName.length) : eventName;           //将事件名称保持为“scroll”、“click”的形式，而非“onscroll"和“onclick"；
+				if("addEventListener" in document)
+				{
+					obj.addEventListener(eventName, func, isCapture);//针对标准的DOM事件模型
+				}
+				else
+				{
+					obj.attachEvent("on" + eventName, func);//针对IE的非标准事件模型
+				}
+				return func;            //返回执行函数的引用
+			}
+		}
+	</script>
+	<script>
+		/*用于设置maxWidth和maxHeight属性*/
+		function setMaxValue(id, attr, value)
+		{
+			var obj = document.getElementById(id);
+			if(obj)
+			{
+				if(attr == "width")
+				{
+					addEvent(window, "onresize", function(){
+						var parent = obj.parentNode || body;
+						alert(parent.clientWidth);
+						value = (String(value).charAt(value.length - 1) == "%") ? parent.clientWidth * (parseInt(value)/100) : parseInt(value);
+						alert(value);
+						if(obj.clientWidth > value)
+						{
+							obj.style.width = value + "px";
+						}
+					});
+				}
+				else if(attr == "height")
+				{
+					addEvent(window, "onresize", function(){
+
+					});
+				}
+			}
+		}
+
+		setMaxValue("content", "width", "72%");/*
+		setMaxValue("side", "width", "25%");
+		setMaxValue("main", "width", "62%");
+		setMaxValue("secondary", "width", "35%");*/
+	</script>
+</body>
+</html>

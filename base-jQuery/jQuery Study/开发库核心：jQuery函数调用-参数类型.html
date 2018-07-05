@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>开发库核心：jQuery函数调用-参数类型 - jQuery使用文档</title>
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link rel="stylesheet" href="public/css/codeView.css" />
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/jquery.extend.js"></script>
+    <script src="public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+    <h1>jQuery使用文档——开发库核心：jQuery函数调用-参数类型</h1>
+    <p>在前面“关于jQuery”的系列文章中，我们了解了jQuery对象的基本概念以及元素集合的使用情况。我们知道，通过执行jQuery的函数调用——<code>jQuery()</code>就可以构建一个jQuery的对象实例，这一操作我们将其称之为对元素集合的封装。同时，我们也知道美元符号（$）是作为jQuery对象的别名存在的，所以<code>jQuery()</code>也可以书写为<code>$()</code>。此外我们还知道jQuery对象具备伪数组、容错处理、浏览器兼容、功能加强、链式操作等区别于原生JavaScript的附加特性。相信通过对这些基本概念的了解和认识，能够为你接下来对jQuery的熟练掌握提供良好的基础铺垫。</p>
+    <p>在jQuery中，我们通过在jQuery的函数调用中传递一个选择器参数来构建一个jQuery的对象实例，代码示例如下：</p>
+<pre class="jsCode">
+var $div = $("div");  //传递一个字符串参数进行实例化操作
+</pre>
+    <p>在上面的代码中，我们构建了一个名为$div的jQuery对象实例，在该对象的元素集合中包含了当前文档中所有的div元素。<b>为了将jQuery对象实例的命名与其他变量区分开来，在这里我们使用了美元符号（$）为前缀进行书写</b>，同时也建议大家在以后使用jQuery的过程中，同样采用这一命名方式来书写jQuery代码。</p>
+    <h2>jQuery函数调用的参数类型</h2>
+    <div>
+        <p>通过前面几篇文章的讲解和代码演示，我们了解到jQuery函数调用的基本格式和所得结果。那么我们除了在执行<code>$()</code>的时候给它传递一个选择器字符串外，还可以是其他类型吗？又或者还可以传递其他参数？</p>
+        <p>根据对jQuery构造函数的代码分析，jQuery函数的调用可以是以下多种参数类型：</p>
+        <p></p>
+        <ol class="list">
+            <li>
+                <p class="title"><code>$()</code></p>
+                <p>当没有传递参数给jQuery函数调用时，也将返回新的jQuery对象实例。但是元素集合是空的，其<code>.length</code>属性将为0。（返回类型：jQuery）</p>
+            </li>
+            <li>
+                <p class="title"><code>$(selector[, context])</code></p>
+                <p>返回新的jQuery对象实例，并在元素集合中包含在指定的上下文环境中根据选择器字符串查找出来的相匹配的所有元素。（返回类型：jQuery）</p>
+                <div class="params">
+                    <p>参数selector：<span>（类型：String）</span>选择器字符串（可以是CSS、CSS3所支持的任意选择器类型）；</p>
+                    <p>参数context：<span>（类型：DOMElement，可选）</span>上下文环境，用来指定在哪个范围内进行元素的查找（默认为当前文档）；</p>
+                </div>
+<pre class="jsCodeNum">
+//将当前文档中所有的段落设置背景颜色为：紫色
+$("p").css("background-color", "purple");
+
+//将当前文档中所有的段落设置背景颜色为：白色
+$("p", document).css("background-color", "white");
+
+//将ID为layer2的容器下的段落设置背景颜色为：绿色
+$("p", document.getElementById("layer2")).css("background-color", "green");
+</pre>
+                <p>如果指定了context参数，那么就相当于执行了后面的这行语句——<code>$(context).find(selector)</code>，即在指定的元素集合中查询符合条件的后代节点，所以context参数的类型并不局限于DOMElement，也可以是String、Array、jQuery等其他类型。当然，这一理解需要建立在你了解了<code>.find()</code>方法的使用的基础上。在这里，你可以把context参数的类型当成只能是DOMElement来理解，避免造成不必要的混淆。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_1.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(element)</code></p>
+                <p>返回新的jQuery对象实例，并在元素集合中包含参数所指的DOM元素。（返回类型：jQuery）</p>
+                <div class="params">
+                    <p>参数element：<span>（类型：DOMElement）</span>DOM元素；</p>
+                </div>
+<pre class="jsCodeNum">
+//将当前文档中ID为box的容器设置背景颜色为：紫色
+$(document.getElementById("box")).css("background-color", "purple");
+</pre>
+                <p>相信看了上面的代码，不少同学会问——上面的那行语句不是可以使用<code>$("#box")</code>来代替吗？这样不是更加简洁？是的，确实是这样，不过上面的这行语句在这里只是用来做演示使用的。在实际编码开发的工作中，该参数类型更多的是使用已有的某个DOM元素来进行传递，我们并不一定知道它的id或者class属性。</p>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_2.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(elementArray)</code></p>
+                <p>返回新的jQuery对象实例，并在元素集合中包含DOM元素数组中的所有成员。（返回类型：jQuery）</p>
+                <div class="params">
+                    <p>参数elementArray：<span>（类型：Array | NodeList）</span>DOM元素数组；</p>
+                </div>
+                <p>jQuery允许任意形式的数组进行传递，既可以是一个DOM元素的数组、也可以是一个节点列表、还可以是其他形式的数组。这样就会存在一个问题——在返回的jQuery对象实例中，元素集合中的值并不一定全都是DOM元素，有可能是数字、也有可能是字符串、还可能是其他对象。所以我们在传递数组作为参数构建jQuery对象实例的时候，应尽可能确保数组中的内容全都是DOM元素，从而避免脚本异常的发生。</p>
+<pre class="jsCodeNum">
+//将当前文档中ID为box的容器下的所有段落设置背景颜色为：紫色
+$(document.getElementById("box").getElementsByTagName("p")).css("background-color", "purple");
+
+//将当前文档中ID为layer2以及ID为layer3的容器设置背景颜色为：绿色
+$([document.getElementById("layer2"), document.getElementById("layer3")]).css("background-color", "green");
+
+//下面的代码企图将jQuery对象实例中的DOM元素设置背景颜色为：橙色，但是你会发现并没有任何的视觉反馈
+//这是因为在这个jQuery对象实例的元素集合中，并没有一个有效的DOM元素
+//为了验证这一操作，我们通过.each()方法对元素集合中的每一项值做了弹窗测试
+$(["abc", "123", "test", 1, 2, 3]).css("background-color", "orange").each(function(){ alert(this) });
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_3.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(jQuery object)</code></p>
+                <p>返回已有jQuery对象实例的克隆副本，对新返回的对象进行筛选过滤操作将不会影响到原有的jQuery对象实例。（返回类型：jQuery）</p>
+                <div class="params">
+                    <p>参数jQuery object：<span>（类型：jQuery）</span>jQuery对象实例；</p>
+                </div>
+<pre class="jsCodeNum">
+//将当前文档中ID为box的容器下的所有段落设置背景颜色为：紫色
+$( $("#box p") ).css("background-color", "purple");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_4.html" target="_blank">这里</a>！</p>
+                <p>进行上面代码所示的操作是没有任何意义的，因为它完全可以直接书写为<code>$("#box p").css("background-color", "purple")</code>。当然，上面的代码纯粹只用来做演示效果使用。jQuery函数调用中的这一参数类型，更多的作用是为了在函数调用时满足多种参数类型的可能性。示例代码如下：</p>
+<pre class="jsCodeNum">
+//假设有一个函数用来对DOM元素进行一系列的相关操作
+function doSomething(selector)
+{
+    $dom = $(selctor);  //根据selctor参数构建jQuery对象实例
+    //...（执行代码省略）
+}
+
+//首先，我们对box容器下的段落进行了一些简单操作。同时为了以后能够重复利用，我们保存了返回的jQuery对象实例
+var $boxP = $("#box p").css("background-color", "purple");
+
+//现在，我们需要对box容器下的段落执行doSomething这个操作，这个时候可以有以下两种做法：
+doSomething("#box p");  //做法1：直接传递选择器字符串
+doSomething($boxP);     //做法2：传递之前存在的jQuery对象实例（很显然，这种做法更为合理）
+</pre>
+            </li>
+            <li>
+                <p class="title"><code>$(Object)</code></p>
+                <p>返回新的jQuery对象实例，元素集合中将仅包含目标参数一个元素。（返回类型：jQuery）</p>
+                <div class="params">
+                    <p>参数Object：<span>（类型：除String、DOMElement、Array、NodeList、jQuery之外的任意类型）</span>目标参数；</p>
+                </div>
+                <p>如果传递的参数值为""、0、undefined、null、false等空值时，则相当于<code>$()</code>操作，返回的jQuery对象实例中的元素集合将为空！</p>
+                <p>这里的参数类型最常见的应用情景就是给window或者document添加事件绑定时的操作，如果是其他值则没有多大价值。</p>
+<pre class="jsCodeNum">
+var $new1 = $(0);           //元素集合为空，length属性为0
+var $new2 = $(1);           //元素集合为[1]，length属性为1
+$(window).scroll( function(){} );      //添加窗口的scroll事件处理（当滑动滚动条时触发）
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_object.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(html[, ownerDocument])</code></p>
+                <p>返回新的jQuery对象实例，元素集合中将包含根据提供的html字符串所创建的DOM元素。（返回类型：jQuery）</p>
+                <div class="params">
+                    <p>参数html：<span>（类型：String）</span>HTML字符串；</p>
+                    <p>参数ownerDocument：<span>（类型：document，可选）</span>用于指定新的DOM元素将在哪里被创建，默认为当前文档；</p>
+                </div>
+                <p>该类型中的ownerDocument参数基本上可以忽略掉，因为只要在同源策略的允许下，不同文档之间创建的DOM元素可以自由添加至其他文档中。</p>
+                <p>在将字符串传递给jQuery函数调用的第一个参数时，jQuery首先会判断这个字符串中是否包含“&lt; &gt;”字样，如果是则进入创建HTML片段的操作，如果不是则作为选择器进行查询匹配。当进入到创建HTML片段的操作中后，如果HTML字符串为“&lt;p&gt;”、“&lt;p/&gt;”、“&lt;p&gt;&lt;/p&gt;”、“&lt;p/&gt;&lt;/p&gt;”这几种格式，那么jQuery将通过createElement方法来创建这个节点并将其加入到元素集合中；否则jQuery会创建一个div，并将HTML字符串作为innerHTML进行赋值，然后将这个div的childNodes中的所有节点加入到元素集合中。</p>
+                <p>需要注意的是，<b>在这里创建的DOM元素并没有包含进文档中</b>，不过我们可以使用后面学习的<code>.appendTo()</code>、<code>.prependTo()</code>、<code>.insertAfter()</code>、<code>.insertBefore()</code></b>等方法将他们加入到文档中。</p>
+<pre class="jsCodeNum">
+$("&lt;div&gt;").appendTo("#box");          //将一个空div元素加入到box容器末尾
+$("&lt;div/&gt;").appendTo("#box");         //将一个空div元素加入到box容器末尾（同上）
+$("&lt;div&gt;&lt;/div&gt;").appendTo("#box");    //将一个空div元素加入到box容器末尾（同上）
+$("&lt;div style='background:purple'&gt;&lt;/div&gt;").appendTo("#box");     //将一个背景为紫色的div元素加入到box容器末尾
+$("&lt;div&gt;这是新添加的DIV容器&lt;/div&gt;").appendTo("#box");              //将一个包含文本内容的div元素加入到box容器末尾
+$("&lt;div&gt;新的图层1&lt;/div&gt;&lt;div&gt;新的图层2&lt;/div&gt;").appendTo("#box");    //将两个包含文本内容的div元素加入到box容器末尾
+$("abc&lt;p&gt;123&lt;/p&gt;").appendTo("#box");   //无效html字符串，将报错！
+$("&lt;p").appendTo("#box");              //无效html字符串，将报错！
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_5.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(html, attributes)</code></p>
+                <p>返回新的jQuery对象实例，元素集合中将包含根据提供的html字符串所创建的DOM元素。（返回类型：jQuery）</p>
+                <div class="params">
+                    <p>参数html：<span>（类型：String）</span>HTML字符串；</p>
+                    <p>参数attributes：<span>（类型：PlainObject）</span>为创建的DOM元素添加属性赋值；</p>
+                </div>
+                <p>如果将字符串传递给jQuery函数调用的第一个参数，且这个字符串为“&lt;p&gt;”、“&lt;p/&gt;”、“&lt;p&gt;&lt;/p&gt;”、“&lt;p/&gt;&lt;/p&gt;”这几种格式，同时函数调用的第二个参数为纯粹的对象（即通过"{}"或者"new Object"创建的对象），那么将会进入到这一参数类型的操作中来。</p>
+<pre class="jsCodeNum">
+//下面的代码，将在box容器末尾添加一个空div元素，并为该元素成功设置了id、name、title等属性值
+$("&lt;div&gt;", {id: "newDIV", name: "newDIV", title: "new div!"}).appendTo("#box");
+
+//下面的代码，将在box容器默认添加一个包含文本内容的div元素，并企图为其设置id、name、title等属性，但属性设置无效！
+$("&lt;div&gt;新的段落&lt;/div&gt;", {id: "newDIV2", name: "newDIV2", title: "new div2!"}).appendTo("#box");
+</pre>
+                <p>如需通过已有页面进行上述代码的测试，请点击<a href="example/$_6.html" target="_blank">这里</a>！</p>
+            </li>
+            <li>
+                <p class="title"><code>$(callback)</code></p>
+                <p>当DOM加载完成的时候执行回调函数。（返回类型：jQuery）</p>
+                <div class="params">
+                    <p>参数callback：<span>（类型：Function）</span>回调函数；</p>
+                    <p class="level2">回调函数-格式：function(jQuery){}</p>
+                    <p class="level2">回调函数-参数jQuery：指向jQuery构造函数；</p>
+                    <p class="level2">回调函数-this：指向document；</p>
+                </div>
+                <p>当进行jQuery函数调用时如果传递的是回调函数，其实相当于执行了<code>return $(document).ready(callback)</code>操作，所以该函数调用执行后依旧返回的是jQuery对象实例，只不过元素集合中的唯一元素是document。</p>
+                <p>为了方便大家理解DOM加载完成的时候指的是什么情况，请看下面的两段代码：</p>
+<pre class="jsCodeNum">
+&lt;script&gt;
+    //由于执行下面代码的时候文档中并没有id为box的元素，所以会报脚本异常
+    document.getElementById("box").style.display = "none";
+&lt;/script&gt;
+&lt;div id="box"&gt;&lt;/div&gt;
+</pre>
+<pre class="jsCodeNum">
+&lt;script&gt;
+    $(function()
+    {
+        //由于执行下面代码的时候文档DOM已经加载完成，已经存在id为box的元素，所以脚本会正常执行
+        document.getElementById("box").style.display = "none";
+    });
+&lt;/script&gt;
+&lt;div id="box"&gt;&lt;/div&gt;
+</pre>
+            </li>
+        </ol>
+    </div>
+</article>
+<section class="codeView">
+    <h2>程序代码：jQuery构造函数</h2>
+    <pre class="jsCodeNum">
+var
+
+    // A central reference to the root jQuery(document)
+    rootjQuery,
+
+    // Define a local copy of jQuery
+    jQuery = function( selector, context ) {
+        // The jQuery object is actually just the init constructor 'enhanced'
+        return new jQuery.fn.init( selector, context, rootjQuery );
+    },
+
+    // A simple way to check for HTML strings
+    // Prioritize #id over &lt;tag&gt; to avoid XSS via location.hash (#9521)
+    // Strict HTML recognition (#11290: must start with &gt;)
+    rquickExpr = /^(?:(&lt;[\w\W]+>)[^>]*|#([\w-]*))$/,
+
+    // Match a standalone tag
+    rsingleTag = /^&lt;(\w+)\s*\/?>(?:&lt;\/\1>|)$/;
+
+jQuery.fn = jQuery.prototype = {
+
+    constructor: jQuery,
+
+    init: function( selector, context, rootjQuery ) {
+        var match, elem;
+
+        // HANDLE: $(""), $(null), $(undefined), $(false)
+        if ( !selector ) {
+            return this;
+        }
+
+        // Handle HTML strings
+        if ( typeof selector === "string" ) {
+            if ( selector.charAt(0) === "&lt;" &amp;&amp; selector.charAt( selector.length - 1 ) === ">" &amp;&amp; selector.length >= 3 ) {
+                // Assume that strings that start and end with &lt;&gt; are HTML and skip the regex check
+                match = [ null, selector, null ];
+
+            } else {
+                match = rquickExpr.exec( selector );
+            }
+
+            // Match html or make sure no context is specified for #id
+            if ( match &amp;&amp; (match[1] || !context) ) {
+
+                // HANDLE: $(html) -> $(array)
+                if ( match[1] ) {
+                    context = context instanceof jQuery ? context[0] : context;
+
+                    // scripts is true for back-compat
+                    jQuery.merge( this, jQuery.parseHTML(
+                        match[1],
+                        context &amp;&amp; context.nodeType ? context.ownerDocument || context : document,
+                        true
+                    ) );
+
+                    // HANDLE: $(html, props)
+                    if ( rsingleTag.test( match[1] ) &amp;&amp; jQuery.isPlainObject( context ) ) {
+                        for ( match in context ) {
+                            // Properties of context are called as methods if possible
+                            if ( jQuery.isFunction( this[ match ] ) ) {
+                                this[ match ]( context[ match ] );
+
+                            // ...and otherwise set as attributes
+                            } else {
+                                this.attr( match, context[ match ] );
+                            }
+                        }
+                    }
+
+                    return this;
+
+                // HANDLE: $(#id)
+                } else {
+                    elem = document.getElementById( match[2] );
+
+                    // Check parentNode to catch when Blackberry 4.6 returns
+                    // nodes that are no longer in the document #6963
+                    if ( elem &amp;&amp; elem.parentNode ) {
+                        // Handle the case where IE and Opera return items
+                        // by name instead of ID
+                        if ( elem.id !== match[2] ) {
+                            return rootjQuery.find( selector );
+                        }
+
+                        // Otherwise, we inject the element directly into the jQuery object
+                        this.length = 1;
+                        this[0] = elem;
+                    }
+
+                    this.context = document;
+                    this.selector = selector;
+                    return this;
+                }
+
+            // HANDLE: $(expr, $(...))
+            } else if ( !context || context.jquery ) {
+                return ( context || rootjQuery ).find( selector );
+
+            // HANDLE: $(expr, context)
+            // (which is just equivalent to: $(context).find(expr)
+            } else {
+                return this.constructor( context ).find( selector );
+            }
+
+        // HANDLE: $(DOMElement)
+        } else if ( selector.nodeType ) {
+            this.context = this[0] = selector;
+            this.length = 1;
+            return this;
+
+        // HANDLE: $(function)
+        // Shortcut for document ready
+        } else if ( jQuery.isFunction( selector ) ) {
+            return rootjQuery.ready( selector );
+        }
+
+        if ( selector.selector !== undefined ) {
+            this.selector = selector.selector;
+            this.context = selector.context;
+        }
+
+        return jQuery.makeArray( selector, this );
+    },
+
+    // Start with an empty selector
+    selector: "",
+
+    // The default length of a jQuery object is 0
+    length: 0
+};
+
+// Give the init function the jQuery prototype for later instantiation
+jQuery.fn.init.prototype = jQuery.fn;
+
+// All jQuery objects should point back to these
+rootjQuery = jQuery(document);
+</pre>
+<script src="public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

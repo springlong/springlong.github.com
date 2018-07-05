@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>排版 - BootStrap案例</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <!--标题-->
+  <h1>我是标题1 h1</h1>
+  <h2>我是标题2 h2</h2>
+  <h3>我是标题3 h3</h3>
+  <h4>我是标题4 h4</h4>
+  <h5>我是标题5 h5</h5>
+  <h6>我是标题6 h6</h6>
+  <hr>
+
+
+  <!--内联子标题-->
+  <h1>我是标题1 h1. <small>我是副标题1 h1</small></h1> 
+  <h2>我是标题2 h2. <small>我是副标题2 h2</small></h2>
+  <h3>我是标题3 h3. <small>我是副标题3 h3</small></h3>
+  <h4>我是标题4 h4. <small>我是副标题4 h4</small></h4>
+  <h5>我是标题5 h5. <small>我是副标题5 h5</small></h5>
+  <h6>我是标题6 h6. <small>我是副标题6 h6</small></h6>
+  <hr>
+
+
+
+  <!--引导主体副本-->
+  <h2>引导主体副本</h2>
+  <p class="lead">（.lead）（使段落突出显示）这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。这是一个演示引导主体副本用法的实例。</p>
+  <hr>
+
+
+
+  <!--强调-->
+  <small>small 强调，设定小文本 (设置为父文本的 85% 大小)</small><br>
+  <strong>strong 强调</strong><br>
+  <em>em 强调</em><br>
+  <p class="text-left">text-left：设定文本左对齐</p>
+  <p class="text-center">text-center：设定文本居中对齐</p>
+  <p class="text-right">text-right：设定文本右对齐</p>
+  <p class="text-justify">text-justify：设定文本对齐,段落中超出屏幕部分文字自动换行</p>
+  <p class="text-nowrap">text-nowrap：段落中超出屏幕部分不换行</p>
+  <p class="text-lowercase">text-lowercase：设定文本小写 ENJOY YOU SELF!</p>
+  <p class="text-uppercase">text-uppercase：设定文本大写 enjoy you self!</p>
+  <p class="text-capitalize">text-capitalize：设定单词首字母大写 enjoy you self!</p>
+  <p class="text-muted">text-muted：本行内容是减弱的</p>
+  <p class="text-primary">text-primary：主要的</p>
+  <p class="text-success">text-success：成功</p>
+  <p class="text-info">text-info：消息</p>
+  <p class="text-warning">text-warning：警告</p>
+  <p class="text-danger">text-danger：危险</p>
+  <hr>
+
+
+
+  <!--缩写-->
+  <abbr title="World Wide Web">WWW</abbr><br>
+  <abbr title="Real Simple Syndication" class="initialism">RSS</abbr>
+  <hr>
+
+
+
+  <!--地址-->
+  <address>
+    <strong>Some Company, Inc.</strong><br>
+    007 street<br>
+    Some City, State XXXXX<br>
+    <abbr title="Phone">P:</abbr> (123) 456-7890
+  </address>
+  <address>
+    <strong>Full Name</strong><br>
+    <a href="mailto:#">mailto@somedomain.com</a>
+  </address>
+  <hr>
+
+
+
+  <!--引用-->
+  <blockquote><p>这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。这是一个默认的引用实例。</p></blockquote>
+  <blockquote>这是一个带有源标题的引用。<small>Someone famous in <cite title="Source Title">Source Title</cite></small></blockquote>
+  <blockquote class="pull-right">这是一个向右对齐的引用。<small>Someone famous in <cite title="Source Title">Source Title</cite></small></blockquote>
+  <hr>
+
+
+
+
+  <!--列表-->
+  <h4>有序列表</h4>
+  <ol>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+  </ol>
+  <h4>无序列表</h4>
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+  </ul>
+  <h4>未定义样式列表</h4>
+  <ul class="list-unstyled">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+  </ul>
+  <h4>内联列表</h4>
+  <ul class="list-inline">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+    <li>Item 4</li>
+  </ul>
+  <h4>定义列表</h4>
+  <dl>
+    <dt>Description 1</dt>
+    <dd>Item 1</dd>
+    <dd>Item 2</dd>
+    <dt>Description 2</dt>
+    <dd>Item 1</dd>
+    <dd>Item 2</dd>
+  </dl>
+  <h4>水平的定义列表</h4>
+  <dl class="dl-horizontal">
+    <dt>Description 1</dt>
+    <dd>Item 1</dd>
+    <dd>Item 2</dd>
+    <dt>Description 2</dt>
+    <dd>Item 1</dd>
+    <dd>Item 2</dd>
+  </dl>
+  <hr>
+
+</div>
+
+</body>
+</html>

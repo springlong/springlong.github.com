@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>浏览器事件（2）：事件类型 - JavaScript学习指南 - 前端志</title>
+    <link rel="stylesheet" href="./public/css/main.css" />
+    <link rel="stylesheet" href="./public/css/codeView.css" />
+    <script src="./public/js/jquery.min.js"></script>
+    <script src="./public/js/jquery.extend.js"></script>
+    <script src="./public/js/jquery.snippet.min.js"></script>
+</head>
+<body>
+<article id="instruction">
+	<h1><span>浏览器事件（2）：事件类型</span></h1>
+    <p>充分了解和掌握浏览器事件模型的工作原理以及各浏览器的兼容性处理，是进一步学习浏览器事件的重要铺垫。有了这一前提保障，那么接下来的学习将会是十分轻松的。从这一节开始，我们将逐步接触浏览器中常见的一些事件，通过对他们的熟悉和了解，可以为我们后续的工作开展提供良好的绿色通道。</p>
+    <p>浏览器中的事件分为了很多类型，且不同事件类型具有不同的信息。这就需要我们静下心来一个事件一个事件地进行测试，并进行实例练习，最后完成兼容性代码的封装。当你一直走到本章最后一节的课程内容时，相信你已经收获累累！</p>
+    <p>下面我们就将对这些事件类型进行一个初步预览，关于更多详细内容我们将从下一节课程中开始介绍。</p>
+    <h2>UI（User Interface，用户界面）事件</h2>
+    <div>
+        <p>该类事件当用户与页面上的元素进行交互时触发。</p>
+        <p>常用的事件如下：</p>
+        <ol>
+            <li><a href="#">load</a>：当页面完全加载完毕时（包括图像、脚本文件、样式文件等所有外部资源）触发！</li>
+            <li><a href="#">DOMContentLoaded</a>：当页面形成完整的DOM树之后触发。</li>
+            <li><a href="#">readystatechange</a>：当页面或相关元素的加载状态发生变更时触发。</li>
+            <li><a href="#">beforeunload</a>：当浏览器准备关闭页面或刷新页面时触发。</li>
+            <li><a href="#">unload</a>：当浏览器关闭页面时触发。</li>
+            <li><a href="#">pageshow</a>：与往返缓存相关的事件。在重新加载的页面中，pageshow会在load事件触发后被触发；而对于bfcache中的页面，pageshow会在页面状态完全恢复的那一刻触发。</li>
+            <li><a href="#">pagehide</a>：与往返缓存相关的事件。当浏览器关闭页面时触发。</li>
+            <li><a href="#">resize</a>：当浏览器窗口调整大小时触发。</li>
+            <li><a href="#">scroll</a>：当滑动浏览器窗口或者某个元素的滚动条时触发。</li>
+            <li><a href="#">error</a>：当页面抛出错误异常时触发。</li>
+            <li><a href="#">contextmenu</a>：当浏览器调出右键菜单时触发。</li>
+            <li><a href="#">hashchange</a>：当页面URL的参数列表（即URL中“#”后面的文本）发生变化时触发。</li>
+            <li><a href="#">abort</a>：当图像加载被中断时触发。</li>
+        </ol>
+    </div>
+    <h2>鼠标与滚轮事件</h2>
+    <div>
+        <p>当用户通过鼠标在页面上执行相关操作时触发。</p>
+        <p>常用的事件如下：</p>
+        <ol>
+            <li><a href="#">mousewheel</a>：当滑动鼠标滚轮时触发。</li>
+            <li><a href="#">mouseover</a>：当鼠标移动至某个元素的上方时触发。</li>
+            <li><a href="#">mouseenter</a>：当鼠标移动至某个元素的上方后触发。</li>
+            <li><a href="#">mousemove</a>：当鼠标在某个元素的范围内进行移动时触发。</li>
+            <li><a href="#">mouseout</a>：当鼠标离开某个元素的范围时触发。</li>
+            <li><a href="#">mouseleave</a>：当鼠标离开某个元素的范围后触发。</li>
+            <li><a href="#">mousedown</a>当鼠标按下时触发。</li>
+            <li><a href="#">mouseup</a>：当鼠标松开时触发。</li>
+            <li><a href="#">click</a>：当单击（按下并松开）鼠标时触发。</li>
+            <li><a href="#">dblclick</a>：当双击鼠标时触发。</li>
+        </ol>
+    </div>
+    <h2>焦点事件</h2>
+    <div>
+        <p>当元素获得或失去焦点时触发。</p>
+        <p>常用的事件如下：</p>
+        <ol>
+            <li><a href="#">focus</a>：当元素获得焦点时触发。</li>
+            <li><a href="#">blur</a>：当元素失去焦点时触发。</li>
+        </ol>
+    </div>
+    <h2>键盘事件</h2>
+    <div>
+        <p>当用户通过键盘在页面上执行相关操作时触发。</p>
+        <p>常用的事件如下：</p>
+        <ol>
+            <li><a href="#">keydown</a>：当键盘上的某个键被按下时触发。</li>
+            <li><a href="#">keypress</a>：当键盘上的某个键按下并准备松开（释放）时触发。</li>
+            <li><a href="#">keyup</a>：当键盘上的某个键被松开（释放）时触发。</li>
+        </ol>
+    </div>
+    <h2>其他事件</h2>
+    <div>
+        <ol>
+            <li><a href="#">change</a>：一个元素在失去焦点时，会把当前元素中的内容与获得焦点时的内容进行对比，如果已发生改变，则触发该事件。</li>
+        </ol>
+    </div>
+</article>
+<script src="../public/js/main.js"></script>
+<script>
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

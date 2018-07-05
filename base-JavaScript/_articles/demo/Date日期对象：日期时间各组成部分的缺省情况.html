@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Date日期对象：日期时间各组成部分的缺省情况</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script src="../../public/js/jquery.min.js"></script>
+    <script src="../../public/js/jquery.extend.js"></script>
+    <script src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';} 
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        p{margin-top:20px;line-height:2em;}
+        code{padding:5px 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:360px;}
+
+        #wrapper div{display:inline-block;font-size:21px;font-weight:bold;color:#3B834D;}
+    </style>
+</head>
+<body>
+<h1>Date日期对象：日期时间各组成部分的缺省情况</h1>
+<script>
+    document.write("<h2>参数缺省情况：</h2>");
+    document.write("<p>年,月,日,时,分,秒,毫秒-<code>Date.UTC(2014, 0, 1, 0, 0, 0, 0)</code>：" + Date.UTC(2014, 0, 1, 0, 0, 0, 0));
+    document.write("<p>年,月,日,时,分,秒-<code>Date.UTC(2014, 0, 1, 0, 0, 0)</code>：" + Date.UTC(2014, 0, 1, 0, 0, 0));
+    document.write("<p>年,月,日,时,分-<code>Date.UTC(2014, 0, 1, 0, 0)</code>：" + Date.UTC(2014, 0, 1, 0, 0));
+    document.write("<p>年,月,日,时-<code>Date.UTC(2014, 0, 1, 0)</code>：" + Date.UTC(2014, 0, 1, 0));
+    document.write("<p>年,月,日-<code>Date.UTC(2014, 0, 1)</code>：" + Date.UTC(2014, 0, 1));
+    document.write("<p>年,月-<code>Date.UTC(2014, 0)</code>：" + Date.UTC(2014, 0));
+    document.write("<p>年-<code>Date.UTC(2014)</code>：" + Date.UTC(2014));
+    document.write("<p>无参数-<code>Date.UTC()</code>：" + Date.UTC());
+    document.write("<h2>超值特点：</h2>");
+    document.write("<p><code>Date.UTC(2014, 7, 10, 8, 30, 45)</code>：" + Date.UTC(2014, 7, 10, 8, 30, 45));
+    document.write("<p><code>Date.UTC(2014, 6, 41, 8, 29, 105)</code>：" + Date.UTC(2014, 6, 41, 8, 29, 105));
+
+    jQuery(function($)
+    {
+        //代码着色
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+    })
+</script>
+</body>
+</html>

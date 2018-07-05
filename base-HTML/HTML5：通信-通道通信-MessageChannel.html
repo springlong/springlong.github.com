@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5：通道通信-MessageChannel</title>
+    <link rel="stylesheet" href="static/css/main.css">
+    <style>
+		iframe{border: 1px solid #ddd;}
+    </style>
+	<script>
+		// 使用MessageChannel构造函数创建实例
+		var channel = new MessageChannel();
+
+		// 接收消息
+		window.onmessage = function(ev) {
+
+			if(ev.data === 'fromA') {
+				document.querySelector('[name="iframeA"]')
+						.contentWindow
+						.postMessage('send a message part A!', '*', [channel.port1]);
+			}
+			else if(ev.data === 'fromB') {
+				document.querySelector('[name="iframeB"]')
+						.contentWindow
+						.postMessage('send a message part B!', '*', [channel.port2]);
+			}
+		};
+	</script>
+</head>
+<body>
+<div class="container">
+	<div class="text-item">
+		<p><code>MessageChannel</code>为不同域名的窗口之间提供了一条专用的通信通道！</p>
+	</div>
+	<div class="text-item">
+		<p>使用<code>new MessageChannel()</code>构造函数创建一个通道对象实例。该对象提供了<code>.prot1</code>和<code>.prot2</code>两个端口，这两口端口的类型均为<code>MessagePort</code>对象。其中任意一个端口发送的消息，都可以被另一个端口接收。</p>
+		<p>发送消息使用端口的<code>.postMessage(message, ports)</code>方法。</p>
+		<p>接收消息使用端口的<code>.onmessage</code>事件。</p>
+		<p>可以使用端口的<code>.close()</code>方法来关闭通道可以关闭通道，这样就不会再接收到另一个端口发送过来的消息</p>
+	</div>
+	<p class="text-item">浏览器支持情况：IE 10+、Firefox 41+、Chrome 4+、Safari 5+、Opera 11.5+、IOS Safari 5.1+、Android 4.1+。</p>
+	<div class="pic-box"><a href="https://caniuse.com/#search=MessageChannel" target="_blank"><img src="static/images/MessageChannel.png" alt=""></a></div>
+	<div class="pic-box"><a href="https://caniuse.com/#search=MessageChannel" target="_blank"><img src="static/images/MessageChannel-2.png" alt=""></a></div>
+	<div>
+		<iframe src="./demo/HTML5：MessageChannel-iframe-a.html" frameborder="0" name="iframeA"></iframe>
+		<iframe src="./demo/HTML5：MessageChannel-iframe-b.html" frameborder="0" name="iframeB"></iframe>
+	</div>
+	<br>
+	<div id="messageShow"></div>
+</div>
+</body>
+</html>

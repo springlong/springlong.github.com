@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>$(":focus") - jQuery代码示例</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="../../public/js/jquery.extend.js"></script>
+    <script src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        #box fieldset p{margin-top:5px;}
+        #box fieldset p input{height:auto;line-height:12px;}
+
+        .focused{background: #abcdef;}
+    </style>
+</head>
+<body style="height:1200px;">
+<h1>jQuery代码示例：<code>$(":focus")</code></h1>
+<p class="title"><code>$(":focus")</code></p>
+<p class="desc">获取当前获得焦点的元素，包括文本框、锚链接等可获得焦点的元素。</p>
+<div id="box">
+    容器（ID：box）
+    <fieldset>
+        <legend>基本信息</legend>
+        <p><label><span>姓名：</span><input type="text" /></label></p>
+        <p><label><span>年龄：</span><input type="text" /></label></p>
+        <p><label><span>性别：</span><input type="text" /></label></p>
+    </fieldset>
+    <fieldset>
+        <legend>学历情况</legend>
+        <select>
+            <option>博士</option>
+            <option>硕士</option>
+            <option selected>本科</option>
+            <option>大专</option>
+            <option>高中</option>
+            <option>初中</option>
+        </select>
+    </fieldset>
+    <a style="display:block;height:30px;margin-top:10px;line-height:30px;" href="http://www.baidu.com/">点击访问更多！</a>
+</div>
+<p class="content">在右侧大家可以看到一个绿色方框的div容器，在该容器下有一些表单元素，为了该页面的更好测试，还希望大家首先查看下这个容器的HTML结构！</p>
+<p>下面的代码已经被执行，你可以点击右边的文本框、下拉框查看效果，如果需要查看锚链接获得焦点时的效果请使用tab选择进行测试！</p>
+<pre class="jsCode" style="width:800px;">
+//将ID为“box”的容器中的文本框、下拉框、锚链接添加获得焦点、失去焦点的事件处理程序
+//如果目标元素获得焦点，那么添加“focused”类名，否则移除“focused”类名
+$("#box").delegate("input,select,a", "focus blur", function()
+{
+    var $this = $(this);
+    setTimeout(function()
+    {
+        //在这里之所以需要使用定时器，是因为事件被触发后，表单元素并不能马上反映出获得焦点的状态
+        $this.toggleClass("focused", $this.is(":focus"));
+    }, 0);       
+});
+</pre>
+<script>
+    (function($)
+    {
+        $("#box").delegate( "*", "focus blur", function()
+        {
+            var $ele = $(this);
+            setTimeout(function()
+            {
+                $ele.toggleClass("focused", $ele.is(":focus"));
+            }, 0);            
+        });
+
+        //代码着色
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+        $("pre.jsCodeNum").snippet("javascript", {style: "custom_js"});
+
+    })(jQuery);
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<base target="_blank" />
+	<meta charset="UTF-8" />
+	<title>浏览器兼容——分割线</title>
+	<style>
+		/*公共样式*/
+		h1{margin-bottom:20px;text-align:center;}
+		p{line-height:24px;}
+		span{display:inline-block;width:10px;height:12px;margin-bottom:3px;background:gray;overflow:hidden;}
+		li{margin:5px 0;line-height:24px;}
+		.red{font-weight:normal;color:#c00000;}
+		.browser{color:#0DD327;}
+		strong.solve{font-size:18px;color:#004BFF;}
+		.question{font-size:18px;color:#F54803;}
+		.f{float:left;_display:inline;margin:0 5px;}
+		.clear{clear:both;}
+
+		/*本页面私有样式*/
+		.wrapper{position:relative;width:80%;padding:10px;border:2px groove #27760A;margin:0 auto 20px;}
+		div.solve{height:300px;border-color:#EA6A08;}
+        .result{width:80%;padding:10px;background:#222;color:#FA5505;line-height:24px;border:5px groove #405812;margin:20px auto 0;text-indent:2em;}
+
+		.w1 .fgx{height:5px;background:gray;}
+		.w1 .fgx2{height:5px;overflow:hidden;background:gray;}
+
+		.w2 .test1{width:50%;height:10px;background:gray;text-align:right;}
+		.w2 .test2{width:50%;height:10px;background:gray;margin:0;}
+		.w2 .test3{height:10px;border-color:red;}
+		.w2 .test4{height:10px;color:blue;}
+		.w2 .test5{height:10px;border-color:red;background:orange;}
+		.w2 p.test6{background:silver;margin-bottom:0;}
+		.w2 hr.test6{height:10px;margin-top:0;background:green;}
+		.w2 hr.true{width:50%;height:15px;border:none;margin-top:0;margin-bottom:0;*margin-top:-7px;*margin-bottom:-7px;margin-left:50%;*margin-left:0;*text-align:right;background:#086A74;color:#086A74;}
+	</style>
+</head>
+<body>
+<h1>浏览器兼容——分割线</h1>
+
+<div class="wrapper w1">
+	<p>
+		<strong class="question">问题一：</strong>
+		在<b class="browser">IE6</b>浏览器中，所有容器都有一个【字符+3】的默认高度，假使目标容器的字体大小为24px，那么该容器的默认高度为24+3=27px的高度；如果此时设置该容器的height为10px，那么该容器的最终高度还是默认的27px！</p>
+	<p><strong>下面的灰色“分割线”是一个空DIV，其高度被设置为5px，请在不同浏览器下测试结果：</strong></p>
+	<p class="fgx"></p>
+	<p><strong class="red">说明：</strong>由于页面的默认字体大小为16px，所以在IE6浏览器中，上面的DIV分割线有19px的高度！</p>
+	<p><strong class="solve">解决方法：</strong>解决上述问题，只需将容器的overflow设置为hidden即可。下面的分割线是一个5px高度的空白DIV，使用解决方案实现效果如下：</p>
+	<div class="fgx2"></div>
+	<div class="result">
+		<p><strong>说明：</strong><span></span>使用空白DIV来实现页面中的分割线是一种方法，但其并不具备语义性，更何况在没有CSS的情况下，用户将看不到“分割线”的任何效果；另外还有一种实现分割线效果的方法是设置相关容器的上边框或下边框；除此之外，HTML中有一个标签是专门用来表示分割线的，那就是&lt;hr /&gt;标签，该标签的含义是表明内容主题的变化。<span></span>在页面中实现分割线效果，需要有针对性地使用相应标签或方法来实现。如果分割线前后内容的主题截然不同，或已发生变化，那么这时应考虑使用&lt;hr /&gt;标签来实现；其他情况下首要考虑通过边框的形式来表达，再次才是使用空白DIV。</p>
+	</div>
+</div>
+
+<div class="wrapper w2">
+	<p><strong class="question">问题二：</strong></p>
+	<ol>
+		<li>在浏览器中，&lt;hr /&gt;标签（“水平线”）的默认宽度为100%，高度为2px，表现为上下共2px的凹槽边框，边框的颜色为灰色!</li>
+		<li>水平线的水平对齐方式在<b class="browser">IE和Opera</b>浏览器中默认为居中对齐；而在<b class="browser">Firefox、Chrome和Safari</b>浏览器中，则默认为左对齐。</li>
+		<li><span></span>在<b class="browser">IE和Opera</b>浏览器中，通过设置text-align属性为left可以实现水平线居左对齐的效果，而其他浏览器中默认的就是左对齐；<span></span>在<b class="browser">IE6/7和Opera</b>浏览器中，通过设置text-align属性为right可以实现水平线居右对齐的效果，而在其他浏览器中则无法实现，另外设置text-align为right或center都将导致在IE8/9中的水平线呈居左对齐显示；<span></span><b class="browser">所有浏览器</b>中都允许使用margin-left来设置水平线的左侧边距，从而可以通过调整水平线的左侧边距来达到水平线居右对齐的效果（仅限父级容器固定宽度的情况下 ）！</li>
+		<li>在<b class="browser">IE8/9、Chrome、Safari以及Opera</b>浏览器中，可通过background-color属性设置水平线的表现颜色，以及通过border属性设置外围的边框样式（包括样式、粗细和颜色）；而在<b class="browser">IE6/7</b>浏览器中，可以通过background-color属性设置水平线的表现颜色，以及通过border属性设置外围的边框样式，但是依旧存在四周各1像素的凹槽边缘，可以通过color属性设置该边缘的颜色。(说明：通过color属性在IE6/7中设置的是整个水平线的颜色！）</li>
+		<li>当设置&lt;hr /&gt;标签的height属性大于2时，在<b class="browser">Firefox、IE6/7</b>浏览器中，水平线的总高度（包含边框）即为height属性值；而在<b class="browser">IE8/9、Chrome、Safari、Opera</b>浏览器中，水平线的总高度为height属性值+边框！</li>
+		<li>在<b class="browser">IE6/7</b>浏览器中，水平线默认拥有7像素的上下边距，如果设置"<code>margin-top:10px;</code>"的话，则水平线的最终顶部边距将为17px，而在其他浏览器中则不会出现该问题；另外在IE6/7浏览器中，水平线的高度（包括height、border和margin）至少有14px，即使你将水平线的高度设置为0。</li>
+	</ol>
+	<p><strong class="solve">解决方法：</strong> <strong>0.</strong> 如果需要保持水平线的默认样式，则什么也不做，否则，按照后面的3个步骤来进行； <strong>1.</strong> 由于各浏览器在实现水平线的高度时有差别，而这差别的造成因素是边框，所以在设置水平线样式之前，应用"<code>border:none;</code>"从而使各浏览器在处理水平线高度时达成一致； <strong>2.</strong> 各浏览器在设置水平线颜色时也各有不同，去掉水平线的边框后，我们就可以同时设置水平线的background-color和color这两个属性来实现水平线的颜色了； <strong>3.</strong> 对于IE6/7浏览器的上下边距问题，我们在设置其样式时，可以利用相关CSS Hack，将IE6/7中水平线的上下边距在正常的边距值下再减去7px； <strong>4.</strong> 如果需要水平线居左对齐，则设置text-align为left即可；如果需要水平线居中对齐，则设置margin-left和margin-right为auto即可；如果需要水平线居右对齐（在父级容器固定宽度的情况下），则针对IE6/7浏览器设置text-align为right，而针对其他浏览器设置margin-left为(父级容器宽度-水平线宽度)的结果值！</p>
+	<p><strong>下面的水平线在各浏览器中都表现一致，请在不同浏览器下测试结果：</strong></p>
+	<p>"<code>width:50%; height:15px; border:none; margin-top:0; margin-bottom:0; *margin-top:-7px; *margin-bottom:-7px; margin-left:50%;  *margin-left:0; *text-align:right; background:#086A74; color:#086A74;</code>"</p>
+	<hr class="true" />
+	<div class="result">
+		<p><strong>说明：</strong>使用&lt;hr /&gt;标签作为分割线使用时，利用上述的解决方法可以实现各浏览器中的兼容，但是无法实现分割线的自由居右对齐的效果，另外也无法解决IE6/7最小占用高度为14px的问题！</p>
+	</div>
+</div>
+</body>
+</html>

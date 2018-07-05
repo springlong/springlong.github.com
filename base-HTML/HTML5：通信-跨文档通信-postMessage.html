@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>HTML5：跨文档通信-postMessage</title>
+    <link rel="stylesheet" href="static/css/main.css">
+    <style>
+		iframe{border: 1px solid #ddd;}
+    </style>
+</head>
+</head>
+<body>
+<div class="container">
+	<p class="text-item">使用<code>postMessage</code>可以向不同域名的目标窗口发送消息，实现跨文档通信。<br>可以是页面中的两个iframe进行通信，也可以是主窗口与window.open的窗口进行通信。</p>
+	<p class="text-item">浏览器支持情况：IE 8+、Firefox 3+、Chrome 4+、Safari 4+、Opera 10.1+、IOS Safari 3.2+、Android 2.1+。</p>
+	<p class="text-item">所有浏览器都支持这个方法，但是IE8和IE9只允许postMessage方法与iFrame窗口通信，不能与新窗口通信。</p>
+	<p class="text-item">网上资料上说IE10可以与新窗口进行通信，不过必须使用MessageChannel的方式。但是经过测试发现，在IE10下可以正常通过window.postMessage与新窗口进行通信。</p>
+	<div class="pic-box"><a href="https://caniuse.com/#search=postMessage" target="_blank"><img src="static/images/postMessage.png" alt=""></a></div>
+	<div class="pic-box"><a href="https://caniuse.com/#search=postMessage" target="_blank"><img src="static/images/postMessage-2.png" alt=""></a></div>
+	<div class="text-item">
+		<p><code>targetWindow.postMessage(message, targetURL[, transferObject]);</code></p>
+		<p>参数-message: 是要发送的消息</p>
+		<p>参数-targetURL: 指定目标窗口的网址，不符合该网址就不发送信息。可以使用<code>*</code>表示不限定目标窗口的网址。</p>
+		<p>参数-prots: 跟随信息一起发送通道端口。</p>
+	</div>
+	<div>
+		<iframe src="./demo/HTML5：postMessage-iframe-a.html" frameborder="0" name="iframeA"></iframe>
+		<iframe src="./demo/HTML5：postMessage-iframe-b.html" frameborder="0" name="iframeB"></iframe>
+	</div>
+	<br>
+	<div><button id="openBtn">点击打开窗口</button></div>
+</div>
+<script>
+	document.getElementById('openBtn').onclick = function(){
+		window.open('./demo/HTML5：postMessage-iframe-c.html');
+	};
+
+	// 接受消息
+	window.onmessage = function(ev) {
+
+		// 通过消息传递的origin来源，进行过滤操作
+		// ev.origin，表示消息传递的来源域名
+		if(ev.origin === 'http://127.0.0.1:8080') {
+
+			// ev.data，表示消息传递过来内容
+			if(ev.data === 'load') {
+				setTimeout(function(){
+
+					// ev.source，表示信息来源的窗口的window对象
+					ev.source.postMessage('您的消息已到达，请查收！', '*');
+				}, 2000);
+			}
+			else if(ev.data === 'closed') {
+				alert('目标窗口已关闭！');
+			}
+		}
+	};
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>日期操作：判断一个年份是否为闰年</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:360px;}
+    </style>
+</head>
+<body>
+<h1>日期操作：判断一个年份是否为闰年</h1>
+<h2>运行测试</h2>
+<div id="wrapper">
+    <p><label for="inputYear">请输入一个年份：</label><input id="inputYear" value="2014" /><button id="btnCheck">点击判断</button></p>
+</div>
+<h2>执行代码</h2>
+<pre class="jsCode">
+document.getElementById("btnCheck").onclick = function()
+{
+    var frmYear = document.getElementById("inputYear"),
+        year = parseInt(frmYear.value);
+
+    //判断正确的年份值
+    if(isNaN(year)){
+        alert("你输入的年份有误，请重新输入！");
+        frmYear.focus();
+        frmYear.select();
+        return;
+    }
+    frmYear.value = year;  //去掉文本框中的前缀“0”
+
+    //判断是否为闰年（普通年能被4整除且不能被100整除的年份是闰年，世纪年能被400整除的年份是闰年）
+    if(year % 400 === 0 || year % 4 === 0 &amp;&amp; year % 100 !== 0){
+        alert("判断结果：闰年！");
+    }else{
+        alert("判断结果：不是闰年！");
+    }
+};
+</pre>
+<script>
+    document.getElementById("btnCheck").onclick = function()
+    {
+        var frmYear = document.getElementById("inputYear"),
+            year = parseInt(frmYear.value);
+
+        //判断正确的年份值
+        if(isNaN(year)){
+            alert("你输入的年份有误，请重新输入！");
+            frmYear.focus();
+            frmYear.select();
+            return;
+        }
+        frmYear.value = year;  //去掉文本框中的前缀“0”
+
+        //判断是否为闰年（普通年能被4整除且不能被100整除的年份是闰年，世纪年能被400整除的年份是闰年）
+        if(year % 400 === 0 || year % 4 === 0 && year % 100 !== 0){
+            alert("判断结果：闰年！");
+        }else{
+            alert("判断结果：不是闰年！");
+        }
+    };
+
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

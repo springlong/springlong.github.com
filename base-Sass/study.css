@@ -1,0 +1,316 @@
+@charset "UTF-8";
+/*标准的css注释，会显示在生成结果中*/
+/*! 重要注释，即使压缩代码也会显示在结果中，通常用于版权声明*/
+#content:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+#content:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+#content:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+#vBox {
+  color: #333;
+  font-size: 0.12rem;
+}
+
+#vBox {
+  border-left: 1px solid #eee;
+}
+
+#vBox-left {
+  border: 1px solid #eee;
+}
+
+#div-1 {
+  border-top: 10px;
+  border-right: 20px;
+  border-bottom: 30px;
+  border-left: 40px;
+}
+
+#div-2 {
+  border-top: 1px;
+  border-right: 2px;
+  border-bottom: 3px;
+  border-left: 4px;
+}
+
+#div-3 {
+  border-top: 5px;
+  border-right: 10px;
+  border-bottom: 15px;
+  border-left: 20px;
+}
+
+#div-4 {
+  border: 5px 10px;
+  padding: 10px 20px;
+}
+
+#div-5 {
+  border: 5px 10px;
+  padding: 10px 5px;
+}
+
+h1 {
+  line-height: 2em;
+}
+
+h2 {
+  line-height: 1.5em;
+}
+
+h3 {
+  line-height: 1.5em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+#vBox-1 {
+  color: green;
+}
+
+#vBox-2 {
+  color: green;
+}
+
+#vBox-1 {
+  color: green;
+}
+
+#vBox-2 {
+  color: green;
+}
+
+#vBox-1 {
+  color: green;
+}
+
+#vBox-2 {
+  color: green;
+}
+
+#vBox-1 {
+  color: red;
+}
+#vBox-1 p {
+  color: green;
+}
+#vBox-1 div {
+  color: red;
+}
+
+#vBox-2 {
+  color: green;
+}
+
+img {
+  border: 1px solid #ccc;
+  padding: 8px;
+}
+
+#box1 {
+  background-color: #999;
+}
+#box1:hover {
+  background-color: #666;
+}
+#box1 span {
+  color: #333;
+}
+
+#box2 {
+  boder-left: 1px solid #fff;
+  boder-top: 1px solid #000;
+}
+
+.class1, .class3 {
+  border: 1px solid #ddd;
+  background-color: #000;
+}
+
+.class2, .class3 {
+  border-raidus: 5px;
+}
+
+.class3 {
+  color: #fff;
+}
+
+#content {
+  *zoom: 1;
+}
+#content:after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+}
+
+#fixed-box {
+  position: fixed;
+  _positon: absolute;
+  _bottom: auto;
+  _top: expression(eval(document.documentElement.scrollTop));
+}
+
+#opacity-box {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+div {
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(255, 255, 255, 0.3);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3), inset 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+@media only screen and (max-width: 480px) {
+  body {
+    color: red;
+  }
+
+  p {
+    margin: 10px 0;
+  }
+
+  div {
+    padding: 10px;
+    background-color: #333;
+  }
+}
+#operation {
+  width: 110px;
+  height: 90px;
+  padding: 200px;
+  margin: 50px;
+  padding-left: 240px;
+}
+
+#condition1 {
+  border-top: 1px solid #fff;
+}
+
+#condition2 {
+  border-top: 1px solid #fff;
+}
+
+#condition3 {
+  border-top: 1px solid #fff;
+}
+
+.box-1 {
+  border-top: 1px;
+}
+
+.box-2 {
+  border-top: 2px;
+}
+
+.box-3 {
+  border-top: 3px;
+}
+
+.box-4 {
+  border-top: 4px;
+}
+
+.test-1 {
+  border-top: 1px;
+}
+
+.test-2 {
+  border-top: 2px;
+}
+
+.test-3 {
+  border-top: 3px;
+}
+
+.test-4 {
+  border-top: 4px;
+}
+
+.test-5 {
+  border-top: 5px;
+}
+
+.item-1 {
+  width: 2px;
+}
+
+.item-2 {
+  width: 4px;
+}
+
+.item-3 {
+  width: 6px;
+}
+
+.item-4 {
+  width: 8px;
+}
+
+.bg-a {
+  background-image: url(images/test-a.png);
+}
+
+.bg-b {
+  background-image: url(images/test-b.png);
+}
+
+.bg-c {
+  background-image: url(images/test-c.png);
+}
+
+.cat {
+  background-image: #333 url(images/test-1.png);
+}
+
+.monkey {
+  background-image: #666 url(images/test-2.png);
+}
+
+.tiger {
+  background-image: #999 url(images/test-3.png);
+}
+
+h1 {
+  line-height: 2em;
+}
+
+h2 {
+  line-height: 1.5em;
+}
+
+h3 {
+  line-height: 1.2em;
+}
+
+.fun-test {
+  width: 30px;
+}

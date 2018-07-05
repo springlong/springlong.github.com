@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>require.js demo</title>
+    <script type="text/javascript" src="js/require-2.3.5.js"></script>
+    <style>
+        pre{padding:10px;background-color:#eee;}
+    </style>
+</head>
+<body>
+    <h1>require.js demo</h1>
+    <script type="text/javascript">
+
+    	// requirejs与require两个全局变量是等同的，即统一个对象具有两个别名
+
+    	// requirejs配置
+    	require.config({
+    		// 基础路径
+			baseUrl: '../modules-requiresjs/',
+            // 请求资源时URL后面附加额外的query参数
+            urlArgs: '_v=20180312',
+			// 路径配置，作为别名使用
+			// 主要用于定义各个JS开发库的路径名，不用加后缀.js
+			// 如果require请求的paths别名与模块声明中设定的模块name不一致，将不会执行模块的代码体并返回undefined
+			paths: {
+		        jquery: 'js/jquery-1.9.1',
+		        'browser': ['http://www.abc.com/test/broser', 'js/browser'],  // 使用数组配置模块请求的多个路径，按照先后顺序哪个文件存在就使用哪个路径
+		    }
+    	});
+
+    	// 加载单个模块并执行回调
+    	// 单个模块也需要使用数组
+    	// require(['jquery'], function(data){
+    	// 	console.log('jquery.js', data);
+    	// });
+
+    	// // 加载多个模块并执行回调，回调函数将在多个模块都加载并执行完成后执行
+    	// require(['js/test', 'js/test2'], function(data1, data2){
+    	// 	console.log('test.js', data1);
+    	// 	console.log('test2.js', data2);
+    	// });
+
+    	// // 加载模块，不执行回调
+    	// require(['js/main']);
+
+    	// // 加载模块，并执行回调
+    	// // 模块声明中设定了模块name为js/browser，与require请求的路径别名不一致，所以模块加载失败，返回undefined
+    	// require(['browser'], function(browser) {
+    	// 	console.log('browser.js', browser);
+    	// });
+
+    	// // 引用非AMD模块
+    	// require(['js/other'], function(data){
+    	// 	console.log('other.js', data);
+    	// });
+
+    	// 加载模块，并执行回调
+    	require(['js/cookie2'], function(data){
+    		console.log('cookie2.js', data);
+    	});
+
+
+
+    	// ====================================================
+        // 模块的标准定义
+        // 模块标识可以省略，默认为脚本路径
+        // 如果声明了模块标识，则必须与require()引用时的模块名称一致，否则模块将无法执行
+
+        define('模块标识', ['脚本依赖1', '脚本依赖2'], function(dep1, dep2){
+
+        	// 当脚本依赖1和脚本依赖2全部加载并执行完毕后，才执行这里的函数体
+        });
+
+    </script>
+</body>
+</html>

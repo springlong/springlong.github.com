@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <title>日期操作：日期时间格式化字符串</title>
+    <link rel="stylesheet" href="../../public/css/codeView.css" />
+    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <style>
+        body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
+        h1{margin:40px 0;}
+        h2{margin:30px 0;}
+        code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
+        span.code{display:inline-block;width:460px;}
+    </style>
+</head>
+<body>
+<h1>日期操作：日期时间格式化字符串</h1>
+<h2>运行结果</h2>
+<div id="wrapper"></div>
+<h2>脚本函数</h2>
+<pre class="jsCode autoHeight">
+/**
+ * 将一个Date对象的日期时间按指定的字符串格式进行返回。
+ * 格式字符有："y"-年（1~4位）、"M"-月（1~4位）、"d"-日（1~4位）、"H"-时（24小时制，1~2位）、"h"-时（12小时制，1~2位）、"m"-分（1~2位）、"s"-秒（1~2位）、"t"-上下午（1~2位）。
+ * @param  {String|Date} dateStr 日期对象（可以是Date对象，也可以是日期时间字符串，支持“2014-05-23”格式）
+ * @param  {String}      format  格式化字符串
+ * @return {String}       
+ */
+function dateFormat(dateStr, format)
+{
+    var oDate = new Date(typeof dateStr === "string" ? dateStr.replace(/-/g, "/") : dateStr),
+        year = oDate.getFullYear(),
+        month = oDate.getMonth() + 1,
+        days = oDate.getDate(),
+        weekday = oDate.getDay(),
+        weekName = ["日", "一", "二", "三", "四", "五", "六"][weekday],
+        hours = oDate.getHours(),
+        hours_12 = hours % 12 || 12,
+        minutes = oDate.getMinutes(),
+        seconds = oDate.getSeconds(),
+        padStr = function(value){
+            return value > 10 ? value : "0" + value;
+        },
+        regStr = {
+            "y{3,4}": year,
+            "y{1,2}": (year + "").substring(2),
+            "M{3,4}": ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"][month - 1] + "月",
+            "MM": padStr(month),
+            "M": month,
+            "dddd": "星期" + weekName,
+            "ddd": weekName,
+            "dd": padStr(days),
+            "d": days,
+            "hh": padStr(hours_12),
+            "h": hours_12,
+            "HH": padStr(hours),
+            "H": hours,
+            "mm": padStr(minutes),
+            "m": minutes,
+            "ss": padStr(seconds),
+            "s": seconds,
+            "tt": hours >= 12 ? "下午" : "上午",
+            "t": hours >= 12 ? "下" : "上"
+        };
+
+    for(var k in regStr){
+        format = format.replace(new RegExp(k, "g"), regStr[k]);
+    }
+    return format;
+}
+</pre>
+<h2>调用代码</h2>
+<pre class="jsCode autoHeight">
+var str = '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "yyyy年MM月dd日 dddd HH:mm:ss")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "yyyy年MM月dd日 dddd HH:mm:ss") + '&lt;/span>&lt;/p>'
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "yyyy-MM-dd dddd HH:mm:ss")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "yyyy-MM-dd dddd HH:mm:ss") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "yyyy-MM-dd HH:mm:ss")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "yyyy-MM-dd HH:mm:ss") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "yyyy-MM-dd tt hh:mm:ss")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "yyyy-MM-dd tt hh:mm:ss") + '&lt;/span>&lt;/p>';
+str += '-----------------------------------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "y")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "y") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "yy")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "yy") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "yyy")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "yyy") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "yyyy")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "yyyy") + '&lt;/span>&lt;/p>';
+str += '-----------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "M")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "M") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "MM")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "MM") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "MMM")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "MMM") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "MMMM")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "MMMM") + '&lt;/span>&lt;/p>';
+str += '-----------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "d")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "d") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "dd")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "dd") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "ddd")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "ddd") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "dddd")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "dddd") + '&lt;/span>&lt;/p>';
+str += '-----------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "H")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "H") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "HH")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "HH") + '&lt;/span>&lt;/p>';
+str += '-----------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "h")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "h") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "hh")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "hh") + '&lt;/span>&lt;/p>';
+str += '-----------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "m")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "m") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "mm")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "mm") + '&lt;/span>&lt;/p>';
+str += '-----------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "s")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "s") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "ss")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "ss") + '&lt;/span>&lt;/p>';
+str += '-----------------------------------------------------------------------------------';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "t")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "t") + '&lt;/span>&lt;/p>';
+str += '&lt;p>&lt;span class="code">&lt;code>dateFormat(new Date(), "tt")&lt;/code>&lt;/span>&lt;span class="result">' + dateFormat(new Date(), "tt") + '&lt;/span>&lt;/p>';
+document.getElementById("wrapper").innerHTML = str;
+</pre>
+<script>
+    /**
+     * 将一个Date对象的日期时间按指定的字符串格式进行返回。
+     * 格式字符有："y"-年（1~4位）、"M"-月（1~4位）、"d"-日（1~4位）、"H"-时（24小时制，1~2位）、"h"-时（12小时制，1~2位）、"m"-分（1~2位）、"s"-秒（1~2位）、"t"-上下午（1~2位）。
+     * @param  {String|Date} dateStr 日期对象（可以是Date对象，也可以是日期时间字符串，支持“2014-05-23”格式）
+     * @param  {String}      format  格式化字符串
+     * @return {String}       
+     */
+    function dateFormat(dateStr, format)
+    {
+        var oDate = new Date(typeof dateStr === "string" ? dateStr.replace(/-/g, "/") : dateStr),
+            year = oDate.getFullYear(),
+            month = oDate.getMonth() + 1,
+            days = oDate.getDate(),
+            weekday = oDate.getDay(),
+            weekName = ["日", "一", "二", "三", "四", "五", "六"][weekday],
+            hours = oDate.getHours(),
+            hours_12 = hours % 12 || 12,
+            minutes = oDate.getMinutes(),
+            seconds = oDate.getSeconds(),
+            padStr = function(value){
+                return value > 10 ? value : "0" + value;
+            },
+            regStr = {
+                "y{3,4}": year,
+                "y{1,2}": (year + "").substring(2),
+                "M{3,4}": ["一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二"][month - 1] + "月",
+                "MM": padStr(month),
+                "M": month,
+                "dddd": "星期" + weekName,
+                "ddd": weekName,
+                "dd": padStr(days),
+                "d": days,
+                "hh": padStr(hours_12),
+                "h": hours_12,
+                "HH": padStr(hours),
+                "H": hours,
+                "mm": padStr(minutes),
+                "m": minutes,
+                "ss": padStr(seconds),
+                "s": seconds,
+                "tt": hours >= 12 ? "下午" : "上午",
+                "t": hours >= 12 ? "下" : "上"
+            };
+
+        for(var k in regStr){
+            format = format.replace(new RegExp(k, "g"), regStr[k]);
+        }
+        return format;
+    }
+
+    //=====================================================================
+    //测试代码
+    var str = '<p><span class="code"><code>dateFormat(new Date(), "yyyy年MM月dd日 dddd HH:mm:ss")</code></span><span class="result">' + dateFormat(new Date(), "yyyy年MM月dd日 dddd HH:mm:ss") + '</span></p>'
+    str += '<p><span class="code"><code>dateFormat(new Date(), "yyyy-MM-dd dddd HH:mm:ss")</code></span><span class="result">' + dateFormat(new Date(), "yyyy-MM-dd dddd HH:mm:ss") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "yyyy-MM-dd HH:mm:ss")</code></span><span class="result">' + dateFormat(new Date(), "yyyy-MM-dd HH:mm:ss") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "yyyy-MM-dd tt hh:mm:ss")</code></span><span class="result">' + dateFormat(new Date(), "yyyy-MM-dd tt hh:mm:ss") + '</span></p>';
+    str += '-----------------------------------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "y")</code></span><span class="result">' + dateFormat(new Date(), "y") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "yy")</code></span><span class="result">' + dateFormat(new Date(), "yy") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "yyy")</code></span><span class="result">' + dateFormat(new Date(), "yyy") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "yyyy")</code></span><span class="result">' + dateFormat(new Date(), "yyyy") + '</span></p>';
+    str += '-----------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "M")</code></span><span class="result">' + dateFormat(new Date(), "M") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "MM")</code></span><span class="result">' + dateFormat(new Date(), "MM") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "MMM")</code></span><span class="result">' + dateFormat(new Date(), "MMM") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "MMMM")</code></span><span class="result">' + dateFormat(new Date(), "MMMM") + '</span></p>';
+    str += '-----------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "d")</code></span><span class="result">' + dateFormat(new Date(), "d") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "dd")</code></span><span class="result">' + dateFormat(new Date(), "dd") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "ddd")</code></span><span class="result">' + dateFormat(new Date(), "ddd") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "dddd")</code></span><span class="result">' + dateFormat(new Date(), "dddd") + '</span></p>';
+    str += '-----------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "H")</code></span><span class="result">' + dateFormat(new Date(), "H") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "HH")</code></span><span class="result">' + dateFormat(new Date(), "HH") + '</span></p>';
+    str += '-----------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "h")</code></span><span class="result">' + dateFormat(new Date(), "h") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "hh")</code></span><span class="result">' + dateFormat(new Date(), "hh") + '</span></p>';
+    str += '-----------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "m")</code></span><span class="result">' + dateFormat(new Date(), "m") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "mm")</code></span><span class="result">' + dateFormat(new Date(), "mm") + '</span></p>';
+    str += '-----------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "s")</code></span><span class="result">' + dateFormat(new Date(), "s") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "ss")</code></span><span class="result">' + dateFormat(new Date(), "ss") + '</span></p>';
+    str += '-----------------------------------------------------------------------------------';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "t")</code></span><span class="result">' + dateFormat(new Date(), "t") + '</span></p>';
+    str += '<p><span class="code"><code>dateFormat(new Date(), "tt")</code></span><span class="result">' + dateFormat(new Date(), "tt") + '</span></p>';
+    document.getElementById("wrapper").innerHTML = str;
+    
+    //代码着色
+    $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
+</script>
+</body>
+</html>

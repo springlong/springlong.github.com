@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>布局组件：警告（Alerts） - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>布局组件：警告（Alerts）</h1>
+    <hr>
+
+    <p>本章将讲解警告（Alerts）以及 Bootstrap 所提供的用于警告的 class。警告（Alerts）向用户提供了一种定义消息样式的方式。它们为典型的用户操作提供了上下文信息反馈。</p>
+    <p>您可以为警告框添加一个可选的关闭按钮。为了创建一个内联的可取消的警告框，请使用 <a href="http://www.runoob.com/bootstrap/bootstrap-alert-plugin.html" target="_blank">警告（Alerts） jQuery 插件</a>。您可以通过创建一个 <code>&lt;div></code>，并向其添加一个 <code>.alert</code> class 和四个上下文 class（即 <code>.alert-success</code>、<code>.alert-info</code>、<code>.alert-warning</code>、<code>.alert-danger</code>）之一，来添加一个基本的警告框。下面的实例演示了这点：</p>
+    <p>&nbsp;</p>
+    <p><code>.alert-success</code></p>
+    <div class="alert alert-success">成功！很好地完成了提交。</div>
+    <p><code>.alert-info</code></p>
+    <div class="alert alert-info">信息！请注意这个信息。</div>
+    <p><code>.alert-warning</code></p>
+    <div class="alert alert-warning">警告！请不要提交。</div>
+    <p><code>.alert-danger</code></p>
+    <div class="alert alert-danger">错误！请进行一些更改。</div>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>可取消的警告（Dismissal Alerts）</h2>
+    <p>创建一个可取消的警告（Dismissal Alert）步骤如下：</p>
+    <ul>
+        <li>通过创建一个 <code>&lt;div></code>，并向其添加一个 <code>.alert</code> class 和四个上下文 class（即 <code>.alert-success</code>、<code>.alert-info</code>、<code>.alert-warning</code>、<code>.alert-danger</code>）之一，来添加一个基本的警告框。</li>
+        <li>同时向上面的 <code>&lt;div></code> class 添加可选的 <code>.alert-dismissable</code>。</li>
+        <li>添加一个关闭按钮。</li>
+    </ul>
+    <p>&nbsp;</p>
+    <div class="alert alert-success alert-dismissable">
+       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+       成功！很好地完成了提交。
+    </div>
+    <div class="alert alert-info alert-dismissable">
+       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+       信息！请注意这个信息。
+    </div>
+    <div class="alert alert-warning alert-dismissable">
+       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+       警告！请不要提交。
+    </div>
+    <div class="alert alert-danger alert-dismissable">
+       <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+       错误！请进行一些更改。
+    </div>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>警告（Alerts）中的链接</h2>
+    <p>在警告（Alerts）中创建链接的步骤如下：</p>
+    <ul>
+        <li>通过创建一个 <code>&lt;div></code>，并向其添加一个 <code>.alert</code> class 和四个上下文 class（即 <code>.alert-success</code>、<code>.alert-info</code>、<code>.alert-warning</code>、<code>.alert-danger</code>）之一，来添加一个基本的警告框。</li>
+        <li>使用 <code>.alert-link</code> 实体类来快速提供带有匹配颜色的链接。</li>
+    </ul>
+    <p>&nbsp;</p>
+    <div class="alert alert-success">
+       <a href="#" class="alert-link">成功！很好地完成了提交。</a>
+    </div>
+    <div class="alert alert-info">
+       <a href="#" class="alert-link">信息！请注意这个信息。</a>
+    </div>
+    <div class="alert alert-warning">
+       <a href="#" class="alert-link">警告！请不要提交。</a>
+    </div>
+    <div class="alert alert-danger">
+       <a href="#" class="alert-link">错误！请进行一些更改。</a>
+    </div>
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>

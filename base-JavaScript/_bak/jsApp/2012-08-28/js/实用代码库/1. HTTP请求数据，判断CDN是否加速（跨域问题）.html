@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="gbk" />
+    <title>Webluker CDN加速请求测试</title>
+    <style type="text/css" media="screen">
+        *{padding:0;margin:0;font-size:14px;}
+        body{position:relative;width:980px;margin:0 auto;background-color:#eee;}
+        a{color:#0066CC;}
+        .requestOuter{overflow:hidden;height:40px;padding:20px;border:5px solid #C9C9C9;margin-top:10px;background:#fff;}
+        .requestOuter input{float:left;display:inline;width:800px;height:30px;padding:5px;line-height:30px;color:#333;}
+        .requestOuter button{float:left;display:inline;width:100px;height:40px;margin-left:10px;}
+        #state{overflow:auto;height:500px;padding:20px;border:5px solid #aaa;margin-top:20px;line-height:1.5em;background:#fff;}
+        #showURL{overflow:auto;width:960px;height:200px;padding:5px;border:5px solid #aaa;margin-top:20px;line-height:1.5em;background:#fff;}
+        .control{height:30px;padding-top:10px;}
+        .control button{float:left;display:inline;width:200px;height:30px;margin-right:10px;}
+        .error{color:#ff0000;}
+        .cdn{color:green;}
+    </style>
+    <base target="_blank" />
+</head>
+<body>
+<div class="control">
+    <button id="loadStart">开始请求</button>
+</div>
+<div id="state"></div>
+<textarea id="showURL"></textarea>
+<script>
+    var Ajax = function(method, target, send, callBack, callBackFail, iframe)
+    {
+        this.method = method;
+        this.target = target;
+        this.send = send;
+        this.encode = "application/x-www-form-urlencoded";
+        this.callBack = callBack;
+        this.callBackFail = callBackFail;
+        this.iframe = iframe;
+    }
+    Ajax.prototype =
+    {
+        newXMLHttpRequest:function()
+        {
+            var XHR = null;
+            if(window.XMLHttpRequest)
+            {
+                XHR = new XMLHttpRequest();
+            }
+            else
+            {
+                try
+                {
+                    XHR = new ActiveXObject("Msxml2.xmlhttp");
+                }
+                catch(e)
+                {
+                    try
+                    {
+                        XHR = new ActiveXObject("Microsoft.xmlhttp");
+                    }
+                    catch(e2)
+                    {}
+                }
+            }
+            return XHR;
+        },
+        onInit:function()
+        {
+            var thisobj = this;
+            var xmlHttp = this.newXMLHttpRequest();
+            xmlHttp.open(this.method, this.target, true);
+            xmlHttp.setRequestHeader("Content-Type", this.encode);
+            xmlHttp.onreadystatechange = function()
+            {
+                if(xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                {
+                    count--;
+                    thisobj.callBack(xmlHttp.responseText, thisobj.target, thisobj.send, xmlHttp.getAllResponseHeaders(), new Date().valueOf() - thisobj.start, thisobj.iframe);
+                }
+                else if(xmlHttp.readyState == 4 && thisobj.callBackFail !== undefined)
+                {
+                    count--;
+                    thisobj.callBackFail(xmlHttp.status, xmlHttp.statusText, thisobj.target, thisobj.send, thisobj.iframe);
+                }
+            }
+            xmlHttp.send("");
+            this.start = new Date().valueOf();
+        }
+    }
+</script>
+<script>
+    var state = document.getElementById("state"),
+        iframe = document.getElementById("openURL"),
+        btnLoadData = document.getElementById("loadData"),
+        btnLoadStart = document.getElementById("loadStart"),
+        txtShowURL = document.getElementById("showURL"),
+        urls = ["http://www.ebh029.com/ || 首页",
+                "http://www.ebh029.com/intro.html || 医院简介",
+                "http://www.ebh029.com/list/2535/ || 专家团队",
+                "http://www.ebh029.com/list/2528/ || 权威技术",
+                "http://www.ebh029.com/list/2543/ || 康复案例",
+                "http://www.ebh029.com/list/2527/ || 专家答疑",
+                "http://www.ebh029.com/zc.html || 疾病自测",
+                "http://www.ebh029.com/costinquires.html || 费用查询系统",
+                "http://www.ebh029.com/list/4084/ || 百姓评议",
+                "http://www.ebh029.com/guide.html || 就医流程",
+                "http://www.ebh029.com/list/2523/ || 媒体报道",
+                "http://www.ebh029.com/list/4087/ || 医院风采",
+                "http://www.ebh029.com/route.html || 来院路线",
+                "http://www.ebh029.com/news/79712.html || 大事件",
+                "http://www.ebh029.com/DNR.html || 专题-DNR鼻炎",
+                "http://www.ebh029.com/rhinitis2.html || 专题-鼻炎",
+                "http://www.ebh029.com/rhinitis.html || 专题-过敏性鼻炎",
+                "http://www.ebh029.com/snoring.html || 专题-鼾症",
+                "http://www.ebh029.com/list/2533/ || 鼻部疾病",
+                "http://www.ebh029.com/list/2532/ || 咽喉疾病",
+                "http://www.ebh029.com/list/2549/ || 耳部疾病",
+                "http://www.ebh029.com/list/3546/ || 鼾症",
+                "http://www.ebh029.com/small/2548.html || 肥厚性鼻炎",
+                "http://www.ebh029.com/small/2546.html || 鼻出血",
+                "http://www.ebh029.com/small/3554.html || 鼻甲肥大",
+                "http://www.ebh029.com/small/2537.html || 过敏性鼻炎",
+                "http://www.ebh029.com/small/2547.html || 鼻息肉",
+                "http://www.ebh029.com/small/2536.html || 慢性鼻炎",
+                "http://www.ebh029.com/small/2538.html || 鼻窦炎",
+                "http://www.ebh029.com/small/2539.html || 鼻中隔偏曲",
+                "http://www.ebh029.com/small/3966.html || 鼻腔鼻窦良、恶性肿瘤",
+                "http://www.ebh029.com/small/2526.html || 慢性咽炎",
+                "http://www.ebh029.com/small/3552.html || 咽异感症",
+                "http://www.ebh029.com/small/3553.html || 慢性喉炎",
+                "http://www.ebh029.com/small/2540.html || 声带息肉",
+                "http://www.ebh029.com/small/2541.html || 声带小结",
+                "http://www.ebh029.com/small/2524.html || 扁桃体炎",
+                "http://www.ebh029.com/small/2650.html || 咽喉炎",
+                "http://www.ebh029.com/small/2542.html || 腺样体肥大",
+                "http://www.ebh029.com/small/2550.html || 外耳道炎",
+                "http://www.ebh029.com/small/2553.html || 耳鸣",
+                "http://www.ebh029.com/small/2552.html || 耳聋",
+                "http://www.ebh029.com/small/2554.html || 鼓膜穿孔",
+                "http://www.ebh029.com/small/2551.html || 中耳炎",
+                "http://www.ebh029.com/small/3555.html || 耳部疱疹",
+                "http://www.ebh029.com/small/3556.html || 耳硬化症",
+                "http://www.ebh029.com/small/3547.html || 成人鼾症",
+                "http://www.ebh029.com/small/3548.html || 儿童鼾症",
+                "http://www.ebh029.com/small/3549.html || 软腭下垂",
+                "http://www.ebh029.com/small/3550.html || 咽腔狭窄",
+                "http://www.ebh029.com/small/3551.html || 呼吸暂停综合症",
+                "http://www.ebh029.com/images.aspx?CacheType=common.css || common.css",
+                "http://www.ebh029.com/css/global.css?v=20121203 || global.css",
+                "http://www.ebh029.com/css/index.css?v=20121203 || index.css",
+                "http://www.ebh029.com/css/other.css?v=20121203 || other.css",
+                "http://www.ebh029.com/images.aspx?CacheType=JSFrame.js || JSFrame.js",
+                "http://www.ebh029.com/js/appcall-uncompressed.js || appcall-uncompressed.js",
+                "http://www.ebh029.com/js/appcall.js || appcall.js",
+                "http://www.ebh029.com/js/date.js || date.js",
+                ],
+        len = 0,
+        count = 0,
+        current = 0,
+        loadData = false;
+
+        txtShowURL.value = urls.join("\n");
+
+//    btnLoadData.onclick = function()
+//    {
+//        if(this.innerHTML === "加载数据：true")
+//        {
+//            this.innerHTML = "加载数据：false";
+//            loadData = false;
+//        }
+//        else
+//        {
+//            this.innerHTML = "加载数据：true";
+//            loadData = true;
+//        }
+//    }
+
+    btnLoadStart.onclick = function()
+    {
+        urls = txtShowURL.value.split("\n");
+        len = urls.length;
+        count = len;
+        current = 0;
+        state.innerHTML = "";
+        loadURL(current);
+    }
+
+    function loadURL(current)
+    {
+        if(current < len)
+        {
+            if(loadData)
+            {
+                var iframe = document.createElement("iframe");
+                iframe.src = urls[current];
+                if(iframe.attachEvent)
+                {
+                    iframe.attachEvent("onload", function()
+                    {
+                        document.body.removeChild(iframe);
+                    });
+                }
+                else
+                {
+                    iframe.onload = function()
+                    {
+                        document.body.removeChild(iframe);
+                    };
+                }
+                document.body.appendChild(iframe);
+            }
+            try{
+                var links = urls[current].split(" || ");
+                var a = new Ajax("get", links[0], links[1], loadSuccess, loadFail, iframe);
+                a.onInit();
+            }catch(e){}
+        }
+    }
+
+    function nextURL()
+    {
+        current++;
+        loadURL(current);
+    }
+
+    function loadSuccess()
+    {
+        var tips = "";
+
+        if(arguments[3].indexOf("HIT via") !== -1 || arguments[3].indexOf("jiasule-WAF") !== -1)
+        {
+            tips = "（<span class='cdn'>已加速</span>）";
+        }
+        else
+        {
+            tips = "（<span class='error'>未加速</span>）";
+        }
+        state.innerHTML += (count + 1) + ".【<a href='" + arguments[1] + "'>" + arguments[2] + "</a>】：请求成功!（" + arguments[4] + "ms）" + tips + "<br />";
+        if(count === 0)
+        {
+            state.innerHTML += "<p>&nbsp;</p><hr /><p><strong>数据已请求完毕，请核对！</strong></p><p>&nbsp;</p>";
+        }
+        state.scrollTop = state.scrollHeight - state.clientHeight;
+
+        nextURL();
+    }
+    function loadFail()
+    {
+        state.innerHTML += (count + 1) + ".【<a href='" + arguments[2] + "'>" + arguments[3] + "</a>】：<span class='error'>请求失败</span>，HTTP状态：" + arguments[0] + " " + arguments[1] + "<br />";
+        if(count === 0)
+        {
+            state.innerHTML += "<p>&nbsp;</p><hr /><p><strong>数据已请求完毕，请核对！</strong></p><p>&nbsp;</p>";
+        }
+        state.scrollTop = state.scrollHeight - state.clientHeight;
+
+        nextURL();
+    }
+</script>
+</body>
+</html>

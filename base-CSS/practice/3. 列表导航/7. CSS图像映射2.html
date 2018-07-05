@@ -1,0 +1,108 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS图像映射2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+	<!--
+		
+		body {
+			font-family: "微软雅黑";
+			color: #000;
+		}
+		a{
+			text-decoration:none;
+		}
+		ul{
+			margin:0px;
+			padding:0px;
+			list-style:none;
+		}
+		
+		/*实现热点图像的基本设置*/
+		#pic{
+			width:640px;
+			height:425px;		
+			background:url(images/group-photo.jpg) no-repeat left top;
+			position:relative;	/*应用相对定位从而使其容器中的元素可以相对于其实行绝对定位*/
+		}
+		#pic a:hover{
+			border:none;
+			cursor:pointer;			/*说明：在IE6中对于a:hover嵌套元素的理解有些问题，在此应用这两个设置即可解决这个问题*/
+		}
+		/*各热点区的布局*/
+		#pic a .hotspot{ 
+			width:120px;
+			height:136px;
+			position:absolute;
+		}
+		#pic a:hover .hotspot{
+			border:1px solid white;
+		}
+		#pic .baidu a .hotspot{
+			left:83px;
+			top:6px;
+		}
+		#pic .hao123 a .hotspot{
+			left:268px;
+			top:101px;
+		}
+		#pic .qq a .hotspot{
+			left:418px;
+			top:233px;
+		}
+		
+		/*实现各链接文本的布局*/
+		#pic a .link{
+			width:200px;
+			height:1.5em;
+			line-height:1.5em;
+			color:#069;
+			position:absolute;
+		}
+		#pic a:hover .link{
+			color:#F60;
+			text-decoration:underline;
+		}
+		#pic .baidu a .link{
+			left:0px;
+			bottom:-2em;
+		}
+		#pic .hao123 a .link{
+			left:0px;
+			bottom:-3.5em;			/*注意：链接文本的高度为多少，与上一文本链接相差的垂直高度就为多少，这里为1.5em;*/
+		}
+		#pic .qq a .link{
+			left:0px;
+			bottom:-5em;
+		}
+		
+	-->
+	</style>
+</head>
+<body>
+<div id="pic">
+	<ul>
+		<li class="baidu">
+			<a href="http://www.baidu.com">
+				<span class="hotspot" title="访问百度首页"></span>		
+				<span class="link" title="访问百度首页">&raquo;&nbsp;访问百度首页</span>
+			</a>
+		</li>
+		<li class="hao123">
+			<a href="http://www.hao123.com">
+				<span class="hotspot" title="访问hao123首页"></span>
+				<span class="link" title="访问hao123首页">&raquo;&nbsp;访问hao123首页</span>
+			</a>
+		</li>
+		<li class="qq">
+			<a href="http://www.qq.com">
+				<span class="hotspot" title="访问腾讯首页"></span>
+				<span class="link" title="访问腾讯首页">&raquo;&nbsp;访问腾讯首页</span>
+			</a>
+			<!--说明：在IE浏览器中,锚链接的嵌套元素不应用a标签的title属性，所以在每一个嵌套元素中都指明title属性-->
+		</li>
+	</ul>
+</div>
+</body>
+</html>

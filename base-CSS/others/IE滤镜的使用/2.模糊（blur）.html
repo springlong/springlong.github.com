@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS应用——滤镜的使用（模糊）</title>
+	<meta name="keywords" content="CSS应用——滤镜的使用" />
+	<meta name="description" content="CSS应用——滤镜的使用" />
+	<meta name="author" content="Jerry_小猪" />
+	<meta http-equive="Content-Type" content="text/html;charset=gb2312"/>
+	<style type="text/css">
+		@import url("css.css");
+		
+		#biaozhun{
+			width:600px;
+			height:30px;
+			border:4px solid silver;}
+		
+	</style>
+</head>
+<body>
+	<p class="caption">CSS应用-滤镜的使用（模糊）</p>
+	<p class="caption">CSS应用-滤镜的使用（模糊）</p>
+	<hr />
+	<table width="850" border="1" align="center" bordercolor="black" cellspacing="0" cellpadding="5" style="font-size:16px;color:#0033CC">
+    	<!--第一行-->
+    	<tr align="center" height="30" bgcolor="silver">
+        	<td colspan="2" class="type">模糊属性blur——相关参数说明</td>
+        </tr>
+        <tr height="30">
+        	<td colspan="2" align="center"><span class="keywords">filter:blur(add=?,direction=?,strength=?)</span></td>
+        </tr>
+    	<!--第二行-->
+    	<tr height="30">
+        	<td>参数</td>
+        	<td>说明</td>
+        </tr>
+    	<!--第三行-->
+    	<tr height="30">
+        	<td>add</td>
+        	<td>参数值为true和false，指定图片是否显示原始图片，true为显示，false为不显示，默认设置为true！</td>
+        </tr>
+    	<!--第四行-->
+    	<tr height="30">
+        	<td height="20">direction</td>
+       	  <td>设置模糊的方向，模糊效果是按照顺时针方向进行的。其中0<sup>。</sup>表示垂直向上；每45<sup>。</sup>为一个单位，默认值是向左270<sup>。</sup></td>
+        </tr>
+    	<!--第五行-->
+    	<tr height="30">
+        	<td>strength</td>
+        	<td>设置模糊强度，只能用整数来指定，代表有多少像素的宽度将受到模糊影响，默认值为5像素！</td>
+      	</tr>
+    </table>
+    
+    <hr />
+    
+	<p class="type">（模糊设置）blur属性——add：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:blur(add=true);</span>
+                <br  />
+                显示原图片！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(add=true,strength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(add=false);</span>
+                <br  />
+                不显示原图片！
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(add=false,strength=30);" />
+       	  	</td>
+         </tr>
+  	</table>
+	
+	<hr />
+	
+	<p class="type">（模糊设置）blur属性——direction：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:blur(direction=0);</span>
+                <br  />
+                模糊方向为0<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(direction=0,strength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(direction=45);</span>
+                <br  />
+                模糊方向为45<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(direction=45,strength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(direction=90);</span>
+                <br  />
+                模糊方向为90<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(direction=90,strength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(direction=135);</span>
+                <br  />
+                模糊方向为135<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(direction135,strength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(direction=180);</span>
+                <br  />
+                模糊方向为180<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(direction=180,strength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(direction=225);</span>
+                <br  />
+                模糊方向为225<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(direction=225,strength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(direction=270);</span>
+                <br  />
+                模糊方向为270<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(direction=270,strength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(direction=315);</span>
+                <br  />
+                模糊方向为315<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(direction=315,strength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(direction=360);</span>
+                <br  />
+                模糊方向为360<sup>。</sup>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(direction=360,strength=30);" />
+       	  	</td>
+         </tr>
+  	</table>
+	
+	<hr />
+    
+	<p class="type">（模糊设置）blur属性——strength：</p>
+    
+	<table width="850" border="1" align="center">
+    	<!--第一行-->
+    	<tr align="center" valign="middle">
+        	<td>
+            	<span class="keywords">正常情况下！</span>
+                <p /><img src="../images/pic4.jpg" width="130" height="90" />
+        	</td>
+        	<td>
+            	<span class="keywords">filter:blur(strength=5);</span>
+                <br  />
+                模糊强度为5像素
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(strength=5);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(strength=10);</span>
+                <br  />
+                模糊强度为10像素
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(strength=10);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(strength=30);</span>
+                <br  />
+                模糊强度为30像素
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(strength=30);" />
+       	  	</td>
+        	<td>
+            	<span class="keywords">filter:blur(strength=50);</span>
+                <br  />
+                模糊强度为50像素
+                <p /><img src="../images/pic4.jpg" width="130" height="90" style="filter:blur(strength=50);" />
+       	  	</td>
+	</tr>
+	</table>
+</body>
+</html>

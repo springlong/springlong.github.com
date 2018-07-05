@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>使用Object.defineProperty实现响应式系统的基础</title>
+</head>
+<body>
+	<script>
+		function cb (val) {
+			/* 渲染视图 */
+			console.log("视图更新啦～", val);
+		}
+
+		// 数据观测
+		function observer (obj) {
+			if (!obj || (typeof obj !== 'object')) {
+				return
+			}
+
+			Object.keys(obj).forEach(key => {
+				defineReactive(obj, key, obj[key])
+			})
+		}
+
+		// 通过 Object.defineProperty 来实现对对象的「响应式」化
+		function defineReactive (obj, key, val) {
+			Object.defineProperty(obj, key, {
+				configurable: true,
+				enumerable: true,
+				get: function () {
+					return val
+				},
+				set: function (newVal) {
+					if (newVal === val) return
+					cb(newVal)
+				}
+			})
+		}
+
+		// 订阅者Dep
+		class Dep {
+			constructor () {
+				// 用来存放Watcher对象的数组
+				this.subs = []
+			}
+
+			// 在subs中添加一个Watcher对象
+			addSub (sub) {
+				this.subs.push(sub)
+			}
+
+			// 通知所有Watcher对象更新视图
+			notify () {
+				this.subs.forEach((sub) => {
+					sub.update()
+				})
+			}
+		}
+
+		// Vue构造函数
+		class Vue {
+			constructor(options) {
+				this._data = options.data
+				observer(this._data)
+			}
+		}
+
+		// Vue实例
+		let vm = new Vue({
+			data: {
+				a: 1,
+				b: 2,
+				c: {
+					name: 'yangtuan',
+					age: 26,
+					favo: ['running', 'music', 'movie'],
+					addr: {
+						province: '湖南',
+						city: '怀化市',
+						county: '溆浦县'
+					}
+				}
+			}
+		})
+	</script>
+</body>
+</html>

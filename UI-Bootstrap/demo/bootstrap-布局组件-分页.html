@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>布局组件：分页 - BootStrap Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h1>布局组件：分页</h1>
+
+    <p>下表列出了 Bootstrap 提供的处理分页的 class。</p>
+    <p><img src="images/pagination-class.png" alt=""></p>
+    
+
+    <hr>
+    <h2>默认的分页</h2>
+    <p>下面的实例演示了上表中所讨论的 class <code>.pagination</code> 的用法：</p>
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>分页的状态</h2>
+    <p>下面的实例演示了上表中所讨论的 class <code>.disabled</code>、<code>.active</code> 的用法：</p>
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li class="active"><a href="#">1</a></li>
+        <li class="disabled"><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>分页的大小</h2>
+    <p>下面的实例演示了上表中所讨论的 class <code>.pagination-*</code> 的用法：</p>
+    <p><code>.pagination-lg</code></p>
+    <ul class="pagination pagination-lg">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul><br>
+    <p><code>.pagination</code></p>
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul><br>
+    <p><code>.pagination-sm</code></p>
+    <ul class="pagination pagination-sm">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
+
+
+
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <hr>
+    <h2>翻页（Pager）</h2>
+    <p>如果您想要创建一个简单的分页链接为用户提供导航，可通过翻页来实现。与分页链接一样，翻页也是无序列表。默认情况下，链接是居中显示。</p>
+    <p>下表列出了 Bootstrap 处理翻页的 class。</p>
+    <p><img src="images/pagination-pager.png" alt=""></p>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>默认的翻页</h3>
+    <p>下面的实例演示了上表中所讨论的 class <code>.pager</code> 的用法：</p>
+    <ul class="pager">
+        <li><a href="#">Previous</a></li>
+        <li><a href="#">Next</a></li>
+    </ul>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>对齐的链接</h3>
+    <p>下面的实例演示了上表中所讨论的 class <code>.previous</code>、<code>.next</code> 的用法：</p>
+    <ul class="pager">
+        <li class="previous"><a href="#">&larr; Older</a></li>
+        <li class="next"><a href="#">Newer &rarr;</a></li>
+    </ul>
+
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <h3>翻页的状态</h3>
+    <p>下面的实例演示了上表中所讨论的 class <code>.disabled</code> 的用法：</p>
+    <ul class="pager">
+        <li class="previous disabled"><a href="#">&larr; Older</a></li>
+        <li class="next"><a href="#">Newer &rarr;</a></li>
+    </ul>
+
+    
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</div>
+</body>
+</html>
