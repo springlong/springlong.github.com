@@ -1,38 +1,38 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>前端规范：HTML规范 - 喜地开发文档</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="stylesheet" href="css/codeView.css" />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.snippet.min.js"></script>
+  <meta charset="UTF-8">
+  <title>前端规范参考：HTML规范</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/codeView.css" />
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.snippet.min.js"></script>
 </head>
 <body>
 <section id="instruction">
-    <h1><span>前端规范：HTML 规范</span></h1>
-    <h2>代码风格</h2>
-    <div>
-        <p>HTML 是网站建设的基础，对 HTML 的书写风格实行共同的规范约定有助于保持 HTML 文档的统一性，并提高 HTML 文档的阅读性以及不同开发人员之间的可接纳程度。况且，该部分文档的整理只是将大家老生长谈的那些 HTML 标准进行归纳总结，形成一个我们共同遵守的标准文档，并不会耽误大家太多的时间。</p>
-        <ol>
-            <li>
-                <strong>文档类型</strong>
-                <p>页面文档类型统一使用 HTML5 DOCTYPE。</p>
-                <p>虽然标准中 DOCTYPE 的文本不区分大小写，但我们建议使用下面的大小写组合。</p>
+  <h1><span>前端规范参考：HTML规范</span></h1>
+  <h2>代码风格</h2>
+  <div>
+    <p>HTML 是网站建设的基础，对 HTML 的书写风格实行共同的规范约定有助于保持 HTML 文档的统一性，并提高 HTML 文档的阅读性以及不同开发人员之间的可接纳程度。况且，该部分文档的整理只是将大家老生长谈的那些 HTML 标准进行归纳总结，形成一个我们共同遵守的标准文档，并不会耽误大家太多的时间。</p>
+    <ol>
+      <li>
+        <strong>文档类型</strong>
+        <p>页面文档类型统一使用 HTML5 DOCTYPE。</p>
+        <p>虽然标准中 DOCTYPE 的文本不区分大小写，但我们建议使用下面的大小写组合。</p>
 <pre class="htmlCode">
 &lt;!DOCTYPE html&gt;
 </pre>
-            </li>
-            <li>
-                <strong>编码</strong>
-                <p>页面统一使用 UTF-8 编码，且编码声明需要放至 head 元素内部的最前面。</p>
+      </li>
+      <li>
+        <strong>编码</strong>
+        <p>页面统一使用 UTF-8 编码，且编码声明需要放至 head 元素内部的最前面。</p>
 <pre class="htmlCode">
 &lt;meta charset="utf-8"&gt;
 </pre>
-            </li>
-            <li>
-                <strong>大小写</strong>
-                <p>元素的标签名和属性名统一使用小写。</p>
+      </li>
+      <li>
+        <strong>大小写</strong>
+        <p>元素的标签名和属性名统一使用小写。</p>
 <pre class="htmlCode">
 &lt;!-- 不推荐 -->
 &lt;A HREF="/"&gt;首页&lt;/A&gt;
@@ -41,10 +41,10 @@
 &lt;!-- 推荐 -->
 &lt;a href="/"&gt;首页&lt;/a&gt;
 </pre>
-            </li>
-            <li>
-                <strong>引号</strong>
-                <p>HTML 属性的值必须添加引号，且使用双引号进行标识。</p>
+      </li>
+      <li>
+        <strong>引号</strong>
+        <p>HTML 属性的值必须添加引号，且使用双引号进行标识。</p>
 <pre class="htmlCode">
 &lt;!-- 不推荐 -->
 &lt;p class=test&gt;测试&lt;/p&gt;
@@ -53,15 +53,15 @@
 &lt;!-- 推荐 -->
 &lt;p class="test"&gt;测试&lt;/p&gt;
 </pre>
-            </li>
-            <li>
-                <strong>空格/空行</strong>
-                <p>删除不必要的空格，特别是行尾空格。</p>
-                <p>某些情况下可以适当通过空行来增加代码的可读性和可维护性，不过应尽可能地减少使用。</p>
-            </li>
-            <li>
-                <strong>缩进</strong>
-                <p>代码层级之间必须拥有一个tab制表位的缩进。</p>
+      </li>
+      <li>
+        <strong>空格/空行</strong>
+        <p>删除不必要的空格，特别是行尾空格。</p>
+        <p>某些情况下可以适当通过空行来增加代码的可读性和可维护性，不过应尽可能地减少使用。</p>
+      </li>
+      <li>
+        <strong>缩进</strong>
+        <p>代码层级之间必须拥有2个空格的缩进。</p>
 <pre class="htmlCode">
 &lt;!-- 不推荐 -->
 &lt;ul&gt;&lt;li&gt;列表项&lt;/li&gt;&lt;/ul&gt;
@@ -69,15 +69,15 @@
 <pre class="htmlCode">
 &lt;!-- 推荐 -->
 &lt;ul&gt;
-    &lt;li&gt;列表项&lt;/li&gt;
+  &lt;li&gt;列表项&lt;/li&gt;
 &lt;/ul&gt;
 </pre>
-            </li>
-            <li>
-                <strong>闭合</strong>
-                <p>所有标签都需要正确闭合。</p>
-                <p>不要省略可选的结束标签（例如：<code>&lt;/li></code> 或 <code>&lt;/p></code>）。</p>
-                <p>对于自闭合的元素无需保留尾部的斜杠。</p>
+      </li>
+      <li>
+        <strong>闭合</strong>
+        <p>所有标签都需要正确闭合。</p>
+        <p>不要省略可选的结束标签（例如：<code>&lt;/li></code> 或 <code>&lt;/p></code>）。</p>
+        <p>对于自闭合的元素无需保留尾部的斜杠。</p>
 <pre class="htmlCode">
 &lt;!-- 不推荐 -->
 &lt;meta charset="utf-8" /&gt;
@@ -94,32 +94,32 @@
 &lt;p&gt;段落2&lt;/p&gt;
 &lt;img src="" alt="">
 </pre>
-            </li>
-            <li>
-                <strong>注释</strong>
-                <p>可以对模块内容、或者不同状态进行注释说明，注释内容统一书写在相应容器的前面一行，切勿使用 start 和 end 进行收尾呼应。</p>
-                <p>提交模板给后端人员时，可以保留注释，便于后端人员理解html结构，但是当模板合完之后，需要删除相应html注释。</p>
-            </li>
-            <li>
-                <strong>id属性</strong>
-                <div>
-                    <p>id属性应仅用于进行 js 行为操作，属性名称采用<b>驼峰式</b>命名规则，比如：<code>navBar</code>、<code>chatBox</code>等。</p>
-                </div>
-            </li>
-            <li>
-                <strong>type属性</strong>
-                <p>省略<code>&lt;link&gt;</code>和<code>&lt;script&gt;</code>标签的 type 属性，因为 <code>text/css</code> 和 <code>text/javascript</code> 分别是它们的默认值。</p>
-                <p>另外，统一将 link 标签的 rel 属性放置在 href 属性的前面进行书写。</p>
+      </li>
+      <li>
+        <strong>注释</strong>
+        <p>可以对模块内容、或者不同状态进行注释说明，注释内容统一书写在相应容器的前面一行，切勿使用 start 和 end 进行收尾呼应。</p>
+        <p>提交模板给后端人员时，可以保留注释，便于后端人员理解html结构，但是当模板合完之后，需要删除相应html注释。</p>
+      </li>
+      <li>
+        <strong>id属性</strong>
+        <div>
+          <p>id属性应仅用于进行 js 行为操作，属性名称采用<b>驼峰式</b>命名规则，比如：<code>navBar</code>、<code>chatBox</code>等。</p>
+        </div>
+      </li>
+      <li>
+        <strong>type属性</strong>
+        <p>省略<code>&lt;link&gt;</code>和<code>&lt;script&gt;</code>标签的 type 属性，因为 <code>text/css</code> 和 <code>text/javascript</code> 分别是它们的默认值。</p>
+        <p>另外，统一将 link 标签的 rel 属性放置在 href 属性的前面进行书写。</p>
 <pre class="htmlCode">
 &lt;link rel="stylesheet" href="reset.css"&gt;
 &lt;link rel="stylesheet" href="common.css"&gt;
 &lt;script src="sea.js"&gt;&lt;/script&gt;
 &lt;script src="seajs-flush.js"&gt;&lt;/script&gt;
 </pre>
-            </li>
-            <li>
-                <strong>布尔型属性</strong>
-                <p>布尔型属性在声明时统一不进行赋值操作。书写了属性则表示 true，否则就是 false。</p>
+      </li>
+      <li>
+        <strong>布尔型属性</strong>
+        <p>布尔型属性在声明时统一不进行赋值操作。书写了属性则表示 true，否则就是 false。</p>
 <pre class="htmlCode">
 &lt;input type="text" disabled>
 
@@ -129,19 +129,19 @@
   &lt;option value="1" selected>1&lt;/option>
 &lt;/select>
 </pre>
-                <p>备注：XHTML 规范要求为布尔型属性赋值，但是 HTML5 规范不需要。</p>
-            </li>
-            <li>
-                <strong>自定义属性</strong>
-                <p>如果需要给元素添加自定义属性来存放 JavaScript 的交互数据，那么该属性的命名应按照标准以“data-”为前缀。</p>
-                <p>在使用jQuery读取自定义属性时，统一使用<code>.attr()</code>，而不是<code>.data()</code>。</p>
+        <p>备注：XHTML 规范要求为布尔型属性赋值，但是 HTML5 规范不需要。</p>
+      </li>
+      <li>
+        <strong>自定义属性</strong>
+        <p>如果需要给元素添加自定义属性来存放 JavaScript 的交互数据，那么该属性的命名应按照标准以“data-”为前缀。</p>
+        <p>在使用jQuery读取自定义属性时，统一使用<code>.attr()</code>，而不是<code>.data()</code>。</p>
 <pre class="htmlCode">
 &lt;a src="/country?country=554" data-tips="tips">新西兰&lt;/a>
 </pre>
-            </li><!--
-            <li>
-                <strong>实体引用</strong>
-                <p>假定开发团队内，文件和编辑器都是使用同样的编码格式（UTF-8），则没有必要使用实体引用的方式（特殊的 HTML 字符除外，例如 &lt; 和 &amp; ）。</p>
+      </li><!--
+      <li>
+        <strong>实体引用</strong>
+        <p>假定开发团队内，文件和编辑器都是使用同样的编码格式（UTF-8），则没有必要使用实体引用的方式（特殊的 HTML 字符除外，例如 &lt; 和 &amp; ）。</p>
 <pre class="htmlCode">
 &lt;!-- 不推荐 --&gt;
 &amp;copy; 2014 喜地电子商务有限公司 版权所有
@@ -150,12 +150,12 @@
 &lt;!-- 推荐 --&gt;
 © 2014 喜地电子商务有限公司 版权所有
 </pre>
-            </li> -->
-            <li>
-                <strong>标签语义</strong>
-                <p>根据 HTML 各个元素的用途去使用它们，正确使用div（容器）、p（段落）、a（锚点）、strong（重要文本）、em（强调）等标签。</p>
-                <p>根据 HTML 各个元素的用途而去使用是很重要的，它涉及到文档的可访问性、重用和代码效率等问题。</p>
-                <p>由于 IE8 不支持 HTML5 的语义标签，我们也未对它们做兼容处理，因此我们约定不使用 header、footer、section、nav、aside 等语义标签。</p>
+      </li> -->
+      <li>
+        <strong>标签语义</strong>
+        <p>根据 HTML 各个元素的用途去使用它们，正确使用div（容器）、p（段落）、a（锚点）、strong（重要文本）、em（强调）等标签。</p>
+        <p>根据 HTML 各个元素的用途而去使用是很重要的，它涉及到文档的可访问性、重用和代码效率等问题。</p>
+        <p>由于 IE8 不支持 HTML5 的语义标签，我们也未对它们做兼容处理，因此我们约定不使用 header、footer、section、nav、aside 等语义标签。</p>
 <pre class="htmlCode">
 &lt;!-- 不推荐 -->
 &lt;div onclick="goToRecommendations();">All recommendations&lt;/div>
@@ -164,25 +164,25 @@
 &lt;!-- 推荐 -->
 &lt;a href="recommendations/">All recommendations&lt;/a>
 </pre>
-            </li>
-            <li>
-                <strong>img 标签</strong>
-                <p>img 标签算是网站中使用较为频繁的标签之一，也是网站多媒体元素的重要组成部分。</p>
-                <p>关于 img 标签的使用，一般性规则有：</p>
-                <ul>
-                    <li>为了加速文档的显示，应确保为每个 img 元素添加 width 和 height 属性（建议使用CSS，便于维护）。</li>
-                    <li>img标签在任何时候都应该拥有 alt 属性 ，这对读屏软件、搜索引擎、图片地址失效时都有好处。</li>
-                    <li>装饰性图片应该由 css 处理。如果为了方便而使用了用于装饰性的图片，则需要设置 alt 为空，使得读屏软件可以忽略此元素。</li>
-                    <li>嵌入在前景图像中的文字需要包含在 alt 文本中。</li>
-                    <li>与语义文本相邻的图片，其 alt 属性值可以为空（即， alt=""）。</li>
-                    <li>当链接内只有图像元素时，那么 alt 文本应描述链接的功能，而不是图像。</li>
-                    <li>组合图片只需要为第一幅图片设置替代文本，其他图片设置为空即可。</li>
-                </ul>
-                <p>在喜地，我们要求：</p>
-                <ul>
-                    <li>所有商品图片，alt属性均为商品的标题。</li>
-                    <li>其它情况视产品需求而定，但所有img标签都需要有alt属性。</li>
-                </ul>
+      </li>
+      <li>
+        <strong>img 标签</strong>
+        <p>img 标签算是网站中使用较为频繁的标签之一，也是网站多媒体元素的重要组成部分。</p>
+        <p>关于 img 标签的使用，一般性规则有：</p>
+        <ul>
+          <li>为了加速文档的显示，应确保为每个 img 元素添加 width 和 height 属性（建议使用CSS，便于维护）。</li>
+          <li>img标签在任何时候都应该拥有 alt 属性 ，这对读屏软件、搜索引擎、图片地址失效时都有好处。</li>
+          <li>装饰性图片应该由 css 处理。如果为了方便而使用了用于装饰性的图片，则需要设置 alt 为空，使得读屏软件可以忽略此元素。</li>
+          <li>嵌入在前景图像中的文字需要包含在 alt 文本中。</li>
+          <li>与语义文本相邻的图片，其 alt 属性值可以为空（即， alt=""）。</li>
+          <li>当链接内只有图像元素时，那么 alt 文本应描述链接的功能，而不是图像。</li>
+          <li>组合图片只需要为第一幅图片设置替代文本，其他图片设置为空即可。</li>
+        </ul>
+        <p>在喜地，我们要求：</p>
+        <ul>
+          <li>所有商品图片，alt属性均为商品的标题。</li>
+          <li>其它情况视产品需求而定，但所有img标签都需要有alt属性。</li>
+        </ul>
 <pre class="htmlCode">
 &lt;!-- 不推荐 -->
 &lt;img src="spreadsheet.png">
@@ -191,298 +191,298 @@
 &lt;!-- 推荐（宽高设置建议使用CSS） -->
 &lt;img src="spreadsheet.png" width="500" height="400" alt="电子表格截图">
 </pre>
-            </li>
-            <li>
-                <strong>title 属性</strong>
-                <p>title 属性可以应用于绝大部分标签上，它的用途有：</p>
-                <ul>
-                    <li>描述非文本内容（例如：icon 图标的辅助说明）</li>
-                    <li>补充说明文本内容。</li>
-                    <li>操作指引（例如：表单元素上使用 title，可以为用户提供更精准、得体的操作指引，一定程度上可以代替文字说明）。</li>
-                </ul>
-                <p>在喜地，我们要求</p>
-                <ul>
-                    <li>所有商品的a标签，title属性统一为商品的标题。</li>
-                    <li>其它情况视产品需求而定，不擅自设置title。</li>
-                </ul>
-            </li>
-            <li>
-                <strong><code>target="_blank"</code>的使用</strong>
-                <p>在用户访问网站的过程中，什么情况下对链接使用新开窗口（标签页）打开，直接影响着用户的使用体验。</p>
-                <p>在我们的网站项目中，是以 <b>当前链接是否会影响到用户的浏览主线</b> 来决定是否采用新开窗口。</p>
-                <p>下面举几个例子来进一步说明：</p>
-                <ul>
-                    <li>在首页点击底部的常见问题，由于该链接跟首页的商品展示关联不大，因此需要新开窗口访问，避免影响到用户在首页浏览商品的原本需求；</p></li>
-                    <li>当用户进入常见问题页面后，会有其他诸如购物流程、支付方式、退货规则等相关问题，那么对于这些性质和作用相似的链接就保持在原窗口打开，以避免太多的页面窗口给用户造成不必要的困扰；</li>
-                    <li>再来说说头部的导航，当用户点击导航链接时，通常被认定为用户对当前页面的需求发生了变更，因此对于导航链接我们都会保持在原窗口打开；</li>
-                    <li>接下来说说商品列表，通常而言用户在商品列表页面基本上都会查看其中的多个商品，或者对其中的几个商品进行比较，那么这个时候我们对这些商品链接将开启新窗口访问；</li>
-                    <li>最后说下跨域名访问，当用户点击站外域名的页面后，用户将会进入到与当前页面并不太相关的新的网站中去。为了让访客能够继续停留在当前网站，对所以的跨域名访问我们一律使用新开窗口访问。</li>
-                </ul>
-                <p>一般而言，在项目需求中，一个链接是在新开窗口打开，还是原窗口覆盖，都会有明确要求，我们按照产品需求进行设置即可！</p>
-            </li>
-            <li>
-                <strong>HTML模板</strong>
-                <p>使用<code>&lt;template>&lt;/template></code>代替<code>&lt;script type="text/html">&lt;/script></code>来定义html模板。</p>
-            </li>
-            <li>
-                <strong>其他说明</strong>
-                <ul>
-                    <li>推荐使用 button 代替 input 按钮，但必须声明 type；</li>
-                    <li>推荐使用 fieldset, legend 组织表单；</li>
-                </ul>
-            </li>
-        </ol>
-    </div>
-    <h2>布局风格</h2>
-    <div>
-        <p>通过遵守第一部分的代码风格，我们以一个标准首页的布局的基本结构为例来展示我们在项目中所遵从的布局风格：</p>
+      </li>
+      <li>
+        <strong>title 属性</strong>
+        <p>title 属性可以应用于绝大部分标签上，它的用途有：</p>
+        <ul>
+          <li>描述非文本内容（例如：icon 图标的辅助说明）</li>
+          <li>补充说明文本内容。</li>
+          <li>操作指引（例如：表单元素上使用 title，可以为用户提供更精准、得体的操作指引，一定程度上可以代替文字说明）。</li>
+        </ul>
+        <p>在喜地，我们要求</p>
+        <ul>
+          <li>所有商品的a标签，title属性统一为商品的标题。</li>
+          <li>其它情况视产品需求而定，不擅自设置title。</li>
+        </ul>
+      </li>
+      <li>
+        <strong><code>target="_blank"</code>的使用</strong>
+        <p>在用户访问网站的过程中，什么情况下对链接使用新开窗口（标签页）打开，直接影响着用户的使用体验。</p>
+        <p>在我们的网站项目中，是以 <b>当前链接是否会影响到用户的浏览主线</b> 来决定是否采用新开窗口。</p>
+        <p>下面举几个例子来进一步说明：</p>
+        <ul>
+          <li>在首页点击底部的常见问题，由于该链接跟首页的商品展示关联不大，因此需要新开窗口访问，避免影响到用户在首页浏览商品的原本需求；</p></li>
+          <li>当用户进入常见问题页面后，会有其他诸如购物流程、支付方式、退货规则等相关问题，那么对于这些性质和作用相似的链接就保持在原窗口打开，以避免太多的页面窗口给用户造成不必要的困扰；</li>
+          <li>再来说说头部的导航，当用户点击导航链接时，通常被认定为用户对当前页面的需求发生了变更，因此对于导航链接我们都会保持在原窗口打开；</li>
+          <li>接下来说说商品列表，通常而言用户在商品列表页面基本上都会查看其中的多个商品，或者对其中的几个商品进行比较，那么这个时候我们对这些商品链接将开启新窗口访问；</li>
+          <li>最后说下跨域名访问，当用户点击站外域名的页面后，用户将会进入到与当前页面并不太相关的新的网站中去。为了让访客能够继续停留在当前网站，对所以的跨域名访问我们一律使用新开窗口访问。</li>
+        </ul>
+        <p>一般而言，在项目需求中，一个链接是在新开窗口打开，还是原窗口覆盖，都会有明确要求，我们按照产品需求进行设置即可！</p>
+      </li>
+      <li>
+        <strong>HTML模板</strong>
+        <p>使用<code>&lt;template>&lt;/template></code>代替<code>&lt;script type="text/html">&lt;/script></code>来定义html模板。</p>
+      </li>
+      <li>
+        <strong>其他说明</strong>
+        <ul>
+          <li>推荐使用 button 代替 input 按钮，但必须声明 type；</li>
+          <li>推荐使用 fieldset, legend 组织表单；</li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+  <h2>布局风格</h2>
+  <div>
+    <p>通过遵守第一部分的代码风格，我们以一个标准首页的布局的基本结构为例来展示我们在项目中所遵从的布局风格：</p>
 <pre class="htmlCode autoHeight">
 &lt;!DOCTYPE html>
 &lt;html lang="zh-cn">
 &lt;head>
-    &lt;meta charset="utf-8">
-    &lt;title>标题&lt;/title>
-    &lt;meta name="keywords" content="">
-    &lt;meta name="description" content="">
+  &lt;meta charset="utf-8">
+  &lt;title>标题&lt;/title>
+  &lt;meta name="keywords" content="">
+  &lt;meta name="description" content="">
 &lt;/head>
 &lt;body>
 &lt;div class="wrapper">
-    &lt;!-- 工具栏 -->
-    &lt;div class="topbar-wrap">
-        &lt;div class="topbar-module1">工具栏模块1&lt;/div>
-        &lt;div class="topbar-module2">工具栏模块2&lt;/div>
-    &lt;/div>
-    &lt;!-- 头部 -->
-    &lt;div class="hd-wrap">
-        &lt;div class="hd-module1">头部模块1&lt;/div>
-        &lt;div class="hd-module2">头部模块2&lt;/div>
-    &lt;/div>
-    &lt;!-- 核心区 -->
-    &lt;div class="content">
-        &lt;!-- 主要内容 -->
-        &lt;div class="main">
-            &lt;div class="choice-wrap">
-                &lt;div class="choice-main">精选商品-主要&lt;/div>
-                &lt;div class="choice-side">精选商品-次要&lt;/div>
-            &lt;/div>
-            &lt;div class="floor-wrap">
-                &lt;div class="floor-hd">楼层-顶部&lt;/div>
-                &lt;div class="floor-bd">
-                    &lt;div class="floor-main">楼层-主要&lt;/div>
-                    &lt;div class="floor-side">楼层-次要&lt;/div>
-                &lt;/div>
-                &lt;div class="floor-ft">楼层-底部&lt;/div>
-            &lt;/div>
+  &lt;!-- 工具栏 -->
+  &lt;div class="topbar-wrap">
+    &lt;div class="topbar-module1">工具栏模块1&lt;/div>
+    &lt;div class="topbar-module2">工具栏模块2&lt;/div>
+  &lt;/div>
+  &lt;!-- 头部 -->
+  &lt;div class="hd-wrap">
+    &lt;div class="hd-module1">头部模块1&lt;/div>
+    &lt;div class="hd-module2">头部模块2&lt;/div>
+  &lt;/div>
+  &lt;!-- 核心区 -->
+  &lt;div class="content">
+    &lt;!-- 主要内容 -->
+    &lt;div class="main">
+      &lt;div class="choice-wrap">
+        &lt;div class="choice-main">精选商品-主要&lt;/div>
+        &lt;div class="choice-side">精选商品-次要&lt;/div>
+      &lt;/div>
+      &lt;div class="floor-wrap">
+        &lt;div class="floor-hd">楼层-顶部&lt;/div>
+        &lt;div class="floor-bd">
+          &lt;div class="floor-main">楼层-主要&lt;/div>
+          &lt;div class="floor-side">楼层-次要&lt;/div>
         &lt;/div>
-        &lt;!-- 侧栏内容 -->
-        &lt;div class="aside">&lt;/div>
+        &lt;div class="floor-ft">楼层-底部&lt;/div>
+      &lt;/div>
     &lt;/div>
-    &lt;!-- 尾部 -->
-    &lt;div class="ft-wrap">
-        &lt;div class="ft-module1">尾部模块1&lt;/div>
-        &lt;div class="ft-module2">尾部模块2&lt;/div>
-    &lt;/div>
+    &lt;!-- 侧栏内容 -->
+    &lt;div class="aside">&lt;/div>
+  &lt;/div>
+  &lt;!-- 尾部 -->
+  &lt;div class="ft-wrap">
+    &lt;div class="ft-module1">尾部模块1&lt;/div>
+    &lt;div class="ft-module2">尾部模块2&lt;/div>
+  &lt;/div>
 &lt;/div>
 &lt;/body>
 &lt;/html>
 </pre>
-        <p>遵守相同的布局风格，有利于各前端人员之间构建完整统一的页面代码。这样一来，各前端人员手中所负责的页面模块将不会有任何的隔阂，我们可以非常容易的去阅读其他前端人员所书写的模块部分。不仅提高了页面代码的可读性和可维护性，还将有利于部分离职前端人员的工作交接。</p>
-        <h3>组成部分</h3>
-        <div>
-            <p>这里所说的组成部分，是指将整个网页拆分为几个独立的区块，通过这种分解来提高网页的可维护性。</p>
-            <p>为了保证下述区块的样式不会与页面中的其他模块冲突，应确保相应类名的唯一性：</p>
-            <ul>
-                <li>
-                    <b>外围容器</b>：<code>.wrapper</code>
-                    <p>用来执行一些页面的CSS辅助设置。例如：页面的双背景（兼容低版本浏览器）、iPad访问时的兼容处理等。</p>
-                    <p>我们喜地的网站中，通常没有这一容器设置。</p>
-                </li>
-                <li>
-                    <b>工具栏</b>：<code>.topbar-wrap</code>
-                    <p>在网页最上面用一行的展示空间来展示登录信息、快捷链接、购物车等内容。</p>
-                </li>
-                <li>
-                    <b>头部</b>：<code>.hd-wrap</code>
-                    <p>一般有网站logo、搜索框、导航等内容。</p>
-                </li>
-                <li>
-                    <b>核心区</b>：<code>.content</code>
-                    <p>该区块是网页中的主要内容，根据页面的不同，该区块的内容也就不同。</p>
-                </li>
-                <li>
-                    <b>核心区-主要内容</b>：<code>.main</code>
-                    <p>当核心区采用两列布局时，更为主要的内容使用<code>.main</code>。</p>
-                </li>
-                <li>
-                    <b>核心区-次要内容</b>：<code>.aside</code>
-                    <p>当核心区采用两列布局时，次要的内容使用<code>.aside</code>。</p>
-                </li>
-                <li>
-                    <b>尾部</b>：<code>.ft-wrap</code>
-                    <p>一般有网站的版权说明、相关帮助链接。</p>
-                </li>
-            </ul>
-        </div>
-        <h3>模块书写</h3>
-        <div>
-            <p>模块是相对于区块之下的进一步分解，也是我们日常工作中的任务组成单元。</p>
-            <p>通常情况下，某些模块会游走于不同的页面之间或者在不同的模块下进行活动。</p>
-            <p>对模块代码的书写保持统一的风格，将有利于模块与页面，模块与模块之间的互动与并存。</p>
-            <p>为此，我们针对模块单元约定如下：</p>
-            <ol>
-                <li>
-                    <b>头尾模块</b>
-                    <p>头尾包含三个区块：工具栏（<code>.topbar-wrap</code>）、头部（<code>.hd-wrap</code>）和尾部（<code>.ft-wrap</code>）。</p>
-                    <p>它们的下属模块的类名，统一使用<code>topbar-</code>、<code>hd-</code>、<code>ft-</code>为前缀进行命名。</p>
-                </li>
-                <li>
-                    <b>模块的容器</b>
-                    <p>为了模块与模块之间的融合或嵌套使用，我们统一为模块的容器以<code>-wrap</code>为尾缀进行命名。</p>
-                    <p>在某些情况下，一个模块可能需要多个容器来满足相关样式或脚本的需求，此时我们可以添加<code>-inner</code>为尾缀的附加容器。</p>
+    <p>遵守相同的布局风格，有利于各前端人员之间构建完整统一的页面代码。这样一来，各前端人员手中所负责的页面模块将不会有任何的隔阂，我们可以非常容易的去阅读其他前端人员所书写的模块部分。不仅提高了页面代码的可读性和可维护性，还将有利于部分离职前端人员的工作交接。</p>
+    <h3>组成部分</h3>
+    <div>
+      <p>这里所说的组成部分，是指将整个网页拆分为几个独立的区块，通过这种分解来提高网页的可维护性。</p>
+      <p>为了保证下述区块的样式不会与页面中的其他模块冲突，应确保相应类名的唯一性：</p>
+      <ul>
+        <li>
+          <b>外围容器</b>：<code>.wrapper</code>
+          <p>用来执行一些页面的CSS辅助设置。例如：页面的双背景（兼容低版本浏览器）、iPad访问时的兼容处理等。</p>
+          <p>我们喜地的网站中，通常没有这一容器设置。</p>
+        </li>
+        <li>
+          <b>工具栏</b>：<code>.topbar-wrap</code>
+          <p>在网页最上面用一行的展示空间来展示登录信息、快捷链接、购物车等内容。</p>
+        </li>
+        <li>
+          <b>头部</b>：<code>.hd-wrap</code>
+          <p>一般有网站logo、搜索框、导航等内容。</p>
+        </li>
+        <li>
+          <b>核心区</b>：<code>.content</code>
+          <p>该区块是网页中的主要内容，根据页面的不同，该区块的内容也就不同。</p>
+        </li>
+        <li>
+          <b>核心区-主要内容</b>：<code>.main</code>
+          <p>当核心区采用两列布局时，更为主要的内容使用<code>.main</code>。</p>
+        </li>
+        <li>
+          <b>核心区-次要内容</b>：<code>.aside</code>
+          <p>当核心区采用两列布局时，次要的内容使用<code>.aside</code>。</p>
+        </li>
+        <li>
+          <b>尾部</b>：<code>.ft-wrap</code>
+          <p>一般有网站的版权说明、相关帮助链接。</p>
+        </li>
+      </ul>
+    </div>
+    <h3>模块书写</h3>
+    <div>
+      <p>模块是相对于区块之下的进一步分解，也是我们日常工作中的任务组成单元。</p>
+      <p>通常情况下，某些模块会游走于不同的页面之间或者在不同的模块下进行活动。</p>
+      <p>对模块代码的书写保持统一的风格，将有利于模块与页面，模块与模块之间的互动与并存。</p>
+      <p>为此，我们针对模块单元约定如下：</p>
+      <ol>
+        <li>
+          <b>头尾模块</b>
+          <p>头尾包含三个区块：工具栏（<code>.topbar-wrap</code>）、头部（<code>.hd-wrap</code>）和尾部（<code>.ft-wrap</code>）。</p>
+          <p>它们的下属模块的类名，统一使用<code>topbar-</code>、<code>hd-</code>、<code>ft-</code>为前缀进行命名。</p>
+        </li>
+        <li>
+          <b>模块的容器</b>
+          <p>为了模块与模块之间的融合或嵌套使用，我们统一为模块的容器以<code>-wrap</code>为尾缀进行命名。</p>
+          <p>在某些情况下，一个模块可能需要多个容器来满足相关样式或脚本的需求，此时我们可以添加<code>-inner</code>为尾缀的附加容器。</p>
 <pre class="htmlCode">
 &lt;div class="module-wrap">
-    &lt;div class="module-inner">
-        模块内容
-    &lt;/div>
+  &lt;div class="module-inner">
+    模块内容
+  &lt;/div>
 &lt;/div>
 </pre>
-                    <p>最开始的时候，也考虑到模块容器的命名不书写任何的前缀或尾缀，以此减少HTML代码的字节占用。但是考虑到为了能够正确对模块进行区分，同时也没有任何合理或完整的规定来限定模块的命名来避免样式冲突，因此最终决定统一使用<code>-wrap</code>为尾缀进行命名。</p>
-                </li>
-                <li>
-                    <b>模块的结构</b>
-                    <p>相信对于大多数前端人员来说，为HTML元素取名（class属性）是一件很令人头痛的事情，为了减少这种痛苦，我们同样将模块进行分解，并以<code>-hd</code>、<code>-bd</code>、<code>-ft</code>、<code>-main</code>、<code>-side</code>、<code>-sub</code>、<code>-cont</code>、<code>-item</code>等尾缀进行命名。它们的使用方法如下：</p>
+          <p>最开始的时候，也考虑到模块容器的命名不书写任何的前缀或尾缀，以此减少HTML代码的字节占用。但是考虑到为了能够正确对模块进行区分，同时也没有任何合理或完整的规定来限定模块的命名来避免样式冲突，因此最终决定统一使用<code>-wrap</code>为尾缀进行命名。</p>
+        </li>
+        <li>
+          <b>模块的结构</b>
+          <p>相信对于大多数前端人员来说，为HTML元素取名（class属性）是一件很令人头痛的事情，为了减少这种痛苦，我们同样将模块进行分解，并以<code>-hd</code>、<code>-bd</code>、<code>-ft</code>、<code>-main</code>、<code>-side</code>、<code>-sub</code>、<code>-cont</code>、<code>-item</code>等尾缀进行命名。它们的使用方法如下：</p>
 <pre class="htmlCode">
 &lt;!--左右-->
 &lt;div class="floor-wrap">
-    &lt;div class="floor-main">&lt;/div>
-    &lt;div class="floor-side">&lt;/div>
+  &lt;div class="floor-main">&lt;/div>
+  &lt;div class="floor-side">&lt;/div>
 &lt;/div>
 
 &lt;!--左中右-->
 &lt;div class="floor-wrap">
-    &lt;div class="floor-main">
-        &lt;div class="floor-sub">&lt;/div>
-        &lt;div class="floor-cont">&lt;/div>
-    &lt;/div>
-    &lt;div class="floor-side">&lt;/div>
+  &lt;div class="floor-main">
+    &lt;div class="floor-sub">&lt;/div>
+    &lt;div class="floor-cont">&lt;/div>
+  &lt;/div>
+  &lt;div class="floor-side">&lt;/div>
 &lt;/div>
 
 &lt;!--上中下-->
 &lt;div class="floor-wrap">
-    &lt;div class="floor-hd">&lt;/div>
-    &lt;div class="floor-bd">&lt;/div>
-    &lt;div class="floor-ft">&lt;/div>
+  &lt;div class="floor-hd">&lt;/div>
+  &lt;div class="floor-bd">&lt;/div>
+  &lt;div class="floor-ft">&lt;/div>
 &lt;/div>
 
 &lt;!--上 [左右] 下-->
 &lt;div class="floor-wrap">
-    &lt;div class="floor-hd">&lt;/div>
-    &lt;div class="floor-bd">
-        &lt;div class="floor-main">&lt;/div>
-        &lt;div class="floor-side">&lt;/div>
-    &lt;/div>
-    &lt;div class="floor-ft">&lt;/div>
+  &lt;div class="floor-hd">&lt;/div>
+  &lt;div class="floor-bd">
+    &lt;div class="floor-main">&lt;/div>
+    &lt;div class="floor-side">&lt;/div>
+  &lt;/div>
+  &lt;div class="floor-ft">&lt;/div>
 &lt;/div>
 </pre>
-                    <pre class="htmlCode">
+          <pre class="htmlCode">
 &lt;!--列表模块-->
 &lt;div class="skulist-wrap">
-    &lt;ul class="skulist-cont">
-        &lt;li class="skulist-item">
-            &lt;div class="skulist-pic">图片&lt;/div>
-            &lt;div class="skulist-title">标题&lt;/div>
-            &lt;div class="skulist-desc">描述&lt;/div>
-            &lt;div class="skulist-price">价格&lt;/div>
-            &lt;div class="skulist-country">国家&lt;/div>
-        &lt;/li>
-        &lt;li class="skulist-item">
-            &lt;div class="skulist-pic">图片&lt;/div>
-            &lt;div class="skulist-title">标题&lt;/div>
-            &lt;div class="skulist-desc">描述&lt;/div>
-            &lt;div class="skulist-price">价格&lt;/div>
-            &lt;div class="skulist-country">国家&lt;/div>
-        &lt;/li>
-    &lt;/ul>
+  &lt;ul class="skulist-cont">
+    &lt;li class="skulist-item">
+      &lt;div class="skulist-pic">图片&lt;/div>
+      &lt;div class="skulist-title">标题&lt;/div>
+      &lt;div class="skulist-desc">描述&lt;/div>
+      &lt;div class="skulist-price">价格&lt;/div>
+      &lt;div class="skulist-country">国家&lt;/div>
+    &lt;/li>
+    &lt;li class="skulist-item">
+      &lt;div class="skulist-pic">图片&lt;/div>
+      &lt;div class="skulist-title">标题&lt;/div>
+      &lt;div class="skulist-desc">描述&lt;/div>
+      &lt;div class="skulist-price">价格&lt;/div>
+      &lt;div class="skulist-country">国家&lt;/div>
+    &lt;/li>
+  &lt;/ul>
 &lt;/div>
 </pre>
-                </li>
-                <li>
-                    <b>模块的内容</b>
-                    <p>按照页面的组成部分、模块的容器、模块的结构对页面进行三次分解后，页面中的代码结构将具备更高的可读性和可维护性。不过这只是最为基础的结构部署，真正的工作量其实来源于模块内容的细节部分。</p>
-                    <p>当到了模块结构之下的内容细节部分，对HTML元素的取名依旧是一项重要工作。我们先来看看代码案例：</p>
+        </li>
+        <li>
+          <b>模块的内容</b>
+          <p>按照页面的组成部分、模块的容器、模块的结构对页面进行三次分解后，页面中的代码结构将具备更高的可读性和可维护性。不过这只是最为基础的结构部署，真正的工作量其实来源于模块内容的细节部分。</p>
+          <p>当到了模块结构之下的内容细节部分，对HTML元素的取名依旧是一项重要工作。我们先来看看代码案例：</p>
 <pre class="htmlCode">
 &lt;!--在已知的模块结构内部继续分解-->
 &lt;div class="floor-cont">
-    &lt;div class="floor-slide">焦点图&lt;/div>
-    &lt;div class="floor-hot">
-        &lt;div class="floor-hot-brand">热卖品牌&lt;/div>
-        &lt;div class="floor-hot-business">热卖商家&lt;/div>
-    &lt;/div>
+  &lt;div class="floor-slide">焦点图&lt;/div>
+  &lt;div class="floor-hot">
+    &lt;div class="floor-hot-brand">热卖品牌&lt;/div>
+    &lt;div class="floor-hot-business">热卖商家&lt;/div>
+  &lt;/div>
 &lt;/div>
 
 &lt;!--在某个合适的结构下不再分解-->
 &lt;div class="floor-cont">
-    &lt;div class="floor-slide">焦点图&lt;/div>
-    &lt;div class="floor-hot">
-        &lt;h3 class="title">热卖商品&lt;/h3>
-        &lt;ul class="list">
-            &lt;li>商品列表&lt;/li>
-        &lt;/ul>
-    &lt;/div>
+  &lt;div class="floor-slide">焦点图&lt;/div>
+  &lt;div class="floor-hot">
+    &lt;h3 class="title">热卖商品&lt;/h3>
+    &lt;ul class="list">
+      &lt;li>商品列表&lt;/li>
+    &lt;/ul>
+  &lt;/div>
 &lt;/div>
 </pre>
-                    <p>通常而言，对网页中模块内容的结构划分不应超过三个级别。</p>
-                    <p>第一级别是指模块本身，即模块的容器部分，如：<code>.floor-wrap</code>。</p>
-                    <p>第二级别就是将模块中的内容进行分类，如：<code>.floor-slide</code>、<code>.floor-hot</code>。</p>
-                    <p>第三级别则是对第二级别继续进行划分，如：<code>.floor-hot-brand</code>、<code>.floor-hot-business</code>。</p>
-                    <p>而对于<code>.floor-hd</code>、<code>.floor-main</code>、<code>.floor-side</code>、<code>.floor-cont</code>等容器属于特殊内容，它们的目的在于将第二级别的内容分布在合适的位置，在模块布局当中不一定会存在这些结构容器。</p>
-                </li>
-            </ol>
-        </div>
+          <p>通常而言，对网页中模块内容的结构划分不应超过三个级别。</p>
+          <p>第一级别是指模块本身，即模块的容器部分，如：<code>.floor-wrap</code>。</p>
+          <p>第二级别就是将模块中的内容进行分类，如：<code>.floor-slide</code>、<code>.floor-hot</code>。</p>
+          <p>第三级别则是对第二级别继续进行划分，如：<code>.floor-hot-brand</code>、<code>.floor-hot-business</code>。</p>
+          <p>而对于<code>.floor-hd</code>、<code>.floor-main</code>、<code>.floor-side</code>、<code>.floor-cont</code>等容器属于特殊内容，它们的目的在于将第二级别的内容分布在合适的位置，在模块布局当中不一定会存在这些结构容器。</p>
+        </li>
+      </ol>
     </div>
-    <h2>注意事项</h2>
+  </div>
+  <h2>注意事项</h2>
+  <div>
+    <h3>meta原数据</h3>
     <div>
-        <h3>meta原数据</h3>
-        <div>
-            <p>针对PC站点，我们约定使用下面部分所示的相关meta的设置。</p>
-            <p>双核浏览器默认使用极速模式（360浏览器）：</p>
+      <p>针对PC站点，我们约定使用下面部分所示的相关meta的设置。</p>
+      <p>双核浏览器默认使用极速模式（360浏览器）：</p>
 <pre class="htmlCode">
 &lt;meta name="renderer" content="webkit">
 </pre>
-            <p>告诉IE使用最新的引擎渲染网页（<code>IE=Edge</code>），同时可以激活<a href="http://baike.baidu.com/link?url=WzkVZ9JKbgqPRNY8-DUllWTd1xvfgUeCdpxjBeLXhJzwkbB59ZELnxLATwkoScBpExkRRnNYf2Io9EdXVyq0z_" target="_blank">Chrome Frame</a>（<code>chrome=1</code>）：</p>
+      <p>告诉IE使用最新的引擎渲染网页（<code>IE=Edge</code>），同时可以激活<a href="http://baike.baidu.com/link?url=WzkVZ9JKbgqPRNY8-DUllWTd1xvfgUeCdpxjBeLXhJzwkbB59ZELnxLATwkoScBpExkRRnNYf2Io9EdXVyq0z_" target="_blank">Chrome Frame</a>（<code>chrome=1</code>）：</p>
 <pre class="htmlCode">
 &lt;meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
 </pre>
-            <p>ios 设备启用 WebApp 全屏模式：</p>
+      <p>ios 设备启用 WebApp 全屏模式：</p>
 <pre class="htmlCode">
 &lt;meta name="apple-mobile-web-app-capable" content="yes">
 </pre>
-            <p>ios 设备禁止数字识自动别为电话号码：</p>
+      <p>ios 设备禁止数字识自动别为电话号码：</p>
 <pre class="htmlCode">
 &lt;meta name="format-detection" content="telephone=no">
 </pre>
-        </div>
-        <h3>低版本IE跳转</h3>
-        <div>
-            <p>喜地的PC卖场最低仅兼容IE8+的浏览器，因此对于IE6或IE7的用户访问，我们需要引导他们升级自己的浏览器来继续访问。</p>
-            <p>最开始我们采用加载脚本文件通过判断浏览器的ua来进行跳转，而现在，我们感觉IE的条件注释来得更为干脆.</p>
-            <p>只需要将下面的代码放入<code>head</code>部分即可：</p>
+    </div>
+    <h3>低版本IE跳转</h3>
+    <div>
+      <p>喜地的PC卖场最低仅兼容IE8+的浏览器，因此对于IE6或IE7的用户访问，我们需要引导他们升级自己的浏览器来继续访问。</p>
+      <p>最开始我们采用加载脚本文件通过判断浏览器的ua来进行跳转，而现在，我们感觉IE的条件注释来得更为干脆.</p>
+      <p>只需要将下面的代码放入<code>head</code>部分即可：</p>
 <pre class="htmlCode">
 &lt;!--[if lt IE 8]>
-    &lt;script type="text/javascript">
-        location.href = 'http://static.xidibuy.com/static/apps/warning.html';
-    &lt;/script>
+  &lt;script type="text/javascript">
+    location.href = 'http://static.xidibuy.com/static/apps/warning.html';
+  &lt;/script>
 &lt;![endif]-->
 </pre>
-        </div>
-        <h3>图片质量</h3>
-        <div>
-            <p>由于我们的网站项目中，绝大多数的图片都是由后台进行上传管理，这些图片的质量把控都是有后端程序进行负责，因此目前在前端方面并没有一个详细的关于图片质量的指标规定。</p>
-            <p>在网站制作过程中，我们负责的主要图片就是那些图标、logo等背景图，它们基本上都是 PNG-8、PNG-24 的图片，对于 PNG-8 我们在导出图片时应保持256的高品质，而 PNG-24 则保持默认参数（无参数可置）。</p>
-            <p>而对于那些活动页面使用的前景图，或者其他不需要经过后端管理输出的页面前景图，如果没有把控好图片的品质与文件大小的约定，随着客访流量的增加，将会浪费很大一笔的带宽资源。尤其是当我看到某些 JPG 图片居然保持着100品质的时候，我有点惊讶加惶恐。</p>
-            <p>虽然产品方面没有关于图片质量的硬指标规定，但是我们还是在这里建议大家<b>对网站中使用到的 JPG 前景图在PS导出的时候选择60或70的品质</b>。老实说100品质的图片相对于70或者60的品质而言，视觉上真的没有太大区别，但是在文件体积上100品质通常是70品质的2.5倍，是60品质的3倍。</p>
-        </div>
     </div>
+    <h3>图片质量</h3>
+    <div>
+      <p>由于我们的网站项目中，绝大多数的图片都是由后台进行上传管理，这些图片的质量把控都是有后端程序进行负责，因此目前在前端方面并没有一个详细的关于图片质量的指标规定。</p>
+      <p>在网站制作过程中，我们负责的主要图片就是那些图标、logo等背景图，它们基本上都是 PNG-8、PNG-24 的图片，对于 PNG-8 我们在导出图片时应保持256的高品质，而 PNG-24 则保持默认参数（无参数可置）。</p>
+      <p>而对于那些活动页面使用的前景图，或者其他不需要经过后端管理输出的页面前景图，如果没有把控好图片的品质与文件大小的约定，随着客访流量的增加，将会浪费很大一笔的带宽资源。尤其是当我看到某些 JPG 图片居然保持着100品质的时候，我有点惊讶加惶恐。</p>
+      <p>虽然产品方面没有关于图片质量的硬指标规定，但是我们还是在这里建议大家<b>对网站中使用到的 JPG 前景图在PS导出的时候选择60或70的品质</b>。老实说100品质的图片相对于70或者60的品质而言，视觉上真的没有太大区别，但是在文件体积上100品质通常是70品质的2.5倍，是60品质的3倍。</p>
+    </div>
+  </div>
 </section>
 <script src="js/main.js"></script>
 </body>

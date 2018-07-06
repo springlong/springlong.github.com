@@ -1,176 +1,176 @@
 ﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <title>前端规范：JSDoc常用标记 - 喜地开发文档</title>
-    <style>
-        body {
-          background-color: #fff;
-          color: #333;
-          font-family: sans-serif;
-          font-size: 10pt;
-          margin-right: 100px;
-          margin-left: 100px;
-        }
+  <meta charset="UTF-8">
+  <title>前端规范参考：JSDoc常用标记</title>
+  <style>
+    body {
+      background-color: #fff;
+      color: #333;
+      font-family: sans-serif;
+      font-size: 10pt;
+      margin-right: 20px;
+      margin-left: 20px;
+    }
 
-        h1, h2, h3, h4, h5, h6, .toc_title {
-          color: #06c;
-          margin-top: 2em;
-          margin-bottom: 1em;
-        }
+    h1, h2, h3, h4, h5, h6, .toc_title {
+      color: #06c;
+      margin-top: 2em;
+      margin-bottom: 1em;
+    }
 
-        h1 {
-          text-align: center;
-          font-size: 18pt;
-        }
+    h1 {
+      text-align: center;
+      font-size: 18pt;
+    }
 
-        h2, .toc_title {
-          font-weight: bold;
-          font-size: 12pt;
-          margin-left: -40px;
-          background-color: #EEE;
-        }
+    h2, .toc_title {
+      font-weight: bold;
+      font-size: 12pt;
+      margin-left: -40px;
+      background-color: #EEE;
+    }
 
-        h3, h4, h5, h6 {
-          font-size: 10pt;
-          margin-left: -20px;
-        }
+    h3, h4, h5, h6 {
+      font-size: 10pt;
+      margin-left: -20px;
+    }
 
-        .toc_category, .toc_stylepoint {
-          font-size: 10pt;
-          padding-top: .3em;
-          padding-bottom: .3em;
-        }
+    .toc_category, .toc_stylepoint {
+      font-size: 10pt;
+      padding-top: .3em;
+      padding-bottom: .3em;
+    }
 
-        table {
-          border-collapse: collapse;
-        }
+    table {
+      border-collapse: collapse;
+    }
 
-        td, th {
-          border: 1px solid #ccc;
-          padding: 2px 12px;
-          font-size: 10pt;
-        }
+    td, th {
+      border: 1px solid #ccc;
+      padding: 2px 12px;
+      font-size: 10pt;
+    }
 
-        .toc td, .toc th {
-          border-width: 1px 5px;
-        }
+    .toc td, .toc th {
+      border-width: 1px 5px;
+    }
 
-        code, samp, var {
-          color: #060;
-        }
+    code, samp, var {
+      color: #060;
+    }
 
-        pre {
-          font-size: 10pt;
-          display: block;
-          color: #060;
-          background-color: #f8fff8;
-          border-color: #f0fff0;
-          border-style: solid;
-          border-top-width: 1px;
-          border-bottom-width: 1px;
-          border-right-width: 1px;
-          border-left-width: 5px;
-          padding-left: 12px;
-          padding-right: 12px;
-          padding-top: 4px;
-          padding-bottom: 4px;
-        }
+    pre {
+      font-size: 10pt;
+      display: block;
+      color: #060;
+      background-color: #f8fff8;
+      border-color: #f0fff0;
+      border-style: solid;
+      border-top-width: 1px;
+      border-bottom-width: 1px;
+      border-right-width: 1px;
+      border-left-width: 5px;
+      padding-left: 12px;
+      padding-right: 12px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+    }
 
-        pre.badcode {
-          color: #c00;
-          background-color: #fff8f8;
-          border-color: #fff0f0;
-        }
+    pre.badcode {
+      color: #c00;
+      background-color: #fff8f8;
+      border-color: #fff0f0;
+    }
 
-        .showhide_button {
-          float: left;
-          cursor: pointer;
-          border-width: 1px;
-          border-style: solid;
-          border-color: #ddd #aaa #aaa #ddd;
-          padding: 0 3px 1px;
-          margin: 0 4px 8px 0;
-          border-radius: 3px;
-          -webkit-border-radius: 3px;
-          -moz-border-radius: 3px;
-        }
+    .showhide_button {
+      float: left;
+      cursor: pointer;
+      border-width: 1px;
+      border-style: solid;
+      border-color: #ddd #aaa #aaa #ddd;
+      padding: 0 3px 1px;
+      margin: 0 4px 8px 0;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+    }
 
-        .link_button {
-          float: left;
-          display: none;
-          background-color: #f8f8ff;
-          border-color: #f0f0ff;
-          border-style: solid;
-          border-width: 1px;
-          font-size: 75%;
-          margin-top: 0;
-          margin-left: -50px;
-          padding: 4px;
-          border-radius: 3px;
-          -webkit-border-radius: 3px;
-          -moz-border-radius: 3px;
-        }
+    .link_button {
+      float: left;
+      display: none;
+      background-color: #f8f8ff;
+      border-color: #f0f0ff;
+      border-style: solid;
+      border-width: 1px;
+      font-size: 75%;
+      margin-top: 0;
+      margin-left: -50px;
+      padding: 4px;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+    }
 
-        address {
-          text-align: right;
-        }
+    address {
+      text-align: right;
+    }
 
-        hr {
-          margin-top: 3.5em;
-          border-width: 1px;
-          color: #fff;
-        }
+    hr {
+      margin-top: 3.5em;
+      border-width: 1px;
+      color: #fff;
+    }
 
-        .stylepoint_section {
-          display: block;
-          margin-bottom: 1em;
-          color: #5588ff;
-          font-family: sans-serif;
-          font-size: 90%;
-          font-weight: bold;
-          margin-left: -2%;
-        }
+    .stylepoint_section {
+      display: block;
+      margin-bottom: 1em;
+      color: #5588ff;
+      font-family: sans-serif;
+      font-size: 90%;
+      font-weight: bold;
+      margin-left: -2%;
+    }
 
-        .stylepoint_subsection {
-          color: #667799;
-          font-family: sans-serif;
-          font-size: 90%;
-          font-weight: bold;
-          margin-left: -1%;
-        }
+    .stylepoint_subsection {
+      color: #667799;
+      font-family: sans-serif;
+      font-size: 90%;
+      font-weight: bold;
+      margin-left: -1%;
+    }
 
-        .stylepoint_subsubsection {
-          color: #667799;
-          font-family: sans-serif;
-          font-size: 80%;
-          font-weight: bold;
-          margin-left: 0;
-        }
+    .stylepoint_subsubsection {
+      color: #667799;
+      font-family: sans-serif;
+      font-size: 80%;
+      font-weight: bold;
+      margin-left: 0;
+    }
 
-        .revision {
-          text-align: right;
-        }
+    .revision {
+      text-align: right;
+    }
 
 
-    </style>
+  </style>
 </head>
 <body>
 <table border="1" style="width:80%;border-collapse:collapse;margin:0 auto;" cellpadding="4">
-              <tbody><tr>
-                <th>标记</th>
-                <th>模板 &amp; 例子</th>
-                <th>描述</th>
-                <th>类型检测支持</th>
-              </tr>
-            
-            
-              <tr>
-                <td><a name="tag-param">@param</a></td>
-                <td>
-                  @param {Type} 变量名 描述
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tbody><tr>
+        <th>标记</th>
+        <th>模板 &amp; 例子</th>
+        <th>描述</th>
+        <th>类型检测支持</th>
+        </tr>
+
+
+        <tr>
+        <td><a name="tag-param">@param</a></td>
+        <td>
+          @param {Type} 变量名 描述
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * Queries a Baz for items.
  * @param {number} groupNum Subgroup id to query.
  * @param {string|number|null} term An itemName,
@@ -179,112 +179,112 @@
 goog.Baz.prototype.query = function(groupNum, term) {
   // ...
 };</pre></div>
-                </td>
-                <td>
-                  给方法, 函数, 构造器中的参数添加说明.
-                </td>
-                <td>完全支持.</td>
-              </tr>
+        </td>
+        <td>
+          给方法, 函数, 构造器中的参数添加说明.
+        </td>
+        <td>完全支持.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-return">@return</a></td>
-                <td>
-                  @return {Type} 描述
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-return">@return</a></td>
+        <td>
+          @return {Type} 描述
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * @return {string} The hex ID of the last item.
  */
 goog.Baz.prototype.getLastId = function() {
   // ...
   return id;
 };</pre></div>
-                </td>
-                <td>
-                  给方法, 函数的返回值添加说明. 在描述布尔型参数时,
-                    用 "Whether the component is visible" 这种描述优于 "True if the component is visible, false otherwise".
-                    如果函数没有返回值, 就不需要添加 <code>@return</code> 标记.
-                </td>
-                <td>完全支持.</td>
-              </tr>
+        </td>
+        <td>
+          给方法, 函数的返回值添加说明. 在描述布尔型参数时,
+          用 "Whether the component is visible" 这种描述优于 "True if the component is visible, false otherwise".
+          如果函数没有返回值, 就不需要添加 <code>@return</code> 标记.
+        </td>
+        <td>完全支持.</td>
+        </tr>
 
-              <tr>
-                <td>
-                  <a name="tag-author">@author</a>
-                  
-                </td>
-                <td>
-                  @author username@google.com (first last)
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td>
+          <a name="tag-author">@author</a>
+
+        </td>
+        <td>
+          @author username@google.com (first last)
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * @fileoverview Utilities for handling textareas.
  * @author kuth@google.com (Uthur Pendragon)
  */</pre></div>
-                </td>
-                <td>
-                  表明文件的作者,
-                  通常仅会在 <code>@fileoverview</code> 注释中使用到它.
-                </td>
-                <td>不需要.</td>
-              </tr>
+        </td>
+        <td>
+          表明文件的作者,
+          通常仅会在 <code>@fileoverview</code> 注释中使用到它.
+        </td>
+        <td>不需要.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-see">@see</a></td>
-                <td>
-                  @see Link
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-see">@see</a></td>
+        <td>
+          @see Link
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * Adds a single item, recklessly.
  * @see #addSafely
  * @see goog.Collect
  * @see goog.RecklessAdder#add
  ...</pre></div>
-                </td>
-                <td>给出引用链接, 用于进一步查看函数/方法的相关细节.</td>
-                <td>不需要.</td>
-              </tr>
+        </td>
+        <td>给出引用链接, 用于进一步查看函数/方法的相关细节.</td>
+        <td>不需要.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-fileoverview">@fileoverview</a></td>
-                <td>
-                  @fileoverview 描述
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-fileoverview">@fileoverview</a></td>
+        <td>
+          @fileoverview 描述
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * @fileoverview Utilities for doing things that require this very long
  * but not indented comment.
  * @author kuth@google.com (Uthur Pendragon)
  */</pre></div>
-                </td>
-                <td>文件通览.</td>
-                <td>不需要.</td>
-              </tr>
+        </td>
+        <td>文件通览.</td>
+        <td>不需要.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-constructor">@constructor</a></td>
-                <td>
-                  @constructor
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-constructor">@constructor</a></td>
+        <td>
+          @constructor
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * A rectangle.
  * @constructor
  */
 function GM_Rect() {
   ...
 }</pre></div>
-                </td>
-                <td>
-                  指明类中的构造器.
-                </td>
-                <td>
-                  会检查. 如果省略了, 编译器将禁止实例化.
-                </td>
-              </tr>
+        </td>
+        <td>
+          指明类中的构造器.
+        </td>
+        <td>
+          会检查. 如果省略了, 编译器将禁止实例化.
+        </td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-interface">@interface</a></td>
-                <td>
-                  @interface
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-interface">@interface</a></td>
+        <td>
+          @interface
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * A shape.
  * @interface
  */
@@ -298,43 +298,43 @@ Shape.prototype.draw = function() {};
  */
 function Polygon() {};
 Polygon.prototype.getSides = function() {};</pre></div>
-                </td>
-                <td>指明这个函数是一个接口.</td>
-                <td>
-                  会检查. 如果实例化一个接口, 编译器会警告.
-                </td>
-              </tr>
+        </td>
+        <td>指明这个函数是一个接口.</td>
+        <td>
+          会检查. 如果实例化一个接口, 编译器会警告.
+        </td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-type">@type</a></td>
-                <td>
-                  
-                    @type Type<br>
-                    @type {Type}
-                  
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-type">@type</a></td>
+        <td>
+
+          @type Type<br>
+          @type {Type}
+
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * The message hex ID.
  * @type {string}
  */
 var hexId = hexId;</pre></div>
-                </td>
-                <td>
-                  标识变量, 属性或表达式的类型.
-                  大多数类型是不需要加大括号的, 但为了保持一致, 建议统一加大括号.
-                </td>
-                <td>会检查</td>
-              </tr>
+        </td>
+        <td>
+          标识变量, 属性或表达式的类型.
+          大多数类型是不需要加大括号的, 但为了保持一致, 建议统一加大括号.
+        </td>
+        <td>会检查</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-extends">@extends</a></td>
-                <td>
-                  
-                    @extends Type<br>
-                    @extends {Type}
-                  
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-extends">@extends</a></td>
+        <td>
+
+          @extends Type<br>
+          @extends {Type}
+
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * Immutable empty node list.
  * @constructor
  * @extends goog.ds.BasicNodeList
@@ -342,22 +342,22 @@ var hexId = hexId;</pre></div>
 goog.ds.EmptyNodeList = function() {
   ...
 };</pre></div>
-                </td>
-                <td>
-                  与 @constructor 一起使用, 用来表明该类是扩展自其它类的. 类型外的大括号可写可不写.
-                </td>
-                <td>会检查</td>
-              </tr>
+        </td>
+        <td>
+          与 @constructor 一起使用, 用来表明该类是扩展自其它类的. 类型外的大括号可写可不写.
+        </td>
+        <td>会检查</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-implements">@implements</a></td>
-                <td>
-                  
-                    @implements Type<br>
-                    @implements {Type}
-                  
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-implements">@implements</a></td>
+        <td>
+
+          @implements Type<br>
+          @implements {Type}
+
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * A shape.
  * @interface
  */
@@ -372,65 +372,65 @@ function Square() {};
 Square.prototype.draw = function() {
   ...
 };</pre></div>
-                </td>
-                <td>
-                 与 @constructor 一起使用, 用来表明该类实现自一个接口. 类型外的大括号可写可不写.
-                </td>
-                <td>
-                  会检查.  如果接口不完整, 编译器会警告.
-                </td>
-              </tr>
+        </td>
+        <td>
+         与 @constructor 一起使用, 用来表明该类实现自一个接口. 类型外的大括号可写可不写.
+        </td>
+        <td>
+          会检查.  如果接口不完整, 编译器会警告.
+        </td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-lends">@lends</a></td>
-                <td>
-                  @lends objectName<br>
-                  @lends {objectName}
-                  <p><i>如:</i></p>
-                  <div class=""><pre>goog.object.extend(
-    Button.prototype,
-    /** @lends {Button.prototype} */ {
-      isButton: function() { return true; }
-    });</pre></div>
-                </td>
-                <td>
-                    表示把对象的键看成是其他对象的属性. 该标记只能出现在对象语法中.<p></p>
-                    注意, 括号中的名称和其他标记中的类型名称不一样, 它是一个对象名, 以"借过来"的属性名命名.
-                  如, @type {Foo} 表示 "Foo 的一个实例",
-                  but @lends {Foo} 表示 "Foo 构造器".<p></p>
+        <tr>
+        <td><a name="tag-lends">@lends</a></td>
+        <td>
+          @lends objectName<br>
+          @lends {objectName}
+          <p><i>如:</i></p>
+          <div class=""><pre>goog.object.extend(
+  Button.prototype,
+  /** @lends {Button.prototype} */ {
+    isButton: function() { return true; }
+  });</pre></div>
+        </td>
+        <td>
+          表示把对象的键看成是其他对象的属性. 该标记只能出现在对象语法中.<p></p>
+          注意, 括号中的名称和其他标记中的类型名称不一样, 它是一个对象名, 以"借过来"的属性名命名.
+          如, @type {Foo} 表示 "Foo 的一个实例",
+          but @lends {Foo} 表示 "Foo 构造器".<p></p>
 
-                  更多有关此标记的内容见 <a href="http://code.google.com/p/jsdoc-toolkit/wiki/TagLends">
-                  JSDoc Toolkit docs</a>.
-                </td>
-                <td>会检查</td>
-              </tr>
+          更多有关此标记的内容见 <a href="http://code.google.com/p/jsdoc-toolkit/wiki/TagLends">
+          JSDoc Toolkit docs</a>.
+        </td>
+        <td>会检查</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-private">@private</a></td>
-                <td>
-                  @private
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-private">@private</a></td>
+        <td>
+          @private
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * Handlers that are listening to this logger.
  * @type Array.&lt;Function&gt;
  * @private
  */
 this.handlers_ = [];</pre></div>
-                </td>
-                <td>
-                  指明那些以下划线结尾的方法和属性是
-                  <a href="#Visibility__private_and_protected_fields_">私有</a>的.
-                  不推荐使用后缀下划线, 而应改用 @private.
-                </td>
-                <td>需要指定标志来开启.</td>
-              </tr>
+        </td>
+        <td>
+          指明那些以下划线结尾的方法和属性是
+          <a href="#Visibility__private_and_protected_fields_">私有</a>的.
+          不推荐使用后缀下划线, 而应改用 @private.
+        </td>
+        <td>需要指定标志来开启.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-protected">@protected</a></td>
-                <td>
-                  @protected
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-protected">@protected</a></td>
+        <td>
+          @protected
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * Sets the component's root element to the given element.  Considered
  * protected and final.
  * @param {Element} element Root element for the component.
@@ -439,24 +439,24 @@ this.handlers_ = [];</pre></div>
 goog.ui.Component.prototype.setElementInternal = function(element) {
   // ...
 };</pre></div>
-                </td>
-                <td>
-                  指明接下来的方法和属性是
-                  <a href="#Visibility__private_and_protected_fields_">被保护</a>的.
-                  被保护的方法和属性的命名不需要以下划线结尾, 和普通变量名没区别.
-                </td>
-                <td>需要指定标志来开启.</td>
-              </tr>
+        </td>
+        <td>
+          指明接下来的方法和属性是
+          <a href="#Visibility__private_and_protected_fields_">被保护</a>的.
+          被保护的方法和属性的命名不需要以下划线结尾, 和普通变量名没区别.
+        </td>
+        <td>需要指定标志来开启.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-this">@this</a></td>
-                <td>
-                  
-                    @this Type<br>
-                    @this {Type}
-                  
-                  <p><i>如:</i></p>
-                  <div class=""><pre>pinto.chat.RosterWidget.extern('getRosterElement',
+        <tr>
+        <td><a name="tag-this">@this</a></td>
+        <td>
+
+          @this Type<br>
+          @this {Type}
+
+          <p><i>如:</i></p>
+          <div class=""><pre>pinto.chat.RosterWidget.extern('getRosterElement',
 /**
  * Returns the roster widget element.
  * @this pinto.chat.RosterWidget
@@ -465,37 +465,37 @@ goog.ui.Component.prototype.setElementInternal = function(element) {
 function() {
   return this.getWrappedComponent_().getElement();
 });</pre></div>
-                </td>
-                <td>
-                  指明调用这个方法时, 需要在哪个上下文中. 当 this 指向的不是原型方法的函数时必须使用这个标记.
-                </td>
-                <td>会检查</td>
-              </tr>
+        </td>
+        <td>
+          指明调用这个方法时, 需要在哪个上下文中. 当 this 指向的不是原型方法的函数时必须使用这个标记.
+        </td>
+        <td>会检查</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-supported">@supported</a></td>
-                <td>
-                  @supported 描述
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-supported">@supported</a></td>
+        <td>
+          @supported 描述
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * @fileoverview Event Manager
  * Provides an abstracted interface to the
  * browsers' event systems.
  * @supported So far tested in IE6 and FF1.5
  */</pre></div>
-                </td>
-                <td>
-                  在文件概述中用到, 表明支持哪些浏览器.
-                </td>
-                <td>不需要.</td>
+        </td>
+        <td>
+          在文件概述中用到, 表明支持哪些浏览器.
+        </td>
+        <td>不需要.</td>
 </tr>
 
-              <tr>
-                <td><a name="tag-enum">@enum</a></td>
-                <td>
-                  @enum {Type}
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-enum">@enum</a></td>
+        <td>
+          @enum {Type}
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * Enum for tri-state values.
  * @enum {number}
  */
@@ -504,17 +504,17 @@ project.TriState = {
   FALSE: -1,
   MAYBE: 0
 };</pre></div>
-                </td>
-                <td>用于枚举类型.</td>
-                <td>完全支持. 如果省略, 会认为是整型.</td>
-              </tr>
+        </td>
+        <td>用于枚举类型.</td>
+        <td>完全支持. 如果省略, 会认为是整型.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-deprecated">@deprecated</a></td>
-                <td>
-                  @deprecated 描述
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-deprecated">@deprecated</a></td>
+        <td>
+          @deprecated 描述
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * Determines whether a node is a field.
  * @return {boolean} True if the contents of
  *     the element are editable, but the element
@@ -524,55 +524,55 @@ project.TriState = {
 BN_EditUtil.isTopEditableField = function(node) {
   // ...
 };</pre></div>
-                </td>
-                <td>
-                  告诉其他开发人员, 此方法, 函数已经过时, 不要再使用. 同时也会给出替代方法或函数.
-                </td>
-                <td>不需要</td>
-              </tr>
+        </td>
+        <td>
+          告诉其他开发人员, 此方法, 函数已经过时, 不要再使用. 同时也会给出替代方法或函数.
+        </td>
+        <td>不需要</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-override">@override</a></td>
-                <td>
-                  @override
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-override">@override</a></td>
+        <td>
+          @override
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * @return {string} Human-readable representation of project.SubClass.
  * @override
  */
 project.SubClass.prototype.toString() {
   // ...
 };</pre></div>
-                </td>
-                <td>
-                  指明子类的方法和属性是故意隐藏了父类的方法和属性. 如果子类的方法和属性没有自己的文档, 就会继承父类的.
-                </td>
-                <td>会检查</td>
-              </tr>
+        </td>
+        <td>
+          指明子类的方法和属性是故意隐藏了父类的方法和属性. 如果子类的方法和属性没有自己的文档, 就会继承父类的.
+        </td>
+        <td>会检查</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-inheritDoc">@inheritDoc</a></td>
-                <td>
-                  @inheritDoc
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/** @inheritDoc */
+        <tr>
+        <td><a name="tag-inheritDoc">@inheritDoc</a></td>
+        <td>
+          @inheritDoc
+          <p><i>如:</i></p>
+          <div class=""><pre>/** @inheritDoc */
 project.SubClass.prototype.toString() {
   // ...
 };</pre></div>
-                </td>
-                <td>
-                  指明子类的方法和属性是故意隐藏了父类的方法和属性, 它们具有相同的文档. 注意: 使用
-                  @inheritDoc 意味着也同时使用了 @override.
-                </td>
-                <td>会检查</td>
-              </tr>
+        </td>
+        <td>
+          指明子类的方法和属性是故意隐藏了父类的方法和属性, 它们具有相同的文档. 注意: 使用
+          @inheritDoc 意味着也同时使用了 @override.
+        </td>
+        <td>会检查</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-code">@code</a></td>
-                <td>
-                  {@code ...}
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-code">@code</a></td>
+        <td>
+          {@code ...}
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * Moves to the next position in the selection.
  * Throws {@code goog.iter.StopIteration} when it
  * passes the end of the range.
@@ -581,102 +581,102 @@ project.SubClass.prototype.toString() {
 goog.dom.RangeIterator.prototype.next = function() {
   // ...
 };</pre></div>
-                </td>
-                <td>
-                    说明这是一段代码, 让它能在生成的文档中正确的格式化.
-                </td>
-                <td>不适用.</td>
-              </tr>
+        </td>
+        <td>
+          说明这是一段代码, 让它能在生成的文档中正确的格式化.
+        </td>
+        <td>不适用.</td>
+        </tr>
 
-              <tr>
-                <td>
+        <tr>
+        <td>
 <a name="tag-license">@license</a> or
-                  <a name="tag-preserve">@preserve</a>
+          <a name="tag-preserve">@preserve</a>
 </td>
-                <td>
-                  @license 描述
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <td>
+          @license 描述
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * @preserve Copyright 2009 SomeThirdParty.
  * Here is the full license text and copyright
  * notice for this file. Note that the notice can span several
  * lines and is only terminated by the closing star and slash:
  */</pre></div>
-                </td>
-                <td>
-                  所有被标记为 @license 或 @preserve 的, 会被编译器保留不做任何修改而直接输出到最终文挡中.
-                   这个标记让一些重要的信息(如法律许可或版权信息)原样保留, 同样, 文本中的换行也会被保留.
-                </td>
-                <td>不需要.</td>
-              </tr>
+        </td>
+        <td>
+          所有被标记为 @license 或 @preserve 的, 会被编译器保留不做任何修改而直接输出到最终文挡中.
+           这个标记让一些重要的信息(如法律许可或版权信息)原样保留, 同样, 文本中的换行也会被保留.
+        </td>
+        <td>不需要.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-noalias">@noalias</a></td>
-                <td>
-                  @noalias
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/** @noalias */
+        <tr>
+        <td><a name="tag-noalias">@noalias</a></td>
+        <td>
+          @noalias
+          <p><i>如:</i></p>
+          <div class=""><pre>/** @noalias */
 function Range() {}</pre></div>
-                </td>
-                <td>
-                  在外部文件中使用, 告诉编译器不要为这个变量或函数重命名.
-                </td>
-                <td>不需要.</td>
-              </tr>
+        </td>
+        <td>
+          在外部文件中使用, 告诉编译器不要为这个变量或函数重命名.
+        </td>
+        <td>不需要.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-define">@define</a></td>
-                <td>
-                  @define {Type} 描述
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/** @define {boolean} */
+        <tr>
+        <td><a name="tag-define">@define</a></td>
+        <td>
+          @define {Type} 描述
+          <p><i>如:</i></p>
+          <div class=""><pre>/** @define {boolean} */
 var TR_FLAGS_ENABLE_DEBUG = true;
 
 /** @define {boolean} */
 goog.userAgent.ASSUME_IE = false;</pre></div>
-                </td>
-                <td>
-                  表示该变量可在编译时被编译器重新赋值.
-                  在上面例子中, BUILD 文件中指定了
-                  --define='goog.userAgent.ASSUME_IE=true'
-                  这个编译之后, 常量 goog.userAgent.ASSUME_IE 将被全部直接替换为 true.
-                </td>
-                <td>不需要.</td>
-              </tr>
+        </td>
+        <td>
+          表示该变量可在编译时被编译器重新赋值.
+          在上面例子中, BUILD 文件中指定了
+          --define='goog.userAgent.ASSUME_IE=true'
+          这个编译之后, 常量 goog.userAgent.ASSUME_IE 将被全部直接替换为 true.
+        </td>
+        <td>不需要.</td>
+        </tr>
 
-              
 
-              <tr>
-                <td><a name="tag-export">@export</a></td>
-                <td>
-                  @export
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/** @export */
+
+        <tr>
+        <td><a name="tag-export">@export</a></td>
+        <td>
+          @export
+          <p><i>如:</i></p>
+          <div class=""><pre>/** @export */
 foo.MyPublicClass.prototype.myPublicMethod = function() {
   // ...
 };</pre></div>
-                </td>
-                <td>
-                  <p>上面的例子代码, 当编译器运行时指定 --generate_exports 标志, 会生成下面的代码:</p>
-                  <div class=""><pre>goog.exportSymbol('foo.MyPublicClass.prototype.myPublicMethod',
-    foo.MyPublicClass.prototype.myPublicMethod);</pre></div>
-                  <p>编译后, 将源代码中的名字原样导出.
-                  使用 @export 标记时, 应该</p>
-                  <ol>
-                    <li>包含 //javascript/closure/base.js, 或者</li>
-                    <li>在代码库中自定义 goog.exportSymbol 和
-                      goog.exportProperty 两个方法, 并保证有相同的调用方式.</li>
-                  </ol>
-                </td>
-                <td>不需要.</td>
-              </tr>
+        </td>
+        <td>
+          <p>上面的例子代码, 当编译器运行时指定 --generate_exports 标志, 会生成下面的代码:</p>
+          <div class=""><pre>goog.exportSymbol('foo.MyPublicClass.prototype.myPublicMethod',
+  foo.MyPublicClass.prototype.myPublicMethod);</pre></div>
+          <p>编译后, 将源代码中的名字原样导出.
+          使用 @export 标记时, 应该</p>
+          <ol>
+          <li>包含 //javascript/closure/base.js, 或者</li>
+          <li>在代码库中自定义 goog.exportSymbol 和
+            goog.exportProperty 两个方法, 并保证有相同的调用方式.</li>
+          </ol>
+        </td>
+        <td>不需要.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-const">@const</a></td>
-                <td>
-                  @const
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/** @const */ var MY_BEER = 'stout';
+        <tr>
+        <td><a name="tag-const">@const</a></td>
+        <td>
+          @const
+          <p><i>如:</i></p>
+          <div class=""><pre>/** @const */ var MY_BEER = 'stout';
 
 /**
  * My namespace's favorite kind of beer.
@@ -686,26 +686,26 @@ foo.MyPublicClass.prototype.myPublicMethod = function() {
 mynamespace.MY_BEER = 'stout';
 
 /** @const */ MyClass.MY_BEER = 'stout';</pre></div>
-                </td>
-                <td>
-                  <p>声明变量为只读, 直接写在一行上.
-                    如果其他代码中重写该变量值, 编译器会警告.</p>
-                  <p>常量应全部用大写字符, 不过使用这个标记, 可以帮你消除命名上依赖.
-                     虽然 jsdoc.org 上列出的 @final 标记作用等价于 @const , 但不建议使用.
-                    @const 与 JS1.5 中的 const 关键字一致.
-                      注意, 编译器不禁止修改常量对象的属性(这与 C++ 中的常量定义不一样).
-                    如果可以准确推测出常量类型的话, 那么类型申明可以忽略. 如果指定了类型, 应该也写在同一行上.
-                      变量的额外注释可写可不写.</p>
-                </td>
-                <td>支持.</td>
-              </tr>
+        </td>
+        <td>
+          <p>声明变量为只读, 直接写在一行上.
+          如果其他代码中重写该变量值, 编译器会警告.</p>
+          <p>常量应全部用大写字符, 不过使用这个标记, 可以帮你消除命名上依赖.
+           虽然 jsdoc.org 上列出的 @final 标记作用等价于 @const , 但不建议使用.
+          @const 与 JS1.5 中的 const 关键字一致.
+            注意, 编译器不禁止修改常量对象的属性(这与 C++ 中的常量定义不一样).
+          如果可以准确推测出常量类型的话, 那么类型申明可以忽略. 如果指定了类型, 应该也写在同一行上.
+            变量的额外注释可写可不写.</p>
+        </td>
+        <td>支持.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-nosideeffects">@nosideeffects</a></td>
-                <td>
-                  @nosideeffects
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/** @nosideeffects */
+        <tr>
+        <td><a name="tag-nosideeffects">@nosideeffects</a></td>
+        <td>
+          @nosideeffects
+          <p><i>如:</i></p>
+          <div class=""><pre>/** @nosideeffects */
 function noSideEffectsFn1() {
   // ...
 };
@@ -719,55 +719,55 @@ var noSideEffectsFn2 = function() {
 a.prototype.noSideEffectsFn3 = function() {
   // ...
 };</pre></div>
-                </td>
-                <td>
-                  用于对函数或构造器声明, 说明调用此函数不会有副作用. 编译器遇到此标记时, 如果调用函数的返回值没有其他地方使用到, 则会将这个函数整个删除.
-                </td>
-                <td>不需要检查.</td>
-              </tr>
+        </td>
+        <td>
+          用于对函数或构造器声明, 说明调用此函数不会有副作用. 编译器遇到此标记时, 如果调用函数的返回值没有其他地方使用到, 则会将这个函数整个删除.
+        </td>
+        <td>不需要检查.</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-typedef">@typedef</a></td>
-                <td>
-                  @typedef
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/** @typedef {(string|number)} */
+        <tr>
+        <td><a name="tag-typedef">@typedef</a></td>
+        <td>
+          @typedef
+          <p><i>如:</i></p>
+          <div class=""><pre>/** @typedef {(string|number)} */
 goog.NumberLike;
 
 /** @param {goog.NumberLike} x A number or a string. */
 goog.readNumber = function(x) {
   ...
 }</pre></div>
-                </td>
-                <td>
-                  这个标记用于给一个复杂的类型取一个别名.
-                </td>
-                <td>会检查</td>
-              </tr>
+        </td>
+        <td>
+          这个标记用于给一个复杂的类型取一个别名.
+        </td>
+        <td>会检查</td>
+        </tr>
 
-              <tr>
-                <td><a name="tag-externs">@externs</a></td>
-                <td>
-                  @externs
-                  <p><i>如:</i></p>
-                  <div class=""><pre>/**
+        <tr>
+        <td><a name="tag-externs">@externs</a></td>
+        <td>
+          @externs
+          <p><i>如:</i></p>
+          <div class=""><pre>/**
  * @fileoverview This is an externs file.
  * @externs
  */
 
 var document;</pre></div>
-                </td>
-                <td>
-                  <p>
-                    指明一个外部文件.
-                  </p>
+        </td>
+        <td>
+          <p>
+          指明一个外部文件.
+          </p>
 
-                  
-                </td>
-                <td>不会检查</td>
-              </tr>
-            
-          </tbody>
-      </table>
+
+        </td>
+        <td>不会检查</td>
+        </tr>
+
+      </tbody>
+    </table>
 </body>
 </html>

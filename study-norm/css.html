@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>前端规范：CSS规范 - 喜地开发文档</title>
+  <title>前端规范参考：CSS规范</title>
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/codeView.css" />
   <script src="js/jquery.min.js"></script>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <section id="instruction">
-  <h1><span>前端规范：CSS规范</span></h1>
+  <h1><span>前端规范参考：CSS规范</span></h1>
   <h2>代码风格</h2>
   <div>
     <ol>
@@ -380,23 +380,23 @@ body {
       <li>
         <h3>属性的声明顺序</h3>
         <div>
-          <p>这是一个选择器内书写 CSS 属性顺序的大致轮廓。这是为了保证更好的可读性和可扫描的重要措施。</p>
+          <p>这是选择器内书写 CSS 属性顺序的大致轮廓，也是为了保证更好的可读性和可扫描的重要措施。</p>
           <p>我们通过将 CSS 属性分为 <b>结构性属性</b> 和 <b>表现性属性</b> 两个分组，其中结构性属性应优先书写。</p>
           <p>有了两个分组之后，我们继续将各个组内的属性进行细分，来确定最后的分组情况：</p>
           <p><b>一、结构性属性</b></p>
           <ol class="listCompact">
             <li>定位属性：position, left, top, right, bottom, z-index</li>
-            <li>布局显示：float, clear, display, flex, overflow, visibility</li>
+            <li>布局属性：float, clear, display, flex, overflow, visibility</li>
             <li>盒模型：box-sizing, width, height, padding, border, margin</li>
           </ol>
           <p><b>二、表现性属性</b></p>
           <ol class="listCompact">
             <li>字体文本：font, text</li>
-            <li>颜色背景：color, background</li>
+            <li>颜色背景：color, background, opacity</li>
             <li>其他属性（animation, transition等）</li>
           </ol>
           <p>在结构性属性中，由于定位可以从正常的文档流中移除元素，还能覆盖盒模型相关的样式，因此排在首位。</p>
-          <p>而布局显示中的属性也会直接影响到元素在文档中的布局流以及显示方式，因此排在第二。</p>
+          <p>而布局属性中的属性也会直接影响到元素在文档中的布局流以及显示方式，因此排在第二。</p>
           <p>而盒模型排在第三位，因为它决定了组件的尺寸和位置，相关属性顺序按照由内向外的顺序进行书写。</p>
           <p>在表现性属性中，由于这些属性只是影响组件的内部或者是不影响结构性的属性，因此排在后面。</p>
           <p>下面的选择器声明就是按照上面所规定的属性顺序进行的书写，有没有感觉代码很清晰呢：</p>
@@ -410,7 +410,7 @@ body {
   bottom: auto;
   z-index: 100;
 
-  /* 布局显示 */
+  /* 布局属性 */
   float: none;
   clear: all;
   display: flex;
@@ -424,12 +424,13 @@ body {
   /* 盒模型 */
   box-sizing: border-box;
   width: 80%;
-  height: auto;
   min-width: 800px;
-  min-height: 100px;
   max-width: 1200px;
+  height: auto;
+  min-height: 100px;
   max-height: 300px;
   padding: 10px;
+  padding-top: 20px;
   border: 2px solid #333;
   margin-top: 24px;
 
@@ -445,9 +446,9 @@ body {
   color: #333;
   background: #fff url(images/bg.png) no-repeat 0 0;
   background-size: 100% 100%;
+  opacity: 1;
 
   /* 其他属性 */
-  opacity: 1;
   transition: all ease-out .4s;
 }
 
