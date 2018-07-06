@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>日期操作：日期时间格式化字符串</title>
-    <link rel="stylesheet" href="../../public/css/codeView.css" />
-    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <link rel="stylesheet" href="../public/css/codeView.css" />
+    <script type="text/javascript" src="../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/js/jquery.snippet.min.js"></script>
     <style>
         body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
         h1{margin:40px 0;}
@@ -25,7 +25,7 @@
  * 格式字符有："y"-年（1~4位）、"M"-月（1~4位）、"d"-日（1~4位）、"H"-时（24小时制，1~2位）、"h"-时（12小时制，1~2位）、"m"-分（1~2位）、"s"-秒（1~2位）、"t"-上下午（1~2位）。
  * @param  {String|Date} dateStr 日期对象（可以是Date对象，也可以是日期时间字符串，支持“2014-05-23”格式）
  * @param  {String}      format  格式化字符串
- * @return {String}       
+ * @return {String}
  */
 function dateFormat(dateStr, format)
 {
@@ -114,7 +114,7 @@ document.getElementById("wrapper").innerHTML = str;
      * 格式字符有："y"-年（1~4位）、"M"-月（1~4位）、"d"-日（1~4位）、"H"-时（24小时制，1~2位）、"h"-时（12小时制，1~2位）、"m"-分（1~2位）、"s"-秒（1~2位）、"t"-上下午（1~2位）。
      * @param  {String|Date} dateStr 日期对象（可以是Date对象，也可以是日期时间字符串，支持“2014-05-23”格式）
      * @param  {String}      format  格式化字符串
-     * @return {String}       
+     * @return {String}
      */
     function dateFormat(dateStr, format)
     {
@@ -196,7 +196,7 @@ document.getElementById("wrapper").innerHTML = str;
     str += '<p><span class="code"><code>dateFormat(new Date(), "t")</code></span><span class="result">' + dateFormat(new Date(), "t") + '</span></p>';
     str += '<p><span class="code"><code>dateFormat(new Date(), "tt")</code></span><span class="result">' + dateFormat(new Date(), "tt") + '</span></p>';
     document.getElementById("wrapper").innerHTML = str;
-    
+
     //代码着色
     $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
 </script>

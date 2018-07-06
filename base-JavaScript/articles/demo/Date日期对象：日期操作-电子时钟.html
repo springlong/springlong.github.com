@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8" />
 	<title>日期操作：电子时钟</title>
-    <link rel="stylesheet" href="../../public/css/codeView.css" />
-    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <link rel="stylesheet" href="../public/css/codeView.css" />
+    <script type="text/javascript" src="../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/js/jquery.snippet.min.js"></script>
     <style>
-    	body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';} 
+    	body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
         h1{margin:40px 0;}
         h2{margin:30px 0;}
 		code{padding:0 4px;border:1px solid #ededed;border-radius:4px;margin:0 2px;background:#fdfdfd;font-family:"Courier New";}
@@ -45,7 +45,7 @@ setInterval(function()
 	minutes = minutes &lt; 10 ? "0" + minutes : minutes;
 	seconds = seconds &lt; 10 ? "0" + seconds: seconds;
 
-	box.innerHTML = year + "年" + month + "月" + day + "日 " + weekDay + " " + hours + ":" + minutes + ":" + seconds; 
+	box.innerHTML = year + "年" + month + "月" + day + "日 " + weekDay + " " + hours + ":" + minutes + ":" + seconds;
 }, 1000);
 </pre>
 <script>
@@ -69,9 +69,9 @@ setInterval(function()
 		minutes = minutes < 10 ? "0" + minutes : minutes;
 		seconds = seconds < 10 ? "0" + seconds: seconds;
 
-		box.innerHTML = year + "年" + month + "月" + day + "日 " + weekDay + " " + hours + ":" + minutes + ":" + seconds; 
+		box.innerHTML = year + "年" + month + "月" + day + "日 " + weekDay + " " + hours + ":" + minutes + ":" + seconds;
 	}, 1000);
-	
+
 
     //代码着色
     $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});

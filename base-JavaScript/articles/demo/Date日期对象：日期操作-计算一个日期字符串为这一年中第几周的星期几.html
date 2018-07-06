@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>日期操作：计算一个日期字符串为这一年中第几周的星期几</title>
-    <link rel="stylesheet" href="../../public/css/codeView.css" />
-    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <link rel="stylesheet" href="../public/css/codeView.css" />
+    <script type="text/javascript" src="../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/js/jquery.snippet.min.js"></script>
     <style>
         body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
         h1{margin:40px 0;}
@@ -24,7 +24,7 @@
  * 计算一个日期字符串为这一年中第几周的星期几，如果是无效日期则最终返回Null。
  * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
  * @param  {String|Date} dateStr 日期字符串
- * @return {Object}      {year: 基于哪一年(Number), weekth: 第几周(Number), weekday: 星期几(String)}          
+ * @return {Object}      {year: 基于哪一年(Number), weekth: 第几周(Number), weekday: 星期几(String)}
  */
 function getWeekInfo(dateStr)
 {
@@ -97,7 +97,7 @@ document.getElementById("wrapper").innerHTML = str;
      * 计算一个日期字符串为这一年中第几周的星期几，如果是无效日期则最终返回Null。
      * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
      * @param  {String|Date} dateStr 日期字符串
-     * @return {Object}      {year: 基于哪一年(Number), weekth: 第几周(Number), weekday: 星期几(String)}       
+     * @return {Object}      {year: 基于哪一年(Number), weekth: 第几周(Number), weekday: 星期几(String)}
      */
     function getWeekInfo(dateStr)
     {
@@ -164,7 +164,7 @@ document.getElementById("wrapper").innerHTML = str;
     str += '<p><span class="code"><code>getWeekInfo("2015-01-01")</code></span><span class="result">' + printWeekInfo("2015-01-01") + '</span></p>';
     str += '<p><span class="code"><code>getWeekInfo("2014-10-10-18")</code></span><span class="result">' + printWeekInfo("2014-10-10-18") + '</span></p>';
     document.getElementById("wrapper").innerHTML = str;
-    
+
     //代码着色
     $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
 </script>

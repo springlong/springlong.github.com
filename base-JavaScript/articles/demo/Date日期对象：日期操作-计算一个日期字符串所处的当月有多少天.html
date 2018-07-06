@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>日期操作：计算一个日期字符串所处的当月有多少天</title>
-    <link rel="stylesheet" href="../../public/css/codeView.css" />
-    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <link rel="stylesheet" href="../public/css/codeView.css" />
+    <script type="text/javascript" src="../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/js/jquery.snippet.min.js"></script>
     <style>
         body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
         h1{margin:40px 0;}
@@ -24,7 +24,7 @@
  * 计算一个日期字符串所处的当月有多少天，如果是无效日期则最终返回NaN。
  * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
  * @param  {String|Date} dateStr 日期字符串
- * @return {Number}       
+ * @return {Number}
  */
 function getMonthDays(dateStr)
 {
@@ -59,7 +59,7 @@ document.getElementById("wrapper").innerHTML = str;
      * 计算一个日期字符串所处的当月有多少天，如果是无效日期则最终返回NaN。
      * 该方法支持“2014-05-23”这类的日期格式，同时也支持直接传递日期对象来进行计算。
      * @param  {String|Date} dateStr 日期字符串
-     * @return {Number}       
+     * @return {Number}
      */
     function getMonthDays(dateStr)
     {
@@ -76,7 +76,7 @@ document.getElementById("wrapper").innerHTML = str;
     //         days, year;
 
     //     if(isNaN(month)){
-    //         return NaN;  
+    //         return NaN;
     //     }else if(",1,3,5,7,8,10,12,".indexOf(month = "," + month + ",") >= 0){
     //         days = 31;
     //     }else if(",4,6,9,11,".indexOf(month) >= 0){
@@ -106,7 +106,7 @@ document.getElementById("wrapper").innerHTML = str;
     str += '<p><span class="code"><code>getMonthDays("2012-02-23")</code></span><span class="result">' + getMonthDays("2012-02-23") + '</span></p>';
     str += '<p><span class="code"><code>getMonthDays("2012-02-23-18")</code></span><span class="result">' + getMonthDays("2012-02-23-18") + '</span></p>';
     document.getElementById("wrapper").innerHTML = str;
-    
+
     //代码着色
     $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: true});
 </script>

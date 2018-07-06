@@ -3,9 +3,9 @@
 <head>
 	<meta charset="utf-8" />
 	<title>日期操作：倒计时</title>
-    <link rel="stylesheet" href="../../public/css/codeView.css" />
-    <script type="text/javascript" src="../../public/js/jquery.min.js"></script>
-    <script type="text/javascript" src="../../public/js/jquery.snippet.min.js"></script>
+    <link rel="stylesheet" href="../public/css/codeView.css" />
+    <script type="text/javascript" src="../public/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/js/jquery.snippet.min.js"></script>
     <style>
     	body{padding:0 10px 120px;font:14px/1.5em 'Microsoft YaHei';}
         h1{margin:40px 0;}
@@ -52,7 +52,7 @@ function countDown(params)
 			baseSecond = 1000,
 			baseMinite = baseSecond * 60,
 			baseHour = baseMinite * 60;
-		
+
 		if(difference &lt; 0){
 			//时间过期了
 			callbackOnExpires &amp;&amp; callbackOnExpires();
@@ -116,7 +116,7 @@ countDown(
  				baseSecond = 1000,
  				baseMinite = baseSecond * 60,
  				baseHour = baseMinite * 60;
- 			
+
  			if(difference < 0){
  				//时间过期了
  				callbackOnExpires && callbackOnExpires();
