@@ -98,6 +98,7 @@
 	执行package.json配置文件中scripts字段指定的npm命令行缩写
 
 `node index.js`
+
 `node index`
 
 	执行当前目录下的index.js文件
