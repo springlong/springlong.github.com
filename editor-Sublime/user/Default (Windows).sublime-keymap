@@ -1,0 +1,18 @@
+[
+    { "keys": ["alt+a"], "command": "alignment" },
+    { "keys": ["ctrl+alt+d"], "command": "delete_trailing_spaces" },
+    { "keys": ["ctrl+alt+enter"], "command": "open_url_under_cursor" },
+    { "keys": ["ctrl+shift+r"], "command": "hex_to_rgba" },
+    { "keys": ["ctrl+shift+c"], "command": "color_pick" },
+	{ "keys": ["ctrl+shift+t"], "command": "open_terminal" },
+	{ "keys": ["ctrl+shift+alt+t"], "command": "open_terminal_project_folder" },
+	{ "keys": ["ctrl+shift+h"], "command": "htmlprettify"},
+    { "keys": ["ctrl+shift+space"], "command": "afn_show_filenames", "context": [{ "key": "afn_use_keybinding", "operator": "equal", "operand": true } ] },
+	{ "keys": ["ctrl+alt+shift+h"], "command": "sublime_tmpl", "args": {"type": "html"}, "context": [{"key": "sublime_tmpl.html"}] },
+    { "keys": ["ctrl+alt+shift+j"], "command": "sublime_tmpl", "args": {"type": "js"}, "context": [{"key": "sublime_tmpl.js"}] },
+    { "keys": ["ctrl+alt+shift+c"], "command": "sublime_tmpl", "args": {"type": "css"}, "context": [{"key": "sublime_tmpl.css"}] },
+    { "keys": ["ctrl+shift+i"], "command": "run_macro_file", "args": {"file":"Packages/User/macro-format-space2-to-tab.sublime-macro"} },
+    { "keys": ["ctrl+shift+o"], "command": "run_macro_file", "args": {"file":"Packages/User/macro-format-tab-to-space2.sublime-macro"} },
+    { "keys": ["shift+space"], "command": "run_macro_file", "args": {"file":"Packages/User/macro-move-to-right.sublime-macro"} },
+    { "keys": ["ctrl+shift+alt+enter"], "command": "run_macro_file", "args": {"file":"Packages/User/macro-move-to-next-end.sublime-macro"} },
+]
