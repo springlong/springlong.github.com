@@ -31,19 +31,19 @@ imagemin使用的这四款默认的压缩工具都是对图片执行无损压缩
 代码示例：
 
 <pre class="jsCode">
-// 引入插件	
+// 引入插件
 var imagemin = require('gulp-imagemin');
 
 // 对src/images目录下的所有图片进行压缩处理，
 // 代码执行完毕后，将会在控制台输出本次操作整体的压缩大小和压缩比率。
 gulp.task('imagemin', function() {
-    gulp.src('src/images/**')
-        .pipe(imagemin({
-            optimizationLevel: 3,
-            progressive: true,
-            interlaced: true
-        }))
-        .pipe(gulp.dest('dist'));
+  gulp.src('src/images/**')
+    .pipe(imagemin({
+      optimizationLevel: 3,
+      progressive: true,
+      interlaced: true
+    }))
+    .pipe(gulp.dest('dist'));
 });
 </pre>
 
@@ -76,8 +76,8 @@ var pngquant = require('imagemin-pngquant');
 // 对src目录以及其所有子目录下的PNG图片做有损压缩的处理
 gulp.task('pngquant', function() {
    gulp.src('src/**/*.png')
-        .pipe(pngquant({ quality: '70-95', speed: 4 }))
-        .pipe(gulp.dest('dist'));
+    .pipe(pngquant({ quality: '70-95', speed: 4 }))
+    .pipe(gulp.dest('dist'));
 });
 </pre>
 
@@ -93,13 +93,13 @@ var pngquant = require('imagemin-pngquant');
 // 对src/images目录下的所有JPG、GIF、SVG文件使用imagemin默认的优化工具进行无损压缩，
 // 而对于PNG图片，则使用pngquant这款优化工具进行有损压缩处理。
 gulp.task('pngquant', function() {
-    gulp.src('src/images/**')
-        .pipe(imagemin({
-            progressive: true,
-            interlaced: true,
-            use: [ pngquant({ quality: '70-95', speed: 4 }) ]
-        }))
-        .pipe(gulp.dest('dist'));
+  gulp.src('src/images/**')
+    .pipe(imagemin({
+      progressive: true,
+      interlaced: true,
+      use: [ pngquant({ quality: '70-95', speed: 4 }) ]
+    }))
+    .pipe(gulp.dest('dist'));
 });
 </pre>
 
@@ -130,20 +130,20 @@ var jpegoptim = require('imagemin-jpegoptim');
 
 // 对src目录以及所有子级目录下的JPG图片进行无损压缩处理
 gulp.task('jpegoptim', function() {
-    gulp.src('src/**/*.jpg')
-        .pipe(imagemin({
-            use: [ jpegoptim({ progressive: true }) ]
-        }))
-        .pipe(gulp.dest('dist'));
+  gulp.src('src/**/*.jpg')
+    .pipe(imagemin({
+      use: [ jpegoptim({ progressive: true }) ]
+    }))
+    .pipe(gulp.dest('dist'));
 });
 
 // 增加max参数以进行有损压缩处理
 gulp.task('jpegoptim2', function() {
-    gulp.src('src/**/*.jpg')
-        .pipe(imagemin({
-            use: [ jpegoptim({ progressive: true, max: 80 }) ]
-        }))
-        .pipe(gulp.dest('dist'));
+  gulp.src('src/**/*.jpg')
+    .pipe(imagemin({
+      use: [ jpegoptim({ progressive: true, max: 80 }) ]
+    }))
+    .pipe(gulp.dest('dist'));
 });
 </pre>
 
@@ -168,9 +168,9 @@ var smushit = require('gulp-smushit');
 
 // 对src/images目录下的所有图片做无损压缩处理，并显示压缩率的统计情况
 gulp.task('smushit', function() {
-    gulp.src('src/images/**')
-        .pipe(smushit({ verbose: true }))
-        .pipe(gulp.dest('dist'));
+  gulp.src('src/images/**')
+    .pipe(smushit({ verbose: true }))
+    .pipe(gulp.dest('dist'));
 });
 </pre>
 
@@ -191,16 +191,16 @@ var smushit = require('gulp-smushit');
 
 // 任务主体
 gulp.task('imagemin', function() {
-    gulp.src('src/**/*.{jpg,png,svg}')
-        .pipe(imagemin({
-            optimizationLevel: 3,
-            progressive: true
-        }))
-        .pipe(gulp.dest('dist'));
+  gulp.src('src/**/*.{jpg,png,svg}')
+    .pipe(imagemin({
+      optimizationLevel: 3,
+      progressive: true
+    }))
+    .pipe(gulp.dest('dist'));
 
-    gulp.src('src/**/*.gif')
-        .pipe(smushit({ verbose: true }))
-        .pipe(gulp.dest('dist'));
+  gulp.src('src/**/*.gif')
+    .pipe(smushit({ verbose: true }))
+    .pipe(gulp.dest('dist'));
 });
 </pre>
 
@@ -220,8 +220,8 @@ var imageisux = require('gulp-imageisux');
 // 对src/images目录下的所有图片做优化处理
 // 默认输出：优化后的图片存放至'/dest/'目录下，生成的webp格式的图片存放在'/webp/'目录下
 gulp.task('zhitu', function() {
-    gulp.src('src/images/**')
-        .pipe(imageisux());
+  gulp.src('src/images/**')
+    .pipe(imageisux());
 });
 </pre>
 

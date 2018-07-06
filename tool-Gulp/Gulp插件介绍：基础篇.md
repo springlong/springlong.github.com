@@ -23,16 +23,16 @@ var concat = require('gulp-concat');
 
 // 将src目录下的所有css文件合并到dist目录下的concat.css文件中
 gulp.task('concat', function(){
-    gulp.src('src/*.css')
-        .pipe(concat('concat.css'))
-        .pipe(gulp.dest('dist'));  // --> dist/concat.css
+  gulp.src('src/*.css')
+    .pipe(concat('concat.css'))
+    .pipe(gulp.dest('dist'));  // --> dist/concat.css
 });
 
 // 将src目录下的home.css和details.css文件合并到dist目录下的concat2.css文件中
 gulp.task('concat2', function(){
-    gulp.src(['src/home.css', 'src/details.css'])
-        .pipe(concat('concat2.css'))
-        .pipe(gulp.dest('dist'));  // --> dist/concat2.css
+  gulp.src(['src/home.css', 'src/details.css'])
+    .pipe(concat('concat2.css'))
+    .pipe(gulp.dest('dist'));  // --> dist/concat2.css
 });
 </pre>
 
@@ -43,42 +43,42 @@ gulp.task('concat2', function(){
 插件地址：[https://npmjs.org/package/gulp-rename/](https://npmjs.org/package/gulp-rename/)
 
 代码示例：
-	
+
 <pre class="jsCode">
 // 引入插件
 var rename = require('gulp-rename');
 
 // 直接指定完整的文件名称，包括扩展名
 gulp.task('rename', function(){
-    gulp.src('src/hello.txt')
-        .pipe(rename('hello-rename.html'))
-        .pipe(gulp.dest('dist'));  // --> dist/hello-rename.html
+  gulp.src('src/hello.txt')
+    .pipe(rename('hello-rename.html'))
+    .pipe(gulp.dest('dist'));  // --> dist/hello-rename.html
 });
 
 // 通过函数回调来变更输出结果的目录（path.dirname）、文件名（path.basename）、以及扩展名（path.extname）
 gulp.task('rename2', function(){
-    gulp.src('src/hello.txt')
-        .pipe(rename(function(path){
-            path.dirname += '/rename2';
-            path.basename += '-rename';
-            path.extname = '.html';
-        }))
-        .pipe(gulp.dest('dist'));  // --> dist/rename2/hello-rename.html
+  gulp.src('src/hello.txt')
+    .pipe(rename(function(path){
+      path.dirname += '/rename2';
+      path.basename += '-rename';
+      path.extname = '.html';
+    }))
+    .pipe(gulp.dest('dist'));  // --> dist/rename2/hello-rename.html
 });
 
 // 通过参数对象的传递来决定最终的输出路径
 // dirname：相对于dist的子目录；prefix：文件名的前缀；basename：文件名本身；suffix：文件名的尾缀；extname：扩展名。
 // 注意：之前的函数回调方式中，并没有prefix和suffix这两个属性设置
 gulp.task('rename3', function(){
-    gulp.src('src/hello.txt')
-        .pipe(rename({
-            dirname: '/rename3',
-            prefix: 'prefix-',
-            basename: 'hello-rename',
-            suffix: '-suffix',
-            extname: '.html'
-        }))
-        .pipe(gulp.dest('dist'));  // --> dist/rename3/prefix-hello-rename-suffix.html
+  gulp.src('src/hello.txt')
+    .pipe(rename({
+      dirname: '/rename3',
+      prefix: 'prefix-',
+      basename: 'hello-rename',
+      suffix: '-suffix',
+      extname: '.html'
+    }))
+    .pipe(gulp.dest('dist'));  // --> dist/rename3/prefix-hello-rename-suffix.html
 });
 </pre>
 
@@ -92,29 +92,29 @@ gulp.task('rename3', function(){
 代码示例：
 
 <pre class="jsCode">
-// 引用插件	
+// 引用插件
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 
 // 将src目录下的所有脚本文件进行代码压缩，并在输出的文件中添加“.min”的尾缀
 gulp.task('uglify', function() {
-    gulp.src('src/*.js')
-        .pipe(uglify())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('dist'));  // --> dist/jquery-cookie.min.js
+  gulp.src('src/*.js')
+    .pipe(uglify())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('dist'));  // --> dist/jquery-cookie.min.js
 });
 
 // 将src目录下已经被压缩过的脚本做美化处理，行缩进四个空格，并将“.min”的尾缀去除
 gulp.task('beautify', function() {
-    gulp.src('src/*.min.js')
-        .pipe(uglify({ 
-            output: {beautify: true, indent_level: 4}
-        }))
-        .pipe(rename(function(path){
-            var basename = path.basename;
-            path.basename = basename.replace('.min', '');
-        }))
-        .pipe(gulp.dest('dist'));  // --> dist/jquery-cookie.js
+  gulp.src('src/*.min.js')
+    .pipe(uglify({
+      output: {beautify: true, indent_level: 4}
+    }))
+    .pipe(rename(function(path){
+      var basename = path.basename;
+      path.basename = basename.replace('.min', '');
+    }))
+    .pipe(gulp.dest('dist'));  // --> dist/jquery-cookie.js
 });
 </pre>
 
@@ -134,26 +134,26 @@ var rename = require('gulp-rename');
 
 // 对src目录下的所有css文件执行代码的压缩处理（压缩结果为一行显示）
 gulp.task('uglifycss', function() {
-    gulp.src('src/*.css')
-        .pipe(uglifycss())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('dist'));  // --> dist/home.min.css
+  gulp.src('src/*.css')
+    .pipe(uglifycss())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('dist'));  // --> dist/home.min.css
 });
 
 // 对src目录下的所有css文件执行代码的压缩处理（当选择器所处的行的代码量已经超过100个字符，那么下一个选择器将被换行输出）
 gulp.task('uglifycss2', function() {
-    gulp.src('src/*.css')
-        .pipe(uglifycss({ maxLineLen: 100 }))
-        .pipe(rename({ suffix: '.min2' }))
-        .pipe(gulp.dest('dist'));  // --> dist/home.min2.css
+  gulp.src('src/*.css')
+    .pipe(uglifycss({ maxLineLen: 100 }))
+    .pipe(rename({ suffix: '.min2' }))
+    .pipe(gulp.dest('dist'));  // --> dist/home.min2.css
 });
 
 // 对src目录下的所有css文件执行代码的压缩处理（选择器保持为单行输出）
 gulp.task('uglifycss3', function() {
-    gulp.src('src/*.css')
-        .pipe(uglifycss({ maxLineLen: 1 }))
-        .pipe(rename({ suffix: '.min3' }))
-        .pipe(gulp.dest('dist'));  // --> dist/home.min3.css
+  gulp.src('src/*.css')
+    .pipe(uglifycss({ maxLineLen: 1 }))
+    .pipe(rename({ suffix: '.min3' }))
+    .pipe(gulp.dest('dist'));  // --> dist/home.min3.css
 });
 </pre>
 
@@ -194,37 +194,37 @@ var rename = require('gulp-rename');
 
 // 单纯对CSS代码做优化处理（通常用来对常规下的CSS文件做选择器的合并、属性值的精简化书写等处理操作）
 gulp.task('crass', function(){
-    gulp.src('src/*.css')
-        .pipe(crass())
-        .pipe(gulp.dest('dist'));  // --> dist/*.css
+  gulp.src('src/*.css')
+    .pipe(crass())
+    .pipe(gulp.dest('dist'));  // --> dist/*.css
 });
 
 // 对src目录下经过压缩处理的CSS文件做美化处理，并将“.min”的尾缀去除
 gulp.task('beautifycss', function(){
-    gulp.src('src/*min.css')
-        .pipe(crass())
-        .pipe(rename(function(path){
-            var basename = path.basename;
-            path.basename = basename.replace('.min', '');
-        }))
-        .pipe(gulp.dest('dist'));  // --> dist/*.css
+  gulp.src('src/*min.css')
+    .pipe(crass())
+    .pipe(rename(function(path){
+      var basename = path.basename;
+      path.basename = basename.replace('.min', '');
+    }))
+    .pipe(gulp.dest('dist'));  // --> dist/*.css
 });
 
 // 将gulp-crass、gulp-uglifycss组合使用来弥补gulp-uglifycss的不足
 gulp.task('uglifycss', function(){
-    gulp.src('src/*.css')
-        .pipe(crass())
-        .pipe(uglifycss())
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('dist'));  // --> dist/*.min.css
+  gulp.src('src/*.css')
+    .pipe(crass())
+    .pipe(uglifycss())
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('dist'));  // --> dist/*.min.css
 });
 
 // 通过设置crass函数的`pretty`参数为false来实现对CSS代码的压缩处理
 gulp.task('uglifycss2', function(){
-    gulp.src('src/*.css')
-        .pipe(crass({ pretty: false }))
-        .pipe(rename({ suffix: '.min' }))
-        .pipe(gulp.dest('dist'));  // --> dist/*.min.css
+  gulp.src('src/*.css')
+    .pipe(crass({ pretty: false }))
+    .pipe(rename({ suffix: '.min' }))
+    .pipe(gulp.dest('dist'));  // --> dist/*.min.css
 });
 </pre>
 
@@ -236,16 +236,16 @@ gulp.task('uglifycss2', function(){
 插件地址：[https://www.npmjs.com/package/gulp-sass/](https://www.npmjs.com/package/gulp-sass/)
 
 代码示例：
-	
+
 <pre class="jsCode">
 // 引入插件
 var sass = require('gulp-sass');
 
 // 对scss目录下的Sass文件执行编译处理，并输出到src目录下
 gulp.task('sass', function() {
-    gulp.src('scss/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('src'));  // --> src/*.css
+  gulp.src('scss/*.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('src'));  // --> src/*.css
 });
 </pre>
 
@@ -258,10 +258,10 @@ var crass = require('gulp-crass');
 
 // 与gulp-crass插件组合使用来弥补自身插件的不足
 gulp.task('sass2', function() {
-    gulp.src('scss/*.scss')
-        .pipe(sass())
-        .pipe(crass())
-        .pipe(gulp.dest('src'));  // --> src/*.css
+  gulp.src('scss/*.scss')
+    .pipe(sass())
+    .pipe(crass())
+    .pipe(gulp.dest('src'));  // --> src/*.css
 });
 </pre>
 
@@ -280,19 +280,19 @@ var jslint = require('gulp-jslint');
 
 // 对src目录下的js文件执行代码检测，如果存在错误则会在控制台中打印出来
 gulp.task('jslint', function() {
-    gulp.src('src/*.js')
-        .pipe(jslint({
-            node: true,
-            evil: true,
-            nomen: true,
-            global: [],
-            predef: [], 
-            reporter: 'default',
-            errorsOnly: false
-        }))
-        .on('error', function (error) {
-            console.error(String(error));
-        });
+  gulp.src('src/*.js')
+    .pipe(jslint({
+      node: true,
+      evil: true,
+      nomen: true,
+      global: [],
+      predef: [],
+      reporter: 'default',
+      errorsOnly: false
+    }))
+    .on('error', function (error) {
+      console.error(String(error));
+    });
 });
 </pre>
 
@@ -308,16 +308,16 @@ gulp.task('jslint', function() {
 插件地址：[https://www.npmjs.com/package/gulp-jshint/](https://www.npmjs.com/package/gulp-jshint/)
 
 代码示例：
-	
+
 <pre class="jsCode">
 // 引用插件
 var jshint = require('gulp-jshint');
 
 // 对src目录下的js文件执行代码检测，如果存在问题则会在控制台中打印出来
 gulp.task('jshint', function() {
-    gulp.src('src/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+  gulp.src('src/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 });
 </pre>
 

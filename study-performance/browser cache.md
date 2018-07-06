@@ -115,15 +115,15 @@
 
 ## demo检验
 
-为了彻底搞清楚浏览器的缓存策略，这里提供了一个使用node http模块构建的一个简单服务器环境，通过自行设置Response Headers来预览浏览器缓存的表现行为。点击[下载资源包](http://www.fedlife.cn/files/node-server-cache-demo.zip)。
+为了彻底搞清楚浏览器的缓存策略，这里提供了一个使用node http模块构建的一个简单服务器环境，通过自行设置Response Headers来预览浏览器缓存的表现行为。点击[下载资源包](http://www.fedlife.cn/study-performance/node-server-cache-demo.zip)。
 
 下载资源包后，自行解压，然后使用 `npm install` 命令安装依赖，通过 `node server` 执行目录下的server.js文件来启动本地服务，将会自动使用默认浏览器打开目录下的 `/pages/index/index.html` 页面。
 
 之后可以在cache.json配置文件的下图所示的代码中，对浏览器缓存涉及到的四个http字段进行编辑，修改完毕后保存并强制刷新浏览器页面即可：
 
-![](images/demo-filelist.png)
+![](images/demo-cache-filelist.png)
 
-![](images/demo-code.png)
+![](images/demo-cache-code.png)
 
 编辑说明：
 

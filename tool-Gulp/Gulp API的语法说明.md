@@ -18,11 +18,11 @@ gulp.task(name[, deps], fn)
 
 <pre class="jsCode">
 gulp.task('taskname', ['array', 'of', 'task', 'names'], function() {
-	return gulp.src('filename')
-		.pipe(...)
-		.pipe(...)
-		// until the last step
-		.pipe(...);
+  return gulp.src('filename')
+    .pipe(...)
+    .pipe(...)
+    // until the last step
+    .pipe(...);
 });
 </pre>
 
@@ -36,7 +36,7 @@ gulp.task('taskname', ['array', 'of', 'task', 'names'], function() {
 
 <pre class="jsCode">
 gulp.task('hello', function(){
-	console.log('Hello gulp!');
+  console.log('Hello gulp!');
 });
 </pre>
 
@@ -46,7 +46,7 @@ gulp.task('hello', function(){
 
 <pre class="jsCode">
 gulp.task('default', function(){
-	// Your default task
+  // Your default task
 });
 </pre>
 
@@ -68,27 +68,27 @@ gulp.src(globs[, options])
 
 <pre class="jsCode">
 gulp.task('sass',  function() {
-    return gulp.src('./scss/abc/somename.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('dist'));  // Writes: './dist/somename.css'
+  return gulp.src('./scss/abc/somename.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('dist'));  // Writes: './dist/somename.css'
 });
 
 gulp.task('sass',  function() {
-    return gulp.src('./scss/abc/somename.scss', {base: ''})
-        .pipe(sass())
-        .pipe(gulp.dest('dist'));  // Writes: './dist/somename.css'
+  return gulp.src('./scss/abc/somename.scss', {base: ''})
+    .pipe(sass())
+    .pipe(gulp.dest('dist'));  // Writes: './dist/somename.css'
 });
 
 gulp.task('sass',  function() {
-    return gulp.src('./scss/abc/somename.scss', {base: 'scss/'})
-        .pipe(sass())
-        .pipe(gulp.dest('dist'));  // Writes: './dist/abc/somename.css'
+  return gulp.src('./scss/abc/somename.scss', {base: 'scss/'})
+    .pipe(sass())
+    .pipe(gulp.dest('dist'));  // Writes: './dist/abc/somename.css'
 });
 
 gulp.task('sass',  function() {
-    return gulp.src('./scss/abc/somename.scss', {base: '...'})
-        .pipe(sass())
-        .pipe(gulp.dest('dist'));  // Writes: './scss/abc/somename.css'
+  return gulp.src('./scss/abc/somename.scss', {base: '...'})
+    .pipe(sass())
+    .pipe(gulp.dest('dist'));  // Writes: './scss/abc/somename.css'
 });
 </pre>
 
@@ -142,10 +142,10 @@ gulp.dest(path[, options])
 
 <pre class="jsCode">
 gulp.src('./client/templates/*.jade')
-	.pipe(jade())
-	.pipe(gulp.dest('./build/templates'))
-	.pipe(minify())
-	.pipe(gulp.dest('./build/minified_templates'));
+  .pipe(jade())
+  .pipe(gulp.dest('./build/templates'))
+  .pipe(minify())
+  .pipe(gulp.dest('./build/minified_templates'));
 </pre>
 
 ## gulp.watch
@@ -168,7 +168,7 @@ gulp.watch(glob[, opts], tasks)
 <pre class="jsCode">
 var watcher = gulp.watch('js/**/*.js', ['uglify','reload']);
 watcher.on('change', function(event) {
-	console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 </pre>
 
@@ -192,7 +192,7 @@ cb回调函数的`event`参数：
 
 <pre class="jsCode">
 gulp.watch('js/**/*.js', function(event) {
-	console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
+  console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 });
 </pre>
 

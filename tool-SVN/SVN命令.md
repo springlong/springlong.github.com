@@ -1,9 +1,9 @@
 
-## 常用SVN命令
+## svn常用命令
 
 查看帮助
 
-	svn help   //查看svn所支持的所有命令
+	svn help          //查看svn所支持的所有命令
 	svn help commit   //查看svn commit命令的帮助信息
 	svn commit -?     //查看svn commit命令的帮助信息
 	svn commit -h     //查看svn commit命令的帮助信息
@@ -11,7 +11,7 @@
 
 查看最近的操作日志
 
-	svn log   //查看当前目录的日志
+	svn log           //查看当前目录的日志
 	svn log test.txt  //查看指定文件的日志
 	svn log images    //查看指定目录的日志
 
@@ -28,7 +28,7 @@
 
 更新服务器的数据到本地
 
-	svn update  //更新当前目录下的所有文件内容
+	svn update           //更新当前目录下的所有文件内容
 	svn update test.txt  //更新指定文件到本地
 	svn update images    //更新指定目录到本地
 

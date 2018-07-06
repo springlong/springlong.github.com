@@ -1,17 +1,17 @@
 
-## 常用git命令
+## git常用命令
 
 
 查看帮助
 
-	git help   		  // 查看git所支持的所有命令
+	git help        // 查看git所支持的所有命令
 	git help add    // 查看git add命令的帮助信息
-	git version 	  // 查看版本号
+	git version     // 查看版本号
 
 
 初始化仓库
 
-	git init 		    // 在当前目录下新建一个Git仓库。创建了一个.git 的隐藏目录，仓库的所有数据都放在这个目录里。
+	git init        // 在当前目录下新建一个Git仓库。创建了一个.git 的隐藏目录，仓库的所有数据都放在这个目录里。
 
 
 查看最近的操作日志
@@ -29,7 +29,7 @@
 
 查看与上一版本文件的差异
 
-	git diff 					 // 查看当前目录下所有文件与上一版的差异
+	git diff        // 查看当前目录下所有文件与上一版的差异
 	git diff HEAD -- readme.txt  // 查看工作区和版本库里面最新版本的区别
 
 
@@ -41,17 +41,17 @@
 
 从暂存区或工作区中删除文件或目录
 
-	git rm --cached test.txt    // 从暂存区中删除
-	git rm -f test.txt          // 从工作区和版本库中删除
+	git rm --cached test.txt   // 从暂存区中删除
+	git rm -f test.txt         // 从工作区和版本库中删除
 
-	git rm --cached images      // 从暂存区删除指定目录
-	git rm -f images            // 从工作区和版本库中删除指定目录
+	git rm --cached images     // 从暂存区删除指定目录
+	git rm -f images           // 从工作区和版本库中删除指定目录
 
 
 在暂存区以及工作区中移动或重命名文件/目录
 
-	git mv test.txt test.html   // 将指定文件重命名
-	git mv images pictures      // 将指定目录重命名
+	git mv test.txt test.html  // 将指定文件重命名
+	git mv images pictures     // 将指定目录重命名
 
 
 将暂存区中的修改提交到本地仓库（版本库）
@@ -68,10 +68,10 @@
 
 将本地仓库（版本库）回退到指定的版本
 
-	git reset --hard HEAD^          // 回退到上一个版本
-	git reset --hard HEAD^^         // 回退到上上一个版本
-	git reset --hard HEAD~100       // 回退到上100个版本
-	git reset --hard <commit_id>    // 回退到指定的版本号
+	git reset --hard HEAD^        // 回退到上一个版本
+	git reset --hard HEAD^^        // 回退到上上一个版本
+	git reset --hard HEAD~100      // 回退到上100个版本
+	git reset --hard <commit_id>   // 回退到指定的版本号
 
 
 查看命令历史，以便确定要回到未来的哪个版本
@@ -102,12 +102,12 @@
 将当前工作区的修改储藏起来
 现在你想切换分支，但是你还不想提交你正在进行中的工作；所以你储藏这些变更。
 
-	git stash save "message" 		// 将当前工作区的变更储藏起来,并恢复到最近的版本状态
-	git stash list  				// 要查看现有的储藏
-	git stash apply 				// 应用最近版本的储藏内容(储藏的内容仍然在储藏栈上)
-	git stash apply stash@{2} 		// 应用指定版本的储藏内容(储藏的内容仍然在储藏栈上)
-	git stash drop stash@{0}        // 将指定版本的储藏内容从储藏栈中移除
-	git stash pop  					// 应用储藏，同时立刻将其从储藏栈中移走
+	git stash save "message"    // 将当前工作区的变更储藏起来,并恢复到最近的版本状态
+	git stash list              // 要查看现有的储藏
+	git stash apply             // 应用最近版本的储藏内容(储藏的内容仍然在储藏栈上)
+	git stash apply stash@{2}   // 应用指定版本的储藏内容(储藏的内容仍然在储藏栈上)
+	git stash drop stash@{0}    // 将指定版本的储藏内容从储藏栈中移除
+	git stash pop               // 应用储藏，同时立刻将其从储藏栈中移走
 
 
 

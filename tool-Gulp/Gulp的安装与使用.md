@@ -16,11 +16,11 @@
 
 查看已安装Node的版本号：
 
-	node -v
+  node -v
 
 查看已安装NPM的版本号：
 
-	npm -v
+  npm -v
 
 如果没有安装，请至<http://nodejs.org/>下载安装，npm将会随着安装包一起安装。
 
@@ -61,7 +61,7 @@
 
 <pre class="jsCode">
 // 引入 gulp
-var gulp = require('gulp'); 
+var gulp = require('gulp');
 
 // 引入组件
 var jshint = require('gulp-jshint');
@@ -74,28 +74,28 @@ var rename = require('gulp-rename');
 // Link任务会检查src/目录下的js文件有没有报错或警告。
 gulp.task('lint', function() {
    return gulp.src('./src/*.js')
-        .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 });
 
 // 编译Sass
 // Sass任务会编译scss/目录下的scss文件，并把编译完成的css文件保存到/css目录中。
 gulp.task('sass', function() {
-    return gulp.src('./scss/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('./dist'));
+  return gulp.src('./scss/*.scss')
+    .pipe(sass())
+    .pipe(gulp.dest('./dist'));
 });
 
 // 合并，压缩文件
 // scripts任务会合并src/目录下得所有的js文件并输出到dist/目录
 // 然后gulp会重命名、压缩合并的文件，也输出到dist/目录。
 gulp.task('scripts', function() {
-    return gulp.src('./src/*.js')
-        .pipe(concat('all.js'))
-        .pipe(gulp.dest('./dist'))
-        .pipe(rename('all.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest('./dist'));
+  return gulp.src('./src/*.js')
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('./dist'))
+    .pipe(rename('all.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('./dist'));
 });
 
 // 默认任务
@@ -103,17 +103,17 @@ gulp.task('scripts', function() {
 // 使用.watch()方法去监听指定目录的文件变化，当有文件变化时，会运行回调定义的其他任务。
 gulp.task('default', function(){
 
-    gulp.run('lint', 'sass', 'scripts');
+  gulp.run('lint', 'sass', 'scripts');
 
-    // 监听脚本文件
-    gulp.watch('./src/*.js', function(){
-        gulp.run('lint');
-    });
+  // 监听脚本文件
+  gulp.watch('./src/*.js', function(){
+    gulp.run('lint');
+  });
 
-    // 监听Scss文件
-    gulp.watch('./scss/*.scss', function(){
-        gulp.run('sass');
-    });
+  // 监听Scss文件
+  gulp.watch('./scss/*.scss', function(){
+    gulp.run('sass');
+  });
 });
 </pre>
 
@@ -124,19 +124,19 @@ gulp.task('default', function(){
 
 执行默认的Gulp任务：
 
-	gulp
+  gulp
 
 上面的语句相当于:
 
-	gulp default
+  gulp default
 
 当然，也可以执行Gulpfile.js中的任意任务，比如：执行sass任务：
 
-	gulp sass
+  gulp sass
 
 
 ## 卸载插件
 
 卸载已安装的插件，只需要在项目工作的根目录下，执行如下所示的命令行即可：
 
-	npm uninstall gulp-uglify
+  npm uninstall gulp-uglify
