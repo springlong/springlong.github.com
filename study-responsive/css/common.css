@@ -263,9 +263,10 @@ dt {
   padding: 20px 0;
 }
 .linklist li {
-  height: 30px;
+  height: auto;
+  margin-bottom: 10px;
   font-size: 14px;
-  line-height: 30px;
+  line-height: 20px;
 }
 .linklist li a {
   color: #317CAA;
