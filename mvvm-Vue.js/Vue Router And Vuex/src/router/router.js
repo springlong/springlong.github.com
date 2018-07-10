@@ -8,6 +8,7 @@ import UserProfile from '@/pages/UserProfile'
 import UserSafe from '@/pages/UserSafe'
 import NotFound from '@/pages/NotFound'
 import VuexDemo from '@/pages/VuexDemo'
+import AxiosDemo from '@/pages/AxiosDemo'
 import ComponentMobile from '@/pages/ComponentMobile'
 import ComponentPC from '@/pages/ComponentPC'
 
@@ -167,6 +168,12 @@ const router = new VueRouter({
       path: '/vuex/',
       name: 'VuexDemo',
       component: VuexDemo
+    },
+    // Axios demo页面
+    {
+      path: '/axios/',
+      name: 'AxiosDemo',
+      component: AxiosDemo
     },
     // 移动端组件
     {

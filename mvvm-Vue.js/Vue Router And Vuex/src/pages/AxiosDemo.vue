@@ -1,30 +1,7 @@
 <template>
-  <div class="module">
-    <div class="foo">
-      Hello.
-    </div>
+  <div class="module-wrap">
     <div>{{ 3+4 }}</div>
     <div>{{ 3+4 }}</div>
-    <img>
-    <img>
-    <TodoItem
-      v-for="todo in todos"
-      v-if="todo.sow"
-      :todo="todo"
-      :key="todo.id"
-    />
-    <img
-      src="https://vuejs.org/images/logo.png"
-      alt="Vue Logo"
-    >
-    <img src="./logo.png">
-    <img src="./logo.png">
-    <div :foo="bar" />
-    <input type="text">
-    <div :foo="bar" />
-    <MyComponent />
-    <svg><path d="" /></svg>
-    <MyComponent my-prop="prop" />
   </div>
 </template>
 
@@ -87,15 +64,22 @@ export default {
     })
 
     // axios请求-get
-    this.axios.get('/static/test-error1.txt?a=1&b=2')
-      .then((res) => {
-        console.log('axios-get:', res)
-      })
-      .catch((err) => {
-        console.error('axios-get error:', err)
-      })
+    // this.axios.get('/static/test-error1.txt?a=1&b=2')
+    //   .then((res) => {
+    //     console.log('axios-get:', res)
+    //   })
+    //   .catch((err) => {
+    //     // console.error('axios-get error:', err)
+    //   })
 
     // axios请求-get
+    this.axios.get('/saas20/api/1/AptGuest/free/roomsearch/customer/rapidLogin/mobile')
+      .then((res) => {
+        console.log('axios-get:', res)
+      }).catch((err) => {
+        // console.error('axios-get error:', err)
+      })
+
     this.axios.get('/static/test-error2.txt', {
       params: {
         a: '1',
@@ -104,32 +88,32 @@ export default {
     }).then((res) => {
       console.log('axios-get:', res)
     }).catch((err) => {
-      console.error('axios-get error:', err)
+      // console.error('axios-get error:', err)
     })
 
     // axios请求-post
-    this.axios({
-      method: 'post',
-      url: '/static/post1.txt',
-      data: {
-        a: '1',
-        b: '2'
-      }
-    }).then((res) => {
-      console.log('axios-post', res)
-    }).catch((err) => {
-      console.log('axios-post error', err)
-    })
+    // this.axios({
+    //   method: 'post',
+    //   url: '/static/post1.txt',
+    //   data: {
+    //     a: '1',
+    //     b: '2'
+    //   }
+    // }).then((res) => {
+    //   console.log('axios-post', res)
+    // }).catch((err) => {
+    //   console.log('axios-post error', err)
+    // })
 
     // axios请求-post
-    this.axios.post('/static/post2.txt', {
-      a: '1',
-      b: '2'
-    }).then((res) => {
-      console.log('axios-post', res)
-    }).catch((err) => {
-      console.log('axios-post error', err)
-    })
+    // this.axios.post('/static/post2.txt', {
+    //   a: '1',
+    //   b: '2'
+    // }).then((res) => {
+    //   console.log('axios-post', res)
+    // }).catch((err) => {
+    //   console.log('axios-post error', err)
+    // })
 
     // 使用JSONP模块请求
     const url = 'https://passport.xidibuy.com/ucenter/jsonpLoginInfo'
@@ -150,4 +134,9 @@ export default {
 <style lang='scss' scoped>
   @import "../assets/styles/base/_mixin.scss";
 
+  .module-wrap {
+    border: 1px solid #ddd;
+    color: #333;
+    background-color: #eee;
+  }
 </style>

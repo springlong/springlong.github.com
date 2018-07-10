@@ -1,0 +1,4 @@
+{
+  "/saas20/api/1/AptGuest/free/roomsearch/customer/rapidLogin/mobile": "/fastLogin",
+  "/saas20/api/1/AptGuest/message/sendcode": "/sendcode"
+}
