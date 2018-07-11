@@ -21,14 +21,14 @@
           <li>
             执行语句必须以分号“;”结尾。
 <pre class="jsCode">
-// 不推荐
+// error
 if (a > 3) alert('test!')
 
 // 推荐
 if (a > 3) alert('test!');
 </pre>
 <pre class="jsCode">
-// 不推荐
+// error
 var a = function() {
   // ...
 }
@@ -42,7 +42,7 @@ var a = function() {
           <li>
             尽可能不要让每行超过120个字符。
 <pre class="jsCode">
-// 不推荐
+// error
 if ((offsetTop &lt;= scrollTop + viewHeight + config.threshold) && (!config.viewport || offsetTop + $ele[prop]() + config.threshold >= scrollTop)) {
   // ...
 }
@@ -339,7 +339,7 @@ var ShareType = {
         <div>
           <p>使用 Array 和 Object 的直接量代替它们的构造器，简化代码的同时亦可提高代码的可读性。</p>
 <pre class="jsCode">
-// 不推荐
+// error
 var arr = new Array(1, 2, 3, 4, 5);
 var obj = new Object();
 obj.a = 0;
@@ -490,7 +490,7 @@ foo();
 <pre class="jsCode">
 var arr = ['a', 'b', 'c'];
 
-// 不推荐
+// error
 var item;
 for (item in arr) {
   console.log(arr[item]);
@@ -508,7 +508,7 @@ Object.prototype.bar = 1;
 
 var foo = {moo: 2}, item;
 
-// 不推荐：直接使用 for in
+// error：直接使用 for in
 for (item in foo) {
   console.log(item); // 输出两个属性：bar 和 moo
 }
@@ -529,7 +529,7 @@ for (item in foo) {
           <p>不要在块内使用函数声明。</p>
           <p>虽然很多 JS 引擎都支持在块内声明函数，但它不属于 ECMAScript 规范。如果确实需要在块中定义函数，建议使用函数表达式来进行。</p>
 <pre class="jsCode">
-// 不推荐
+// error
 if(x) {
   function foo(){}
 }
@@ -549,7 +549,7 @@ if(x) {
 <pre class="jsCode">
 var json = '{"name": "Jerry", "age": 18}';
 
-// 不推荐
+// error
 eval('(' + json + ')');
 
 // 建议

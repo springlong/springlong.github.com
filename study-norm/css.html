@@ -26,13 +26,13 @@
               <b>花括号：</b>
               <p>为了代码的易读性，在每个声明块的左花括号前添加一个空格，且声明块的右花括号应单独成行。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 .selector{
   font-size: 12px;
   color: #333;}
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 .selector {
   font-size: 12px;
   color: #333;
@@ -43,13 +43,13 @@
               <b>属性名结束：</b>
               <p>属性名的冒号后使用一个空格来分隔属性的名称和值（注意：属性和冒号之间没有空格）。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 h3 {
   font-weight:bold;
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 h3 {
   font-weight: bold;
 }
@@ -59,13 +59,13 @@ h3 {
               <b>声明结束：</b>
               <p>为了保证一致性和可扩展性，每个属性声明应该用分号结束。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 .test {
   display: block; height: 100px
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 .test {
   display: block;
   height: 100px;
@@ -76,13 +76,13 @@ h3 {
               <b>选择器和声明分离：</b>
               <p>每个选择器和属性声明总是使用新的一行。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 a:focus, a:active {
   position: relative; top: 1px;
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 h1,
 h2,
 h3 {
@@ -95,7 +95,7 @@ h3 {
               <b>规则分隔：</b>
               <p>每个规则块之间始终使用一个空行进行分隔。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 html {
   background: #fff;
 }
@@ -105,7 +105,7 @@ body {
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 html {
   background: #fff;
 }
@@ -121,13 +121,13 @@ body {
               <p>十六进制值应该全部小写，例如：<code>#fff</code>。在扫描文档时，小写字符易于分辨，因为他们的形式更易于区分。</p>
               <p>尽量使用简写形式的十六进制值，例如：用 <code>#fff</code> 代替 <code>#ffffff</code>。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 .selector {
   color: #FFFFFF;
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 .selector {
   color: #fff;
 }
@@ -138,14 +138,14 @@ body {
               <p>避免为 0 值指定单位，例如：用 <code>margin: 0;</code> 代替 <code>margin: 0px;</code>。</p>
               <p>省略小数点前面的 0（例如：<code>.5</code> 代替 <code>0.5</code>，<code>.5em</code> 代替 <code>0.5em</code>）。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 .selector {
   margin: 0px;
   padding: 0.5em;
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 .selector {
   margin: 0;
   padding: .5em;
@@ -157,14 +157,14 @@ body {
               <p>对于以逗号分隔的属性值，每个逗号后面都应该插入一个空格（例如：<code>box-shadow</code>）。</p>
               <p>不要在 <code>rgb()</code>、<code>rgba()</code>、<code>hsl()</code>、<code>hsla()</code> 或 <code>rect()</code> 值的内部的逗号后面插入空格。这样利于从多个属性值（既加逗号也加空格）中区分多个颜色值（只加逗号，不加空格）。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 .selector {
   background-color: rgba(0, 0, 0, .5);
   box-shadow: 0 1px 2px #ccc,inset 0 1px 0 #fff;
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 .selector {
   background-color: rgba(0,0,0,.5);
   box-shadow: 0 1px 2px #ccc, inset 0 1px 0 #fff;
@@ -175,7 +175,7 @@ body {
               <b>CSS引号：</b>
               <p>属性选择器或属性值用双引号（<code>""</code>），而不是单引号（<code>''</code>）。对于 URI 值（<code>url()</code>）不要使用引号。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 body {
   font-family: 'open sans', arial, sans-serif;
   background: url('images/bg.png');
@@ -186,7 +186,7 @@ body {
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 body {
   font-family: "open sans", arial, sans-serif;
   background: url(images/bg.png);
@@ -244,13 +244,13 @@ body {
           <p>ID选择器权重很高。一个只包含一个ID选择器的权重高于包含1000个class类名的选择器，这使得它很奇怪。</p>
           <p>使用ID唯一有效的是确定网页或整个站点中的位置。尽管如此，我们应该始终考虑使用class，而不是id，除非只使用一次。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 #searchBox .key {
   font-size: 12px;
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 .searchBox .key {
   font-size: 12px;
 }
@@ -265,13 +265,13 @@ body {
           <p>从分离的角度考虑，在表现层中不应该分配html标记/语义。它可能是一个有序列表需要被改成一个无序列表，或者一个div将被转换成article。</p>
           <p>如果你只使用具有实际意义的class类名，并且不使用元素选择器，那么你只需要改变你的html标记，而不用改动你的CSS。</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 .content > header > h2 {
   font-size: 2em;
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 .content-header > .title {
   font-size: 2em;
 }
@@ -304,14 +304,14 @@ body {
 </pre>
           <p>下面的CSS将应用于有 title 类的全部三个元素。然而，要解决 news-bd 类下的 title 类和 news-teaser 类下的 title 类下不同的样式，这将需要更精确的选择器再次重写他们的样式：</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 .news-wrap .title {
   font-size: 2em;
 }
 </pre>
           <p>因此，建议尽可能使用直接子选择器来确保选择器的精确性：</p>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 .news-wrap > .title {
   font-size: 2em;
 }
@@ -331,7 +331,7 @@ body {
         <div>
           <p>CSS提供了各种缩写属性（如 font 字体），合理的使用缩写属性对于代码效率和可读性是有很有帮助的：</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 .selector {
   border-top-style: none;
   font-family: palatino, georgia, serif;
@@ -344,7 +344,7 @@ body {
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 .selector {
   border-top: 0;
   font: 100%/1.6 palatino, georgia, serif;
@@ -362,14 +362,14 @@ body {
           <p>以上样式不会将 background 的 color 值设置为 red，而是 background-color 的默认值 transparent，因为第二条规则优先。</p>
           <p>因此，为了避免使用缩写属性而导致覆盖之前所设置的属性，我们应该避免为单一属性使用缩写形式的属性声明：</p>
 <pre class="cssCode">
-/*不推荐*/
+/* error */
 .selector {
   margin: 0 0 10px;
   background: url(images/bg.png);
 }
 </pre>
 <pre class="cssCode">
-/*推荐*/
+/* 推荐 */
 .selector {
   margin-bottom: 10px;
   background-image: url(images/bg.png);
@@ -402,7 +402,7 @@ body {
           <p>下面的选择器声明就是按照上面所规定的属性顺序进行的书写，有没有感觉代码很清晰呢：</p>
 <pre class="cssCode autoHeight">
 .declaration-order {
-  /* 定位属性 */
+  /*  定位属性  */
   position: absolute;
   left: 0;
   top: 0;
@@ -410,7 +410,7 @@ body {
   bottom: auto;
   z-index: 100;
 
-  /* 布局属性 */
+  /*  布局属性  */
   float: none;
   clear: all;
   display: flex;
@@ -421,7 +421,7 @@ body {
   flex-grow: 1;
   overflow: hidden;
 
-  /* 盒模型 */
+  /*  盒模型  */
   box-sizing: border-box;
   width: 80%;
   min-width: 800px;
@@ -434,7 +434,7 @@ body {
   border: 2px solid #333;
   margin-top: 24px;
 
-  /* 字体文本 */
+  /*  字体文本  */
   font: normal 13px "Helvetica Neue", sans-serif;
   line-height: 1.5em;
   letter-spacing: 0;
@@ -442,21 +442,21 @@ body {
   text-indent: 2em;
   word-wrap: break-word;
 
-  /* 颜色背景 */
+  /*  颜色背景  */
   color: #333;
   background: #fff url(images/bg.png) no-repeat 0 0;
   background-size: 100% 100%;
   opacity: 1;
 
-  /* 其他属性 */
+  /*  其他属性  */
   transition: all ease-out .4s;
 }
 
 .declaration-order::before {
-  /* 伪元素的content属性优先书写 */
+  /*  伪元素的content属性优先书写  */
   content: "";
 
-  /* 定位属性 */
+  /*  定位属性  */
   position: absolute;
   left: 0;
   top: 0;
@@ -482,7 +482,7 @@ body {
         <div>
           <p>为了符合 CSS 样式代码的编写习惯，以及方便从 CSS 代码到 Sass 代码的快速切换，我们约定统一使用 <code>.scss</code> 扩展名的 Sass 文件。</p>
 <pre class="cssCode">
-// 不推荐 *.sass
+// error *.sass
 .test-wrap
   display: block
   margin-top: 24px
@@ -535,7 +535,7 @@ body {
           <p>不过在使用嵌套书写的过程中，应尽量避免嵌套没有任何内容的选择器。</p>
           <p>同时，你应该确保代码中的嵌套简洁易懂，最好控制在三层嵌套以内。</p>
 <pre class="cssCode">
-// 不推荐
+// error
 .market-wrap {
   display: block;
 }
@@ -546,7 +546,7 @@ body {
 }
 </pre>
 <pre class="cssCode">
-// 不推荐
+// error
 .market-wrap {
   display: block;
 
@@ -576,7 +576,7 @@ body {
         <div>
           <p>为了提高代码的整洁和可读，建议在嵌套选择器和 CSS 属性声明之间空一行。</p>
 <pre class="cssCode">
-// 不推荐
+// error
 .market-wrap {
   display: block;
   > .title {
@@ -624,7 +624,7 @@ body {
           <p>我们应将媒体查询尽可能放在相关规则的附近，不要将他们打包放在一个单一的样式文件中或者放在文档底部。</p>
           <p>如果你把他们分开了，将来只会被大家遗忘。</p>
 <pre class="cssCode autoHeight">
-// 不推荐
+// error
 
 .page-wrap {
   font-size: 1.2rem;

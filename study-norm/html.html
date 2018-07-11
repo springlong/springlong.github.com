@@ -34,7 +34,7 @@
         <strong>大小写</strong>
         <p>元素的标签名和属性名统一使用小写。</p>
 <pre class="htmlCode">
-&lt;!-- 不推荐 -->
+&lt;!-- error -->
 &lt;A HREF="/"&gt;首页&lt;/A&gt;
 </pre>
 <pre class="htmlCode">
@@ -46,7 +46,7 @@
         <strong>引号</strong>
         <p>HTML 属性的值必须添加引号，且使用双引号进行标识。</p>
 <pre class="htmlCode">
-&lt;!-- 不推荐 -->
+&lt;!-- error -->
 &lt;p class=test&gt;测试&lt;/p&gt;
 </pre>
 <pre class="htmlCode">
@@ -63,7 +63,7 @@
         <strong>缩进</strong>
         <p>代码层级之间必须拥有2个空格的缩进。</p>
 <pre class="htmlCode">
-&lt;!-- 不推荐 -->
+&lt;!-- error -->
 &lt;ul&gt;&lt;li&gt;列表项&lt;/li&gt;&lt;/ul&gt;
 </pre>
 <pre class="htmlCode">
@@ -79,7 +79,7 @@
         <p>不要省略可选的结束标签（例如：<code>&lt;/li></code> 或 <code>&lt;/p></code>）。</p>
         <p>对于自闭合的元素无需保留尾部的斜杠。</p>
 <pre class="htmlCode">
-&lt;!-- 不推荐 -->
+&lt;!-- error -->
 &lt;meta charset="utf-8" /&gt;
 &lt;script src="js/effect.js" /&gt;
 &lt;p&gt;段落1
@@ -143,7 +143,7 @@
         <strong>实体引用</strong>
         <p>假定开发团队内，文件和编辑器都是使用同样的编码格式（UTF-8），则没有必要使用实体引用的方式（特殊的 HTML 字符除外，例如 &lt; 和 &amp; ）。</p>
 <pre class="htmlCode">
-&lt;!-- 不推荐 --&gt;
+&lt;!-- error --&gt;
 &amp;copy; 2014 喜地电子商务有限公司 版权所有
 </pre>
 <pre class="htmlCode">
@@ -157,7 +157,7 @@
         <p>根据 HTML 各个元素的用途而去使用是很重要的，它涉及到文档的可访问性、重用和代码效率等问题。</p>
         <p>由于 IE8 不支持 HTML5 的语义标签，我们也未对它们做兼容处理，因此我们约定不使用 header、footer、section、nav、aside 等语义标签。</p>
 <pre class="htmlCode">
-&lt;!-- 不推荐 -->
+&lt;!-- error -->
 &lt;div onclick="goToRecommendations();">All recommendations&lt;/div>
 </pre>
 <pre class="htmlCode">
@@ -184,7 +184,7 @@
           <li>其它情况视产品需求而定，但所有img标签都需要有alt属性。</li>
         </ul>
 <pre class="htmlCode">
-&lt;!-- 不推荐 -->
+&lt;!-- error -->
 &lt;img src="spreadsheet.png">
 </pre>
 <pre class="htmlCode">

@@ -27,7 +27,15 @@
 
 `npm install`
 
-	无任何参数的情况下，表示根据当前目录的package.json文件中定义的dependencies和devDependencies字段中定义的依赖包进行安装。
+	install 命令的别名有：i, isntall, add
+
+	无任何参数的情况下，表示根据当前目录的package.json文件中,
+
+	定义的dependencies和devDependencies字段中定义的依赖包进行安装。
+
+`npm install -g npm`
+
+	更新npm到最新版本
 
 `npm install -g <packageName>`
 
@@ -55,6 +63,8 @@
 	使用@符号安装指定版本的模块
 
 `npm uninstall -g <packageName>`
+
+	uninstall 命令的别名有：un, unlink, remove, rm, r
 
 	卸载全局已安装的node模块
 
@@ -110,10 +120,6 @@
 `npm link`
 
 	命令可以将一个任意位置的npm包链接到全局执行环境，从而在任意位置使用命令行都可以直接运行该npm包。
-
-`npm i -g npm`
-
-	更新npm到最新版本
 
 
 ## 使用cnpm

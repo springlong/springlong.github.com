@@ -36,7 +36,7 @@
 
 ## 响应式
 
-1. [响应式布局概述](http://www.fedlife.cn/responsive.html)
+1. [响应式布局概述](http://www.fedlife.cn/study-responsive/responsive.html)
 
 ## 前端规范
 
