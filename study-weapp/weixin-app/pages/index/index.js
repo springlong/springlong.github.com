@@ -13,6 +13,9 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+    isActive: true,
+    errorClass: 'error-class',
+    activeClass: 'active-class',
 		welcome: 'Hello World 123',
 		obj: {
 			name: 'yangtuan',

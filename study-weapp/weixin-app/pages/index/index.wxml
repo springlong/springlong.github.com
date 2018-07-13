@@ -4,6 +4,13 @@
 <!--index.wxml-->
 <view class="container">
 
+<view class="_p {{[isActive ? 'active' : '']}}">111</view>
+<view class="_div data-v-5e89cfcc dialog-toast {{[isError ? 'dialog-toast--text' : '']}}">111-2</view>
+<view class="_p static {{[isActive ? 'active' : '', hasError ? 'text-danger' : '']}}">222</view>
+<view class="_p static {{[activeClass, errorClass]}}">333</view>
+<view class="_p static {{[isActive ? activeClass : '', errorClass]}}">444</view>
+<view class="_p static {{[[isActive ? 'active' : ''], errorClass]}}">555</view>
+
 	<!-- 引入模板 -->
 	<include src="/templates/header.wxml" />
 

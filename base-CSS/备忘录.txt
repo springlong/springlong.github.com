@@ -2,3 +2,10 @@
 两端对齐：
 text-align: justify;
 text-justify: inter-ideograph;
+
+
+
+
+-webkit-backface-visibility:hidden; //隐藏转换的元素的背面
+-webkit-transform-style: preserve-3d; //使被转换的元素的子元素保留其 3D 转换
+-webkit-transform:translate3d(0,0,0); //开启GPU硬件加速模式，使用GPU代替CPU渲染动画（在安卓系统中有时会有莫名其妙的BUG，建议慎重）
