@@ -274,7 +274,8 @@ export default {
   background-color: #333;
 
   a {
-    color: #1F6CE8;
+    color: #1f6ce8;
   }
 }
+
 </style>

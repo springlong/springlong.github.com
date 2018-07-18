@@ -319,6 +319,17 @@ module.exports = {
     // }],
     'comma-dangle': 0,
 
+    // 强制使用一致的反勾号、双引号或单引号 (quotes)
+    // http://eslint.cn/docs/rules/quotes
+    // 字符串选项：
+    // "double" (默认) 要求尽可能地使用双引号
+    // "single" 要求尽可能地使用单引号
+    // "backtick" 要求尽可能地使用反勾号
+    // 对象选项：
+    // "avoidEscape": true 允许字符串使用单引号或双引号，只要字符串中包含了一个其它引号，否则需要转义
+    // "allowTemplateLiterals": true 允许字符串使用反勾号
+    // 'quotes': ['error', 'single', { avoidEscape: true }],
+
     // 建议使用const
     // 如果一个变量不会被重新赋值，最好使用const进行声明。
     // http://eslint.cn/docs/rules/prefer-const
@@ -373,7 +384,7 @@ module.exports = {
       'comments': 150
     }],
 
-    // 禁用行尾空白
+    // 禁用行尾空格
     // http://eslint.cn/docs/rules/no-trailing-spaces
     // 'no-trailing-spaces': ['error', {
     //   // 是否允许在空行使用空白符
@@ -381,6 +392,16 @@ module.exports = {
     //   // 是否允许在注释块中使用空白
     //   'ignoreComments': false
     // }],
+
+    // 禁止多个空格
+    // http://eslint.cn/docs/0.24.1/rules/no-multi-spaces
+    // 'no-multi-spaces': ['error', {
+    //   // ignoreEOLComments: false, // TODO: uncomment once v3 is dropped
+    // }],
+
+    // 要求中缀操作符周围有空格 (space-infix-ops)
+    // http://eslint.cn/docs/rules/space-infix-ops
+    // 'space-infix-ops': 'error',
 
     // 要求或禁止块内填充
     // http://eslint.cn/docs/rules/padded-blocks
@@ -459,6 +480,75 @@ module.exports = {
     //   'named': 'never',
     //   'asyncArrow': 'always'
     // }],
+
+    // 禁止在返回语句中赋值 (no-return-assign)
+    // http://eslint.cn/docs/rules/no-return-assign
+    // 'no-return-assign': ['error', 'always'],
+
+    // 禁用 Script URL (no-script-url)
+    // http://eslint.cn/docs/rules/no-script-url
+    // 'no-script-url': 'error',
+
+    // 强制函数中的变量在一起声明或分开声明 (one-var)
+    // http://eslint.cn/docs/rules/one-var
+    // 该规则有一个选项，可以是字符串或对象。
+    // 字符串选项：
+    // "always" (默认) 要求每个作用域有一个变量声明
+    // "never" 要求每个作用域有多个变量声明
+    // "consecutive" 每个作用域允许出现多个变量声明，但对连续的变量声明要求合并为单个声明
+    // 对象选项：
+    // "var": "always" 要求每个函数有一个 var 声明
+    // "var": "never" 要求每个函数有多个 var 声明
+    // "var": "consecutive" 要求连续的 var 声明合并为一个
+    // "let": "always" 要求每个块有一个 let 声明
+    // "let": "never" 要求每个块有多个 let 声明
+    // "let": "consecutive" 要求连续的 let 声明合并为一个
+    // "const": "always" 要求每个块有一个 const 声明
+    // "const": "never" 要求每个块有多个 const 声明
+    // "const": "consecutive" 要求连续的 const 声明合并为一个
+    // "separateRequires": true 强制 requires 分开声明
+    // 对象选项：
+    // "initialized": "always" 要求每个作用域的初始化的变量有一个变量声明
+    // "initialized": "never" 要求每个作用域的初始化的变量有多个变量声明
+    // "initialized": "consecutive" 对已经初始化的变量，要求其连续的变量声明合并为一个声明
+    // "uninitialized": "always" 要求每个作用域的未初始化的变量有一个变量声明
+    // "uninitialized": "never" 要求每个作用域的未初始化的变量有多个变量声明
+    // "uninitialized": "consecutive" 对未初始化的变量，要求其连续的变量声明合并为一个声明
+    // 'one-var': ['error', 'never'],
+
+    // 禁止在 else 前有 return (no-else-return)
+    // 如果 if 块中包含了一个 return 语句，else 块就成了多余的了。可以将其内容移至块外。
+    // 该规则旨在突出含有 return 语句的 if 语句后的不必要的代码。因此，当else 语句出现在含有 return 语句的 if 语句之后，该规则将发出警告。
+    // http://eslint.cn/docs/rules/no-else-return
+    // 'no-else-return': 'error',
+
+    // 禁止空块语句 (no-empty)
+    // http://eslint.cn/docs/rules/no-empty
+    // 'no-empty-pattern': 'error',
+
+    // 要求使用 === 和 !== (eqeqeq)
+    // http://eslint.cn/docs/rules/eqeqeq
+    // 'eqeqeq': ['error', 'always', { null: 'ignore' }],
+
+    // 强制数组方法的回调函数中有 return 语句 (array-callback-return)
+    // http://eslint.cn/docs/rules/array-callback-return
+    // 该规则发现以下方法的回调函数，然后检查return语句的使用。
+    // Array.from
+    // Array.prototype.every
+    // Array.prototype.filter
+    // Array.prototype.find
+    // Array.prototype.findIndex
+    // Array.prototype.map
+    // Array.prototype.reduce
+    // Array.prototype.reduceRight
+    // Array.prototype.some
+    // Array.prototype.sort
+    // 以上类型的数据。
+    // 'array-callback-return': 'error',
+
+    // 要求使用一致的 return 语句 (consistent-return)
+    // http://eslint.cn/docs/rules/consistent-return
+    // 'consistent-return': 'error',
 
     // 禁止对 function 的参数进行重新赋值
     // http://eslint.cn/docs/rules/no-param-reassign
@@ -550,6 +640,10 @@ module.exports = {
     // 'no-useless-constructor': 'error',
     'no-useless-constructor': 0,
 
+    // 不允许修改类声明的变量 (no-class-assign)
+    // http://eslint.cn/docs/rules/no-class-assign
+    // 'no-class-assign': 'error',
+
     // 强制类方法使用 this
     // 如果一个类方法不使用 this，可以安全的做为静态函数出现。
     // http://eslint.cn/docs/rules/class-methods-use-this
@@ -587,6 +681,7 @@ module.exports = {
     // 为什么？模板字符串为你提供了更好的可读性，简洁的语法，正确的换行符和字符串插值功能。
     // http://eslint.cn/docs/rules/prefer-template
     // 'prefer-template': 'error',
+    'prefer-template': 'off',
 
     // 优先使用数组和对象解构
     // http://eslint.cn/docs/rules/prefer-destructuring
@@ -658,6 +753,21 @@ module.exports = {
     //   ignoreConstructors: false,
     // }],
 
+    // 要求对象字面量属性名称使用引号 (quote-props)
+    // http://eslint.cn/docs/rules/quote-props
+    // 该规则有两个选项，一个是字符串，一个是对象。
+    // 字符串选项：
+    // "always" (默认) 要求对象字面量属性名称都使用引号
+    // "as-needed" 当没有严格要求时，禁止对象字面量属性名称使用引号
+    // "consistent" 要求对象字面量属性名称使用一致的引号，要么全部用引号，要么都不用
+    // "consistent-as-needed" 如果有属性名称要求使用引号，则所有的属性名称都要使用引号；否则，禁止所有的属性名称使用引号
+    // 对象选项：
+    // "keywords": true 如果关键字作为对象属性名称，要求使用引号 (当 as-needed 或 consistent-as-needed 时生效)
+    // "unnecessary": true (默认) 如果没有严格要求，禁止对象属性名称使用引号 (当as-needed 时生效)
+    // "unnecessary": false 如果没有严格要求，允许对象属性名称使用引号 (当 as-needed 时生效)
+    // "numbers": true 当数字作为对象属性名称时，要求使用引号 (只当 as-needed 时生效)
+    // 'quote-props': ['error', 'as-needed', { keywords: false, unnecessary: true, numbers: false }],
+
     // 强制在花括号中使用一致的空格
     // http://eslint.cn/docs/rules/object-curly-spacing
     // 该规则有两个选项，一个是字符串，一个是对象。
@@ -670,6 +780,30 @@ module.exports = {
     // 'objectsInObjects': true 要求以对象元素开始或结尾的对象的花括号中有空格 (当第一个选项为 never 时生效)
     // 'objectsInObjects': false 禁止以对象元素开始或结尾的对象的花括号中有空格 (当第一个选项为 always 时生效)
     // 'object-curly-spacing': ['error', 'always'],
+
+    // react and jsx
+
+    // 要求jsx的代码层级的缩进
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
+    // 'react/jsx-indent': ['error', 2],
+
+    // 要求jsx标签属性的缩进
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
+    // 'react/jsx-indent-props': ['error', 2],
+
+    // 要求jsx结束标签的位置
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md
+    // 'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
+
+    // 如果你声明了state，但是没有使用它，将会给出警告
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-state.md
+    // 'react/no-unused-state': 'error',
+
+    // 每个文件只声明一个组件可以提高组件的可读性和可重用性。
+    // ignoreStateless配置项允许在文件中出现多个无状态组件 (Stateless Component)
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md
+    // 'react/no-multi-comp': ['error', { ignoreStateless: true }],
+
   },
   // 有时，你可能需要更精细的配置，
   // 比如，如果同一个目录下的文件需要有不同的配置。
