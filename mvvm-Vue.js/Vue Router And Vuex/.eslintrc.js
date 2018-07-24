@@ -338,6 +338,29 @@ module.exports = {
     //   ignoreReadBeforeAssign: true,
     // }],
 
+    // 要求必须有基数，强制parseInt()提供第二个参数
+    // http://eslint.cn/docs/rules/radix
+    // 此规则有两个选项：
+    // "always"强制提供一个基数（默认的）
+    // "as-needed"禁止提供基数10
+    // 'radix': 'error',
+
+    // 禁止混合使用不同的操作符
+    // http://eslint.cn/docs/rules/no-mixed-operators
+    // 该规则有两个选项。
+    // groups (string[][]) - 指定要检查的操作符分组。groups 选项是分组的列表，分组是二进制运算符的列表。默认操作符分组定义为算术、位、比较、逻辑和关系运算符。
+    // allowSamePrecedence (boolean) - 指定是否允许混合运算符具有相同的优先级。默认为 true。
+    // 'no-mixed-operators': ['error', {
+    //   groups: [
+    //     ['+', '-', '*', '/', '%', '**'],
+    //     ['&', '|', '^', '~', '<<', '>>', '>>>'],
+    //     ['==', '!=', '===', '!==', '>', '>=', '<', '<='],
+    //     ['&&', '||'],
+    //     ['in', 'instanceof']
+    //   ],
+    //   allowSamePrecedence: false
+    // }],
+
     // 禁止未使用过的表达式
     // http://eslint.cn/docs/rules/no-unused-expressions
     // 'no-unused-expressions': ['error', {
@@ -351,6 +374,10 @@ module.exports = {
       // 设置为true，允许三目运算符
       'allowTernary': true
     }],
+
+    // 禁止使用嵌套的三元表达式
+    // http://eslint.cn/docs/rules/no-nested-ternary
+    // 'no-nested-ternary': 'error',
 
     // 禁止未使用过的变量
     // https://eslint.cn/docs/rules/no-unused-vars
@@ -384,7 +411,14 @@ module.exports = {
       'comments': 150
     }],
 
-    // 禁用行尾空格
+    // 要求使用骆驼拼写法
+    // http://eslint.cn/docs/rules/camelcase
+    // 该规则有一个对象选项：
+    // "properties": "always" (默认) 强制属性名称为驼峰风格
+    // "properties": "never" 不检查属性名称
+    // 'camelcase': ['error', { properties: 'never' }],
+
+    // 禁用行尾空格 （--fix）
     // http://eslint.cn/docs/rules/no-trailing-spaces
     // 'no-trailing-spaces': ['error', {
     //   // 是否允许在空行使用空白符
@@ -434,6 +468,28 @@ module.exports = {
     //   // 要求在行级注释之前有一空行
     //   'beforeLineComment': true,
     // }],
+
+    // 不允许多个空行
+    // http://eslint.cn/docs/rules/no-multiple-empty-lines
+    // 该规则有一个对象选项：
+    // "max" (默认为 2) 强制最大连续空行数。
+    // "maxEOF" 强制文件末尾的最大连续空行数。
+    // "maxBOF" 强制文件开始的最大连续空行数。
+    // 'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 1 }],
+
+    // 大括号风格要求 (--fix)
+    // http://eslint.cn/docs/rules/brace-style
+    // 在 Javascript 中，one true brace style也是最常见的一种，它将大括号放在控制语句或声明语句同一行的位置。
+    // one true brace style的一种常见的变体形式叫做 Stroustrup，if-else中的else语句，连同catch 和 finally，都必须在右括号后另起一行
+    // 另一种风格叫做Allman， 括号必须单独成行且没有任何缩进：
+    // 该规则有一个字符串选项：
+    // "1tbs" (默认) 强制 one true brace style
+    // "stroustrup" 强制 Stroustrup style
+    // "allman" 强制 Allman style
+    // 该规则可以有例外情况，用对象表示：
+    // "allowSingleLine": true (默认 false) 允许块的开括号和闭括号在同一行
+    // 'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+    'brace-style': ['error', '1tbs', { allowSingleLine: false }],
 
     // 强制在注释中 // 或 /* 使用一致的空格
     // http://eslint.cn/docs/rules/spaced-comment
@@ -712,6 +768,18 @@ module.exports = {
     // 'linebreak-style': ['error', 'unix'],
     'linebreak-style': 0,
 
+    // 要求遵循大括号约定
+    // http://eslint.cn/docs/rules/curly
+    // 当代码块只有一条语句时，JavaScript 允许省略大括号。
+    // 然而，很多人认为，在块区域前后时刻保留大括号是一种最佳实践，即使他们是可有可无的，因为省略大括号会导致错误，并且降低代码的清晰度。
+    // 选项：
+    // all: 始终使用大括号，默认选项，当 if、else、for、while 或 do 不使用大括号包裹代码时，会给出警告。
+    // multi：你可以指定当块中有多条语句时才使用大括号，而当代码块中只有一条语句时只会给出警告。
+    // multi-line：你可以放宽规则，允许在单行中省略大括号，而if、else if、else、for、while 和 do，在其他使用中依然会强制使用大括号。
+    // multi-or-nest：如果 if、else if、else、for、while 和 do 的代码主体中只包含一条语句，你可以使用另外一个配置来强制省略大括号。同时在其他的情况下，强制使用大括号。
+    // consistent：当在使用任何 multi* 选项时，你可以添加一个参数来强制 if、else if 和 else 中所有的代码块使用或者不使用大括号。
+    // 'curly': ['error', 'multi-line'],
+
     // 强制在对象的花括号内使用一致的换行符
     // http://eslint.cn/docs/rules/object-curly-newline
     // 该规则有一个字符串选项
@@ -735,7 +803,7 @@ module.exports = {
       'consistent': true
     }],
 
-    // 要求对象字面量简写语法
+    // 要求对象字面量简写语法 (--fix)
     // http://eslint.cn/docs/rules/object-shorthand
     // 该规则有一个选项。可以设置为下列值之一：
     // 'always' (默认) 只要有可能，简写就应该被使用。
@@ -753,7 +821,19 @@ module.exports = {
     //   ignoreConstructors: false,
     // }],
 
-    // 要求对象字面量属性名称使用引号 (quote-props)
+    // 禁止直接使用 Object.prototypes 的内置属性
+    // http://eslint.cn/docs/rules/no-prototype-builtins
+    // 禁止：foo.hasOwnProperty("bar")
+    // 允许：Object.prototype.hasOwnProperty.call(foo, "bar")
+    // 'no-prototype-builtins': 'error',
+
+    // 禁用 continue
+    // http://eslint.cn/docs/rules/no-continue
+    // continue 语句终止当前的循环的此次迭代或带标签的循环，执行循环中的下一个迭代。
+    // 不正确的使用会降低代码可测性、可读性以及可维护性。应使用结构化的控制语句如 if 来代替。
+    'no-continue': 'error',
+
+    // 要求对象字面量属性名称使用引号 (--fix)
     // http://eslint.cn/docs/rules/quote-props
     // 该规则有两个选项，一个是字符串，一个是对象。
     // 字符串选项：
@@ -768,7 +848,7 @@ module.exports = {
     // "numbers": true 当数字作为对象属性名称时，要求使用引号 (只当 as-needed 时生效)
     // 'quote-props': ['error', 'as-needed', { keywords: false, unnecessary: true, numbers: false }],
 
-    // 强制在花括号中使用一致的空格
+    // 强制在花括号中使用一致的空格 (--fix)
     // http://eslint.cn/docs/rules/object-curly-spacing
     // 该规则有两个选项，一个是字符串，一个是对象。
     // 字符串选项：
@@ -783,27 +863,106 @@ module.exports = {
 
     // react and jsx
 
-    // 要求jsx的代码层级的缩进
+    // 要求jsx的代码层级的缩进 (--fix)
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent.md
     // 'react/jsx-indent': ['error', 2],
 
-    // 要求jsx标签属性的缩进
+    // 要求jsx标签属性的缩进 (--fix)
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-indent-props.md
     // 'react/jsx-indent-props': ['error', 2],
 
-    // 要求jsx结束标签的位置
+    // 要求jsx自闭合标签的位置 (--fix)
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md
+    // line-aligned: 必须与包含开始标记的行对齐。
     // 'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
+
+    // 要求jsx的闭合标签必须与开头标签对齐 (--fix)
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-tag-location.md
+    // 'react/jsx-closing-tag-location': 'error',
+
+    // 要求在关闭标签之前是否需要空格 (--fix)
+    // 可使用'react/jsx-tag-spacing'规则代替
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-space-before-closing.md
+    // 'react/jsx-space-before-closing': ['off', 'always'],
+
+    // 要求标签的空格形式 (--fix)
+    // <div></div> <input />
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md
+    // 'react/jsx-tag-spacing': ['error', {
+    //   closingSlash: 'never',
+    //   beforeSelfClosing: 'always',
+    //   afterOpening: 'never',
+    // }],
+    // 'react/jsx-tag-spacing': ['error', {
+    //   closingSlash: 'never',
+    //   beforeSelfClosing: 'always',
+    //   afterOpening: 'never',
+    //   // 该规则非默认设置，为附加
+    //   beforeClosing: 'never',
+    // }],
+
+    // 禁止{}嵌入语法两端出现空格，但是允许多行书写 (--fix)
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-curly-spacing.md
+    // 'react/jsx-curly-spacing': ['error', 'never', { allowMultiline: true }],
+
+    // 禁止等号两端存在空格 (--fix)
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-equals-spacing.md
+    // 'react/jsx-equals-spacing': ['error', 'never'],
+
+    // 禁止多个属性之间存在多余的空格（--fix）
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-props-no-multi-spaces.md
+    // 'react/jsx-props-no-multi-spaces': ['warn'],
+
+    // 要求一行最多书写属性的数量 (--fix)
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-max-props-per-line.md
+    // 参数配置：
+    // maximum: 最大数量限制
+    // when: 检测时机
+    // -- always: 总是检测最大数量限制
+    // -- multiline: 只有当属性被多行书写时才进行检测
+    // 'react/jsx-max-props-per-line': ['error', { maximum: 1, when: 'multiline' }],
+
+    // 要求第一个属性是否换行书写 (--fix)
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-first-prop-new-line.md
+    // multiline-multiprop配置项：只有当多行属性书写时才要求第一个属性换行书写
+    // 'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],
 
     // 如果你声明了state，但是没有使用它，将会给出警告
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-unused-state.md
     // 'react/no-unused-state': 'error',
 
     // 每个文件只声明一个组件可以提高组件的可读性和可重用性。
-    // ignoreStateless配置项允许在文件中出现多个无状态组件 (Stateless Component)
+    // ignoreStateless: 该配置项允许在文件中出现多个无状态组件 (Stateless Component)
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md
     // 'react/no-multi-comp': ['error', { ignoreStateless: true }],
 
+    // Enforce boolean attributes notation in JSX
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-boolean-value.md
+    // 'react/jsx-boolean-value': ['error', 'never', { always: [] }],
+
+    // Prevent missing parentheses around multilines JSX （--fix）
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-wrap-multilines.md
+    // 'react/jsx-wrap-multilines': ['error', {
+    //   declaration: true,
+    //   assignment: true,
+    //   return: true,
+    //   arrow: true,
+    // }],
+
+    // Enforce props alphabetical sorting（--fix）
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
+    // 'react/jsx-sort-props': ['off', {
+    //   ignoreCase: true,
+    //   callbacksLast: false,
+    //   shorthandFirst: false,
+    //   shorthandLast: false,
+    //   noSortAlphabetically: false,
+    //   reservedFirst: true,
+    // }],
+
+    // 使用了propTypes时，对于定义了的prop且为非必填元素，那么必须通过defaultProps指定默认值
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
+    'react/require-default-props': 'error',
   },
   // 有时，你可能需要更精细的配置，
   // 比如，如果同一个目录下的文件需要有不同的配置。
