@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>Start D3.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./source/d3.js"></script>
+<style>
+.axis path,
+.axis line {
+  fill: none;
+  stroke: black;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+</style>
+</head>
+<body>
+<div class="hello">
+    <p>Hello world 1</p>
+    <p class="hello-p">Hello world 2</p>
+</div>
+<hr>
+<div class="datum">
+    <p>Apple</p>
+    <p>Pear</p>
+    <p>Banana</p>
+</div>
+<hr>
+<div class="data">
+    <p>Apple</p>
+    <p>Pear</p>
+    <p>Banana</p>
+</div>
+<hr>
+<div id="svgBox">
+
+</div>
+<script>
+    // d3.select() 选择所有指定元素的第一个
+    // d3.selectAll() 选择指定元素的全部
+    // d3.text() 修改指定元素集合的文本值
+    // d3.style() 修改指定元素集合的样式
+    const hello = d3.select('.hello')
+    const helloP = hello.selectAll('p').text('d3 is great!')
+    helloP.style('color', 'red').style('font-size', '30px')
+
+    // d3.append() 在选择集末尾插入元素
+    // d3.insert() 在选择集前面插入元素
+    // d3.remove() 删除选择的元素
+    hello.append('p').text('append p element')
+    hello.insert('p', '.hello-p').text('insert p element')
+    // hello.select('.hello-p').remove()
+
+    // d3.datum() 绑定一个数据到选择集上
+    const str = 'china'
+    const datumP = d3.select('.datum').selectAll('p')
+    datumP.datum(str)
+    datumP.text((data, index) => {
+        return '第 ' + index + ' 个元素的数据是：' + data
+    })
+
+    // d3.data() 绑定一个数组到选择集上，数组的各项值分别与选择集的各元素绑定
+    const dataset = ['I like dog', 'I like cat', 'I like snake']
+    const dataP = d3.select('.data').selectAll('p')
+    dataP.data(dataset)
+    dataP.text((data, index) => {
+        return data
+    })
+
+    // 使用svg绘制图形
+    const svgWidth = 300;
+    const svgHeight = 300;
+    const svgData = [250, 210, 170, 130, 90]
+    const rectHeight = 25
+
+    // d3.scaleLinear() 创建定量线性比例尺
+    // .domain([min, max]) 设定比例尺的定义域（可以是原始数据，可以是0.1，也可以是100，也可以是1000）
+    // .range([min, max]) 设定比例尺的值域（显示在svg上的具体长度，相对于页面上svg的显示区域）
+    const linear = d3.scaleLinear().domain([0, d3.max(svgData)]).range([0, 250])
+
+    // d3.axisBottom() 创建一个底部轴生成器
+    // .ticks() 指定刻度的数量
+    const axis = d3.axisBottom(linear).ticks(7)
+
+    // 添加svg画布
+    const eleSvg = d3.select('#svgBox')
+        .append('svg')
+        .attr('width', svgWidth)
+        .attr('height', svgHeight)
+
+    // 添加矩形
+    eleSvg.selectAll('rect')
+        .data(svgData)
+        .enter()
+        .append('rect')
+        .attr('x', 20)
+        .attr('y', (data, index) => {
+            return index * rectHeight
+        })
+        .attr('width', (data) => {
+            return linear(data)
+        })
+        .attr('height', rectHeight - 2)
+        .attr('fill', 'steelblue')
+
+    // 在 SVG 中添加坐标轴
+    eleSvg.append('g')
+        .attr('class', 'axis')
+        .attr('transform', 'translate(20, 130)')
+        .call(axis)
+</script>
+</body>
+</html>
