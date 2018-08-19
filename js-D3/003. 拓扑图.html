@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>D3.js 柱状图</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./source/d3.js"></script>
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        #togo {
+            width: 800px;
+            height: 500px;
+            border: 1px solid #ccc;
+            user-select: none;
+        }
+
+        #togo text {
+            font-size: 10px;
+            fill: #1A2C3F;
+            text-anchor: middle;
+        }
+
+        #togo .node-other {
+
+            text-anchor: start;
+        }
+
+        #togo .health1 {
+            stroke: #92E1A2;
+        }
+
+        #togo .health2 {
+            stroke: orange;
+        }
+
+        #togo .health3 {
+            stroke: red;
+        }
+
+        #togo #cloud,
+        #togo #database {
+            fill: #ccc;
+        }
+
+        #togo .link {
+            stroke: #E4E8ED;
+        }
+
+        #togo .node-title {
+            font-size: 14px;
+        }
+
+        #togo .node-code circle {
+            fill: #3F86F5;
+        }
+
+        #togo .node-code text {
+            fill: #fff;
+        }
+
+        #togo .node-bg {
+            fill: #fff;
+        }
+
+        #togo .arrow {
+            fill: #E4E8ED;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="togo"></div>
+    <script src="./js/data.js"></script>
+    <script src="./js/togo.js"></script>
+    <script>
+        let t=new Togo('#togo',__options);
+        t.render();
+    </script>
+</body>
+
+</html>
