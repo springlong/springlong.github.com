@@ -1,5 +1,11 @@
 # 小程序开发注意事项
 
+## 移动体验
+
+### 点击区域过小，多次点击无法触发事件
+
+由于触屏关系，如果某些点击区域过小，将导致多次点击而无法触发行为响应，因此在实际开发过程中，需要将点击区域放大。
+
 ## 小程序
 
 ### `wx.navigateTo` 最多打开10个页面
@@ -25,7 +31,6 @@ background-image：可以使用网络图片，或者 base64，或者使用<image
 而自定义组件，则是一个类似独立封闭的webview，无法从外部覆盖其内部的样式。
 
 因此对于第三方小程序组件库的使用，常常因为需要满足项目的视觉需求而无法使用。
-
 
 ### 为什么 map 组件总是在最上层
 
@@ -71,12 +76,11 @@ mpvue 的生命周期默认是是一个页面只会触发一次 `beforeCreate` �
         class="m-appointment-item"
     ></div>
 
-
 ### Mustache 语法不支持复杂表达式
 
 受限于小程序的数据绑定的能力限制，在 mpvue 中 Mustache 语法仅支持 `+ - * % ?: ! == === > < [] .` 常规运算符，其它处理均不支持。
 
-以下在vue中常见的处理均不能使用，应当避免使用，使用计算属性予以代替：
+以下在vue中常见的处理均不能使用，应当避免使用，使用计算属性予以代替：
 
     <!-- 函数方法不被支持，建议放到 computed -->
     <p>{{ message.split('').reverse().join('') }}</p>
@@ -90,7 +94,10 @@ mpvue 的生命周期默认是是一个页面只会触发一次 `beforeCreate` �
 
 由于 mpvue 中的 beforeCreate 和 created 周期是在 小程序页面的 onLaunch/onLoad 之前触发，在这两个周期中将无法获取当前页面的路由信息。
 
-### 小程序 button 组件去除 border 边框
+
+## 表单部分
+
+### 小程序 button 组件去除 border 边框
 
 微信小程序中的button组件有特定的css，背景可以用“background：none”去掉，但是边框用“border : none”则无法移除。
 
@@ -106,7 +113,7 @@ mpvue 的生命周期默认是是一个页面只会触发一次 `beforeCreate` �
 
 小程序的input组件的placeholder的样式表现，无法使用css的伪类进行设置。
 
-需要通过input组件独有的 `input-placeholder` 类名进行设置，该类名可以通过组件的`placeholder-class` 属性进行设置。
+需要通过input组件独有的 `input-placeholder` 类名进行设置，该类名可以通过组件的`placeholder-class` 属性进行设置（建议保持默认）。
 
 需要注意的是，`input-placeholder` 类名不能使用交集选择器进行设置，否则样式将不能生效。
 
@@ -118,5 +125,35 @@ mpvue 的生命周期默认是是一个页面只会触发一次 `beforeCreate` �
 
 目前没有找到相关的解决方案。
 
-### 其它
+### 小程序input与H5的属性异同表现
 
+**相同属性：**
+
+`value` - 输入框的初始值
+`maxlength` - 限制输出长度
+`placeholder` - 占位文本
+`disabled` - 禁用属性，Boolean，建议无值书写
+
+**type属性的差异性：**
+
+| 值 | 说明 | h5类型
+| ------ | ------ | ------ |
+| text | 文本输入键盘 | text
+| number | 数字输入键盘 | number
+| idcard | 身份证输入键盘 | number
+| digit | 带小数点的数字键盘 | number
+
+输入电话号码：
+小程序 - `type="number"`
+h5 - `type="tel"`
+
+**密码输入框的差异性：**
+
+小程序 - 通过指定 `password="true"` 属性来设置
+h5 - 通过指定 `type="password"` 属性来设置
+
+**注意事项：**
+
+h5中 `type="number"` 时，设置的 `maxlength` 长度控制无效，需要注意判断以及处理。
+
+mpvue中input的 'type' 属性无法设置动态值，需要通过 v-if 代替，而vue中可以。
