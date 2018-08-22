@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>可拖拉流程图</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/visodemo.css">
+</head>
+<body>
+    <div id="visobox">
+        <div id="operate">
+            <div class="viso-item viso-start" data-type="start">开始</div>
+            <div class="viso-item viso-branch" data-type="branch">分支</div>
+            <div class="viso-item viso-action" data-type="action">任务</div>
+            <div class="viso-item viso-end" data-type="end">结束</div>
+            <hr>
+            <div class="operate-item">
+                <button id="loadData">加载数据</button>
+            </div>
+            <div class="operate-item">
+                <button id="saveData">保存数据</button>
+            </div>
+            <div class="operate-item">
+                <button id="clearData">清除数据</button>
+            </div>
+        </div>
+        <div id="diagramContainer"></div>
+    </div>
+    <script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.bootcss.com/jsPlumb/2.6.8/js/jsplumb.min.js"></script>
+    <script src="./js/visodemo.js"></script>
+</body>
+</html>

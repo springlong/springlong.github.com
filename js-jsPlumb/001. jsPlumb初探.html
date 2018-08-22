@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>jsPlumb初探</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://lib.baomitu.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdn.bootcss.com/jsPlumb/2.6.8/js/jsplumb.min.js"></script>
+    <style>
+        /* 设置连接线鼠滑样式 */
+        .jtk-connector.jtk-hover {
+            cursor: pointer;
+        }
+
+        /* 设置端点鼠滑样式 */
+        .jtk-endpoint.jtk-hover {
+            cursor: pointer;
+        }
+
+        #diagramContainer {
+            overflow: hidden;
+            padding: 20px;
+            width: 80%;
+            height: 200px;
+            border: 1px solid gray;
+            background-image: url(./images/grid.jpeg);
+            background-repeat: repeat;
+        }
+
+        #diagramContainer .diagram-item {
+            position: absolute;
+            height: 80px;
+            width: 80px;
+            border: 1px solid #ddd;
+            background-color: rgb(9, 116, 116);
+            cursor: pointer;
+        }
+        #diagramContainer .diagram-item.select {
+            background-color: rgb(20, 85, 85);
+        }
+
+        .operate {
+            margin-top: 20px;
+        }
+        .operate-item {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="diagramContainer">
+        <div id="item001" class="diagram-item"></div>
+        <div id="item002" class="diagram-item" style="left:300px;"></div>
+    </div>
+    <div class="operate">
+        <div class="operate-item">
+            <button id="clearPointAndConnection">清除连接线和端点</button>
+        </div>
+        <div class="operate-item">
+            <button id="clearPoint">清除所有端点</button>
+        </div>
+        <div class="operate-item">
+            <button id="clearConnection">清除所有连接线</button>
+        </div>
+    </div>
+
+    <script>
+        jsPlumb.ready(function () {
+            // 设置绘图所在的容器，如果不指定则默认为body下
+            jsPlumb.setContainer('diagramContainer')
+
+            // 很多连接线都是相同设置的情况下，可以将配置抽离出来，作为一个单独的变量，作为connect的第二个参数传入。
+            // 实际上connect的第二个参数会和第一个参数merge，作为一个整体。
+            var commonConfig = {
+                // 是否可以拖动（作为连线起点）
+                isSource: true,
+                // 是否可以放置（连线终点）
+                isTarget: true,
+                // 设置连接点最多可以连接几条线
+                // -1不限制，默认限制一条线
+                maxConnections: -1,
+                // 设置锚点位置，按照[target, source]的顺序进行设置
+                // 可以有 Bottom Top Right Left四种方位
+                // 还可以是BottomLeft BottomRight BottomCenter TopLeft TopRight TopCenter LeftMiddle RightMiddle的组合
+                // 默认值 ['Bottom', 'Bottom']
+                // anchor: ['Bottom', 'Bottom'],
+                // 端点类型，形状（区分大小写），Rectangle-正方形 Dot-圆形 Blank-空
+                endpoint: ['Dot', {
+                    radius: 4,
+                }],
+                // 设置端点的样式
+                endpointStyle: {
+                    fill: '#456', // 填充颜色
+                    outlineStroke: 'blank', // 边框颜色
+                    outlineWidth: 0, // 边框宽度
+                },
+                // 设置连接线的样式 Bezier-贝瑟尔曲线 Flowchart-流程图 StateMachine-弧线 Straight-直线
+                connector: ['Flowchart'],
+                // 设置连接线的样式
+                connectorStyle: {
+                    stroke: '#456', // 实线颜色
+                    strokeWidth: 3, // 实线宽度
+                    outlineStroke: 'blank', // 边框颜色
+                    outlineWidth: 2, // 边框宽度
+                },
+                // 设置连接线悬浮样式
+                connectorHoverStyle: {
+                    stroke: 'lightblue', // 实线颜色
+                },
+                // 设置连接线的箭头
+                // 箭头实际上是通过设置overlays去设置的，可以设置箭头的长宽以及箭头的位置，location 0.5表示箭头位于中间，location 1表示箭头设置在连接线末端。 一根连接线是可以添加多个箭头的。
+                connectorOverlays: [
+                    ['Arrow', {
+                        width: 10,
+                        length: 10,
+                        location: 1
+                    }],
+                    ['Arrow', {
+                        width: 10,
+                        length: 10,
+                        location: 0.2
+                    }],
+                    ['Arrow', {
+                        width: 10,
+                        length: 10,
+                        location: 0.7
+                    }],
+                    ['Label', {
+                        label: '',
+                        cssClass: '',
+                        labelStyle: {
+                            color: 'red'
+                        },
+                        events: {
+                            click: function (labelOverlay, originalEvent) {
+                                console.log('点击连接线的文字内容', labelOverlay, originalEvent)
+                            }
+                        }
+                    }]
+                ]
+            }
+
+            // 使用draggable可以让节点被拖动
+            jsPlumb.draggable('item001', {
+                containment: 'parent', // 限制节点的拖动区域
+                grid: [10, 10], // 设置网格
+            })
+
+            jsPlumb.draggable('item002', {
+                containment: 'parent',
+                grid: [10, 10],
+            })
+
+            // addEndpoint方法可以用来增加端点
+            jsPlumb.addEndpoint('item001', {anchors: ['Left'], uuid: 'item001-left'}, commonConfig)
+            jsPlumb.addEndpoint('item001', {anchors: ['Right'], uuid: 'item001-right'}, commonConfig)
+            jsPlumb.addEndpoint('item001', {anchors: ['Top'], uuid: 'item001-top'}, commonConfig)
+            jsPlumb.addEndpoint('item001', {anchors: ['Bottom'], uuid: 'item001-bottom'}, commonConfig)
+
+            jsPlumb.addEndpoint('item002', {anchors: ['Left'], uuid: 'item002-left'}, commonConfig)
+            jsPlumb.addEndpoint('item002', {anchors: ['Right'], uuid: 'item002-right'}, commonConfig)
+            jsPlumb.addEndpoint('item002', {anchors: ['Top'], uuid: 'item002-top'}, commonConfig)
+            jsPlumb.addEndpoint('item002', {anchors: ['Bottom'], uuid: 'item002-bottom'}, commonConfig)
+
+            // 通过编码连接两个端点
+            // uuids: ['fromId', 'toId']
+            jsPlumb.connect({
+                uuids: ['item001-right', 'item002-bottom'],
+                overlays: [
+                    // 设置箭头
+                    ['Arrow', { width: 12, length: 12, location: 0.5 }],
+                    // 设置文本
+                    ['Label', { label: '连接线', labelStyle: {color: 'red'}}]
+                ],
+            })
+
+            // 连接两个节点
+            // jsPlumb.connect({
+            //     target: 'item002', // 连接线目标的标识，可以是id, element, 或者Endpoint
+            //     source: 'item001', // 连接线源的标识，可以是id, element, 或者Endpoint
+            // }, commonConfig)
+
+            // 可以使用importDefaults，来重写某些默认设置
+            // jsPlumb.importDefaults({
+            //     ConnectionsDetachable: false, // 一般来说拖动创建的连接，可以再次拖动，让连接断开。如果不想触发这种行为，可以设置。
+            // })
+
+            // 点击连接线时触发
+            // click-单击
+            // dblclick-双击
+            jsPlumb.bind('dblclick', function (connection, originalEvent) {
+                console.log('dblclick-双击连接线', connection)
+                if (window.confirm('确定删除所点击的连接线吗？')) {
+                    // 删除指定连接线
+                    jsPlumb.deleteConnection(connection)
+                }
+            })
+
+            // 点击端点触发事件
+            // endpointClick-单击
+            // endpointDblClick-双击
+            jsPlumb.bind('endpointDblClick', function (point, originalEvent) {
+                console.log('endpointDblClick-双击端点', point)
+                if (window.confirm('确定删除所点击的端点吗？')) {
+                    // 删除指定端点
+                    jsPlumb.deleteEndpoint(point)
+                }
+            })
+
+            // 建立端点之间的连接线时触发
+            jsPlumb.bind('connection', function (info, originalEvent) {
+                console.log('connection-建立端点的连接线', info)
+            })
+
+            // 建立连接线之前触发
+            // 返回true正常建立连线，返回false取消连接
+            jsPlumb.bind('beforeDrop', function (info, originalEvent) {
+                console.log('beforeDrop-', info)
+                return true;
+            })
+
+            // 删除所有连接线和端点
+            $('#clearPointAndConnection').on('click', function(){
+                if (window.confirm('确认清除所有连接线和端点吗？')) {
+                    jsPlumb.clear()
+                }
+            })
+
+            // 删除所有端点
+            $('#clearPoint').on('click', function(){
+                if (window.confirm('确认清除所有端点吗？')) {
+                    jsPlumb.deleteEveryEndpoint()
+                }
+            })
+            // 删除所有连接线
+            $('#clearConnection').on('click', function(){
+                if (window.confirm('确认清除所有连接线吗？')) {
+                    jsPlumb.deleteEveryConnection()
+                }
+            })
+        })
+    </script>
+</body>
+</html>
