@@ -43,15 +43,10 @@ var commonConfig = {
     ['Arrow', {
         width: 10,
         length: 10,
-        location: 0.8
-    }],
-    ['Arrow', {
-        width: 10,
-        length: 10,
-        location: 0.2
+        location: 1
     }],
     ['Label', {
-      label: '',
+      label: '...',
       cssClass: '',
       labelStyle: {
         color: 'red'
@@ -67,7 +62,8 @@ var commonConfig = {
 
 jsPlumb.ready(function () {
   // 常用量设置
-  const containerSelector = '#diagramContainer'
+  const containerId = 'diagramContainer'
+  const containerSelector = '#' + containerId
   const visoSelector = '#operate .viso-item'
 
   // 绑定删除连接线的操作处理
@@ -83,7 +79,7 @@ jsPlumb.ready(function () {
   bindLoadData()
 
   // 设置绘图容器
-  jsPlumb.setContainer('diagramContainer')
+  jsPlumb.setContainer(containerId)
 
   // 可以使用importDefaults，来重写某些默认设置
   jsPlumb.importDefaults({
@@ -100,25 +96,38 @@ jsPlumb.ready(function () {
   $(containerSelector).droppable({
     scope: 'ss',
     drop: function (event, ui) {
-      const left = parseInt(ui.offset.left - $(this).offset().left)
-      const top = parseInt(ui.offset.top - $(this).offset().top)
+      const x = parseInt(ui.offset.left - $(this).offset().left)
+      const y = parseInt(ui.offset.top - $(this).offset().top)
       const type = ui.helper.attr('data-type')
       const id = `${type}${new Date().valueOf()}`
+      const name = ui.helper.html()
 
-      // 附加节点
-      $(this).append(`
-        <div id="${id}"
-          class="viso-item viso-${type}"
-          style="position: absolute; left: ${left}px; top: ${top}px;"
-        >
-          ${ui.helper.html()}
-        </div>
-      `)
-
-      // 设置默认表现
-      setDefault(id)
+      // 添加节点
+      appendNode({ id, type, x, y, name })
     }
   })
+
+  // 添加节点
+  function appendNode(info) {
+    let eleStyle = `position: absolute; left: ${info.x}px; top: ${info.y}px;`
+    if (info.width) {
+      eleStyle += `width: ${info.width}px; height: ${info.height}px;`
+    }
+
+    $(containerSelector).append(`
+      <div id="${info.id}"
+        class="viso-item viso-${info.type}"
+        style="${eleStyle}"
+      >
+        ${info.name}
+      </div>
+    `)
+
+    $(`#${info.id}`).data('type', info.type)
+
+    // 设置默认表现
+    setDefault(info.id)
+  }
 
   // 设置默认表现
   function setDefault(id) {
@@ -136,10 +145,29 @@ jsPlumb.ready(function () {
 
   // 给指定节点添加端点
   function addEndpoint(id) {
-    jsPlumb.addEndpoint(id, {anchors: 'Left'}, commonConfig)
-    jsPlumb.addEndpoint(id, {anchors: 'Right'}, commonConfig)
-    jsPlumb.addEndpoint(id, {anchors: 'Top'}, commonConfig)
-    jsPlumb.addEndpoint(id, {anchors: 'Bottom'}, commonConfig)
+    jsPlumb.addEndpoint(id, {anchors: 'Left', uuid: `${id}-anchor-left`}, commonConfig)
+    jsPlumb.addEndpoint(id, {anchors: 'Right', uuid: `${id}-anchor-right`}, commonConfig)
+    jsPlumb.addEndpoint(id, {anchors: 'Top', uuid: `${id}-anchor-top`}, commonConfig)
+    jsPlumb.addEndpoint(id, {anchors: 'Bottom', uuid: `${id}-anchor-bottom`}, commonConfig)
+  }
+
+  // 设置连线
+  function setConnection(info, nodeData) {
+    jsPlumb.connect({
+      uuids: [`${info.source.elementId}-anchor-bottom`, `${info.target.elementId}-anchor-top`],
+    })
+  }
+
+  // 清除画布内容
+  function clearCont() {
+    // 删除所有连接线
+    jsPlumb.deleteEveryConnection()
+
+    // 删除所有端点
+    jsPlumb.deleteEveryEndpoint()
+
+    // 删除所有节点
+    $(containerSelector).empty()
   }
 
   // 绑定删除连接线的操作处理
@@ -152,28 +180,115 @@ jsPlumb.ready(function () {
     })
   }
 
-  // 绑定保存数据的操作数据
-  function bindSaveData() {
-    $('#saveData').on('click', function() {
-
-    })
-  }
-
-  function getNodeList() {
-    const $viso = $(containerSelector).find('.viso-item')
-  }
-
-  // 绑定清除数据的操作数据
-  function bindClearData() {
-    $('#clearData').on('click', function() {
-
-    })
-  }
-
   // 绑定加载数据的操作数据
   function bindLoadData() {
     $('#loadData').on('click', function() {
+      const defData = {connectionData: {}, nodeData: {}}
+      const visoData = JSON.parse(localStorage.getItem('visoData') || '') || defData
+      const nodeData = visoData.nodeData
+      const connectionData = visoData.connectionData
 
+      // 清除内容
+      clearCont()
+
+      // 添加节点
+      Object.keys(nodeData).forEach((key) => {
+        appendNode(nodeData[key])
+      })
+
+      // 创建连线
+      Object.keys(connectionData).forEach((key) => {
+        setConnection(connectionData[key], nodeData)
+      })
+    })
+  }
+
+  // 绑定保存数据的操作数据
+  function bindSaveData() {
+    $('#saveData').on('click', function() {
+      const nodeData = getNodeData()
+      const connectionData = getConnectionData()
+
+      const visoData = {
+        nodeData,
+        connectionData,
+      }
+
+      console.log('保存数据', visoData)
+      localStorage.setItem('visoData', JSON.stringify(visoData));
+    })
+  }
+
+  // 获取节点数据
+  function getNodeData() {
+    const $viso = $(containerSelector).find('.viso-item')
+    const nodeData = {}
+
+    $viso.each(function() {
+      const $item = $(this)
+      const id = $item.attr('id')
+      const name = $item.text().replace(/^\s+|\s+$/g, '')
+
+      if (!id) {
+        throw new Error('流程图节点必须包含id')
+      }
+
+      if (!name) {
+        throw new Error('流程图节点必须包含name')
+      }
+
+      nodeData[id] = {
+        id: id,
+        name: name,
+        type: $item.data('type'),
+        width: $item.width() || 80,
+        height: $item.height() || 80,
+        x: parseInt($item.css('left')) || 0,
+        y: parseInt($item.css('top')) || 0,
+      }
+    })
+
+    return nodeData
+  }
+
+  // 获取连线数据
+  function getConnectionData() {
+    const originalData = jsPlumb.getAllConnections()
+    const connectionData = {}
+
+    originalData.forEach((item) => {
+      const anchorSource = item.endpoints[0].anchor
+      const anchorTarget = item.endpoints[1].anchor
+
+      connectionData[item.id] = {
+        // 连线id
+        id: item.id,
+        // 源节点
+        source: {
+          elementId: anchorSource.elementId,
+          // type: anchorSource.type,
+          // x: anchorSource.x,
+          // y: anchorSource.y,
+          // pointId: anchorSource.id,
+        },
+        // 目标节点
+        target: {
+          elementId: anchorTarget.elementId,
+          // type: anchorTarget.type,
+          // x: anchorTarget.x,
+          // y: anchorTarget.y,
+          // pointId: anchorTarget.id,
+        },
+      }
+    })
+
+    return connectionData
+  }
+
+  // 绑定清除内容的操作数据
+  function bindClearData() {
+    $('#clearData').on('click', function() {
+      clearCont()
     })
   }
 })

@@ -93,12 +93,12 @@ body {
     background-color: green;
 }
 
-#diagramContainer .viso-action {
+#diagramContainer .viso-task {
     width: 100px;
     height: 50px;
 }
 
-#diagramContainer .viso-branch {
+#diagramContainer .viso-gateway {
     width: 80px;
     height: 50px;
     border-radius: 50%;

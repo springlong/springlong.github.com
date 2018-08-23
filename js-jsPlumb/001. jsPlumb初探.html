@@ -164,16 +164,16 @@
             jsPlumb.addEndpoint('item002', {anchors: ['Bottom'], uuid: 'item002-bottom'}, commonConfig)
 
             // 通过编码连接两个端点
-            // uuids: ['fromId', 'toId']
-            jsPlumb.connect({
-                uuids: ['item001-right', 'item002-bottom'],
-                overlays: [
-                    // 设置箭头
-                    ['Arrow', { width: 12, length: 12, location: 0.5 }],
-                    // 设置文本
-                    ['Label', { label: '连接线', labelStyle: {color: 'red'}}]
-                ],
-            })
+            // jsPlumb.connect({
+            //     // uuids: ['sourceId', 'targetId']
+            //     uuids: ['item001-right', 'item002-bottom'],
+            //     overlays: [
+            //         // 设置箭头
+            //         ['Arrow', { width: 12, length: 12, location: 0.5 }],
+            //         // 设置文本
+            //         ['Label', { label: '连接线', labelStyle: {color: 'red'}}]
+            //     ],
+            // })
 
             // 连接两个节点
             // jsPlumb.connect({
