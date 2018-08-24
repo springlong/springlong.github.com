@@ -63,8 +63,17 @@ body {
     height: 100%;
     background-image: url(../images/grid.jpeg);
     background-repeat: repeat;
+    user-select: none;
 }
 
+#diagramContainer .jtk-overlay-label {
+    padding: 0 2px;
+    font-size: 12px;
+    line-height: 15px;
+    color: #333;
+    background-color: #fff;
+    opacity: 0.8;
+}
 #diagramContainer .viso-item {
     position: absolute;
     display: flex;
@@ -79,10 +88,43 @@ body {
     cursor: pointer;
 }
 
+#diagramContainer .viso-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-align: center;
+    color: #eee;
+    background: none;
+}
+
+
+#diagramContainer .viso-close {
+    position: absolute;
+    right: 0;
+    top: -20px;
+    z-index: 10;
+    display: none;
+    width: 15px;
+    height: 20px;
+    font-size: 15px;
+    line-height: 20px;
+    font-family: "Segoe UI","Lucida Grande",Helvetica,Arial;
+    cursor: pointer;
+    color: #666;
+}
+
+#diagramContainer .viso-close:hover {
+    color: #333;
+}
+
 #diagramContainer .viso-start {
     width: 80px;
     height: 30px;
     border-radius: 10px;
+    background-color: orange;
+}
+#diagramContainer .viso-start .viso-input {
     background-color: orange;
 }
 
@@ -92,16 +134,26 @@ body {
     border-radius: 10px;
     background-color: green;
 }
+#diagramContainer .viso-end .viso-input {
+    background-color: green;
+}
 
 #diagramContainer .viso-task {
     width: 100px;
     height: 50px;
+    background-color: rgb(9, 116, 116);
+}
+#diagramContainer .viso-task .viso-input {
+    background-color: rgb(9, 116, 116);
 }
 
 #diagramContainer .viso-gateway {
     width: 80px;
     height: 50px;
     border-radius: 50%;
+    background-color: rgb(44, 120, 192);
+}
+#diagramContainer .viso-gateway .viso-input {
     background-color: rgb(44, 120, 192);
 }
 

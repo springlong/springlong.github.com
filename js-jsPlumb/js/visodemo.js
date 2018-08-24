@@ -46,11 +46,9 @@ var commonConfig = {
         location: 1
     }],
     ['Label', {
-      label: '...',
-      cssClass: '',
-      labelStyle: {
-        color: 'red'
-      },
+      label: '',
+      cssClass: 'jtk-overlay-label',
+      location: 0.4,
       events: {
         click: function (labelOverlay, originalEvent) {
           console.log('点击连接线的文字内容', labelOverlay, originalEvent)
@@ -74,6 +72,9 @@ jsPlumb.ready(function () {
     ConnectionsDetachable: false, // 一般来说拖动创建的连接，可以再次拖动，让连接断开。如果不想触发这种行为，可以设置。
   })
 
+  // 绑定加载数据的操作数据
+  bindLoadData()
+
   // 绑定删除连接线的操作处理
   bindDeleteConnection()
 
@@ -83,14 +84,17 @@ jsPlumb.ready(function () {
   // 绑定清除数据的操作数据
   bindClearData()
 
-  // 绑定加载数据的操作数据
-  bindLoadData()
+  // 绑定删除节点操作
+  bindRemoveNode()
 
   // 绑定节点内容编辑
   bindEditNodeName()
 
   // 加载数据并绘制流程图
   loadDataAndPaint()
+
+  // 绑定连接线添加label文本
+  bindConnectionAddLabel()
 
   // 设置拖拉
   $(visoSelector).draggable({
@@ -125,7 +129,8 @@ jsPlumb.ready(function () {
         class="viso-item viso-${info.type}"
         style="${eleStyle}"
       >
-        ${info.name}
+        <span class="viso-name">${info.name}</span>
+        <span class="viso-close">&times;</span>
       </div>
     `)
 
@@ -161,6 +166,9 @@ jsPlumb.ready(function () {
   function setConnection(info) {
     jsPlumb.connect({
       uuids: [getAnchorID(info.source), getAnchorID(info.target)],
+      overlays: [
+        [ "Label", {label: "text", cssClass: 'jtk-overlay-label', location: 0.4,}]
+      ]
     })
   }
 
@@ -233,7 +241,7 @@ jsPlumb.ready(function () {
   function getNodeInfo(ele) {
     const $ele = $(ele)
     const id = $ele.attr('id')
-    const name = $ele.text().replace(/^\s+|\s+$/g, '')
+    const name = $ele.find('.viso-name').text().replace(/^\s+|\s+$/g, '')
 
     return  {
       id: id,
@@ -317,7 +325,7 @@ jsPlumb.ready(function () {
 
     // 创建连线
     connectionData.forEach((item) => {
-      setConnection(item, nodeData)
+      setConnection(item)
     })
   }
 
@@ -329,6 +337,27 @@ jsPlumb.ready(function () {
         jsPlumb.deleteConnection(connection)
       }
     })
+  }
+
+  // 绑定连接线添加label文本
+  function bindConnectionAddLabel() {
+    // 建立连接线之前触发
+    // 返回true正常建立连线，返回false取消连接
+    // jsPlumb.bind('beforeDrop', function (info, originalEvent) {
+    //   console.log('beforeDrop-', info)
+    //   console.log(info.connection.getLabel)
+
+    //   const output = window.prompt('请输入连接线的label')
+
+    //   getOverlay
+
+    //   return false;
+    // })
+
+    // 建立端点之间的连接线时触发
+    // jsPlumb.bind('connection', function (info, originalEvent) {
+    //     console.log('connection-建立端点的连接线', info)
+    // })
   }
 
   // 绑定加载数据的操作数据
@@ -361,13 +390,67 @@ jsPlumb.ready(function () {
     })
   }
 
+  // 绑定删除节点操作
+  function bindRemoveNode() {
+    $(containerSelector).on('click', '.viso-close', function() {
+      const $item = $(this).closest('.viso-item')
+      const id = $item.attr('id')
+      jsPlumb.remove(id)
+    })
+  }
+
   // 绑定节点内容编辑
   function bindEditNodeName() {
     $(containerSelector).on('dblclick', '.viso-item', function() {
       const $ele = $(this)
-      const editable = $ele.attr('contenteditable')
-      console.log('editable', editable)
-      $ele.attr('contenteditable', true)
+      const text = $ele.find('.viso-name').text().replace(/^\s+|\s+$/g, '')
+      const $input = $ele.find('.viso-input')
+
+      if ($input.length) {
+        $input.val(text).show()
+        moveEnd($input[0])
+      } else {
+        const $appendInput = $(`<input class="viso-input" value="${text}" />`).appendTo($ele)
+        moveEnd($appendInput[0])
+      }
+
+      $ele.find('.viso-close').show()
     })
+
+    $(containerSelector).on('blur', '.viso-input', function() {
+      saveInput(this)
+    })
+
+    $(containerSelector).on('keyup', '.viso-input', function(event) {
+      if (event.keyCode === 13) {
+        saveInput(this)
+      }
+    })
+
+    // 保存数据
+    function saveInput(ele) {
+      const $ele = $(ele)
+      const val = $ele.val()
+
+      if (val.trim() !== '') {
+        $ele.closest('.viso-item').find('.viso-name').text(val)
+      }
+      $ele.hide()
+      $ele.closest('.viso-item').find('.viso-close').hide()
+    }
+  }
+
+  // 光标移至末尾
+  function moveEnd(ele) {
+    ele.focus();
+    var len = ele.value.length;
+    if (document.selection) {
+      var sel = ele.createTextRange();
+      sel.moveStart('character', len);
+      sel.collapse();
+      sel.select();
+    } else if (typeof ele.selectionStart == 'number' && typeof ele.selectionEnd == 'number') {
+      ele.selectionStart = ele.selectionEnd = len;
+    }
   }
 })
