@@ -302,7 +302,8 @@ jsPlumb.ready(function () {
   // 加载数据并绘制流程图
   function loadDataAndPaint() {
     const defData = {connectionData: [], nodeData: []}
-    const visoData = JSON.parse(localStorage.getItem('visoData') || '') || defData
+    const storageData = localStorage.getItem('visoData')
+    const visoData = storageData ? JSON.parse(storageData) : defData
     const nodeData = visoData.nodeData
     const connectionData = visoData.connectionData
 
