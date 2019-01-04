@@ -1,80 +1,68 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <title>CSS3用户界面：pointer-events</title>
-    <link rel="stylesheet" href="static/css/main.css">
-    <style>
-		.text {
-			position: relative;
-			width: 300px;
-			height: 200px;
-			margin: 20px 0;
-			background-color: #eee;
-		}
-		.text a {
-			position: absolute;
-			left: 0;
-			top: 0;
-			display: block;
-			width: 100%;
-			height: 100%;
-			font-size: 14px;
-			line-height: 200px;
-			text-align: center;
-			background-color: rgba(0,0,0,.5);
-		}
 
-		.text .text-none {
-			pointer-events: none;
-			background-color: rgba(41,165,214,.5);
-		}
-    </style>
+<head>
+  <meta charset="UTF-8">
+  <title>CSS3用户界面：pointer-events</title>
+  <link rel="stylesheet" href="static/css/main.css">
+  <style>
+    .text {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      margin: 20px 0;
+      background-color: #eee;
+    }
+
+    .text a {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      line-height: 200px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .text .text-none {
+      pointer-events: none;
+      background-color: rgba(41, 165, 214, .5);
+    }
+  </style>
 </head>
+
 <body>
-<div class="container">
-	<h1><span>CSS3用户界面：pointer-events</span></h1>
-	<p class="text-item">该属性用来设置鼠标事件的响应行为。</p>
-	<div class="text-item support-list">
-		<strong class="title">浏览器支持情况：</strong>
-		<p>IE 11+（<span class="time">2013/10/17</span>）</p>
-		<p>Firefox 3.6+（<span class="time">2010/01/21</span>）</p>
-		<p>Chrome 4+（<span class="time">2010/01/25</span>）</p>
-		<p>Safari 4+（<span class="time">2009/06/08</span>）</p>
-		<p>Opera 15+（<span class="time">2013/07/02</span>）</p>
-		<p>IOS 3.2+（<span class="time">2010/04/03</span>）</p>
-		<p>Android 2.1+（<span class="time">2009/10/26</span>）</p>
-	</div>
-	<div class="pic-box"><a href="https://caniuse.com/#search=pointer-events" target="_blank"><img src="static/images/pointer-events兼容性.png" alt=""></a></div>
-	<div class="pic-box"><a href="https://caniuse.com/#search=pointer-events" target="_blank"><img src="static/images/pointer-events兼容性-2.png" alt=""></a></div>
-	<pre>
+  <div class="container">
+    <h1><span>CSS3用户界面：pointer-events</span></h1>
+    <p class="text-item">该属性用来设置鼠标事件的响应行为。</p>
+    <div class="text-item support-list">
+      <strong class="title">浏览器支持情况：</strong>
+      <p>IE 11+（<span class="time">2013/10/17</span>）</p>
+      <p>Firefox 3.6+（<span class="time">2010/01/21</span>）</p>
+      <p>Chrome 4+（<span class="time">2010/01/25</span>）</p>
+      <p>Safari 4+（<span class="time">2009/06/08</span>）</p>
+      <p>Opera 15+（<span class="time">2013/07/02</span>）</p>
+      <p>IOS 3.2+（<span class="time">2010/04/03</span>）</p>
+      <p>Android 2.1+（<span class="time">2009/10/26</span>）</p>
+    </div>
+    <div class="pic-box"><a href="https://caniuse.com/#search=pointer-events" target="_blank"><img src="static/images/pointer-events兼容性.png" alt=""></a></div>
+    <div class="pic-box"><a href="https://caniuse.com/#search=pointer-events" target="_blank"><img src="static/images/pointer-events兼容性-2.png" alt=""></a></div>
+    <pre>
 pointer-events:
 	auto (默认值，与pointer-events属性未指定时的表现效果相同。) |
 	none (元素永远不会成为鼠标事件的target) ;</pre>
-	<div class="text-item">
-		当把值设置为none后，他有如下相关特性:
-		<br>
-		<br>1. 阻止用户的点击动作产生任何效果
-		<br>2. 阻止缺省鼠标指针的显示
-		<br>3. 阻止CSS里的hover和active状态的变化触发事件
-		<br>4. 阻止JavaScript点击动作触发的事件
-	</div>
-	<div class="text-item">这个属性非常实用的一个应用场景，在许多网站上过节的时候页面最上层会用canvas绘制的雨、雪花，避免这些悬浮物遮挡住页面从而影响鼠标点击，可以使用<code>pointer-events:none</code>属性，让这些上方的canvas不会遮挡鼠标事件，让鼠标事件可以穿透上方的canvas来点击页面。</div>
-	<div class="text">
-		来呀，点我啊 pointer-events:auto;
-		<br>来呀，点我啊 pointer-events:auto;
-		<br>来呀，点我啊 pointer-events:auto;
-		<br>来呀，点我啊 pointer-events:auto;
-		<a href="#"></a>
-	</div>
-	<div class="text">
-		来呀，点我啊 pointer-events:none;
-		<br>来呀，点我啊 pointer-events:none;
-		<br>来呀，点我啊 pointer-events:none;
-		<br>来呀，点我啊 pointer-events:none;
-		<a href="#" class="text-none"></a>
-	</div>
-</div>
-</div>
+    <div class="text-item"> 当把值设置为none后，他有如下相关特性: <br>
+      <br>1. 阻止用户的点击动作产生任何效果 <br>2. 阻止缺省鼠标指针的显示 <br>3. 阻止CSS里的hover和active状态的变化触发事件 <br>4. 阻止JavaScript点击动作触发的事件 </div>
+    <div class="text-item">这个属性非常实用的一个应用场景，在许多网站上过节的时候页面最上层会用canvas绘制的雨、雪花，避免这些悬浮物遮挡住页面从而影响鼠标点击，可以使用<code>pointer-events:none</code>属性，让这些上方的canvas不会遮挡鼠标事件，让鼠标事件可以穿透上方的canvas来点击页面。</div>
+    <div class="text"> 来呀，点我啊 pointer-events:auto; <br>来呀，点我啊 pointer-events:auto; <br>来呀，点我啊 pointer-events:auto; <br>来呀，点我啊 pointer-events:auto; <a href="#"></a>
+    </div>
+    <div class="text"> 来呀，点我啊 pointer-events:none; <br>来呀，点我啊 pointer-events:none; <br>来呀，点我啊 pointer-events:none; <br>来呀，点我啊 pointer-events:none; <a href="#" class="text-none"></a>
+    </div>
+  </div>
+  </div>
 </body>
+
 </html>

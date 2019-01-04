@@ -1,91 +1,78 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="utf-8">
-    <title>HTML5：可见性-Page Visibility</title>
-    <link rel="stylesheet" href="static/css/main.css">
+  <meta charset="utf-8">
+  <title>HTML5：可见性-Page Visibility</title>
+  <link rel="stylesheet" href="static/css/main.css">
 </head>
 </head>
+
 <body>
-<div class="container">
-	<div class="text-item">
-		<p>Page Visibility API，可以用来判断页面是否可见。当页面处于最小化，或者不是当前标签页等不可见状态时，可以避免处理一些不必要的操作。该API在IE10中是支持的。</p>
-	</div>
-	<p class="text-item">浏览器支持情况：IE 10+、Firefox 18+、Chrome 33+、Safari 6.1+、Opera 20+、IOS Safari 7.1+、Android 4.4+。</p>
-	<p class="text-item">其中Firefox 10~17、Chrome 14~32、Opera 15~19、Android 4.4需要使用浏览器前缀。</p>
-	<div class="pic-box"><a href="https://caniuse.com/#search=Page%20Visibility" target="_blank"><img src="static/images/Page Visibility.png" alt=""></a></div>
-	<div class="pic-box"><a href="https://caniuse.com/#search=Page%20Visibility" target="_blank"><img src="static/images/Page Visibility-2.png" alt=""></a></div>
-</div>
-<script>
-
-	// =================================================
-	// Page Visibility API
-
-	// document.hidden
-	// 判断页面是否隐藏
-	// 页面隐藏包括 页面在后台标签页中 或者 浏览器最小化（注意，页面被其他软件遮盖并不算隐藏，比如打开的 sublime 遮住了浏览器）
-	console.log('当前页面是否隐藏:', document.hidden);
-
-	// document.visibilityState
-	// 页面的可见状态
-	//
-	// hidden：
-	// 当浏览器最小化、切换tab（the page is on a background tab）、电脑锁屏时visibilityState值是hidden
-	//
-	// visible：
-	// 当浏览器顶级context（top level browsing context）的document至少显示在一个屏幕（screen）当中时，返回visible；当浏览器窗口没有最小化，但是浏览器被其他应用遮挡时，visibilityState值也是visible
-	//
-	// prerender：
-	// 文档加载离屏（is loaded off-screen）或者不可见时返回prerender，浏览器可选择性的支持这个属性（not all browsers will necessarily support it）
-	//
-	// unloaded：
-	// 当文档（document）将要被unload时返回unloaded，浏览器可选择性的支持这个属性
-	console.log('当前页面的状态', document.visibilityState);
-
-	// visibilitychange事件
-	// 当文档从可见变为不可见，或者从不可见变为可见时，会触发该事件
-	// document.addEventListener("visibilitychange", function() { ... });
-	// document.addEventListener('visibilitychange', function(){
-	// 	console.log('当前页面是否隐藏：', document.hidden, new Date().toLocaleTimeString());
-	// });
-
-
-
-	// =================================================
-	// 兼容性封装
-
-	// document.hidden的兼容性封装
-	function documentHidden() {
-		if('hidden' in document) return document['hidden'];
-		if('webkitHidden' in document) return document['webkitHidden'];
-		if('mozHidden' in document) return document['mozHidden'];
-		if('msHidden' in document) return document['msHidden'];
-	}
-
-	// visibilitychange事件的兼容性封装
-	function visibilitychange(handler) {
-
-		var eventName = 'visibilitychange';
-
-		if('hidden' in document){
-			// 不需要设置
-		}
-		else if('mozHidden' in document){
-			eventName = 'mozvisibilitychange';
-		}
-		else if('webkitHidden' in document){
-			eventName = 'webkitvisibilitychange';
-		}
-		else if('msHidden' in document){
-			eventName = 'msvisibilitychange';
-		}
-		document.addEventListener(eventName, handler);
-	}
-
-	visibilitychange(function(){
-		console.log('当前页面是否隐藏：', documentHidden(), new Date().toLocaleTimeString());
-	});
-
-</script>
+  <div class="container">
+    <div class="text-item">
+      <p>Page Visibility API，可以用来判断页面是否可见。当页面处于最小化，或者不是当前标签页等不可见状态时，可以避免处理一些不必要的操作。该API在IE10中是支持的。</p>
+    </div>
+    <p class="text-item">浏览器支持情况：IE 10+、Firefox 18+、Chrome 33+、Safari 6.1+、Opera 20+、IOS Safari 7.1+、Android 4.4+。</p>
+    <p class="text-item">其中Firefox 10~17、Chrome 14~32、Opera 15~19、Android 4.4需要使用浏览器前缀。</p>
+    <div class="pic-box"><a href="https://caniuse.com/#search=Page%20Visibility" target="_blank"><img src="static/images/Page Visibility.png" alt=""></a></div>
+    <div class="pic-box"><a href="https://caniuse.com/#search=Page%20Visibility" target="_blank"><img src="static/images/Page Visibility-2.png" alt=""></a></div>
+  </div>
+  <script>
+    // =================================================
+    // Page Visibility API
+    // document.hidden
+    // 判断页面是否隐藏
+    // 页面隐藏包括 页面在后台标签页中 或者 浏览器最小化（注意，页面被其他软件遮盖并不算隐藏，比如打开的 sublime 遮住了浏览器）
+    console.log('当前页面是否隐藏:', document.hidden);
+    // document.visibilityState
+    // 页面的可见状态
+    //
+    // hidden：
+    // 当浏览器最小化、切换tab（the page is on a background tab）、电脑锁屏时visibilityState值是hidden
+    //
+    // visible：
+    // 当浏览器顶级context（top level browsing context）的document至少显示在一个屏幕（screen）当中时，返回visible；当浏览器窗口没有最小化，但是浏览器被其他应用遮挡时，visibilityState值也是visible
+    //
+    // prerender：
+    // 文档加载离屏（is loaded off-screen）或者不可见时返回prerender，浏览器可选择性的支持这个属性（not all browsers will necessarily support it）
+    //
+    // unloaded：
+    // 当文档（document）将要被unload时返回unloaded，浏览器可选择性的支持这个属性
+    console.log('当前页面的状态', document.visibilityState);
+    // visibilitychange事件
+    // 当文档从可见变为不可见，或者从不可见变为可见时，会触发该事件
+    // document.addEventListener("visibilitychange", function() { ... });
+    // document.addEventListener('visibilitychange', function(){
+    // 	console.log('当前页面是否隐藏：', document.hidden, new Date().toLocaleTimeString());
+    // });
+    // =================================================
+    // 兼容性封装
+    // document.hidden的兼容性封装
+    function documentHidden() {
+      if ('hidden' in document) return document['hidden'];
+      if ('webkitHidden' in document) return document['webkitHidden'];
+      if ('mozHidden' in document) return document['mozHidden'];
+      if ('msHidden' in document) return document['msHidden'];
+    }
+    // visibilitychange事件的兼容性封装
+    function visibilitychange(handler) {
+      var eventName = 'visibilitychange';
+      if ('hidden' in document) {
+        // 不需要设置
+      } else if ('mozHidden' in document) {
+        eventName = 'mozvisibilitychange';
+      } else if ('webkitHidden' in document) {
+        eventName = 'webkitvisibilitychange';
+      } else if ('msHidden' in document) {
+        eventName = 'msvisibilitychange';
+      }
+      document.addEventListener(eventName, handler);
+    }
+    visibilitychange(function() {
+      console.log('当前页面是否隐藏：', documentHidden(), new Date().toLocaleTimeString());
+    });
+  </script>
 </body>
+
 </html>

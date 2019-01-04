@@ -1,56 +1,63 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="utf-8">
-    <title>D3.js 柱状图</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./source/d3.js"></script>
-<style>
-.axis path,
-.axis line {
-  fill: none;
-  stroke: black;
-  shape-rendering: crispEdges;
-}
+  <meta charset="utf-8">
+  <title>D3.js 柱状图</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./source/d3.js"></script>
+  <style>
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
 
-.axis text {
-  font-family: sans-serif;
-  font-size: 11px;
-}
+    .axis text {
+      font-family: sans-serif;
+      font-size: 11px;
+    }
 
-.myRect {
-    fill: steelblue;
-}
+    .myRect {
+      fill: steelblue;
+    }
 
-.myText {
-	fill: white;
-}
-</style>
+    .myText {
+      fill: white;
+    }
+  </style>
 </head>
+
 <body>
-<div id="box"></div>
-<script>
+  <div id="box"></div>
+  <script>
     // 画布的宽度和高度
     const width = 400
     const height = 400
 
     // 定义画布周边的空白
-    const padding = {top: 20, right: 30, bottom: 20, left: 30}
+    const padding = {
+      top: 20,
+      right: 30,
+      bottom: 20,
+      left: 30
+    }
 
     // 数据
     const dataset = [40, 30, 20, 10, 15, 25, 35]
 
     // x轴的比例尺-序数分段比例尺
     var xScale =
-        d3.scaleBand()
-        .domain(d3.range(dataset.length))
-        .range([0, width - padding.left - padding.right])
+      d3.scaleBand()
+      .domain(d3.range(dataset.length))
+      .range([0, width - padding.left - padding.right])
 
     // y轴的比例尺-线性比例尺
     const yScale =
-        d3.scaleLinear()
-        .domain([0, d3.max(dataset)])
-        .range([height - padding.top - padding.bottom, 0])
+      d3.scaleLinear()
+      .domain([0, d3.max(dataset)])
+      .range([height - padding.top - padding.bottom, 0])
 
     // x轴坐标
     const xAxis = d3.axisBottom(xScale)
@@ -60,93 +67,94 @@
 
     // 创建svg画布
     const eleSvg =
-        d3.select('#box')
-        .append('svg')
-        .attr('width', width)
-        .attr('height', height)
+      d3.select('#box')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height)
 
     // 矩形之间的空白
     const rectPadding = 10;
 
     // 添加矩形元素
     const eleRects =
-        eleSvg.selectAll('.myRect')
-        .data(dataset)
-        .enter()
-        .append('rect')
-        .attr('class', 'myRect')
-        .attr('transform', `translate(${padding.left},${padding.top})`)
-        .attr('x', (data, index) => {
-            return xScale(index) + rectPadding/2
-        })
-        .attr('y', (data, index) => {
-			var min = yScale.domain()[0];
-			return yScale(min);
-        })
-        .attr('width', (data, index) => {
-            return xScale.bandwidth() - rectPadding
-        })
-        .attr('height', (data) => {
-            return 0
-        })
-        .transition()
-		.delay(function(data, index){
-			return index * 200;
-		})
-        .duration(2000)
-        .ease(d3.easeBounceOut)
-        .attr('y', (data, index) => {
-            return yScale(data)
-        })
-        .attr('height', (data) => {
-            return height - padding.top - padding.bottom - yScale(data)
-        })
+      eleSvg.selectAll('.myRect')
+      .data(dataset)
+      .enter()
+      .append('rect')
+      .attr('class', 'myRect')
+      .attr('transform', `translate(${padding.left},${padding.top})`)
+      .attr('x', (data, index) => {
+        return xScale(index) + rectPadding / 2
+      })
+      .attr('y', (data, index) => {
+        var min = yScale.domain()[0];
+        return yScale(min);
+      })
+      .attr('width', (data, index) => {
+        return xScale.bandwidth() - rectPadding
+      })
+      .attr('height', (data) => {
+        return 0
+      })
+      .transition()
+      .delay(function(data, index) {
+        return index * 200;
+      })
+      .duration(2000)
+      .ease(d3.easeBounceOut)
+      .attr('y', (data, index) => {
+        return yScale(data)
+      })
+      .attr('height', (data) => {
+        return height - padding.top - padding.bottom - yScale(data)
+      })
 
     // 添加文字元素
     const eleTexts =
-        eleSvg.selectAll('.myText')
-        .data(dataset)
-        .enter()
-        .append('text')
-        .attr('class', 'myText')
-        .attr('transform', `translate(${padding.left},${padding.top})`)
-        .attr('x', (data, index) => {
-            return xScale(index) - rectPadding/2
-        })
-        .attr('y', (data) => {
-            var min = yScale.domain()[0];
-            return yScale(min);
-        })
-        .attr('dx', (data) => {
-            return (xScale.bandwidth() - rectPadding)/2
-        })
-        .attr('dy', () => {
-            return 20
-        })
-        .text((data) => {
-            return data
-        })
-        .transition()
-		.delay(function(data, index){
-			return index * 200;
-		})
-        .duration(2000)
-        .ease(d3.easeBounceOut)
-        .attr('y', (data) => {
-            return yScale(data)
-        })
+      eleSvg.selectAll('.myText')
+      .data(dataset)
+      .enter()
+      .append('text')
+      .attr('class', 'myText')
+      .attr('transform', `translate(${padding.left},${padding.top})`)
+      .attr('x', (data, index) => {
+        return xScale(index) - rectPadding / 2
+      })
+      .attr('y', (data) => {
+        var min = yScale.domain()[0];
+        return yScale(min);
+      })
+      .attr('dx', (data) => {
+        return (xScale.bandwidth() - rectPadding) / 2
+      })
+      .attr('dy', () => {
+        return 20
+      })
+      .text((data) => {
+        return data
+      })
+      .transition()
+      .delay(function(data, index) {
+        return index * 200;
+      })
+      .duration(2000)
+      .ease(d3.easeBounceOut)
+      .attr('y', (data) => {
+        return yScale(data)
+      })
 
     //添加x轴
     eleSvg.append("g")
-        .attr("class","axis")
-        .attr("transform","translate(" + padding.left + "," + (height - padding.bottom) + ")")
-        .call(xAxis);
+      .attr("class", "axis")
+      .attr("transform", "translate(" + padding.left + "," + (height - padding.bottom) + ")")
+      .call(xAxis);
 
     //添加y轴
     eleSvg.append("g")
-        .attr("class","axis")
-        .attr("transform","translate(" + padding.left + "," + padding.top + ")")
-        .call(yAxis);
-</script>
+      .attr("class", "axis")
+      .attr("transform", "translate(" + padding.left + "," + padding.top + ")")
+      .call(yAxis);
+  </script>
 </body>
+
 </html>

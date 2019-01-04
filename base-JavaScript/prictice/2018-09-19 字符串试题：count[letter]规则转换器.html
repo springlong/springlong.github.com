@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+</head>
+<body>
+<script>
+
+	// 实现一个decodeString函数，输入符合count[letter]规则的参数，能将letter的内容count次输出。
+	// 其中，count是0或正数，letter是区分大小写的纯字母。
+	function decodeString(str) {
+		const reg = /(\d*)(\[([a-z0-9]+)\])/g
+		const result = []
+		const oldStr = str
+
+		// 正则案例：'5[abc]'
+		// 正则输出： ["5[ab]", "5", "[ab]", "ab", index: 4, input: "[ab]5[ab]", groups: undefined]
+		let match = reg.exec(str)
+		let count
+		let letter
+		let countStr
+
+		// 批量生成符合count[letter]规则的字符串
+		while(match !== null) {
+			count = parseInt(match[1], 10) || 1
+			letter = match[3]
+			countStr = letter.repeat(count)
+			str = str.replace(match[0], countStr)
+
+			// 重新开始进行匹配
+			reg.lastIndex  = 0
+			match = reg.exec(str)
+		}
+
+		// 输出结果
+		console.log(`${oldStr}===>${str}`)
+	}
+
+	// 顺利通过下面的测试用例
+	decodeString('[ab]5[cd]') // return: 'abcdcdcdcdcd'
+	decodeString('3[a]2[bc]') // return: 'aaabcbc'
+	decodeString('2[abc]3[cd]ef') // return: 'abcabccdcdef'
+	decodeString('3[a2[c]]') // return: 'accaccacc'
+	decodeString('3abc') // return: '3abc'
+</script>
+</body>
+</html>

@@ -962,7 +962,7 @@ module.exports = {
 
     // 使用了propTypes时，对于定义了的prop且为非必填元素，那么必须通过defaultProps指定默认值
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
-    'react/require-default-props': 'error',
+    // 'react/require-default-props': 'error',
   },
   // 有时，你可能需要更精细的配置，
   // 比如，如果同一个目录下的文件需要有不同的配置。

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS应用：多行文本省略号</title>
+  <style>
+    .box {
+      display: flex;
+      width: 80%;
+    }
+
+    .cont {
+      flex-grow: 1;
+      height: 40px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      line-height: 20px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    .side {
+      flex-basis: 100px;
+      flex-shrink: 0;
+      height: 40px;
+      margin-left: 10px;
+      background-color: orange;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="cont"> “形散”主要是说散文取材十分广泛自由，不受时间和空间的限制；表现手法不拘一格：可以叙述事件的发展，可以描写人物形象，可以托物抒情，可以发表议论，而且作者可以根据内容需要自由调整、随意变化。“神不散”主要是从散文的立意方面说的，即散文所要表达的主题必须明确而集中，无论散文的内容多么广泛，表现手法多么灵活，无不为更好的表达主题服务。 </div>
+    <div class="side"></div>
+  </div>
+</body>
+
+</html>

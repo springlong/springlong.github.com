@@ -1,145 +1,144 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
+
 <head>
-    <meta charset="utf-8" />
-    <title>HTML5：视频播放-video</title>
-    <style>
-		*{margin:0;padding:0;}
+  <meta charset="utf-8" />
+  <title>HTML5：视频播放-video</title>
+  <style> *{margin:0;padding:0;}
 		body{margin:10px;background:url(static/images/bodyBG.jpg) repeat-x;}
 		li{list-style:none;}
 
-        #videoBox,#videoBox object,#videoBox .error{display:block;width:300px;height:130px;background:#000;}
+    #videoBox,#videoBox object,#videoBox .error{display:block;width:300px;height:130px;background:#000;}
 		#videoBox .error{display:table-cell;vertical-align:middle;text-align:center;background:#000;color:white;}
 		#videoBox .error a{color:blue;}
 		#videoBox .error a img{border:none;}
 	</style>
 </head>
+
 <body>
-<!--
+  <!--
 
-video参数说明：
-	0. src：视频文件地址（单文件指定时，使用该属性即可，但如果进行多视频文件的支持选择则需要使用source标签）；
-	1. width：宽度（无需单位，默认像素）；
-	2. height：高度（无需单位，默认像素）；
-	3. preload：决定页面加载完毕后，是否自动加载视频文件；如果不需要自动加载，则赋值为none；默认为自动加载整个视频，取值为auto；如果取值为metadata,则只自动加载部分元数据；
-	4. controls：显示控制栏；
-	5. autoplay：自动播放；
-	6. loop：循环播放；
-	7. poster：视频播放前显示的图片；
-	8. 说明：controls、autoplay、loop这三个属性为布尔型，属性值为其本身。当添加该属性时，则表示true，不添加该属性时则表示false。
-
-
-对象属性说明：
-	0. currentSrc：只读属性，返回视频播放文件的物理地址。
-	1. networkState： 只读属性；返回视频的网络状态，共有4个可能值（返回的是数字值）。
-		a. NETWORK_EMPTY(数字值为0）：尚未初始化；
-		b. NETWORK_IDLE(数字值为1）：加载完成，网络空闲；
-		c. NETWORK_LOADING(数字值为2）：视频加载中；
-		d. NETWORK_NO_SOURCE(数字值为3）：加载失败，没有源文件；
-	2. seeking：只读属性，返回浏览器是否正在请求数据；true表示浏览器正在请求数据，false表示浏览器已停止请求数据。
-	3. seekable：只读属性，返回值为TimeRanges对象时，表示可以对目标资源进行请求；（Firefox 4.0未支持）
-	4. buffered：只读属性，返回值为TimeRanges对象时，表示目标媒体文件已被缓存。
-	5. preload：可读写属性，设置或返回preload属性,取值为auto,none或metadata。
-	6. duration：只读属性，返回目标视频播放的总时长，单位为（秒）。
-	7. startTime：只读属性，返回目标视频播放的开始时间，通常为0，所以某些浏览器不支持该属性。（Firefox 4.0未支持）
-	8. currentTime：可读写属性，设置或返回当前视频播放所处的时间点，单位为（秒）；在使用该属性时，如果返回的时间超出了浏览器的请求能力，将抛出一个INDEX_SIZE_ERR异常；如果没有选中的媒体资源，将抛出一个INVAKLID_STATE_ERR异常，所以在使用该属性时需要做好以上情况的判断，方可正常使用。
-	9. paused：只读属性，返回视频是否暂停播放，true表示暂时播放，false表示正在播放。
-	10.ended：只读属性，返回视频是否已播放结束，true表示播放结束，false表示还未播放完毕。
-	11.autoplay：可读写属性，设置或返回是否设置了自动播放，true表示自动播放，false表示不自动播放。
-	12.loop：可读写属性，设置或返回是否设置了循环播放，ture表示自动播放，false表示不循环播放。（Firefox 4.0未支持）
-	13.defaultPlaybackRate：可读写属性，设置或返回视频默认的播放速率，默认值为1倍速。
-	14.playbackRate：可读写属性，设置或返回视频当前的播放速率，单位为（倍速）。
-	15.controls：可读写属性，设置或返回是否显示播放控制栏，true表示显示控制栏，false表示不显示控制栏。
-	16.volume：可读写属性，设置或返回当前视频播放的音量大小，取值为0~1，默认值为1。
-	17.muted：可读写属性，设置或返回是否处于静音状态，true表示静音，false表示不静音，默认值为false。
+	video参数说明：
+		0. src：视频文件地址（单文件指定时，使用该属性即可，但如果进行多视频文件的支持选择则需要使用source标签）；
+		1. width：宽度（无需单位，默认像素）；
+		2. height：高度（无需单位，默认像素）；
+		3. preload：决定页面加载完毕后，是否自动加载视频文件；如果不需要自动加载，则赋值为none；默认为自动加载整个视频，取值为auto；如果取值为metadata,则只自动加载部分元数据；
+		4. controls：显示控制栏；
+		5. autoplay：自动播放；
+		6. loop：循环播放；
+		7. poster：视频播放前显示的图片；
+		8. 说明：controls、autoplay、loop这三个属性为布尔型，属性值为其本身。当添加该属性时，则表示true，不添加该属性时则表示false。
 
 
-对象方法说明：
-	0. play()：播放视频，并将paused值强行设为false。
-	1. pause()：暂停播放视频，并将paused值强行设为true。
-	2. load()：重新载入视频，并error值强行设为null。
-	3. canPlayType(type)：判断当前浏览器是否支持type指定的视频类型（其中type参数的取值即为source标签所指定的type类型）。返回值为空字符串时表示浏览器不支持此种媒体类型，返回值为maybe时表示浏览器可能支持此种媒体类型，返回值为probably表示浏览器确定支持此种媒体类型。
+	对象属性说明：
+		0. currentSrc：只读属性，返回视频播放文件的物理地址。
+		1. networkState： 只读属性；返回视频的网络状态，共有4个可能值（返回的是数字值）。
+			a. NETWORK_EMPTY(数字值为0）：尚未初始化；
+			b. NETWORK_IDLE(数字值为1）：加载完成，网络空闲；
+			c. NETWORK_LOADING(数字值为2）：视频加载中；
+			d. NETWORK_NO_SOURCE(数字值为3）：加载失败，没有源文件；
+		2. seeking：只读属性，返回浏览器是否正在请求数据；true表示浏览器正在请求数据，false表示浏览器已停止请求数据。
+		3. seekable：只读属性，返回值为TimeRanges对象时，表示可以对目标资源进行请求；（Firefox 4.0未支持）
+		4. buffered：只读属性，返回值为TimeRanges对象时，表示目标媒体文件已被缓存。
+		5. preload：可读写属性，设置或返回preload属性,取值为auto,none或metadata。
+		6. duration：只读属性，返回目标视频播放的总时长，单位为（秒）。
+		7. startTime：只读属性，返回目标视频播放的开始时间，通常为0，所以某些浏览器不支持该属性。（Firefox 4.0未支持）
+		8. currentTime：可读写属性，设置或返回当前视频播放所处的时间点，单位为（秒）；在使用该属性时，如果返回的时间超出了浏览器的请求能力，将抛出一个INDEX_SIZE_ERR异常；如果没有选中的媒体资源，将抛出一个INVAKLID_STATE_ERR异常，所以在使用该属性时需要做好以上情况的判断，方可正常使用。
+		9. paused：只读属性，返回视频是否暂停播放，true表示暂时播放，false表示正在播放。
+		10.ended：只读属性，返回视频是否已播放结束，true表示播放结束，false表示还未播放完毕。
+		11.autoplay：可读写属性，设置或返回是否设置了自动播放，true表示自动播放，false表示不自动播放。
+		12.loop：可读写属性，设置或返回是否设置了循环播放，ture表示自动播放，false表示不循环播放。（Firefox 4.0未支持）
+		13.defaultPlaybackRate：可读写属性，设置或返回视频默认的播放速率，默认值为1倍速。
+		14.playbackRate：可读写属性，设置或返回视频当前的播放速率，单位为（倍速）。
+		15.controls：可读写属性，设置或返回是否显示播放控制栏，true表示显示控制栏，false表示不显示控制栏。
+		16.volume：可读写属性，设置或返回当前视频播放的音量大小，取值为0~1，默认值为1。
+		17.muted：可读写属性，设置或返回是否处于静音状态，true表示静音，false表示不静音，默认值为false。
 
 
-对象事件说明：
-	0. onloadstart：在媒体文件开始加载时触发。
-	1. onplay：在媒体文件开始播放时触发，如执行video.play()时将触发该事件。
-	2. onpause：在媒体文件暂停播放时触发，如执行video.pause()时将触发该事件。
-	3. onended：在媒体文件播放结束时触发。
-	4. ontimeupdate：当播放事件更新时触发，在视频播放期间，该事件将自动随着播放事件的变更而自动触发。
--->
-<video id="videoBox" width="528" height="372" preload="auto" controls autoplay loop poster="video/images/poster.jpg">
-	<!--首先针对IE9+、Safari 3+、Chrome 5.0+、iPhone 3.0+、Android 2.0+、iPad使用MP4容器格式(.mp4/.m4v)的视频文件【使用HandBrake软件可实现到MP4格式的转换】-->
-	<source src="video/movies/a.m4v" type='video/mp4;codecs="avc1.42E01E,mp4a.40.2"' />
-	<!--接着针对Firefox 3.5+、Opera 10.5+使用Ogg容器格式(.ogv)的视频文件【使用firefogg可实现到WebM和Ogg格式的转换：http://firefogg.org】-->
-	<source src="video/movies/a.ogv" type='video/ogg;codecs="theora,vorbis"' />
-	<!--然后针对IE 9.0+、Firefox 4.0+、Opera 11.0+使用WebM容器格式(.webm)的视频文件-->
-	<source src="video/movies/a.webm" type='video/webm;codecs="vp8,vorbis"' />
-	<!--最后针对IE6/7/8等不支持video标签的浏览器使用.flv文件通过Flash播放器来实现-->
-	<object id="FlashMediaPlayer" width="572" height="372" type="application/x-shockwave-flash" data="video/strobe/StrobeMediaPlayback.swf">
-        <param name="movie" value="video/strobe/StrobeMediaPlayback.swf" />
-		<param name="wmode" value="transparent" />
-        <param name="allowFullScreen" value="true" />
-        <param name="allowscriptaccess" value="always" />
-        <param name="flashvars" value="src=http://pseudo01.hddn.com/vod/demo.flowplayervod/flowplayer-700.flv" />
-        <div class="error">你还没有安装Flash播放器，请点击<a href="http://get.adobe.com/cn/flashplayer/" target="_blank"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="获取 Adobe Flash Player" /></a>安装！</div>
+	对象方法说明：
+		0. play()：播放视频，并将paused值强行设为false。
+		1. pause()：暂停播放视频，并将paused值强行设为true。
+		2. load()：重新载入视频，并error值强行设为null。
+		3. canPlayType(type)：判断当前浏览器是否支持type指定的视频类型（其中type参数的取值即为source标签所指定的type类型）。返回值为空字符串时表示浏览器不支持此种媒体类型，返回值为maybe时表示浏览器可能支持此种媒体类型，返回值为probably表示浏览器确定支持此种媒体类型。
+
+
+	对象事件说明：
+		0. onloadstart：在媒体文件开始加载时触发。
+		1. onplay：在媒体文件开始播放时触发，如执行video.play()时将触发该事件。
+		2. onpause：在媒体文件暂停播放时触发，如执行video.pause()时将触发该事件。
+		3. onended：在媒体文件播放结束时触发。
+		4. ontimeupdate：当播放事件更新时触发，在视频播放期间，该事件将自动随着播放事件的变更而自动触发。
+	-->
+  <video id="videoBox" width="528" height="372" preload="auto" controls autoplay loop poster="video/images/poster.jpg">
+    <!--首先针对IE9+、Safari 3+、Chrome 5.0+、iPhone 3.0+、Android 2.0+、iPad使用MP4容器格式(.mp4/.m4v)的视频文件【使用HandBrake软件可实现到MP4格式的转换】-->
+    <source src="video/movies/a.m4v" type='video/mp4;codecs="avc1.42E01E,mp4a.40.2"' />
+    <!--接着针对Firefox 3.5+、Opera 10.5+使用Ogg容器格式(.ogv)的视频文件【使用firefogg可实现到WebM和Ogg格式的转换：http://firefogg.org】-->
+    <source src="video/movies/a.ogv" type='video/ogg;codecs="theora,vorbis"' />
+    <!--然后针对IE 9.0+、Firefox 4.0+、Opera 11.0+使用WebM容器格式(.webm)的视频文件-->
+    <source src="video/movies/a.webm" type='video/webm;codecs="vp8,vorbis"' />
+    <!--最后针对IE6/7/8等不支持video标签的浏览器使用.flv文件通过Flash播放器来实现-->
+    <object id="FlashMediaPlayer" width="572" height="372" type="application/x-shockwave-flash" data="video/strobe/StrobeMediaPlayback.swf">
+      <param name="movie" value="video/strobe/StrobeMediaPlayback.swf" />
+      <param name="wmode" value="transparent" />
+      <param name="allowFullScreen" value="true" />
+      <param name="allowscriptaccess" value="always" />
+      <param name="flashvars" value="src=http://pseudo01.hddn.com/vod/demo.flowplayervod/flowplayer-700.flv" />
+      <div class="error">你还没有安装Flash播放器，请点击<a href="http://get.adobe.com/cn/flashplayer/" target="_blank"><img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif" alt="获取 Adobe Flash Player" /></a>安装！</div>
     </object>
-</video>
-<br />
-<p>
-	<button onclick="video.play()">播放</button>
-	<button onclick="video.pause()">暂停</button>
-	<button onclick="video.load()">重新载入</button>
-</p>
-<br />
-<p id="canPlay"></p>
-<br />
-<p>
-	<strong>当前视频网络状态networkState：</strong><span id="networkState"></span>
-	<br /><strong>当前视频文件路径currentSrc：</strong><span id="currentSrc"></span>
-	<br /><strong>播放总时间duration：</strong><span id="duration"></span>
-	<br /><strong>当前播放进度currentTime：</strong><span id="currentTime"></span>
-	<br /><strong>是否暂停播放paused：</strong><span id="paused"></span>
-	<br /><strong>是否播放已结束ended：</strong><span id="ended"></span>
-	<br /><strong>是否自动加载preload：</strong><span id="preload"></span>
-	<br /><strong>是否显示控制栏controls：</strong><span id="controls"></span>
-	<br /><strong>是否自动播放autoplay：</strong><span id="autoplay"></span>
-	<br /><strong>是否循环播放loop：</strong><span id="loop"></span>
-	<br /><strong>是否静音muted：</strong><span id="muted"></span>
-	<br /><strong>当前音量大小volume：</strong><span id="volume"></span>
-	<br /><strong>默认播放速度defaultPlaybackRate：</strong><span id="defaultPlaybackRate"></span>
-	<br /><strong>当前播放速度playbackRate：</strong><span id="playbackRate"></span>
-</p>
-<script>
-	function $(id){return document.getElementById(id);}
-
-	var video = document.getElementById("videoBox");
-
-	video.ontimeupdate = function()
-	{
-		$("networkState").innerHTML = video.networkState;
-		$("currentSrc").innerHTML = video.currentSrc;
-		$("duration").innerHTML = parseInt(video.duration);
-		$("currentTime").innerHTML = parseInt(video.currentTime);
-		$("paused").innerHTML = video.paused;
-		$("ended").innerHTML = video.ended;
-		$("preload").innerHTML = video.preload;
-		$("controls").innerHTML = video.controls;
-		$("autoplay").innerHTML = video.autoplay;
-		$("loop").innerHTML = video.loop;
-		$("muted").innerHTML = video.muted;
-		$("volume").innerHTML = video.volume;
-		$("defaultPlaybackRate").innerHTML = video.defaultPlaybackRate;
-		$("playbackRate").innerHTML = video.playbackRate;
-	}
-
-	var canPlayText = "<strong>是否支持MP4容器格式（.mp4/.m4v）：</strong>" + video.canPlayType('video/mp4;codecs="avc1.42E01E,mp4a.40.2"') + "<br />";
-	canPlayText += "<strong>是否支持Ogg容器格式（.ogv）：</strong>" + video.canPlayType('video/ogg;codecs="theora,vorbis"') + "<br />";
-	canPlayText += "<strong>是否支持WebM容器格式（.webm）：</strong>" + video.canPlayType('video/webm;codecs="vp8,vorbis"') + "<br />";
-	canPlayText += "<strong>是否支持httplive流媒体播放（.m3u8）：</strong>" + video.canPlayType('application/vnd.apple.mpegurl') + "<br />";
-	$("canPlay").innerHTML = canPlayText;
-
-	video.ontimeupdate();
-</script>
+  </video>
+  <br />
+  <p>
+    <button onclick="video.play()">播放</button>
+    <button onclick="video.pause()">暂停</button>
+    <button onclick="video.load()">重新载入</button>
+  </p>
+  <br />
+  <p id="canPlay"></p>
+  <br />
+  <p>
+    <strong>当前视频网络状态networkState：</strong><span id="networkState"></span>
+    <br /><strong>当前视频文件路径currentSrc：</strong><span id="currentSrc"></span>
+    <br /><strong>播放总时间duration：</strong><span id="duration"></span>
+    <br /><strong>当前播放进度currentTime：</strong><span id="currentTime"></span>
+    <br /><strong>是否暂停播放paused：</strong><span id="paused"></span>
+    <br /><strong>是否播放已结束ended：</strong><span id="ended"></span>
+    <br /><strong>是否自动加载preload：</strong><span id="preload"></span>
+    <br /><strong>是否显示控制栏controls：</strong><span id="controls"></span>
+    <br /><strong>是否自动播放autoplay：</strong><span id="autoplay"></span>
+    <br /><strong>是否循环播放loop：</strong><span id="loop"></span>
+    <br /><strong>是否静音muted：</strong><span id="muted"></span>
+    <br /><strong>当前音量大小volume：</strong><span id="volume"></span>
+    <br /><strong>默认播放速度defaultPlaybackRate：</strong><span id="defaultPlaybackRate"></span>
+    <br /><strong>当前播放速度playbackRate：</strong><span id="playbackRate"></span>
+  </p>
+  <script>
+    function $(id) {
+      return document.getElementById(id);
+    }
+    var video = document.getElementById("videoBox");
+    video.ontimeupdate = function() {
+      $("networkState").innerHTML = video.networkState;
+      $("currentSrc").innerHTML = video.currentSrc;
+      $("duration").innerHTML = parseInt(video.duration);
+      $("currentTime").innerHTML = parseInt(video.currentTime);
+      $("paused").innerHTML = video.paused;
+      $("ended").innerHTML = video.ended;
+      $("preload").innerHTML = video.preload;
+      $("controls").innerHTML = video.controls;
+      $("autoplay").innerHTML = video.autoplay;
+      $("loop").innerHTML = video.loop;
+      $("muted").innerHTML = video.muted;
+      $("volume").innerHTML = video.volume;
+      $("defaultPlaybackRate").innerHTML = video.defaultPlaybackRate;
+      $("playbackRate").innerHTML = video.playbackRate;
+    }
+    var canPlayText = "<strong>是否支持MP4容器格式（.mp4/.m4v）：</strong>" + video.canPlayType('video/mp4;codecs="avc1.42E01E,mp4a.40.2"') + "<br />";
+    canPlayText += "<strong>是否支持Ogg容器格式（.ogv）：</strong>" + video.canPlayType('video/ogg;codecs="theora,vorbis"') + "<br />";
+    canPlayText += "<strong>是否支持WebM容器格式（.webm）：</strong>" + video.canPlayType('video/webm;codecs="vp8,vorbis"') + "<br />";
+    canPlayText += "<strong>是否支持httplive流媒体播放（.m3u8）：</strong>" + video.canPlayType('application/vnd.apple.mpegurl') + "<br />";
+    $("canPlay").innerHTML = canPlayText;
+    video.ontimeupdate();
+  </script>
 </body>
+
 </html>

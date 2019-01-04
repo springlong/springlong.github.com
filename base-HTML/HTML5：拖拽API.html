@@ -1,218 +1,191 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-    <meta charset="utf-8">
-    <title>HTML5：拖拽API</title>
-    <link rel="stylesheet" href="static/css/main.css">
-    <style>
-		.box-wrap {
-			width: 400px;
-			height: 400px;
-			border: 1px solid transparent;
-			background: #eee;
-		}
+  <meta charset="utf-8">
+  <title>HTML5：拖拽API</title>
+  <link rel="stylesheet" href="static/css/main.css">
+  <style>
+    .box-wrap {
+      width: 400px;
+      height: 400px;
+      border: 1px solid transparent;
+      background: #eee;
+    }
 
-		.box-content {
-			width: 400px;
-		}
+    .box-content {
+      width: 400px;
+    }
 
-		.box-item {
-			background: orange;
-			padding: 10px;
-			margin: 10px;
-		}
-    </style>
+    .box-item {
+      background: orange;
+      padding: 10px;
+      margin: 10px;
+    }
+  </style>
 </head>
 </head>
+
 <body>
-<div class="container">
-	<div class="text-item">
-		<p>在 HTML5 中，拖放是标准的一部分，任何元素都能够拖放。</p>
-		<p>通过给标签元素设置<code>draggable="true"</code>属性来开启元素的可拖拽功能，链接和图片默认是可拖拽的，不需要设置<code>draggable</code>属性。</p>
-		<p>拖拽API相关事件，属于鼠标事件，事件对象记录着跟鼠标相关的所有信息。</p>
-	</div>
-	<p class="text-item">浏览器支持情况：IE 8+、Firefox 3.5+、Chrome 4+、Safari 3.1+、Opera 12.1+、IOS Safari 11.2+，不支持：Android。</p>
-	<p class="text-item">在IE9~IE11中，event.dataTransfer.setData和event.dataTransfer.getData不能使用"text/plain"，否则会报错，需要使用"text"代替。</p>
-	<p class="text-item">在IE9中，draggable属性只针对链接和图片，其他元素必须通过.dragDrop()方法开启拖拽。</p>
-	<div class="pic-box"><a href="https://caniuse.com/#search=Drag" target="_blank"><img src="static/images/DragAndDrop.png" alt=""></a></div>
-	<div class="pic-box"><a href="https://caniuse.com/#search=Drag" target="_blank"><img src="static/images/DragAndDrop-2.png" alt=""></a></div>
-	<div class="box-wrap" id="dragBox"></div>
-	<div class="box-content">
-		<div class="box-item" draggable="true" id="drag1">item1</div>
-		<div class="box-item" id="drag2">item2</div>
-		<div class="box-item" id="drag3">item3</div>
-		<div class="box-item" id="drag4"><a href="#">这是一个超链接！</a></div>
-	</div>
-</div>
-<script>
-	var eleDrag1 = document.querySelector('#drag1');
-	var eleDragBox = document.querySelector('#dragBox');
-	var eleDrag = null;
-
-	// 定义事件处理函数
-	var eventHandler = {'drag1': {
-		dragstart: function(ev){
-			console.log('j_drag1元素开始被拖动！', ev);
-
-			// dataTransfer.dropEffect
-			// 设置拖拽操作的效果
-			//
-			// copy: 复制到新的位置
-			// move: 移动到新的位置.
-			// link: 建立一个源位置到新位置的链接.
-			// none: 禁止放置（禁止任何操作）.
-			ev.dataTransfer.dropEffect = 'move';
-
-			// dataTransfer.effectAllowed
-			// 用来指定拖动时被允许的效果
-			//
-			// copy: 复制到新的位置.
-			// move:移动到新的位置 .
-			// link:建立一个源位置到新位置的链接.
-			// copyLink: 允许复制或者链接.
-			// copyMove: 允许复制或者移动.
-			// linkMove: 允许链接或者移动.
-			// all: 允许所有的操作.
-			// none: 禁止所有操作.
-			// uninitialized: 缺省值（默认值）, 相当于 all.
-			ev.dataTransfer.effectAllowed = 'move';
-
-			// dataTransfer.setData(type, data)
-			// 向dataTransfer存入数据，方便drop事件中接收收据
-			// 只有drop事件可以通过getData方法获取到setData数据，其他事件中，均无法获取
-			//
-			// type类型
-			// text/plain：文本文字。
-			// text/html：HTML文字。
-			// text/xml：XML文字。
-			// text/uri-list：URL列表，每个URL为一行。
-			ev.dataTransfer.setData('text', ev.target.id);
-
-			// dataTransfer.setDragImage(eleImg, x, y)
-			// 设置拖放显示的图标，默认为元素的缩影，且相对于鼠标的位置为点击时所在的位置
-			// x和y用来设置图标元素离鼠标指针的x轴位移量和y轴位移量
-			// ev.dataTransfer.setDragImage(ev.target, 0, 0);
-		},
-		drag: function(ev){
-			// console.log('j_drag1元素处于拖放过程');
-		},
-		dragend: function(ev){
-			console.log('j_drag1元素拖放结束！');
-
-			// dataTransfer.clearData([type])
-			// 清除dataTransfer中存放的数据
-			// 可以通过type参数指定需要清除的数据种类，如果不提供该参数，则表示清空所有种类的数据
-			ev.dataTransfer.clearData('text');
-		},
-	}};
-
-
-
-	// ==============================================================
-	// 针对拖拽元素本身的相关事件
-
-	// dragstart事件
-	// 进行拖拽操作时触发
-	eleDrag1.addEventListener('dragstart', eventHandler['drag1']['dragstart']);
-
-	try {
-		// IE9中draggable属性只针对链接和图片，其他元素必须通过.dragDrop()方法开启拖拽
-		eleDrag1.onmousedown = function(){
-			eleDrag1.dragDrop();
-		}
-	}catch(e) {}
-
-	// drag事件
-	// 在拖动过程中触发
-	// 将会多次且频繁的触发事件
-	eleDrag1.addEventListener('drag', eventHandler['drag1']['drag']);
-
-	// dragend事件
-	// 结束拖放操作时触发
-	eleDrag1.addEventListener('dragend', eventHandler['drag1']['dragend']);
-
-
-
-	// ==============================================================
-	// 针对拖拽元素落脚点的相关事件
-
-	// dragenter事件
-	// 当有元素被拖动到目标元素的范围内时触发
-	eleDragBox.addEventListener('dragenter', function(ev) {
-		console.log('有元素被拖动进入j_dragBox！');
-
-		// 仅针对容器元素设置背景色，避免子元素冒泡
-		if(ev.target === eleDragBox) {
-			ev.target.style.background = '#ccc';
-		}
-	});
-
-	// dragleave事件
-	// 当被拖动的元素离开目标元素的范围时触发
-	eleDragBox.addEventListener('dragleave', function(ev) {
-		console.log('有元素离开j_dragBox范围！');
-
-		// 仅针对容器元素设置背景色，避免子元素冒泡
-		if(ev.target === eleDragBox) {
-			ev.target.style.background = '#eee';
-		}
-	});
-
-	// dragover事件
-	// 当被拖动的元素在目标元素的范围内移动时触发
-	// 将会多次且频繁的触发事件
-	eleDragBox.addEventListener('dragover', function(ev) {
-		// console.log('有元素在j_dragBox范围内移动！');
-
-		// 在dragover事件中，必须使用ev.preventDefault()，否则不能触发drop事件
-		//
-		// 拖拽操作结束时，如果目标元素不在dragover事件中取消默认行为，且dragstart时存放了数据，
-		// 那么松开鼠标后，浏览器将自动按照存放的内容打开新链接
-		ev.preventDefault();
-	});
-
-	// drop事件
-	// 当被拖动的元素拖动到目标元素并松开鼠标进行放置时触发
-	eleDragBox.addEventListener('drop', function(ev) {
-
-		// dataTransfer.getData(type)
-		// 仅在drop事件中可以使用getData方法获取数据，如果没有数据默认为''
-		var data = ev.dataTransfer.getData('text');
-		console.log('有元素正准备放置到j_dragBox！数据：', data);
-
-		// 由于图片、链接默认开启可拖拽性，所以在drop事件中一定要判断数据来源的正确性
-		var id, eleSource = null;
-
-		if(/^[0-9a-z]*$/i.test(data)) {
-			id = data;
-			eleSource = id === '' ? null : document.querySelector('#' + id);
-		}
-
-		if(eleSource !== null) {
-
-			// 将拖动的元素添加到容器
-			eleDragBox.appendChild(eleSource);
-
-			// 移除拖动元素的可拖动性
-			// eleSource.removeAttribute('draggable');
-
-			// 移除被拖动元素的相关事件
-			for(var name in eventHandler[id]) {
-				eleSource.removeEventListener(name, eventHandler[id][name]);
-			}
-		}
-
-		// 仅针对容器元素设置背景色，避免子元素冒泡
-		if(ev.target === eleDragBox) {
-			ev.target.style.background = '#eee';
-		}
-	});
-
-	// 使用document的dragover事件取消退拽操作带来的默认行为
-	// 在Firefox中，该方式无效
-	document.addEventListener('dragover', function(ev) {
-		ev.preventDefault();
-	});
-</script>
+  <div class="container">
+    <div class="text-item">
+      <p>在 HTML5 中，拖放是标准的一部分，任何元素都能够拖放。</p>
+      <p>通过给标签元素设置<code>draggable="true"</code>属性来开启元素的可拖拽功能，链接和图片默认是可拖拽的，不需要设置<code>draggable</code>属性。</p>
+      <p>拖拽API相关事件，属于鼠标事件，事件对象记录着跟鼠标相关的所有信息。</p>
+    </div>
+    <p class="text-item">浏览器支持情况：IE 8+、Firefox 3.5+、Chrome 4+、Safari 3.1+、Opera 12.1+、IOS Safari 11.2+，不支持：Android。</p>
+    <p class="text-item">在IE9~IE11中，event.dataTransfer.setData和event.dataTransfer.getData不能使用"text/plain"，否则会报错，需要使用"text"代替。</p>
+    <p class="text-item">在IE9中，draggable属性只针对链接和图片，其他元素必须通过.dragDrop()方法开启拖拽。</p>
+    <div class="pic-box"><a href="https://caniuse.com/#search=Drag" target="_blank"><img src="static/images/DragAndDrop.png" alt=""></a></div>
+    <div class="pic-box"><a href="https://caniuse.com/#search=Drag" target="_blank"><img src="static/images/DragAndDrop-2.png" alt=""></a></div>
+    <div class="box-wrap" id="dragBox"></div>
+    <div class="box-content">
+      <div class="box-item" draggable="true" id="drag1">item1</div>
+      <div class="box-item" id="drag2">item2</div>
+      <div class="box-item" id="drag3">item3</div>
+      <div class="box-item" id="drag4"><a href="#">这是一个超链接！</a></div>
+    </div>
+  </div>
+  <script>
+    var eleDrag1 = document.querySelector('#drag1');
+    var eleDragBox = document.querySelector('#dragBox');
+    var eleDrag = null;
+    // 定义事件处理函数
+    var eventHandler = {
+      'drag1': {
+        dragstart: function(ev) {
+          console.log('j_drag1元素开始被拖动！', ev);
+          // dataTransfer.dropEffect
+          // 设置拖拽操作的效果
+          //
+          // copy: 复制到新的位置
+          // move: 移动到新的位置.
+          // link: 建立一个源位置到新位置的链接.
+          // none: 禁止放置（禁止任何操作）.
+          ev.dataTransfer.dropEffect = 'move';
+          // dataTransfer.effectAllowed
+          // 用来指定拖动时被允许的效果
+          //
+          // copy: 复制到新的位置.
+          // move:移动到新的位置 .
+          // link:建立一个源位置到新位置的链接.
+          // copyLink: 允许复制或者链接.
+          // copyMove: 允许复制或者移动.
+          // linkMove: 允许链接或者移动.
+          // all: 允许所有的操作.
+          // none: 禁止所有操作.
+          // uninitialized: 缺省值（默认值）, 相当于 all.
+          ev.dataTransfer.effectAllowed = 'move';
+          // dataTransfer.setData(type, data)
+          // 向dataTransfer存入数据，方便drop事件中接收收据
+          // 只有drop事件可以通过getData方法获取到setData数据，其他事件中，均无法获取
+          //
+          // type类型
+          // text/plain：文本文字。
+          // text/html：HTML文字。
+          // text/xml：XML文字。
+          // text/uri-list：URL列表，每个URL为一行。
+          ev.dataTransfer.setData('text', ev.target.id);
+          // dataTransfer.setDragImage(eleImg, x, y)
+          // 设置拖放显示的图标，默认为元素的缩影，且相对于鼠标的位置为点击时所在的位置
+          // x和y用来设置图标元素离鼠标指针的x轴位移量和y轴位移量
+          // ev.dataTransfer.setDragImage(ev.target, 0, 0);
+        },
+        drag: function(ev) {
+          // console.log('j_drag1元素处于拖放过程');
+        },
+        dragend: function(ev) {
+          console.log('j_drag1元素拖放结束！');
+          // dataTransfer.clearData([type])
+          // 清除dataTransfer中存放的数据
+          // 可以通过type参数指定需要清除的数据种类，如果不提供该参数，则表示清空所有种类的数据
+          ev.dataTransfer.clearData('text');
+        },
+      }
+    };
+    // ==============================================================
+    // 针对拖拽元素本身的相关事件
+    // dragstart事件
+    // 进行拖拽操作时触发
+    eleDrag1.addEventListener('dragstart', eventHandler['drag1']['dragstart']);
+    try {
+      // IE9中draggable属性只针对链接和图片，其他元素必须通过.dragDrop()方法开启拖拽
+      eleDrag1.onmousedown = function() {
+        eleDrag1.dragDrop();
+      }
+    } catch (e) {}
+    // drag事件
+    // 在拖动过程中触发
+    // 将会多次且频繁的触发事件
+    eleDrag1.addEventListener('drag', eventHandler['drag1']['drag']);
+    // dragend事件
+    // 结束拖放操作时触发
+    eleDrag1.addEventListener('dragend', eventHandler['drag1']['dragend']);
+    // ==============================================================
+    // 针对拖拽元素落脚点的相关事件
+    // dragenter事件
+    // 当有元素被拖动到目标元素的范围内时触发
+    eleDragBox.addEventListener('dragenter', function(ev) {
+      console.log('有元素被拖动进入j_dragBox！');
+      // 仅针对容器元素设置背景色，避免子元素冒泡
+      if (ev.target === eleDragBox) {
+        ev.target.style.background = '#ccc';
+      }
+    });
+    // dragleave事件
+    // 当被拖动的元素离开目标元素的范围时触发
+    eleDragBox.addEventListener('dragleave', function(ev) {
+      console.log('有元素离开j_dragBox范围！');
+      // 仅针对容器元素设置背景色，避免子元素冒泡
+      if (ev.target === eleDragBox) {
+        ev.target.style.background = '#eee';
+      }
+    });
+    // dragover事件
+    // 当被拖动的元素在目标元素的范围内移动时触发
+    // 将会多次且频繁的触发事件
+    eleDragBox.addEventListener('dragover', function(ev) {
+      // console.log('有元素在j_dragBox范围内移动！');
+      // 在dragover事件中，必须使用ev.preventDefault()，否则不能触发drop事件
+      //
+      // 拖拽操作结束时，如果目标元素不在dragover事件中取消默认行为，且dragstart时存放了数据，
+      // 那么松开鼠标后，浏览器将自动按照存放的内容打开新链接
+      ev.preventDefault();
+    });
+    // drop事件
+    // 当被拖动的元素拖动到目标元素并松开鼠标进行放置时触发
+    eleDragBox.addEventListener('drop', function(ev) {
+      // dataTransfer.getData(type)
+      // 仅在drop事件中可以使用getData方法获取数据，如果没有数据默认为''
+      var data = ev.dataTransfer.getData('text');
+      console.log('有元素正准备放置到j_dragBox！数据：', data);
+      // 由于图片、链接默认开启可拖拽性，所以在drop事件中一定要判断数据来源的正确性
+      var id, eleSource = null;
+      if (/^[0-9a-z]*$/i.test(data)) {
+        id = data;
+        eleSource = id === '' ? null : document.querySelector('#' + id);
+      }
+      if (eleSource !== null) {
+        // 将拖动的元素添加到容器
+        eleDragBox.appendChild(eleSource);
+        // 移除拖动元素的可拖动性
+        // eleSource.removeAttribute('draggable');
+        // 移除被拖动元素的相关事件
+        for (var name in eventHandler[id]) {
+          eleSource.removeEventListener(name, eventHandler[id][name]);
+        }
+      }
+      // 仅针对容器元素设置背景色，避免子元素冒泡
+      if (ev.target === eleDragBox) {
+        ev.target.style.background = '#eee';
+      }
+    });
+    // 使用document的dragover事件取消退拽操作带来的默认行为
+    // 在Firefox中，该方式无效
+    document.addEventListener('dragover', function(ev) {
+      ev.preventDefault();
+    });
+  </script>
 </body>
+
 </html>

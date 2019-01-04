@@ -1,46 +1,48 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <title>Start D3.js</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./source/d3.js"></script>
-<style>
-.axis path,
-.axis line {
-  fill: none;
-  stroke: black;
-  shape-rendering: crispEdges;
-}
 
-.axis text {
-  font-family: sans-serif;
-  font-size: 11px;
-}
-</style>
+<head>
+  <meta charset="utf-8">
+  <title>Start D3.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="./source/d3.js"></script>
+  <style>
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
+
+    .axis text {
+      font-family: sans-serif;
+      font-size: 11px;
+    }
+  </style>
 </head>
+
 <body>
-<div class="hello">
+  <div class="hello">
     <p>Hello world 1</p>
     <p class="hello-p">Hello world 2</p>
-</div>
-<hr>
-<div class="datum">
+  </div>
+  <hr>
+  <div class="datum">
     <p>Apple</p>
     <p>Pear</p>
     <p>Banana</p>
-</div>
-<hr>
-<div class="data">
+  </div>
+  <hr>
+  <div class="data">
     <p>Apple</p>
     <p>Pear</p>
     <p>Banana</p>
-</div>
-<hr>
-<div id="svgBox">
+  </div>
+  <hr>
+  <div id="svgBox">
 
-</div>
-<script>
+  </div>
+  <script>
     // d3.select() 选择所有指定元素的第一个
     // d3.selectAll() 选择指定元素的全部
     // d3.text() 修改指定元素集合的文本值
@@ -61,7 +63,7 @@
     const datumP = d3.select('.datum').selectAll('p')
     datumP.datum(str)
     datumP.text((data, index) => {
-        return '第 ' + index + ' 个元素的数据是：' + data
+      return '第 ' + index + ' 个元素的数据是：' + data
     })
 
     // d3.data() 绑定一个数组到选择集上，数组的各项值分别与选择集的各元素绑定
@@ -69,7 +71,7 @@
     const dataP = d3.select('.data').selectAll('p')
     dataP.data(dataset)
     dataP.text((data, index) => {
-        return data
+      return data
     })
 
     // 使用svg绘制图形
@@ -89,30 +91,31 @@
 
     // 添加svg画布
     const eleSvg = d3.select('#svgBox')
-        .append('svg')
-        .attr('width', svgWidth)
-        .attr('height', svgHeight)
+      .append('svg')
+      .attr('width', svgWidth)
+      .attr('height', svgHeight)
 
     // 添加矩形
     eleSvg.selectAll('rect')
-        .data(svgData)
-        .enter()
-        .append('rect')
-        .attr('x', 20)
-        .attr('y', (data, index) => {
-            return index * rectHeight
-        })
-        .attr('width', (data) => {
-            return linear(data)
-        })
-        .attr('height', rectHeight - 2)
-        .attr('fill', 'steelblue')
+      .data(svgData)
+      .enter()
+      .append('rect')
+      .attr('x', 20)
+      .attr('y', (data, index) => {
+        return index * rectHeight
+      })
+      .attr('width', (data) => {
+        return linear(data)
+      })
+      .attr('height', rectHeight - 2)
+      .attr('fill', 'steelblue')
 
     // 在 SVG 中添加坐标轴
     eleSvg.append('g')
-        .attr('class', 'axis')
-        .attr('transform', 'translate(20, 130)')
-        .call(axis)
-</script>
+      .attr('class', 'axis')
+      .attr('transform', 'translate(20, 130)')
+      .call(axis)
+  </script>
 </body>
+
 </html>

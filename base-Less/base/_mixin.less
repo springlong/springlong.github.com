@@ -163,38 +163,33 @@
 
 // 关闭X
 .less-close(@width: 40px, @border: 2px, @color: #A2A2A2) {
-  @widthClose: @width * 1.5;
-
   display: inline-block;
   position: relative;
   overflow: hidden;
   width: @width;
   height: @width;
+  transform: rotate(45deg);
   cursor: pointer;
 
   &:before {
     content: '';
     width: @border;
-    height: @widthClose;
+    height: 100%;
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: rotate(45deg) translateY(-50%);
-    transform-origin: 0 0;
-    margin-left: -(@border/2);
+    top: 0;
+    transform: translateX(-50%);
     background-color: @color;
   }
 
   &:after {
     content: '';
-    width: @widthClose;
+    width: 100%;
     height: @border;
     position: absolute;
-    left: 50%;
+    left: 0;
     top: 50%;
-    transform: rotate(45deg) translateX(-50%);
-    transform-origin: 0 0;
-    margin-top: -(@border/2);
+    transform: translateY(-50%);
     background-color: @color;
   }
 }
