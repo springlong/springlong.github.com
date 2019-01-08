@@ -32,7 +32,7 @@
 
 ## 性能优化
 
-1. [浏览器缓存策略](http://www.fedlife.cn/study-performance/browser%20cache)
+1. [浏览器缓存策略](http://www.fedlife.cn/base-Http/浏览器缓存策略)
 
 ## 响应式
 
