@@ -29,7 +29,6 @@
 1. [浏览器事件：事件模型](http://www.fedlife.cn/base-JavaScript/articles/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BA%8B%E4%BB%B6%EF%BC%9A%E4%BA%8B%E4%BB%B6%E6%A8%A1%E5%9E%8B.html)
 1. [浏览器事件：load + DOMContentLoaded + readystatechange](http://www.fedlife.cn/base-JavaScript/articles/%E6%B5%8F%E8%A7%88%E5%99%A8%E4%BA%8B%E4%BB%B6%EF%BC%9Aload%20+%20DOMContentLoaded%20+%20readystatechange.html)
 
-
 ## 性能优化
 
 1. [浏览器缓存策略](http://www.fedlife.cn/base-Http/浏览器缓存策略)
