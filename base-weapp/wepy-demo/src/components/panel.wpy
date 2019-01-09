@@ -1,0 +1,90 @@
+<template>
+  <view class="panel {{className}}">
+    <view class="panel-title">
+      <view class="panel-title-value">
+        <slot name="title">
+          Title
+        </slot>
+      </view>
+      <view class="panel-title-extra">
+        <text @tap="changeView">{{showName}}</text>
+      </view>
+    </view>
+    <view class="panel-content {{stateName}}">
+      <slot name="content"></slot>
+      <slot></slot>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+
+  export default class Panel extends wepy.component {
+    // 声明组件传值
+    props = {
+      className: String
+    }
+
+    // 组件数据
+    data = {
+      isShow: true
+    }
+
+    // 计算属性
+    computed = {
+      showName() {
+        return this.isShow ? '收起' : '展开'
+      },
+
+      stateName() {
+        return this.isShow ? 'isShow' : 'isHide'
+      }
+    }
+
+    // 事件处理函数
+    methods = {
+      changeView() {
+        this.isShow = !this.isShow
+      }
+    }
+
+    // 组件生命周期：组件加载时触发
+    onLoad() {
+      console.log('panel onLoad')
+    }
+
+    // 组件生命周期：组件卸载时触发
+    onUnload() {
+      console.log('panel onUnload')
+    }
+  }
+</script>
+<style lang="less">
+  .panel {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20rpx;
+    text-align: left;
+    font-size: 12px;
+    padding: 20rpx 30rpx;
+    border: 1px solid #ccc;
+  }
+  .panel-title {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20rpx;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  .panel-content {
+    padding: 15rpx;
+
+    &.isShow {
+      display: block;
+    }
+
+    &.isHide {
+      display: none;
+    }
+  }
+</style>
