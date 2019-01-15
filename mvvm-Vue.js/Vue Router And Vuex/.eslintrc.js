@@ -293,6 +293,7 @@ module.exports = {
     //     'parameters': 1,
     //     'body': 1
     //   }
+    // }],
 
     // 禁用 tab
     // http://eslint.cn/docs/rules/no-tabs
