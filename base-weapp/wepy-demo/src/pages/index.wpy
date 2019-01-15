@@ -11,6 +11,7 @@
         <view>姓名: {{name}}</view>
         <view>描述: {{desc}}</view>
       </view>
+      <view>other text</view>
     </PanelIntrol>
 
     <PanelGood className="panel--index">

@@ -12,14 +12,31 @@
     </view>
     <view class="panel-content {{stateName}}">
       <slot name="content"></slot>
-      <slot></slot>
+    </view>
+    <view class="panel-test">
+      <!-- page -> parent -> child 组件slot传递的三级测试-->
+      <!-- 直接传slot失败 -->
+      <TestSlot>
+        <slot></slot>
+      </TestSlot>
+      <!-- 需要包装一层才能进一步传递 -->
+      <TestSlot>
+        <view class="test">
+          <slot></slot>
+        </view>
+      </TestSlot>
     </view>
   </view>
 </template>
 <script>
   import wepy from 'wepy'
+  import TestSlot from './testSlot'
 
   export default class Panel extends wepy.component {
+    components = {
+      TestSlot: TestSlot
+    }
+
     // 声明组件传值
     props = {
       className: String
