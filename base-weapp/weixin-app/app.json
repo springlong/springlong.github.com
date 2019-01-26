@@ -11,7 +11,8 @@
         "pages/order/ordercheck/ordercheck",
         "pages/order/orderpay/orderpay",
         "pages/order/orderdetail/orderdetail",
-        "pages/refund/refund/refund"
+        "pages/refund/refund/refund",
+        "pages/lazyload/index"
     ],
     "window": {
         "navigationBarTitleText": "头部标题1",

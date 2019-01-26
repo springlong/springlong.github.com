@@ -2,7 +2,7 @@
   "usingComponents": {
     "component-test": "/components/test/test"
   },
-  "navigationBarTitleText": "微信测试首页",
+  "navigationBarTitleText": "图片懒加载测试",
   "navigationBarBackgroundColor": "#000000",
   "navigationBarTextStyle": "white",
   "backgroundColor": "#ffffff",

@@ -36,6 +36,7 @@ Page({
 		},
 		userInfo: {},
 		hasUserInfo: false,
+		lazyPlaceholderHeight: wx.getSystemInfoSync().windowHeight*2,
 		canIUse: wx.canIUse('button.open-type.getUserInfo')
 	},
 
@@ -134,7 +135,7 @@ Page({
 	 * data.scrollTop, 页面在垂直方向已滚动的距离
 	 */
 	onPageScroll: function(data) {
-		console.log('page-onPageScroll', data)
+		// console.log('page-onPageScroll', data)
 	},
 
 	/**
@@ -162,6 +163,11 @@ Page({
 	 */
 	onTabItemTap: function(item) {
 		console.log('page-onTabItemTap', item)
+	},
+
+	// 图片加载事件
+	bingImageLoad: function(event) {
+		console.log('bingImageLoad', event.currentTarget.dataset)
 	},
 
 	/**

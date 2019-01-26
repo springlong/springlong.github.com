@@ -4,12 +4,12 @@
 <!--index.wxml-->
 <view class="container">
 
-<view class="_p {{[isActive ? 'active' : '']}}">111</view>
-<view class="_div data-v-5e89cfcc dialog-toast {{[isError ? 'dialog-toast--text' : '']}}">111-2</view>
-<view class="_p static {{[isActive ? 'active' : '', hasError ? 'text-danger' : '']}}">222</view>
-<view class="_p static {{[activeClass, errorClass]}}">333</view>
-<view class="_p static {{[isActive ? activeClass : '', errorClass]}}">444</view>
-<view class="_p static {{[[isActive ? 'active' : ''], errorClass]}}">555</view>
+	<view class="_p {{[isActive ? 'active' : '']}}">111</view>
+	<view class="_div data-v-5e89cfcc dialog-toast {{[isError ? 'dialog-toast--text' : '']}}">111-2</view>
+	<view class="_p static {{[isActive ? 'active' : '', hasError ? 'text-danger' : '']}}">222</view>
+	<view class="_p static {{[activeClass, errorClass]}}">333</view>
+	<view class="_p static {{[isActive ? activeClass : '', errorClass]}}">444</view>
+	<view class="_p static {{[[isActive ? 'active' : ''], errorClass]}}">555</view>
 
 	<!-- 引入模板 -->
 	<include src="/templates/header.wxml" />
@@ -65,26 +65,26 @@
 		<text class="text-item" wx:for="{{obj}}" wx:key="*this">{{index}} - {{item}}</text>
 	</view>
 	<view class="text-list">
-		<text class="text-item" wx:for="{{obj}}" wx:for-index="idx" wx:for-item="value">{{idx}} - {{value}}</text>
+		<text class="text-item" wx:for="{{obj}}" wx:for-index="idx" wx:for-item="value" wx:key="value">{{idx}} - {{value}}</text>
 	</view>
 
 	<!-- 数组循环 -->
 	<view class="text-list">
-		<text class="text-item" wx:for="{{arr}}">{{index}} - {{item}}</text>
+		<text class="text-item" wx:for="{{arr}}" wx:key="index">{{index}} - {{item}}</text>
 	</view>
 	<view class="text-list">
-		<text class="text-item" wx:for="{{arr}}" wx:for-index="idx" wx:for-item="value">{{idx}} - {{value}}</text>
+		<text class="text-item" wx:for="{{arr}}" wx:for-index="idx" wx:for-item="value" wx:key="value">{{idx}} - {{value}}</text>
 	</view>
 
 	<!-- 循环嵌套 -->
-	<view wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="i">
-		<view wx:for="{{[1,2,3,4,5,6,7,9]}}" wx:for-item="j" wx:if="{{i <= j}}">
+	<view wx:for="{{[1,2,3,4,5,6,7,8,9]}}" wx:for-item="i" wx:key="i">
+		<view wx:for="{{[1,2,3,4,5,6,7,9]}}" wx:for-item="j" wx:key="j" wx:if="{{i <= j}}">
 			{{i}} * {{j}} = {{i * j}}
 		</view>
 	</view>
 
 	<!-- 结构块的循环 -->
-	<block wx:for="{{[1,2,3]}}">
+	<block wx:for="{{[1,2,3]}}" wx:key="index">
 		<view>{{index + 33 *3 }}:</view>
 		<view>{{item}}</view>
 	</block>
@@ -101,6 +101,45 @@
 		<view>view1</view>
 		<view>view2</view>
 	</block>
+
+	<!-- 图片懒加载测试 -->
+	<view class="pic-test">
+		<view style="width: 100%; height: {{lazyPlaceholderHeight}}px; background: #eee;">图片：pic001</view>
+		<image
+			src="http://img.juimg.com/tuku/yulantu/140218/330598-14021R23A410.jpg"
+			data-id="pic001"
+			lazy-load="{{true}}"
+			bindload="bingImageLoad"
+		/>
+		<view style="width: 100%; height: {{lazyPlaceholderHeight}}px; background: #eee;">图片：pic002</view>
+		<image
+			src="http://wx3.sinaimg.cn/large/00610vQGly1fkwwq76bkaj30dw0dwq51.jpg"
+			data-id="pic002"
+			lazy-load="{{true}}"
+			bindload="bingImageLoad"
+		/>
+		<view style="width: 100%; height: {{lazyPlaceholderHeight}}px; background: #eee;">图片：pic003</view>
+		<image
+			src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548512412885&di=53d38f8fdc46bbfa55426c6c8dfd08c2&imgtype=0&src=http%3A%2F%2Fimg17.3lian.com%2Fd%2Ffile%2F201703%2F01%2F361f57b73a22ea0e6b6f44339574aaf2.jpg"
+			data-id="pic003"
+			lazy-load="{{true}}"
+			bindload="bingImageLoad"
+		/>
+		<view style="width: 100%; height: {{lazyPlaceholderHeight}}px; background: #eee;">图片：pic004</view>
+		<image
+			src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548512412746&di=0606f832a883020b9612905a7f6e6caa&imgtype=0&src=http%3A%2F%2Fimage.whhost.net%2Fuploads%2F20181011%2F23%2F1539273579-nxbWmGwgZS.jpg"
+			data-id="pic004"
+			lazy-load="{{true}}"
+			bindload="bingImageLoad"
+		/>
+		<view style="width: 100%; height: {{lazyPlaceholderHeight}}px; background: #eee;">图片：pic005</view>
+		<image
+			src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1548512412885&di=f01ccc7448b6441fb99ea2160c6eba60&imgtype=0&src=http%3A%2F%2Fimg17.3lian.com%2Fd%2Ffile%2F201702%2F21%2F8f8a5c670f68613382cb043d1ad2fe05.jpg"
+			data-id="pic005"
+			lazy-load="{{true}}"
+			bindload="bingImageLoad"
+		/>
+	</view>
 
 	<!-- 模板：使用 -->
 	<template is="testTemp" data="{{...testTempA}}"></template>

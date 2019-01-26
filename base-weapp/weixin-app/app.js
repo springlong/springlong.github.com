@@ -21,7 +21,7 @@ App({
 		console.log('app-onLaunch')
 
 		// 使用mock测试数据
-		this.sendAjax({
+		this.ajax({
 			url: 'demo',
 			data: {type: 'demo', useMock: 'true', page: 3}
 		})
@@ -35,7 +35,7 @@ App({
 		})
 
 		// 使用mock测试数据-模拟分页
-		this.sendAjax({
+		this.ajax({
 			url: 'demo/page',
 			data: {type: 'demo', useMock: 'true', page: 3}
 		})
