@@ -1,0 +1,15 @@
+// 引入wxs模块
+var funcs = require('./funcs.wxs');
+console.log('require funcs:', funcs.a);
+console.log('require funcs:', funcs.b);
+
+var name = 'test a name';
+var func = function(msg) {
+  return msg.toUpperCase();
+};
+
+// 模块导出对象
+module.exports = {
+  name: name,
+  func: func,
+};

@@ -56,7 +56,7 @@
 
     // page生命周期：页面加载时触发
     // 一个页面只会调用一次
-    onLoad() {
+    onLoad(query) {
       console.log('detail onLoad')
 
       // 在Page页面实例中，可以通过this.$parent来访问App实例。

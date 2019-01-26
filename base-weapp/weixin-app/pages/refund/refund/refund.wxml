@@ -1,0 +1,6 @@
+<!--pages/refund/refund/refund.wxml-->
+<view class="container">
+  <view class="list-warp">
+    <button bindtap='bindReLaunch'>重新打开应用程序到详情页</button>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+{
+  "usingComponents": {
+    "component-test": "/components/test/test"
+  },
+  "navigationBarTitleText": "微信测试首页",
+  "navigationBarBackgroundColor": "#000000",
+  "navigationBarTextStyle": "white",
+  "backgroundColor": "#ffffff",
+  "backgroundTextStyle": "light",
+  "backgroundColorTop": "#333",
+  "backgroundColorBottom": "#333",
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 50,
+  "disableScroll": false
+}

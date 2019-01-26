@@ -1,0 +1,6 @@
+<!--pages/classify/classify.wxml-->
+<view class="container">
+  <view class="list-warp">
+    <navigator url="/pages/list/list?type=5" open-type="navigate">查看五级列表页</navigator>
+  </view>
+</view>

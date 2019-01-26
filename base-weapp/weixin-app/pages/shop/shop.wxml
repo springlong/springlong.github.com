@@ -1,0 +1,6 @@
+<!--pages/country/country.wxml-->
+<view class="container">
+  <view class="list-warp">
+    <navigator url="/pages/classify/classify?type=4" open-type="navigate">查看四级分类页</navigator>
+  </view>
+</view>

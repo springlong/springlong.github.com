@@ -154,7 +154,7 @@
 
     // page生命周期：页面加载时触发
     // 一个页面只会调用一次
-    onLoad() {
+    onLoad(query) {
       console.log('index onLoad')
 
       // 加载页面数据

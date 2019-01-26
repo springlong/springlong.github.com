@@ -1,0 +1,6 @@
+<!--pages/order/ordercheck/ordercheck.wxml-->
+<view class="container">
+  <view class="list-warp">
+    <navigator url="/pages/order/orderpay/orderpay?type=4" open-type="navigate">查看九级支付页</navigator>
+  </view>
+</view>

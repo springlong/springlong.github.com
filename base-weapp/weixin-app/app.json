@@ -1,0 +1,48 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/country/country",
+        "pages/logs/logs",
+        "pages/shop/shop",
+        "pages/classify/classify",
+        "pages/list/list",
+        "pages/detail/detail",
+        "pages/cart/cart",
+        "pages/order/ordercheck/ordercheck",
+        "pages/order/orderpay/orderpay",
+        "pages/order/orderdetail/orderdetail",
+        "pages/refund/refund/refund"
+    ],
+    "window": {
+        "navigationBarTitleText": "头部标题1",
+        "navigationBarBackgroundColor": "#000000",
+        "navigationBarTextStyle": "white",
+        "backgroundColor": "#ffffff",
+        "backgroundTextStyle": "light",
+        "backgroundColorTop": "#333",
+        "backgroundColorBottom": "#333",
+        "enablePullDownRefresh": true,
+        "onReachBottomDistance": 50
+    },
+    "tabBar": {
+        "color": "#666",
+        "selectedColor": "#00BEBF",
+        "backgroundColor": "#fff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "assets/images/home.png",
+                "selectedIconPath": "assets/images/home-active.png"
+            },
+            {
+                "pagePath": "pages/logs/logs",
+                "text": "日志",
+                "iconPath": "assets/images/user.png",
+                "selectedIconPath": "assets/images/user-active.png"
+            }
+        ],
+        "position": "bottom"
+    }
+}

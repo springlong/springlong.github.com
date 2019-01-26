@@ -1,0 +1,8 @@
+<view id="footer">footer box</view>
+<view>asdfasdf</view>
+<text>asdfasd</text>
+<text class="asdf"></text>
+<block wx:if="{{view}}">
+
+</block>
+<text class=""></text>

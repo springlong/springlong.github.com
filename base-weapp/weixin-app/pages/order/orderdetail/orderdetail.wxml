@@ -1,0 +1,7 @@
+<!--pages/order/orderdetail/orderdetail.wxml-->
+<view class="container">
+  <view class="list-warp">
+    <!--微信小程序最多只能通过wx.navigateTo打开十级页面，如果超过数量将无法打开-->
+    <navigator url="/pages/refund/refund/refund" open-type='redirect'>查看十一级退货退款页面</navigator>
+  </view>
+</view>
