@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+		current: new Date(),
   },
 
   /**
@@ -13,6 +13,7 @@ Page({
    * query参数- query参数所组成的JSON对象
    */
   onLoad: function (query) {
+		console.log('country-onLoad', new Date() , this.data.current)
     console.log('country-onload', query);
   },
 

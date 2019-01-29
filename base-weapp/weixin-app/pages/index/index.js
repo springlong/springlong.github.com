@@ -37,7 +37,7 @@ Page({
 		userInfo: {},
 		hasUserInfo: false,
 		lazyPlaceholderHeight: wx.getSystemInfoSync().windowHeight*2,
-		canIUse: wx.canIUse('button.open-type.getUserInfo')
+		canIUse: wx.canIUse('button.open-type.getUserInfo'),
 	},
 
 	/**
@@ -46,7 +46,6 @@ Page({
 	 * options-其他页面打开当前页面所调用的 query 参数
 	 */
 	onLoad: function(options) {
-		console.log('page-onLoad')
 		console.log('options:', options)
 
 		if (app.globalData.userInfo) {
