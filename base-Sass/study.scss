@@ -1,228 +1,241 @@
 @charset "utf-8";
 
-/*标准的css注释，会显示在生成结果中*/
+/* 标准的css注释，会显示在生成结果中 */
 
-/*! 重要注释，即使压缩代码也会显示在结果中，通常用于版权声明*/
+/*! 重要注释，即使压缩代码也会显示在结果中，通常用于版权声明 */
 
-//双斜杆单行注释，属于Sass使用的注释，不会生成到结果中
+// 双斜杆单行注释，属于Sass使用的注释，不会生成到结果中
+
+// demo https://www.sassmeister.com/gist/bd3b206ada9a8af0239d50ce65ba2837
 
 
 
-//====================================================================================
-//====================================================================================
 
-//导入（完整路径）
+
+// ====================================================================================
+// ====================================================================================
+
+// 导入（完整路径）
 @import "base/_mixin.scss";
 
-//导入（可省略扩展名）
+// 导入（可省略扩展名）
 @import "base/_mixin";
 
-//导入（可省略文件名前面的下划线）
+// 导入（可省略文件名前面的下划线）
 @import "base/mixin";
 
-//sass的导入与css的导入有所不同，编译时会将@import的scss文件合并进来只生成一个CSS文件。
-//但是如果你在sass文件中导入css文件，如@import 'reset.css'，那效果跟普通CSS导入样式文件一样，导入的css文件不会合并到编译后的文件中，而是以@import方式存在。
+// sass的导入与css的导入有所不同，编译时会将@import的scss文件合并进来只生成一个CSS文件。
+// 但是如果你在sass文件中导入css文件，如@import 'reset.css'，那效果跟普通CSS导入样式文件一样，导入的css文件不会合并到编译后的文件中，而是以@import方式存在。
 
 
 
-//====================================================================================
-//====================================================================================
 
-//=========================================
-//普通变量的声明
+
+// ====================================================================================
+// ====================================================================================
+
+// =========================================
+// 普通变量的声明
 $ftcolor: #333;
 $direction: left;
 
-//变量的单独使用
+// 变量的单独使用
 #vBox {
-    color: $ftcolor;
-    font-size: p2r(12px);
+  color: $ftcolor;
+  font-size: 12px;
 }
 
-//变量的组合使用（与属性组合）
-#vBox{
-    border-#{$direction}: 1px solid #eee;
+// 变量的组合使用（与属性组合）
+#vBox {
+  border-#{$direction}: 1px solid #eee;
 }
 
-//变量的组合使用（与选择器组合）
-#vBox-#{$direction}{
-    border: 1px solid #eee;
+// 变量的组合使用（与选择器组合）
+#vBox-#{$direction} {
+  border: 1px solid #eee;
 }
 
-//demo http://sassmeister.com/gist/7bedabd59cf27bad42a3
+// demo https://www.sassmeister.com/gist/7bedabd59cf27bad42a3
 
 
-//=========================================
-//多值变量（list），相当于JS中的数组。
-//可以通过空格、逗号、小括号来分隔多个值，需要通过nth($var, $index)来取值
 
-//通过空格分隔创建
+// =========================================
+// 多值变量（list），相当于JS中的数组。
+// 可以通过空格、逗号、小括号来分隔多个值，需要通过nth($var, $index)来取值
+
+// 通过空格分隔创建
 $width1: 10px 20px 30px 40px;
-#div-1{
-    border-top: nth($width1, 1);
-    border-right: nth($width1, 2);
-    border-bottom: nth($width1, 3);
-    border-left: nth($width1, 4);
+#div-1 {
+  border-top: nth($width1, 1);
+  border-right: nth($width1, 2);
+  border-bottom: nth($width1, 3);
+  border-left: nth($width1, 4);
 }
 
-//通过逗号分隔创建（
+// 通过逗号分隔创建（
 $width2: 1px,2px,3px,4px;
-#div-2{
-    border-top: nth($width2, 1);
-    border-right: nth($width2, 2);
-    border-bottom: nth($width2, 3);
-    border-left: nth($width2, 4);
+#div-2 {
+  border-top: nth($width2, 1);
+  border-right: nth($width2, 2);
+  border-bottom: nth($width2, 3);
+  border-left: nth($width2, 4);
 }
 
-//通过小括号分隔创建
+// 通过小括号分隔创建
 $width3: (5px)(10px)(15px)(20px);
-#div-3{
-    border-top: nth($width3, 1);
-    border-right: nth($width3, 2);
-    border-bottom: nth($width3, 3);
-    border-left: nth($width3, 4);
+#div-3 {
+  border-top: nth($width3, 1);
+  border-right: nth($width3, 2);
+  border-bottom: nth($width3, 3);
+  border-left: nth($width3, 4);
 }
 
-//通过多个符号分隔创建（一）
+// 通过多个符号分隔创建（一）
 $width4: (5px 10px)(10px 20px);
-#div-4{
-    border: nth($width4, 1);
-    padding: nth($width4, 2);
+#div-4 {
+  border: nth($width4, 1);
+  padding: nth($width4, 2);
 }
 
-//通过多个符号分隔创建（二）
+// 通过多个符号分隔创建（二）
 $width5: 5px 10px, 10px 5px;
-#div-5{
-    border: nth($width5, 1);
-    padding: nth($width5, 2);
+#div-5 {
+  border: nth($width5, 1);
+  padding: nth($width5, 2);
 }
 
-//demo http://sassmeister.com/gist/0e8d23d72cb57bfb9125
-//更多函数 http://sass-lang.com/documentation/Sass/Script/Functions.html#list-functions
+// demo https://www.sassmeister.com/gist/0e8d23d72cb57bfb9125
+// 更多函数 http://sass-lang.com/documentation/Sass/Script/Functions.html#list-functions
 
 
-//=========================================
-//多值变量（map），相当于JS中的Object。
-//map数据以key和value成对出现，其中value又可以是list。
 
-//格式为：$map: (key1: value1, key2: value2, key3: value3)
+// =========================================
+// 多值变量（map），相当于JS中的Object。
+// map数据以key和value成对出现，其中value又可以是list。
+
+// 格式为：$map: (key1: value1, key2: value2, key3: value3)
 $headings: (h1: 2em, h2: 1.5em, h3: 1.2em);
 
-//取值：map-get($map, $key)
-h1{
-    line-height: map-get($headings, h1);
+// 取值：map-get($map, $key)
+h1 {
+  line-height: map-get($headings, h1);
 }
-h2{
-    line-height: map-get($headings, h2);
+h2 {
+  line-height: map-get($headings, h2);
 }
-h3{
-    line-height: map-get($headings, h2);
-}
-
-//遍历：@each in
-@each $header, $size in $headings{
-    #{$header}{
-        font-size: $size;
-    }
+h3 {
+  line-height: map-get($headings, h2);
 }
 
-//demo http://sassmeister.com/gist/d4023640f3501b32dbf9
-//更多函数 http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions
+// 遍历：@each in
+@each $name, $value in $headings {
+  #{$name} {
+    font-size: $value;
+  }
+}
+
+// demo https://www.sassmeister.com/gist/d4023640f3501b32dbf9
+// 更多函数 http://sass-lang.com/documentation/Sass/Script/Functions.html#map-functions
 
 
-//=========================================
-//目前针对Sass关于全局变量和局部变量的区分
-//如以下四种情景所示：
 
-//情景一：全局变量
+// =========================================
+// 目前针对Sass关于全局变量和局部变量的区分
+// 如以下四种情景所示：
+
+// 情景一：全局变量
 $color: green;
-#vBox-1{
-    color: $color; //green
+#vBox-1 {
+  color: $color; // green
 }
-#vBox-2{
-    color: $color; //green
-}
-
-//demo http://sassmeister.com/gist/6abd39ef70f3388b5b9f
-
-
-//情景二：局部变量
-#vBox-1{
-    $color: green;
-    color: $color; //green
-}
-#vBox-2{
-    color: $color; //$color undefined
+#vBox-2 {
+  color: $color; // green
 }
 
-//demo http://sassmeister.com/gist/5bb7ff0f78490667645c
+// demo https://www.sassmeister.com/gist/6abd39ef70f3388b5b9f
 
 
-//情景三：全局变量的重新赋值
+// 情景二：局部变量
+#vBox-1 {
+  $color: green;
+  color: $color; // green
+}
+#vBox-2 {
+  color: $color; // $color undefined
+}
+
+// demo https://www.sassmeister.com/gist/5bb7ff0f78490667645c
+
+
+// 情景三：全局变量的重新赋值
 $color: green;
-#vBox-1{
-    color: $color; //green
-    $color: blue;
+#vBox-1 {
+  color: $color; // green
+  $color: blue; // 此处定义的是局部变量，而非全局变量的重新赋值
 }
-#vBox-2{
-    color: $color; //blue
+#vBox-2 {
+  color: $color; // green
 }
-
-//demo http://sassmeister.com/gist/e29c28b5408193b4cc7e
-
-
-//情景四：多级嵌套
-#vBox-1{
-    $color: green;
-
-    p{
-        color: $color; //green
-        $color: red;
-    }
-
-    div{
-        color: $color; //red
-    }
-
-    color: $color; //red
-}
-#vBox-2{
-    color: $color; //$color undefined
+$color: blue; // 此处为重置全局变量
+#vBox-3 {
+  color: $color; // blue
 }
 
-//demo http://sassmeister.com/gist/13ea0d03d7ae8bd661a7
+// demo https://www.sassmeister.com/gist/e29c28b5408193b4cc7e
 
 
-//=========================================
-//默认变量值的应用（在变量值的末尾加上!default即可，无需空格）
+// 情景四：多级嵌套
+#vBox-1 {
+  $color: green;  // 局部变量
 
-//在不做处理的情况下，当我们导入imgStyle.scss之后，img的样式输出中的padding将为默认的5px：
+  p {
+    color: $color; // green
+    $color: red; // 局部变量重新赋值
+  }
+
+  div {
+    color: $color; // red
+  }
+
+  color: $color; // red
+}
+#vBox-2 {
+  color: $color; // $color undefined
+}
+
+// demo https://www.sassmeister.com/gist/e6bb9a63a1224ba9fb17ec1ff4411388
+
+
+
+
+
+// =========================================
+// 默认变量值的应用（在变量值的末尾加上!default即可，无需空格）
+
+// 在不做处理的情况下，当我们导入imgStyle.scss之后，img的样式输出中的padding将为默认的5px：
 // @import "imgStyle.scss";
 
-//但是在当前文件中，我们期望设置img的padding为8px，这个时候我们可以在@import命令执行之前，先行给$imgPadding变量进行赋值
-//这样的话，当imgStyle.scss导入后，img的输出样式中padding将采用位于!default之前声明的值来进行使用，这种使用方式为组件化开发提供了极大的便利性
+// 但是在当前文件中，我们期望设置img的padding为8px，这个时候我们可以在@import命令执行之前，先行给$imgPadding变量进行赋值
+// 这样的话，当imgStyle.scss导入后，img的输出样式中padding将采用位于!default之前声明的值来进行使用，这种使用方式为组件化开发提供了极大的便利性
 $imgPadding: 8px;
 
-//假设下面的代码来自imgStyle.scss，我们通过@import进行导入
+// 假设下面的代码来自imgStyle.scss，我们通过@import进行导入
 // @import "imgStyle.scss";
 $imgBoderStyle: 1px solid #ccc !default;
 $imgPadding: 5px !default;
-@mixin imgBorder($border: $imgBoderStyle, $padding: $imgPadding){
-    border: $border;
-    padding: $padding;
+@mixin imgBorder($border: $imgBoderStyle, $padding: $imgPadding) {
+  border: $border;
+  padding: $padding;
 }
-img{
-    @include imgBorder;
+img {
+  @include imgBorder;
 }
 
-//demo http://sassmeister.com/gist/e80c80bbe6e175f66305
+// demo https://www.sassmeister.com/gist/e80c80bbe6e175f66305
 
 
-//在sass 3.4后的版本中将正式应用"!global"来强化全局变量的概念——即在变量值后面加上"!global"即为全局变量，否则为局部变量。目前的sass变量范围饱受诟病，所以才有了这个全局变量。
-//关于变量的更多内容请参考——sass揭秘之变量：http://www.w3cplus.com/preprocessor/sass-basic-variable.html
-
-
-
+// 在sass 3.4后的版本中将正式应用"!global"来强化全局变量的概念——即在变量值后面加上"!global"即为全局变量，否则为局部变量。目前的sass变量范围饱受诟病，所以才有了这个全局变量。
+// 关于变量的更多内容请参考——sass揭秘之变量：http://www.w3cplus.com/preprocessor/sass-basic-variable.html
 
 
 
@@ -235,305 +248,288 @@ img{
 
 
 
-//====================================================================================
-//====================================================================================
 
-//嵌套（选择器的嵌套）
+
+
+// ====================================================================================
+// ====================================================================================
+
+// 嵌套（选择器的嵌套）
 #box1 {
+  background-color: #999;
 
-    background-color: #999;
+  //&符号表示父级选择器本身
+  &:hover {
+    background-color: #666;
+  }
 
-    //&符号表示父级选择器本身
-    &:hover {
-        background-color: #666;
-    }
-
-    span {
-        color: #333;
-    }
+  span {
+    color: #333;
+  }
 }
 
-//嵌套（CSS属性的嵌套，使用冒号“:”进行区分）
+// 嵌套（CSS属性的嵌套，使用冒号“:”进行区分）
 #box2 {
-    boder: {
-        left: 1px solid #fff;
-        top: 1px solid #000;
-    }
+  boder: {
+    left: 1px solid #fff;
+    top: 1px solid #000;
+  }
 }
 
-//demo http://sassmeister.com/gist/a66c9139fe14dac86249
+//demo https://www.sassmeister.com/gist/a66c9139fe14dac86249
 
 
 
-//====================================================================================
-//====================================================================================
+// ====================================================================================
+// ====================================================================================
 
-//继承
-//sass中，选择器继承可以让选择器继承另一个选择器的所有样式，以联合声明的方式存在。
-//使用继承，需要使用关键词@extend，后面紧跟需要继承的选择器。
+// 继承
+// sass中，选择器继承可以让选择器继承另一个选择器的所有样式，以联合声明的方式存在。
+// 使用继承，需要使用关键词@extend，后面紧跟需要继承的选择器。
 
-//继承一：普通选择器的继承
+// 继承一：普通选择器的继承
 .class1 {
-    border: 1px solid #ddd;
-    background-color: #000;
+  border: 1px solid #ddd;
+  background-color: #000;
 }
 .class2 {
-    border-raidus: 5px;
+  border-raidus: 5px;
 }
 .class3 {
-    @extend .class1, .class2;
-    color: #fff;
+  @extend .class1, .class2;
+  color: #fff;
 }
 
-//继承二：占位选择器的继承
-//以百分比符号（%）开头的选择器表示placeholder，即占位选择器。
-//该选择器的优势在于：如果不调用则不会有任何多余的css文件，避免了以前在一些基础的文件中预定义了很多基础的样式，然后实际应用中不管是否使用了@extend去继承相应的样式，都会解析出来所有的样式。
+// 继承二：占位选择器的继承
+// 以百分比符号（%）开头的选择器表示placeholder，即占位选择器。
+// 该选择器的优势在于：如果不调用则不会有任何多余的css文件，避免了以前在一些基础的文件中预定义了很多基础的样式，然后实际应用中不管是否使用了@extend去继承相应的样式，都会解析出来所有的样式。
 %ellipsis{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 %clearfix {
-    &:after{
-        content: "";
-        clear: both;
-        display: block;
-        height: 0;
-    }
-    *zoom: 1;
+  &:after{
+    content: "";
+    clear: both;
+    display: block;
+    height: 0;
+  }
+  *zoom: 1;
 }
 #content {
-    @extend %clearfix;
+  @extend %clearfix;
 }
 
-//demo http://sassmeister.com/gist/7c5856455f74e837a4c5
+//demo https://www.sassmeister.com/gist/7c5856455f74e837a4c5
 
 
 
-//====================================================================================
-//====================================================================================
 
-//@mixin混合
-//sass中使用@mixin声明混合，可以传递参数，参数名以$符号开始，多个参数以逗号分开，也可以给参数设置默认值。
-//声明的@mixin通过@include来调用，调用后解析出来的样式是以拷贝形式存在的。
 
-//无参数
+// ====================================================================================
+// ====================================================================================
+
+// @mixin混合
+// sass中使用@mixin声明混合，可以传递参数，参数名以$符号开始，多个参数以逗号分开，也可以给参数设置默认值。
+// 声明的@mixin通过@include来调用，调用后解析出来的样式是以拷贝形式存在的。
+
+// 无参数
 @mixin fixedTop {
-    position:fixed;_positon:absolute;_bottom:auto;_top:expression(eval(document.documentElement.scrollTop));
+  position: fixed;
+  left: 0;
+  top: 0;
 }
 #fixed-box {
-    @include fixedTop;
+  @include fixedTop;
 }
 
 
-//带参数
-//当存在多个参数的情况下，如果通过@include调用时没有传递对应的参数且该参数没有提供默认值的情况时，将会报错
+// 带参数
+// 当存在多个参数的情况下，如果通过@include调用时没有传递对应的参数且该参数没有提供默认值的情况时，将会报错
 @mixin opacity($opacity: 100) {
-    opacity: $opacity / 100;
-    filter: alpha(opacity=$opacity);
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
 }
 #opacity-box {
-    @include opacity(50);
+  @include opacity(50);
 }
 
 
-//参数名后面加三个点...
-//这种使用方式可以满足部分CSS3属性值可以存在多个值且以逗号(,)分隔的情况
-@mixin box-shadow($shadow...){
-    -webkit-box-shadow: $shadow;
-    -moz-box-shadow: $shadow;
-    box-shadow: $shadow;
+// 参数名后面加三个点...
+// 这种使用方式可以满足部分CSS3属性值可以存在多个值且以逗号(,)分隔的情况
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+  -moz-box-shadow: $shadow;
+  box-shadow: $shadow;
 }
-div{
-    @include box-shadow(0 0 3px rgba(0,0,0,0.3),inset 0 0 3px rgba(255,255,255,0.3));
+div {
+  @include box-shadow(0 0 3px rgba(0,0,0,0.3),inset 0 0 3px rgba(255,255,255,0.3));
 }
 
 
-//@content
-//@content在sass3.2.0中引入，可以用来解决css3的@media等带来的问题。它可以使@mixin接受一整块样式，然后插入到@content所在的位置。
-@mixin max-screen($res){
-    @media only screen and ( max-width: $res )
-    {
-        @content;
-        div{
-            padding: 10px;
-            background-color: #333;
-        }
+// @content
+// @content在sass3.2.0中引入，可以用来解决css3的@media等带来的问题。它可以使@mixin接受一整块样式，然后插入到@content所在的位置。
+@mixin max-screen($res) {
+  @media only screen and ( max-width: $res )
+  {
+    @content;
+    div{
+      padding: 10px;
+      background-color: #333;
     }
+  }
 }
 @include max-screen(480px) {
-    body {
-        color: red
-    }
-    p{
-        margin: 10px 0;
-    }
+  body {
+    color: red
+  }
+  p{
+    margin: 10px 0;
+  }
 }
 
-//demo http://sassmeister.com/gist/77c6f397dd057473890f
+// demo https://www.sassmeister.com/gist/77c6f397dd057473890f
 
 
 
 
 
+// ====================================================================================
+// ====================================================================================
 
-
-
-
-
-
-
-
-
-
-//====================================================================================
-//====================================================================================
-
-//运算符（加减乘除）（可带单位参与运算）
+// 运算符（加减乘除）（可带单位参与运算）
 $base: 100px;
-#operation{
-    width: $base + 10px;
-    height: $base - 10px;
-    padding: $base * 2;
-    margin: $base / 2;
-    padding-left: $base * 2 + $base / 2 - 10px;
+#operation {
+  width: $base + 10px;
+  height: $base - 10px;
+  padding: $base * 2;
+  margin: $base / 2;
+  padding-left: $base * 2 + $base / 2 - 10px;
 }
 
-//demo http://sassmeister.com/gist/f713277bdf903745564e
+// demo https://www.sassmeister.com/gist/f713277bdf903745564e
 
 
 
-//====================================================================================
-//====================================================================================
 
-//条件判断（@if  @else if  @else）
+
+// ====================================================================================
+// ====================================================================================
+
+// 条件判断（@if  @else if  @else）
 $mgtop: 10px;
-#condition1{
+#condition1 {
   @if $mgtop > 10px { border-top: 2px solid #fff; }
   @if $mgtop > 5px { border-top: 1px solid #fff; }
 }
-#condition2{
-    @if $mgtop > 10px {
-        border-top: 2px solid #fff;
-    }
-    @else if $mgtop > 5px {
-        border-top: 1px solid #fff;
-    }
-    @else {
-        border-top: none;
-    }
+#condition2 {
+  @if $mgtop > 10px {
+    border-top: 2px solid #fff;
+  }
+  @else if $mgtop > 5px {
+    border-top: 1px solid #fff;
+  }
+  @else {
+    border-top: none;
+  }
 }
 
-//三目判断
-//if(true, 1px, 2px) => 1px
-//if(false, 1px, 2px) => 2px
+// 三目判断
+// if(true, 1px, 2px) => 1px
+// if(false, 1px, 2px) => 2px
 #condition3{
-    border-top: if($mgtop > 10px, 2px solid #fff, 1px solid #fff);
+  border-top: if($mgtop > 10px, 2px solid #fff, 1px solid #fff);
 }
 
-//Sass不支持逻辑运算
-//demo http://sassmeister.com/gist/82a8f3386035aa2338fb
+// Sass不支持逻辑运算
+// demo https://www.sassmeister.com/gist/82a8f3386035aa2338fb
 
 
 
-//====================================================================================
-//====================================================================================
 
-//循环（@for $var from <start> to <end>）
-//不包含end
+
+// ====================================================================================
+// ====================================================================================
+
+// 循环（@for $var from <start> to <end>）
+// 不包含end
 @for $num from 1 to 5 {
-    .box-#{$num}{
-        border-top: #{$num}px;
-    }
+  .box-#{$num} {
+    border-top: #{$num}px;
+  }
 }
 
-//循环（@for $var from <start> through <end>）
-//包含end
+// 循环（@for $var from <start> through <end>）
+// 包含end
 @for $num from 1 through 5 {
-    .test-#{$num}{
-        border-top: #{$num}px;
-    }
+  .test-#{$num} {
+    border-top: #{$num}px;
+  }
 }
 
-//循环（@while）
+// 循环（@while）
 $i: 1;
 @while $i < 5 {
-    .item-#{$i} {
-        width: 2px * $i;
-    }
-    $i: $i + 1;
+  .item-#{$i} {
+    width: 2px * $i;
+  }
+  $i: $i + 1;
 }
 
-//demo http://sassmeister.com/gist/b2afbae009ffeb98234e
+// demo https://www.sassmeister.com/gist/b2afbae009ffeb98234e
 
 
 
-//====================================================================================
-//====================================================================================
 
-//遍历（@each in <list or map>）
 
-//单个字段list数据的遍历
+// ====================================================================================
+// ====================================================================================
+
+// 遍历（@each in <list or map>）
+
+// 单个字段list数据的遍历
 $lists: a, b, c;
 @each $member in $lists {
-    .bg-#{$member} {
-        background-image: url(images/test-#{$member}.png);
-    }
+  .bg-#{$member} {
+    background-image: url(images/test-#{$member}.png);
+  }
 }
 
-//多个字段list数据的遍历
+// 多个字段list数据的遍历
 $animals: (cat, 1, #333), (monkey, 2, #666), (tiger, 3, #999);
 @each $member, $index, $color in $animals {
-    .#{$member} {
-        background-image: $color url(images/test-#{$index}.png);
-    }
+  .#{$member} {
+    background-image: $color url(images/test-#{$index}.png);
+  }
 }
 
-//多个字段map数据的遍历
+// 多个字段map数据的遍历
 $headings: (h1: 2em, h2: 1.5em, h3: 1.2em);
-@each $header, $size in $headings{
-    #{$header}{
-        line-height: $size;
-    }
+@each $name, $value in $headings{
+  #{$name}{
+    line-height: $value;
+  }
 }
 
-//demo http://sassmeister.com/gist/8b0674a2dfc3d1d010bd
+// demo https://www.sassmeister.com/gist/8b0674a2dfc3d1d010bd
 
 
 
 
 
+// ====================================================================================
+// ====================================================================================
 
-
-
-
-
-
-
-
-//====================================================================================
-//====================================================================================
-
-//自定义函数
+// 自定义函数
 @function add($a, $b) {
-    @return $a + $b;
+  @return $a + $b;
 }
 .fun-test {
-    width: add(10px, 20px);
+  width: add(10px, 20px);
 }
 
-//demo http://sassmeister.com/gist/ceae42617485ba9a67f7
-//资料，Sass官方函数文档 http://sass-lang.com/documentation/Sass/Script/Functions.html
-//阅读，Sass基础——颜色函数 http://www.w3cplus.com/preprocessor/sass-color-function.html
-//阅读，Sass基础——Sass函数 http://www.w3cplus.com/preprocessor/sass-other-function.html
-
-
-
-//====================================================================================
-//====================================================================================
-
-//颜色函数
-
-// #color1 {
-//     color: darken(#333, 10%);
-// }
+// demo https://www.sassmeister.com/gist/ceae42617485ba9a67f7
+// 资料，Sass官方函数文档 http://sass-lang.com/documentation/Sass/Script/Functions.html
+// 阅读，Sass基础——颜色函数 http://www.w3cplus.com/preprocessor/sass-color-function.html
+// 阅读，Sass基础——Sass函数 http://www.w3cplus.com/preprocessor/sass-other-function.html
