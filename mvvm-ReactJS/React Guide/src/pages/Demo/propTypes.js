@@ -112,3 +112,29 @@ DemoPropTypes.defaultProps = {
 }
 
 export default DemoPropTypes;
+
+
+// function CompA() {
+//   return (
+//     <div>compA text</div>
+//   )
+// }
+{/* <DemoPropTypes
+  typeArray={[1, 2, 3]}
+  typeBool={true}
+  typeFunc={() => { return 'funcs-return'; }}
+  typeNumber={123}
+  typeObject={{a: 'obj-a-value', b: 'obj-b-value'}}
+  // typeString={'abc'}
+  typeSymbol={Symbol('sm')}
+  typeElement={<CompA />}
+  typeOneOf={'News'}
+  typeOneOfType={'typeoftype'}
+  typeArrayOf={[1]}
+  typeObjectOf={{a: '1'}}
+  typeShape={{a:1 , b: 2}}
+  typeRequire={'require'}
+  typeAnyRequire={'any'}
+  typeCustom={'customValue'}
+  typeCustomArrayOf={['1']}
+/> */}

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-// 组件名称必须首字母大写，否则在JSX中会被当作普通html标签处理
+// 无状态函数式组件（PureCompoent）：组件名称必须首字母大写，否则在JSX中会被当作普通html标签处理
 function testComp1() {
   return (<p>testComp1</p>)
 }
 
-// 组件名称必须首字母大写
+// 无状态函数式组件（PureCompoent）：组件名称必须首字母大写
 function TestComp2(props) {
   return (
     <div>
@@ -15,12 +15,13 @@ function TestComp2(props) {
       <p>{String(props.checkType1)}</p>
       <p>{String(props.checkType2)}</p>
       <p>{String(props.checkType3)}</p>
+      {/* slot内容 */}
       <div>{props.children}</div>
     </div>
   )
 }
 
-// 重复内容
+// 无状态函数式组件（PureCompoent）：重复内容
 function Repeat(props) {
   let items = [];
   for (let i = 0; i < props.numTimes; i++) {
@@ -29,8 +30,9 @@ function Repeat(props) {
   return <div>{items}</div>;
 }
 
+// ES6方式创建的有状态组件
 export default class DemoJSX extends Component {
-  // 初始化页面常量、绑定事件方法
+  // 初始化组件数据、绑定事件方法的this
   constructor(props) {
     super(props);
 

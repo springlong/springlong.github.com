@@ -1,6 +1,43 @@
-.demo-module {
+.demo-wrap {
   width: 80%;
   padding: 20px;
   border: 2px solid #ddd;
   margin: 20px auto;
+}
+
+.topbar-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: rgb(21, 192, 178);
+  background-color: #eee;
+}
+
+.hd-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: rgb(21, 192, 178);
+  background-color: #eee;
+}
+
+.ft-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: rgb(21, 192, 178);
+  background-color: #eee;
+}
+
+.page-wrap {
+  padding: 20px 0;
 }

@@ -1,45 +1,34 @@
-import React, { Component } from 'react';
-import DemoJSX from './demo/jsx';
-import DemoPropTypes from './demo/propTypes';
-import DemoRefs from './demo/refs';
-import DemoFragments from './demo/fragments';
+import React from 'react';
+import { HashRouter as Router, Route } from 'react-router-dom';
+
+import Home from './pages/Home'
+import List from './pages/List'
+import Detail from './pages/Detail'
+import Login from './pages/User/Login'
+
+import Topbar from './components/Layouts/Topbar'
+import Header from './components/Layouts/Header'
+import Nav from './components/Layouts/Nav'
+import Footer from './components/Layouts/Footer'
+
 import './App.css';
 
-function CompA() {
-  return (
-    <div>compA text</div>
-  )
-}
+// 路由配置
+const router = () => (
+  <Router>
+    <div id="app">
+      <Topbar/>
+      <Header/>
+      <Nav/>
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        {/* <DemoJSX /> */}
-        <DemoPropTypes
-          typeArray={[1, 2, 3]}
-          typeBool={true}
-          typeFunc={() => { return 'funcs-return'; }}
-          typeNumber={123}
-          typeObject={{a: 'obj-a-value', b: 'obj-b-value'}}
-          // typeString={'abc'}
-          typeSymbol={Symbol('sm')}
-          typeElement={<CompA />}
-          typeOneOf={'News'}
-          typeOneOfType={'typeoftype'}
-          typeArrayOf={[1]}
-          typeObjectOf={{a: '1'}}
-          typeShape={{a:1 , b: 2}}
-          typeRequire={'require'}
-          typeAnyRequire={'any'}
-          typeCustom={'customValue'}
-          typeCustomArrayOf={['1']}
-        />
-        <DemoRefs />
-        <DemoFragments />
-      </div>
-    );
-  }
-}
+      <Route path="/" component={Home} exact/>
+      <Route path="/list" component={List}/>
+      <Route path="/detail" component={Detail}/>
+      <Route path="/login" component={Login}/>
 
-export default App;
+      <Footer/>
+    </div>
+  </Router>
+)
+
+export default router;
