@@ -65,6 +65,16 @@
       }
     }
 
+    // WePY组件间通信事件
+    // 子组件中定义的events事件，可以在父组件中通过$broadcast进行触发：
+    // this.$broadcast('onChildEvent', data)
+    events = {
+      // 测试组件间通信
+      onChildEvent: (data) => {
+        console.log('panel.wpy', data)
+      }
+    }
+
     // 组件生命周期：组件加载时触发
     onLoad() {
       console.log('panel onLoad')

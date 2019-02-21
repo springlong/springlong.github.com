@@ -43,8 +43,12 @@
         <button @tap="handleJumpToDetail">redirect 跳转至详情页</button>
       </view>
       <view class="row">
+        <button @tap="handleTriggerBroadcast">父组件派发事件给子组件</button>
+      </view>
+      <view class="row">
         <button @tap="handleLoadMore">加载更多</button>
         <!-- 动态传值使用冒号(:)，加上.sync修饰符来达到父组件数据绑定至子组件的效果 -->
+        <!-- 父组件传递给子组件的自定义事件，可以在子组件中通过$emit触发 -->
         <LoadMore
           message="加载中，请稍等..."
           :show.sync="isShowMore"
@@ -133,6 +137,12 @@
         wx.redirectTo({ url: '/pages/detail' })
       },
 
+      // 触发子组件定义的events
+      handleTriggerBroadcast() {
+        // 父组件派发事件给子组件，所有子组件都会收到此广播事件
+        this.$broadcast('onChildEvent', {a: 1, b: 2})
+      },
+
       // 点击加载更多
       handleLoadMore() {
         this.isShowMore = true
@@ -144,11 +154,25 @@
       }
     }
 
-    // WePY组件事件处理函数对象
-    // 存放响应组件之间通过$broadcast、$emit、$invoke所传递的事件的函数
+    // WePY组件间通信事件
+    // 存放响应组件之间通过 $broadcast $emit $invoke 所传递的事件的函数
+    //
+    // 父组件定义的events事件，可以在子组件中通过$emit触发
+    // 父组件传递给子组件的自定义事件，也可以在子组件中通过$emit触发
+    // 在子组件中通过$emit触发事件，事件发起组件的所有祖先组件都会依次接收到emit事件
+    //
+    // 子组件定义的events事件，可以在父组件中通过$broadcast进行触发
+    // 父组件通过$broadcast派发事件给子组件，所有子组件都会收到此广播事件
+    //
+    // 组件之间的通信可以通过$invoke进行触发
+    // 调用子组件的方法：this.$invoke('ComoponentName', 'MethodName', 'sendData')
+    // 调用自己的方法：this.$invoke('./', 'MethodName', 'sendData')
+    // 调用父组件的方法：this.$invoke('../', 'MethodName', 'sendData')
+    // 调用兄弟组件的方法：this.$invoke('../ComoponentName', 'MethodName', 'sendData')
+    // 调用根页面的方法(this.$root)：this.$invoke('/', 'MethodName', 'sendData')
     events = {
-      onLoadMoerLoaded(info, evt) {
-        console.log('events-onLoadMoerLoaded', info, evt)
+      onParentEvent(info, evt) {
+        console.log('events-onParentEvent', info, evt)
       }
     }
 

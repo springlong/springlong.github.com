@@ -49,8 +49,8 @@
     methods = {
     }
 
-    // WePY组件事件处理函数对象
-    // 存放响应组件之间通过$broadcast、$emit、$invoke所传递的事件的函数
+    // WePY组件间通信事件
+    // 存放响应组件之间通过 $broadcast $emit $invoke 所传递的事件的函数
     events = {
     }
 

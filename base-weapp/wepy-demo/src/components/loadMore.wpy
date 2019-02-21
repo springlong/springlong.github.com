@@ -32,8 +32,8 @@
     watch = {
       show(newValue, olvValue) {
         if (newValue === true) {
-          this.$emit('onLoad', '子组件传递的数据信息')
-          this.$emit('onLoadMoerLoaded', '子组件传递的数据信息')
+          this.$emit('onLoad', 'onLoad-子组件传递的数据信息')
+          this.$emit('onParentEvent', 'onParentEvent-子组件传递的数据信息')
 
           setTimeout(() => {
             this.show = false
@@ -49,6 +49,16 @@
 
     // 事件处理函数
     methods = {
+    }
+
+    // WePY组件间通信事件
+    // 子组件中定义的events事件，可以在父组件中通过$broadcast进行触发：
+    // this.$broadcast('onChildEvent', data)
+    events = {
+      // 测试组件间通信
+      onChildEvent: (data) => {
+        console.log('loadMore.wpy', data)
+      }
     }
 
     // 组件生命周期：组件加载时触发
