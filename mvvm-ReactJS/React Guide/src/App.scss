@@ -1,0 +1,58 @@
+code {
+  display: inline-block;
+  padding: 4px;
+  border-radius: 3px;
+  margin: 0 2px;
+  line-height: 1em;
+  text-indent: 0;
+  background: rgb(244, 244, 244);
+  font-family: "Consolas";
+}
+
+.demo-wrap {
+  width: 80%;
+  padding: 20px;
+  border: 2px solid #ddd;
+  margin: 20px auto;
+}
+
+%module {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: rgb(21, 192, 178);
+  background-color: #eee;
+}
+
+.topbar-wrap {
+  @extend %module;
+}
+
+.hd-wrap {
+  @extend %module;
+}
+
+.ft-wrap {
+  @extend %module;
+}
+
+.nav-wrap {
+  padding: 20px;
+  margin-bottom: 10px;
+  background-color: #eee;
+}
+
+.page-wrap {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.page-section {
+  padding: 20px;
+  margin: 20px 0;
+  background-color: #eee;
+}

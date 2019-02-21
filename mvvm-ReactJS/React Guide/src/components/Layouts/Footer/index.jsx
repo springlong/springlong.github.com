@@ -9,6 +9,8 @@ export default class Footer extends Component {
     this.state = {
       msg: 'Hello React!'
     }
+
+    // console.log('Footer-constructor', this.props)
   }
 
   // DOM渲染

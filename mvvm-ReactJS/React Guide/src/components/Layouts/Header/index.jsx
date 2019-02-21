@@ -9,6 +9,8 @@ export default class Header extends Component {
     this.state = {
       msg: 'Hello React!'
     }
+
+    // console.log('Header-constructor', this.props)
   }
 
   // DOM渲染
