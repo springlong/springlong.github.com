@@ -1,4 +1,0 @@
-  <!-- 模板：定义 -->
-  <template name="testTemp">
-    <view>FirstName: {{firstName}}, LastName: {{lastName}}</view>
-  </template>
