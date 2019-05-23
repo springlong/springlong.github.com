@@ -428,13 +428,13 @@ module.exports = {
     //   'ignoreComments': false
     // }],
 
-    // 禁止多个空格
+    // 禁止多个空格 （--fix）
     // http://eslint.cn/docs/0.24.1/rules/no-multi-spaces
     // 'no-multi-spaces': ['error', {
     //   // ignoreEOLComments: false, // TODO: uncomment once v3 is dropped
     // }],
 
-    // 要求中缀操作符周围有空格 (space-infix-ops)
+    // 要求中缀操作符周围有空格 (space-infix-ops) （--fix）
     // http://eslint.cn/docs/rules/space-infix-ops
     // 'space-infix-ops': 'error',
 
@@ -492,7 +492,7 @@ module.exports = {
     // 'brace-style': ['error', '1tbs', { allowSingleLine: true }],
     'brace-style': ['error', '1tbs', { allowSingleLine: false }],
 
-    // 强制在注释中 // 或 /* 使用一致的空格
+    // 强制在注释中 // 或 /* 使用一致的空格 (--fix)
     // http://eslint.cn/docs/rules/spaced-comment
     // 'spaced-comment': ['error', 'always', {
     //   'line': {
@@ -632,7 +632,7 @@ module.exports = {
       ]
     }],
 
-    // 要求箭头函数的参数使用圆括号
+    // 要求箭头函数的参数使用圆括号（-fix）
     // http://eslint.cn/docs/rules/arrow-parens
     // 字符串选项：
     // 'always' (默认) 要求在所有情况下使用圆括号将参数括起来。

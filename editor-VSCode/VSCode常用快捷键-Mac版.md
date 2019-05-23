@@ -27,7 +27,7 @@
 
     选择下一个匹配项 command + D
     选择所有匹配项 shift + command + L
-    在行位添加光标 shift + command + I  (多行编辑,自定义快捷键)
+    在行尾添加光标 shift + command + I  (多行编辑,自定义快捷键)
 
 ## 注释&折叠
 

@@ -8,7 +8,7 @@
 @color-success: #4ed6d1;        // 成功
 @color-warning: #f33;           // 警告
 @color-error: #f33;             // 错误
-@color-info: #ff7300;           // 提示文字
+@color-info: #ff7300;           // 提示
 @color-link: #6f55c0;           // 超链接
 @color-link-hover: #6f55c0;     // 超链接-鼠标悬浮
 @color-price: #6f55c0;          // 价格
@@ -19,7 +19,7 @@
 // ==================================================================================
 
 // 三角形生成器
-.less-triangle-basic(){
+.triangle-basic(){
   overflow: hidden;
   display: inline-block;
   width: 0;
@@ -27,33 +27,33 @@
   font-size: 0;
   line-height: 0;
 }
-.less-triangle(top, @width: 5px, @color: #A2A2A2){
-  .less-triangle-basic();
+.triangle(top, @width: 5px, @color: #A2A2A2){
+  .triangle-basic();
   border: @width solid transparent;
   border-top: none;
   border-bottom-color: @color;
 }
-.less-triangle(bottom, @width: 5px, @color: #A2A2A2){
-  .less-triangle-basic();
+.triangle(bottom, @width: 5px, @color: #A2A2A2){
+  .triangle-basic();
   border: @width solid transparent;
   border-bottom: none;
   border-top-color: @color;
 }
-.less-triangle(left, @width: 5px, @color: #A2A2A2){
-  .less-triangle-basic();
+.triangle(left, @width: 5px, @color: #A2A2A2){
+  .triangle-basic();
   border: @width solid transparent;
   border-left: none;
   border-right-color: @color;
 }
-.less-triangle(right, @width: 5px, @color: #A2A2A2){
-  .less-triangle-basic();
+.triangle(right, @width: 5px, @color: #A2A2A2){
+  .triangle-basic();
   border: @width solid transparent;
   border-right: none;
   border-left-color: @color;
 }
 
 // 箭头生成器
-.less-arrow-basic(){
+.arrow-basic(){
   position: relative;
   display: inline-block;
   &:before,
@@ -64,8 +64,8 @@
     width: 0;
   }
 }
-.less-arrow(top, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
-  .less-arrow-basic();
+.arrow(top, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
+  .arrow-basic();
   &{
     width: @width * 2;
     height: @width;
@@ -88,8 +88,8 @@
     border-bottom-color: @defaltColor;
   }
 }
-.less-arrow(bottom, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
-  .less-arrow-basic();
+.arrow(bottom, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
+  .arrow-basic();
   &{
     width: @width * 2;
     height: @width;
@@ -112,8 +112,8 @@
     border-top-color: @defaltColor;
   }
 }
-.less-arrow(left, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
-  .less-arrow-basic();
+.arrow(left, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
+  .arrow-basic();
   &{
     width: @width;
     height: @width * 2;
@@ -136,8 +136,8 @@
     border-right-color: @defaltColor;
   }
 }
-.less-arrow(right, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
-  .less-arrow-basic();
+.arrow(right, @width: 5px, @color: #A2A2A2, @size: 1px, @defaltColor: #fff){
+  .arrow-basic();
   &{
     width: @width;
     height: @width * 2;
@@ -162,7 +162,7 @@
 }
 
 // 关闭X
-.less-close(@width: 40px, @border: 2px, @color: #A2A2A2) {
+.close(@width: 40px, @border: 2px, @color: #A2A2A2) {
   display: inline-block;
   position: relative;
   overflow: hidden;
@@ -200,7 +200,7 @@
 // ==================================================================================
 
 // 清除浮动
-.less-clearfix(){
+.clearfix(){
   &:after{
     content: "";
     clear: both;
@@ -210,16 +210,18 @@
 }
 
 // 单行省略号
-.less-ellipsis(){
+.text-ellipsis() {
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 // 多行省略号
-.less-ellipsis-lines() {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+.line-clamp(@line) {
   overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
 }

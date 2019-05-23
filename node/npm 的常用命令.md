@@ -188,7 +188,7 @@ https://github.com/creationix/nvm
 
 	nvm arch
 
-安装指定版本的文件，version为"latest"表示安装最新版本node
+安装指定版本的文件，version为"latest"表示安装最新版本node，"stable"-表示最新稳定版本
 
 	nvm install <version>
 
