@@ -54,17 +54,16 @@
 
 
   // // 指定一个包含相对或绝对文件路径的列表
-  "files": [
-    "src/start002-dataTypes/declareFiles.ts",
-    "src/start002-dataTypes/declareFiles.d.ts",
-  ],
+  // "files": [
+  //   "src/start002-dataTypes/declareFiles.ts",
+  //   "src/start002-dataTypes/declareFiles.d.ts",
+  // ],
 
   // // 编译哪些文件
-  // "include": [
-  //   "src/**/*.*",
-  //   "src/**/*.d.ts",
-  //   "src/**/*.ts",
-  // ],
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+  ],
 
   // // 过滤哪些文件
   // "exclude": [

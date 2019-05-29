@@ -27,4 +27,47 @@ jQuery('#foo');
 // 可以在这个页面 [http://microsoft.github.io/TypeSearch/] 搜索你需要的声明文件。
 // =======================================================
 // =======================================================
-new Animal('Tom');
+// 全局变量 声明
+$$('div');
+jq('div');
+jq(function () { });
+var cat = new Animal('Tom');
+console.log(cat.name);
+cat.sayHi();
+var directions = [Direction.Up, Direction.Down, Direction.Left, Direction.Right];
+jQuery.ajax('/api/get_somethins');
+jQuery2.ajax('/api/get_something');
+console.log(jQuery2.version);
+var e = new jQuery2.Event();
+e.blur(jQuery2.EventType.CustomClick);
+jQuery3.ajax('/api/get_something');
+jQuery3.fn.extend({
+    check: function () {
+        return this.each(function () {
+            this.checked = true;
+        });
+    }
+});
+jQuery4.fn.extend({
+    check: function () {
+        return this.each(function () {
+            this.checked = true;
+        });
+    }
+});
+var settings = {
+    method: 'POST',
+    data: {
+        name: 'foo'
+    }
+};
+jQuery5.ajax('/api/post_something', settings);
+var settings2 = {
+    method: 'POST',
+    data: {
+        name: 'foo'
+    }
+};
+jQuery6.ajax('/api/post_something', settings);
+jQuery7('#foo');
+jQuery7.ajax('/api/get_something');
