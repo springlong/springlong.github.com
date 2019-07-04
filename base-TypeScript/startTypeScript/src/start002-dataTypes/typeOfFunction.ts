@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 
 // 函数的类型
 // 在 JavaScript 中，有两种常见的定义函数的方式——函数声明（Function Declaration）和函数表达式（Function Expression）：
 
 // 函数声明（Function Declaration）
-function funDeclaration (x, y) {
+function funDeclaration(x, y) {
   return x + y;
 }
 
@@ -38,7 +39,7 @@ sum(1);
 // =======================================================
 // 函数表达式
 // 如果要我们现在写一个对函数表达式（Function Expression）的定义，可能会写成这样：
-let mySum = function (x: number, y: number) : number {
+let mySum = function (x: number, y: number): number {
   return x + y;
 };
 
@@ -48,14 +49,14 @@ let mySum = function (x: number, y: number) : number {
 // 如果需要我们手动给 mySum 添加类型，则应该是这样：
 // 注意不要混淆了 TypeScript 中的 => 和 ES6 中的 =>。
 // 在 TypeScript 的类型定义中，=> 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。
-let mySum2: (x: number, y: number) => number = function (x: number, y: number) : number {
+let mySum2: (x: number, y: number) => number = function (x: number, y: number): number {
   return x + y;
 };
 
 // 使用箭头函数的函数表达式：
-let mySum3 = (x: number, y: number) : number => {
+let mySum3 = (x: number, y: number): number => {
   return x + y;
-}
+};
 
 
 
@@ -64,13 +65,11 @@ let mySum3 = (x: number, y: number) : number => {
 // 用接口定义函数的形状
 // 我们也可以使用接口的方式来定义一个函数需要符合的形状：
 
-interface SearchFunc {
-  (source: string, substring: string): boolean;
-}
+type SearchFunc = (source: string, substring: string) => boolean;
 
 let mySearch: SearchFunc = function (source: string, substring: string) {
   return source.search(substring) !== -1;
-}
+};
 
 
 
@@ -114,7 +113,7 @@ let tomOnly3 = buildName('Tom');
 
 // 此时就不受「可选参数必须接在必需参数后面」的限制了：
 function buildName4(firstName: string = 'Tom', lastName: string) {
-    return firstName + ' ' + lastName;
+  return firstName + ' ' + lastName;
 }
 let tomcat4 = buildName('Tom', 'Cat');
 let tomOnly4 = buildName(undefined, 'Cat');
