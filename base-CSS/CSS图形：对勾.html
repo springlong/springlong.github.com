@@ -3,32 +3,37 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>CSS实现对勾</title>
+  <title>对勾 - CSS图形</title>
   <style>
-    .test {
+    .shape-check {
+      display: inline-block;
+      width: 35px;
+      height: 20px;
+    }
+    .shape-check::before {
       display: inline-block;
       width: 15px;
       height: 5px;
       background: red;
-      line-height: 0;
-      font-size: 0;
-      vertical-align: middle;
       transform: rotate(45deg);
-    }
-
-    .test:after {
       content: '';
+    }
+    .shape-check::after {
+      position: relative;
+      top: 3px;
+      left: -8px;
       display: block;
-      width: 20px;
+      width: 25px;
       height: 5px;
       background: red;
-      transform: rotate(-90deg) translateX(50%) translateY(50%);
+      transform: rotate(-45deg) translateX(100%) translateY(-45%);
+      content: '';
     }
   </style>
 </head>
 
 <body>
-  <div class="test"></div>
+  <div class="shape-check"></div>对勾
 </body>
 
 </html>

@@ -3,25 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>箭头</title>
+  <title>箭头&三角形 - CSS图形</title>
   <style>
-    .proAll {
-      width: 6em;
-      height: 30px;
-      text-indent: 20px;
-      margin-bottom: 20px;
-      line-height: 30px;
-      color: #333;
-    }
-
-    /* .proAll .triangle{display:inline-block;padding-bottom:9px;}
-        .proAll .triangle:before,
-        .proAll .triangle:after{content:"";width:0px;height:0;border-width:5px;border-style:solid;border-color:transparent;}
-        .proAll .triangle:before{border-top-color:#A2A2A2;}
-        .proAll .triangle:after{border-top-color:#FFF;} */
-    /* .triangle{position:relative;display:block;width:10px;height:5px;}
-        .triangle:before{content:".";position:absolute;left:0;bottom:0;border:5px solid transparent;}
-        .triangle:before{content:".";position:absolute;left:0;bottom:-1;z-index:2;border:5px solid transparent;} */
     body {
       width: 200px;
       margin: 0 auto;
@@ -30,87 +13,77 @@
     p {
       clear: both;
       height: 30px;
-      line-height: 30px;
       margin-top: 20px;
+      line-height: 30px;
     }
 
-    /* triangle */
-    /* ============================================================================ */
+    /*
+     triangle
+     ============================================================================
+    */
     .triangle-top {
-      overflow: hidden;
       display: inline-block;
       width: 0;
       height: 0;
-      border-left: 5px solid transparent;
-      /* 左边框的宽 */
-      border-right: 5px solid transparent;
-      /* 右边框的宽 */
-      border-bottom: 5px solid #2f2f2f;
-      /* 下边框的高度，以及显示颜色 */
+      overflow: hidden;
       font-size: 0;
       line-height: 0;
+      border-right: 5px solid transparent; /* 右边框的宽 */
+      border-bottom: 5px solid #2f2f2f; /* 下边框的高度，以及显示颜色 */
+      border-left: 5px solid transparent;  /* 左边框的宽 */
     }
 
     .triangle-bottom {
-      overflow: hidden;
       display: inline-block;
       width: 0;
       height: 0;
-      border-left: 5px solid transparent;
-      /* 左边框的宽 */
-      border-right: 5px solid transparent;
-      /* 右边框的宽 */
-      border-top: 5px solid #2f2f2f;
-      /* 下边框的高度，以及显示颜色 */
+      overflow: hidden;
       font-size: 0;
       line-height: 0;
+      border-top: 5px solid #2f2f2f; /* 下边框的高度，以及显示颜色 */
+      border-right: 5px solid transparent; /* 右边框的宽 */
+      border-left: 5px solid transparent; /* 左边框的宽 */
     }
 
     .triangle-left {
-      overflow: hidden;
       display: inline-block;
       width: 0;
       height: 0;
-      border-top: 5px solid transparent;
-      /* 上边框的高 */
-      border-bottom: 5px solid transparent;
-      /* 下边框的高 */
-      border-right: 5px solid #2f2f2f;
-      /* 右边框的宽度，以及显示颜色 */
+      overflow: hidden;
       font-size: 0;
       line-height: 0;
+      border-top: 5px solid transparent;  /* 上边框的高 */
+      border-right: 5px solid #2f2f2f; /* 右边框的宽度，以及显示颜色 */
+      border-bottom: 5px solid transparent; /* 下边框的高 */
     }
 
     .triangle-right {
-      overflow: hidden;
       display: inline-block;
       width: 0;
       height: 0;
-      border-top: 5px solid transparent;
-      /* 上边框的高 */
-      border-bottom: 5px solid transparent;
-      /* 下边框的高 */
-      border-left: 5px solid #2f2f2f;
-      /* 左边框的宽度，以及显示颜色 */
+      overflow: hidden;
       font-size: 0;
       line-height: 0;
+      border-top: 5px solid transparent; /* 上边框的高 */
+      border-bottom: 5px solid transparent; /* 下边框的高 */
+      border-left: 5px solid #2f2f2f; /* 左边框的宽度，以及显示颜色 */
     }
 
-    /* arrow */
-    /* ============================================================================ */
+    /*
+      arrow
+      ============================================================================
+    */
     .arrow {
       position: relative;
       display: inline-block;
     }
-
-    .arrow:before,
-    .arrow:after {
-      content: '';
+    .arrow::before,
+    .arrow::after {
       position: absolute;
-      height: 0;
       width: 0;
-      border: 5px solid transparent;
-      /* arrow size */
+      height: 0;
+      border: 5px solid transparent; /* arrow size */
+      content: '';
     }
 
     /* arrow top */
@@ -118,14 +91,12 @@
       width: 10px;
       height: 5px;
     }
-
-    .arrow-top:before {
+    .arrow-top::before {
       top: -6px;
       left: 0;
       border-bottom-color: blue;
     }
-
-    .arrow-top:after {
+    .arrow-top::after {
       top: -5px;
       left: 0;
       border-bottom-color: #fff;
@@ -136,14 +107,12 @@
       width: 10px;
       height: 5px;
     }
-
-    .arrow-bottom:before {
+    .arrow-bottom::before {
       top: -5px;
       left: 0;
       border-top-color: blue;
     }
-
-    .arrow-bottom:after {
+    .arrow-bottom::after {
       top: -6px;
       left: 0;
       border-top-color: #fff;
@@ -154,14 +123,12 @@
       width: 5px;
       height: 10px;
     }
-
-    .arrow-left:before {
+    .arrow-left::before {
       top: 0;
-      left: 0px;
+      left: 0;
       border-right-color: blue;
     }
-
-    .arrow-left:after {
+    .arrow-left::after {
       top: 0;
       left: 1px;
       border-right-color: #fff;
@@ -172,14 +139,12 @@
       width: 5px;
       height: 10px;
     }
-
-    .arrow-right:before {
+    .arrow-right::before {
       top: 0;
       left: 0;
       border-left-color: blue;
     }
-
-    .arrow-right:after {
+    .arrow-right::after {
       top: 0;
       left: -1px;
       border-left-color: #fff;
@@ -192,6 +157,7 @@
   <p>三角形-向下：<span class="triangle-bottom"></span></p>
   <p>三角形-向左：<span class="triangle-left"></span></p>
   <p>三角形-向右：<span class="triangle-right"></span></p>
+
   <p class="triangle-out">箭头-向上：<span class="arrow arrow-top"></span></p>
   <p class="triangle-out">箭头-向下：<span class="arrow arrow-bottom"></span></p>
   <p class="triangle-out">箭头-向左：<span class="arrow arrow-left"></span></p>

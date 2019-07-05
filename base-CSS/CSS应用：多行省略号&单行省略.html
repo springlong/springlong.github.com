@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS应用：多行省略号&单行省略</title>
+  <style>
+    .wrapper {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .box {
+      padding: 20px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+    }
+
+    .cont {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    /* 多行省略号应用代码 */
+    .cont-clamp {
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 2;
+      /* autoprefixer 默认会将-webkit-box-orient移除，需要设置为忽略才行 */
+      /* autoprefixer: ignore next */
+      -webkit-box-orient: vertical;
+    }
+
+    /* 单行省略号应用代码 */
+    .cont-ellipsis {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="box">
+      <div class="cont"> “形散”主要是说散文取材十分广泛自由，不受时间和空间的限制；表现手法不拘一格：可以叙述事件的发展，可以描写人物形象，可以托物抒情，可以发表议论，而且作者可以根据内容需要自由调整、随意变化。“神不散”主要是从散文的立意方面说的，即散文所要表达的主题必须明确而集中，无论散文的内容多么广泛，表现手法多么灵活，无不为更好的表达主题服务。 </div>
+    </div>
+    <div class="box">
+      <div class="cont cont-clamp">【多行省略号】 “形散”主要是说散文取材十分广泛自由，不受时间和空间的限制；表现手法不拘一格：可以叙述事件的发展，可以描写人物形象，可以托物抒情，可以发表议论，而且作者可以根据内容需要自由调整、随意变化。“神不散”主要是从散文的立意方面说的，即散文所要表达的主题必须明确而集中，无论散文的内容多么广泛，表现手法多么灵活，无不为更好的表达主题服务。 </div>
+    </div>
+    <div class="box">
+      <div class="cont cont-ellipsis">【单行省略号】 “形散”主要是说散文取材十分广泛自由，不受时间和空间的限制；表现手法不拘一格：可以叙述事件的发展，可以描写人物形象，可以托物抒情，可以发表议论，而且作者可以根据内容需要自由调整、随意变化。“神不散”主要是从散文的立意方面说的，即散文所要表达的主题必须明确而集中，无论散文的内容多么广泛，表现手法多么灵活，无不为更好的表达主题服务。 </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>关闭X - CSS图形</title>
   <style>
     .closeBox {
       position: relative;
@@ -13,11 +13,15 @@
       border: 1px solid #ddd;
     }
 
-    .close {
-      display: block;
+    /*
+     close-css绘制方案
+     ============================================================================
+    */
+    .shape-close {
       position: absolute;
-      right: 5px;
       top: 5px;
+      right: 5px;
+      display: block;
       width: 20px;
       height: 20px;
       -webkit-transform: rotate(45deg);
@@ -27,55 +31,53 @@
       transform: rotate(45deg);
       cursor: pointer;
     }
-
-    .close:before {
-      content: '';
+    .shape-close::before {
+      position: absolute;
+      top: 0;
+      left: 50%;
       width: 2px;
       height: 100%;
-      position: absolute;
-      left: 50%;
-      top: 0;
       margin-left: -1px;
       background-color: #ddd;
-    }
-
-    .close:after {
       content: '';
+    }
+    .shape-close::after {
+      position: absolute;
+      top: 50%;
+      left: 0;
       width: 100%;
       height: 2px;
-      position: absolute;
-      left: 0;
-      top: 50%;
       margin-top: -1px;
       background-color: #ddd;
+      content: '';
     }
-
-    .close:hover {
+    .shape-close:hover {
       background: url(about:blank);
     }
-
-    .close:hover:before {
+    .shape-close:hover::before {
+      background-color: #4ED6D1;
+    }
+    .shape-close:hover::after {
       background-color: #4ED6D1;
     }
 
-    .close:hover:after {
-      background-color: #4ED6D1;
-    }
-
-    .close-ie {
+    /*
+     close-特殊文字方案
+     ============================================================================
+    */
+    .shape-close-font {
       position: absolute;
-      left: 0;
       top: 0;
+      left: 0;
       width: 30px;
       height: 30px;
-      font-size: 40px;
-      line-height: 20px;
-      font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial;
-      cursor: pointer;
       color: #ddd;
+      font-size: 40px;
+      font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, serif;
+      line-height: 20px;
+      cursor: pointer;
     }
-
-    .close-ie:hover {
+    .shape-close-font:hover {
       color: #4ed6d1;
     }
   </style>
@@ -83,8 +85,8 @@
 
 <body>
   <div class="closeBox">
-    <span class="close" id="closeIcon"></span>
-    <span class="close-ie" id="closeIcon">&times;</span>
+    <span class="shape-close"></span>
+    <span class="shape-close-font">&times;</span>
   </div>
 </body>
 
