@@ -1,12 +1,34 @@
-# npm 的常用命令
+# 关于NodeJs
+
+NodeJS，前端开发必备工具。
+
+Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。
+
+Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。
+
+Node.js 的包管理器 `npm` (Node Package Manager)，是全球最大的开源库生态系统。
+
+```shell
+brew install node
+```
+
+nodejs 和 npm 的仓库托管在S3上，在国内访问十分困难，这里可以用淘宝的镜像站 `npm.taobao.org` 代替。安装完 Node 后建议设置 npm 镜像以加速后面的过程：
+
+```shell
+npm config set registry https://registry.npm.taobao.org --global
+npm config set disturl https://npm.taobao.org/dist --global
+```
+
+
+## npm 的常用命令
 
 `node -v`
 
 	查看已安装Node的版本号。
 
-`npm -v`
+`npm -h`
 
-	查看已安装NPM的版本号
+	查看Node的命令帮助。
 
 `npm login`
 
@@ -27,7 +49,7 @@
 
 `npm install`
 
-	install 命令的别名有：i, isntall, add
+	install 命令的别名有：i, install, add
 
 	无任何参数的情况下，表示根据当前目录的package.json文件中,
 
@@ -120,6 +142,18 @@
 `npm link`
 
 	命令可以将一个任意位置的npm包链接到全局执行环境，从而在任意位置使用命令行都可以直接运行该npm包。
+
+`npm version major`
+
+	主要版本号+1。
+
+`npm version minor`
+
+	小版本号+1。
+
+`npm version patch`
+
+	补丁版本号+1。
 
 
 ## 使用cnpm
