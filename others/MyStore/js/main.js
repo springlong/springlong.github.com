@@ -1,4 +1,5 @@
 var searchObj = getUrlSearch() || {};
+console.log({searchObj});
 
 // 置换网页标题
 if (searchObj.title) {
