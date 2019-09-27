@@ -1,0 +1,57 @@
+#container {
+  padding: 0 10px;
+}
+
+#goodsBox {
+
+}
+
+.goods-group {
+  margin-bottom: 50px;
+}
+
+.goods-group-title {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  line-height: 32px;
+  font-weight: bold;
+}
+
+.goods-group-cont {
+
+}
+
+.goods-list-item {
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.goods-list-item-inner {
+  white-space: nowrap;
+}
+
+.goods-item-link {
+  display: inline-block;
+}
+
+.goods-item-link:hover {
+  text-decoration: none;
+}
+
+.goods-item-image-box {
+  padding: 10px;
+  margin-right: 10px;
+}
+
+.goods-item-image {
+  width: 220px;
+  height: 392px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,.3);
+}
+
+.goods-item-title {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 26px;
+}

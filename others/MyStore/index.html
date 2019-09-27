@@ -1,0 +1,49 @@
+<DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>龙泉的星链小店</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no">
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="./js/vue.min.js"></script>
+</head>
+<body>
+	<div id="container">
+		<div id="goodsBox">
+			<div
+				v-for="(item, index) in goodsGroup"
+				v-if="item !== undefined"
+				class="goods-group"
+			>
+				<div class="goods-group-title">{{item.name}}</div>
+				<div class="goods-group-cont">
+					<div
+						v-for="(goodsItem, goodsIndex) in item.goods"
+						class="goods-list-item"
+					>
+						<div class="goods-list-item-inner">
+							<a
+								v-for="(picItem, picIndex) in goodsItem.pictures"
+								class="goods-item-link"
+								:href="picItem.url"
+								target="_blank"
+							>
+								<div class="goods-item-image-box">
+									<img class="goods-item-image" :src="picItem.image" />
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="./data/dataBedroom.js"></script>
+	<script src="./data/dataDaily.js"></script>
+	<script src="./data/dataFood.js"></script>
+	<script src="./data/datakitchenCookers.js"></script>
+	<script src="./data/datakitchenMaterial.js"></script>
+	<script src="./js/main.js"></script>
+</body>
+</html>
