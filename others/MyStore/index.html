@@ -12,11 +12,22 @@
 	<div id="container">
 		<div id="goodsBox">
 			<div
+				v-if="isSearch"
+				class="goods-group-title"
+			>
+				{{searchTitle}}
+			</div>
+			<div
 				v-for="(item, index) in goodsGroup"
 				v-if="item !== undefined"
 				class="goods-group"
 			>
-				<div class="goods-group-title">{{item.name}}</div>
+				<div
+					v-if="showGroupTitle"
+					class="goods-group-title"
+				>
+					{{isSearch ? searchTitle : item.name}}
+				</div>
 				<div class="goods-group-cont">
 					<div
 						v-for="(goodsItem, goodsIndex) in item.goods"
