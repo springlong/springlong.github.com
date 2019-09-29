@@ -12,21 +12,14 @@
 	<div id="container">
 		<div id="goodsBox">
 			<div
-				v-if="isSearch"
-				class="goods-group-title"
-			>
-				{{searchTitle}}
-			</div>
-			<div
-				v-for="(item, index) in goodsGroup"
+				v-for="(item, index) in useGroupData"
 				v-if="item !== undefined"
 				class="goods-group"
 			>
 				<div
-					v-if="showGroupTitle"
 					class="goods-group-title"
 				>
-					{{isSearch ? searchTitle : item.name}}
+					{{item.name}}
 				</div>
 				<div class="goods-group-cont">
 					<div
@@ -40,6 +33,11 @@
 								:href="picItem.url"
 								target="_blank"
 							>
+								<div class="goods-item-item-info">
+									<div class="goods-item-item-info-platform" :class="[picItem.type]">
+										{{platformType[picItem.type].name}}
+									</div>
+								</div>
 								<div class="goods-item-image-box">
 									<img class="goods-item-image" :src="picItem.image" />
 								</div>
@@ -53,6 +51,7 @@
 	<script src="./data/dataBedroom.js?t=20190927"></script>
 	<script src="./data/dataDaily.js?t=20190927"></script>
 	<script src="./data/dataFood.js?t=20190927"></script>
+	<script src="./data/dataMaternal.js?t=20190927"></script>
 	<script src="./data/datakitchenCookers.js?t=20190927"></script>
 	<script src="./data/datakitchenMaterial.js?t=20190927"></script>
 	<script src="./js/main.js?t=20190927"></script>

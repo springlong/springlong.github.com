@@ -40,6 +40,39 @@
   text-decoration: none;
 }
 
+.goods-item-item-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding: 10px;
+}
+
+.goods-item-item-info-platform {
+  display: inline-block;
+  padding: 0 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.goods-item-item-info-platform.star {
+  color: #fff;
+  background-color: #e9393b;
+  opacity: 0.9;
+}
+
+.goods-item-item-info-platform.tmall {
+  color: #fff;
+  background-color: #7b0e0b;
+  opacity: 0.9;
+}
+
+.goods-item-item-info-platform.jd {
+  color: #fff;
+  background-color: #380604;
+  opacity: 0.9;
+}
+
 .goods-item-image-box {
   padding: 10px;
 }

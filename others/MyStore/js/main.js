@@ -1,5 +1,4 @@
 var searchObj = getUrlSearch() || {};
-console.log({searchObj});
 
 // 置换网页标题
 if (searchObj.title) {
@@ -10,12 +9,12 @@ if (searchObj.title) {
 var vm = new Vue({
   el: '#goodsBox',
   data: {
-    // 是否处于关键字展示模式
-    isSearch: searchObj.keywords,
-    // 关键字展示用的标题
-    searchTitle: decodeURIComponent(searchObj.title),
-    // 是否显示分组标题
-    showGroupTitle: !searchObj.keywords,
+    // 平台类型
+    platformType: {
+      jd: { name: '京东' },
+      tmall: { name: '天猫' },
+      star: { name: '星链' },
+    },
     // 商品组合
     goodsGroup: [
       window.datakitchenMaterial,  // 厨房用料
@@ -33,7 +32,36 @@ var vm = new Vue({
       window.dataHomeElectronic,  // 电器设备
       window.dataElectronicDigital,  // 电子数码
       window.dataOhters,  // 其它用品
-    ]
+    ],
+  },
+  computed: {
+    // 最终使用的数据
+    useGroupData: function() {
+      return searchObj.keywords ? this.filterKeywordsData : this.goodsGroup;
+    },
+    // 关键字展示数据
+    filterKeywordsData: function(){
+      if (searchObj.keywords) {
+        const searchKeywords = decodeURIComponent(searchObj.keywords);
+        const searchGroup = {
+          name: decodeURIComponent(searchObj.title || `【龙泉的星链小店】为您推荐：${searchKeywords}`),
+          goods: []
+        };
+
+        this.goodsGroup.forEach((groupItem) => {
+          if (groupItem && groupItem.goods && groupItem.goods.length >= 1) {
+            groupItem.goods.forEach((goodsItem) => {
+              if (goodsItem.keywords.indexOf(searchKeywords) !== -1) {
+                searchGroup.goods.push(goodsItem);
+              }
+            });
+          }
+        });
+
+        return [searchGroup];
+      }
+      return this.goodsGroup;
+    },
   }
 });
 
