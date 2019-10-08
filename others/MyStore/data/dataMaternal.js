@@ -5,6 +5,8 @@ window.dataFood = {
     {
       title: '美素佳儿-妈妈孕产妇配方奶粉-900g',
       keywords: ['奶粉', '美素佳儿'],
+      goodsPrice: 258,
+      commission: 5.73,
       pictures: [
         {
           type: 'star',
@@ -13,11 +15,13 @@ window.dataFood = {
         },
         {
           type: 'tmall',
+          goodsPrice: 288,
           image: './images/dataMaternal/美素佳儿-妈妈孕产妇配方奶粉-900g-tmall.PNG',
           url: 'https://m.tb.cn/h.enl0li0?sm=18bfa1',
         },
         {
           type: 'jd',
+          goodsPrice: 288,
           image: './images/dataMaternal/美素佳儿-妈妈孕产妇配方奶粉-900g-jd.PNG',
           url: 'https://item.m.jd.com/product/4589263.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
         },

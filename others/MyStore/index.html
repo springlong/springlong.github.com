@@ -12,18 +12,18 @@
 	<div id="container">
 		<div id="goodsBox">
 			<div
-				v-for="(item, index) in useGroupData"
-				v-if="item !== undefined"
+				v-for="(groupItem, index) in useGroupData"
+				v-if="groupItem !== undefined"
 				class="goods-group"
 			>
 				<div
 					class="goods-group-title"
 				>
-					{{item.name}}
+					{{groupItem.name}}
 				</div>
 				<div class="goods-group-cont">
 					<div
-						v-for="(goodsItem, goodsIndex) in item.goods"
+						v-for="(goodsItem, goodsIndex) in groupItem.goods"
 						class="goods-list-item"
 					>
 						<div class="goods-list-item-inner">
@@ -36,6 +36,22 @@
 								<div class="goods-item-item-info">
 									<div class="goods-item-item-info-platform" :class="[picItem.type]">
 										{{platformType[picItem.type].name}}
+									</div>
+									<div
+										v-if="goodsItem.showPrice && picItem.type === 'star'"
+										class="goods-item-item-info-price"
+									>
+										<p>标准销售价：{{goodsItem.goodsPriceStr}}</p>
+										<p v-if="vipLevel === '0' || vipLevel === '1'">一星会员价：{{goodsItem.vipPriceLevelOne}}，佣金：{{goodsItem.commissionLevelOne}}</p>
+										<p v-if="vipLevel === '0' || vipLevel === '3'">三星会员价：{{goodsItem.vipPriceLevelThree}}，佣金：{{goodsItem.commissionLevelThree}}</p>
+										<p v-if="vipLevel === '0' || vipLevel === '5'">五星会员价：{{goodsItem.vipPriceLevelFive}}，佣金：{{goodsItem.commissionLevelFive}}</p>
+									</div>
+									<div
+										v-if="goodsItem.showPrice && picItem.type !== 'star'"
+										class="goods-item-item-info-price"
+									>
+										<p>标准销售价：{{picItem.goodsPrice.toFixed(2)}}</p>
+										<p v-if="picItem.couponPrice">券后购买价：{{picItem.couponPrice.toFixed(2)}}</p>
 									</div>
 								</div>
 								<div class="goods-item-image-box">

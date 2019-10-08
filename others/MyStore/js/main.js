@@ -1,4 +1,18 @@
+// title - 网页标题
+// keywords - 搜索关键词
+// showPrice - 是否显示价格信息
+// vipLevel - 星链会员等级
+// filterType = 'cheapBySale' - 仅显示星链售价比天猫淘宝售价，便宜的商品
+// filterType = 'cheapByPay' - 仅显示星链售价比天猫淘宝支付价格，便宜的商品
+// filterType = 'cheapByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，便宜的商品
+// filterType = 'expensiveBySale' - 仅显示星链售价比天猫淘宝售价，贵的商品
+// filterType = 'expensiveByPay' - 仅显示星链售价比天猫淘宝支付价格，贵的商品
+// filterType = 'expensiveByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，贵的商品
+
+// showPrice=1&vipLevel=0&filterType=3&keywords=&title=
+
 var searchObj = getUrlSearch() || {};
+console.log('searchObj', searchObj);
 
 // 置换网页标题
 if (searchObj.title) {
@@ -15,6 +29,8 @@ var vm = new Vue({
       tmall: { name: '天猫' },
       star: { name: '星链' },
     },
+    // 星链会员等级
+    vipLevel: searchObj.vipLevel || '0',
     // 商品组合
     goodsGroup: [
       window.datakitchenMaterial,  // 厨房用料
@@ -37,10 +53,10 @@ var vm = new Vue({
   computed: {
     // 最终使用的数据
     useGroupData: function() {
-      return searchObj.keywords ? this.filterKeywordsData : this.goodsGroup;
-    },
-    // 关键字展示数据
-    filterKeywordsData: function(){
+      const adjustData = adjustGoodsGroup(this.goodsGroup);
+      let useGroupData = adjustData;
+
+      // 根据关键词筛选数据
       if (searchObj.keywords) {
         const searchKeywords = decodeURIComponent(searchObj.keywords);
         const searchGroup = {
@@ -48,7 +64,7 @@ var vm = new Vue({
           goods: []
         };
 
-        this.goodsGroup.forEach((groupItem) => {
+        adjustData.forEach((groupItem) => {
           if (groupItem && groupItem.goods && groupItem.goods.length >= 1) {
             groupItem.goods.forEach((goodsItem) => {
               if (goodsItem.keywords.indexOf(searchKeywords) !== -1) {
@@ -58,12 +74,108 @@ var vm = new Vue({
           }
         });
 
-        return [searchGroup];
+        useGroupData = [searchGroup];
       }
-      return this.goodsGroup;
+
+      return useGroupData;
     },
   }
 });
+
+// 返回调整后的商品数据
+function adjustGoodsGroup(originalData) {
+  const goodsGroup = [];
+  originalData.forEach((groupItem) => {
+    if (groupItem && groupItem.goods && groupItem.goods.length >= 1) {
+      const filterGoods = [];
+
+      groupItem.goods.forEach((goodsItem) => {
+        if (goodsItem.goodsPrice) {
+          // 计算不同级别会员的商品价格
+          const commissionLevelOne = (goodsItem.commission || 0) / 1.2;
+          goodsItem.showPrice = searchObj.showPrice !== '0';
+          goodsItem.commissionLevelOne = (commissionLevelOne).toFixed(2);
+          goodsItem.commissionLevelThree = (commissionLevelOne*1.1).toFixed(2);
+          goodsItem.commissionLevelFive = (commissionLevelOne*1.2).toFixed(2);
+          goodsItem.vipPriceLevelOne = (goodsItem.goodsPrice - commissionLevelOne).toFixed(2);
+          goodsItem.vipPriceLevelThree = (goodsItem.goodsPrice - commissionLevelOne*1.1).toFixed(2);
+          goodsItem.vipPriceLevelFive = (goodsItem.goodsPrice - commissionLevelOne*1.2).toFixed(2);
+          goodsItem.goodsPriceStr = parseFloat(goodsItem.goodsPrice).toFixed(2);
+
+          // 判断星链的售价格是否比其他平台的销售价格便宜
+          goodsItem.isCheapBySale = true;
+          goodsItem.pictures.some((picItem) => {
+            const salePrice = picItem.goodsPrice || 0;
+            if (picItem.type !== 'star' && salePrice < goodsItem.goodsPrice) {
+              goodsItem.isCheapBySale = false;
+              return true;
+            }
+            return false;
+          });
+
+          // 判断星链的支付价格是否比其他平台的支付价格便宜
+          goodsItem.isCheapByPay = true;
+          goodsItem.pictures.some((picItem) => {
+            const payPrice = picItem.couponPrice || picItem.goodsPrice || 0;
+            if (picItem.type !== 'star' && payPrice < goodsItem.goodsPrice) {
+              goodsItem.isCheapByPay = false;
+              return true;
+            }
+            return false;
+          });
+
+          // 判断星链的一星会员价格是否比其他平台的支付价格便宜
+          goodsItem.isCheapByVip = true;
+          goodsItem.pictures.some((picItem) => {
+            const payPrice = picItem.couponPrice || picItem.goodsPrice || 0;
+            if (picItem.type !== 'star' && payPrice < goodsItem.vipPriceLevelOne) {
+              goodsItem.isCheapByVip = false;
+              return true;
+            }
+            return false;
+          });
+
+          // filterType = 'cheapBySale' - 仅显示星链售价比天猫淘宝售价，便宜的商品
+          if (searchObj.filterType === 'cheapBySale' && goodsItem.isCheapBySale) {
+            filterGoods.push(goodsItem);
+          }
+
+          // filterType = 'cheapByPay' - 仅显示星链售价比天猫淘宝支付价格，便宜的商品
+          if (searchObj.filterType === 'cheapByPay' && goodsItem.isCheapByPay) {
+            filterGoods.push(goodsItem);
+          }
+
+          // filterType = 'cheapByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，便宜的商品
+          if (searchObj.filterType === 'cheapByVip' && goodsItem.isCheapByVip) {
+            filterGoods.push(goodsItem);
+          }
+
+          // filterType = 'expensiveBySale' - 仅显示星链售价比天猫淘宝售价，贵的商品
+          if (searchObj.filterType === 'expensiveBySale' && !goodsItem.isCheapBySale) {
+            filterGoods.push(goodsItem);
+          }
+
+          // filterType = 'expensiveByPay' - 仅显示星链售价比天猫淘宝支付价格，贵的商品
+          if (searchObj.filterType === 'expensiveByPay' && !goodsItem.isCheapByPay) {
+            filterGoods.push(goodsItem);
+          }
+
+          // filterType = 'expensiveByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，贵的商品
+          if (searchObj.filterType === 'expensiveByVip' && !goodsItem.isCheapByVip) {
+            filterGoods.push(goodsItem);
+          }
+        }
+      });
+
+      if (searchObj.filterType) {
+        groupItem.goods = null;
+        groupItem.goods = filterGoods;
+      }
+    }
+    goodsGroup.push(groupItem);
+  });
+  return goodsGroup;
+}
 
 
 /**
@@ -75,7 +187,6 @@ var vm = new Vue({
  * @return {String|Object|undefined}
  */
 function getUrlSearch(strUrl, strName) {
-  console.log(strUrl);
   // 参数智能化选择
   // 如果不传参数，则表示默认使用当前网页url，并返回search组成的对象
   if (arguments.length === 0) {
