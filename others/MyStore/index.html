@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/main.css" />
     <script src="./js/vue.min.js"></script>
+		<script src="./js/vue-lazyload.js"></script>
+		<script>
+			Vue.use(VueLazyload);
+		</script>
 </head>
 <body>
 	<iframe id="iframeBox" src="https://friend.380star.com/goods.do?goodsid=7375807&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864"></iframe>
@@ -56,7 +60,7 @@
 									</div>
 								</div>
 								<div class="goods-item-image-box">
-									<img class="goods-item-image" :src="picItem.image" />
+									<img class="goods-item-image" v-lazy="picItem.image" />
 								</div>
 								<div v-if="picItem.isInvalid" class="goods-item-invalid">
 									<div class="goods-item-invalid-text">已失效</div>
@@ -68,12 +72,12 @@
 			</div>
 		</div>
 	</div>
-	<script src="./data/dataBedroom.js?t=20190928"></script>
-	<script src="./data/dataDaily.js?t=20190928"></script>
-	<script src="./data/dataFood.js?t=20190928"></script>
-	<script src="./data/dataMaternal.js?t=20190928"></script>
-	<script src="./data/datakitchenCookers.js?t=20190928"></script>
-	<script src="./data/datakitchenMaterial.js?t=20190928"></script>
-	<script src="./js/main.js?t=20190928"></script>
+	<script src="./data/dataBedroom.js?t=20190930"></script>
+	<script src="./data/dataDaily.js?t=20190930"></script>
+	<script src="./data/dataFood.js?t=20190930"></script>
+	<script src="./data/dataMaternal.js?t=20190930"></script>
+	<script src="./data/datakitchenCookers.js?t=20190930"></script>
+	<script src="./data/datakitchenMaterial.js?t=20190930"></script>
+	<script src="./js/main.js?t=20190930"></script>
 </body>
 </html>
