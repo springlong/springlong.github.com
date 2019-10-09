@@ -9,6 +9,7 @@
     <script src="./js/vue.min.js"></script>
 </head>
 <body>
+	<iframe id="iframeBox" src="https://friend.380star.com/goods.do?goodsid=7375807&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864"></iframe>
 	<div id="container">
 		<div id="goodsBox">
 			<div
@@ -56,6 +57,9 @@
 								</div>
 								<div class="goods-item-image-box">
 									<img class="goods-item-image" :src="picItem.image" />
+								</div>
+								<div v-if="picItem.isInvalid" class="goods-item-invalid">
+									<div class="goods-item-invalid-text">已失效</div>
 								</div>
 							</a>
 						</div>
