@@ -64,6 +64,10 @@ var vm = new Vue({
           goods: []
         };
 
+        if (!searchObj.title) {
+          document.title = decodeURIComponent(`【龙泉的星链小店】为您推荐：${searchKeywords}`);
+        }
+
         adjustData.forEach((groupItem) => {
           if (groupItem && groupItem.goods && groupItem.goods.length >= 1) {
             groupItem.goods.forEach((goodsItem) => {
