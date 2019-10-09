@@ -1,5 +1,5 @@
 
-window.dataFood = {
+window.dataMaternal = {
   name: '母婴用品',
   goods: [
     {

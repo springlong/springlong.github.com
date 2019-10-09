@@ -2,6 +2,7 @@
 // keywords - 搜索关键词
 // showPrice - 是否显示价格信息
 // vipLevel - 星链会员等级
+// goodsType - 展示的商品分类
 // filterType = 'cheapBySale' - 仅显示星链售价比天猫淘宝售价，便宜的商品
 // filterType = 'cheapByPay' - 仅显示星链售价比天猫淘宝支付价格，便宜的商品
 // filterType = 'cheapByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，便宜的商品
@@ -12,6 +13,8 @@
 // showPrice=1&vipLevel=0&filterType=3&keywords=&title=
 
 var searchObj = getUrlSearch() || {};
+var goodsType = searchObj.goodsType;
+var isNotType = goodsType === undefined;
 console.log('searchObj', searchObj);
 
 // 置换网页标题
@@ -33,21 +36,22 @@ var vm = new Vue({
     vipLevel: searchObj.vipLevel || '0',
     // 商品组合
     goodsGroup: [
-      window.datakitchenMaterial,  // 厨房用料
-      window.datakitchenCookers,  // 厨房用具
-      window.dataFood,  // 食品零食
-      window.dataDrinks,  // 酒水饮料
-      window.dataDaily,  // 日常用品
-      window.dataClean,  // 清洁卫生
-      window.dataClean,  // 美妆用品
-      window.dataMaternal,  // 母婴用品
-      window.dataJewelry,  // 珠宝首饰
-      window.dataDress,  // 服饰鞋包
-      window.dataBedroom,  // 家居家纺
-      window.dataFurniture,  // 家用家具
-      window.dataHomeElectronic,  // 电器设备
-      window.dataElectronicDigital,  // 电子数码
-      window.dataOhters,  // 其它用品
+      isNotType || goodsType === 'datakitchenMaterial' ? window.datakitchenMaterial : undefined,  // 厨房用料
+      isNotType || goodsType === 'datakitchenCookers' ? window.datakitchenCookers : undefined,  // 厨房用具
+      isNotType || goodsType === 'dataFood' ? window.dataFood : undefined,  // 食品零食
+      isNotType || goodsType === 'dataDrinks' ? window.dataDrinks : undefined,  // 酒水饮料
+      isNotType || goodsType === 'dataDaily' ? window.dataDaily : undefined,  // 日常用品
+      isNotType || goodsType === 'dataClean' ? window.dataClean : undefined,  // 清洁卫生
+      isNotType || goodsType === 'dataWash' ? window.dataWash : undefined,  // 洗护用品
+      isNotType || goodsType === 'dataBeautiful' ? window.dataBeautiful : undefined,  // 美妆用品
+      isNotType || goodsType === 'dataMaternal' ? window.dataMaternal : undefined,  // 母婴用品
+      isNotType || goodsType === 'dataJewelry' ? window.dataJewelry : undefined,  // 珠宝首饰
+      isNotType || goodsType === 'dataDress' ? window.dataDress : undefined,  // 服饰鞋包
+      isNotType || goodsType === 'dataBedroom' ? window.dataBedroom : undefined,  // 家居家纺
+      isNotType || goodsType === 'dataFurniture' ? window.dataFurniture : undefined,  // 家用家具
+      isNotType || goodsType === 'dataHomeElectronic' ? window.dataHomeElectronic : undefined,  // 电器设备
+      isNotType || goodsType === 'dataElectronicDigital' ? window.dataElectronicDigital : undefined,  // 电子数码
+      isNotType || goodsType === 'dataOhters' ? window.dataOhters : undefined,  // 其它用品
     ],
   },
   computed: {
