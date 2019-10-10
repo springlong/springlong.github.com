@@ -38,13 +38,16 @@
 								:href="picItem.url"
 								target="_blank"
 							>
-								<div class="goods-item-item-info">
-									<div class="goods-item-item-info-platform" :class="[picItem.type]">
+								<div class="goods-item-info">
+									<div class="goods-item-info-platform" :class="[picItem.type]">
 										{{platformType[picItem.type].name}}
 									</div>
+								</div>
+								<div class="goods-item-info-bottom">
 									<div
 										v-if="goodsItem.showPrice && picItem.type === 'star'"
-										class="goods-item-item-info-price"
+										class="goods-item-info-price"
+										:class="[picItem.type]"
 									>
 										<p>标准销售价：{{goodsItem.goodsPriceStr}}</p>
 										<p v-if="vipLevel === '0' || vipLevel === '1'">一星会员价：{{goodsItem.vipPriceLevelOne}}，佣金：{{goodsItem.commissionLevelOne}}</p>
@@ -53,7 +56,8 @@
 									</div>
 									<div
 										v-if="goodsItem.showPrice && picItem.type !== 'star'"
-										class="goods-item-item-info-price"
+										class="goods-item-info-price"
+										:class="[picItem.type]"
 									>
 										<p>标准销售价：{{picItem.goodsPrice.toFixed(2)}}</p>
 										<p v-if="picItem.couponPrice">券后购买价：{{picItem.couponPrice.toFixed(2)}}</p>
@@ -72,13 +76,13 @@
 			</div>
 		</div>
 	</div>
-	<script src="./data/dataBedroom.js?t=20191001"></script>
-	<script src="./data/dataDaily.js?t=20191001"></script>
-	<script src="./data/dataFood.js?t=20191001"></script>
-	<script src="./data/dataWash.js?t=20191001"></script>
-	<script src="./data/dataMaternal.js?t=20191001"></script>
-	<script src="./data/datakitchenCookers.js?t=20191001"></script>
-	<script src="./data/datakitchenMaterial.js?t=20191001"></script>
-	<script src="./js/main.js?t=20191001"></script>
+	<script src="./data/dataBedroom.js?t=20191002"></script>
+	<script src="./data/dataDaily.js?t=20191002"></script>
+	<script src="./data/dataFood.js?t=20191002"></script>
+	<script src="./data/dataWash.js?t=20191002"></script>
+	<script src="./data/dataMaternal.js?t=20191002"></script>
+	<script src="./data/datakitchenCookers.js?t=20191002"></script>
+	<script src="./data/datakitchenMaterial.js?t=20191002"></script>
+	<script src="./js/main.js?t=20191002"></script>
 </body>
 </html>
