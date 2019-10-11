@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <title>龙泉的星链小店</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no">
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/reset.css?t=20191003" />
+    <link rel="stylesheet" href="./css/main.css?t=20191003" />
     <script src="./js/vue.min.js"></script>
 		<script src="./js/vue-lazyload.js"></script>
 		<script>
@@ -49,22 +49,22 @@
 										class="goods-item-info-price"
 										:class="[picItem.type]"
 									>
+									<p v-if="vipLevel === '0' || vipLevel === '5'">五星会员价：{{goodsItem.vipPriceLevelFive}}，佣金：{{goodsItem.commissionLevelFive}}</p>
+									<p v-if="vipLevel === '0' || vipLevel === '3'">三星会员价：{{goodsItem.vipPriceLevelThree}}，佣金：{{goodsItem.commissionLevelThree}}</p>
+									<p v-if="vipLevel === '0' || vipLevel === '1'">一星会员价：{{goodsItem.vipPriceLevelOne}}，佣金：{{goodsItem.commissionLevelOne}}</p>
 										<p>标准销售价：{{goodsItem.goodsPriceStr}}</p>
-										<p v-if="vipLevel === '0' || vipLevel === '1'">一星会员价：{{goodsItem.vipPriceLevelOne}}，佣金：{{goodsItem.commissionLevelOne}}</p>
-										<p v-if="vipLevel === '0' || vipLevel === '3'">三星会员价：{{goodsItem.vipPriceLevelThree}}，佣金：{{goodsItem.commissionLevelThree}}</p>
-										<p v-if="vipLevel === '0' || vipLevel === '5'">五星会员价：{{goodsItem.vipPriceLevelFive}}，佣金：{{goodsItem.commissionLevelFive}}</p>
 									</div>
 									<div
 										v-if="goodsItem.showPrice && picItem.type !== 'star'"
 										class="goods-item-info-price"
 										:class="[picItem.type]"
 									>
-										<p>标准销售价：{{picItem.goodsPrice.toFixed(2)}}</p>
 										<p v-if="picItem.couponPrice">券后购买价：{{picItem.couponPrice.toFixed(2)}}</p>
+										<p>标准销售价：{{picItem.goodsPrice.toFixed(2)}}</p>
 									</div>
 								</div>
 								<div class="goods-item-image-box">
-									<img class="goods-item-image" v-lazy="picItem.image" />
+									<img class="goods-item-image" :class="[picItem.type]" v-lazy="picItem.image" />
 								</div>
 								<div v-if="picItem.isInvalid" class="goods-item-invalid">
 									<div class="goods-item-invalid-text">已失效</div>
@@ -76,13 +76,13 @@
 			</div>
 		</div>
 	</div>
-	<script src="./data/dataBedroom.js?t=20191002"></script>
-	<script src="./data/dataDaily.js?t=20191002"></script>
-	<script src="./data/dataFood.js?t=20191002"></script>
-	<script src="./data/dataWash.js?t=20191002"></script>
-	<script src="./data/dataMaternal.js?t=20191002"></script>
-	<script src="./data/datakitchenCookers.js?t=20191002"></script>
-	<script src="./data/datakitchenMaterial.js?t=20191002"></script>
-	<script src="./js/main.js?t=20191002"></script>
+	<script src="./data/dataBedroom.js?t=20191003"></script>
+	<script src="./data/dataDaily.js?t=20191003"></script>
+	<script src="./data/dataFood.js?t=20191003"></script>
+	<script src="./data/dataWash.js?t=20191003"></script>
+	<script src="./data/dataMaternal.js?t=20191003"></script>
+	<script src="./data/datakitchenCookers.js?t=20191003"></script>
+	<script src="./data/datakitchenMaterial.js?t=20191003"></script>
+	<script src="./js/main.js?t=20191003"></script>
 </body>
 </html>

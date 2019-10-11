@@ -1,5 +1,5 @@
 // title - 网页标题
-// keywords - 搜索关键词
+// keywords - 搜索关键词（简写k）
 // showPrice - 是否显示价格信息
 // vipLevel - 星链会员等级
 // goodsType - 展示的商品分类
@@ -14,6 +14,7 @@
 
 var searchObj = getUrlSearch() || {};
 var goodsType = searchObj.goodsType;
+var keywords = searchObj.keywords || searchObj.k;
 var isNotType = goodsType === undefined;
 console.log('searchObj', searchObj);
 
@@ -61,8 +62,8 @@ var vm = new Vue({
       let useGroupData = adjustData;
 
       // 根据关键词筛选数据
-      if (searchObj.keywords) {
-        const searchKeywords = decodeURIComponent(searchObj.keywords);
+      if (keywords) {
+        const searchKeywords = decodeURIComponent(keywords);
         const searchGroup = {
           name: decodeURIComponent(searchObj.title || `【龙泉的星链小店】为您推荐：${searchKeywords}`),
           goods: []
