@@ -11,6 +11,9 @@
 		<script src="./js/vue-lazyload.js"></script>
 		<script>
 			Vue.use(VueLazyload);
+			window.onbeforeunload = function(){
+				return false;
+			};
 		</script>
 </head>
 <body>
