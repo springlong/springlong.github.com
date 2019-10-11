@@ -471,6 +471,25 @@ window.dataFood = {
       ]
     },
     {
+      title: '小七陈卤-正能量套餐',
+      keywords: ['小七陈卤', '卤味'],
+      goodsPrice: 29.9,
+      commission: 1.72,
+      pictures: [
+        {
+          type: 'star',
+          image: './images/dataFood/小七陈卤-正能量套餐.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7320763&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+        },
+        {
+          type: 'tmall',
+          goodsPrice: 39.9,
+          image: './images/dataFood/小七陈卤-正能量套餐-tmall.PNG',
+          url: 'https://m.tb.cn/h.eorFvDM?sm=0a3aee',
+        },
+      ]
+    },
+    {
       title: '小七陈卤-啃啃套餐-400g',
       keywords: ['小七陈卤', '卤味'],
       goodsPrice: 34.9,
