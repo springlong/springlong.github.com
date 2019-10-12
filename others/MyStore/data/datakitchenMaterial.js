@@ -82,6 +82,8 @@ window.datakitchenMaterial = {
         {
           isInvalid: true,
           type: 'star',
+          goodsPrice: 49.00,
+          commission: 4.85,
           image: './images/datakitchenMaterial/伊通河-东北小粒香米-5kg-miaosha.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7381635&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -105,6 +107,14 @@ window.datakitchenMaterial = {
           image: './images/datakitchenMaterial/伊通河-田园清香大米-5kg-tmall.PNG',
           url: 'https://m.tb.cn/h.enMvzn5?sm=3284bb',
         },
+        {
+          isInvalid: true,
+          type: 'star',
+          goodsPrice: 49.00,
+          commission: 4.85,
+          image: './images/datakitchenMaterial/伊通河-田园清香大米-5kg-miaosha.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7381633&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+        },
       ]
     },
     {
@@ -124,6 +134,14 @@ window.datakitchenMaterial = {
           couponPrice: 65,
           image: './images/datakitchenMaterial/伊通河-生态清香大米-5kg-tmall.PNG',
           url: 'https://m.tb.cn/h.eNvv0PW?sm=cc8c80',
+        },
+        {
+          isInvalid: true,
+          type: 'star',
+          goodsPrice: 49.00,
+          commission: 3.08,
+          image: './images/datakitchenMaterial/伊通河-生态清香大米-5kg-miaosha.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7381634&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
       ]
     },

@@ -65,12 +65,12 @@ var vm = new Vue({
       if (keywords) {
         const searchKeywords = decodeURIComponent(keywords);
         const searchGroup = {
-          name: decodeURIComponent(searchObj.title || `【龙泉的星链小店】为您推荐：${searchKeywords}`),
+          name: decodeURIComponent(searchObj.title || `【龙泉的星链商城】为您推荐：${searchKeywords}`),
           goods: []
         };
 
         if (!searchObj.title) {
-          document.title = decodeURIComponent(`【龙泉的星链小店】为您推荐：${searchKeywords}`);
+          document.title = decodeURIComponent(`【龙泉的星链商城】为您推荐：${searchKeywords}`);
         }
 
         adjustData.forEach((groupItem) => {
