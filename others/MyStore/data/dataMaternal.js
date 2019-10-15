@@ -392,6 +392,13 @@ window.dataMaternal = {
           image: './images/dataMaternal/伊利-金领冠-菁护-较大婴儿配方奶粉-2段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7276044&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
+        {
+          type: 'tmall',
+          goodsPrice: 268,
+          couponPrice: 229,
+          image: './images/dataMaternal/伊利-金领冠-菁护-较大婴儿配方奶粉-2段-900g-tmall.PNG',
+          url: 'https://m.tb.cn/h.eLhHDqO?sm=34d239',
+        },
       ]
     },
     {
