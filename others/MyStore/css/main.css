@@ -8,7 +8,11 @@
 }
 
 #goodsBox {
+  opacity: 0;
+}
 
+#goodsBox.isDone {
+  opacity: 1;
 }
 
 .goods-group {

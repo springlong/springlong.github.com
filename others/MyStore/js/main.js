@@ -27,6 +27,8 @@ if (searchObj.title) {
 var vm = new Vue({
   el: '#goodsBox',
   data: {
+    // 是否完成挂载
+    isDone: false,
     // 平台类型
     platformType: {
       jd: { name: '京东' },
@@ -70,7 +72,7 @@ var vm = new Vue({
         };
 
         if (!searchObj.title) {
-          document.title = decodeURIComponent(`【龙泉的星链商城】为您推荐：${searchKeywords}`);
+          document.title = decodeURIComponent(`龙泉为您推荐：${searchKeywords}`);
         }
 
         adjustData.forEach((groupItem) => {
@@ -88,7 +90,10 @@ var vm = new Vue({
 
       return useGroupData;
     },
-  }
+  },
+  mounted() {
+    this.isDone = true;
+  },
 });
 
 // 返回调整后的商品数据
