@@ -75,10 +75,19 @@ var vm = new Vue({
           document.title = decodeURIComponent(`龙泉为您推荐：${searchKeywords}`);
         }
 
+        const arrKeys = searchKeywords.split(' ');
         adjustData.forEach((groupItem) => {
           if (groupItem && groupItem.goods && groupItem.goods.length >= 1) {
             groupItem.goods.forEach((goodsItem) => {
-              if (goodsItem.keywords.indexOf(searchKeywords) !== -1) {
+              let isMatch = true;
+              arrKeys.some((key) => {
+                if (goodsItem.keywords.indexOf(key) === -1) {
+                  isMatch = false;
+                  return true;
+                }
+                return false;
+              });
+              if (isMatch) {
                 searchGroup.goods.push(goodsItem);
               }
             });

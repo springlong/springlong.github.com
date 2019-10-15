@@ -35,6 +35,16 @@
   overflow-x: auto;
 }
 
+.goods-list-item-title {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 22px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: #fff;
+  background: rgba(8, 6, 6, 0.6);
+}
+
 .goods-list-item-inner {
   white-space: nowrap;
 }
