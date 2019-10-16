@@ -530,8 +530,8 @@ window.dataFood = {
     {
       title: '小七陈卤-家庭大礼包10种-800g',
       keywords: ['小七陈卤', '卤味'],
-      goodsPrice: 69,
-      commission: 1.32,
+      goodsPrice: 89,
+      commission: 10.13,
       pictures: [
         {
           type: 'star',
