@@ -204,7 +204,7 @@ window.dataFood = {
     },
     {
       title: '海底捞-自煮火锅-组合套餐B-麻辣嫩牛435g-香辣素食400g',
-      keywords: ['海底捞', '自煮火锅', '自助火锅'],
+      keywords: ['海底捞', '自煮火锅', '麻辣嫩牛', '香辣素食'],
       goodsPrice: 56,
       commission: 1.85,
       pictures: [
@@ -223,7 +223,7 @@ window.dataFood = {
     },
     {
       title: '海底捞-自煮火锅-组合套餐C-麻辣嫩牛435g-番茄牛腩365g',
-      keywords: ['海底捞', '自煮火锅', '自助火锅'],
+      keywords: ['海底捞', '自煮火锅', '麻辣嫩牛', '番茄牛腩'],
       goodsPrice: 66,
       commission: 2.29,
       pictures: [
@@ -242,7 +242,7 @@ window.dataFood = {
     },
     {
       title: '海底捞-自煮火锅-组合套餐D-脆爽牛肚435g-番茄牛腩365g',
-      keywords: ['海底捞', '自煮火锅', '自助火锅'],
+      keywords: ['海底捞', '自煮火锅', '脆爽牛肚', '番茄牛腩'],
       goodsPrice: 66,
       commission: 2.29,
       pictures: [
@@ -261,7 +261,7 @@ window.dataFood = {
     },
     {
       title: '海底捞-自煮火锅-组合套餐E-脆爽牛肚435g-麻辣嫩牛435g',
-      keywords: ['海底捞', '自煮火锅', '自助火锅'],
+      keywords: ['海底捞', '自煮火锅', '脆爽牛肚', '麻辣嫩牛'],
       goodsPrice: 66,
       commission: 2.29,
       pictures: [
@@ -275,6 +275,158 @@ window.dataFood = {
           goodsPrice: 69.9,
           image: './images/dataFood/海底捞-自煮火锅-组合套餐E-脆爽牛肚435g-麻辣嫩牛435g-tmall.PNG',
           url: 'https://m.tb.cn/h.eowykeP?sm=f98233',
+        },
+      ]
+    },
+    {
+      title: '海底捞-自热火锅-2盒-番茄牛腩*2',
+      keywords: ['海底捞', '自煮火锅', '自热火锅', '番茄牛腩'],
+      goodsPrice: 69.9,
+      commission: 5.28,
+      pictures: [
+        {
+          type: 'star',
+          image: './images/dataFood/海底捞-自热火锅-2盒-番茄牛腩.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7387954&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+        },
+        {
+          type: 'tmall',
+          goodsPrice: 69.9,
+          image: './images/dataFood/海底捞-自热火锅-2盒-番茄牛腩-tmall.PNG',
+          url: 'https://m.tb.cn/h.ephnzlQ?sm=e1ac16',
+        },
+      ]
+    },
+    {
+      title: '海底捞-自热火锅-2盒-脆爽牛肚*2',
+      keywords: ['海底捞', '自煮火锅', '自热火锅', '脆爽牛肚'],
+      goodsPrice: 69.9,
+      commission: 5.28,
+      pictures: [
+        {
+          type: 'star',
+          image: './images/dataFood/海底捞-自热火锅-2盒-脆爽牛肚.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7387957&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+        },
+        {
+          type: 'tmall',
+          goodsPrice: 69.9,
+          image: './images/dataFood/海底捞-自热火锅-2盒-脆爽牛肚-tmall.PNG',
+          url: 'https://m.tb.cn/h.eLNqk3w?sm=4a4721',
+        },
+      ]
+    },
+    {
+      title: '海底捞-自热火锅-2盒-麻辣嫩牛*2',
+      keywords: ['海底捞', '自煮火锅', '自热火锅', '麻辣嫩牛'],
+      goodsPrice: 69.9,
+      commission: 5.28,
+      pictures: [
+        {
+          type: 'star',
+          image: './images/dataFood/海底捞-自热火锅-2盒-麻辣嫩牛.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7387958&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+        },
+        {
+          type: 'tmall',
+          goodsPrice: 69.9,
+          image: './images/dataFood/海底捞-自热火锅-2盒-麻辣嫩牛-tmall.PNG',
+          url: 'https://m.tb.cn/h.eLBtCpu?sm=2e4760',
+        },
+      ]
+    },
+    {
+      title: '海底捞-自热火锅-2盒-麻辣嫩牛+香辣素食',
+      keywords: ['海底捞', '自煮火锅', '自热火锅', '麻辣嫩牛', '香辣素食'],
+      goodsPrice: 62.9,
+      commission: 5.69,
+      pictures: [
+        {
+          type: 'star',
+          image: './images/dataFood/海底捞-自热火锅-2盒-麻辣嫩牛+香辣素食.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7387949&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+        },
+        {
+          type: 'tmall',
+          goodsPrice: 59.9,
+          image: './images/dataFood/海底捞-自热火锅-2盒-麻辣嫩牛+香辣素食-tmall.PNG',
+          url: 'https://m.tb.cn/h.ephJyJS?sm=b81ef2',
+        },
+      ]
+    },
+    {
+      title: '海底捞-自热火锅-2盒-脆爽牛肚+香辣素食',
+      keywords: ['海底捞', '自煮火锅', '自热火锅', '脆爽牛肚', '香辣素食'],
+      goodsPrice: 62.9,
+      commission: 5.69,
+      pictures: [
+        {
+          type: 'star',
+          image: './images/dataFood/海底捞-自热火锅-2盒-脆爽牛肚+香辣素食.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7387952&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+        },
+        {
+          type: 'tmall',
+          goodsPrice: 59.9,
+          image: './images/dataFood/海底捞-自热火锅-2盒-脆爽牛肚+香辣素食-tmall.PNG',
+          url: 'https://m.tb.cn/h.eLNG0dJ?sm=5b8ef9',
+        },
+      ]
+    },
+    {
+      title: '海底捞-自热米饭-2盒-腊味双拼+咖喱牛肉',
+      keywords: ['海底捞', '自煮火锅', '自热米饭', '腊味双拼', '咖喱牛肉'],
+      goodsPrice: 56.9,
+      commission: 4.41,
+      pictures: [
+        {
+          type: 'star',
+          image: './images/dataFood/海底捞-自热米饭-2盒-腊味双拼+咖喱牛肉.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7387934&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+        },
+        {
+          type: 'tmall',
+          goodsPrice: 55.6,
+          image: './images/dataFood/海底捞-自热米饭-2盒-腊味双拼+咖喱牛肉-tmall.PNG',
+          url: 'https://m.tb.cn/h.ephGpXo?sm=ee7cf6',
+        },
+      ]
+    },
+    {
+      title: '海底捞-自热米饭-2盒-腊味双拼+红烧牛肉',
+      keywords: ['海底捞', '自煮火锅', '自热米饭', '腊味双拼', '红烧牛肉'],
+      goodsPrice: 56.9,
+      commission: 4.41,
+      pictures: [
+        {
+          type: 'star',
+          image: './images/dataFood/海底捞-自热米饭-2盒-腊味双拼+红烧牛肉.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7387937&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+        },
+        {
+          type: 'tmall',
+          goodsPrice: 55.6,
+          image: './images/dataFood/海底捞-自热米饭-2盒-腊味双拼+红烧牛肉-tmall.PNG',
+          url: 'https://m.tb.cn/h.eLXMhN8?sm=fcfd78',
+        },
+      ]
+    },
+    {
+      title: '海底捞-自热米饭-2盒-腊味双拼煲仔风味*2',
+      keywords: ['海底捞', '自煮火锅', '自热米饭', '腊味双拼'],
+      goodsPrice: 56.9,
+      commission: 5.24,
+      pictures: [
+        {
+          type: 'star',
+          image: './images/dataFood/海底捞-自热米饭-2盒-腊味双拼煲仔风味.PNG',
+          url: 'https://friend.380star.com/goods.do?goodsid=7387940&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+        },
+        {
+          type: 'tmall',
+          goodsPrice: 57.6,
+          image: './images/dataFood/海底捞-自热米饭-2盒-腊味双拼煲仔风味-tmall.PNG',
+          url: 'https://m.tb.cn/h.ephv1SP?sm=f2cecc',
         },
       ]
     },
