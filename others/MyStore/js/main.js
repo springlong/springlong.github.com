@@ -2,20 +2,21 @@
 // keywords - 搜索关键词（简写k）
 // showPrice - 是否显示价格信息
 // vipLevel - 星链会员等级
-// goodsType - 展示的商品分类
-// filterType = 'cheapBySale' - 仅显示星链售价比天猫淘宝售价，便宜的商品
-// filterType = 'cheapByPay' - 仅显示星链售价比天猫淘宝支付价格，便宜的商品
-// filterType = 'cheapByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，便宜的商品
-// filterType = 'expensiveBySale' - 仅显示星链售价比天猫淘宝售价，贵的商品
-// filterType = 'expensiveByPay' - 仅显示星链售价比天猫淘宝支付价格，贵的商品
-// filterType = 'expensiveByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，贵的商品
+// type - 展示的商品分类
+// filter = 'cheapBySale' - 仅显示星链售价比天猫淘宝售价，便宜的商品
+// filter = 'cheapByPay' - 仅显示星链售价比天猫淘宝支付价格，便宜的商品
+// filter = 'cheapByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，便宜的商品
+// filter = 'expensiveBySale' - 仅显示星链售价比天猫淘宝售价，贵的商品
+// filter = 'expensiveByPay' - 仅显示星链售价比天猫淘宝支付价格，贵的商品
+// filter = 'expensiveByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，贵的商品
 
-// showPrice=1&vipLevel=0&filterType=3&keywords=&title=
+// showPrice=1&vipLevel=0&filter=3&keywords=&title=
 
 var searchObj = getUrlSearch() || {};
-var goodsType = searchObj.goodsType;
+var type = searchObj.dataType || searchObj.type;
 var keywords = searchObj.keywords || searchObj.k;
-var isNotType = goodsType === undefined;
+var filterType = searchObj.filterType || searchObj.filter;
+var isNotType = type === undefined;
 console.log('searchObj', searchObj);
 
 // 置换网页标题
@@ -39,22 +40,22 @@ var vm = new Vue({
     vipLevel: searchObj.vipLevel || '0',
     // 商品组合
     goodsGroup: [
-      isNotType || goodsType === 'datakitchenMaterial' ? window.datakitchenMaterial : undefined,  // 厨房用料
-      isNotType || goodsType === 'datakitchenCookers' ? window.datakitchenCookers : undefined,  // 厨房用具
-      isNotType || goodsType === 'dataFood' ? window.dataFood : undefined,  // 食品零食
-      isNotType || goodsType === 'dataDrinks' ? window.dataDrinks : undefined,  // 酒水饮料
-      isNotType || goodsType === 'dataDaily' ? window.dataDaily : undefined,  // 日常用品
-      isNotType || goodsType === 'dataClean' ? window.dataClean : undefined,  // 清洁卫生
-      isNotType || goodsType === 'dataWash' ? window.dataWash : undefined,  // 洗护用品
-      isNotType || goodsType === 'dataBeautiful' ? window.dataBeautiful : undefined,  // 美妆用品
-      isNotType || goodsType === 'dataMaternal' ? window.dataMaternal : undefined,  // 母婴用品
-      isNotType || goodsType === 'dataJewelry' ? window.dataJewelry : undefined,  // 珠宝首饰
-      isNotType || goodsType === 'dataDress' ? window.dataDress : undefined,  // 服饰鞋包
-      isNotType || goodsType === 'dataBedroom' ? window.dataBedroom : undefined,  // 家居家纺
-      isNotType || goodsType === 'dataFurniture' ? window.dataFurniture : undefined,  // 家用家具
-      isNotType || goodsType === 'dataHomeElectronic' ? window.dataHomeElectronic : undefined,  // 电器设备
-      isNotType || goodsType === 'dataElectronicDigital' ? window.dataElectronicDigital : undefined,  // 电子数码
-      isNotType || goodsType === 'dataOhters' ? window.dataOhters : undefined,  // 其它用品
+      isNotType || type === 'datakitchenMaterial' ? window.datakitchenMaterial : undefined,  // 厨房用料
+      isNotType || type === 'datakitchenCookers' ? window.datakitchenCookers : undefined,  // 厨房用具
+      isNotType || type === 'dataFood' ? window.dataFood : undefined,  // 食品零食
+      isNotType || type === 'dataDrinks' ? window.dataDrinks : undefined,  // 酒水饮料
+      isNotType || type === 'dataDaily' ? window.dataDaily : undefined,  // 日常用品
+      isNotType || type === 'dataClean' ? window.dataClean : undefined,  // 清洁卫生
+      isNotType || type === 'dataWash' ? window.dataWash : undefined,  // 洗护用品
+      isNotType || type === 'dataBeautiful' ? window.dataBeautiful : undefined,  // 美妆用品
+      isNotType || type === 'dataMaternal' ? window.dataMaternal : undefined,  // 母婴用品
+      isNotType || type === 'dataJewelry' ? window.dataJewelry : undefined,  // 珠宝首饰
+      isNotType || type === 'dataDress' ? window.dataDress : undefined,  // 服饰鞋包
+      isNotType || type === 'dataBedroom' ? window.dataBedroom : undefined,  // 家居家纺
+      isNotType || type === 'dataFurniture' ? window.dataFurniture : undefined,  // 家用家具
+      isNotType || type === 'dataHomeElectronic' ? window.dataHomeElectronic : undefined,  // 电器设备
+      isNotType || type === 'dataElectronicDigital' ? window.dataElectronicDigital : undefined,  // 电子数码
+      isNotType || type === 'dataOhters' ? window.dataOhters : undefined,  // 其它用品
     ],
   },
   computed: {
@@ -158,39 +159,39 @@ function adjustGoodsGroup(originalData) {
             return false;
           });
 
-          // filterType = 'cheapBySale' - 仅显示星链售价比天猫淘宝售价，便宜的商品
-          if (searchObj.filterType === 'cheapBySale' && goodsItem.isCheapBySale) {
+          // filter = 'cheapBySale' - 仅显示星链售价比天猫淘宝售价，便宜的商品
+          if (filterType === 'cheapBySale' && goodsItem.isCheapBySale) {
             filterGoods.push(goodsItem);
           }
 
-          // filterType = 'cheapByPay' - 仅显示星链售价比天猫淘宝支付价格，便宜的商品
-          if (searchObj.filterType === 'cheapByPay' && goodsItem.isCheapByPay) {
+          // filter = 'cheapByPay' - 仅显示星链售价比天猫淘宝支付价格，便宜的商品
+          if (filterType === 'cheapByPay' && goodsItem.isCheapByPay) {
             filterGoods.push(goodsItem);
           }
 
-          // filterType = 'cheapByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，便宜的商品
-          if (searchObj.filterType === 'cheapByVip' && goodsItem.isCheapByVip) {
+          // filter = 'cheapByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，便宜的商品
+          if (filterType === 'cheapByVip' && goodsItem.isCheapByVip) {
             filterGoods.push(goodsItem);
           }
 
-          // filterType = 'expensiveBySale' - 仅显示星链售价比天猫淘宝售价，贵的商品
-          if (searchObj.filterType === 'expensiveBySale' && !goodsItem.isCheapBySale) {
+          // filter = 'expensiveBySale' - 仅显示星链售价比天猫淘宝售价，贵的商品
+          if (filterType === 'expensiveBySale' && !goodsItem.isCheapBySale) {
             filterGoods.push(goodsItem);
           }
 
-          // filterType = 'expensiveByPay' - 仅显示星链售价比天猫淘宝支付价格，贵的商品
-          if (searchObj.filterType === 'expensiveByPay' && !goodsItem.isCheapByPay) {
+          // filter = 'expensiveByPay' - 仅显示星链售价比天猫淘宝支付价格，贵的商品
+          if (filterType === 'expensiveByPay' && !goodsItem.isCheapByPay) {
             filterGoods.push(goodsItem);
           }
 
-          // filterType = 'expensiveByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，贵的商品
-          if (searchObj.filterType === 'expensiveByVip' && !goodsItem.isCheapByVip) {
+          // filter = 'expensiveByVip' - 仅显示星链一星会员价格比天猫淘宝支付价格，贵的商品
+          if (filterType === 'expensiveByVip' && !goodsItem.isCheapByVip) {
             filterGoods.push(goodsItem);
           }
         }
       });
 
-      if (searchObj.filterType) {
+      if (filterType) {
         groupItem.goods = null;
         groupItem.goods = filterGoods;
       }
