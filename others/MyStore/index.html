@@ -6,8 +6,8 @@
 		<meta name="description" itemprop="description" content="龙泉的星链商城，专业为您推荐星链爆品好物。星链·友店商城，领先的通证电商平台，为您提供物美价廉、正品好货！"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
 		<link rel="shortcut icon" href="./images/favicon.ico" />
-    <link rel="stylesheet" href="./css/reset.css?t=20191009" />
-    <link rel="stylesheet" href="./css/main.css?t=20191009" />
+    <link rel="stylesheet" href="./css/reset.css?t=20191010" />
+    <link rel="stylesheet" href="./css/main.css?t=20191010" />
     <script src="./js/vue.min.js"></script>
 		<script src="./js/vue-lazyload.js"></script>
 		<script>
@@ -55,10 +55,10 @@
 											class="goods-item-info-price"
 											:class="[picItem.type]"
 										>
-										<p v-if="vipLevel === '0' || vipLevel === '5'">五星会员价：{{goodsItem.vipPriceLevelFive}}，佣金：{{goodsItem.commissionLevelFive}}</p>
-										<p v-if="vipLevel === '0' || vipLevel === '3'">三星会员价：{{goodsItem.vipPriceLevelThree}}，佣金：{{goodsItem.commissionLevelThree}}</p>
-										<p v-if="vipLevel === '0' || vipLevel === '1'">一星会员价：{{goodsItem.vipPriceLevelOne}}，佣金：{{goodsItem.commissionLevelOne}}</p>
-											<p>标准销售价：{{goodsItem.goodsPriceStr}}</p>
+											<p v-if="vipLevel === '0' || vipLevel === '5'">五星会员价：{{picItem.vipPriceLevelFive}}，佣金：{{picItem.commissionLevelFive}}</p>
+											<p v-if="vipLevel === '0' || vipLevel === '3'">三星会员价：{{picItem.vipPriceLevelThree}}，佣金：{{picItem.commissionLevelThree}}</p>
+											<p v-if="vipLevel === '0' || vipLevel === '1'">一星会员价：{{picItem.vipPriceLevelOne}}，佣金：{{picItem.commissionLevelOne}}</p>
+											<p>标准销售价：{{picItem.goodsPriceStr}}</p>
 										</div>
 										<div
 											v-if="goodsItem.showPrice && picItem.type !== 'star'"
@@ -68,6 +68,16 @@
 											<p v-if="picItem.couponPrice">券后购买价：{{picItem.couponPrice.toFixed(2)}}</p>
 											<p>标准销售价：{{picItem.goodsPrice.toFixed(2)}}</p>
 										</div>
+									</div>
+									<div
+										v-if="goodsItem.showPrice && picItem.canShowDiff"
+										class="goods-item-diff"
+									>
+										<div class="goods-item-diff-title">{{picItem.diffTitle}}</div>
+										<div class="goods-item-diff-price" :class="[picItem.diffClassFlag]">
+											{{picItem.diffPriceFlag}}
+											{{picItem.diffPriceStr}}
+									</div>
 									</div>
 									<div class="goods-item-image-box">
 										<img class="goods-item-image" :class="[picItem.type]" v-lazy="picItem.image + '?t=20191004'" />
@@ -83,13 +93,13 @@
 			</div>
 		</div>
 	</div>
-	<script src="./data/dataBedroom.js?t=20191009"></script>
-	<script src="./data/dataDaily.js?t=20191009"></script>
-	<script src="./data/dataFood.js?t=20191009"></script>
-	<script src="./data/dataWash.js?t=20191009"></script>
-	<script src="./data/dataMaternal.js?t=20191009"></script>
-	<script src="./data/datakitchenCookers.js?t=20191009"></script>
-	<script src="./data/datakitchenMaterial.js?t=20191009"></script>
-	<script src="./js/main.js?t=20191009"></script>
+	<script src="./data/dataBedroom.js?t=20191010"></script>
+	<script src="./data/dataDaily.js?t=20191010"></script>
+	<script src="./data/dataFood.js?t=20191010"></script>
+	<script src="./data/dataWash.js?t=20191010"></script>
+	<script src="./data/dataMaternal.js?t=20191010"></script>
+	<script src="./data/datakitchenCookers.js?t=20191010"></script>
+	<script src="./data/datakitchenMaterial.js?t=20191010"></script>
+	<script src="./js/main.js?t=20191010"></script>
 </body>
 </html>

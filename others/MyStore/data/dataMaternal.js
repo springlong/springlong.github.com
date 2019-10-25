@@ -5,11 +5,11 @@ window.dataMaternal = {
     {
       title: '美素佳儿-妈妈孕产妇配方奶粉-900g',
       keywords: ['美素佳儿', '奶粉', '妈妈'],
-      goodsPrice: 258,
-      commission: 5.73,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 258,
+          commission: 5.73,
           image: './images/dataMaternal/美素佳儿-妈妈孕产妇配方奶粉-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7375807&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -30,11 +30,11 @@ window.dataMaternal = {
     {
       title: '美素佳儿-美素力-婴儿配方奶粉-1段-罐装-400g',
       keywords: ['美素佳儿', '奶粉', '1段'],
-      goodsPrice: 118,
-      commission: 1.76,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 118,
+          commission: 1.76,
           image: './images/dataMaternal/美素佳儿-美素力-婴儿配方奶粉-1段-罐装-400g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7375800&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -55,11 +55,11 @@ window.dataMaternal = {
     {
       title: '美素佳儿-美素力-婴儿配方奶粉-1段-罐装-900g',
       keywords: ['美素佳儿', '奶粉', '1段'],
-      goodsPrice: 249,
-      commission: 4.85,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 249,
+          commission: 4.85,
           image: './images/dataMaternal/美素佳儿-美素力-婴儿配方奶粉-1段-罐装-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7375801&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -80,11 +80,11 @@ window.dataMaternal = {
     {
       title: '美素佳儿-金装-2段奶粉-2罐-900g-组合装',
       keywords: ['美素佳儿', '奶粉', '2段'],
-      goodsPrice: 480,
-      commission: 4.41,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 480,
+          commission: 4.41,
           image: './images/dataMaternal/美素佳儿-金装2段奶粉-2罐-900g-组合装.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7375802&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -105,12 +105,12 @@ window.dataMaternal = {
     {
       title: '美素佳儿-金装-3段奶粉-2罐-组合套装',
       keywords: ['美素佳儿', '奶粉', '3段'],
-      goodsPrice: 358,
-      commission: 23.55,
       isBoutique: true,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 358,
+          commission: 23.55,
           image: './images/dataMaternal/美素佳儿-金装3段奶粉-2罐-组合套装.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7235171&flag=0&shopbag=1&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -140,11 +140,11 @@ window.dataMaternal = {
     {
       title: '美素佳儿-金装-4段奶粉-2罐-组合套装',
       keywords: ['美素佳儿', '奶粉', '4段'],
-      goodsPrice: 338,
-      commission: 4.41,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 338,
+          commission: 4.41,
           image: './images/dataMaternal/美素佳儿-金装4段奶粉-2罐-组合套装.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7375809&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -174,11 +174,11 @@ window.dataMaternal = {
     {
       title: '皇家美素佳儿-3段-幼儿配方奶粉-800g',
       keywords: ['美素佳儿', '皇家美素佳儿', '奶粉', '3段'],
-      goodsPrice: 376,
-      commission: 16.74,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 376,
+          commission: 16.74,
           image: './images/dataMaternal/皇家美素佳儿-3段幼儿配方奶粉-800g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7375810&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -193,11 +193,11 @@ window.dataMaternal = {
     {
       title: '皇家美素佳儿-4段-儿童配方奶粉-800g',
       keywords: ['美素佳儿', '皇家美素佳儿', '奶粉', '4段'],
-      goodsPrice: 309,
-      commission: 4.41,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 309,
+          commission: 4.41,
           image: './images/dataMaternal/皇家美素佳儿-4段儿童配方奶粉-800g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7368139&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -212,11 +212,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-妈妈配方奶粉-900g',
       keywords: ['伊利', '金领冠', '标准装', '奶粉', '妈妈'],
-      goodsPrice: 178,
-      commission: 25.31,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 178,
+          commission: 25.31,
           image: './images/dataMaternal/伊利-金领冠-妈妈配方奶粉-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7275964&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -231,11 +231,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-婴儿配方奶粉-1段-400g',
       keywords: ['伊利', '金领冠', '标准装', '奶粉', '1段'],
-      goodsPrice: 69,
-      commission: 1.59,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 69,
+          commission: 1.59,
           image: './images/dataMaternal/伊利-金领冠-婴儿配方奶粉-1段-400g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7274928&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -250,11 +250,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-婴儿配方奶粉-1段-900g',
       keywords: ['伊利', '金领冠', '标准装', '奶粉', '1段'],
-      goodsPrice: 170,
-      commission: 8.62,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 170,
+          commission: 8.62,
           image: './images/dataMaternal/伊利-金领冠-婴儿配方奶粉-1段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7276025&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -269,11 +269,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-菁护-婴儿配方奶粉-1段-900g',
       keywords: ['伊利', '金领冠', '菁护', '奶粉', '1段'],
-      goodsPrice: 256,
-      commission: 17.98,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 256,
+          commission: 17.98,
           image: './images/dataMaternal/伊利-金领冠-菁护-婴儿配方奶粉-1段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7275004&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -288,11 +288,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-睿护-婴儿配方奶粉-1段-900g',
       keywords: ['伊利', '金领冠', '睿护', '奶粉', '1段'],
-      goodsPrice: 289,
-      commission: 15.86,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 289,
+          commission: 15.86,
           image: './images/dataMaternal/伊利-金领冠-睿护-婴儿配方奶粉-1段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7275001&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -307,11 +307,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-珍护-婴儿配方奶粉-1段-405g',
       keywords: ['伊利', '金领冠', '珍护', '奶粉', '1段'],
-      goodsPrice: 145,
-      commission: 5.78,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 145,
+          commission: 5.78,
           image: './images/dataMaternal/伊利-金领冠-珍护-婴儿配方奶粉-1段-405g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7276028&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -326,11 +326,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-珍护-白金版-婴儿配方奶粉-1段-900g',
       keywords: ['伊利', '金领冠', '珍护', '奶粉', '1段'],
-      goodsPrice: 299,
-      commission: 14.4,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 299,
+          commission: 14.4,
           image: './images/dataMaternal/伊利-金领冠-珍护-白金版-婴儿配方奶粉-1段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7276031&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -345,11 +345,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-较大婴儿配方奶粉-2段-400g',
       keywords: ['伊利', '金领冠', '标准装', '奶粉', '2段'],
-      goodsPrice: 65,
-      commission: 1.13,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 65,
+          commission: 1.13,
           image: './images/dataMaternal/伊利-金领冠-较大婴儿配方奶粉-2段-400g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7276047&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -364,11 +364,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-较大婴儿配方奶粉-2段-900g',
       keywords: ['伊利', '金领冠', '标准装', '奶粉', '2段'],
-      goodsPrice: 155,
-      commission: 6.07,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 155,
+          commission: 6.07,
           image: './images/dataMaternal/伊利-金领冠-较大婴儿配方奶粉-2段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7275036&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -384,11 +384,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-菁护-较大婴儿配方奶粉-2段-900g',
       keywords: ['伊利', '金领冠', '菁护', '奶粉', '2段'],
-      goodsPrice: 239,
-      commission: 14.4,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 239,
+          commission: 14.4,
           image: './images/dataMaternal/伊利-金领冠-菁护-较大婴儿配方奶粉-2段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7276044&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -404,11 +404,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-睿护-较大婴儿配方奶粉-2段-900g',
       keywords: ['伊利', '金领冠', '睿护', '奶粉', '2段'],
-      goodsPrice: 279,
-      commission: 32.02,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 279,
+          commission: 32.02,
           image: './images/dataMaternal/伊利-金领冠-睿护-较大婴儿配方奶粉-2段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7274979&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -423,11 +423,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-珍护-较大婴儿配方奶粉-2段-405g',
       keywords: ['伊利', '金领冠', '珍护', '奶粉', '2段'],
-      goodsPrice: 135,
-      commission: 2.84,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 135,
+          commission: 2.84,
           image: './images/dataMaternal/伊利-金领冠-珍护-较大婴儿配方奶粉-2段-405g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7341453&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -443,11 +443,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-珍护-较大婴儿配方奶粉-2段-900g',
       keywords: ['伊利', '金领冠', '珍护', '奶粉', '2段'],
-      goodsPrice: 298,
-      commission: 20.21,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 298,
+          commission: 20.21,
           image: './images/dataMaternal/伊利-金领冠-珍护-较大婴儿配方奶粉-2段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7274958&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -462,11 +462,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-幼儿配方奶粉-3段-400g',
       keywords: ['伊利', '金领冠', '标准装', '奶粉', '3段'],
-      goodsPrice: 65,
-      commission: 3.67,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 65,
+          commission: 3.67,
           image: './images/dataMaternal/伊利-金领冠-幼儿配方奶粉-3段-400g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7274933&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -475,11 +475,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-幼儿配方奶粉-3段-900g',
       keywords: ['伊利', '金领冠', '标准装', '奶粉', '3段'],
-      goodsPrice: 148,
-      commission: 8.47,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 148,
+          commission: 8.47,
           image: './images/dataMaternal/伊利-金领冠-幼儿配方奶粉-3段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7274936&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -494,11 +494,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-菁护-幼儿配方奶粉-3段-900g',
       keywords: ['伊利', '金领冠', '菁护', '奶粉', '3段'],
-      goodsPrice: 226,
-      commission: 14.54,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 226,
+          commission: 14.54,
           image: './images/dataMaternal/伊利-金领冠-菁护-幼儿配方奶粉-3段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7274900&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -513,11 +513,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-睿护-幼儿配方奶粉-3段-900g',
       keywords: ['伊利', '金领冠', '睿护', '奶粉', '3段'],
-      goodsPrice: 269,
-      commission: 16.35,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 269,
+          commission: 16.35,
           image: './images/dataMaternal/伊利-金领冠-睿护-幼儿配方奶粉-3段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7274909&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -532,11 +532,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-珍护-幼儿配方奶粉-3段-405g',
       keywords: ['伊利', '金领冠', '珍护', '奶粉', '3段'],
-      goodsPrice: 122,
-      commission: 3.48,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 122,
+          commission: 3.48,
           image: './images/dataMaternal/伊利-金领冠-珍护-幼儿配方奶粉-3段-405g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7341455&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -545,11 +545,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-珍护-幼儿配方奶粉-3段-900g',
       keywords: ['伊利', '金领冠', '珍护', '奶粉', '3段'],
-      goodsPrice: 285,
-      commission: 20.23,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 285,
+          commission: 20.23,
           image: './images/dataMaternal/伊利-金领冠-珍护-幼儿配方奶粉-3段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7274923&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -564,11 +564,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-儿童配方奶粉-4段-400g',
       keywords: ['伊利', '金领冠', '标准装', '奶粉', '4段'],
-      goodsPrice: 62,
-      commission: 4.31,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 62,
+          commission: 4.31,
           image: './images/dataMaternal/伊利-金领冠-儿童配方奶粉-4段-400g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7341448&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -583,11 +583,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-儿童配方奶粉-4段-900g',
       keywords: ['伊利', '金领冠', '标准装', '奶粉', '4段'],
-      goodsPrice: 135,
-      commission: 6.61,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 135,
+          commission: 6.61,
           image: './images/dataMaternal/伊利-金领冠-儿童配方奶粉-4段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7274892&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },
@@ -602,11 +602,11 @@ window.dataMaternal = {
     {
       title: '伊利-金领冠-珍护-白金版-儿童配方奶粉-4段-900g',
       keywords: ['伊利', '金领冠', '珍护', '奶粉', '4段'],
-      goodsPrice: 235,
-      commission: 17.04,
       pictures: [
         {
           type: 'star',
+          goodsPrice: 235,
+          commission: 17.04,
           image: './images/dataMaternal/伊利-金领冠-珍护-白金版-儿童配方奶粉-4段-900g.PNG',
           url: 'https://friend.380star.com/goods.do?goodsid=7274950&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
         },

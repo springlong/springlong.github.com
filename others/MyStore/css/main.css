@@ -174,10 +174,39 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0,.5);
+  background: rgba(0,0,0,.3);
 }
 .goods-item-invalid-text {
   font-size: 14px;
   line-height: 28px;
+  color: #ccc;
+}
+
+.goods-item-diff {
+  position: absolute;
+  left: 100%;
+  top: 100px;
+  z-index: 10;
+  padding: 5px 10px;
+  border-radius: 10px;
+  transform: translateX(-50%);
+  background: rgba(8, 6, 6, 0.6);
+}
+
+.goods-item-diff-title {
   color: #fff;
+  text-align: center;
+}
+
+.goods-item-diff-price {
+  color: #fff;
+  text-align: center;
+}
+
+.goods-item-diff-price.cheap {
+  color: orange;
+}
+
+.goods-item-diff-price.expensive {
+  color: red;
 }
