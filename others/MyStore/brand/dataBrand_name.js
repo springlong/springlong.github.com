@@ -1,0 +1,3 @@
+window['dataBrand_name'] = [
+
+];

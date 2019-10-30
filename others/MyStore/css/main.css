@@ -7,6 +7,7 @@
   padding: 0 10px;
 }
 
+
 #goodsBox {
   opacity: 0;
 }
@@ -209,4 +210,14 @@
 
 .goods-item-diff-price.expensive {
   color: red;
+}
+
+.nav-item {
+  margin: 10px 0;
+}
+
+.nav-link {
+  font-size: 16px;
+  line-height: 22px;
+  color: #4b80de;
 }
