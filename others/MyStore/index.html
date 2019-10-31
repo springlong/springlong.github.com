@@ -46,7 +46,7 @@
 								>
 									<div class="goods-item-info">
 										<div class="goods-item-info-platform" :class="[picItem.type]">
-											{{platformType[picItem.type].name}}
+											{{picItem.platform || platformType[picItem.type].name}}
 										</div>
 									</div>
 									<div class="goods-item-info-bottom">

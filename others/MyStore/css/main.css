@@ -93,13 +93,17 @@
   opacity: 0.9;
 }
 
-.goods-item-info-platform.tmall {
+.goods-item-info-platform.tmall,
+.goods-item-info-platform.tmcs,
+.goods-item-info-platform.tmqjd {
   color: #fff;
   background-color: #7b0e0b;
   opacity: 0.9;
 }
 
-.goods-item-info-platform.jd {
+.goods-item-info-platform.jd,
+.goods-item-info-platform.jdzy,
+.goods-item-info-platform.jdqjd {
   color: #fff;
   background-color: hsl(2, 87%, 12%);
   opacity: 0.9;
@@ -115,11 +119,15 @@
   background-color: #e9393b;
   opacity: 0.7;
 }
-.goods-item-info-price.tmall {
+.goods-item-info-price.tmall,
+.goods-item-info-price.tmcs,
+.goods-item-info-price.tmqjd {
   background-color: #7b0e0b;
   opacity: 0.7;
 }
-.goods-item-info-price.jd {
+.goods-item-info-price.jd,
+.goods-item-info-price.jdzy,
+.goods-item-info-price.jdqjd {
   background-color: hsl(2, 87%, 12%);
   opacity: 0.7;
 }

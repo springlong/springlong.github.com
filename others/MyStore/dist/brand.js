@@ -560,7 +560,7 @@ window['dataBrand_伊通河'] = [
         goodsPrice: 76.9,
         couponPrice: 54.9,
         image: './images/datakitchenMaterial/伊通河-东北吉林小町大米-10kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eNvsF1a?sm=8036cd',
+        url: 'https://detail.tmall.com/item.htm?id=562383140370&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572494497267.Copy.1&sourceType=item&price=76.9&origin_price=127&suid=8FB067F6-C409-4136-B215-F082615DEF4F&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0U3ZzZFlzbjF1MXTigrQ=&cpp=1&shareurl=true&short_name=h.er8sL23&sm=c0d16e&app=chrome',
       },
     ]
   },
@@ -580,7 +580,7 @@ window['dataBrand_伊通河'] = [
         goodsPrice: 49.9,
         couponPrice: 39.9,
         image: './images/datakitchenMaterial/伊通河-东北吉林珍珠米-5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.enMBEZJ?sm=c4de42',
+        url: 'https://detail.tmall.com/item.htm?id=558267517179&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572494497267.Copy.1&sourceType=item&price=49.9&origin_price=72&suid=934760B0-1FBA-40AF-B43B-DCCDCB41C4D3&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0aW5UeVlzbmNyck/igrQ=&cpp=1&shareurl=true&short_name=h.er8tz2v&sm=7ae03d&app=chrome',
       },
     ]
   },
@@ -600,7 +600,7 @@ window['dataBrand_伊通河'] = [
         goodsPrice: 59.9,
         couponPrice: 49.9,
         image: './images/datakitchenMaterial/伊通河-东北小粒香米-5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eNiL8RD?sm=68abd8',
+        url: 'https://detail.tmall.com/item.htm?id=558329771499&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572494497267.Copy.1&sourceType=item&price=59.9&origin_price=81&suid=7643AC6F-946B-4D29-8988-C7CC3DD35FC2&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JGMxUHpZc25jbVhwJA==&cpp=1&shareurl=true&short_name=h.eJBb3oK&sm=a920d4&app=chrome',
       },
       {
         isInvalid: true,
@@ -612,62 +612,62 @@ window['dataBrand_伊通河'] = [
       },
     ]
   },
-  {
-    title: '伊通河-田园清香大米-5kg',
-    keywords: ['大米', '伊通河', '香米'],
-    pictures: [
-      {
-        type: 'star',
-        goodsPrice: 58,
-        commission: 7.93,
-        image: './images/datakitchenMaterial/伊通河-田园清香大米-5kg.PNG',
-        url: 'https://friend.380star.com/goods.do?goodsid=7381633&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
-      },
-      {
-        type: 'tmall',
-        goodsPrice: 66.9,
-        couponPrice: 56.9,
-        image: './images/datakitchenMaterial/伊通河-田园清香大米-5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.enMvzn5?sm=3284bb',
-      },
-      {
-        isInvalid: true,
-        type: 'star',
-        goodsPrice: 49.00,
-        commission: 4.85,
-        image: './images/datakitchenMaterial/伊通河-田园清香大米-5kg-miaosha.PNG',
-        url: 'https://friend.380star.com/goods.do?goodsid=7381633&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
-      },
-    ]
-  },
-  {
-    title: '伊通河-生态清香大米-5kg',
-    keywords: ['大米', '伊通河', '香米'],
-    pictures: [
-      {
-        type: 'star',
-        goodsPrice: 65,
-        commission: 8.81,
-        image: './images/datakitchenMaterial/伊通河-生态清香大米-5kg.PNG',
-        url: 'https://friend.380star.com/goods.do?goodsid=7381634&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
-      },
-      {
-        type: 'tmall',
-        goodsPrice: 75,
-        couponPrice: 65,
-        image: './images/datakitchenMaterial/伊通河-生态清香大米-5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eNvv0PW?sm=cc8c80',
-      },
-      {
-        isInvalid: true,
-        type: 'star',
-        goodsPrice: 49.00,
-        commission: 3.08,
-        image: './images/datakitchenMaterial/伊通河-生态清香大米-5kg-miaosha.PNG',
-        url: 'https://friend.380star.com/goods.do?goodsid=7381634&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
-      },
-    ]
-  },
+  // {
+  //   title: '伊通河-田园清香大米-5kg',
+  //   keywords: ['大米', '伊通河', '香米'],
+  //   pictures: [
+  //     {
+  //       type: 'star',
+  //       goodsPrice: 58,
+  //       commission: 7.93,
+  //       image: './images/datakitchenMaterial/伊通河-田园清香大米-5kg.PNG',
+  //       url: 'https://friend.380star.com/goods.do?goodsid=7381633&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+  //     },
+  //     {
+  //       type: 'tmall',
+  //       goodsPrice: 66.9,
+  //       couponPrice: 56.9,
+  //       image: './images/datakitchenMaterial/伊通河-田园清香大米-5kg-tmall.PNG',
+  //       url: 'https://detail.tmall.com/item.htm?id=551479513223&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572494497267.Copy.1&sourceType=item&price=66.9&origin_price=105&suid=5BA0122C-8F07-4D57-B713-B90319A74818&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKzSEs1b1lzblhDZm3igrM=&cpp=1&shareurl=true&short_name=h.er8u2Fa&sm=4dc859&app=chrome',
+  //     },
+  //     {
+  //       isInvalid: true,
+  //       type: 'star',
+  //       goodsPrice: 49.00,
+  //       commission: 4.85,
+  //       image: './images/datakitchenMaterial/伊通河-田园清香大米-5kg-miaosha.PNG',
+  //       url: 'https://friend.380star.com/goods.do?goodsid=7381633&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+  //     },
+  //   ]
+  // },
+  // {
+  //   title: '伊通河-生态清香大米-5kg',
+  //   keywords: ['大米', '伊通河', '香米'],
+  //   pictures: [
+  //     {
+  //       type: 'star',
+  //       goodsPrice: 65,
+  //       commission: 8.81,
+  //       image: './images/datakitchenMaterial/伊通河-生态清香大米-5kg.PNG',
+  //       url: 'https://friend.380star.com/goods.do?goodsid=7381634&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+  //     },
+  //     {
+  //       type: 'tmall',
+  //       goodsPrice: 75,
+  //       couponPrice: 65,
+  //       image: './images/datakitchenMaterial/伊通河-生态清香大米-5kg-tmall.PNG',
+  //       url: 'https://detail.tmall.com/item.htm?id=551562242936&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572494497267.Copy.1&sourceType=item&price=75&origin_price=120&suid=1F592507-0E04-460D-B4BF-A4A6C6321BE6&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=wqJHOEpWWXNuZFRYccKi&cpp=1&shareurl=true&short_name=h.erFAm2x&sm=c251fd&app=chrome',
+  //     },
+  //     {
+  //       isInvalid: true,
+  //       type: 'star',
+  //       goodsPrice: 49.00,
+  //       commission: 3.08,
+  //       image: './images/datakitchenMaterial/伊通河-生态清香大米-5kg-miaosha.PNG',
+  //       url: 'https://friend.380star.com/goods.do?goodsid=7381634&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+  //     },
+  //   ]
+  // },
 ];
 window['dataBrand_先农氏'] = [
   {
@@ -683,16 +683,25 @@ window['dataBrand_先农氏'] = [
       },
       {
         type: 'tmall',
-        goodsPrice: 88,
-        couponPrice: 73,
-        image: './images/datakitchenMaterial/先农氏-东北小莉香米-5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.enolP85?sm=4a8a9a',
+        goodsPrice: 68,
+        couponPrice: 63,
+        image: './images/datakitchenMaterial/先农氏-东北小莉香米-5kg-tmall-2.PNG',
+        url: 'https://detail.tmall.com/item.htm?id=551679266190&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572489051566.Copy.1&sourceType=item&price=68&origin_price=138&suid=D734A14F-F7A9-4A17-9D28-8D812FB58813&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JGxJcmpZc09DeW9ZJA==&cpp=1&shareurl=true&short_name=h.erGCNkg&sm=b3f5b5&app=chrome',
       },
       {
         type: 'jd',
         goodsPrice: 87,
         image: './images/datakitchenMaterial/先农氏-东北小莉香米-5kg-jd.PNG',
         url: 'https://item.m.jd.com/product/25577354649.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
+      },
+      {
+        type: 'tmall',
+        goodsPrice: 88,
+        couponPrice: 73,
+        isInvalid: true,
+        invalidDate: '2019-10-31',
+        image: './images/datakitchenMaterial/先农氏-东北小莉香米-5kg-tmall.PNG',
+        url: 'https://detail.tmall.com/item.htm?id=551679266190&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572489051566.Copy.1&sourceType=item&price=68&origin_price=138&suid=D734A14F-F7A9-4A17-9D28-8D812FB58813&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JGxJcmpZc09DeW9ZJA==&cpp=1&shareurl=true&short_name=h.erGCNkg&sm=b3f5b5&app=chrome',
       },
     ]
   },
@@ -709,19 +718,54 @@ window['dataBrand_先农氏'] = [
       },
       {
         type: 'tmall',
-        goodsPrice: 79,
-        couponPrice: 69,
-        image: './images/datakitchenMaterial/先农氏-五常生态香米-5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eNRVfic?sm=ac42d6',
+        goodsPrice: 69,
+        couponPrice: 59,
+        image: './images/datakitchenMaterial/先农氏-五常生态香米-5kg-tmall-2.PNG',
+        url: 'https://detail.tmall.com/item.htm?id=537876660572&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572489051566.Copy.1&sourceType=item&price=69&origin_price=138&suid=70C0927F-C99E-4D07-B226-0B7E76664245&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkUWFhSFlzT3lzNDfigqQ=&cpp=1&shareurl=true&short_name=h.eritMvN&sm=2278d2&app=chrome',
       },
       {
         type: 'jd',
-        goodsPrice: 75,
+        goodsPrice: 69.8,
         image: './images/datakitchenMaterial/先农氏-五常生态香米-5kg-jd.PNG',
-        url: 'https://item.m.jd.com/product/17404889795.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
+        url: 'https://item.m.jd.com/product/22060746496.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
+      },
+      {
+        type: 'tmall',
+        goodsPrice: 79,
+        couponPrice: 69,
+        isInvalid: true,
+        invalidDate: '2019-10-31',
+        image: './images/datakitchenMaterial/先农氏-五常生态香米-5kg-tmall.PNG',
+        url: 'https://detail.tmall.com/item.htm?id=537876660572&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572489051566.Copy.1&sourceType=item&price=69&origin_price=138&suid=70C0927F-C99E-4D07-B226-0B7E76664245&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkUWFhSFlzT3lzNDfigqQ=&cpp=1&shareurl=true&short_name=h.eritMvN&sm=2278d2&app=chrome',
       },
     ]
   },
+  // {
+  //   title: '先农氏-五常生态香米-5kg',
+  //   keywords: ['大米', '先农氏', '香米'],
+  //   pictures: [
+  //     {
+  //       type: 'star',
+  //       goodsPrice: 69.8,
+  //       commission: 6.15,
+  //       image: './images/datakitchenMaterial/先农氏-五常生态香米-5kg.PNG',
+  //       url: 'https://friend.380star.com/goods.do?goodsid=7381630&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+  //     },
+  //     {
+  //       type: 'tmall',
+  //       goodsPrice: 69,
+  //       couponPrice: 59,
+  //       image: './images/datakitchenMaterial/先农氏-五常生态香米-5kg-tmall-2.PNG',
+  //       url: 'https://detail.tmall.com/item.htm?id=537876660572&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572489051566.Copy.1&sourceType=item&price=69&origin_price=138&suid=70C0927F-C99E-4D07-B226-0B7E76664245&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkUWFhSFlzT3lzNDfigqQ=&cpp=1&shareurl=true&short_name=h.eritMvN&sm=2278d2&app=chrome',
+  //     },
+  //     {
+  //       type: 'jd',
+  //       goodsPrice: 69.8,
+  //       image: './images/datakitchenMaterial/先农氏-五常生态香米-5kg-jd.PNG',
+  //       url: 'https://item.m.jd.com/product/22060746496.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
+  //     },
+  //   ]
+  // },
 ];
 window['dataBrand_叶盛贡米'] = [
   {
@@ -1191,6 +1235,49 @@ window['dataBrand_小七陈卤'] = [
         goodsPrice: 36.8,
         image: './images/dataFood/小七辣卤-香辣麻辣鸭肠-150g-tmall.PNG',
         url: 'https://m.tb.cn/h.eohEABv?sm=cf5626',
+      },
+    ]
+  },
+];
+
+window['dataBrand_拾光稻田'] = [
+  {
+    title: '拾光稻田-泰国臻选-茉莉香米-5kg',
+    keywords: ['大米', '拾光稻田', '泰国', '香米'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 98,
+        commission: 14.54,
+        image: './images/datakitchenMaterial/拾光稻田-泰国臻选-茉莉香米-5kg.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7374711&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '拾光稻田-泰国臻选-茉莉香米-5kg-2袋装',
+    keywords: ['大米', '拾光稻田', '柬埔寨', '香米'],
+    isBoutique: true,
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 199,
+        commission: 27.27,
+        image: './images/datakitchenMaterial/拾光稻田-泰国臻选-茉莉香米-5kg-2袋装.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7378314&flag=0&shopbag=1&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '拾光稻田-柬埔寨臻选-茉莉香米-5kg',
+    keywords: ['大米', '拾光稻田', '柬埔寨', '香米'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 108,
+        commission: 18.94,
+        image: './images/datakitchenMaterial/拾光稻田-柬埔寨臻选-茉莉香米-5kg.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7374713&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
       },
     ]
   },
@@ -1860,6 +1947,103 @@ window['dataBrand_甄伴'] = [
     ]
   },
 ];
+window['dataBrand_神农百谷'] = [
+  {
+    title: '神农百谷-寒地秋田稻香米-东北大米-4.5kg',
+    keywords: ['大米', '神农百谷', '东北大米'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 49.9,
+        commission: 3.49,
+        image: './images/datakitchenMaterial/神农百谷-寒地秋田稻香米-东北大米-4.5kg.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7282423&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+      {
+        type: 'tmall',
+        goodsPrice: 64.9,
+        image: './images/datakitchenMaterial/神农百谷-寒地秋田稻香米-东北大米-4.5kg-tmall.PNG',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572223317712.Copy.1&id=583556755823&sourceType=item&price=64.9&suid=BA86A21D-8888-4F13-BEC9-26EDEAD5C937&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKzeFk0N1lJZ0xkVW7igrM=&cpp=1&shareurl=true&short_name=h.eJpSF0u&sm=1b70e3&app=chrome',
+      },
+    ]
+  },
+  {
+    title: '神农百谷-蟹田生态稻香米-东北大米-5kg',
+    keywords: ['大米', '神农百谷', '东北大米'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 59.9,
+        commission: 3.92,
+        image: './images/datakitchenMaterial/神农百谷-蟹田生态稻香米-东北大米-5kg.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7282421&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+      {
+        type: 'tmall',
+        goodsPrice: 79,
+        image: './images/datakitchenMaterial/神农百谷-蟹田生态稻香米-东北大米-5kg-tmall.PNG',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572223317712.Copy.1&id=583556395103&sourceType=item&price=79&suid=765466D5-41F8-4D99-A115-21100E6C0C05&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=wqJ0Nmk3WUlncFh6N8Ki&cpp=1&shareurl=true&short_name=h.er0ItBc&sm=034c59&app=chrome',
+      },
+    ]
+  },
+  {
+    title: '神农百谷-珍选稻花香-香米-东北大米-5kg',
+    keywords: ['大米', '神农百谷', '香米', '东北大米'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 69,
+        commission: 4.4,
+        image: './images/datakitchenMaterial/神农百谷-珍选稻花香-香米-东北大米-5kg.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7282395&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+      {
+        type: 'tmall',
+        goodsPrice: 78,
+        image: './images/datakitchenMaterial/神农百谷-珍选稻花香-香米-东北大米-5kg-tmall.PNG',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572223317712.Copy.1&id=584626716847&sourceType=item&price=78&suid=6E6E7317-A76C-4F2C-912B-57693668F875&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkeGZTSVlJZ0tzNWLigqQ=&cpp=1&shareurl=true&short_name=h.er0IoDC&sm=d4f235&app=chrome',
+      },
+    ]
+  },
+  {
+    title: '神农百谷-生态稻花香-香米-东北大米-5kg',
+    keywords: ['大米', '神农百谷', '香米', '东北大米'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 79,
+        commission: 5.28,
+        image: './images/datakitchenMaterial/神农百谷-生态稻花香-香米-东北大米-5kg.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7282400&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+      {
+        type: 'tmall',
+        goodsPrice: 96.9,
+        image: './images/datakitchenMaterial/神农百谷-生态稻花香-香米-东北大米-5kg-tmall.PNG',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572223317712.Copy.1&id=583092536423&sourceType=item&price=96.9&suid=97B14D7A-D14D-4BD5-A254-D979086F1DE9&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JExic0pZSWdxazNQJA==&cpp=1&shareurl=true&short_name=h.er0H9bK&sm=05879f&app=chrome',
+      },
+    ]
+  },
+  {
+    title: '神农百谷-五常稻花香-香米-东北大米-5kg',
+    keywords: ['大米', '神农百谷', '香米', '东北大米'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 99,
+        commission: 6.61,
+        image: './images/datakitchenMaterial/神农百谷-五常稻花香-香米-东北大米-5kg.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7282416&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+      {
+        type: 'tmall',
+        goodsPrice: 129,
+        image: './images/datakitchenMaterial/神农百谷-五常稻花香-香米-东北大米-5kg-tmall.PNG',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572223317712.Copy.1&id=583368162329&sourceType=item&price=129&suid=6A5658E8-31B1-40F6-BA3E-03C41CF22A40&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0MUN0aFlJZ3JJVXDigrQ=&cpp=1&shareurl=true&short_name=h.er0u460&sm=a33fdd&app=chrome',
+      },
+    ]
+  },
+];
 window['dataBrand_美素佳儿'] = [
   {
     title: '美素佳儿-妈妈孕产妇配方奶粉-900g',
@@ -2217,7 +2401,7 @@ window['dataBrand_金龙鱼'] = [
         url: 'https://friend.380star.com/goods.do?goodsid=7295457&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
       },
       {
-        type: 'tmall',
+        type: 'tmcs',
         goodsPrice: 89.9,
         image: './images/datakitchenMaterial/金龙鱼-五常基地原香稻5kg-五常稻花香原粮-东北大米香米-tmall.PNG',
         url: 'https://m.tb.cn/h.enECcnt?sm=3c05d7',
@@ -2227,6 +2411,105 @@ window['dataBrand_金龙鱼'] = [
         goodsPrice: 89.9,
         image: './images/datakitchenMaterial/金龙鱼-五常基地原香稻5kg-五常稻花香原粮-东北大米香米-jd.PNG',
         url: 'https://item.m.jd.com/product/302017.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-乳玉皇妃-五常有机稻花香-5KG',
+    keywords: ['大米', '金龙鱼', '香米', '稻花香', '有机'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 159,
+        commission: 17.19,
+        image: './images/datakitchenMaterial/金龙鱼-乳玉皇妃-五常有机稻花香-5KG.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7295339&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+      {
+        type: 'tmcs',
+        goodsPrice: 168,
+        couponPrice: 153,
+        image: './images/datakitchenMaterial/金龙鱼-乳玉皇妃-五常有机稻花香-5KG-tmcs.PNG',
+        url: 'https://chaoshi.detail.tmall.com/item.htm?id=569741682019&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572482575767.Copy.1&sourceType=item&price=168&suid=E0927A7D-2D62-4CE5-B24D-049DA47FA283&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0eGpLaVlzUDFlUFHigrQ=&cpp=1&shareurl=true&short_name=h.erSdDZr&sm=ac8cba&app=chrome',
+      },
+    ]
+  },
+];
+window['dataBrand_香纳兰'] = [
+  {
+    title: '香纳兰-纯正泰国香米-2.5kg',
+    keywords: ['大米', '香纳兰', '香米', '泰国'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 59.9,
+        commission: 10.53,
+        image: './images/datakitchenMaterial/香纳兰-纯正泰国香米-2.5kg.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7295451&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+      {
+        type: 'tmcs',
+        goodsPrice: 61.9,
+        image: './images/datakitchenMaterial/香纳兰-纯正泰国香米-2.5kg-tmcs.PNG',
+        url: 'https://chaoshi.detail.tmall.com/item.htm?id=43818952484&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572482575767.Copy.1&sourceType=item&price=61.9&suid=E21A663C-49AF-4862-8550-F581F0FEA1A2&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0MVM3YVlzUFZNVEPigrQ=&cpp=1&shareurl=true&short_name=h.erH8As2&sm=c63626&app=chrome',
+      },
+      {
+        type: 'jd',
+        goodsPrice: 61.9,
+        image: './images/datakitchenMaterial/香纳兰-纯正泰国香米-2.5kg-jd.PNG',
+        url: 'https://item.m.jd.com/product/1109176.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
+      },
+    ]
+  },
+  {
+    title: '香纳兰-纯正泰国香米-5kg',
+    keywords: ['大米', '香纳兰', '香米', '泰国'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 89,
+        commission: 4.36,
+        image: './images/datakitchenMaterial/香纳兰-纯正泰国香米-5kg.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7295468&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+      {
+        type: 'tmcs',
+        goodsPrice: 95,
+        image: './images/datakitchenMaterial/香纳兰-纯正泰国香米-5kg-tmcs.PNG',
+        url: 'https://chaoshi.detail.tmall.com/item.htm?id=43839680744&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572482575767.Copy.1&sourceType=item&price=95&suid=D0F6970F-4F70-4BBD-82FF-601236D84B77&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0anV1eVlzUGhzV2bigrQ=&cpp=1&shareurl=true&short_name=h.eJwJiVQ&sm=bf4027&app=chrome',
+      },
+      {
+        type: 'jd',
+        goodsPrice: 99,
+        couponPrice: 97,
+        image: './images/datakitchenMaterial/香纳兰-纯正泰国香米-5kg-jd.PNG',
+        url: 'https://item.m.jd.com/product/1130427.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
+      },
+    ]
+  },
+  {
+    title: '香纳兰-泰国茉莉香米-5kg',
+    keywords: ['大米', '香纳兰', '香米', '泰国', '茉莉香'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 99,
+        commission: 7.05,
+        image: './images/datakitchenMaterial/香纳兰-泰国茉莉香米-5kg.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7295401&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+      {
+        type: 'tmcs',
+        goodsPrice: 119,
+        image: './images/datakitchenMaterial/香纳兰-泰国茉莉香米-5kg-tmcs.PNG',
+        url: 'https://chaoshi.detail.tmall.com/item.htm?id=520570762211&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572482575767.Copy.1&sourceType=item&price=119&suid=2F9FBC4B-756D-48C3-9A50-B768A4F7E431&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKzb1VpRllzUFJJcjDigrM=&cpp=1&shareurl=true&short_name=h.eJwsPdo&sm=3cb74c&app=chrome',
+      },
+      {
+        type: 'jd',
+        goodsPrice: 119,
+        couponPrice: 113.9,
+        image: './images/datakitchenMaterial/香纳兰-泰国茉莉香米-5kg-jd.PNG',
+        url: 'https://item.m.jd.com/product/1628431.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
       },
     ]
   },

@@ -43,7 +43,11 @@ var vm = new Vue({
     // 平台类型
     platformType: {
       jd: { name: '京东' },
+      jdzy: { name: '京东自营' },
+      jdqjd: { name: '京东旗舰店' },
       tmall: { name: '天猫' },
+      tmcs: { name: '天猫超市' },
+      tmqjd: { name: '天猫旗舰店' },
       star: { name: '星链' },
     },
     // 星链会员等级
