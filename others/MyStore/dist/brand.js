@@ -1134,7 +1134,7 @@ window['dataBrand_叶盛贡米'] = [
         type: 'tmall',
         goodsPrice: 38.8,
         image: './images/datakitchenMaterial/叶盛贡米-袋装贡米-宁夏大米-2.5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eKrZVKZ?sm=c07742',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=604106881073&sourceType=item&price=38.8&suid=C1D2036E-CA0C-4007-8341-D8EEF6294473&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0UnM3VllyWHhnWE/igrQ=&cpp=1&shareurl=true&short_name=h.eKrZVKZ&sm=c07742&app=chrome',
       },
     ]
   },
@@ -1153,13 +1153,13 @@ window['dataBrand_叶盛贡米'] = [
         type: 'tmall',
         goodsPrice: 72,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-富硒香米-宁夏大米-5kg-tmall.PNG',
-        url: 'https://c.tb.cn/h.eKJ9kLk?sm=4788bd',
+        url: 'https://detail.tmall.com/item.htm?id=599925355367&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&sourceType=item&price=72&suid=7803FB6F-3761-4DF5-9501-3015ADFCCF8F&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0MnVGaFlyWDZzbDPigrQ=&cpp=1&shareurl=true&short_name=h.eKJ9kLk&sm=4788bd&app=chrome',
       },
       {
         type: 'tmall',
         goodsPrice: 72,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-富硒香米-宁夏大米-5kg-tmall-2.PNG',
-        url: 'https://m.tb.cn/h.eqWCbpM?sm=0377cb',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=604199473007&sourceType=item&price=72&suid=C1DB20BB-9DEE-4B3B-B585-B91B90F1AC34&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=wqI3RVR2WXIyV0xDY8Ki&cpp=1&shareurl=true&short_name=h.eqWCbpM&sm=0377cb&app=chrome',
       },
       {
         type: 'jd',
@@ -1184,13 +1184,13 @@ window['dataBrand_叶盛贡米'] = [
         type: 'tmall',
         goodsPrice: 82,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-蟹田香米-宁夏大米-5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eqmEWfy?sm=acdaa8',
+        url: 'https://detail.tmall.com/item.htm?id=599539125065&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&sourceType=item&price=82&suid=05E9A72E-4D45-4094-85C3-A081FB4EECB2&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkcnkxR1lyWFNKOHXigqQ=&cpp=1&shareurl=true&short_name=h.eqmEWfy&sm=acdaa8&app=chrome',
       },
       {
         type: 'tmall',
         goodsPrice: 82,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-蟹田香米-宁夏大米-5kg-tmall-2.PNG',
-        url: 'https://m.tb.cn/h.eKrQIsK?sm=13d6d8',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=604623279951&sourceType=item&price=82&suid=89BDE377-A5EF-4883-9066-111689A46BAC&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKzM3RMNllyMjZKejXigrM=&cpp=1&shareurl=true&short_name=h.eKrQIsK&sm=13d6d8&app=chrome',
       },
       {
         type: 'jd',
@@ -1215,7 +1215,7 @@ window['dataBrand_叶盛贡米'] = [
         type: 'tmall',
         goodsPrice: 98,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-有机贡米-宁夏大米-2.5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eqWO9pT?sm=09bbaf',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=603947868901&sourceType=item&price=98&suid=8636AEC6-5619-43DC-9F93-D5C5AA965CB7&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKsR2hYNFlyWHRXSDjigqw=&cpp=1&shareurl=true&short_name=h.eqWO9pT&sm=09bbaf&app=chrome',
       },
     ]
   },
@@ -1234,7 +1234,7 @@ window['dataBrand_叶盛贡米'] = [
         type: 'tmall',
         goodsPrice: 98,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-壹号有机米-宁夏大米-2.5kg-tmall.PNG',
-        url: 'https://c.tb.cn/h.eqB1AxK?sm=2a700f',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=604401431761&sourceType=item&price=98&suid=9F87A5CA-2F0C-46CB-A0FD-674C7FC2F933&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkeWZNcllyWEZHQmLigqQ=&cpp=1&shareurl=true&short_name=h.eqB1AxK&sm=2a700f&app=chrome',
       },
     ]
   },
@@ -1254,13 +1254,13 @@ window['dataBrand_叶盛贡米'] = [
         goodsPrice: 288,
         couponPrice: 278,
         image: './images/datakitchenMaterial/叶盛贡米-真空盒装-金色礼盒-有机米-宁夏大米-6kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eqWdzt0?sm=654132',
+        url: 'https://detail.tmall.com/item.htm?id=599538249627&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&sourceType=item&price=288&suid=F949F58C-1981-4F61-999B-761B0677279D&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JGt2anVZclhSSlNCJA==&cpp=1&shareurl=true&short_name=h.eqWdzt0&sm=654132&app=chrome',
       },
       {
         type: 'tmall',
         goodsPrice: 288,
         image: './images/datakitchenMaterial/叶盛贡米-真空盒装-金色礼盒-有机米-宁夏大米-6kg-tmall-2.PNG',
-        url: 'https://m.tb.cn/h.eqNHTUL?sm=3fc9fb',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=603965088393&sourceType=item&price=288&suid=9252BB43-3E47-4857-A3BD-B45B47F7CBE3&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkVGpBcFlyMlNkNE7igqQ=&cpp=1&shareurl=true&short_name=h.eqNHTUL&sm=3fc9fb&app=chrome',
       },
       {
         type: 'jd',
@@ -1286,13 +1286,13 @@ window['dataBrand_叶盛贡米'] = [
         goodsPrice: 310,
         couponPrice: 280,
         image: './images/datakitchenMaterial/叶盛贡米-真空盒装-白色礼盒-有机米-宁夏大米-6kg-tmall.PNG',
-        url: 'https://c.tb.cn/h.eKJmlIY?sm=3eb372',
+        url: 'https://detail.tmall.com/item.htm?id=599537837908&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&sourceType=item&price=310&suid=E6171965-1D7E-4972-802A-1D9D190A1F0C&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JFhNR1dZclhqUVVaJA==&cpp=1&shareurl=true&short_name=h.eKJmlIY&sm=3eb372&app=chrome',
       },
       {
         type: 'tmall',
         goodsPrice: 322.2,
         image: './images/datakitchenMaterial/叶盛贡米-真空盒装-白色礼盒-有机米-宁夏大米-6kg-tmall-2.PNG',
-        url: 'https://c.tb.cn/h.eqNHAZd?sm=95189f',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=604210537983&sourceType=item&price=322.2&origin_price=358&suid=E759F8A7-3295-407B-BB00-DCB13AD2EE1D&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=wqIyREFIWXIyU3NJbsKi&cpp=1&shareurl=true&short_name=h.eqNHAZd&sm=95189f&app=chrome',
       },
       {
         type: 'jd',
@@ -1319,7 +1319,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 39.9,
         image: './images/dataFood/小七陈卤-正能量套餐-tmall.PNG',
-        url: 'https://m.tb.cn/h.eorFvDM?sm=0a3aee',
+        url: 'https://detail.tmall.com/item.htm?id=562699459087&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=DE66BF1A-D062-4482-A20A-8B68F79DE8D9&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lMG5KQVlMd3pha0jvv6U=&cpp=1&shareurl=true&short_name=h.eorFvDM&sm=0a3aee&app=chrome',
       },
     ]
   },
@@ -1338,7 +1338,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 46.8,
         image: './images/dataFood/小七陈卤-啃啃套餐-400g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eLc9PF9?sm=c9cf76',
+        url: 'https://detail.tmall.com/item.htm?id=543735953315&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=43450FA1-629A-4E40-8375-55D7B95F56F2&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lYWRJOVlMd0pIQ2nvv6U=&cpp=1&shareurl=true&short_name=h.eLc9PF9&sm=c9cf76&app=chrome',
       },
     ]
   },
@@ -1357,7 +1357,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 39.8,
         image: './images/dataFood/小七陈卤-素食套餐-525g-tmall.PNG',
-        url: 'https://c.tb.cn/h.eorpcEj?sm=2f3593',
+        url: 'https://detail.tmall.com/item.htm?id=543712848340&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.1&sourceType=item&price=39.8&origin_price=58&suid=06B34AF8-EC8B-4CC4-9F51-063DDAF891A8&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0bW40b1lMd0dpTkHigrQ=&cpp=1&shareurl=true&short_name=h.eorpcEj&sm=2f3593&app=chrome',
       },
     ]
   },
@@ -1376,7 +1376,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 99,
         image: './images/dataFood/小七陈卤-家庭大礼包10种-800g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eLcK1sm?sm=a5149f',
+        url: 'https://detail.tmall.com/item.htm?id=543759759032&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=AAE6209C-1A8E-4E26-923E-2A8BAC7CD050&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lQUprZFlMd3h6cELvv6U=&cpp=1&shareurl=true&short_name=h.eLcK1sm&sm=a5149f&app=chrome',
       },
     ]
   },
@@ -1395,7 +1395,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 188,
         image: './images/dataFood/小七陈卤-party大礼包16种-1245g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eortKcZ?sm=60631d',
+        url: 'https://detail.tmall.com/item.htm?id=543711780078&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=E0FAB5C0-F3E7-448A-97D5-BDE5A0373511&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lY1FVRFlMd3g0Nkfvv6U=&cpp=1&shareurl=true&short_name=h.eortKcZ&sm=60631d&app=chrome',
       },
     ]
   },
@@ -1414,7 +1414,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 36.8,
         image: './images/dataFood/小七陈卤-辣卤龙虾尾-150g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eorrIUT?sm=7a3086',
+        url: 'https://detail.tmall.com/item.htm?id=562710135045&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=4AF01544-1095-4166-A4D4-F60B1D613EBA&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lSDFub1lMd0V4VDTvv6U=&cpp=1&shareurl=true&short_name=h.eorrIUT&sm=7a3086&app=chrome',
       },
     ]
   },
@@ -1433,7 +1433,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 33.8,
         image: './images/dataFood/小七陈卤-魔鬼牛肚-150g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eohvbwL?sm=f260cc',
+        url: 'https://detail.tmall.com/item.htm?id=542615642109&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=824CD98D-E028-4014-92FE-24CD5E851DC6&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20leU41N1lMd0NPMU7vv6U=&cpp=1&shareurl=true&short_name=h.eohvbwL&sm=f260cc&app=chrome',
       },
     ]
   },
@@ -1452,7 +1452,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 29.8,
         image: './images/dataFood/小七陈卤-辣卤牛板筋-150g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eohoAT9?sm=293a6b',
+        url: 'https://detail.tmall.com/item.htm?id=587150713475&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=64768155-CC12-4F28-9189-43C8D0CB44BE&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lOWZmQ1lMd3MzZTDvv6U=&cpp=1&shareurl=true&short_name=h.eohoAT9&sm=293a6b&app=chrome',
       },
     ]
   },
@@ -1471,7 +1471,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 26.8,
         image: './images/dataFood/小七陈卤-辣卤牛肉-100g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eorqrZe?sm=2d4161',
+        url: 'https://detail.tmall.com/item.htm?id=542628235936&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=5C987E7D-82B9-4C0E-901C-109FB5901828&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lNUExbVlMd0Zhbkbvv6U=&cpp=1&shareurl=true&short_name=h.eorqrZe&sm=2d4161&app=chrome',
       },
     ]
   },
@@ -1490,7 +1490,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 23.8,
         image: './images/dataFood/小七陈卤-辣卤鸭脖-200g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eMwri19?sm=bdfb91',
+        url: 'https://detail.tmall.com/item.htm?id=542638356132&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=A5872C0A-55D8-4D51-8DE3-C706C250994B&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lUHlwMllMd3N3c2zvv6U=&cpp=1&shareurl=true&short_name=h.eMwri19&sm=bdfb91&app=chrome',
       },
     ]
   },
@@ -1509,7 +1509,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 35.8,
         image: './images/dataFood/小七陈卤-辣卤去骨鸭掌-120g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eoroUQ5?sm=147cd1',
+        url: 'https://detail.tmall.com/item.htm?id=556691676943&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=21AAB2CE-40E9-4F38-9C36-758E9A69585C&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lSkI1Q1lMd3Q3R3rvv6U=&cpp=1&shareurl=true&short_name=h.eoroUQ5&sm=147cd1&app=chrome',
       },
     ]
   },
@@ -1528,7 +1528,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 28.8,
         image: './images/dataFood/小七陈卤-辣卤鸭胗-150g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eMwGWWR?sm=a2c906',
+        url: 'https://detail.tmall.com/item.htm?id=544273028265&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=85727EA7-3728-4097-904A-6671676991A3&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20ldGR3WllMd3V6MFLvv6U=&cpp=1&shareurl=true&short_name=h.eMwGWWR&sm=a2c906&app=chrome',
       },
     ]
   },
@@ -1547,7 +1547,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 26.8,
         image: './images/dataFood/小七陈卤-香辣鸭郡把-150g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eMwtv2A?sm=75da6b',
+        url: 'https://detail.tmall.com/item.htm?id=543203371752&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=2560E8F5-154E-4EC8-8F1D-47BA198E6D30&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lbFpxd1lMd3ZaZzXvv6U=&cpp=1&shareurl=true&short_name=h.eMwtv2A&sm=75da6b&app=chrome',
       },
     ]
   },
@@ -1566,7 +1566,7 @@ window['dataBrand_小七陈卤'] = [
         type: 'tmall',
         goodsPrice: 36.8,
         image: './images/dataFood/小七辣卤-香辣麻辣鸭肠-150g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eohEABv?sm=cf5626',
+        url: 'https://detail.tmall.com/item.htm?id=542664130645&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570755378521.Copy.Physical_Screenshots&sourceType=tao&suid=15B8C4DE-581F-4005-9808-4462B63B1D0F&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20leVF3U1lMd0FoMnnvv6U=&cpp=1&shareurl=true&short_name=h.eohEABv&sm=cf5626&app=chrome',
       },
     ]
   },
@@ -1629,14 +1629,16 @@ window['dataBrand_海天'] = [
       {
         type: 'jd',
         goodsPrice: 19.9,
+        postage: 8,
         image: './images/datakitchenMaterial/海天-味极鲜-酱油-1.28升-jd.PNG',
         url: 'https://item.m.jd.com/product/743696.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
       },
       {
         type: 'tmall',
         goodsPrice: 19.9,
+        postage: 20,
         image: './images/datakitchenMaterial/海天-味极鲜-酱油-1.28升-tmcs.PNG',
-        url: 'https://m.tb.cn/h.eqL0W77?sm=1d5c3a',
+        url: 'https://chaoshi.detail.tmall.com/item.htm?id=520545232414&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571875301120.Copy.1&sourceType=item&price=19.9&suid=FADF0C51-5D18-43EE-B63C-7AEEE71E1317&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKsNkI0dVlKSEloeHbigqw=&cpp=1&shareurl=true&short_name=h.eqL0W77&sm=1d5c3a&app=chrome',
       },
     ]
   },
@@ -1654,14 +1656,16 @@ window['dataBrand_海天'] = [
       {
         type: 'jd',
         goodsPrice: 24.9,
+        postage: 8,
         image: './images/datakitchenMaterial/海天-味极鲜-酱油-1.9L-jd.PNG',
         url: 'https://item.m.jd.com/product/2680178.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
       },
       {
         type: 'tmall',
         goodsPrice: 24.9,
+        postage: 20,
         image: './images/datakitchenMaterial/海天-味极鲜-酱油-1.9L-tmcs.PNG',
-        url: 'https://c.tb.cn/h.eKvQgBf?sm=7a20bf',
+        url: 'https://chaoshi.detail.tmall.com/item.htm?id=41124112598&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571875301120.Copy.1&sourceType=item&price=24.9&suid=36D956E1-43B6-4473-9F80-D8480F496C40&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JFJkMWNZSkh0N2RXJA==&cpp=1&shareurl=true&short_name=h.eKvQgBf&sm=7a20bf&app=chrome',
       },
     ]
   },
@@ -1679,14 +1683,16 @@ window['dataBrand_海天'] = [
       {
         type: 'jd',
         goodsPrice: 17.2,
+        postage: 8,
         image: './images/datakitchenMaterial/海天-金标生抽-1.28L-酱油-jd.PNG',
         url: 'https://item.m.jd.com/product/743688.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
       },
       {
         type: 'tmall',
         goodsPrice: 18.9,
+        postage: 11,
         image: './images/datakitchenMaterial/海天-金标生抽-1.28L-酱油-tmall.PNG',
-        url: 'https://m.tb.cn/h.eq4v3Bo?sm=2fa41c',
+        url: 'https://detail.tmall.com/item.htm?id=559309611872&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571875301120.Copy.1&sourceType=item&price=18.9&origin_price=22&suid=FA1CBA79-0230-4DAB-8259-F31BF005E94E&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkUjdud1lKSFJHcHDigqQ=&cpp=1&shareurl=true&short_name=h.eq4v3Bo&sm=2fa41c&app=chrome',
       },
     ]
   },
@@ -1704,14 +1710,16 @@ window['dataBrand_海天'] = [
       {
         type: 'jd',
         goodsPrice: 22.9,
+        postage: 8,
         image: './images/datakitchenMaterial/海天-金标生抽-1.9L-酱油-jd.PNG',
         url: 'https://item.m.jd.com/product/743677.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
       },
       {
         type: 'tmall',
         goodsPrice: 24.9,
+        postage: 20,
         image: './images/datakitchenMaterial/海天-金标生抽-1.9L-酱油-tmcs.PNG',
-        url: 'https://c.tb.cn/h.eqouuua?sm=e9c472',
+        url: 'https://chaoshi.detail.tmall.com/item.htm?id=12272135156&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571875301120.Copy.1&sourceType=item&price=24.9&suid=FE3DC4F9-9786-4A75-AAB4-DC86536A6A57&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=wqJKclFmWUpIa1NnRMKi&cpp=1&shareurl=true&short_name=h.eqouuua&sm=e9c472&app=chrome',
       },
     ]
   },
@@ -1729,20 +1737,23 @@ window['dataBrand_海天'] = [
       {
         type: 'jd',
         goodsPrice: 9.9*3,
+        postage: 8,
         image: './images/datakitchenMaterial/海天-特级-金标生抽-500ml-3瓶-jd.PNG',
         url: 'https://item.m.jd.com/product/851968.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
       },
       {
         type: 'tmall',
         goodsPrice: 9.9*3,
+        postage: 20,
         image: './images/datakitchenMaterial/海天-特级-金标生抽-500ml-3瓶-tmcs.PNG',
-        url: 'https://m.tb.cn/h.eKv5roV?sm=c4f916',
+        url: 'https://chaoshi.detail.tmall.com/item.htm?id=12485925903&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571875301120.Copy.1&sourceType=item&price=9.9&suid=B08D28CE-67E1-4538-8D14-D29AE7AF0E0B&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=wqJpZlZvWUpIT3Q2TsKi&cpp=1&shareurl=true&short_name=h.eKv5roV&sm=c4f916&app=chrome',
       },
       {
         type: 'tmall',
         goodsPrice: 10.9*3,
+        postage: 11,
         image: './images/datakitchenMaterial/海天-特级-金标生抽-500ml-3瓶-tmall.PNG',
-        url: 'https://m.tb.cn/h.eK7pUTq?sm=11fd44',
+        url: 'https://detail.tmall.com/item.htm?id=17074043263&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571875301120.Copy.1&sourceType=item&price=10.9&origin_price=16&suid=DAD87682-F856-40A4-8A8A-02B17743D4DC&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkOU5ybFlKSE1FbkjigqQ=&cpp=1&shareurl=true&short_name=h.eK7pUTq&sm=11fd44&app=chrome',
       },
     ]
   },
@@ -1760,6 +1771,7 @@ window['dataBrand_海天'] = [
       {
         type: 'jd',
         goodsPrice: 16.8,
+        postage: 8,
         image: './images/datakitchenMaterial/海天-鲜味生抽-酱油-1.28L-jd.PNG',
         url: 'https://item.m.jd.com/product/743690.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
       },
@@ -1779,14 +1791,16 @@ window['dataBrand_海天'] = [
       {
         type: 'jd',
         goodsPrice: 18.8,
+        postage: 8,
         image: './images/datakitchenMaterial/海天-鲜味生抽-酱油-1.9L-jd.PNG',
         url: 'https://item.m.jd.com/product/743679.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
       },
       {
         type: 'tmall',
         goodsPrice: 18.8,
+        postage: 20,
         image: './images/datakitchenMaterial/海天-鲜味生抽-酱油-1.9L-tmcs.PNG',
-        url: 'https://m.tb.cn/h.eKvSvAV?sm=ccf027',
+        url: 'https://chaoshi.detail.tmall.com/item.htm?id=17477692249&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571875301120.Copy.1&sourceType=item&price=18.8&suid=6E8FF039-8321-4849-8F7B-70D7856A781F&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JFY4UUxZSkhxc2JCJA==&cpp=1&shareurl=true&short_name=h.eKvSvAV&sm=ccf027&app=chrome',
       },
     ]
   },
@@ -1804,14 +1818,16 @@ window['dataBrand_海天'] = [
       {
         type: 'jd',
         goodsPrice: 4.2*3,
+        postage: 8,
         image: './images/datakitchenMaterial/海天-上等蚝油-260g-3瓶-jd.PNG',
         url: 'https://item.m.jd.com/product/851963.html?wxa_abtest=o&utm_source=iosapp&utm_medium=appshare&utm_campaign=t_335139774&utm_term=CopyURL&ad_od=share',
       },
       {
         type: 'tmall',
         goodsPrice: 4.5*3,
+        postage: 11,
         image: './images/datakitchenMaterial/海天-上等蚝油-260g-3瓶-tmall.PNG',
-        url: 'https://m.tb.cn/h.eqL9M2z?sm=3451dc',
+        url: 'https://detail.tmall.com/item.htm?id=549042317193&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571875301120.Copy.1&sourceType=item&price=4.5&suid=4DA77C70-87F0-46E1-BB4C-FD60A5CD80EF&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKzelA5YVlKdGVhMmbigrM=&cpp=1&shareurl=true&short_name=h.eqL9M2z&sm=3451dc&app=chrome',
       },
     ]
   },
@@ -1833,7 +1849,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 59.9,
         image: './images/dataFood/海底捞-自煮火锅-组合套餐B-麻辣嫩牛435g-香辣素食400g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eowFont?sm=9059f8',
+        url: 'https://detail.tmall.com/item.htm?id=582863803104&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=2318D156-1F5D-47EF-8B5E-5208AED0BDC5&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lb1dLQ1lMTFBNU1Lvv6U=&cpp=1&shareurl=true&short_name=h.eowFont&sm=9059f8&app=chrome',
       },
     ]
   },
@@ -1852,7 +1868,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 69.9,
         image: './images/dataFood/海底捞-自煮火锅-组合套餐C-麻辣嫩牛435g-番茄牛腩365g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eoPWQKE?sm=c89ee9',
+        url: 'https://detail.tmall.com/item.htm?id=560203211229&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=E746C409-F1FE-4929-A3F5-B65256D8102C&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lV0JsdVlMTGxNc0fvv6U=&cpp=1&shareurl=true&short_name=h.eoPWQKE&sm=c89ee9&app=chrome',
       },
     ]
   },
@@ -1871,7 +1887,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 69.9,
         image: './images/dataFood/海底捞-自煮火锅-组合套餐D-脆爽牛肚435g-番茄牛腩365g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eMKdlUB?sm=d9bfb1',
+        url: 'https://detail.tmall.com/item.htm?id=594726851775&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=5A0F3137-8BA1-4276-9306-ABB2F0332606&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lS1ZPcFlMTG1OZUXvv6U=&cpp=1&shareurl=true&short_name=h.eMKdlUB&sm=d9bfb1&app=chrome',
       },
     ]
   },
@@ -1890,7 +1906,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 69.9,
         image: './images/dataFood/海底捞-自煮火锅-组合套餐E-脆爽牛肚435g-麻辣嫩牛435g-tmall.PNG',
-        url: 'https://m.tb.cn/h.eowykeP?sm=f98233',
+        url: 'https://detail.tmall.com/item.htm?id=559179217465&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=4BB2D3A9-1F1B-45C7-9D11-2CF6186AB5AF&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20laU84aFlMTG1zWlXvv6U=&cpp=1&shareurl=true&short_name=h.eowykeP&sm=f98233&app=chrome',
       },
     ]
   },
@@ -1909,7 +1925,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 69.9,
         image: './images/dataFood/海底捞-自热火锅-2盒-番茄牛腩-tmall.PNG',
-        url: 'https://m.tb.cn/h.ephnzlQ?sm=e1ac16',
+        url: 'https://detail.tmall.com/item.htm?id=558104940538&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571200037567.Copy.Physical_Screenshots&sourceType=tao&suid=2F0267C3-1EEC-4D3D-84CF-3BBBEEBE0B41&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lMGNheFlLVTNrbFbvv6U=&cpp=1&shareurl=true&short_name=h.ephnzlQ&sm=e1ac16&app=chrome',
       },
     ]
   },
@@ -1928,7 +1944,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 69.9,
         image: './images/dataFood/海底捞-自热火锅-2盒-脆爽牛肚-tmall.PNG',
-        url: 'https://m.tb.cn/h.eLNqk3w?sm=4a4721',
+        url: 'https://detail.tmall.com/item.htm?id=563746678582&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571200037567.Copy.Physical_Screenshots&sourceType=tao&suid=BD46A2AF-FFF1-4B87-ABA7-C69EA5E9B4FA&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20laVRkYVlLVVZldTXvv6U=&cpp=1&shareurl=true&short_name=h.eLNqk3w&sm=4a4721&app=chrome',
       },
     ]
   },
@@ -1947,7 +1963,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 69.9,
         image: './images/dataFood/海底捞-自热火锅-2盒-麻辣嫩牛-tmall.PNG',
-        url: 'https://m.tb.cn/h.eLBtCpu?sm=2e4760',
+        url: 'https://detail.tmall.com/item.htm?id=563747266470&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571200037567.Copy.Physical_Screenshots&sourceType=tao&suid=FCBC33B3-EF75-4FCE-BB0E-9C9016502CD9&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lcWJTTVlLVTRqZ2nvv6U=&cpp=1&shareurl=true&short_name=h.eLBtCpu&sm=2e4760&app=chrome',
       },
     ]
   },
@@ -1966,7 +1982,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 59.9,
         image: './images/dataFood/海底捞-自热火锅-2盒-麻辣嫩牛+香辣素食-tmall.PNG',
-        url: 'https://m.tb.cn/h.ephJyJS?sm=b81ef2',
+        url: 'https://detail.tmall.com/item.htm?id=582863803104&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571200037567.Copy.Physical_Screenshots&sourceType=tao&suid=3E3308CA-31DE-400C-93EA-CCA794FBBB33&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lOXN4QVlLVVRHSjbvv6U=&cpp=1&shareurl=true&short_name=h.ephJyJS&sm=b81ef2&app=chrome',
       },
     ]
   },
@@ -1985,7 +2001,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 59.9,
         image: './images/dataFood/海底捞-自热火锅-2盒-脆爽牛肚+香辣素食-tmall.PNG',
-        url: 'https://m.tb.cn/h.eLNG0dJ?sm=5b8ef9',
+        url: 'https://detail.tmall.com/item.htm?id=594554502367&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571200037567.Copy.Physical_Screenshots&sourceType=tao&suid=16276F41-21C3-431A-AFE7-53D305342AB6&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lR3o3SVlLVTZUNXLvv6U=&cpp=1&shareurl=true&short_name=h.eLNG0dJ&sm=5b8ef9&app=chrome',
       },
     ]
   },
@@ -2004,7 +2020,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 55.6,
         image: './images/dataFood/海底捞-自热米饭-2盒-腊味双拼+咖喱牛肉-tmall.PNG',
-        url: 'https://m.tb.cn/h.ephGpXo?sm=ee7cf6',
+        url: 'https://detail.tmall.com/item.htm?id=594311388383&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571200037567.Copy.Physical_Screenshots&sourceType=tao&suid=07B1B707-56D9-4ABC-8263-875E860DB543&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lVlVDM1lLVWlCQ0bvv6U=&cpp=1&shareurl=true&short_name=h.ephGpXo&sm=ee7cf6&app=chrome',
       },
     ]
   },
@@ -2023,7 +2039,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 55.6,
         image: './images/dataFood/海底捞-自热米饭-2盒-腊味双拼+红烧牛肉-tmall.PNG',
-        url: 'https://m.tb.cn/h.eLXMhN8?sm=fcfd78',
+        url: 'https://detail.tmall.com/item.htm?id=594882379281&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571200037567.Copy.Physical_Screenshots&sourceType=tao&suid=C394BC16-6BB3-49CB-9731-9BF3391EF3F3&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lOEpTd1lLVVJQVHHvv6U=&cpp=1&shareurl=true&short_name=h.eLXMhN8&sm=fcfd78&app=chrome',
       },
     ]
   },
@@ -2042,7 +2058,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 57.6,
         image: './images/dataFood/海底捞-自热米饭-2盒-腊味双拼煲仔风味-tmall.PNG',
-        url: 'https://m.tb.cn/h.ephv1SP?sm=f2cecc',
+        url: 'https://detail.tmall.com/item.htm?id=590651047618&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571200037567.Copy.Physical_Screenshots&sourceType=tao&suid=63120669-8F67-40FB-9E06-3020A913852E&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lSDB4RVlLVWo5Y3bvv6U=&cpp=1&shareurl=true&short_name=h.ephv1SP&sm=f2cecc&app=chrome',
       },
     ]
   },
@@ -2061,7 +2077,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 45.9,
         image: './images/dataFood/海底捞-清汤-火锅底料-110g-3袋-tmall.PNG',
-        url: 'https://m.tb.cn/h.eowyRKM?sm=1754de ',
+        url: 'https://detail.tmall.com/item.htm?id=550403522277&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=F15C24C3-43E0-4782-BA76-2091484A826B&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lR3VJNFlMTE1iczPvv6U=&cpp=1&shareurl=true&short_name=h.eowyRKM&sm=1754de&app=chrome',
       },
     ]
   },
@@ -2080,7 +2096,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 45.9,
         image: './images/dataFood/海底捞-清油火锅底料-麻辣味-220g-3袋-tmall.PNG',
-        url: 'https://m.tb.cn/h.eo2g79B?sm=80d295',
+        url: 'https://detail.tmall.com/item.htm?id=538164094912&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=0CD8BA40-2DAF-4F40-900D-2922DA4CCC91&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lWmRRMFlMTG96OW7vv6U=&cpp=1&shareurl=true&short_name=h.eo2g79B&sm=80d295&app=chrome',
       },
     ]
   },
@@ -2099,7 +2115,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 43.9,
         image: './images/dataFood/海底捞-番茄火锅底料-酸香味-200g-3袋-tmall.PNG',
-        url: 'https://m.tb.cn/h.eoP5vO2?sm=2d1e37',
+        url: 'https://detail.tmall.com/item.htm?id=550402362261&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=F9582DC8-93EF-4D09-8B26-443A134531FF&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lSFVrS1lMTEtTR3rvv6U=&cpp=1&shareurl=true&short_name=h.eoP5vO2&sm=2d1e37&app=chrome',
       },
     ]
   },
@@ -2118,7 +2134,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 45.9,
         image: './images/dataFood/海底捞-鲜香菌汤-火锅底料-110g-3袋-tmall.PNG',
-        url: 'https://m.tb.cn/h.eoP7Ono?sm=0deb92',
+        url: 'https://detail.tmall.com/item.htm?id=550404182219&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=355B60E4-445A-4ACF-A53E-89E2984A615A&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lN0QzVVlMTEpmZETvv6U=&cpp=1&shareurl=true&short_name=h.eoP7Ono&sm=0deb92&app=chrome',
       },
     ]
   },
@@ -2137,7 +2153,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 45.9,
         image: './images/dataFood/海底捞-上汤三鲜-火锅底料-200g-3袋-tmall.PNG',
-        url: 'https://m.tb.cn/h.eoP6Bcq?sm=7d7f61',
+        url: 'https://detail.tmall.com/item.htm?id=550376557656&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=CC67DB3D-9016-453A-BD05-4752FFF9193D&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lZ0NnR1lMTEpCRG7vv6U=&cpp=1&shareurl=true&short_name=h.eoP6Bcq&sm=7d7f61&app=chrome',
       },
     ]
   },
@@ -2156,7 +2172,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 29.9,
         image: './images/dataFood/海底捞-醇香牛油-火锅底料-150g-3袋-tmall.PNG',
-        url: 'https://m.tb.cn/h.eo2iPeq?sm=7a4594',
+        url: 'https://detail.tmall.com/item.htm?id=550444899457&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.1&sourceType=item&price=29.9&origin_price=39.9&suid=A54DF5E3-54A4-4F45-A611-90AE18DA5764&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=wqJnQldVWUxMSU9xUsKi&cpp=1&shareurl=true&short_name=h.eo2iPeq&sm=7a4594&app=chrome',
       },
     ]
   },
@@ -2175,7 +2191,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 45.9,
         image: './images/dataFood/海底捞-麻辣香锅-调味料-220g-3袋-tmall.PNG',
-        url: 'https://c.tb.cn/h.eo27vW8?sm=052402',
+        url: 'https://detail.tmall.com/item.htm?id=530771960449&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.1&sourceType=item&price=45.9&origin_price=56.9&suid=5B1517F5-1634-4D49-A7A2-C57B700C1CDE&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JGRreWhZTExzR0g1JA==&cpp=1&shareurl=true&short_name=h.eo27vW8&sm=052402&app=chrome',
       },
     ]
   },
@@ -2194,7 +2210,7 @@ window['dataBrand_海底捞'] = [
         type: 'tmall',
         goodsPrice: 45.9,
         image: './images/dataFood/海底捞-上汤酸菜鱼-调味料-360g-3袋-tmall.PNG',
-        url: 'https://m.tb.cn/h.eMK6tPK?sm=e84dca',
+        url: 'https://detail.tmall.com/item.htm?id=550406326522&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=9635F95E-FAD5-4044-B9CA-3F39DDACB898&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lQjNzU1lMTEVTZELvv6U=&cpp=1&shareurl=true&short_name=h.eMK6tPK&sm=e84dca&app=chrome',
       },
     ]
   },
@@ -2214,7 +2230,7 @@ window['dataBrand_海底捞'] = [
         goodsPrice: 15.9*3,
         couponPrice: 35.78,
         image: './images/dataFood/海底捞-麻辣小龙虾-调味料-200g-3袋-tmall.PNG',
-        url: 'https://m.tb.cn/h.eoDXxq7?sm=1027eb',
+        url: 'https://detail.tmall.com/item.htm?id=589015986756&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=4BFF3FDE-F5EA-4967-8BB9-0839E63DC46F&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lalpEcllMTEYxRlPvv6U=&cpp=1&shareurl=true&short_name=h.eoDXxq7&sm=1027eb&app=chrome',
       },
     ]
   },
@@ -2234,7 +2250,7 @@ window['dataBrand_海底捞'] = [
         goodsPrice: 15.9*3,
         couponPrice: 35.78,
         image: './images/dataFood/海底捞-香辣小龙虾-调味料200g-3袋-tmall.PNG',
-        url: 'https://m.tb.cn/h.eoD3Ma6?sm=b41aae',
+        url: 'https://detail.tmall.com/item.htm?id=567487367539&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570667405487.Copy.Physical_Screenshots&sourceType=tao&suid=4EB48437-B15C-46AE-BF3A-2667E41A90DD&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20lMFl4U1lMTHZVamHvv6U=&cpp=1&shareurl=true&short_name=h.eoD3Ma6&sm=b41aae&app=chrome',
       },
     ]
   },
@@ -2255,7 +2271,7 @@ window['dataBrand_甄伴'] = [
         type: 'tmall',
         goodsPrice: 29.9,
         image: './images/dataFood/甄伴-咸蛋黄饼干-方块酥-千层酥-粗粮饼干-网红零食点心-100g-3盒-tmall.PNG',
-        url: 'https://m.tb.cn/h.eKLqkPL?sm=2e5ae7',
+        url: 'https://detail.tmall.com/item.htm?id=594116899104&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571616995561.Copy.Physical_Screenshots&sourceType=tao&suid=C44518F6-D5E5-44A8-A6FF-DBD121637FEE&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77+ldFpKVVlxcXp1V2Hvv6U=&cpp=1&shareurl=true&short_name=h.eKLqkPL&sm=2e5ae7&app=chrome',
       },
     ]
   },
@@ -2274,7 +2290,7 @@ window['dataBrand_甄伴'] = [
         type: 'tmall',
         goodsPrice: 14.9*2,
         image: './images/dataFood/甄伴-红糖肚脐饼-潮汕小吃特产-双炉饼-网红零食-手工糕点-200g-2袋-共20个-tmall.PNG',
-        url: 'https://c.tb.cn/h.epEHWNB?sm=9fe40b',
+        url: 'https://detail.tmall.com/item.htm?id=593545776417&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571618279651.Copy.1&sourceType=item&price=14.9&origin_price=26.1&suid=7B534EEB-7A82-46E6-8813-C7607AADC988&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0RDV0U1lxSlRDY1PigrQ=&cpp=1&shareurl=true&short_name=h.epEHWNB&sm=9fe40b&app=chrome',
       },
     ]
   },
@@ -2736,7 +2752,7 @@ window['dataBrand_金龙鱼'] = [
         type: 'tmcs',
         goodsPrice: 89.9,
         image: './images/datakitchenMaterial/金龙鱼-五常基地原香稻5kg-五常稻花香原粮-东北大米香米-tmall.PNG',
-        url: 'https://m.tb.cn/h.enECcnt?sm=3c05d7',
+        url: 'https://chaoshi.detail.tmall.com/item.htm?id=13166579433&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1570316118683.Copy.Physical_Screenshots&sourceType=tao&suid=FCE276A9-661F-463A-BC38-DE189BE42531&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=77%20ldTJ6R1lvc2NlNVjvv6U=&cpp=1&shareurl=true&short_name=h.enECcnt&sm=3c05d7&app=chrome',
       },
       {
         type: 'jd',
@@ -2763,6 +2779,305 @@ window['dataBrand_金龙鱼'] = [
         couponPrice: 153,
         image: './images/datakitchenMaterial/金龙鱼-乳玉皇妃-五常有机稻花香-5KG-tmcs.PNG',
         url: 'https://chaoshi.detail.tmall.com/item.htm?id=569741682019&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1572482575767.Copy.1&sourceType=item&price=168&suid=E0927A7D-2D62-4CE5-B24D-049DA47FA283&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0eGpLaVlzUDFlUFHigrQ=&cpp=1&shareurl=true&short_name=h.erSdDZr&sm=ac8cba&app=chrome',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-精炼一级-大豆油-5L',
+    keywords: ['食用油', '金龙鱼', '大豆油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 42.9,
+        commission: 0.61,
+        image: './images/datakitchenMaterial/金龙鱼-精炼一级-大豆油-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7387711&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-纯香-菜籽油-5L',
+    keywords: ['食用油', '金龙鱼', '菜籽油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 49.9,
+        commission: 0.39,
+        image: './images/datakitchenMaterial/金龙鱼-纯香-菜籽油-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7381422&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-精炼一级-菜籽油-5L',
+    keywords: ['食用油', '金龙鱼', '菜籽油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 49.9,
+        commission: 0.61,
+        image: './images/datakitchenMaterial/金龙鱼-精炼一级-菜籽油-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7387713&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-纯香-菜籽油-非转基因-物理压榨-5L',
+    keywords: ['食用油', '金龙鱼', '菜籽油', '非转基因'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 59.9,
+        commission: 0.84,
+        image: './images/datakitchenMaterial/金龙鱼-纯香-菜籽油-非转基因-物理压榨-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7381424&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-纯香-维生素A营养强化-菜籽油-非转基因-5L',
+    keywords: ['食用油', '金龙鱼', '菜籽油', '非转基因'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 69.9,
+        commission: 1.28,
+        image: './images/datakitchenMaterial/金龙鱼-纯香-维生素A营养强化-菜籽油-非转基因-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7381463&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-外婆乡小榨-菜籽油-非转基因-压榨-1.8L',
+    keywords: ['食用油', '金龙鱼', '外婆乡小榨', '菜籽油', '非转基因'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 39.9,
+        commission: 1.28,
+        image: './images/datakitchenMaterial/金龙鱼-外婆乡小榨-菜籽油-非转基因-压榨-1.8L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7387706&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-外婆乡小榨-菜籽油-非转基因-3.68L',
+    keywords: ['食用油', '金龙鱼', '外婆乡小榨', '菜籽油', '非转基因'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 49.9,
+        commission: 0.61,
+        image: './images/datakitchenMaterial/金龙鱼-外婆乡小榨-菜籽油-非转基因-3.68L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7329198&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-外婆乡小榨-菜籽油-非转基因-物理压榨-5L',
+    keywords: ['食用油', '金龙鱼', '外婆乡小榨', '菜籽油', '非转基因'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 89.9,
+        commission: 1.72,
+        image: './images/datakitchenMaterial/金龙鱼-外婆乡小榨-菜籽油-非转基因-物理压榨-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7387708&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-阳光鲜榨原香-葵花仁油-5L',
+    keywords: ['食用油', '金龙鱼', '葵花仁油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 118,
+        commission: 4.4,
+        image: './images/datakitchenMaterial/金龙鱼-阳光鲜榨原香-葵花仁油-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7295705&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-压榨一级-特香-花生油-4L-桶送金龙鱼面包粉500G两袋',
+    keywords: ['食用油', '金龙鱼', '花生油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 79.9,
+        commission: 0.84,
+        image: './images/datakitchenMaterial/金龙鱼-压榨一级-特香-花生油-4L-桶送金龙鱼面包粉500G两袋.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7324154&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-食用植物调和油-浓香-5L',
+    keywords: ['食用油', '金龙鱼', '食用调和油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 49.9,
+        commission: 0.61,
+        image: './images/datakitchenMaterial/金龙鱼-食用植物调和油-浓香-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7381176&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-黄金比例-食用调和油-5L',
+    keywords: ['食用油', '金龙鱼', '食用调和油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 59.9,
+        commission: 0.61,
+        image: './images/datakitchenMaterial/金龙鱼-黄金比例-食用调和油-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7387721&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-黄金比例-食用调和油-非转基因-5L-送400ML小油',
+    keywords: ['食用油', '金龙鱼', '食用调和油', '非转基因'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 69.9,
+        commission: 0.61,
+        image: './images/datakitchenMaterial/金龙鱼-黄金比例-食用调和油-非转基因-5L-送400ML小油.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7387718&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864',
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-稻谷鲜生-食用植物调和油-5L-非转基因',
+    keywords: ['食用油', '金龙鱼', '食用调和油', '非转基因'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 99.9,
+        commission: 0.84,
+        image: './images/datakitchenMaterial/金龙鱼-稻谷鲜生-食用植物调和油-5L-非转基因.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7295719&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864'
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-添加10%-特级初榨-橄榄油-食用植物调和油-1.8L+澳麦鸡蛋-椭圆挂面800g',
+    keywords: ['食用油', '金龙鱼', '植物调和油', '橄榄油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 76,
+        commission: 3.08,
+        image: './images/datakitchenMaterial/金龙鱼-添加10%-特级初榨-橄榄油-食用植物调和油-1.8L+澳麦鸡蛋-椭圆挂面800g.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7282183&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864'
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-添加10%-特级初榨-橄榄油-食用植物调和油-4L',
+    keywords: ['食用油', '金龙鱼', '植物调和油', '橄榄油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 89.9,
+        commission: 3.04,
+        image: './images/datakitchenMaterial/金龙鱼-添加10%-特级初榨-橄榄油-食用植物调和油-4L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7283864&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864'
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-添加10%-特级初榨-橄榄油-食用植物调和油-5L',
+    keywords: ['食用油', '金龙鱼', '植物调和油', '橄榄油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 123,
+        commission: 4.85,
+        image: './images/datakitchenMaterial/金龙鱼-添加10%-特级初榨-橄榄油-食用植物调和油-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7286749&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864'
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-双一万-谷维多-稻米油-食用油-1.8L-2支',
+    keywords: ['食用油', '金龙鱼', '谷维多', '稻米油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 89,
+        commission: 3.52,
+        image: './images/datakitchenMaterial/金龙鱼-双一万-谷维多-稻米油-食用油-1.8L-2支.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7282347&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864'
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-双一万-谷维多-稻米油-5L-非转基因',
+    keywords: ['食用油', '金龙鱼', '谷维多', '稻米油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 99.9,
+        commission: 2.6,
+        image: './images/datakitchenMaterial/金龙鱼-双一万-谷维多-稻米油-5L-非转基因.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7387702&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864'
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-KINGS-一级初榨-亚麻籽油-750ml',
+    keywords: ['食用油', '金龙鱼', '亚麻籽油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 78,
+        commission: 3.53,
+        image: './images/datakitchenMaterial/金龙鱼-KINGS-一级初榨-亚麻籽油-750ml.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7282142&flag=0&storeid=244721&shareuserid=655864&supplierId=2755&starpower=0'
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-KINGS-食用油-进口原料-初榨一级-亚麻籽油-750ml',
+    keywords: ['食用油', '金龙鱼', '亚麻籽油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 79.9,
+        commission: 3.04,
+        image: './images/datakitchenMaterial/金龙鱼-KINGS-食用油-进口原料-初榨一级-亚麻籽油-750ml.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7295027&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864'
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-KINGS-食用油-进口原料-初榨一级-亚麻籽油-5L',
+    keywords: ['食用油', '金龙鱼', '亚麻籽油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 198,
+        commission: 10.13,
+        image: './images/datakitchenMaterial/金龙鱼-KINGS-食用油-进口原料-初榨一级-亚麻籽油-5L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7295036&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864'
+      },
+    ]
+  },
+  {
+    title: '金龙鱼-茶籽油-山茶油-月子油-1.6L',
+    keywords: ['食用油', '金龙鱼', '茶籽油', '山茶油'],
+    pictures: [
+      {
+        type: 'star',
+        goodsPrice: 196,
+        commission: 8.81,
+        image: './images/datakitchenMaterial/金龙鱼-茶籽油-山茶油-月子油-1.6L.PNG',
+        url: 'https://friend.380star.com/goods.do?goodsid=7282140&flag=0&storeid=244721&shareuserid=655864&addspuserid=655864'
       },
     ]
   },

@@ -147,7 +147,11 @@ function adjustGoodsGroup(originalData) {
             if (index === 0) {
               firstStarGoodsItem = picItem;
             }
+          } else if (picItem.postage) {
+            // 计算邮费
+            picItem.postagePrice = (picItem.couponPrice || picItem.goodsPrice) + picItem.postage
           }
+
           if (index === 1) {
             secondOtherGoodsItem = picItem;
           }
@@ -160,7 +164,7 @@ function adjustGoodsGroup(originalData) {
         // compareDiff = '5' - 比较五星会员价格
         if (secondOtherGoodsItem !== undefined && compareDiff) {
           const salePrice = secondOtherGoodsItem.goodsPrice || 0;
-          const payPrice = secondOtherGoodsItem.couponPrice || salePrice;
+          const payPrice = secondOtherGoodsItem.postagePrice || secondOtherGoodsItem.couponPrice || salePrice;
           firstStarGoodsItem.canShowDiff = true;
 
           if (compareDiff == '0') {

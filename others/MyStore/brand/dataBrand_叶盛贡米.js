@@ -33,7 +33,7 @@ window['dataBrand_叶盛贡米'] = [
         type: 'tmall',
         goodsPrice: 38.8,
         image: './images/datakitchenMaterial/叶盛贡米-袋装贡米-宁夏大米-2.5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eKrZVKZ?sm=c07742',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=604106881073&sourceType=item&price=38.8&suid=C1D2036E-CA0C-4007-8341-D8EEF6294473&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0UnM3VllyWHhnWE/igrQ=&cpp=1&shareurl=true&short_name=h.eKrZVKZ&sm=c07742&app=chrome',
       },
     ]
   },
@@ -52,13 +52,13 @@ window['dataBrand_叶盛贡米'] = [
         type: 'tmall',
         goodsPrice: 72,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-富硒香米-宁夏大米-5kg-tmall.PNG',
-        url: 'https://c.tb.cn/h.eKJ9kLk?sm=4788bd',
+        url: 'https://detail.tmall.com/item.htm?id=599925355367&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&sourceType=item&price=72&suid=7803FB6F-3761-4DF5-9501-3015ADFCCF8F&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oK0MnVGaFlyWDZzbDPigrQ=&cpp=1&shareurl=true&short_name=h.eKJ9kLk&sm=4788bd&app=chrome',
       },
       {
         type: 'tmall',
         goodsPrice: 72,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-富硒香米-宁夏大米-5kg-tmall-2.PNG',
-        url: 'https://m.tb.cn/h.eqWCbpM?sm=0377cb',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=604199473007&sourceType=item&price=72&suid=C1DB20BB-9DEE-4B3B-B585-B91B90F1AC34&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=wqI3RVR2WXIyV0xDY8Ki&cpp=1&shareurl=true&short_name=h.eqWCbpM&sm=0377cb&app=chrome',
       },
       {
         type: 'jd',
@@ -83,13 +83,13 @@ window['dataBrand_叶盛贡米'] = [
         type: 'tmall',
         goodsPrice: 82,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-蟹田香米-宁夏大米-5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eqmEWfy?sm=acdaa8',
+        url: 'https://detail.tmall.com/item.htm?id=599539125065&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&sourceType=item&price=82&suid=05E9A72E-4D45-4094-85C3-A081FB4EECB2&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkcnkxR1lyWFNKOHXigqQ=&cpp=1&shareurl=true&short_name=h.eqmEWfy&sm=acdaa8&app=chrome',
       },
       {
         type: 'tmall',
         goodsPrice: 82,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-蟹田香米-宁夏大米-5kg-tmall-2.PNG',
-        url: 'https://m.tb.cn/h.eKrQIsK?sm=13d6d8',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=604623279951&sourceType=item&price=82&suid=89BDE377-A5EF-4883-9066-111689A46BAC&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKzM3RMNllyMjZKejXigrM=&cpp=1&shareurl=true&short_name=h.eKrQIsK&sm=13d6d8&app=chrome',
       },
       {
         type: 'jd',
@@ -114,7 +114,7 @@ window['dataBrand_叶盛贡米'] = [
         type: 'tmall',
         goodsPrice: 98,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-有机贡米-宁夏大米-2.5kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eqWO9pT?sm=09bbaf',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=603947868901&sourceType=item&price=98&suid=8636AEC6-5619-43DC-9F93-D5C5AA965CB7&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKsR2hYNFlyWHRXSDjigqw=&cpp=1&shareurl=true&short_name=h.eqWO9pT&sm=09bbaf&app=chrome',
       },
     ]
   },
@@ -133,7 +133,7 @@ window['dataBrand_叶盛贡米'] = [
         type: 'tmall',
         goodsPrice: 98,
         image: './images/datakitchenMaterial/叶盛贡米-真空包装-壹号有机米-宁夏大米-2.5kg-tmall.PNG',
-        url: 'https://c.tb.cn/h.eqB1AxK?sm=2a700f',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=604401431761&sourceType=item&price=98&suid=9F87A5CA-2F0C-46CB-A0FD-674C7FC2F933&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkeWZNcllyWEZHQmLigqQ=&cpp=1&shareurl=true&short_name=h.eqB1AxK&sm=2a700f&app=chrome',
       },
     ]
   },
@@ -153,13 +153,13 @@ window['dataBrand_叶盛贡米'] = [
         goodsPrice: 288,
         couponPrice: 278,
         image: './images/datakitchenMaterial/叶盛贡米-真空盒装-金色礼盒-有机米-宁夏大米-6kg-tmall.PNG',
-        url: 'https://m.tb.cn/h.eqWdzt0?sm=654132',
+        url: 'https://detail.tmall.com/item.htm?id=599538249627&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&sourceType=item&price=288&suid=F949F58C-1981-4F61-999B-761B0677279D&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JGt2anVZclhSSlNCJA==&cpp=1&shareurl=true&short_name=h.eqWdzt0&sm=654132&app=chrome',
       },
       {
         type: 'tmall',
         goodsPrice: 288,
         image: './images/datakitchenMaterial/叶盛贡米-真空盒装-金色礼盒-有机米-宁夏大米-6kg-tmall-2.PNG',
-        url: 'https://m.tb.cn/h.eqNHTUL?sm=3fc9fb',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=603965088393&sourceType=item&price=288&suid=9252BB43-3E47-4857-A3BD-B45B47F7CBE3&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=4oKkVGpBcFlyMlNkNE7igqQ=&cpp=1&shareurl=true&short_name=h.eqNHTUL&sm=3fc9fb&app=chrome',
       },
       {
         type: 'jd',
@@ -185,13 +185,13 @@ window['dataBrand_叶盛贡米'] = [
         goodsPrice: 310,
         couponPrice: 280,
         image: './images/datakitchenMaterial/叶盛贡米-真空盒装-白色礼盒-有机米-宁夏大米-6kg-tmall.PNG',
-        url: 'https://c.tb.cn/h.eKJmlIY?sm=3eb372',
+        url: 'https://detail.tmall.com/item.htm?id=599537837908&ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&sourceType=item&price=310&suid=E6171965-1D7E-4972-802A-1D9D190A1F0C&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=JFhNR1dZclhqUVVaJA==&cpp=1&shareurl=true&short_name=h.eKJmlIY&sm=3eb372&app=chrome',
       },
       {
         type: 'tmall',
         goodsPrice: 322.2,
         image: './images/datakitchenMaterial/叶盛贡米-真空盒装-白色礼盒-有机米-宁夏大米-6kg-tmall-2.PNG',
-        url: 'https://c.tb.cn/h.eqNHAZd?sm=95189f',
+        url: 'https://item.taobao.com/item.htm?ut_sk=1.XVkkS47HfHsDACPkxEmRvOIR_21380790_1571964566304.Copy.1&id=604210537983&sourceType=item&price=322.2&origin_price=358&suid=E759F8A7-3295-407B-BB00-DCB13AD2EE1D&un=2ec94aa5acbd04c9defba349c3f14615&share_crt_v=1&spm=a2159r.13376460.0.0&sp_tk=wqIyREFIWXIyU3NJbsKi&cpp=1&shareurl=true&short_name=h.eqNHAZd&sm=95189f&app=chrome',
       },
       {
         type: 'jd',
