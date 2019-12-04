@@ -1,0 +1,122 @@
+<DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+		<title>黄金回购套利对比表</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
+		<script src="./js/vue.min.js"></script>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			body {
+				font-size: 14px;
+				line-height: 1.5em;
+				color: #2B3037;
+			}
+
+			select {
+				height: 30px;
+				padding: 0 10px;
+				border: 1px solid #eee;
+				margin-right: 10px;
+			}
+
+			.row {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+			}
+
+			.line {
+				border-top: 1px solid #eee;
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+
+			.red {
+				color: #F63623;
+			}
+
+			.bold {
+				font-weight: bold;
+			}
+
+			#goldBox {
+				padding: 20px 10px;
+			}
+
+			.info-head {
+				padding: 20px 0;
+			}
+
+			.info-title {
+				margin-bottom: 20px;
+				color: #4778E7;
+			}
+
+			.info-list {
+				padding: 20px 0;
+			}
+
+			.info-list p {
+				line-height: 2em;
+			}
+
+			.info-list .important {
+				font-weight: bold;
+				margin-top: 10px;
+			}
+		</style>
+</head>
+<body>
+	<div id="goldBox">
+		<div class="row">
+			<select v-model="selectedDate">
+				<option
+					v-for="(item, index) in goldPriceList"
+					:value="item.value"
+				>
+					{{item.name}}
+				</option>
+			</select>
+			<select v-model="selectedWeight">
+				<option
+					v-for="(item, index) in weightList"
+					:value="item.value"
+				>
+					{{item.name}}
+				</option>
+			</select>
+			<select v-model="selectedExpectPrice">
+				<option
+					v-for="(item, index) in expectPriceList"
+					:value="item.value"
+				>
+					{{item.name}}
+				</option>
+			</select>
+		</div>
+		<div class="line" />
+		<div class="info-head">
+			<div class="info-title">
+				<p>{{selectedItem.name}} 2.5倍星力值，{{selectedWeight}}克黄金回购：</p>
+			</div>
+			<p>现金流 {{payMoney}} 元，回购 {{selectedItem.repo}} * {{selectedWeight}} = {{repoMoney}} 元；</p>
+			<p>成本支出 {{chenbenMoney}} 元，星力值 {{xinglizhi}}。</p>
+		</div>
+		<div class="line" />
+		<div class="info-list">
+			<p
+				v-for="(item, index) in infoList"
+				v-bind:class="[{important: index % 5 === 0}]"
+			>
+				星钻{{xinglizhi}}/{{item.bili}}={{item.xzCount}}，成本{{item.chengben}}元
+			</p>
+		</div>
+	</div>
+	<script src="./js/gold.js?t=20191015"></script>
+</body>
+</html>
