@@ -5,10 +5,10 @@ var vm = new Vue({
     // 是否完成挂载
     isDone: false,
     // 选择日期
-    selectedDate: '20191203',
+    selectedDate: '20191204',
     // 黄金价格表
     goldPriceList: {
-      // '20191204': { value: '20191204', name: '2019年12月04日', '50': 18800, '100': 37200, '200': 73900, repo: 332.36 },
+      '20191204': { value: '20191204', name: '2019年12月04日', '50': 19000, '100': 37700, '200': 74900, repo: 336.81 },
       '20191203': { value: '20191203', name: '2019年12月03日', '50': 18800, '100': 37200, '200': 73990, repo: 332.36 },
       '20191202': { value: '20191202', name: '2019年12月02日', '50': 18600, '100': 37000, '200': 73700, repo: 331.42 },
       '20191201': { value: '20191201', name: '2019年12月01日', '50': 18594, '100': 36875, '200': 73430, repo: 330.44 },
@@ -63,10 +63,16 @@ var vm = new Vue({
       for (var i = 20; i <= 50; i += 1) {
         var xzCount = Math.round(this.xinglizhi / i);
         var chengben = (this.chenbenMoney / xzCount).toFixed(4);
+        var gslPrice = Math.round(this.selectedExpectPrice);
+        var lirun = xzCount * gslPrice - this.chenbenMoney;
+        var taoli = Math.round(xzCount - this.chenbenMoney/gslPrice);
+
         infoList.push({
           bili: i,
           xzCount,
           chengben,
+          lirun,
+          taoli,
         })
       }
 

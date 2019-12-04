@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8" />
 		<title>黄金回购套利对比表</title>
+		<meta name="description" itemprop="description" content="黄金回购套利对比表，诚心制作，既帮助自己，也服务大家！"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
 		<script src="./js/vue.min.js"></script>
 		<style>
@@ -30,6 +31,13 @@
 				align-items: center;
 			}
 
+			.label {
+				font-size:12px;
+				text-align: left;
+				text-indent: 10px;
+				color: #999;
+			}
+
 			.line {
 				border-top: 1px solid #eee;
 				margin-top: 10px;
@@ -42,6 +50,11 @@
 
 			.bold {
 				font-weight: bold;
+			}
+
+			.mutedText {
+				font-size: 12px;
+				color: #999;
 			}
 
 			#goldBox {
@@ -59,6 +72,7 @@
 
 			.info-list {
 				padding: 20px 0;
+				overflow: auto;
 			}
 
 			.info-list p {
@@ -69,37 +83,50 @@
 				font-weight: bold;
 				margin-top: 10px;
 			}
+
+			.info-list-inner {
+				white-space: nowrap;
+			}
 		</style>
 </head>
 <body>
 	<div id="goldBox">
 		<div class="row">
-			<select v-model="selectedDate">
-				<option
-					v-for="(item, index) in goldPriceList"
-					:value="item.value"
-				>
-					{{item.name}}
-				</option>
-			</select>
-			<select v-model="selectedWeight">
-				<option
-					v-for="(item, index) in weightList"
-					:value="item.value"
-				>
-					{{item.name}}
-				</option>
-			</select>
-			<select v-model="selectedExpectPrice">
-				<option
-					v-for="(item, index) in expectPriceList"
-					:value="item.value"
-				>
-					{{item.name}}
-				</option>
-			</select>
+			<div>
+				<div class="label">回购日期:</div>
+				<select v-model="selectedDate">
+					<option
+						v-for="(item, index) in goldPriceList"
+						:value="item.value"
+					>
+						{{item.name}}
+					</option>
+				</select>
+			</div>
+			<div>
+				<div class="label">黄金重量:</div>
+				<select v-model="selectedWeight">
+					<option
+						v-for="(item, index) in weightList"
+						:value="item.value"
+					>
+						{{item.name}}
+					</option>
+				</select>
+			</div>
+			<div>
+				<div class="label">二级市场:</div>
+				<select v-model="selectedExpectPrice">
+					<option
+						v-for="(item, index) in expectPriceList"
+						:value="item.value"
+					>
+						{{item.name}}
+					</option>
+				</select>
+			</div>
 		</div>
-		<div class="line" />
+		<div class="line"></div>
 		<div class="info-head">
 			<div class="info-title">
 				<p>{{selectedItem.name}} 2.5倍星力值，{{selectedWeight}}克黄金回购：</p>
@@ -107,16 +134,19 @@
 			<p>现金流 {{payMoney}} 元，回购 {{selectedItem.repo}} * {{selectedWeight}} = {{repoMoney}} 元；</p>
 			<p>成本支出 {{chenbenMoney}} 元，星力值 {{xinglizhi}}。</p>
 		</div>
-		<div class="line" />
+		<div class="line"></div>
 		<div class="info-list">
-			<p
-				v-for="(item, index) in infoList"
-				v-bind:class="[{important: index % 5 === 0}]"
-			>
-				星钻{{xinglizhi}}/{{item.bili}}={{item.xzCount}}，成本{{item.chengben}}元
-			</p>
+			<div class="info-list-inner">
+				<p
+					v-for="(item, index) in infoList"
+					v-bind:class="[{important: index % 5 === 0}]"
+				>
+					星钻{{xinglizhi}}/{{item.bili}}={{item.xzCount}}，成本{{item.chengben}}元。
+					<span class="mutedText">( 利润 {{item.lirun}} 元，套利 {{item.taoli}} 星钻 )</span>
+				</p>
+			</div>
 		</div>
 	</div>
-	<script src="./js/gold.js?t=20191015"></script>
+	<script src="./js/gold.js?t=20191016"></script>
 </body>
 </html>
