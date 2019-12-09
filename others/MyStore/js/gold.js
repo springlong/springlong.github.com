@@ -5,9 +5,13 @@ var vm = new Vue({
     // 是否完成挂载
     isDone: false,
     // 选择日期
-    selectedDate: '20191204',
+    selectedDate: '20191209',
     // 黄金价格表
     goldPriceList: {
+      '20191209': { value: '20191209', name: '2019年12月09日', '50': 18699, '100': 37039, '200': 73729, repo: 331.69 },
+      '20191208': { value: '20191208', name: '2019年12月08日', '50': 18919, '100': 37479, '200': 74589, repo: 335.74 },
+      '20191207': { value: '20191207', name: '2019年12月07日', '50': 18919, '100': 37479, '200': 74589, repo: 335.74 },
+      '20191206': { value: '20191206', name: '2019年12月06日', '50': 18919, '100': 37479, '200': 74589, repo: 335.74 },
       '20191205': { value: '20191205', name: '2019年12月05日', '50': 18939, '100': 37519, '200': 74669, repo: 336.13 },
       '20191204': { value: '20191204', name: '2019年12月04日', '50': 19000, '100': 37700, '200': 74900, repo: 336.81 },
       '20191203': { value: '20191203', name: '2019年12月03日', '50': 18800, '100': 37200, '200': 73990, repo: 332.36 },
@@ -22,10 +26,29 @@ var vm = new Vue({
       { value: 100, name: '100克' },
       { value: 200, name: '200克' },
     ],
+    // 选择倍数
+    selectedMultiple: 2,
+    // 倍数列表
+    multipleList: [
+      { value: 2.5, name: '2.5倍' },
+      { value: 2, name: '2倍' },
+      { value: 1.5, name: '1.5倍' },
+    ],
     // 预期价格
-    selectedExpectPrice: '3',
+    selectedExpectPrice: '2',
     // 预期价格列表
     expectPriceList: [
+      { value: 1.2, name: '1.2元/GSL' },
+      { value: 1.5, name: '1.5元/GSL' },
+      { value: 1.8, name: '1.8元/GSL' },
+      { value: 1.9, name: '1.9元/GSL' },
+      { value: 2, name: '2元/GSL' },
+      { value: 2.1, name: '2.1元/GSL' },
+      { value: 2.2, name: '2.2元/GSL' },
+      { value: 2.3, name: '2.3元/GSL' },
+      { value: 2.4, name: '2.4元/GSL' },
+      { value: 2.5, name: '2.5元/GSL' },
+      { value: 2.8, name: '2.8元/GSL' },
       { value: 3, name: '3元/GSL' },
       { value: 4, name: '4元/GSL' },
       { value: 5, name: '5元/GSL' },
@@ -55,7 +78,7 @@ var vm = new Vue({
     },
     // 星力值
     xinglizhi: function() {
-      return Math.round(this.payMoney*2.5);
+      return Math.round(this.payMoney*this.selectedMultiple);
     },
     // 信息展示列表
     infoList: function() {

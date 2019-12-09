@@ -20,7 +20,7 @@
 
 			select {
 				height: 30px;
-				padding: 0 10px;
+				padding: 0 2px;
 				border: 1px solid #eee;
 				margin-right: 10px;
 			}
@@ -114,6 +114,17 @@
 				</select>
 			</div>
 			<div>
+				<div class="label">星力值:</div>
+				<select v-model="selectedMultiple">
+					<option
+						v-for="(item, index) in multipleList"
+						:value="item.value"
+					>
+						{{item.name}}
+					</option>
+				</select>
+			</div>
+			<div>
 				<div class="label">二级市场:</div>
 				<select v-model="selectedExpectPrice">
 					<option
@@ -128,7 +139,7 @@
 		<div class="line"></div>
 		<div class="info-head">
 			<div class="info-title">
-				<p>{{selectedItem.name}} 2.5倍星力值，{{selectedWeight}}克黄金回购：</p>
+				<p>{{selectedItem.name}} {{selectedMultiple}}倍星力值，{{selectedWeight}}克黄金回购：</p>
 			</div>
 			<p>现金流 {{payMoney}} 元，回购 {{selectedItem.repo}} * {{selectedWeight}} = {{repoMoney}} 元；</p>
 			<p>成本支出 {{chenbenMoney}} 元，星力值 {{xinglizhi}}。</p>
@@ -146,6 +157,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="./js/gold.js?t=20191016"></script>
+	<script src="./js/gold.js?t=20191017"></script>
 </body>
 </html>
