@@ -1,0 +1,182 @@
+{
+	// Place your snippets for css here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+	// Example:
+	"position: absolute;": { "prefix": "abs", "body": ["position: absolute;"], "description": "" },
+	"position: fixed;": { "prefix": "fix", "body": ["position: fixed;"], "description": "" },
+	"position: relative;": { "prefix": "rel", "body": ["position: relative;"], "description": "" },
+	"position: static;": { "prefix": "sta", "body": ["position: static;"], "description": "" },
+	"left: $1;": { "prefix": "lf", "body": ["left: $1;"], "description": "" },
+	"right: $1;": { "prefix": "ri", "body": ["right: $1;"], "description": "" },
+	"top: $1;": { "prefix": "tp", "body": ["top: $1;"], "description": "" },
+	"bottom: $1;": { "prefix": "bt", "body": ["bottom: $1;"], "description": "" },
+	"z-index: $1;": { "prefix": "zin", "body": ["z-index: $1;"], "description": "" },
+	// display
+	"display: block;": { "prefix": "blo", "body": ["display: block;"], "description": "" },
+	"display: inline-block;": { "prefix": "ilb", "body": ["display: inline-block;"], "description": "" },
+	"display: inline;": { "prefix": "il", "body": ["display: inline;"], "description": "" },
+	"display: flex;": { "prefix": "flx", "body": ["display: flex;"], "description": "" },
+	"display: none;": { "prefix": "non", "body": ["display: none;"], "description": "" },
+	// float
+	"float: left;": { "prefix": "fll", "body": ["float: left;"], "description": "" },
+	"float: right;": { "prefix": "flr", "body": ["float: right;"], "description": "" },
+	"clear: both;": { "prefix": "cl", "body": ["clear: both;"], "description": "" },
+	// 字体
+	"font-style: italic;": { "prefix": "ita", "body": ["font-style: italic;"], "description": "" },
+	"font-weight: bold;": { "prefix": "bod", "body": ["font-weight: bold;"], "description": "" },
+	"line-height: $1;": { "prefix": "lh", "body": ["line-height: $1;"], "description": "" },
+	"font-family: $1;": { "prefix": "ff", "body": ["font-family: $1;"], "description": "" },
+	"font-size: $1;": { "prefix": "fs", "body": ["font-size: $1;"], "description": "" },
+	"font-weight: $1;": { "prefix": "fw", "body": ["font-weight: $1;"], "description": "" },
+	"font-weight: normal;": { "prefix": "fw-n", "body": ["font-weight: normal;"], "description": "" },
+	" font-weight: bold;": { "prefix": "fw-b", "body": ["font-weight: bold;"], "description": "" },
+	"font-weight: lighter;": { "prefix": "fw-l", "body": ["font-weight: lighter;"], "description": "" },
+	"font-style: $1;": { "prefix": "fst", "body": ["font-style: $1;"], "description": "" },
+	"font-style: normal;": { "prefix": "fst-n", "body": ["font-style: normal;"], "description": "" },
+	" font-style: italic;": { "prefix": "fst-i", "body": ["font-style: italic;"], "description": "" },
+	"font-style: oblique;": { "prefix": "fst-o", "body": ["font-style: oblique;"], "description": "" },
+	"font-variant: $1;": { "prefix": "fv", "body": ["font-variant: $1;"], "description": "" },
+	"font-variant: normal;": { "prefix": "fv-n", "body": ["font-variant: normal;"], "description": "" },
+	"font-variant: small-caps;": { "prefix": "fv-s", "body": ["font-variant: small-caps;"], "description": "" },
+	// 文本
+	"text-align: $1;": { "prefix": "ta", "body": ["text-align: $1;"], "description": "" },
+	"text-align: center;": { "prefix": "ta-c", "body": ["text-align: center;"], "description": "" },
+	"text-align: left;": { "prefix": "ta-l", "body": ["text-align: left;"], "description": "" },
+	"text-align: right;": { "prefix": "ta-r", "body": ["text-align: right;"], "description": "" },
+	"text-align: justify;": { "prefix": "ta-j", "body": ["text-align: justify;"], "description": "" },
+	"vertical-align: $1;": { "prefix": "va", "body": ["vertical-align: $1;"], "description": "" },
+	"vertical-align: auto;": { "prefix": "va-au", "body": ["vertical-align: auto;"], "description": "" },
+	"vertical-align: baseline;": { "prefix": "va-bs", "body": ["vertical-align: baseline;"], "description": "" },
+	"vertical-align: bottom;": { "prefix": "va-bot", "body": ["vertical-align: bottom;"], "description": "" },
+	"vertical-align: text-bottom;": { "prefix": "va-tb", "body": ["vertical-align: text-bottom;"], "description": "" },
+	"vertical-align: middle;": { "prefix": "va-mid", "body": ["vertical-align: middle;"], "description": "" },
+	"vertical-align: top;": { "prefix": "va-top", "body": ["vertical-align: top;"], "description": "" },
+	"vertical-align: text-top;": { "prefix": "va-tt", "body": ["vertical-align: text-top;"], "description": "" },
+	"text-decoration: $1;": { "prefix": "td", "body": ["text-decoration: $1;"], "description": "" },
+	"text-decoration: none;": { "prefix": "td-non", "body": ["text-decoration: none;"], "description": "" },
+	"text-decoration: underline;": { "prefix": "td-und", "body": ["text-decoration: underline;"], "description": "" },
+	"letter-spacing: $1;": { "prefix": "lts", "body": ["letter-spacing: $1;"], "description": "" },
+	"word-spacing: $1;": { "prefix": "wds", "body": ["word-spacing: $1;"], "description": "" },
+	"text-transform: $1;": { "prefix": "tt", "body": ["text-transform: $1;"], "description": "" },
+	"text-transform: uppercase;": { "prefix": "tt-up", "body": ["text-transform: uppercase;"], "description": "" },
+	"text-transform: lowercase;": { "prefix": "tt-lw", "body": ["text-transform: lowercase;"], "description": "" },
+	"text-transform: capitalize;": { "prefix": "tt-cap", "body": ["text-transform: capitalize;"], "description": "" },
+	"text-indent: $1;": { "prefix": "ti", "body": ["text-indent: $1;"], "description": "" },
+	"white-space: $1;": { "prefix": "wts", "body": ["white-space: ${1:normal|pre|pre-wrap|nowrap};"], "description": "" },
+	"white-space: normal;": { "prefix": "wts-nm", "body": ["white-space: normal;"], "description": "" },
+	"white-space: pre;": { "prefix": "wts-pre", "body": ["white-space: pre;"], "description": "" },
+	"white-space: pre-wrap;": { "prefix": "wts-prew", "body": ["white-space: pre-wrap;"], "description": "" },
+	"white-space: nowrap;": { "prefix": "wts-nw", "body": ["white-space: nowrap;"], "description": "" },
+	"word-break: $1;": { "prefix": "wdb", "body": ["word-break: ${1:normal|break-all|keep-all};"], "description": "" },
+	"word-break: normal;": { "prefix": "wdb-nm", "body": ["word-break: normal;"], "description": "" },
+	"word-break: break-all;": { "prefix": "wdb-bre", "body": ["word-break: break-all;"], "description": "" },
+	"word-break: keep-all;": { "prefix": "wdb-kp", "body": ["word-break: keep-all;"], "description": "" },
+	"word-wrap: $1;": { "prefix": "wdw", "body": ["word-wrap: $1;"], "description": "" },
+	"word-wrap: normal;": { "prefix": "wdw-nm", "body": ["word-wrap: normal;"], "description": "" },
+	"word-wrap: break-word;": { "prefix": "wdw-bre", "body": ["word-wrap: break-word;"], "description": "" },
+	"text-overflow: $1;": { "prefix": "to", "body": ["text-overflow: $1;"], "description": "" },
+	"text-overflow: clip;": { "prefix": "to-cl", "body": ["text-overflow: clip;"], "description": "" },
+	"text-overflow: ellipsis;": { "prefix": "to-el", "body": ["text-overflow: ellipsis;"], "description": "" },
+	"text-shadow: $1;": { "prefix": "tsha", "body": ["text-shadow: ${1:水平偏移量} ${2:垂直偏移量} ${3:模糊程度} ${4:阴影颜色};"], "description": "" },
+	"color: $1;": { "prefix": "co", "body": ["color: $1;"], "description": "" },
+	// 盒模型
+	"box-sizing: content-box;": { "prefix": "cb", "body": ["box-sizing: content-box;"], "description": "盒子width、height单独计算" },
+	"box-sizing: border-box;": { "prefix": "bb", "body": ["box-sizing: border-box;"], "description": "盒子width、height包含padding和border" },
+	"width: $1;": { "prefix": "wd", "body": ["width: $1;"], "description": "" },
+	"min-width: $1;": { "prefix": "mwd", "body": ["min-width: $1;"], "description": "" },
+	"max-width: $1;": { "prefix": "maxwd", "body": ["max-width: $1;"], "description": "" },
+	"height: $1;": { "prefix": "ht", "body": ["height: $1;"], "description": "" },
+	"min-height: $1;": { "prefix": "mht", "body": ["min-height: $1;"], "description": "" },
+	"max-height: $1;": { "prefix": "maxht", "body": ["max-height: $1;"], "description": "" },
+	"padding: $1;": { "prefix": "pd", "body": ["padding: $1;"], "description": "" },
+	"padding-left: $1;": { "prefix": "pd-l", "body": ["padding-left: $1;"], "description": "" },
+	"padding-right: $1;": { "prefix": "pd-r", "body": ["padding-right: $1;"], "description": "" },
+	"padding-top: $1;": { "prefix": "pd-t", "body": ["padding-top: $1;"], "description": "" },
+	"padding-bottom: $1;": { "prefix": "pd-b", "body": ["padding-bottom: $1;"], "description": "" },
+	"border: $1;": { "prefix": "bd", "body": ["border: ${1:1px} ${2:solid} ${3:#ddd};"], "description": "" },
+	"border-bottom: $1;": { "prefix": "bd-b", "body": ["border-bottom: ${1:1px} ${2:solid} ${3:#ddd};"], "description": "" },
+	"border-top: $1;": { "prefix": "bd-t", "body": ["border-top: ${1:1px} ${2:solid} ${3:#ddd};"], "description": "" },
+	"border-left: $1;": { "prefix": "bd-l", "body": ["border-left: ${1:1px} ${2:solid} ${3:#ddd};"], "description": "" },
+	"border-right: $1;": { "prefix": "bd-r", "body": ["border-right: ${1:1px} ${2:solid} ${3:#ddd};"], "description": "" },
+	"border-color: $1;": { "prefix": "bd-c", "body": ["border-color: $1;"], "description": "" },
+	"border-style: $1;": { "prefix": "bd-s", "body": ["border-style: $1;"], "description": "" },
+	"border-width: $1;": { "prefix": "bd-w", "body": ["border-width: $1;"], "description": "" },
+	"border-image: $1;": { "prefix": "bd-i", "body": ["border-image: url(${1:图像地址}) ${2:填充宽度} ${3:排列方式};"], "description": "" },
+	"margin: $1;": { "prefix": "mg", "body": ["margin: $1;"], "description": "" },
+	"margin-left: $1;": { "prefix": "mg-l", "body": ["margin-left: $1;"], "description": "" },
+	"margin-right: $1;": { "prefix": "mg-r", "body": ["margin-right: $1;"], "description": "" },
+	"margin-top: $1;": { "prefix": "mg-t", "body": ["margin-top: $1;"], "description": "" },
+	"margin-bottom: $1;": { "prefix": "mg-b", "body": ["margin-bottom: $1;"], "description": "" },
+	"border-radius: $1;": { "prefix": "rd", "body": ["border-radius: $1;"], "description": "" },
+	"box-shadow: $1;": { "prefix": "sd", "body": ["box-shadow: ${1:水平偏移量} ${2:垂直偏移量} ${3:模糊程度} ${4:阴影颜色};"], "description": "" },
+	// 背景
+	"background: $1": { "prefix": "bk", "body": ["background: url($1) ${2:no-repeat} ${3:0 0};"], "description": "背景设置" },
+	"background-color: $1": { "prefix": "bk-c", "body": ["background-color: $1;"], "description": "背景颜色" },
+	"background-image: $1": { "prefix": "bk-i", "body": ["background-image: url($1);"], "description": "背景图" },
+	"background-attachment: fixed": { "prefix": "bk-fix", "body": ["background-attachment: fixed;"], "description": "背景图-固定" },
+	"background-attachment: scroll": { "prefix": "bk-scr", "body": ["background-attachment: scroll;"], "description": "背景图-可滚动" },
+	"background-position: $1": { "prefix": "bk-p", "body": ["background-position: $1;"], "description": "背景图-显示位置" },
+	"background-repeat: $1": { "prefix": "bk-r", "body": ["background-repeat: $1;"], "description": "背景图-平铺方式" },
+	"background-size: $1": { "prefix": "bk-s", "body": ["background-size: ${1:<length>|<percentage>|auto|cover|contain};"], "description": "背景图-大小" },
+	"background-size: cover": { "prefix": "bk-s", "body": ["background-size: cover;"], "description": "背景图-等比缩放完全覆盖容器，有可能超出容器" },
+	"background-size: contain": { "prefix": "bk-s", "body": ["background-size: contain;"], "description": "背景图-等比缩放到宽度或高度与容器的宽度或高度相等，始终被包含在容器内" },
+	"background-origin: $1": { "prefix": "bk-o", "body": ["background-origin: $1;"], "description": "背景图-从什么位置开始显示" },
+	"background-origin: border": { "prefix": "bk-o", "body": ["background-origin: border;"], "description": "背景图-从什么位置开始显示" },
+	"background-origin: padding": { "prefix": "bk-o", "body": ["background-origin: padding;"], "description": "背景图-从什么位置开始显示" },
+	"background-origin: content": { "prefix": "bk-o", "body": ["background-origin: content;"], "description": "背景图-从什么位置开始显示" },
+	"background-clip: $1": { "prefix": "bk-cl", "body": ["background-clip: ${1:border-box|padding-box|content-box};"], "description": "背景图-裁剪方式" },
+	"background-clip: border-box": { "prefix": "bk-cl", "body": ["background-clip: border-box;"], "description": "默认,不裁剪" },
+	"background-clip: padding-box": { "prefix": "bk-cl", "body": ["background-clip: padding-box;"], "description": "从填充处向外裁剪" },
+	"background-clip: content-box": { "prefix": "bk-cl", "body": ["background-clip: content-box;"], "description": "从内容区向外裁剪" },
+	// 其他
+	"overflow: hidden;": { "prefix": "hd", "body": ["overflow: hidden;"], "description": "" },
+	"content: $1;": { "prefix": "con", "body": ["content: $1;"], "description": "" },
+	"opacity: $1;": { "prefix": "op", "body": ["opacity: $1;"], "description": ""},
+	// 代码片段
+	"多行省略号": {
+		"prefix": "ellip:lines",
+		"body": [
+			"display: -webkit-box;",
+			"-webkit-box-orient: vertical;",
+			"-webkit-line-clamp: ${1:2};",
+			"overflow: hidden;"
+		],
+		"description": ""
+	},
+	"单行省略号": {
+		"prefix": "ellip:single",
+		"body": [
+			"overflow: hidden;",
+			"text-overflow:ellipsis;",
+			"white-space: nowrap;"
+		],
+		"description": ""
+	},
+	"flex垂直排列": {
+		"prefix": "flx-c",
+		"body": [
+			"display: flex;",
+			"flex-direction: column;"
+		],
+		"description": ""
+	},
+	"flex两端对齐": {
+		"prefix": "flx-ld",
+		"body": [
+			"display: flex;",
+			"justify-content: space-between;"
+		],
+		"description": ""
+	},
+	"flex两端对齐(column)": {
+		"prefix": "flx-ld-c",
+		"body": [
+			"display: flex;",
+			"flex-direction: column;",
+			"justify-content: space-between;"
+		],
+		"description": ""
+	},
+}

@@ -1,0 +1,266 @@
+{
+  // 根据活动编辑器控制窗口标题。变量基于上下文进行替换:
+  // ${activeEditorShort}: 文件名 (如 myFile.txt)
+  // ${activeEditorMedium}: 相对于工作区文件夹的文件路径 (如 myFolder/myFile.txt)
+  // ${activeEditorLong}: 文件的完整路径 (如 /Users/Development/myProject/myFolder/myFile.txt)
+  // ${folderName}: 文件所在工作区文件夹名称 (如 myFolder)
+  // ${folderPath}: 文件所在工作区文件夹路径 (如 /Users/Development/myFolder)
+  // ${rootName}: 工作区名称 (如 myFolder 或 myWorkspace)
+  // ${rootPath}: 工作区路径 (如 /Users/Development/myWorkspace)
+  // ${appName}: 如 VS Code
+  // ${dirty}: 活动编辑器有更新时显示的更新指示器
+  // ${separator}: 仅在被有值变量或静态文本包围时显示的分隔符 (" - ")
+  "window.title": "${activeEditorMedium}${separator}${rootName}",
+
+  // 调整窗口的缩放级别。原始大小是 0，每次递增(例如 1)或递减(例如 -1)表示放大或缩小 20%。也可以输入小数以便以更精细的粒度调整缩放级别。
+  "window.zoomLevel": 0,
+
+  // 控制终端的渲染方式。
+  "terminal.integrated.rendererType": "dom",
+
+  // 指定在工作台中使用的图标主题，或指定”null“以不显示任何文件图标
+  "workbench.iconTheme": "vscode-great-icons",
+
+  // 指定用在工作台中的颜色主题
+  "workbench.colorTheme": "Monokai Alt",
+
+  // 控制边栏的位置。它可以显示在工作台的左侧或右侧。
+  "workbench.sideBar.location": "left",
+
+  // 设置资源管理器目录层级之间的间隔距离，单位（px）
+  "workbench.tree.indent": 14,
+
+  // 控制在资源管理器内拖放移动文件或文件夹时，是否进行确认
+  "explorer.confirmDragAndDrop": true,
+
+  // 控制资源管理器是否在把文件删除到废纸篓时进行确认
+  "explorer.confirmDelete": false,
+
+  // 控制折行方式。可以选择:
+  //  - "off" (禁用折行)，
+  //  - "on" (根据视区宽度折行)，
+  //  - "wordWrapColumn" (在 "editor.wordWrapColumn" 处换行)
+  //  - "bounded" (在视区宽度和 "editor.wordWrapColumn" 两者的较小者处换行)。
+  "editor.wordWrap": "off",
+
+  // 以像素为单位控制字号。
+  "editor.fontSize": 14,
+
+  // 控制行高。使用 0 通过字号计算行高。
+  "editor.lineHeight": 28,
+
+  // 一个制表符等于的空格数。该设置在 "editor.detectIndentation" 启用时根据文件内容可能会被覆盖。
+  "editor.tabSize": 2,
+
+  // 控制编辑器是否应自动设置粘贴内容的格式。格式化程序必须可用并且能设置文档中某一范围的格式。
+  "editor.formatOnPaste": false,
+
+  // 当选择其中一项时，将突出显示匹配的括号。
+  "editor.matchBrackets": true,
+
+  // 在通过鼠标添加多个光标时使用的修改键。“转到定义”和“打开链接”功能所需的鼠标动作将会相应调整，不与多光标修改键冲突。
+  "editor.multiCursorModifier": "ctrlCmd",
+
+  // 控制编辑器在空白字符上显示符号的方式。
+  "editor.renderWhitespace": "none",
+
+  // 启用后，将在保存文件时剪裁尾随空格。
+  "files.trimTrailingWhitespace": true,
+
+  // 以逗号分隔的标签列表，其中的标签之前将有额外新行。若为 `null`，默认包含 `"head, body, /html"`。
+  "html.format.extraLiners": "head, body, /html",
+
+  // 对不属于任何工程的 JavaScript 文件启用或禁用 "experimentalDecorators" 设置。
+  // 现有的 jsconfig.json 或tsconfig.json 文件会覆盖此设置。
+  // 要求 TypeScript >=2.3.1。
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+
+  // 当在 VS Code 中重命名或移动文件时，启用或禁用自动更新导入路径。要求工作区使用高于 2.9 版本的 TypeScript。
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  // 显示可能的 Emmet 缩写作为建议。在样式表中或当 emmet.showExpandedAbbreviation 设置为 "never" 时不适用。
+  "emmet.showAbbreviationSuggestions": false,
+
+  // 不应展开 Emmet 缩写的语言数组。
+  // 我这里喜欢使用自己定义的CSS代码片段,不适用Emmet的语法
+  "emmet.excludeLanguages": [
+    "markdown",
+    "css",
+    "css",
+    "scss",
+    "less",
+  ],
+
+  // 在默认不支持 Emmet 的语言中启用 Emmet 缩写功能。在此添加该语言与受支持的语言间的映射。 示例: {"vue-html": "html", "javascript": "javascriptreact"}
+  "emmet.includeLanguages": {
+    "wxml": "html"
+  },
+
+  // 路径自动完成-别名设置
+  "path-autocomplete.pathMappings": {
+    "@": "${folder}/src/",
+  },
+
+  // 默认在启动时会自动相关文件关联的配置项，配置成功后将此配置自动设置成true，避免下次启动再重新配置
+  "minapp-vscode.disableAutoConfig": true,
+
+  // vue文件中的格式化不处理html和js,由eslint处理
+  "vetur.format.defaultFormatter.html": "none",
+  "vetur.format.defaultFormatter.js": "none",
+
+  // eslint配置文件
+  "eslint.options": {
+    // 使用指定的配置文件
+    // "configFile": "/Users/yangtuan/Works/house-mobile/.eslintrc-strict.js",
+    // 使用.eslintrc配置文件
+    "useEslintrc": true,
+  },
+
+  // 保存时自动修复eslint提示的问题
+  "eslint.autoFixOnSave": true,
+
+  // eslint验证的文件类型
+  "eslint.validate": [
+    "javascript",
+    {
+      "language": "javascriptreact",
+      "autoFix": true
+    },
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+
+  // stylelint 格式化配置
+  // stylelint 中文文档： https://cloud.tencent.com/developer/section/1489630
+
+  // 是否启用stylelint校验
+  "stylelint.enable": true,
+
+  // 保存代码时是否自动修复stylelint规则
+  "stylelint.autoFix": true,
+
+  // csscomb 格式化配置
+  "csscomb.formatOnSave": false,
+  "csscomb.preset": {
+    "remove-empty-rulesets": true,
+    "always-semicolon": true,
+    "color-case": "lower",
+    "block-indent": "  ",
+    "color-shorthand": true,
+    "element-case": "lower",
+    "eof-newline": true,
+    "leading-zero": false,
+    "lines-between-rulesets": 1,
+    "quotes": "double",
+    "sort-order-fallback": "",
+    "space-before-colon": "",
+    "space-after-colon": " ",
+    "space-before-combinator": " ",
+    "space-after-combinator": " ",
+    "space-between-declarations": "\n",
+    "space-before-opening-brace": " ",
+    "space-after-opening-brace": "\n",
+    "space-after-selector-delimiter": "\n",
+    "space-before-selector-delimiter": "",
+    "space-before-closing-brace": "\n",
+    "strip-spaces": true,
+    "tab-size": true,
+    "unitless-zero": true,
+    "exclude": [
+      ".git/**",
+      "node_modules/**",
+      "bower_components/**"
+    ],
+    "sort-order": [
+      [
+        "content",
+        "position", "top", "right", "bottom", "left", "z-index",
+        "float", "clear",
+        "display", "overflow", "overflow-x", "overflow-y", "-webkit-overflow-scrolling", "visibility", "clip",
+        "flex-flow", "flex-direction", "flex-wrap",
+        "justify-content", "align-items", "align-content",
+        "order", "flex", "flex-grow", "flex-shrink", "flex-basis", "align-self",
+        "box-sizing",
+        "width", "min-width", "max-width",
+        "height", "min-height", "max-height",
+        "padding",  "padding-top", "padding-right", "padding-bottom", "padding-left",
+        "border", "border-spacing", "border-collapse", "border-width", "border-style", "border-color",
+        "border-top", "border-top-width", "border-top-style", "border-top-color",
+        "border-right", "border-right-width", "border-right-style", "border-right-color",
+        "border-bottom", "border-bottom-width", "border-bottom-style", "border-bottom-color",
+        "border-left", "border-left-width", "border-left-style", "border-left-color",
+        "border-radius", "border-top-left-radius", "border-top-right-radius", "border-bottom-right-radius", "border-bottom-left-radius",
+        "border-image", "border-image-source", "border-image-slice", "border-image-width", "border-image-outset", "border-image-repeat",
+        "outline", "outline-width", "outline-style", "outline-color", "outline-offset",
+        "margin",  "margin-top", "margin-right", "margin-bottom", "margin-left",
+        "font", "font-family", "font-size", "line-height", "font-weight", "font-style", "font-variant", "font-stretch", "font-size-adjust",
+        "letter-spacing", "word-spacing",
+        "text-align", "vertical-align", "text-indent", "text-transform",
+        "text-decoration", "text-shadow", "text-overflow",
+        "white-space", "word-break", "word-wrap",
+        "color",
+        "background",
+        "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader",
+        "background-color", "background-image", "background-repeat", "background-position", "background-position-x", "background-position-y",
+        "background-attachment", "background-size", "background-clip", "background-origin",
+        "box-shadow",
+        "opacity",
+        "cursor",
+        "table-layout", "caption-side", "empty-cells",
+        "list-style", "list-style-position", "list-style-type", "list-style-image",
+        "pointer-events",
+        "transform", "transform-origin", "transform-style", "perspective", "perspective-origin", "backface-visibility",
+        "transition", "transition-property", "transition-duration", "transition-timing-function", "transition-delay",
+        "animation", "animation-name", "animation-duration", "animation-timing-function", "animation-delay", "animation-iteration-count", "animation-direction", "animation-play-state", "animation-fill-mode",
+        "-webkit-appearance",
+        "-webkit-tap-highlight-color",
+      ]
+    ]
+  },
+
+  // 配置语言的文件关联 (如: "*.extension": "html")。这些关联的优先级高于已安装语言的默认关联。
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.wxss": "css",
+    "*.wxs": "javascript",
+    "*.wxc": "vue"
+  },
+
+  // 自动同步插件配置
+  "sync.gist": "141cee95350d11a92e513ccc67a98485",
+  "sync.host": "",
+  "sync.pathPrefix": "",
+  "sync.quietSync": false,
+  "sync.askGistName": false,
+  "sync.removeExtensions": true,
+  "sync.syncExtensions": true,
+  "sync.autoDownload": false,
+  "sync.autoUpload": false,
+  "sync.lastUpload": "2018-07-18T01:22:41.545Z",
+  "sync.lastDownload": "2018-06-13T01:32:05.489Z",
+  "sync.forceDownload": false,
+
+  // Auto close tag when </ is typed, same as Sublime Text 3
+  // "auto-close-tag.SublimeText3Mode": true,
+
+  // 隐藏掉bracketPairColorizer插件的区域线
+  // "bracketPairColorizer.showHorizontalScopeLine": false,
+  // "bracketPairColorizer.showVerticalScopeLine": false,
+
+  // import第三方库文件大小统计显示的配色方案
+  // "importCost.smallPackageSize": 50,
+  // "importCost.mediumPackageSize": 100,
+  // "importCost.smallPackageColor": "#777777",
+  // "importCost.mediumPackageColor": "#777777",
+  // "importCost.largePackageColor": "#777777",
+}
