@@ -1,0 +1,132 @@
+<DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+		<title>星链友店为您省钱</title>
+		<meta name="description" itemprop="description" content="星链友店为您省钱，诚心制作，既帮助自己，也服务大家！"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1,user-scalable=no" />
+		<script src="./js/vue.min.js"></script>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+
+			body {
+				font-size: 14px;
+				line-height: 2em;
+				color: #2B3037;
+			}
+
+			.row {
+				display: flex;
+				flex-direction: row;
+				align-items: center;
+				margin: 10px 0;
+			}
+
+			.label {
+				width: 8em;
+				margin-left: 20px;
+				font-size:12px;
+				text-align: left;
+				color: #999;
+			}
+
+			select,
+			input {
+				width: 200px;
+				height: 30px;
+				padding: 0 10px;
+				border: 1px solid #eee;
+			}
+
+			.line {
+				border-top: 1px solid #eee;
+				margin-top: 10px;
+				margin-bottom: 10px;
+			}
+
+			.empty {
+				height: 20px;
+			}
+
+			.important {
+				font-size: 16px;
+				font-weight: bold;
+				color: #F63623;
+			}
+
+			.bold {
+				font-weight: bold;
+			}
+
+			.mutedText {
+				font-size: 12px;
+				color: #999;
+			}
+
+			#a {
+				padding: 20px 10px;
+			}
+
+			.info-cont {
+				text-align: center;
+			}
+		</style>
+</head>
+<body>
+	<div id="accountBox">
+		<div>
+			<div class="row">
+				<div class="label">商品标题:</div>
+				<input v-model="goodsTitle" />
+			</div>
+			<div class="row">
+				<div class="label">商品价格:</div>
+				<input v-model="goodsPrice" />
+			</div>
+			<div class="row">
+				<div class="label">商品佣金:</div>
+				<input v-model="goodsCommission" />
+			</div>
+			<div class="row">
+				<div class="label">额外星力值:</div>
+				<input v-model="extraXinglizhi" />
+			</div>
+		</div>
+		<div class="line"></div>
+		<div class="info-cont">
+			<p class="info-title important">{{goodsTitle}}</p>
+			<p class="info-text important">星链友店标准售价 {{goodsPrice}} 元</p>
+			<p class="info-text">共可获得 {{xinglizhi}} 星力值</p>
+			<p class="info-text">按当下 {{ratio}}:1 比例兑换星钻，即 {{xzCount.toFixed(2)}} 枚星钻</p>
+
+			<div class="empty"></div>
+			<p class="info-text">{{xzCount.toFixed(2)}}枚星钻 若同期激活价值 {{xzValue.toFixed(2)}} 元</p>
+			<p class="info-text">一星会员自购折扣佣金 {{goodsCommission || 0}} 元</p>
+			<p class="info-text">则最终只需花费 {{goodsPrice}} - {{xzValue.toFixed(2)}} - {{goodsCommission || 0}} = {{goodsPayMoney.toFixed(2)}} 元</p>
+			<p class="info-text">星链友店商城为您节省 {{goodsSaveMoney.toFixed(2)}} 元</p>
+
+			<div class="empty"></div>
+			<p class="info-text">若一年后1枚星钻价值 {{xzPriceOneYearLater}} 元</p>
+			<p class="info-text">{{xzCount.toFixed(2)}}枚星钻 激活后的价值为 {{xzValueOneYearLater.toFixed(2)}} 元</p>
+			<p class="info-text" v-if="goodsPayMoneyOneYearLater > 0">则该商品仅需花费 {{goodsPrice}} - {{xzValueOneYearLater.toFixed(2)}} - {{goodsCommission || 0}} = {{goodsPayMoneyOneYearLater.toFixed(2)}} 元</p>
+			<div v-else>
+				<p class="info-text">则该商品相当于不花钱</p>
+				<p class="info-text">还为您赚了 {{xzValueOneYearLater.toFixed(2)}} - {{goodsPrice}} = {{(xzValueThreeYearLater - goodsPrice).toFixed(2)}} 元</p>
+			</div>
+
+			<div class="empty"></div>
+			<p class="info-text">若三年后1枚星钻价值 {{xzPriceThreeYearLater}} 元</p>
+			<p class="info-text">{{xzCount.toFixed(2)}}枚星钻 激活后的价值为 {{xzValueThreeYearLater.toFixed(2)}} 元</p>
+			<p class="info-text" v-if="goodsPayMoneyThreeYearLater > 0">则该商品仅需花费 {{goodsPrice}} - {{xzValueThreeYearLater.toFixed(2)}} - {{goodsCommission || 0}} = {{goodsPayMoneyThreeYearLater.toFixed(2)}} 元</p>
+			<div v-else>
+				<p class="info-text">则该商品相当于不花钱</p>
+				<p class="info-text">还为您赚了 {{xzValueThreeYearLater.toFixed(2)}} - {{goodsPrice}} = {{(xzValueThreeYearLater - goodsPrice).toFixed(2)}} 元</p>
+			</div>
+		</div>
+	</div>
+	<script src="./js/account.js?t=20191017"></script>
+</body>
+</html>

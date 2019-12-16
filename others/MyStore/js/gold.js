@@ -27,7 +27,7 @@ var vm = new Vue({
       { value: 200, name: '200克' },
     ],
     // 选择倍数
-    selectedMultiple: 2,
+    selectedMultiple: 2.5,
     // 倍数列表
     multipleList: [
       { value: 2.5, name: '2.5倍' },
