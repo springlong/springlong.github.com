@@ -27,12 +27,14 @@ var vm = new Vue({
       { value: 200, name: '200克' },
     ],
     // 选择倍数
-    selectedMultiple: 2.5,
+    selectedMultiple: 1.5,
     // 倍数列表
     multipleList: [
       { value: 2.5, name: '2.5倍' },
       { value: 2, name: '2倍' },
       { value: 1.5, name: '1.5倍' },
+      { value: 1.2, name: '1.2倍' },
+      { value: 1, name: '1倍' },
     ],
     // 预期价格
     selectedExpectPrice: '2',
