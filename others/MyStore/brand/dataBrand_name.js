@@ -1,3 +1,0 @@
-window['dataBrand_name'] = [
-
-];
